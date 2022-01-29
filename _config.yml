@@ -27,6 +27,7 @@ repository               : "miro7923/miro7923.github.com"# GitHub username/repo-
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : "개발 공부하는 Blog"# overrides the website title displayed in the masthead, use " " for no title
+future                   : true
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 comments:
@@ -70,6 +71,7 @@ algolia:
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
+  
 # SEO Related
 google_site_verification :
 bing_site_verification   :
@@ -94,9 +96,9 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "google-gtag", "custom"
+  provider               : "google" # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id          :
+    tracking_id          : "miro7923"
     anonymize_ip         : # true, false (default)
 
 
