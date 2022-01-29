@@ -406,10 +406,4 @@ var store = [{
         "tags": [],
         "url": "/CS01/",
         "teaser": null
-      },{
-        "title": "Post: Future Date",
-        "excerpt":"This post lives in the future and is dated Fri Dec 31 00:00:00 9999. When building Jekyll with the --future flag it should appear.  ","categories": ["Post"],
-        "tags": [],
-        "url": "/post/post-future-date/",
-        "teaser": null
       }]
