@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Yujin Log</title>
+<!-- begin _includes/seo.html --><title>Posts by Tag | Yujin Log</title>
 <meta name="description" content="개발 공부하는 블로그">
 
 
@@ -20,8 +20,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Log">
-<meta property="og:title" content="Yujin Log">
-<meta property="og:url" content="http://localhost:4000/">
+<meta property="og:title" content="Posts by Tag">
+<meta property="og:url" content="http://localhost:4000/tags/">
 
 
   <meta property="og:description" content="개발 공부하는 블로그">
@@ -41,7 +41,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/">
+<link rel="canonical" href="http://localhost:4000/tags/">
 
 
 
@@ -92,7 +92,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--tags">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -136,6 +136,33 @@
     <div class="initial-content">
       
 
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Posts by Tag</li>
+      
+    
+  </ol>
+</nav>
+
+  
 
 
 <div id="main" role="main">
@@ -263,18 +290,37 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title"></h1>
+      <h1 id="page-title" class="page__title">Posts by Tag</h1>
     
     
 
-<h3 class="archive__subtitle">최근 포스트</h3>
 
 
 
 
-<div class="entries-list">
+<ul class="taxonomy__index">
   
     
+      
+        <li>
+          <a href="#cs">
+            <strong>CS</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+  
+</ul>
+
+
+
+  
+    
+      <section id="cs" class="taxonomy__section">
+        <h2 class="archive__subtitle">CS</h2>
+        <div class="entries-list">
+          
+            
 
 
 
@@ -317,10 +363,12 @@
   </article>
 </div>
 
+          
+        </div>
+        <a href="#page-title" class="back-to-top">맨 위로 이동 &uarr;</a>
+      </section>
+    
   
-</div>
-
-
 
 
   </div>
