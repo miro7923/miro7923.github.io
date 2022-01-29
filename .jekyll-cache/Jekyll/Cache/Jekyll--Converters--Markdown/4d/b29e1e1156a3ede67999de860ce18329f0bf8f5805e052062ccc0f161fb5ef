@@ -1,0 +1,68 @@
+I"`<p>This post should display a <strong>header with a responsive video</strong>, if the theme supports it.</p>
+
+<h2 id="settings">Settings</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">id</code></td>
+      <td><strong>Required</strong></td>
+      <td>ID of the video</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">provider</code></td>
+      <td><strong>Required</strong></td>
+      <td>Hosting provider of the video, either <code class="language-plaintext highlighter-rouge">youtube</code> or <code class="language-plaintext highlighter-rouge">vimeo</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="youtube">YouTube</h3>
+
+<p>To embed the following YouTube video at url <code class="language-plaintext highlighter-rouge">https://www.youtube.com/watch?v=XsxDH4HcOWA</code> (long version) or <code class="language-plaintext highlighter-rouge">https://youtu.be/XsxDH4HcOWA</code> (short version) into a post or page’s main content you’d use:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="nv">video</span><span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s2">"XsxDH4HcOWA"</span><span class="w"> </span><span class="na">provider</span><span class="o">=</span><span class="s2">"youtube"</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<!-- Courtesy of embedresponsively.com -->
+
+<div class="responsive-video-container">
+    <iframe src="https://www.youtube-nocookie.com/embed/XsxDH4HcOWA" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+  </div>
+
+<p>To embed it as a video header you’d use the following YAML Front Matter</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">header</span><span class="pi">:</span>
+  <span class="na">video</span><span class="pi">:</span>
+    <span class="na">id</span><span class="pi">:</span> <span class="s">XsxDH4HcOWA</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">youtube</span>
+</code></pre></div></div>
+
+<h3 id="vimeo">Vimeo</h3>
+
+<p>To embed the following Vimeo video at url <code class="language-plaintext highlighter-rouge">https://vimeo.com/212731897</code> into a post or page’s main content you’d use:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="nv">video</span><span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s2">"212731897"</span><span class="w"> </span><span class="na">provider</span><span class="o">=</span><span class="s2">"vimeo"</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<!-- Courtesy of embedresponsively.com -->
+
+<div class="responsive-video-container">
+    <iframe src="https://player.vimeo.com/video/212731897?dnt=true" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+  </div>
+
+<p>To embed it as a video header you’d use the following YAML Front Matter</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">header</span><span class="pi">:</span>
+  <span class="na">video</span><span class="pi">:</span>
+    <span class="na">id</span><span class="pi">:</span> <span class="m">212731897</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">vimeo</span>
+</code></pre></div></div>
+:ET

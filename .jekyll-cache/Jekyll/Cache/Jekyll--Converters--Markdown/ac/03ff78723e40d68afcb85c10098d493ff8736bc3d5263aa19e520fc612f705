@@ -1,0 +1,19 @@
+I"<p>This post should not appear in the search index because it has the following YAML Front Matter:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">search</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p class="notice--info"><strong>Note:</strong> <code class="language-plaintext highlighter-rouge">search: false</code> only works to exclude posts when using Lunr as a search provider.</p>
+
+<p>To exclude files when using Algolia as a search provider add an array to <code class="language-plaintext highlighter-rouge">algolia.files_to_exclude</code> in your <code class="language-plaintext highlighter-rouge">_config.yml</code>. For more configuration options be sure to check their <a href="https://community.algolia.com/jekyll-algolia/options.html">full documentation</a>.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">algolia</span><span class="pi">:</span>
+  <span class="c1"># Exclude more files from indexing</span>
+  <span class="na">files_to_exclude</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">index.html</span>
+    <span class="pi">-</span> <span class="s">index.md</span>
+    <span class="pi">-</span> <span class="s">excluded-file.html</span>
+    <span class="pi">-</span> <span class="s">_posts/2017-11-28-post-exclude-search.md</span>
+    <span class="pi">-</span> <span class="s">subdirectory/*.html</span>
+</code></pre></div></div>
+:ET

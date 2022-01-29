@@ -1,0 +1,86 @@
+I"�#<p>Jekyll <a href="http://jekyllrb.com/docs/themes/">themes distributed as Ruby gems</a> are finally here to make installing and upgrading much easier. Gone are the days of forking a repo just to “install it”. Or dealing with merge conflicts when pulling in upstream commits to “upgrade it”.</p>
+
+<p>If you’re interested in testing out Minimal Mistakes as a gemified theme read on. There are a few caveats though:</p>
+
+<ol>
+  <li>Support for a theme <code class="language-plaintext highlighter-rouge">assets</code> folder was recently <a href="https://github.com/jekyll/jekyll/pull/5364">added to Jekyll core</a>, but has yet to be released or rolled into the <code class="language-plaintext highlighter-rouge">github-pages</code> gem. Meaning you can’t use Minimal Mistakes as a Ruby gem there just yet… locally served or self-hosted installs should be fine if you don’t mind using a pre-release version of Jekyll.</li>
+  <li>Windows users can’t currently use themes packaged as gems due to a <a href="https://github.com/jekyll/jekyll/issues/5192">bug with file paths</a> in Jekyll core. This is being worked on so hopefully a <a href="https://github.com/jekyll/jekyll/pull/5256">fix is on the way</a> soon.</li>
+</ol>
+
+<p>Fine with all that? Great. Let’s continue.</p>
+
+<p>If you’re migrating a site already using Minimal Mistakes and haven’t customized any of the <code class="language-plaintext highlighter-rouge">_includes</code>, <code class="language-plaintext highlighter-rouge">_layouts</code>, <code class="language-plaintext highlighter-rouge">_sass</code> partials, or <code class="language-plaintext highlighter-rouge">assets</code> this should be quick and painless.</p>
+
+<h2 id="step-1-remove-theme-files">Step 1: Remove Theme Files</h2>
+
+<p>Remove <code class="language-plaintext highlighter-rouge">_includes</code>, <code class="language-plaintext highlighter-rouge">_layouts</code>, <code class="language-plaintext highlighter-rouge">_sass</code>, <code class="language-plaintext highlighter-rouge">assets</code> folders and files within. You won’t need these anymore as they’re bundled in the theme.</p>
+
+<p>If you customized any of these then leave them alone and only remove the untouched ones. If setup correctly your modified versions should act as <a href="http://jekyllrb.com/docs/themes/#overriding-theme-defaults">overrides</a> to the versions bundled with the theme.</p>
+
+<h2 id="step-2-update-gemfile">Step 2: Update <code class="language-plaintext highlighter-rouge">Gemfile</code></h2>
+
+<p>In order to test you’ll need to install pre-release gems of Jekyll and Minimal Mistakes.</p>
+
+<p>Start by replacing <code class="language-plaintext highlighter-rouge">gem "github-pages"</code> or <code class="language-plaintext highlighter-rouge">gem "jekyll"</code> with the following:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s2">"https://github.com/jekyll/jekyll.git"</span>
+</code></pre></div></div>
+
+<p>Then add the pre-release Minimal Mistakes theme gem:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"minimal-mistakes-jekyll"</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s2">"https://github.com/mmistakes/minimal-mistakes.git"</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s2">"feature/theme-gem"</span><span class="sb">`
+</span></code></pre></div></div>
+
+<p>When finished your <code class="language-plaintext highlighter-rouge">Gemfile</code> should look something like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
+
+<span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s2">"https://github.com/jekyll/jekyll.git"</span>
+<span class="n">gem</span> <span class="s2">"minimal-mistakes-jekyll"</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s2">"https://github.com/mmistakes/minimal-mistakes.git"</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s2">"feature/theme-gem"</span>
+
+<span class="n">group</span> <span class="ss">:jekyll_plugins</span> <span class="k">do</span>
+  <span class="c1"># gem "jekyll-archives"</span>
+  <span class="n">gem</span> <span class="s2">"jekyll-paginate"</span>
+  <span class="n">gem</span> <span class="s2">"jekyll-sitemap"</span>
+  <span class="n">gem</span> <span class="s2">"jekyll-gist"</span>
+  <span class="n">gem</span> <span class="s2">"jekyll-feed"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="step-3-run-bundler">Step 3: Run Bundler</h2>
+
+<p>Run <code class="language-plaintext highlighter-rouge">bundle install</code> (or <code class="language-plaintext highlighter-rouge">bundle update</code> if you’re updating an existing repo) to install the pre-release gems.</p>
+
+<h2 id="step-4-install-the-theme">Step 4: Install the Theme</h2>
+
+<p>Add <code class="language-plaintext highlighter-rouge">theme: "minimal-mistakes-jekyll"</code> to your <code class="language-plaintext highlighter-rouge">_config.yml</code> file.</p>
+
+<p>If you’re migrating from an existing Minimal Mistakes site you shouldn’t have to change anything else after this. If it’s a new site consult then docs to <a href="/docs/configuration/">properly config</a>.</p>
+
+<p class="notice--danger"><strong>Please Note:</strong> Paths for image headers, overlays, teasers, <a href="/docs/helpers/#gallery">galleries</a>, and <a href="/docs/helpers/#feature-row">feature rows</a> have changed and now require a full path. Instead of just <code class="language-plaintext highlighter-rouge">image: filename.jpg</code> you’ll need to use the full path eg: <code class="language-plaintext highlighter-rouge">image: assets/images/filename.jpg</code>. The preferred location is now <code class="language-plaintext highlighter-rouge">assets/images</code> but can be placed elsewhere or external hosted. This applies for image references in <code class="language-plaintext highlighter-rouge">_config.yml</code> and <code class="language-plaintext highlighter-rouge">author.yml</code>.</p>
+
+<h2 id="step-5-jekyll-new-tweaks">Step 5: <code class="language-plaintext highlighter-rouge">jekyll new</code> Tweaks</h2>
+
+<p>If this is a new site be sure to add the following files to <code class="language-plaintext highlighter-rouge">_data/</code> and customize as you see fit. There is currently no way of bundling them in with the theme, so be sure to consult the docs on how to properly use both.</p>
+
+<ul>
+  <li><a href="https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml"><code class="language-plaintext highlighter-rouge">_data/ui-text.yml</code></a> - UI text <a href="/docs/ui-text/">documentation</a></li>
+  <li><a href="https://github.com/mmistakes/minimal-mistakes/blob/master/_data/navigation.yml"><code class="language-plaintext highlighter-rouge">_data/navigation.yml</code></a> - navigation <a href="/docs/navigation/">documentation</a></li>
+</ul>
+
+<p>You’ll also need to:</p>
+
+<ul>
+  <li>Replace <code class="language-plaintext highlighter-rouge">&lt;site root&gt;/index.html</code> with a modified <a href="https://github.com/mmistakes/minimal-mistakes/blob/master/index.html">Minimal Mistakes <code class="language-plaintext highlighter-rouge">index.html</code></a>.</li>
+  <li>Change <code class="language-plaintext highlighter-rouge">layout: post</code> in <code class="language-plaintext highlighter-rouge">_posts/0000-00-00-welcome-to-jekyll.markdown</code> to <code class="language-plaintext highlighter-rouge">layout: single</code>.</li>
+  <li>Remove <code class="language-plaintext highlighter-rouge">about.md</code>, or at the very least change <code class="language-plaintext highlighter-rouge">layout: page</code> to <code class="language-plaintext highlighter-rouge">layout: single</code> and remove references to <code class="language-plaintext highlighter-rouge">icon-github.html</code> (or <a href="https://github.com/jekyll/minima/tree/master/_includes">copy to your <code class="language-plaintext highlighter-rouge">_includes</code></a> if using).</li>
+</ul>
+
+<hr />
+
+<p>That’s it! If all goes well running <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> should spin-up your site. If you encounter any bumps please file an issue on GitHub and make sure to indicate you’re testing the pre-release Ruby gem version.</p>
+
+<p><a href="https://github.com/mmistakes/minimal-mistakes/issues/new" class="btn btn--info btn--large">File an issue</a></p>
+
+<p>Thanks!</p>
+:ET
