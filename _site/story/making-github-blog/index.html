@@ -370,7 +370,7 @@ ruby 설치 관련글은 아래 글과 같이 구글에 검색하시면 많이 �
 <p>시작 전에 깃헙 블로그는 터미널에서 명령어를 입력하는 것을 이용해서 만들 것인데 처음 하면 이것도 뭔가 싶으실 수 있습니다.<br />
 모든 블로그 글들을 따라하다 보면 터미널에서 무슨 명령어를 입력해라고 할텐데 그냥 터미널을 켜고 명령어를 입력하면 전혀 작동하지 않고 명령어로 실행하고자 하는 파일이 들어있는 위치로 이동한 다음에 해당 명령어를 입력해야 합니다.<br /><br /></p>
 
-<p><img src="../assets/images/terminal01.png" alt="terminal01" /><br /><br />
+<p><img src="../../assets/images/terminal01.png" alt="terminal01" /><br /><br />
 그렇기 때문에 블로그 repository가 있는 폴더에서 마우스 우클릭해서 나오는 메뉴에서 <strong>‘폴더에서 새로운 터미널 열기’</strong> 를 선택해서 터미널을 실행하거나 <br /></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /폴더경로
 </code></pre></div></div>
@@ -395,7 +395,7 @@ ruby 설치 관련글은 아래 글과 같이 구글에 검색하시면 많이 �
 새로운 마음으로 다시 repo를 만들고 테마도 똑같은 걸로 다운받아서 진행했습니다. <br />
 이번엔 다행히 잘 되었습니다. 😄👏👏👏<br /><br />
 하지만 댓글 기능을 추가하려고 disqus에 들어가 보니까 <br /><br />
-<img src="../assets/images/disqus01.png" alt="disqus01" /><br /><br />
+<img src="../../assets/images/disqus01.png" alt="disqus01" /><br /><br />
 기본적으로 유료 서비스더라고요… 무료 서비스도 있긴 한데 무겁고 광고가 붙는다고 해서 disqus는 쓰지 않고 오픈소스에다 가벼운 utterances를 쓰기로 했습니다.<br /><br /></p>
 
 <h1 id="2-utterances로-댓글-기능-만들기">2. utterances로 댓글 기능 만들기<br /></h1>
@@ -403,29 +403,29 @@ ruby 설치 관련글은 아래 글과 같이 구글에 검색하시면 많이 �
 <a href="#https://github.com/apps/utterances">https://github.com/apps/utterances</a><br /><br />
 일단 여기로 이동하셔서 utterances를 repo에 설치합니다. <br /><br /></p>
 
-<p><img src="../assets/images/utterances01.png" alt="utterances01" /><br /><br />
+<p><img src="../../assets/images/utterances01.png" alt="utterances01" /><br /><br />
 인스톨 버튼을 누르시면 <br /><br /></p>
 
-<p><img src="../assets/images/utterances02.png" alt="utterances02" /><br /><br />
+<p><img src="../../assets/images/utterances02.png" alt="utterances02" /><br /><br />
 이런 화면을 보실 수 있는데 제가 가진 모든 repo에 댓글 기능을 추가할 필요는 없기 때문에 블로그용으로 쓰는 repo만 선택했습니다. 여기까지 하셨으면 Install을 눌러서 다음으로 진행하시면 됩니다.<br /><br /></p>
 
-<p><img src="../assets/images/utterances03.png" alt="utterances03" /><br /><br />
+<p><img src="../../assets/images/utterances03.png" alt="utterances03" /><br /><br />
 다음으로 넘어가면 이런 화면을 보실 수 있는데 configuration 아래 repo를 설정하는 란에 나의 깃헙 블로그 파일들을 저장하는 repository의 경로를 적어주시면 됩니다. 깃헙아이디/깃헙아이디.github.com 혹은 깃헙아이디/깃헙아이디.githun.io 이런 식으로 보통 적으실 것입니다.<br /><br /></p>
 
-<p><img src="../assets/images/utterances04.png" alt="utterances04" /><br /><br />
+<p><img src="../../assets/images/utterances04.png" alt="utterances04" /><br /><br />
 밑으로 내려보시면 이런 선택란이 있을텐데 댓글이 작성되는 루트를 어디로 설정해주느냐 선택하는 것이라고 합니다. pathname은 블로그에 올릴 포스트의 파일명으로 깃헙 블로그에 올릴 포스트의 파일 이름 형식은 정해져 있어서(ex. 2022-01-30-title.md) 바꿀 일이 거의 없다고 봐도 되기 때문에 맨 첫번째 것으로 선택했습니다. 다른 분들도 많이 선택하시는 옵션이었습니다.<br /><br /></p>
 
-<p><img src="../assets/images/utterances05.png" alt="utterances05" /><br /><br />
+<p><img src="../../assets/images/utterances05.png" alt="utterances05" /><br /><br />
 그리고 또 밑으로 내려보시면 이런 태그를 보실 수 있는데 본인이 쓰시는 테마의 레이아웃에 이걸 설정하는 란이 따로 있다면 저 태그를 복사해서 넣어주시면 되는데 제가 쓰는 테마엔 따로 없어서 저 태그는 필요가 없었습니다. <br />
 Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마를 선택할 수 있으니 맘에 드는 것을 고르시면 되겠습니다. <br /><br /></p>
 
-<p><img src="../assets/images/utterances06.png" alt="utterances06" /><br /><br />
+<p><img src="../../assets/images/utterances06.png" alt="utterances06" /><br /><br />
 대신 위 설명처럼 _config.yml 파일에서만 설정해주면 되었습니다.<br /><br /></p>
 
-<p><img src="../assets/images/utterances07.png" alt="utterances07" /><br /><br />
+<p><img src="../../assets/images/utterances07.png" alt="utterances07" /><br /><br />
 이런 식으로 provider 이름만 설정해주고 아래 utterances 정보 입력란에서 입력만 해 주니까<br /><br /></p>
 
-<p><img src="../assets/images/utterances08.png" alt="utterances08" /><br /><br />
+<p><img src="../../assets/images/utterances08.png" alt="utterances08" /><br /><br />
 짜잔! 댓글창이 생겼습니다!! 😘👏👏<br />
 아 행복해… 이거 만든다고 또 한시간 썼었거든요…ㅠ <br />
 댓글창 색이 테마랑 좀 안맞는 감이 있지만 이건 천천히 수정하기로 하고.. 여기까지 해서 제 첫 깃헙 블로그를 만들기 위한 여정이 마무리 되었습니다. <br /><br />
@@ -651,7 +651,7 @@ Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마�
     script.setAttribute('repo', 'miro7923/miro7923.github.com');
     script.setAttribute('issue-term', 'pathname');
     script.setAttribute('label', 'Comment');
-    script.setAttribute('theme', 'github-dark-orange');
+    script.setAttribute('theme', 'boxy-light');
     script.setAttribute('crossorigin', 'anonymous');
 
     commentContainer.appendChild(script);
