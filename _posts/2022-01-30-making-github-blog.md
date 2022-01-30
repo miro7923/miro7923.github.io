@@ -92,4 +92,14 @@ Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마�
 [https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml](https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml)<br>
 그 중에서도 _config.yml 파일 내용이 궁금하시면 여기를 참고하시면 됩니다. <br><br>
 
+# 3. 그런데.. 열심히 쓴 글이 포스팅 되지 않는다.<br>
+드디어 블로그 세팅을 완료하고 설레는 마음으로 첫 글을 썼는데 로컬 서버로 띄워 보면 잘 보이는데 암만 push를 해도 실제 제 블로그에서는 보이질 않는 것이었습니다...! 머선일이고 이게 ㅠㅠ<br><br>
+약 한시간동안 헤멘 끝에<br>
+ [https://devyuseon.github.io//github%20blog/githubblog-post-not-shown/](https://devyuseon.github.io//github%20blog/githubblog-post-not-shown/)<br>
+이 글을 보고 해결할 수 있었습니다.<br><br>
+
+![published](../../assets/images/published.png)<br><br>
+저는 _config.yml에 future: true 추가하고 게시글 마크다운 파일의 상단 타이틀 쓰는 란에 published: true 를 추가해 주었더니 해결되었습니다.<br><br>
+그리고 네이버나 티스토리처럼 큰 회사 블로그처럼 push 하자마자 블로그가 업데이트 되는 것은 아니고 몇 분 정도 기다려야 변경내용이 완전히 반영이 되더라고요. 외국 회사라 그런가?<br><br>
+
 그럼 오늘은 여기까지... 다음 글에서 만나요!!<br>

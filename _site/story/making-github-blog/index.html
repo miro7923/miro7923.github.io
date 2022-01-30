@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>깃허브 블로그(Github Blog)를 만들기 위한 여정 | Yujin Log</title>
+<!-- begin _includes/seo.html --><title>깃허브 블로그(Github Blog)를 만들기 위한 여정 | Yujin Dev Log</title>
 <meta name="description" content="🎬 시작 개발 공부를 시작하고 기존에 쓰던 티스토리 블로그가 있긴 했는데 뭔가 깃헙을 이용해서 블로그를 꾸미고 여기에 공부한 내용을 올리고 싶어졌습니다. 다른 개발자 분들이 쓰시는 걸 보니까 되게 있어보이기도 하고 만들어져 있는 큰 회사(?)의 블로그를 쓰는 것 보다는 내가 직접 만들어 보면 뭔가 더 공부가 되지 않을까… 하는 생각으로 깃헙 블로그 만들기에 호기롭게 도전하게 되었습니다.   그리고 그것은 엄청난 고생길의 시작이었습니다….ㅎ">
 
 
@@ -21,7 +21,7 @@
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Yujin Log">
+<meta property="og:site_name" content="Yujin Dev Log">
 <meta property="og:title" content="깃허브 블로그(Github Blog)를 만들기 위한 여정">
 <meta property="og:url" content="http://localhost:4000/story/making-github-blog/">
 
@@ -71,7 +71,7 @@
 
 
 
-  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Log Feed">
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
 
 
 <!-- https://t.co/dKP3o1e -->
@@ -351,7 +351,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#-시작">🎬 시작</a></li><li><a href="#0-시작-전에-ruby">0. 시작 전에… Ruby</a><ul><li><a href="#-그리고">+) 그리고…</a></li></ul></li><li><a href="#1-참고했던-글">1. 참고했던 글</a></li><li><a href="#2-utterances로-댓글-기능-만들기">2. utterances로 댓글 기능 만들기</a></li></ul>
+              <ul class="toc__menu"><li><a href="#-시작">🎬 시작</a></li><li><a href="#0-시작-전에-ruby">0. 시작 전에… Ruby</a><ul><li><a href="#-그리고">+) 그리고…</a></li></ul></li><li><a href="#1-참고했던-글">1. 참고했던 글</a></li><li><a href="#2-utterances로-댓글-기능-만들기">2. utterances로 댓글 기능 만들기</a></li><li><a href="#3-그런데-열심히-쓴-글이-포스팅-되지-않는다">3. 그런데.. 열심히 쓴 글이 포스팅 되지 않는다.</a></li></ul>
 
             </nav>
           </aside>
@@ -435,6 +435,16 @@ Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마�
 <a href="https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml">https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml</a><br />
 그 중에서도 _config.yml 파일 내용이 궁금하시면 여기를 참고하시면 됩니다. <br /><br /></p>
 
+<h1 id="3-그런데-열심히-쓴-글이-포스팅-되지-않는다">3. 그런데.. 열심히 쓴 글이 포스팅 되지 않는다.<br /></h1>
+<p>드디어 블로그 세팅을 완료하고 설레는 마음으로 첫 글을 썼는데 로컬 서버로 띄워 보면 잘 보이는데 암만 push를 해도 실제 제 블로그에서는 보이질 않는 것이었습니다…! 머선일이고 이게 ㅠㅠ<br /><br />
+약 한시간동안 헤멘 끝에<br />
+ <a href="https://devyuseon.github.io//github%20blog/githubblog-post-not-shown/">https://devyuseon.github.io//github%20blog/githubblog-post-not-shown/</a><br />
+이 글을 보고 해결할 수 있었습니다.<br /><br /></p>
+
+<p><img src="../../assets/images/published.png" alt="published" /><br /><br />
+저는 _config.yml에 future: true 추가하고 게시글 마크다운 파일의 상단 타이틀 쓰는 란에 published: true 를 추가해 주었더니 해결되었습니다.<br /><br />
+그리고 네이버나 티스토리처럼 큰 회사 블로그처럼 push 하자마자 블로그가 업데이트 되는 것은 아니고 몇 분 정도 기다려야 변경내용이 완전히 반영이 되더라고요. 외국 회사라 그런가?<br /><br /></p>
+
 <p>그럼 오늘은 여기까지… 다음 글에서 만나요!!<br /></p>
 
         
@@ -497,7 +507,7 @@ Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마�
       
   <nav class="pagination">
     
-      <a href="/computer%20science/CS08/" class="pagination--pager" title="컴퓨터 하드웨어 기억장치
+      <a href="/computer%20science/CS10/" class="pagination--pager" title="컴퓨터 하드웨어 - 반도체 메모리
 ">이전</a>
     
     
@@ -515,6 +525,97 @@ Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마�
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS10/" rel="permalink">컴퓨터 하드웨어 - 반도체 메모리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">반도체 메모리
+
+  현재 주기억 장치로 사용되고 있는 반도체 메모리는 하나의 칩(chip)상에 수메가 비트를 저장할 수 있다. 반도체 제조공법상 쌍극성(bipolar type)과 모스형(mos type)의 두 가지로 구분된다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS09/" rel="permalink">컴퓨터 하드웨어 주기억 장치의 종류
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">주기억 장치의 종류
+
+  컴퓨터 하드웨어 기술의 발전은 기억 용량의 급속한 증가와 함께 기억 소자 크기의 감소, 그리고 가격면에서 급격한 하락을 가져왔다.
+
+
+1. 과거의 주기억 장치
+
+  초기
+  
+    처음엔 진공관을 사용했다. 진공관 한 개는 1비트의 정보를 나타내는데, 그...</p>
+  </article>
+</div>
+
         
           
 
@@ -595,86 +696,6 @@ Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마�
   컴퓨터 시스템은 크게 하드웨어(hardware)와 소프트웨어(software)로 이루어져 있다.
   하드웨어는 눈으로 볼 수 있는 기계의 본체로 중앙처리장치(CPU), 보조기억장치, 입출력장치로 구성되어 있다.
   중앙처리장치는 주기억장치, 연산장치, 제...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer%20science/CS06/" rel="permalink">부울대수
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">부울대수
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer%20science/CS05/" rel="permalink">데이터의 표현과 연산
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">데이터의 표현과 연산
-</p>
   </article>
 </div>
 

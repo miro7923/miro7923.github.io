@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-30T20:46:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">깃허브 블로그(Github Blog)를 만들기 위한 여정</title><link href="http://localhost:4000/story/making-github-blog/" rel="alternate" type="text/html" title="깃허브 블로그(Github Blog)를 만들기 위한 여정" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/story/making-github-blog</id><content type="html" xml:base="http://localhost:4000/story/making-github-blog/"><![CDATA[<h1 id="-시작">🎬 시작<br /></h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-30T23:00:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">깃허브 블로그(Github Blog)를 만들기 위한 여정</title><link href="http://localhost:4000/story/making-github-blog/" rel="alternate" type="text/html" title="깃허브 블로그(Github Blog)를 만들기 위한 여정" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/story/making-github-blog</id><content type="html" xml:base="http://localhost:4000/story/making-github-blog/"><![CDATA[<h1 id="-시작">🎬 시작<br /></h1>
 <p>개발 공부를 시작하고 기존에 쓰던 티스토리 블로그가 있긴 했는데 뭔가 깃헙을 이용해서 블로그를 꾸미고 여기에 공부한 내용을 올리고 싶어졌습니다. 다른 개발자 분들이 쓰시는 걸 보니까 되게 있어보이기도 하고 만들어져 있는 큰 회사(?)의 블로그를 쓰는 것 보다는 내가 직접 만들어 보면 뭔가 더 공부가 되지 않을까… 하는 생각으로 깃헙 블로그 만들기에 호기롭게 도전하게 되었습니다. <br />
  그리고 그것은 엄청난 고생길의 시작이었습니다….ㅎ<br /><br /></p>
 
@@ -76,6 +76,16 @@ Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마�
  여기를 참고하세요. <br /><br />
 <a href="https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml">https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml</a><br />
 그 중에서도 _config.yml 파일 내용이 궁금하시면 여기를 참고하시면 됩니다. <br /><br /></p>
+
+<h1 id="3-그런데-열심히-쓴-글이-포스팅-되지-않는다">3. 그런데.. 열심히 쓴 글이 포스팅 되지 않는다.<br /></h1>
+<p>드디어 블로그 세팅을 완료하고 설레는 마음으로 첫 글을 썼는데 로컬 서버로 띄워 보면 잘 보이는데 암만 push를 해도 실제 제 블로그에서는 보이질 않는 것이었습니다…! 머선일이고 이게 ㅠㅠ<br /><br />
+약 한시간동안 헤멘 끝에<br />
+ <a href="https://devyuseon.github.io//github%20blog/githubblog-post-not-shown/">https://devyuseon.github.io//github%20blog/githubblog-post-not-shown/</a><br />
+이 글을 보고 해결할 수 있었습니다.<br /><br /></p>
+
+<p><img src="../../assets/images/published.png" alt="published" /><br /><br />
+저는 _config.yml에 future: true 추가하고 게시글 마크다운 파일의 상단 타이틀 쓰는 란에 published: true 를 추가해 주었더니 해결되었습니다.<br /><br />
+그리고 네이버나 티스토리처럼 큰 회사 블로그처럼 push 하자마자 블로그가 업데이트 되는 것은 아니고 몇 분 정도 기다려야 변경내용이 완전히 반영이 되더라고요. 외국 회사라 그런가?<br /><br /></p>
 
 <p>그럼 오늘은 여기까지… 다음 글에서 만나요!!<br /></p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Story" /><category term="story" /><summary type="html"><![CDATA[🎬 시작 개발 공부를 시작하고 기존에 쓰던 티스토리 블로그가 있긴 했는데 뭔가 깃헙을 이용해서 블로그를 꾸미고 여기에 공부한 내용을 올리고 싶어졌습니다. 다른 개발자 분들이 쓰시는 걸 보니까 되게 있어보이기도 하고 만들어져 있는 큰 회사(?)의 블로그를 쓰는 것 보다는 내가 직접 만들어 보면 뭔가 더 공부가 되지 않을까… 하는 생각으로 깃헙 블로그 만들기에 호기롭게 도전하게 되었습니다. 그리고 그것은 엄청난 고생길의 시작이었습니다….ㅎ]]></summary></entry><entry><title type="html">컴퓨터는 무엇일까?</title><link href="http://localhost:4000/computer%20science/CS02/" rel="alternate" type="text/html" title="컴퓨터는 무엇일까?" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS02</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS02/"><![CDATA[<h1 id="컴퓨터는-무엇일까">컴퓨터는 무엇일까?</h1>
 <h2 id="컴퓨터의-정의">컴퓨터의 정의<br /></h2>
@@ -780,81 +790,172 @@ Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마�
 <h1 id="모든-프로그램은-주기억-장치에서만-실행된다">!모든 프로그램은 주기억 장치에서만 실행된다!</h1>
 <ul>
   <li>그래서 주기억 장치(RAM)의 용량이 클수록 더 많은 정보를 기억하고 실행할 수 있기 때문에 비싸다.<br /><br /><br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[컴퓨터 하드웨어 기억장치]]></summary></entry><entry><title type="html">컴퓨터 사이언스란</title><link href="http://localhost:4000/computer%20science/CS01/" rel="alternate" type="text/html" title="컴퓨터 사이언스란" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS01</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS01/"><![CDATA[<h1 id="컴퓨터-사이언스란">컴퓨터 사이언스란?</h1>
-<h2 id="컴퓨터-사이언스의-기원">컴퓨터 사이언스의 기원<br /></h2>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[컴퓨터 하드웨어 기억장치]]></summary></entry><entry><title type="html">컴퓨터 하드웨어 주기억 장치의 종류</title><link href="http://localhost:4000/computer%20science/CS09/" rel="alternate" type="text/html" title="컴퓨터 하드웨어 주기억 장치의 종류" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS09</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS09/"><![CDATA[<h1 id="주기억-장치의-종류">주기억 장치의 종류<br /></h1>
 <ul>
-  <li>컴퓨터 사이언스는 컴퓨터라고 하는 기기에 대한 연구라고 할 수 있다.<br /></li>
-  <li>컴퓨터 사이언스의 현대적인 기원은 1940년대에 최초로 출현한 디지털 컴퓨터들의 등장과 1930년대에 이와는 별도로 형성된 계산기기들에 대한 적절한 수학적 모델에 있다고 할 수 있다. 컴퓨터는 그 전까지는 수작업으로 하던 덧셈과 뺄셈같은 계산들을 좀 더 빠르면서 정확하게 처리하고자 만든 장치에서 시작되었기 때문이다. <br /><br /></li>
+  <li>컴퓨터 하드웨어 기술의 발전은 기억 용량의 급속한 증가와 함께 기억 소자 크기의 감소, 그리고 가격면에서 급격한 하락을 가져왔다.<br /><br /></li>
 </ul>
 
-<h2 id="컴퓨터-사이언스의-정의">컴퓨터 사이언스의 정의<br /></h2>
-<blockquote>
-  <p>물리학은 에너지와 많은 관련성을 갖는 학문이다. 반면, 컴퓨터 사이언스는 정보의 표현, 저장, 조작 및 검색과 밀접한 관계를 갖는 학문이다. <br />
-물리학이 에너지 변환장치를 이용하는 것처럼, 컴퓨터 사이언스는 정보변환장치를 이용한다.<br /><br /></p>
-</blockquote>
-
+<h2 id="1-과거의-주기억-장치">1. 과거의 주기억 장치</h2>
 <ul>
-  <li>컴퓨터 사이언스에서는 정보가 중요하고 그것이 차지하는 비중이 크기 때문에 컴퓨터 사이언스를 정보과학(Information Science)이라고도 한다. 컴퓨터 사이언스는 여러 가지 서로 다른 측면에서 정의할 수 있다. <br /><br /></li>
+  <li>초기</li>
+  <li>
+    <p>처음엔 진공관을 사용했다. 진공관 한 개는 1비트의 정보를 나타내는데, 그 크기와 전력 소모, 열 발생 등으로 문제점이 많았다. 이후 적은 전력 소모와 신뢰성을 가진 트랜지스터(transistor)가 사용된다.<br /><br /></p>
+  </li>
+  <li>1960년대 초반 ~ 1970년대 중반</li>
+  <li>
+    <p>자기 코어(magnetic core)가 기억 소자로 사용되었다. 매우 작은 링(ring) 형태로 되어 있으며, 페라이트(ferrite)라는 자기 재료를 사용해서 페라이트 코어 메모리라고도 한다.<br /><br /></p>
+  </li>
+  <li>기억 원리
+    <ul>
+      <li>코어의 링을 통과하는 도선에 전류를 흘려 ‘플레밍의 오른손 법칙’에 따라 <strong>자화</strong>의 방향을 바꾸어 준다.</li>
+      <li>자기 코어는 한 번 1 또는 0의 상태가 되면 어떠한 변화를 주지 않는 한 계속 자화 상태를 유지하여 정보를 기억하게 되고, 여러 개의 코어를 코어판(core plane)의 형태로 묶어서 사용하게 된다.<br /><br /></li>
+    </ul>
+  </li>
+  <li>자화(magnetization)
+    <ul>
+      <li>물질을 자기장 속에 놓았을 때 그 물질 전체가 갖는 거시적인 자기(磁氣)모멘트</li>
+      <li>물질의 자기적 성질은 주로 전자의 자기모멘트에 연유하는데, 전자가 가진 극히 작은 미시적인 자기모멘트가 많이 모여, 그 총합으로 거시적으로 물질이 나타내는 자기모멘트를 <strong>자화</strong>라고 한다.<br /><br /></li>
+    </ul>
+  </li>
+  <li>플레밍의 오른손 법칙<br /><br />
+<img src="../img/rightHand.png" alt="rightHand" /><br />
+    <ul>
+      <li>N극에서 S극 방향으로 자기장이 형성되었을 때 그림처럼 자기장의 방향과 수직으로 도체(금속 막대 등)가 움직이고 있다면 전류는 가운데 손가락 방향으로 흐른다.</li>
+      <li>엄지손가락 방향 : 도체를 움직이는 힘(속도)의 방향</li>
+      <li>두번째 손가락 방향 : 자기장의 방향</li>
+      <li>가운데 손가락 방향 : 전류가 흐르는 방향</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="1-기기-중심">1. 기기 중심<br /></h3>
+<h2 id="2-현재의-주기억-장치">2. 현재의 주기억 장치</h2>
 <ul>
-  <li><strong>문제를 해결</strong>하기 위한 도구로서의 정의. 컴퓨터 기기와 이를 둘러싼 질문들, 즉 컴퓨터를 어떻게 설계하고 분석하고 구축하고 사용할 것인가 하는 것에 초점이 모아진다.<br /><br /></li>
+  <li>1960년대 후반부터 반도체 집적 회로(IC : Integrated Circuit) 기술의 개발과 함께 기억 소자로의 적용이 추진된 후, 1968년에는 주기억 장치의 버퍼 메모리로 사용되기 시작했다.</li>
+  <li>집적 회로는 집적도, 소비 전력, 소형성, 경제성 등으로 코어 메모리를 대체하여 널리 이용되고 있다.<br /><br /></li>
 </ul>
 
-<h3 id="2-정보-중심">2. 정보 중심<br /></h3>
+<h2 id="3-미래의-주기억-장치">3. 미래의 주기억 장치</h2>
 <ul>
-  <li>컴퓨터에게 <strong>정보(데이터)</strong>의 개념과 처리는 중요하다. 정보 중심 관점에서는 데이터의 표현, 저장, 구성, 전송 및 처리에 관한 질문으로 귀결된다.<br /><br /></li>
+  <li>현재보다 크기가 작고, 대용량, 고속의 기억 소자가 사용될 것이라 예상된다.</li>
+  <li>그 중 하나가 조셉슨 소자(Josephson device)인데, 현재의 기억 소자보다 10배 이상 빠르게 나타나고 있으며 대량 생산과 가격 등의 문제점을 해결하고 있다.<br /></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[주기억 장치의 종류 컴퓨터 하드웨어 기술의 발전은 기억 용량의 급속한 증가와 함께 기억 소자 크기의 감소, 그리고 가격면에서 급격한 하락을 가져왔다. 1. 과거의 주기억 장치 초기 처음엔 진공관을 사용했다. 진공관 한 개는 1비트의 정보를 나타내는데, 그 크기와 전력 소모, 열 발생 등으로 문제점이 많았다. 이후 적은 전력 소모와 신뢰성을 가진 트랜지스터(transistor)가 사용된다. 1960년대 초반 ~ 1970년대 중반 자기 코어(magnetic core)가 기억 소자로 사용되었다. 매우 작은 링(ring) 형태로 되어 있으며, 페라이트(ferrite)라는 자기 재료를 사용해서 페라이트 코어 메모리라고도 한다.]]></summary></entry><entry><title type="html">컴퓨터 하드웨어 - 반도체 메모리</title><link href="http://localhost:4000/computer%20science/CS10/" rel="alternate" type="text/html" title="컴퓨터 하드웨어 - 반도체 메모리" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS10</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS10/"><![CDATA[<h1 id="반도체-메모리">반도체 메모리</h1>
+<ul>
+  <li>현재 주기억 장치로 사용되고 있는 반도체 메모리는 하나의 칩(chip)상에 수메가 비트를 저장할 수 있다. 반도체 제조공법상 쌍극성(bipolar type)과 모스형(mos type)의 두 가지로 구분된다.<br /><br /></li>
 </ul>
 
-<h3 id="3-프로그램-중심">3. 프로그램 중심<br /></h3>
+<h2 id="메모리의-제조기술적인-분류에-따른-특성">메모리의 제조기술적인 분류에 따른 특성<br /></h2>
+<p>1) 밀도(chip당 bit 용량)<br />
+2) 속도<br />
+3) 소비전력(bit당 mW)<br />
+4) bit당 cost(반도체 제조가격 측면)<br />
+5) Noise 면역성<br /><br /></p>
+
+<h2 id="읽기동작read-operation과-쓰기동작">읽기동작(read operation)과 쓰기동작</h2>
 <ul>
-  <li><strong>프로그램</strong>이란 어떤 문제를 풀기 위한 컴퓨터 명령어들의 집합이다. 프로그램 중심 관점에서 본다면 컴퓨터 사이언스는 프로그래밍에 관한 연구라고 할 수 있다. 그렇기 때문에 이 관점에서는 프로그램 표현을 위한 적절한 언어의 선택, 프로그램의 정확성과 효율성, 프로그램의 실행을 위한 기계, 그리고 프로그래밍 기술 등과 같은 프로그래밍에 관한 문제점들을 강조한다.<br /><br /></li>
+  <li>특별한 메모리위치(주소)에 저장되어 있는 2진 워드가 감지되어 다른 소자에 전달되는 동작</li>
+  <li>만약 100번 주소에 있는 메모리에서 워드 4를 사용하려 한다면 주소 100번에서 읽기동작을 실행해야 한다.</li>
+  <li>한 워드를 메모리부터 가져오기 때문에 패치(fetch)동작이라고도 한다.<br /><br /></li>
 </ul>
 
-<h3 id="4-알고리즘-중심">4. 알고리즘 중심<br /></h3>
+<h2 id="접근-시간access-time">접근 시간(access time)</h2>
 <ul>
-  <li><strong>알고리즘</strong>이란 문제 해결을 위한 작업이 어떻게 수행되는지를 정의하는 단계들의 집합니다. 컴퓨터는 알고리즘을 구현하는 기계이고, 정보는 알고리즘이 만들어내는 대상이며, 프로그래밍은 알고리즘을 기술하는 수단이다. 알고리즘 중심 관점에서 본다면 컴퓨터 사이언스는 알고리즘에 관한 연구라고 할 수 있다.<br /></li>
+  <li>기억 장치가 출력 신호를 받은 시간부터 데이터가 출력된 때까지의 시간</li>
+  <li>자기 코어 기억 장치에서는 접근 시간과 복원 시간을 합해서 사이클(cycle) 시간이라 하며, IC 메모리에서는 사이클 시간이 접근 시간과 같다.</li>
+  <li>메모리소자 동작속도의 측정치로 읽기동작하는 데 필요한 시간이라고도 할 수 있으며, 이는 주소입력 순간으로부터 메모리 내용의 출력순간까지의 시간이다.<br /><br /></li>
 </ul>
 
-<blockquote>
-  <p>👉 이와 같이 컴퓨터 사이언스는 컴퓨터의 설계, 컴퓨터 프로그래밍, 정보 처리, 알고리즘 문제 해결, 알고리즘 처리 자체 등과 같은 다양한 분야에 대한 과학적인 기초를 제공하는 학문이라 할 수 있다.<br /></p>
-</blockquote>
-
-<h2 id="컴퓨터-사이언스의-주요분야">컴퓨터 사이언스의 주요분야<br /></h2>
-<ol>
-  <li>컴퓨터 구조<br /></li>
-  <li>시스템 소프트웨어<br /></li>
-  <li>프로그래밍 언어<br /></li>
-  <li>데이터베이스<br /></li>
-  <li>데이터통신<br /></li>
-  <li>컴퓨터 네트워크<br /></li>
-  <li>인공지능<br /></li>
-  <li>소프트웨어 공학<br /><br /><br /></li>
-</ol>
-
-<h2 id="컴퓨터-사이언스의-발전">컴퓨터 사이언스의 발전<br /></h2>
-<h3 id="1-컴퓨터의-멀티미디어화">1. 컴퓨터의 멀티미디어화<br /></h3>
+<h2 id="랜덤-액세스메모리ram">랜덤 액세스메모리(RAM)</h2>
 <ul>
-  <li>대용량의 사운드, 그래픽, 비디오 등을 지원하는 멀티미디어 PC가 보편화되면서 이에 따라 주변기기들의 성능도 멀티미디어를 잘 처리할 수 있는 수준으로 고성능화, 고용량화되고 있다.<br /><br /></li>
+  <li>한 메모리 워드의 실제 물리적 위치가 그 위치로부터 읽거나 쓰는 데 걸리는 시간이 얼마나 걸리는가에는 영향을 받지 않는 메모리이다. 즉 액세스시간이 메모리의 모든 주소에 대해서 같은 메모리이다.</li>
+  <li>대부분의 반도체메모리와 코어메모리는 RAM이다.
+    <ul>
+      <li>사용 예 : CDP(컴팩트 디스크 플레이어)는 적당한 코드를 입력함으로써 어떤 한 노래를 선택하든간에 같은 시간을 갖는다.<br /><br /><br /></li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="2-컴퓨터의-네트워크화">2. 컴퓨터의 네트워크화<br /></h3>
+<h1 id="순차-액세스-메모리sam">순차 액세스 메모리(SAM)</h1>
 <ul>
-  <li>인터넷의 보급으로 클라이언트/서버 환경의 확대가 가속화되고 네트워크를 통한 정보의 교환이 급속히 늘어나면서 네트워크 환경에 알맞은 컴퓨터 기술과 더불어 더욱 고급화, 지능화되는 네트위크 기술의 개발과 연구가 가속화 되고 있다.<br /><br /></li>
+  <li>액세스시간이 일정하지 않고 주소위치에 따라 변하는 메모리의 한 형태이다.</li>
+  <li>원하는 주소에 도달할 때까지 모든 주소위치를 통하여 저장된 워드를 순차적으로 찾기 때문에 랜덤 액세스메모리보다 더 긴 액세스시간을 갖는다.
+    <ul>
+      <li>사용 예 : 자기테이프, 디스크, 자기버블메모리<br /><br /></li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="3-모바일-컴퓨팅의-확산">3. 모바일 컴퓨팅의 확산<br /></h3>
+<h2 id="읽기전용메모리rom">읽기전용메모리(ROM)</h2>
 <ul>
-  <li>노트북, PDA, 스마트폰 등 휴대할 수 있는 모바일 컴퓨터들이 확산되고 있는 것에 따라 무선 기술 및 관련 컴퓨팅 기술의 개발과 연구가 확대되고 있다.<br /><br /></li>
+  <li>읽기동작이 쓰기동작보다 매우 많은 응용분야를 위해 설계된 반도체메모리의 종류</li>
+  <li>기술적으로 (주로 제작자에 의해)단 한 번만 프로그래밍되어 쓸 수 있으며, 이후로는 내용을 수정할 수 없으며 읽기만 가능하다.</li>
+  <li>모든 ROM은 비휘발성이며 전원이 제거되어도 데이터는 그대로 저장된다.</li>
+  <li>한 번 이상 쓰기동작을 할 수 있는 메모리 RMM(Read Mostly Memory)도 있는데 읽기동작보다 쓰기동작이 훨씬 복잡하기 때문에 자주 사용되지는 않는다.<br /><br />
+<img src="../img/rom.png" alt="rom" /><br />
+    <blockquote>
+      <p>ROM의 구성도<br /></p>
+    </blockquote>
+  </li>
+  <li>ROM은 읽어내기만 하기 때문에 기억부와 번지 해독기, 출력 버퍼만으로 구성된다.<br /><br /></li>
 </ul>
 
-<h3 id="4-컴퓨터의-임베드화">4. 컴퓨터의 임베드화<br /></h3>
+<h3 id="프로그램이나-자료-저장-방법에-따른-rom-분류">프로그램이나 자료 저장 방법에 따른 ROM 분류</h3>
 <ul>
-  <li>컴퓨터 기술과 가전기기가 접합된 시스템을 임베디드(embedded) 시스템이라 한다. TV에 인터넷 접속 기능이 결합된 경우가 대표적이라 할 수 있다.<br /></li>
+  <li>마스크(Mask) ROM : 사용자의 요구에 따라 제작사가 자료를 넣기 때문에 내용을 바꿀 수는 없지만 대량 생산에 적합</li>
+  <li>PROM(Programmable ROM) : 제작시에 아무런 내용을 넣지 않은 상태로 만들어져서 사용자가 원하는 내용을 저장할 수 있다. 하지만 한 번 기억되면 그 내용을 변경할 수 없다.</li>
+  <li>EPROM(Erasable ROM) : ROM의 내용을 자외선 삭제 장치로 지울 수 있다. 지운 후에 새로운 내용을 써 넣는 것도 가능</li>
+  <li>EEPROM(Electrically Erasable PROM) : ROM의 내용을 전기신호로 지울 수 있다. 지운 후에 새로운 내용을 써 넣는 것도 가능<br /><br /></li>
 </ul>
 
-<h3 id="5-pc의-고성능화">5. PC의 고성능화<br /></h3>
+<h2 id="정적-램static-ram-device-sram">정적 램(static RAM device, SRAM)</h2>
 <ul>
-  <li>클러스터링 기법을 활용한 병렬처리 컴퓨터 기술이 접합될 경우 지금의 서버 수준을 뛰어 넘는 고성능 PC가 개발될 것이다.<br /><br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[컴퓨터 사이언스란? 컴퓨터 사이언스의 기원 컴퓨터 사이언스는 컴퓨터라고 하는 기기에 대한 연구라고 할 수 있다. 컴퓨터 사이언스의 현대적인 기원은 1940년대에 최초로 출현한 디지털 컴퓨터들의 등장과 1930년대에 이와는 별도로 형성된 계산기기들에 대한 적절한 수학적 모델에 있다고 할 수 있다. 컴퓨터는 그 전까지는 수작업으로 하던 덧셈과 뺄셈같은 계산들을 좀 더 빠르면서 정확하게 처리하고자 만든 장치에서 시작되었기 때문이다.]]></summary></entry></feed>
+  <li>전원이 인가되는 동안은 저장된 데이터가 영원히 저장되고, 주기적으로 데이터를 다시 쓸 필요가 없는 반도체 메모리장치</li>
+  <li>플립플롭 조합으로 구성되어 있다.<br /><br /></li>
+</ul>
+
+<h2 id="동적-램dynamic-ram-device-dram">동적 램(dynamic RAM device, DRAM)</h2>
+<ul>
+  <li>전원이 인가되어도 저장된 데이터가 영원히 유지되지 못하며, 데이터가 메모리에 주기적으로 다시 쓰여져야 저장된 데이터가 계속 저장되는 반도체메모리</li>
+  <li>이러한 주기적 동작을 리플레시(refresh)동작이라 한다.<br /><br /></li>
+</ul>
+
+<h2 id="휘발성-메모리volatile-memory">휘발성 메모리(volatile memory)</h2>
+<ul>
+  <li>전원이 제거되면 메모리에 있는 모든 정보가 소실된다.</li>
+  <li>반도체메모리가 휘발성 메모리에 해당한다.<br /><br /></li>
+</ul>
+
+<h2 id="캐시-메모리cache-memory">캐시 메모리(cache memory)</h2>
+<ul>
+  <li>SRAM과 구성이 동일하다.</li>
+  <li>기억 용량은 작으나 속도가 매우 빠른 버퍼(buffer) 메모리로 주기억 장치와 CPU와의 속도 차이를 줄여서 처리의 효율을 높이기 위해서 사용된다.</li>
+  <li>캐시 기억 장치의 호출 시간은 주기억 장치의 호출 시간보다 5~10배 정도 빠르다.</li>
+  <li>전체 기억 장치 시스템의 총 소요 시간을 최소화하면서 가능한 하 높은 평균 액세스 속도를 얻기 위해서 사용한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="메모리의-연결">메모리의 연결</h1>
+<ul>
+  <li>컴퓨터 내부메모리는 어드레스(Address) 버스, 데이터(Data) 버스, 제어(Control) 버스라는 세 종류의 버스로 CPU에 연결되는 신호선이 구성된다.<br /><br /></li>
+</ul>
+
+<h2 id="버스">버스<br /></h2>
+<p>1) 어드레스 버스 : CPU에서 메모리 IC까지 2진 어드레스 출력을 전달하는 단방향 버스<br />
+2) 데이터 버스 : CPU와 메모리 IC 사이에 데이터를 옮기는 양방향 버스<br />
+3) 제어 버스 : CPU에서 메모리 IC까지 제어신호들 전달<br /><br /></p>
+
+<h2 id="cpu의-쓰기동작-순서">CPU의 쓰기동작 순서<br /></h2>
+<p>1) CPU가 데이터가 저장될 메모리 위치에 2진 어드레스 공급. 어드레스 버스선에서 이 어드레스를 인가한다.<br />
+2) CPU가 데이터 버스선에 저장될 데이터 인가<br />
+3) CPU가 메모리 쓰기 동작을 위해 제어신호선 동작시킴<br />
+4) 메모리 IC들은 저장될 위치를 선택하기 위해 2진 어드레스 해독<br />
+5) 데이터 버스에 있는 데이터가 선택된 메모리 위치로 전송됨<br /><br /></p>
+
+<h2 id="cpu의-읽기동작-순서">CPU의 읽기동작 순서<br /></h2>
+<p>1) 어드레스 버스선에 이 어드레스 인가. CPU가 데이터의 메모리 위치의 2진 어드레스 공급<br />
+2) CPU가 메모리 읽기동작을 위해 제어신호선 활성화 시킴<br />
+3) 메모리 IC중에서 읽기동작이 실행되는 위치를 선택하기 위해, 2진 어드레스를 해독한다.<br />
+4) 메모리 IC들은 선택된 메모리 위치로부터 데이터 버스에 데이터 인가. 데이터가 전송되는 곳으로부터 CPU로 데이터 인가<br /><br /></p>
+
+<h1 id="메모리-맵memory-map">메모리 맵(Memory Map)</h1>
+<ul>
+  <li>원하는 용량 및 워드사이즈에 알맞게 응용하기 위해 메모리칩을 조합하거나 큰 용량을 나누어 쓰는 것<br /><br /><br /></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[반도체 메모리 현재 주기억 장치로 사용되고 있는 반도체 메모리는 하나의 칩(chip)상에 수메가 비트를 저장할 수 있다. 반도체 제조공법상 쌍극성(bipolar type)과 모스형(mos type)의 두 가지로 구분된다.]]></summary></entry></feed>
