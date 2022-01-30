@@ -17,7 +17,7 @@ tags:
 # 0. 시작 전에... Ruby<br>
 깃헙 블로그는 보통 jekyll(지킬)이라는 것을 사용해서 꾸미더라고요. 근데 저건 ruby 기반으로 만들어져 있어서 깃헙 블로그를 시작하려면 ruby를 깔아야 합니다. 전 처음에 이것도 모르고 시작했기 때문에 블로그 글을 똑같이 따라해도 안 되었던 것들이 참 많았기 때문에...ㅎ 이 글을 보시는 분들은 시작 전에 꼭 ruby를 깔고 시작하세요!<br><br>
 ruby 설치 관련글은 아래 글과 같이 구글에 검색하시면 많이 보실 수 있을 것입니다.<br>
-[https://ogaeng.com/jekyll-blog-install/](#https://ogaeng.com/jekyll-blog-install/)<br><br>
+[https://ogaeng.com/jekyll-blog-install/](https://ogaeng.com/jekyll-blog-install/)<br><br>
 부디 고통받지 마시고 사전에 루비 설치하고 진행하세요...<br><br>
 
 ## +) 그리고...<br>
@@ -33,21 +33,21 @@ cd 명령어를 이용해 해당 파일이 있는 폴더로 이동해 모든 명
 
 
 # 1. 참고했던 글<br>
-[https://zeddios.tistory.com/1222](#https://zeddios.tistory.com/1222)<br><br>
+[https://zeddios.tistory.com/1222](https://zeddios.tistory.com/1222)<br><br>
 맨 처음에는 이 블로그 글을 참고해서 만들었었습니다. <br>
 그런데 똑같이 따라하고 심지어 테마도 똑같은 걸로 받아 썼지만 안 되더라고요... 제 repo에 push도 잘 되는데 정작 제 블로그 페이지에 들어가보면 맨 처음에 기본으로 주는 테마에서 변경이 안 되었습니다. .gitignore 설정이 잘못 되어있나 싶어서 아예 지워도보고 기타등등 별 짓을 다 해봤지만 되질 않아서... 이 글을 따라하며 만들었던 repo를 삭제하고 다시 만들기로 다짐하면서 다른 블로그 글을 찾아 떠나게 됩니다.<br><br>
 만약 이 글대로 하셔서 잘 되시면 거기서 스톱하고 나만의 블로그를 꾸미시면 됩니다. 전 되질 않아서 더 많은 시간을 소비해야만 했거든요...ㅠ <br><br>
 ! 그리고 테마를 설치하다 보면 거의 99% 확률로<br> 
 **`require': cannot load such file -- webrick (LoadError)** <br>
 이런 메세지를 보게 됩니다. 근데 다른 블로거분들은 이런걸 보신 적이 없는지 이것에 대한 언급이 아무도 없으심 ㅠ.ㅠ<br>
-[https://junho85.pe.kr/1850](#https://junho85.pe.kr/1850)<br><br>
+[https://junho85.pe.kr/1850](https://junho85.pe.kr/1850)<br><br>
 만약 저런 오류 메세지를 보시면 이 글을 참고하여 해결하시면 됩니다.<br>
 ```
 bundle add webrick
 ```
 무엇보다도 중요한 명령어... 전 테마를 설치할 때마다 webric을 꼭 추가해 주어야 했습니다.<br><br>
 
-[https://honbabzone.com/jekyll/start-gitHubBlog/](#https://honbabzone.com/jekyll/start-gitHubBlog/)<br><br>
+[https://honbabzone.com/jekyll/start-gitHubBlog/](https://honbabzone.com/jekyll/start-gitHubBlog/)<br><br>
 그리고 두번째로 찾은 글<br>
 새로운 마음으로 다시 repo를 만들고 테마도 똑같은 걸로 다운받아서 진행했습니다. <br>
 이번엔 다행히 잘 되었습니다. 😄👏👏👏<br><br>
@@ -57,7 +57,7 @@ bundle add webrick
 
 # 2. utterances로 댓글 기능 만들기<br>
 사실 영어를 그닥 좋아하지 않아서(^^;) 최대한 한국인이 쓴 글을 구글링 해서 찾는 편이지만 제가 쓰는 테마는 영어를 쓰는 사람이 만들었기 때문에 영어로 된 설명서를 봐야만 했습니다.<br><br>
-[https://github.com/apps/utterances](#https://github.com/apps/utterances)<br><br>
+[https://github.com/apps/utterances](https://github.com/apps/utterances)<br><br>
 일단 여기로 이동하셔서 utterances를 repo에 설치합니다. <br><br>
 
 ![utterances01](../../assets/images/utterances01.png)<br><br>
@@ -87,9 +87,9 @@ Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마�
 아 행복해... 이거 만든다고 또 한시간 썼었거든요...ㅠ <br>
 댓글창 색이 테마랑 좀 안맞는 감이 있지만 이건 천천히 수정하기로 하고.. 여기까지 해서 제 첫 깃헙 블로그를 만들기 위한 여정이 마무리 되었습니다. <br><br>
 혹시 제 블로그 설정 파일이 궁금하시면 <br> 
-[https://github.com/miro7923/miro7923.github.com](#https://github.com/miro7923/miro7923.github.com)<br>
+[https://github.com/miro7923/miro7923.github.com](https://github.com/miro7923/miro7923.github.com)<br>
  여기를 참고하세요. <br><br>
-[https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml](#https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml)<br>
+[https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml](https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml)<br>
 그 중에서도 _config.yml 파일 내용이 궁금하시면 여기를 참고하시면 됩니다. <br><br>
 
 그럼 오늘은 여기까지... 다음 글에서 만나요!!<br>
