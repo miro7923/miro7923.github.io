@@ -38,7 +38,7 @@ tags:
 
 ## 🔸 배지 만들기<br>
 ![techStack](../../assets/images/techStack.png)<br><br>
-다른 분들 보니까 이런식으로 c++같은 프로그래밍 언어들을 그냥 텍스트로 쓰지 않고 배지 그림으로 달아 놓으셨더라고요. 저도 좋아보이는 건 다 해보고 싶어서 배치 이미지를 만들어 주는 사이트에서 만들었습니다.<br><br>
+다른 분들 보니까 이런식으로 c++같은 프로그래밍 언어들을 그냥 텍스트로 쓰지 않고 배지 그림으로 달아 놓으셨더라고요. 저도 좋아보이는 건 다 해보고 싶어서 배지 이미지를 만들어 주는 사이트에서 만들었습니다.<br><br>
 
 ### ▪️ 배지 : [https://shields.io/](https://shields.io/)
 ### ▪️ 언어 로고 : [https://simpleicons.org/](https://simpleicons.org/)<br>
