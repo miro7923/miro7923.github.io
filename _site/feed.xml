@@ -1,94 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-30T23:20:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">깃허브 블로그(Github Blog)를 만들기 위한 여정</title><link href="http://localhost:4000/story/making-github-blog/" rel="alternate" type="text/html" title="깃허브 블로그(Github Blog)를 만들기 위한 여정" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/story/making-github-blog</id><content type="html" xml:base="http://localhost:4000/story/making-github-blog/"><![CDATA[<h1 id="-시작">🎬 시작<br /></h1>
-<p>개발 공부를 시작하고 기존에 쓰던 티스토리 블로그가 있긴 했는데 뭔가 깃헙을 이용해서 블로그를 꾸미고 여기에 공부한 내용을 올리고 싶어졌습니다. 다른 개발자 분들이 쓰시는 걸 보니까 되게 있어보이기도 하고 만들어져 있는 큰 회사(?)의 블로그를 쓰는 것 보다는 내가 직접 만들어 보면 뭔가 더 공부가 되지 않을까… 하는 생각으로 깃헙 블로그 만들기에 호기롭게 도전하게 되었습니다. <br />
- 그리고 그것은 엄청난 고생길의 시작이었습니다….ㅎ<br /><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-31T02:42:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">깃허브 프로필(Github Profile) 꾸미기</title><link href="http://localhost:4000/story/decorate-github-profile/" rel="alternate" type="text/html" title="깃허브 프로필(Github Profile) 꾸미기" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/story/decorate-github-profile</id><content type="html" xml:base="http://localhost:4000/story/decorate-github-profile/"><![CDATA[<h1 id="-시작">🎬 시작<br /></h1>
+<p>드디어 깃헙 블로그를 만들고… 다른 깃헙들을 구경하다 보니까 깃헙 메인 화면 자체를 예쁘게 꾸며놓으신 분들이 많더라고요!<br /><br />
+<img src="../../assets/images/githubProfileComplete.png" alt="githubProfileComplete" /><br /><br />
+이렇게요!<br /><br />
+되게 좋아 보이잖아요?ㅎㅎㅎ 그래서 저도 꾸며보기로 했습니다.<br /><br /></p>
 
-<h1 id="0-시작-전에-ruby">0. 시작 전에… Ruby<br /></h1>
-<p>깃헙 블로그는 보통 jekyll(지킬)이라는 것을 사용해서 꾸미더라고요. 근데 저건 ruby 기반으로 만들어져 있어서 깃헙 블로그를 시작하려면 ruby를 깔아야 합니다. 전 처음에 이것도 모르고 시작했기 때문에 블로그 글을 똑같이 따라해도 안 되었던 것들이 참 많았기 때문에…ㅎ 이 글을 보시는 분들은 시작 전에 꼭 ruby를 깔고 시작하세요!<br /><br />
-ruby 설치 관련글은 아래 글과 같이 구글에 검색하시면 많이 보실 수 있을 것입니다.<br />
-<a href="https://ogaeng.com/jekyll-blog-install/">https://ogaeng.com/jekyll-blog-install/</a><br /><br />
-부디 고통받지 마시고 사전에 루비 설치하고 진행하세요…<br /><br /></p>
+<h1 id="1-new-repository-만들기">1. New Repository 만들기<br /></h1>
+<p><img src="../../assets/images/createNewRepo.png" alt="createNewRepo" /><br /><br />
+먼저 내 아이디와 같은 이름으로 새로운 레포지토리를 만들어 줍니다.<br />
+처음 깃헙 블로그를 만들 때 봤을 때엔 깃헙 프로필 페이지 자체를 꾸밀 수 있다는 것을 몰라서 뭔 소린가 했는데 이런 뜻이었네요…<br /><br /></p>
 
-<h2 id="-그리고">+) 그리고…<br /></h2>
-<p>시작 전에 깃헙 블로그는 터미널에서 명령어를 입력하는 것을 이용해서 만들 것인데 처음 하면 이것도 뭔가 싶으실 수 있습니다.<br />
-모든 블로그 글들을 따라하다 보면 터미널에서 무슨 명령어를 입력해라고 할텐데 그냥 터미널을 켜고 명령어를 입력하면 전혀 작동하지 않고 명령어로 실행하고자 하는 파일이 들어있는 위치로 이동한 다음에 해당 명령어를 입력해야 합니다.<br /><br /></p>
+<p><img src="../../assets/images/addReadme.png" alt="addReadme" /><br /><br />
+만들 때엔 add a readme에 꼭 체크해 주세요! readme로 프로필 페이지를 꾸며야 하거든요.<br /><br /></p>
 
-<p><img src="../../assets/images/terminal01.png" alt="terminal01" /><br /><br />
-그렇기 때문에 블로그 repository가 있는 폴더에서 마우스 우클릭해서 나오는 메뉴에서 <strong>‘폴더에서 새로운 터미널 열기’</strong> 를 선택해서 터미널을 실행하거나 <br /></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /폴더경로
+<h1 id="2-readmemd-편집하기">2. README.md 편집하기<br /></h1>
+<p><img src="../../assets/images/editReadme01.png" alt="editReadme01" /><br /><br />
+새로 만든 레포로 들어오면 아무것도 없어서 휑한 모습을 볼 수 있습니다. 전 까먹고 스샷을 좀 늦게 찍었더니 어느정도 꾸미기를 진행한 상태였네요 😅 <br />
+여기서 리드미 파일 상단의 연필 그림을 누르거나 오른쪽에 보이는 초록색 edit readme 버튼을 눌러서 웹상에서 바로 편집을 진행하셔도 되고 로컬로 다운받아서 편집한 다음에 푸시하셔도 됩니다.<br /><br /></p>
+
+<h2 id="-markdown-미리보기">🔸 markdown 미리보기<br /></h2>
+<p>혹은 <a href="https://dillinger.io/">https://dillinger.io/</a><br />
+<img src="../../assets/images/markdownPreviewService.png" alt="markdownPreviewService" /><br /><br />
+라는 사이트가 있는데 여기에서는 마크다운으로 작성하는 파일을 실시간으로 미리볼 수 있는 서비스를 제공하고 있습니다.<br />
+보통 마크다운 파일을 편집할 땐 미리보기가 가능하지 않으니까 여러번 커밋과 푸시를 하게 되어서 좀 귀찮은데 이 사이트에서는 실시간으로 확인하면서 작성한 다음에 복붙해서 한 번에 커밋할 수 있어서 꽤 편합니다.<br /><br />
+하지만 전 쓸 게 그렇게 많지는 않아서 여기 쓰려다가 안 쓰고 그냥 레포에서 바로 수정했습니다…😅<br /><br /></p>
+
+<h2 id="-배지-만들기">🔸 배지 만들기<br /></h2>
+<p><img src="../../assets/images/techStack.png" alt="techStack" /><br /><br />
+다른 분들 보니까 이런식으로 c++같은 프로그래밍 언어들을 그냥 텍스트로 쓰지 않고 배지 그림으로 달아 놓으셨더라고요. 저도 좋아보이는 건 다 해보고 싶어서 배치 이미지를 만들어 주는 사이트에서 만들었습니다.<br /><br /></p>
+
+<h3 id="️-배지--httpsshieldsio">▪️ 배지 : <a href="https://shields.io/">https://shields.io/</a></h3>
+<h3 id="️-언어-로고--httpssimpleiconsorg">▪️ 언어 로고 : <a href="https://simpleicons.org/">https://simpleicons.org/</a><br /></h3>
+<p>위 사이트들에 가면 저런 폼나는 아이콘들을 얻을 수 있습니다.<br /><br /></p>
+
+<p>배지를 만드시려면<br /><br />
+<img src="../../assets/images/makeBadge01.png" alt="makeBadge01" /><br /><br />
+이런식으로 넣고 싶은 문구를 입력하고 세번째 칸의 화살표를 눌러서 색상을 선택하거나 직접 입력하시고 나서 오른쪽의 Make Badge 버튼을 누르시면 <br /><br />
+<img src="../../assets/images/makeBadge02.png" alt="makeBadge02" /><br /><br />
+이렇게 배지를 만들어 줍니다. 여기서 주소를 복사하세요.<br /><br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="https://img.shields.io/badge/-TechBlog-brightgreen"&gt;
 </code></pre></div></div>
-<p>cd 명령어를 이용해 해당 파일이 있는 폴더로 이동해 모든 명령어를 입력해 주어야 합니다.<br /><br /></p>
-
-<h1 id="1-참고했던-글">1. 참고했던 글<br /></h1>
-<p><a href="https://zeddios.tistory.com/1222">https://zeddios.tistory.com/1222</a><br /><br />
-맨 처음에는 이 블로그 글을 참고해서 만들었었습니다. <br />
-그런데 똑같이 따라하고 심지어 테마도 똑같은 걸로 받아 썼지만 안 되더라고요… 제 repo에 push도 잘 되는데 정작 제 블로그 페이지에 들어가보면 맨 처음에 기본으로 주는 테마에서 변경이 안 되었습니다. .gitignore 설정이 잘못 되어있나 싶어서 아예 지워도보고 기타등등 별 짓을 다 해봤지만 되질 않아서… 이 글을 따라하며 만들었던 repo를 삭제하고 다시 만들기로 다짐하면서 다른 블로그 글을 찾아 떠나게 됩니다.<br /><br />
-만약 이 글대로 하셔서 잘 되시면 거기서 스톱하고 나만의 블로그를 꾸미시면 됩니다. 전 되질 않아서 더 많은 시간을 소비해야만 했거든요…ㅠ <br /><br />
-! 그리고 테마를 설치하다 보면 거의 99% 확률로<br /> 
-<strong>`require’: cannot load such file – webrick (LoadError)</strong> <br />
-이런 메세지를 보게 됩니다. 근데 다른 블로거분들은 이런걸 보신 적이 없는지 이것에 대한 언급이 아무도 없으심 ㅠ.ㅠ<br />
-<a href="https://junho85.pe.kr/1850">https://junho85.pe.kr/1850</a><br /><br />
-만약 저런 오류 메세지를 보시면 이 글을 참고하여 해결하시면 됩니다.<br /></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle add webrick
+<p>위 태그를 리드미에 입력하시면 우리가 만든 배지를 불러옵니다. 하지만 이렇게만 작성하면 단순히 그림만 불러오고 이 그림을 눌렀을 때 어디로 이동할지는 정해주지 않았기 때문에 그냥 새 창에서 그림이 호출될 것이어요… <br /><br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;a href="https://miro7923.github.io/"&gt;
+&lt;img src="https://img.shields.io/badge/-TechBlog-brightgreen"&gt;
 </code></pre></div></div>
-<p>무엇보다도 중요한 명령어… 전 테마를 설치할 때마다 webric을 꼭 추가해 주어야 했습니다.<br /><br /></p>
+<p>그렇기 때문에 이런식으로 a 태그를 이용해 하이퍼링크를 걸어주시면 우리가 만든 배지 그림을 눌렀을 때 나의 블로그로 이동하게 됩니다.<br /><br /></p>
 
-<p><a href="https://honbabzone.com/jekyll/start-gitHubBlog/">https://honbabzone.com/jekyll/start-gitHubBlog/</a><br /><br />
-그리고 두번째로 찾은 글<br />
-새로운 마음으로 다시 repo를 만들고 테마도 똑같은 걸로 다운받아서 진행했습니다. <br />
-이번엔 다행히 잘 되었습니다. 😄👏👏👏<br /><br />
-하지만 댓글 기능을 추가하려고 disqus에 들어가 보니까 <br /><br />
-<img src="../../assets/images/disqus01.png" alt="disqus01" /><br /><br />
-기본적으로 유료 서비스더라고요… 무료 서비스도 있긴 한데 무겁고 광고가 붙는다고 해서 disqus는 쓰지 않고 오픈소스에다 가벼운 utterances를 쓰기로 했습니다.<br /><br /></p>
+<p>일반화한다면 <br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="https://img.shields.io/badge/라벨-메세지-색상"&gt;
+</code></pre></div></div>
+<p>이렇게 작성하시면 됩니다.<br /><br /></p>
 
-<h1 id="2-utterances로-댓글-기능-만들기">2. utterances로 댓글 기능 만들기<br /></h1>
-<p>사실 영어를 그닥 좋아하지 않아서(^^;) 최대한 한국인이 쓴 글을 구글링 해서 찾는 편이지만 제가 쓰는 테마는 영어를 쓰는 사람이 만들었기 때문에 영어로 된 설명서를 봐야만 했습니다.<br /><br />
-<a href="https://github.com/apps/utterances">https://github.com/apps/utterances</a><br /><br />
-일단 여기로 이동하셔서 utterances를 repo에 설치합니다. <br /><br /></p>
+<p>만약 이메일 주소도 추가하고 싶으시면 <br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;a href="mailto:miro7923@gmail.com"&gt;
+</code></pre></div></div>
+<p>mailto를 이용해 메일주소를 적어주세요!<br /><br /></p>
 
-<p><img src="../../assets/images/utterances01.png" alt="utterances01" /><br /><br />
-인스톨 버튼을 누르시면 <br /><br /></p>
+<h2 id="-프로그래밍-언어-로고-만들기">🔸 프로그래밍 언어 로고 만들기<br /></h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="https://img.shields.io/badge/C++-00599C?style=flat-square&amp;logo=C%2B%2B&amp;logoColor=white"/&gt;&lt;/a&gt;&amp;nbsp 
+</code></pre></div></div>
+<p>프로그래밍 언어 로고는 위와 같이 태그를 입력하면 되는데 이것을 일반화하면<br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="https://img.shields.io/badge/언어-색상?style=flat-square&amp;logo=simpleicons에서 로고 이름&amp;logoColor=white"/&gt;&lt;/a&gt;&amp;nbsp 
+</code></pre></div></div>
+<p>위와 같은 형태로 만들 수 있습니다.<br /><br />
+<img src="../../assets/images/simpleIcons.png" alt="simpleIcons" /><br /><br />
+simpleicons 사이트에서 원하는 언어를 검색해서 그 언어의 이름과 색상을 넣어준 다음 simpleicons 사이트에서 표시되어 있는 언어의 이름을 넣어주시면 됩니다. <br /><br /></p>
 
-<p><img src="../../assets/images/utterances02.png" alt="utterances02" /><br /><br />
-이런 화면을 보실 수 있는데 제가 가진 모든 repo에 댓글 기능을 추가할 필요는 없기 때문에 블로그용으로 쓰는 repo만 선택했습니다. 여기까지 하셨으면 Install을 눌러서 다음으로 진행하시면 됩니다.<br /><br /></p>
+<p>단, c++을 쓸 때에만 좀 주의하면 되는데 simpleicons 사이트에는 단순히 C++이라 나와있지만 이걸 그대로 쓰면 적용이 안 되고 C%2B%2B라고 적어주어야 적용이 된다고 합니다. %2B가 +에 대응된다고 합니다.<br /><br />
+c#은 C Sharp 이라는 이름으로 등록되어 있었습니다.<br /><br /></p>
 
-<p><img src="../../assets/images/utterances03.png" alt="utterances03" /><br /><br />
-다음으로 넘어가면 이런 화면을 보실 수 있는데 configuration 아래 repo를 설정하는 란에 나의 깃헙 블로그 파일들을 저장하는 repository의 경로를 적어주시면 됩니다. 깃헙아이디/깃헙아이디.github.com 혹은 깃헙아이디/깃헙아이디.githun.io 이런 식으로 보통 적으실 것입니다.<br /><br /></p>
+<p><img src="../../assets/images/editReadme02.png" alt="editReadme02" /><br /><br />
+대략 이렇게 태그들을 쓴 다음에 <br /><br /></p>
 
-<p><img src="../../assets/images/utterances04.png" alt="utterances04" /><br /><br />
-밑으로 내려보시면 이런 선택란이 있을텐데 댓글이 작성되는 루트를 어디로 설정해주느냐 선택하는 것이라고 합니다. pathname은 블로그에 올릴 포스트의 파일명으로 깃헙 블로그에 올릴 포스트의 파일 이름 형식은 정해져 있어서(ex. 2022-01-30-title.md) 바꿀 일이 거의 없다고 봐도 되기 때문에 맨 첫번째 것으로 선택했습니다. 다른 분들도 많이 선택하시는 옵션이었습니다.<br /><br /></p>
+<p><img src="../../assets/images/editReadme03.png" alt="editReadme03" /><br /><br />
+커밋 버튼 눌러서 마무리!<br /><br /></p>
 
-<p><img src="../../assets/images/utterances05.png" alt="utterances05" /><br /><br />
-그리고 또 밑으로 내려보시면 이런 태그를 보실 수 있는데 본인이 쓰시는 테마의 레이아웃에 이걸 설정하는 란이 따로 있다면 저 태그를 복사해서 넣어주시면 되는데 제가 쓰는 테마엔 따로 없어서 저 태그는 필요가 없었습니다. <br />
-Theme 아래 화살표가 있는 박스를 눌러보시면 댓글창의 테마를 선택할 수 있으니 맘에 드는 것을 고르시면 되겠습니다. <br /><br /></p>
+<h1 id="3-최종-완성">3. 최종 완성<br /></h1>
+<p><img src="../../assets/images/completeReadme.png" alt="completeReadme" /><br /><br />
+짠 👏 커밋 버튼을 눌러서 나오면 이렇게 완성된 리드미를 볼 수 있습니다.<br /><br /></p>
 
-<p><img src="../../assets/images/utterances06.png" alt="utterances06" /><br /><br />
-대신 위 설명처럼 _config.yml 파일에서만 설정해주면 되었습니다.<br /><br /></p>
+<p><img src="../../assets/images/githubProfileComplete.png" alt="githubProfileComplete" /><br /><br />
+그리고 제 깃헙 프로필 메인 페이지를 확인해보면 이렇게 있어보이게 바꼈습니다! 😄 뿌듯~~!!<br /><br />
+이렇게 보니까 할 줄 아는거 되게 많네요! ㅎㅎ 더 뿌듯하다…<br /><br /></p>
 
-<p><img src="../../assets/images/utterances07.png" alt="utterances07" /><br /><br />
-이런 식으로 provider 이름만 설정해주고 아래 utterances 정보 입력란에서 입력만 해 주니까<br /><br /></p>
-
-<p><img src="../../assets/images/utterances08.png" alt="utterances08" /><br /><br />
-짜잔! 댓글창이 생겼습니다!! 😘👏👏<br />
-아 행복해… 이거 만든다고 또 한시간 썼었거든요…ㅠ <br />
-댓글창 색이 테마랑 좀 안맞는 감이 있지만 이건 천천히 수정하기로 하고.. 여기까지 해서 제 첫 깃헙 블로그를 만들기 위한 여정이 마무리 되었습니다. <br /><br />
-혹시 제 블로그 설정 파일이 궁금하시면 <br /> 
-<a href="https://github.com/miro7923/miro7923.github.com">https://github.com/miro7923/miro7923.github.com</a><br />
- 여기를 참고하세요. <br /><br />
-<a href="https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml">https://github.com/miro7923/miro7923.github.com/blob/main/_config.yml</a><br />
-그 중에서도 _config.yml 파일 내용이 궁금하시면 여기를 참고하시면 됩니다. <br /><br /></p>
-
-<h1 id="3-그런데-열심히-쓴-글이-포스팅-되지-않는다">3. 그런데.. 열심히 쓴 글이 포스팅 되지 않는다.<br /></h1>
-<p>드디어 블로그 세팅을 완료하고 설레는 마음으로 첫 글을 썼는데 로컬 서버로 띄워 보면 잘 보이는데 암만 push를 해도 실제 제 블로그에서는 보이질 않는 것이었습니다…! 머선일이고 이게 ㅠㅠ<br /><br />
-약 한시간동안 헤멘 끝에<br />
- <a href="https://devyuseon.github.io//github%20blog/githubblog-post-not-shown/">https://devyuseon.github.io//github%20blog/githubblog-post-not-shown/</a><br />
-이 글을 보고 해결할 수 있었습니다.<br /><br /></p>
-
-<p><img src="../../assets/images/published.png" alt="published" /><br /><br />
-저는 _config.yml에 future: true 추가하고 게시글 마크다운 파일의 상단 타이틀 쓰는 란에 published: true 를 추가해 주었더니 해결되었습니다.<br /><br />
-그리고 네이버나 티스토리처럼 큰 회사 블로그처럼 push 하자마자 블로그가 업데이트 되는 것은 아니고 몇 분 정도 기다려야 변경내용이 완전히 반영이 되더라고요. 외국 회사라 그런가?<br /><br />
-하지만 네이버랑 티스토리에 비해서는 손이 가는게 많아서 그런지 포스트 하나를 쓰고 나면 뭔가 엄청 뿌듯하고 그렇습니다.😄 열심히 해야지!<br /><br /></p>
-
-<p>그럼 오늘은 여기까지… 다음 글에서 만나요!!<br /></p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Story" /><category term="story" /><summary type="html"><![CDATA[🎬 시작 개발 공부를 시작하고 기존에 쓰던 티스토리 블로그가 있긴 했는데 뭔가 깃헙을 이용해서 블로그를 꾸미고 여기에 공부한 내용을 올리고 싶어졌습니다. 다른 개발자 분들이 쓰시는 걸 보니까 되게 있어보이기도 하고 만들어져 있는 큰 회사(?)의 블로그를 쓰는 것 보다는 내가 직접 만들어 보면 뭔가 더 공부가 되지 않을까… 하는 생각으로 깃헙 블로그 만들기에 호기롭게 도전하게 되었습니다. 그리고 그것은 엄청난 고생길의 시작이었습니다….ㅎ]]></summary></entry><entry><title type="html">컴퓨터는 무엇일까?</title><link href="http://localhost:4000/computer%20science/CS02/" rel="alternate" type="text/html" title="컴퓨터는 무엇일까?" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS02</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS02/"><![CDATA[<h1 id="컴퓨터는-무엇일까">컴퓨터는 무엇일까?</h1>
+<p>앞으로 공부 더 열심히 해야겠습니다. 그럼 다음 글에서 만나요! 👋<br /></p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Story" /><category term="story" /><summary type="html"><![CDATA[🎬 시작 드디어 깃헙 블로그를 만들고… 다른 깃헙들을 구경하다 보니까 깃헙 메인 화면 자체를 예쁘게 꾸며놓으신 분들이 많더라고요! 이렇게요! 되게 좋아 보이잖아요?ㅎㅎㅎ 그래서 저도 꾸며보기로 했습니다.]]></summary></entry><entry><title type="html">컴퓨터는 무엇일까?</title><link href="http://localhost:4000/computer%20science/CS02/" rel="alternate" type="text/html" title="컴퓨터는 무엇일까?" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS02</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS02/"><![CDATA[<h1 id="컴퓨터는-무엇일까">컴퓨터는 무엇일까?</h1>
 <h2 id="컴퓨터의-정의">컴퓨터의 정의<br /></h2>
 <ul>
   <li>컴퓨터(Computer)란 지금까지 사람이 해 왔던 기억과 계산 등의 일을 빠르고 정확하게 처리해 주는 기계이며, 사람의 지시에 따라 여러 가지 일을 자동적으로 처리해주는 전자 장치이다.<br /></li>
