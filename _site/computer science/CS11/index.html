@@ -1,0 +1,890 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>컴퓨터 하드웨어 - 보조 기억 장치 | Yujin Dev Log</title>
+<meta name="description" content="보조 기억 장치    주기억 장치는 적은 자료를 기억하여 고속으로 처리한다.   **그에 반해 많은 양의 자료를 기억시켜 관리하기 위한 장치**를 보조 기억 장치 또는 2차 기억 장치(secondary memory)라 한다.   보조 기억 장치의 자료를 액세스하는 방법에 따라 **순차 액세스**와 **임의 액세스**로 분류할 수 있다.">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="컴퓨터 하드웨어 - 보조 기억 장치">
+<meta property="og:url" content="http://localhost:4000/computer%20science/CS11/">
+
+
+  <meta property="og:description" content="보조 기억 장치    주기억 장치는 적은 자료를 기억하여 고속으로 처리한다.   **그에 반해 많은 양의 자료를 기억시켜 관리하기 위한 장치**를 보조 기억 장치 또는 2차 기억 장치(secondary memory)라 한다.   보조 기억 장치의 자료를 액세스하는 방법에 따라 **순차 액세스**와 **임의 액세스**로 분류할 수 있다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-30T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/computer%20science/CS11/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#computer-science" itemprop="item"><span itemprop="name">Computer science</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">컴퓨터 하드웨어 - 보조 기억 장치</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="컴퓨터 하드웨어 - 보조 기억 장치">
+    <meta itemprop="description" content="보조 기억 장치  주기억 장치는 적은 자료를 기억하여 고속으로 처리한다.  **그에 반해 많은 양의 자료를 기억시켜 관리하기 위한 장치**를 보조 기억 장치 또는 2차 기억 장치(secondary memory)라 한다.  보조 기억 장치의 자료를 액세스하는 방법에 따라 **순차 액세스**와 **임의 액세스**로 분류할 수 있다.">
+    <meta itemprop="datePublished" content="2022-01-30T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/computer%20science/CS11/" class="u-url" itemprop="url">컴퓨터 하드웨어 - 보조 기억 장치
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#보조-기억-장치">보조 기억 장치</a><ul><li><a href="#순차-액세스sequential-access">순차 액세스(sequential access)</a></li><li><a href="#임의-액세스random-access">임의 액세스(random access)</a></li></ul></li><li><a href="#보조-기억-장치의-종류">보조 기억 장치의 종류</a><ul><li><a href="#자기-테이프magnetic-tape">자기 테이프(magnetic tape)</a></li><li><a href="#자기-디스크-장치">자기 디스크 장치</a></li><li><a href="#자기-드럼-장치magnetic-drum">자기 드럼 장치(magnetic drum)</a></li><li><a href="#플로피-디스크-장치floppy-disk">플로피 디스크 장치(floppy disk)</a></li><li><a href="#하드-디스크hard-disk">하드 디스크(hard disk)</a></li><li><a href="#광학-디스크optical-disk">광학 디스크(optical disk)</a><ul><li><a href="#광-디스크의-종류">광 디스크의 종류</a><ul><li><a href="#1-cd-romcompact-disk-read-only-memory">1) CD-ROM(Compact Disk-Read Only Memory)</a></li><li><a href="#2-wormwrite-once-read-memory">2) WORM(Write Once Read Memory)</a></li><li><a href="#3-mo-diskmagneto-optical-disk">3) MO DISK(Magneto Optical Disk)</a></li><li><a href="#4-dvd">4) DVD</a></li></ul></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="보조-기억-장치">보조 기억 장치</h1>
+<ul>
+  <li>주기억 장치는 적은 자료를 기억하여 고속으로 처리한다.</li>
+  <li><u>**그에 반해 많은 양의 자료를 기억시켜 관리하기 위한 장치**</u>를 보조 기억 장치 또는 2차 기억 장치(secondary memory)라 한다.</li>
+  <li>보조 기억 장치의 자료를 액세스하는 방법에 따라 <u>**순차 액세스**</u>와 <u>**임의 액세스**</u>로 분류할 수 있다.<br /><br /></li>
+</ul>
+
+<h2 id="순차-액세스sequential-access">순차 액세스(sequential access)</h2>
+<ul>
+  <li>물리적으로 저장된 순서에 따라 자료를 검색해 나가기 때문에 일괄 처리(batch processiong)에 적합하다.</li>
+  <li>그렇기 때문에 빠른 액세스가 요구되는 실시간 처리에는 잘 사용되지 않는다.
+    <ul>
+      <li>사용 예 : 자기 테이프<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="임의-액세스random-access">임의 액세스(random access)</h2>
+<ul>
+  <li>원하는 레코드에 직접 액세스할 수 있는 방식</li>
+  <li>레코드를 순차적으로 읽지 않기 때문에 원하는 데이터를 빠르게 검색할 수 있다.</li>
+  <li>주로 실시간 처리 시스템에서 사용된다.
+    <ul>
+      <li>사용 예 : 자기 디스크<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="보조-기억-장치의-종류">보조 기억 장치의 종류</h1>
+<h2 id="자기-테이프magnetic-tape">자기 테이프(magnetic tape)</h2>
+<ul>
+  <li>플라스틱 테이프의 표면에 자성 도료를 입혀 제작된 것<br /><br /></li>
+</ul>
+
+<p>1) 특성<br /></p>
+<ul>
+  <li>녹음 테이프와 비슷하게 생겼는데 폭이 1/2~3/4인지 정도로 넓고 기록 밀도가 높다.<br />
+<img src="../img/magneticTape.jpeg" alt="magneticTape" /><br /><br /></li>
+  <li>대량의 자료를 반영구적으로 보관할 수 있고 가격이 저렴하다는 장점을 가지고 있다.</li>
+  <li>하지만 테이프가 릴에 순차적으로 감겨 있기 때문에 자료의 순차적 처리만 가능하다.<br /><br /></li>
+</ul>
+
+<p>2) 기록 밀도<br /></p>
+<ul>
+  <li>자기 테이프 1릴(reel)의 길이는 보통 800, 1,200, 1,600, 2,400 피트(feet) 등이며, 테이프의 기록 밀도는 테이프 1인치 당 저장될 수 있는 문자(character)의 수 혹은 바이트(byte)의 수로 계산 되고 있다.</li>
+  <li>이 기록 밀도의 단위를 BPI(Byte Per Inch)라고 하며 800, 1,600, 3,200, 6,250, 20,000BPI 등의 기록 밀도가 있다.</li>
+  <li>자기 테이프는 최초로부터 4~5m 지점에 BOT(Beginning of Tape) 마커가 있고 끝의 6~7m 앞지점에 EOT(End of Tape) 마커가 있는데, 이 부분에는 자료를 수록할 수 없다.</li>
+  <li>자기 테이프는 7개 또는 9개의 트랙(track)으로 구성되어 데이터를 표현한다.</li>
+  <li>자료의 저장은 ASCII 코드나 EBCDIC 코드로 표현된다.</li>
+  <li>파일의 갱신과 보수를 쉽게 하기 위하여 레이블을 사용하는데 레이블에는 표준 레이블, 비표준 레이블, 레이블이 없는 것 세 가지 종류가 있다.<br /><br /></li>
+</ul>
+
+<p>3) 저장 방법<br /></p>
+<ul>
+  <li>레코드는 자기 테이프에 순차적으로 기록되고 읽혀진다.</li>
+  <li>이 때 테이프가 레코드를 읽거나 기록하는 과정에서 테이프를 출발시키거나 멈추게 하는데는 물리적인 가속 및 감속 구간이 필요한데, 이를 IRG(Inter Record Gap)로 나타낸다.</li>
+  <li>IRG의 길이는 약 0.3~0.75인치로 각 레코드마다 IRG를 두게 되면 그만큼 저장할 수 있는 공간이 줄어들기 때문에 비효율적이다.</li>
+  <li>따라서 효율성을 위해 몇 개의 레코드를 묶어서 한 개의 물리적 레코드로 만들어 준다.</li>
+  <li>이것을 블록화라고 하며 하나의 블록에 포함된 논리 레코드의 수를 블록화 인수, 각 블록 사이의 간격을 IBG(Inter Block Gap)라 한다.<br /><br /></li>
+</ul>
+
+<p>4) 자기 테이프의 레코드 형식<br /></p>
+<ul>
+  <li>고정 길이 비블록 레코드(fixed unblock record)
+    <ul>
+      <li>블록화되지 않은 고정 길이 레코드</li>
+      <li>물리 레코드와 논리 레코드의 길이가 같다.</li>
+    </ul>
+  </li>
+  <li>고정 길이 블록 레코드(fixed block record)
+    <ul>
+      <li>블록화된 고정 길이 레코드</li>
+      <li>레코드의 길이가 일정하며 하나의 물리 레코드 내에 2개 이상의 논리 레코드가 존재한다.</li>
+    </ul>
+  </li>
+  <li>가변 길이 비블록 레코드(variable unblock record)
+    <ul>
+      <li>블록화되지 않은 가변 길이 레코드</li>
+      <li>각 논리 레코드의 길이가 일정하지 않다.</li>
+    </ul>
+  </li>
+  <li>가변 길이 블록 레코드(variable block record)
+    <ul>
+      <li>블록화된 가변 길이 레코드</li>
+      <li>길이가 일정하지 않은 논리 레코드가 블록화되어 있는 형식이다.</li>
+    </ul>
+  </li>
+  <li>부정 형식 레코드(undefined record)
+    <ul>
+      <li>길이를 나타내는 필드가 없는 가변 길이 레코드</li>
+      <li>비블록 레코드이다.<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="자기-디스크-장치">자기 디스크 장치<br /></h2>
+<p><img src="../img/magneticDisk.jpeg" alt="magneticDisk" /><br /></p>
+<ul>
+  <li>대용량을 저장할 수 있고 임의로 호출이 가능하기 때문에 은행 업무, 좌석 예약 업무 등 실시간 처리가 요구되는 자료 처리에 효율적이다.</li>
+  <li>처리 속도는 1,200 ~ 3,600 회전/분이며, 기록 밀도는 한 트랙당 3,000 ~ 13,000바이트, 즉 60만 ~ 520만 바이트가 수록된다.</li>
+  <li>자기 디스크 장치는 여러 디스크가 하나의 축에 연결되어 있는데 이것을 디스크 팩(pack)이라 한다.</li>
+  <li>그리고 각 면의 트랙을 수직으로 연결한 트랙군을 실린더(cylinder)라 한다.</li>
+  <li>트랙과 실린더에는 고유 번호인 트랙 번호와 실린더 번호가 있어서 기억 매체상의 주소(address)가 할당되어 있기 때문에 데이터에 직접 액세스 하는 것이 가능하다.<br /><br /></li>
+</ul>
+
+<h2 id="자기-드럼-장치magnetic-drum">자기 드럼 장치(magnetic drum)<br /></h2>
+<p><img src="../img/magneticDrum.jpeg" alt="magneticDrum" /><br /></p>
+<ul>
+  <li>초기에 사용되던 주기억 장치</li>
+  <li>새로운 기억 장치가 개발되면서 보조 기억 장치로 사용되기 시작했지만 현재는 그마저도 잘 안 쓴다.</li>
+  <li>직경 20~30cm인 금속 원통의 표면에 자성 물질을 입힌 드럼으로 드럼을 회전시킬 때 표면에 헤드를 접근시켜 기억된 내용을 읽거나 새로운 내용을 기억시킨다.<br /><br /></li>
+</ul>
+
+<h2 id="플로피-디스크-장치floppy-disk">플로피 디스크 장치(floppy disk)<br /></h2>
+<p><img src="../img/floppyDisk.jpeg" alt="floppyDisk" /><br /></p>
+<ul>
+  <li>자기 디스크와 같이 데이터를 직접 액세스하며 가볍고 취급이 간편한 반면, 먼지, 햇볕, 열 또는 자성 물질에 가까이 두지 않는 등 관리상 주의가 필요하다.</li>
+  <li>기록 방법에 따라 단밀도, 배밀도, 고밀도 등이 있으며, 2D는 양면 배밀도를 뜻하고 2HD는 양면 고밀도를 뜻한다.<br /><br /></li>
+</ul>
+
+<h2 id="하드-디스크hard-disk">하드 디스크(hard disk)<br /></h2>
+<p><img src="../img/hardDisk.jpeg" alt="hardDisk" /><br /></p>
+<ul>
+  <li>개인용 컴퓨터의 보조 기억 장치로 널리 사용되고 있다.</li>
+  <li>동작 속도는 ms로 나타내며, 보통 평균 액세스 속도와 트랙간 이동 속도, 최대 이동 거리 속도 등을 표시한다.</li>
+  <li>평균 속도가 빠를수록 전체적으로 동작이 빠르며 가격도 높아진다.</li>
+  <li>하드 디스크는 본체에 내장되어 사용되는 것이 보통이나 기억 용량의 증가, 편의성 등으로 외장형 하드 디스크도 사용되고 있다.<br /><br /></li>
+</ul>
+
+<h2 id="광학-디스크optical-disk">광학 디스크(optical disk)<br /></h2>
+<ul>
+  <li>레이저를 이용해서 자료를 기록한다.</li>
+  <li>레이저가 필요한 표면에 도착하면 표면을 태워서 비트 형태의 데이터를 저장한다.</li>
+  <li>광학 디스크는 데이터가 잘 지워지지 않는 백업 파일, 역사적 기록 등의 분야에 이용된다.<br /><br /></li>
+</ul>
+
+<h3 id="광-디스크의-종류">광 디스크의 종류<br /></h3>
+<h4 id="1-cd-romcompact-disk-read-only-memory">1) CD-ROM(Compact Disk-Read Only Memory)<br /></h4>
+<p><img src="../img/cdrom.jpeg" alt="cdrom" /><br /></p>
+<ul>
+  <li>지름이 12cm인 소형 디스크 위에 정보를 기록, 저장 및 검색할 수 있는 형식의 시스템으로 광학 드라이브를 이용해서 읽을 수 있다.</li>
+  <li>원본에 정보를 기록하기 위해서는 WORM 장치가 사용된다.</li>
+  <li>오디오 디스크, 비디오 디스크, 각종 상품화된 소프트웨어의 저장에 이용된다.<br /><br /></li>
+</ul>
+
+<h4 id="2-wormwrite-once-read-memory">2) WORM(Write Once Read Memory)<br /></h4>
+<ul>
+  <li>디스크에 단 한 번만 정보를 기록할 수 있고 기록한 후에 지울 수 없고 판독만 할 수 있는데, 그 후에는 드라이브에 있는 데이터가 삭제되지 않도록 보호하는 데이터 저장기술이다.</li>
+  <li>문서용 파일, 비디오용 파일 등에 이용된다.<br /><br /></li>
+</ul>
+
+<h4 id="3-mo-diskmagneto-optical-disk">3) MO DISK(Magneto Optical Disk)<br /></h4>
+<p><img src="../img/magnetoOpticalDisk.jpeg" alt="magnetoOpticalDisk" /><br /></p>
+<ul>
+  <li>자기광학 디스크라고도 하며 자기박막의 광자기 효과를 이용하여 자료를 기록하고 읽어낼 수 있는 CD-ROM 형태의 외부 기억 매체</li>
+  <li>자료를 기록할 때엔 레이저광을 사용하여 자화시키는데 이 자화가 유지되어 정보가 기록된다.</li>
+  <li>판독시엔 피트(pit : 광자기 디스크 표면의 미세한 홈)에 반사되는 빛의 유무로 데이터를 판독한다.</li>
+  <li>광자기 디스크는 3.5인치 디스켓보다는 빠르지만 하드 디스크보다는 느리다.</li>
+  <li>광자기 디스크는 자료 백업용 기억매체로 사용하기 좋으며 이동이 간편하고 신뢰성이 높은 것이 장점이다.</li>
+  <li>오디오용, 비디오용, 컴퓨터 데이터 파일 등에 이용된다.<br /><br /></li>
+</ul>
+
+<h4 id="4-dvd">4) DVD<br /></h4>
+<ul>
+  <li>CD에서 더 발전한 광학 디스크 기술을 이용하는 저장매체이다.</li>
+  <li>외형은 CD와 같지만 다른 포맷으로 저장되며 높은 용량을 가지고 있다.</li>
+  <li>DVD는 MPEG-2 파일과 압축 표준을 사용한다.</li>
+  <li>MPEG-2 이미지들은 MPEG-1 이미지의 4배 해상도를 가지며, 2개의 필드가 하나의 이미지 프레임을 구성하는 상황에서 초당 60개의 인터레이스드 필드(Interlaced Field)를 전송할 수 있다. (MPEG-1은 초당 30개의 인터레이스되지 않은 프레임을 전송한다)<br /><br /></li>
+</ul>
+
+<p><img src="../img/memoryHierarchy.png" alt="memoryHierarchy" /><br /></p>
+<blockquote>
+  <p>메모리 계층 구조<br /></p>
+</blockquote>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cs" class="page__taxonomy-item p-category" rel="tag">CS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#computer-science" class="page__taxonomy-item p-category" rel="tag">Computer Science</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-30T00:00:00+09:00">January 30, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%BB%B4%ED%93%A8%ED%84%B0+%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4+-+%EB%B3%B4%EC%A1%B0+%EA%B8%B0%EC%96%B5+%EC%9E%A5%EC%B9%98%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS11%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS11%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS11%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/computer%20science/CS10/" class="pagination--pager" title="컴퓨터 하드웨어 - 반도체 메모리
+">이전</a>
+    
+    
+      <a href="/computer%20science/CS12/" class="pagination--pager" title="컴퓨터 하드웨어 - 산술 논리 연산 장치
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/story/making-github-blog/" rel="permalink">깃허브 블로그(Github Blog)를 만들기 위한 여정
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">🎬 시작
+개발 공부를 시작하고 기존에 쓰던 티스토리 블로그가 있긴 했는데 뭔가 깃헙을 이용해서 블로그를 꾸미고 여기에 공부한 내용을 올리고 싶어졌습니다. 다른 개발자 분들이 쓰시는 걸 보니까 되게 있어보이기도 하고 만들어져 있는 큰 회사(?)의 블로그를 쓰는 것 보다는 내가 직접 ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS13/" rel="permalink">적재와 프로그램과 프로세스
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">🔸 적재(로드 load)
+
+  보조기억장치(HDD 등) -&gt; 주기억장치(RAM)로 이동
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS12/" rel="permalink">컴퓨터 하드웨어 - 산술 논리 연산 장치
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">산술 논리 연산 장치(ALU : Arithmetic and Logic Unit)
+
+  제어 장치의 지시에 따라 실제 자료 처리가 이루어지는 곳
+  사칙연산, 논리연산, 비교연산, 자리 이동(shift) 등을 수행한다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS10/" rel="permalink">컴퓨터 하드웨어 - 반도체 메모리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">반도체 메모리
+
+  현재 주기억 장치로 사용되고 있는 반도체 메모리는 하나의 칩(chip)상에 수메가 비트를 저장할 수 있다. 반도체 제조공법상 쌍극성(bipolar type)과 모스형(mos type)의 두 가지로 구분된다.
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>
