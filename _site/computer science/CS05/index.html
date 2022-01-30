@@ -1,0 +1,909 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>데이터의 표현과 연산 | Yujin Log</title>
+<meta name="description" content="데이터의 표현과 연산">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Log">
+<meta property="og:title" content="데이터의 표현과 연산">
+<meta property="og:url" content="http://localhost:4000/computer%20science/CS05/">
+
+
+  <meta property="og:description" content="데이터의 표현과 연산">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-30T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/computer%20science/CS05/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#computer-science" itemprop="item"><span itemprop="name">Computer science</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">데이터의 표현과 연산</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="데이터의 표현과 연산">
+    <meta itemprop="description" content="데이터의 표현과 연산">
+    <meta itemprop="datePublished" content="2022-01-30T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/computer%20science/CS05/" class="u-url" itemprop="url">데이터의 표현과 연산
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#데이터의-표현과-연산">데이터의 표현과 연산</a><ul><li><a href="#1-컴퓨터의-수-체계">1. 컴퓨터의 수 체계</a></li><li><a href="#2-데이터의-표현">2. 데이터의 표현</a></li><li><a href="#3-보수-연산">3. 보수 연산</a></li><li><a href="#4-정보-교환용-코드">4. 정보 교환용 코드</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="데이터의-표현과-연산">데이터의 표현과 연산<br /></h1>
+
+<h2 id="1-컴퓨터의-수-체계">1. 컴퓨터의 수 체계<br /></h2>
+<ul>
+  <li>우리는 10진수를 사용하지만 컴퓨터는 0과 1로 모든 것을 판단하기 때문에 2진수를 사용한다.<br /></li>
+  <li>컴퓨터의 연산과 제어의 기본은 부울대수이며, 컴퓨터가 다루는 데이터를 2진 숫자(Binary digIT)라고 하며 약자로 비트(BIT)라고 한다.<br /></li>
+  <li>8개의 비트를 한 단위로 하여 1바이트(byte)로 사용한다.<br /></li>
+  <li>2진수의 최상위 비트를 MSB(most significant bit)라 하고 최하위 비트를 LSB(least significant bit)라 한다.<br /><br /></li>
+</ul>
+
+<h2 id="2-데이터의-표현">2. 데이터의 표현<br /></h2>
+<p>1) BCD 코드<br /></p>
+<ul>
+  <li>Binary Coded Decimal의 약자로 8421 코드라고도 한다.<br /></li>
+  <li>BCD 코드는 각 비트 자리가 자리값을 갖는데 1010이라는 4자리 비트가 있다고 했을 때 왼쪽(10진수로 생각할 때 1000의 자리)부터 <br /></li>
+  <li>2^3 = 8<br /></li>
+  <li>2^2 = 4<br /></li>
+  <li>2^1 = 2<br /></li>
+  <li>2^0 = 1<br /></li>
+  <li>의 값을 가지므로 8421코드라 부른다. <br /></li>
+  <li>일반적으로 10진수를 2진수로 표현하는 것과 비슷하지만 10이 넘어가면 2진수는 1010이라고 표현하지만 BCD 코드는 0001 0000, 11은 0001 0001 … 와 같은 방식으로 표현한다.<br /><br /></li>
+</ul>
+
+<p>2) 문자 데이터<br /></p>
+<ul>
+  <li>문자 데이터는 1바이트의 데이터이다. 아스키코드의 문자 ABC를 2진법과 16진법으로 나타낸다면 다음과 같이 된다.<br /></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>문자</th>
+      <th>2진법</th>
+      <th>16진법</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>0100 0001</td>
+      <td>41H</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>0100 0010</td>
+      <td>42H</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>0100 0011</td>
+      <td>43H</td>
+      <td><br /><br /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>3) 존(Zone) 형식<br /></p>
+<ul>
+  <li>언팩(unpack) 형식이라고도 하며, 1바이트에 한 개의 10진수가 저장된다. 1바이트의 왼쪽 4비트를 존(zone) 비트라고 하며 항상 F(16진수)가 들어 있다.<br /></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>2진수</th>
+      <th>1111</th>
+      <th>0111</th>
+      <th>1111</th>
+      <th>0001</th>
+      <th>1100</th>
+      <th>0010</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>16진수</td>
+      <td>F</td>
+      <td>7</td>
+      <td>F</td>
+      <td>1</td>
+      <td>C(양수)</td>
+      <td>2</td>
+      <td><br /></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>10진수를 712로 표현한다면 위와 같이 표현되는데 마지막 바이트의 왼쪽 4비트를 이용해서 부호를 나타낸다. 위와 같은 경우처럼 마지막 바이트의 왼쪽 4비트가 C라면 양수고<br /></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>2진수</th>
+      <th>1111</th>
+      <th>0111</th>
+      <th>1111</th>
+      <th>0001</th>
+      <th>1101</th>
+      <th>0010</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>16진수</td>
+      <td>F</td>
+      <td>7</td>
+      <td>F</td>
+      <td>1</td>
+      <td>D(음수)</td>
+      <td>2</td>
+      <td><br /></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>위처럼 D라면 음수로 -712가 된다.<br /><br /></li>
+</ul>
+
+<p>4) 팩(Pack) 형식<br /></p>
+<ul>
+  <li>수치를 표현하는 4비트의 BCD를 1바이트에 2개를 나타내며 10진수 숫자 2개를 표시한다. 존 형식이 절반으로 줄어든 형태라고 보면 된다.<br /></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>2진수</th>
+      <th>0111</th>
+      <th>0001</th>
+      <th>0010</th>
+      <th>1100</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>16진수</td>
+      <td>7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>C(양수)</td>
+      <td><br /></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>2진수</th>
+      <th>0111</th>
+      <th>0001</th>
+      <th>0010</th>
+      <th>1101</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>16진수</td>
+      <td>7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>D(음수)</td>
+      <td><br /><br /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>5) 고정 소수점 형식<br /></p>
+<ul>
+  <li>고정 소수점 형식은 소수점 위치가 가장 오른쪽 끝에 고정되어 있다고 가정하는 것으로 전체의 수를 정수로 표현한다. 가장 왼쪽의 비트는 부호를 표시하며 0이면 +양수, 1이면 -음수를 나타낸다. 데이터 길이를 n이라고 했을 때 -(2^n-1 - 1) ~ (2^n-1 - 1)의 범위를 나타낼 수 있다.<br /></li>
+  <li>고정 소수점은 BCD 코드에 비해서 명령 속도가 빠르다.<br /><br /></li>
+</ul>
+
+<p>6) 부동 소수점 표현<br /></p>
+<ul>
+  <li>아주 큰 수나 아주 작은 수를 표현한다든지 아니면 높은 정도(precision)로 취급할 때 많이 쓰인다. 유효숫자만을 나타내는 소수부(fraction part)와 소수점의 위치를 나타내는 지수부(exponent part)로 구분한다. 10^-78 ~ 10^74의 범위까지를 나타낼 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h2 id="3-보수-연산">3. 보수 연산<br /></h2>
+<ul>
+  <li>보수(complement)란 어떤 기준이 되는 수를 설정했을 때 그 수에 모자라는 수를 말한다. x에 대한 9의 보수는 9로부터 x를 뺀 것인데, 6에 대한 9의 보수는 3이고 2에 대한 10의 보수는 8이다.<br /></li>
+  <li>보수 연산은 뺄셈을 할 때 9의 보수를 사용하는 방법과 1의 보수와 2의 보수를 사용하는 방법 등이 있다.<br /><br /><br /></li>
+</ul>
+
+<h2 id="4-정보-교환용-코드">4. 정보 교환용 코드<br /></h2>
+<ul>
+  <li>정보 교환용 코드는 국제표준화기구(ISO)에 의해 정해지고 이것에 준해서 각국에서 정하여 사용하고 있다. 컴퓨터 대 컴퓨터시스템간의 통신을 단순화하고 표준화하기 위해 만들어졌다. <br /></li>
+  <li>대표적인 것으로 프로그래밍을 할 때 자주 쓰는 아스키(ASCII)코드가 있다.</li>
+  <li>산업 표준으로 전세계 모든 문자들을 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 유니코드(Unicode)가 제정되어 사용되고 있다.<br /><br /><br /></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cs" class="page__taxonomy-item p-category" rel="tag">CS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#computer-science" class="page__taxonomy-item p-category" rel="tag">Computer Science</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-30T00:00:00+09:00">January 30, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98+%ED%91%9C%ED%98%84%EA%B3%BC+%EC%97%B0%EC%82%B0%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS05%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS05%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS05%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/computer%20science/CS04/" class="pagination--pager" title="컴퓨터의 분류
+">이전</a>
+    
+    
+      <a href="/computer%20science/CS06/" class="pagination--pager" title="부울대수
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/story/making-github-blog/" rel="permalink">깃허브 블로그(Github Blog)를 만들기 위한 여정
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">🎬 시작
+개발 공부를 시작하고 기존에 쓰던 티스토리 블로그가 있긴 했는데 뭔가 깃헙을 이용해서 블로그를 꾸미고 여기에 공부한 내용을 올리고 싶어졌습니다. 다른 개발자 분들이 쓰시는 걸 보니까 되게 있어보이기도 하고 만들어져 있는 큰 회사(?)의 블로그를 쓰는 것 보다는 내가 직접 ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS08/" rel="permalink">컴퓨터 하드웨어 기억장치
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">컴퓨터 하드웨어 기억장치
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS07/" rel="permalink">컴퓨터 하드웨어 구성
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">컴퓨터 하드웨어 구성
+
+  컴퓨터 시스템은 크게 하드웨어(hardware)와 소프트웨어(software)로 이루어져 있다.
+  하드웨어는 눈으로 볼 수 있는 기계의 본체로 중앙처리장치(CPU), 보조기억장치, 입출력장치로 구성되어 있다.
+  중앙처리장치는 주기억장치, 연산장치, 제...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS06/" rel="permalink">부울대수
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">부울대수
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>
