@@ -1,0 +1,17 @@
+I"�<h1 id="쿼리구문에-큰-따옴표-가-사용되는-경우">쿼리구문에 큰 따옴표(“ “)가 사용되는 경우</h1>
+<ul>
+  <li>컬럼명 [AS] “Alias”
+    <ul>
+      <li>대소문자 구분</li>
+      <li>특수문자 포함</li>
+      <li>공백 포함하는 경우
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>TO_CHAR(sysdate, ‘YYYY-MM-DD “Time” HH24:MI’)
+    <ul>
+      <li>사용자 형식 내 문자열 포함 시</li>
+    </ul>
+  </li>
+</ul>
+:ET
