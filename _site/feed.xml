@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-31T12:24:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">깃허브 프로필(Github Profile) 꾸미기</title><link href="http://localhost:4000/story/decorate-github-profile/" rel="alternate" type="text/html" title="깃허브 프로필(Github Profile) 꾸미기" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/story/decorate-github-profile</id><content type="html" xml:base="http://localhost:4000/story/decorate-github-profile/"><![CDATA[<h1 id="-시작">🎬 시작<br /></h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-31T14:15:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">깃허브 프로필(Github Profile) 꾸미기</title><link href="http://localhost:4000/story/decorate-github-profile/" rel="alternate" type="text/html" title="깃허브 프로필(Github Profile) 꾸미기" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/story/decorate-github-profile</id><content type="html" xml:base="http://localhost:4000/story/decorate-github-profile/"><![CDATA[<h1 id="-시작">🎬 시작<br /></h1>
 <p>드디어 깃헙 블로그를 만들고… 다른 깃헙들을 구경하다 보니까 깃헙 메인 화면 자체를 예쁘게 꾸며놓으신 분들이 많더라고요!<br /><br />
 <img src="../../assets/images/githubProfileComplete.png" alt="githubProfileComplete" /><br /><br />
 이렇게요!<br /><br />
@@ -175,206 +175,127 @@ c#은 C Sharp 이라는 이름으로 등록되어 있었습니다.<br /><br /></
 <img src="../../assets/images/table.png" alt="table" /><br /><br /></li>
   <li>세로는 <strong>열(column)</strong>, 가로는 <strong>행(row)</strong>!!</li>
   <li>column과 row가 만나는 곳은 <strong>Field(Record)값</strong>이라고 부른다.<br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB란?]]></summary></entry><entry><title type="html">데이터의 표현과 연산</title><link href="http://localhost:4000/computer%20science/CS05/" rel="alternate" type="text/html" title="데이터의 표현과 연산" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS05</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS05/"><![CDATA[<h1 id="데이터의-표현과-연산">데이터의 표현과 연산<br /></h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB란?]]></summary></entry><entry><title type="html">SELECT 구문을 사용한 데이터 검색</title><link href="http://localhost:4000/database/SQL-SELECT/" rel="alternate" type="text/html" title="SELECT 구문을 사용한 데이터 검색" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-SELECT</id><content type="html" xml:base="http://localhost:4000/database/SQL-SELECT/"><![CDATA[<h1 id="-sql-문법은-기본적으로-대소문자를-구분하지-않는다-">🎬 SQL 문법은 기본적으로 대소문자를 구분하지 않는다. <br /></h1>
 
-<h2 id="1-컴퓨터의-수-체계">1. 컴퓨터의 수 체계<br /></h2>
+<h2 id="️-문법">☑️ 문법</h2>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="o">|</span> <span class="p">{[</span><span class="k">DISTINCT</span><span class="p">]</span> <span class="k">column</span> <span class="o">|</span> <span class="n">expression</span> <span class="p">[</span><span class="k">alias</span><span class="p">],</span> <span class="p">...}</span>
+<span class="k">FROM</span>   <span class="k">table</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="1-테이블-구조-조회">1. 테이블 구조 조회</h2>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DESCRIBE</span> <span class="n">employees</span>
+</code></pre></div></div>
+<p><img src="../../assets/images/describe.png" alt="describe" /><br /><br /></p>
+
+<h2 id="2-테이블로부터-데이터-검색">2. 테이블로부터 데이터 검색</h2>
+<h3 id="1-select-구문">1) SELECT 구문</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span>   <span class="n">department</span><span class="p">;</span>
+</code></pre></div></div>
 <ul>
-  <li>우리는 10진수를 사용하지만 컴퓨터는 0과 1로 모든 것을 판단하기 때문에 2진수를 사용한다.<br /></li>
-  <li>컴퓨터의 연산과 제어의 기본은 부울대수이며, 컴퓨터가 다루는 데이터를 2진 숫자(Binary digIT)라고 하며 약자로 비트(BIT)라고 한다.<br /></li>
-  <li>8개의 비트를 한 단위로 하여 1바이트(byte)로 사용한다.<br /></li>
-  <li>2진수의 최상위 비트를 MSB(most significant bit)라 하고 최하위 비트를 LSB(least significant bit)라 한다.<br /><br /></li>
+  <li>‘*‘은 모든 것을 보여달라고 할 때 사용한다.</li>
+  <li>SQL 구문 또한 세미콜론(;)을 사용해서 문장이 끝났다는 것을 표시하기 때문에 명령어를 실행하려면 마지막에 세미콜론을 꼭 찍어줘야 한다.<br /></li>
 </ul>
 
-<h2 id="2-데이터의-표현">2. 데이터의 표현<br /></h2>
-<p>1) BCD 코드<br /></p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">location_id</span>
+<span class="n">FORM</span>   <span class="n">departments</span><span class="p">;</span>
+</code></pre></div></div>
 <ul>
-  <li>Binary Coded Decimal의 약자로 8421 코드라고도 한다.<br /></li>
-  <li>BCD 코드는 각 비트 자리가 자리값을 갖는데 1010이라는 4자리 비트가 있다고 했을 때 왼쪽(10진수로 생각할 때 1000의 자리)부터 <br /></li>
-  <li>2^3 = 8<br /></li>
-  <li>2^2 = 4<br /></li>
-  <li>2^1 = 2<br /></li>
-  <li>2^0 = 1<br /></li>
-  <li>의 값을 가지므로 8421코드라 부른다. <br /></li>
-  <li>일반적으로 10진수를 2진수로 표현하는 것과 비슷하지만 10이 넘어가면 2진수는 1010이라고 표현하지만 BCD 코드는 0001 0000, 11은 0001 0001 … 와 같은 방식으로 표현한다.<br /><br /></li>
+  <li>SELECT 뒤에 컬럼명을 지정하면 해당 컬럼에 해당하는 내용들만 보여달라는 뜻이 된다.<br /></li>
 </ul>
 
-<p>2) 문자 데이터<br /></p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span><span class="p">,</span> <span class="mi">12</span><span class="o">*</span><span class="n">salary</span><span class="o">+</span><span class="mi">100</span>
+<span class="k">FROM</span>   <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
 <ul>
-  <li>문자 데이터는 1바이트의 데이터이다. 아스키코드의 문자 ABC를 2진법과 16진법으로 나타낸다면 다음과 같이 된다.<br /></li>
+  <li><strong>12*salary+100</strong> 처럼 내가 원하는 계산을 한 결과를 출력하게 할 수도 있다.<br /><br /></li>
 </ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>문자</th>
-      <th>2진법</th>
-      <th>16진법</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>A</td>
-      <td>0100 0001</td>
-      <td>41H</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>B</td>
-      <td>0100 0010</td>
-      <td>42H</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>C</td>
-      <td>0100 0011</td>
-      <td>43H</td>
-      <td><br /><br /></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>3) 존(Zone) 형식<br /></p>
+<h4 id="-입력한-명령어-수정-마지막으로-쓴-명령어와-비슷한-명령어를-또-써야-할-때-유용하다">🔸 입력한 명령어 수정 (마지막으로 쓴 명령어와 비슷한 명령어를 또 써야 할 때 유용하다)</h4>
 <ul>
-  <li>언팩(unpack) 형식이라고도 하며, 1바이트에 한 개의 10진수가 저장된다. 1바이트의 왼쪽 4비트를 존(zone) 비트라고 하며 항상 F(16진수)가 들어 있다.<br /></li>
+  <li>SQL에서는 가장 마지막에 입력한 구문 하나만 버퍼에 저장되어서 이것을 수정할 수 있다.
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ed</span>
+</code></pre></div>    </div>
+  </li>
+  <li>위 명령어를 입력하고 엔터를 치면 버퍼를 수정할 수 있는 모드에 들어갈 수 있다.
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span>
+</code></pre></div>    </div>
+  </li>
+  <li>를 누르면 하단에 –INTSERT–가 표시되며 버퍼에 저장된 명령어를 수정할 수 있다.</li>
+  <li>이 때 구문의 마지막에 세미콜론을 입력하면 <strong>안 된다!!!</strong></li>
+  <li>모든 수정이 끝나면 ESC를 눌러 수정을 종료한 뒤
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">:</span><span class="n">wq</span>
+</code></pre></div>    </div>
+  </li>
+  <li>위 명령어를 입력하면 버퍼 수정 모드를 빠져나온다.
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span> <span class="o">+</span> <span class="n">ENTER</span>
+</code></pre></div>    </div>
+  </li>
+  <li>’/’를 입력하고 엔터를 누르면 버퍼에 저장된 명령어를 실행하는 동작이다. 모든 수정을 마치고 나와서 ‘/’ + 엔터를 실행해주면 아까 수정했던 명령어가 실행되는 것을 볼 수 있다.<br /><br /></li>
 </ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>2진수</th>
-      <th>1111</th>
-      <th>0111</th>
-      <th>1111</th>
-      <th>0001</th>
-      <th>1100</th>
-      <th>0010</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>16진수</td>
-      <td>F</td>
-      <td>7</td>
-      <td>F</td>
-      <td>1</td>
-      <td>C(양수)</td>
-      <td>2</td>
-      <td><br /></td>
-    </tr>
-  </tbody>
-</table>
-
+<h3 id="2-null값이란">2) null값이란?</h3>
 <ul>
-  <li>10진수를 712로 표현한다면 위와 같이 표현되는데 마지막 바이트의 왼쪽 4비트를 이용해서 부호를 나타낸다. 위와 같은 경우처럼 마지막 바이트의 왼쪽 4비트가 C라면 양수고<br /></li>
+  <li>사용할 수 없는 값, 알려지지 않은 값, 할당받지 못한 값, 모르는 값, 아직 정의되지 않은 값 등…</li>
+  <li>null은 0(zero)이나 공백과는 다른 특수한 값으로 모든 데이터타입에 사용 가능하다.<br /><br /></li>
 </ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>2진수</th>
-      <th>1111</th>
-      <th>0111</th>
-      <th>1111</th>
-      <th>0001</th>
-      <th>1101</th>
-      <th>0010</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>16진수</td>
-      <td>F</td>
-      <td>7</td>
-      <td>F</td>
-      <td>1</td>
-      <td>D(음수)</td>
-      <td>2</td>
-      <td><br /></td>
-    </tr>
-  </tbody>
-</table>
-
+<h3 id="3-column-alias">3) Column Alias</h3>
 <ul>
-  <li>위처럼 D라면 음수로 -712가 된다.<br /><br /></li>
+  <li>컬럼명에 별명을 붙이는 것</li>
+  <li>원래 정해져 있는 컬럼명을 사용자가 보기에 좀 더 알아보기 쉽게 표시하고 싶을 때 사용한다.
+    <h4 id="1️⃣--컬럼명-as-alias">1️⃣  컬럼명 AS alias</h4>
+    <h4 id="2️⃣--컬럼명-alias">2️⃣  컬럼명 alias</h4>
+    <h4 id="3️⃣--컬럼명-as-alias--대소문자-구분-공백-포함-특수문자-포함을-원하는-경우">3️⃣  컬럼명 [AS] “Alias” =&gt; 대소문자 구분, 공백 포함, 특수문자 포함을 원하는 경우</h4>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span> <span class="k">AS</span> <span class="n">name</span><span class="p">,</span> <span class="n">commission_pct</span> <span class="n">comm</span>
+<span class="n">FORM</span>   <span class="n">employees</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p><img src="../../assets/images/alias01.png" alt="alias01" /><br /><br /></p>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span> <span class="nv">"Name"</span><span class="p">,</span> <span class="n">salary</span><span class="o">*</span><span class="mi">12</span> <span class="nv">"Annual Salary"</span>
+<span class="k">FROM</span>   <span class="n">employees</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p><img src="../../assets/images/alias02.png" alt="alias02" /><br /><br /></p>
+  </li>
 </ul>
 
-<p>4) 팩(Pack) 형식<br /></p>
+<h3 id="4-연결-연산자-">4) 연결 연산자 (||)</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span> <span class="o">||</span> <span class="n">job_id</span> <span class="k">AS</span> <span class="nv">"Employees"</span>
+<span class="k">FROM</span>   <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
 <ul>
-  <li>수치를 표현하는 4비트의 BCD를 1바이트에 2개를 나타내며 10진수 숫자 2개를 표시한다. 존 형식이 절반으로 줄어든 형태라고 보면 된다.<br /></li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td> </td>
+          <td>로 연결된 컬럼들을 묶어서 한 컬럼에 표시해 준다. 이것 또한 Alias 지정이 가능하다.<br /><br /></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
 </ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>2진수</th>
-      <th>0111</th>
-      <th>0001</th>
-      <th>0010</th>
-      <th>1100</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>16진수</td>
-      <td>7</td>
-      <td>1</td>
-      <td>2</td>
-      <td>C(양수)</td>
-      <td><br /></td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>2진수</th>
-      <th>0111</th>
-      <th>0001</th>
-      <th>0010</th>
-      <th>1101</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>16진수</td>
-      <td>7</td>
-      <td>1</td>
-      <td>2</td>
-      <td>D(음수)</td>
-      <td><br /><br /></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>5) 고정 소수점 형식<br /></p>
+<h3 id="5-리터럴-문자">5) 리터럴 문자</h3>
 <ul>
-  <li>고정 소수점 형식은 소수점 위치가 가장 오른쪽 끝에 고정되어 있다고 가정하는 것으로 전체의 수를 정수로 표현한다. 가장 왼쪽의 비트는 부호를 표시하며 0이면 +양수, 1이면 -음수를 나타낸다. 데이터 길이를 n이라고 했을 때 -(2^n-1 - 1) ~ (2^n-1 - 1)의 범위를 나타낼 수 있다.<br /></li>
-  <li>고정 소수점은 BCD 코드에 비해서 명령 속도가 빠르다.<br /><br /></li>
+  <li>리터럴 문자란 쿼리 구문에 포함된 일반 문자, 숫자, 날짜 값</li>
+  <li>문자나 날짜 리터럴은 작은 따옴표로 묶어서 작성해야 함
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span> <span class="o">||</span> <span class="s1">' is a '</span> <span class="o">||</span> <span class="n">job_id</span>
+     <span class="k">AS</span> <span class="nv">"Employee Details"</span>
+<span class="k">FROM</span>   <span class="n">employees</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Alias를 지정하지 않았다면 ‘last_name is a job_id’ 라는 컬럼명으로 표시된다.<br /><br /></li>
 </ul>
 
-<p>6) 부동 소수점 표현<br /></p>
+<h3 id="6-distinct-키워드">6) DISTINCT 키워드</h3>
 <ul>
-  <li>아주 큰 수나 아주 작은 수를 표현한다든지 아니면 높은 정도(precision)로 취급할 때 많이 쓰인다. 유효숫자만을 나타내는 소수부(fraction part)와 소수점의 위치를 나타내는 지수부(exponent part)로 구분한다. 10^-78 ~ 10^74의 범위까지를 나타낼 수 있다.<br /><br /><br /></li>
-</ul>
-
-<h2 id="3-보수-연산">3. 보수 연산<br /></h2>
-<ul>
-  <li>보수(complement)란 어떤 기준이 되는 수를 설정했을 때 그 수에 모자라는 수를 말한다. x에 대한 9의 보수는 9로부터 x를 뺀 것인데, 6에 대한 9의 보수는 3이고 2에 대한 10의 보수는 8이다.<br /></li>
-  <li>보수 연산은 뺄셈을 할 때 9의 보수를 사용하는 방법과 1의 보수와 2의 보수를 사용하는 방법 등이 있다.<br /><br /><br /></li>
-</ul>
-
-<h2 id="4-정보-교환용-코드">4. 정보 교환용 코드<br /></h2>
-<ul>
-  <li>정보 교환용 코드는 국제표준화기구(ISO)에 의해 정해지고 이것에 준해서 각국에서 정하여 사용하고 있다. 컴퓨터 대 컴퓨터시스템간의 통신을 단순화하고 표준화하기 위해 만들어졌다. <br /></li>
-  <li>대표적인 것으로 프로그래밍을 할 때 자주 쓰는 아스키(ASCII)코드가 있다.</li>
-  <li>산업 표준으로 전세계 모든 문자들을 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 유니코드(Unicode)가 제정되어 사용되고 있다.<br /><br /><br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[데이터의 표현과 연산]]></summary></entry><entry><title type="html">부울대수</title><link href="http://localhost:4000/computer%20science/CS06/" rel="alternate" type="text/html" title="부울대수" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS06</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS06/"><![CDATA[<h1 id="부울대수">부울대수<br /></h1>
+  <li>중복된 값을 자동으로 제거해 주는 키워드
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">department_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <hr />
+  </li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 SQL 문법은 기본적으로 대소문자를 구분하지 않는다.]]></summary></entry><entry><title type="html">부울대수</title><link href="http://localhost:4000/computer%20science/CS06/" rel="alternate" type="text/html" title="부울대수" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS06</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS06/"><![CDATA[<h1 id="부울대수">부울대수<br /></h1>
 
 <h2 id="1-부울대수의-개요">1. 부울대수의 개요<br /></h2>
 <ul>
