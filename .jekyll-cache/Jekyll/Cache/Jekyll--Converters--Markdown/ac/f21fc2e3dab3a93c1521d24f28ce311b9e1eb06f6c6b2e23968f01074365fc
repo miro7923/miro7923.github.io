@@ -1,0 +1,51 @@
+I"�<h1 id="-http-프로토콜이란">🎬 HTTP 프로토콜이란?</h1>
+<ul>
+  <li>실제 사용자와 연결된 최상위 계층의 프로토콜로 가장 대표적인 웹브라우저의 통신에 관한 프로토콜<br /><br /></li>
+</ul>
+
+<h2 id="-프로토콜protocol">🔸 프로토콜(Protocol)</h2>
+<ul>
+  <li>네트워크상에서 데이터를 주고 받는 규칙</li>
+  <li>컴퓨터 상호간의 대화에 필요한 통신 규약<br /><br /><br /></li>
+</ul>
+
+<h1 id="1-http-프로토콜의-구조">1. HTTP 프로토콜의 구조</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">요청(Request)</code>과 <code class="language-plaintext highlighter-rouge">응답(Response)</code> 형태로 이루어졌다.</li>
+  <li>사용자가 웹 페이지의 링크를 클릭하면 브라우저는 <code class="language-plaintext highlighter-rouge">HTTP</code> 프로토콜의 요청 형태로 <code class="language-plaintext highlighter-rouge">HTTP</code> 메시지를 작성하여 웹 서버에 전송한다.</li>
+  <li>웹 서버에서는 지금 받은 <code class="language-plaintext highlighter-rouge">HTTP</code> 메시지가 <code class="language-plaintext highlighter-rouge">요청(Request)</code> 메시지임을 판단하고 그 데이터를 분석해서 <code class="language-plaintext highlighter-rouge">HTTP</code> 프로토콜의 <code class="language-plaintext highlighter-rouge">응답(Response)</code> 형태로 메시지를 작성하여 브라우저로 보내게 되면 브라우저는 메시지를 받아서 사용자의 화면에 표시하게 된다.<br /><br />
+<img src="../../assets/images/httpMsgSturcture.png" alt="httpMsgSturcture" /><br /><br /></li>
+  <li>각 <code class="language-plaintext highlighter-rouge">HTTP</code> 메시지는 지금 작성 된 메시지가 요청인지, 응답인지와 요청 URL 등 기본적인 정보가 담겨있는 시작 라인과 수행 날짜, 서버 정보, 브라우저 버전 등 부가적인 정보를 담는 헤더 그리고 요청이나 응답에 필요한 내용을 담고 있는 본문(Body)으로 구성된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="2-http-요청request-메시지">2. HTTP 요청(Request) 메시지</h1>
+<ul>
+  <li>기본적으로 <code class="language-plaintext highlighter-rouge">HTTP 메소드(Method)</code>와 접근할 주소(URL) 정보 그리고 서버에 전달할 데이터인 <code class="language-plaintext highlighter-rouge">폼 파라미터</code>로 구성된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">HTTP 메소드(Method)</code>는 클라이언트가 웹 서버가 해야 할 행동을 정해주는 정보로 <code class="language-plaintext highlighter-rouge">GET 메소드</code>와 <code class="language-plaintext highlighter-rouge">POST 메소드</code>가 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">GET 메소드</code>를 사용하는 요청 메시지를 <code class="language-plaintext highlighter-rouge">GET 방식의 요청</code>, <code class="language-plaintext highlighter-rouge">POST 메소드</code>를 사용하는 요청 메시지를 <code class="language-plaintext highlighter-rouge">POST 방식의 요청</code>이라고 한다.<br /><br /></li>
+</ul>
+
+<h2 id="-get-방식">🔸 GET 방식</h2>
+<ul>
+  <li>전송할 파라미터 값들을 시작 라인의 URL 정보에 붙여서 같이 전송한다.</li>
+  <li>파라미터의 길이는 256바이트를 넘을 수 없다.</li>
+  <li>본문(Body)이 필요없기 때문에 전송 속도가 <code class="language-plaintext highlighter-rouge">POST</code> 방식에 비해 빠르다.</li>
+  <li>전송해야 할 데이터가 적을 때 유용하다.</li>
+  <li>파라미터가 URL뒤에 붙어서 전송되므로 사용자가 브라우저의 주소 창에서 전송되는 파라미터를 실제로 확인할 수 있다.<br /><br /></li>
+</ul>
+
+<h2 id="-post-방식">🔸 POST 방식</h2>
+<ul>
+  <li>전송할 파라미터 값들을 요청 메시지 본문(Body)에 담아서 전송한다.</li>
+  <li>따라서 전송할 수 있는 데이터의 양에 제한이 없으며 주소창에서 전송되는 파라미터 확인이 불가능하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">GET</code> 방식에 비해 보안상 더 유용하다.<br /><br /></li>
+</ul>
+
+<p><img src="../../assets/images/getPostRequest.jpg" alt="getPostRequest" /><br /><br /><br /></p>
+
+<h1 id="3-http-응답response-메시지">3. HTTP 응답(Response) 메시지</h1>
+<ul>
+  <li>요쳥에 대한 서버의 처리 성공 여부를 표시하는 상태 코드(HTTP 404, 500 등) 번호와 웹 서버가 응답해주는 콘텐츠의 타입 정보(텍스트/HTML, 이미지 등), 콘텐츠의 내용으로 구성된다.</li>
+  <li>실제적으로 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스가 요청을 처리해 생성하는 페이지는 웹 서버에서 응답 메시지의 형태로 작성되어 사용자의 브라우저에 전송된다.</li>
+</ul>
+:ET
