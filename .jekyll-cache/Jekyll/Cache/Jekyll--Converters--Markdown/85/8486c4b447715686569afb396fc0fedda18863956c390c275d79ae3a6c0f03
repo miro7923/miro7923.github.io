@@ -1,0 +1,283 @@
+I"�X<h1 id="자바스크립트란">자바스크립트란?</h1>
+<ul>
+  <li>웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어</li>
+  <li><code class="language-plaintext highlighter-rouge">인터프리터 언어</code>로 작성된 코드를 위에서 아래로 순차적으로 실행한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">컴파일 언어</code>와 다른 점은 일단 실행을 하고 에러가 발생하기 전 까지의 코드만 실행한다.</li>
+  <li>객체 기반 언어이다.</li>
+  <li>오픈소스 언어</li>
+  <li>다양한 라이브러리(API) 사용 가능
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Jquery</code> 주로 사용 - <code class="language-plaintext highlighter-rouge">Ajax</code>, <code class="language-plaintext highlighter-rouge">Json</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">HTML5</code>(웹표준) API 기반의 언어<br /><br /><br /></li>
+</ul>
+
+<h1 id="변수-선언">변수 선언</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">var</code> 키워드를 이용해 선언한다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>일반적인 프로그래밍 언어와 다르게 자료형별로 구분해서 선언하지 않는다. 변수 선언과 동시에 초기화하는 내용물에 따라서 자바스트립트가 알아서 자료형을 지정한다.</li>
+  <li>편한 듯 하면서도 원래 하던 언어가 있어서 그런지 무의식적으로 int num … 과 같이 타이핑하게 될 때가 많다.</li>
+</ul>
+
+<h2 id="-var">🔸 var</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">var</code> 키워드는 같은 이름으로 중복해서 선언하고 값을 넣는 것이 가능하다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">james</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// james</span>
+
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">lily</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// lily</span>
+</code></pre></div></div>
+
+<ul>
+  <li>컴파일 언어를 하다 온 입장에서는 다소 이해가 되지 않지만 <code class="language-plaintext highlighter-rouge">자바스크립트</code>에서의 <code class="language-plaintext highlighter-rouge">var</code> 키워드는 이런 흐름이 가능하다.</li>
+  <li>변수가 많아지면 중간에 꼬일 가능성이 아주 많아 보이는 속성이다. 그래서 이것을 보완하기 위해 나온 것이 <code class="language-plaintext highlighter-rouge">let</code> 키워드이다.</li>
+</ul>
+
+<h2 id="-let">🔸 let</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">let</code> 키워드도 <code class="language-plaintext highlighter-rouge">var</code>처럼 변수를 선언하는 키워드지만 약간 속성이 다르다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">james</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// james</span>
+
+<span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">lily</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> 
+<span class="c1">// Uncaught SyntaxError: Identifier 'name' has already been declared</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">let</code> 키워드를 사용하니까 컴파일 언어와 같은 흐름을 보인다.</li>
+</ul>
+
+<h2 id="-const">🔸 const</h2>
+<ul>
+  <li>컴파일 언어에서와 마찬가지로 상수 선언 키워드이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code> 다음에 자료형은 쓸 필요 없이 바로 변수 이름을 선언하고 초기화하면 된다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">james</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h1 id="연산자">연산자</h1>
+<ul>
+  <li>연산자의 사용은 동일하지만 자바스크립트에는 <code class="language-plaintext highlighter-rouge">===</code>과 <code class="language-plaintext highlighter-rouge">!==</code>이라는 연산자가 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">데이터값</code>과 <code class="language-plaintext highlighter-rouge">자료형</code>이 <strong>모두 동일</strong>한지 확인하는 연산자이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">==</code>, <code class="language-plaintext highlighter-rouge">!=</code> 연산자들은 단순히 값만 확인하고 자료형이 같은지는 확인하지 않는다.
+    <ul>
+      <li>그래서 문자 100과 숫자 100을 <code class="language-plaintext highlighter-rouge">==</code>을 이용해서 값이 같은지 비교하면 <code class="language-plaintext highlighter-rouge">true</code>를 리턴한다.</li>
+      <li><code class="language-plaintext highlighter-rouge">===</code> 연산자 사용시 <code class="language-plaintext highlighter-rouge">false</code> 리턴</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-연산자-우선순위">🔸 연산자 우선순위<br /></h2>
+<ol>
+  <li>()<br /></li>
+  <li>단항연산자(++, –, !)<br /></li>
+  <li>산술연산자(+, -, *, /, %)<br /></li>
+  <li>비교연산자(&gt;, &lt;, &gt;=, &lt;=, ==, !=, ===, !==)<br /></li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>논리연산자(&amp;&amp;,</td>
+          <td> </td>
+          <td>)<br /></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>복합대입연산자(=, +=, -=, *=, /=, %=)<br /><br /></li>
+</ol>
+
+<h1 id="함수">함수</h1>
+<ul>
+  <li>함수 또한 자료형을 구분하지 않고 <code class="language-plaintext highlighter-rouge">function</code> 키워드 하나만 쓴다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">함수명</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">실행문</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nl">호출법</span> <span class="p">:</span> <span class="nx">함수명</span><span class="p">();</span>
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<ul>
+  <li>익명함수도 사용 가능하다.
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">변수</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="nx">실행문</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nl">호출법</span> <span class="p">:</span> <span class="nx">참조</span> <span class="nx">변수명</span><span class="p">();</span>
+</code></pre></div>    </div>
+    <p><br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="객체">객체</h1>
+<ul>
+  <li>내 눈앞에 보이는 모든 대상</li>
+</ul>
+
+<h3 id="-객체-생성은-new-키워드를-이용해서-생성한다">🔸 객체 생성은 new 키워드를 이용해서 생성한다.</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">참조변수</span><span class="p">(</span><span class="nx">레퍼런스</span><span class="p">)</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h2 id="1-내장객체">1) 내장객체</h2>
+<ul>
+  <li>자바스크립트 안에 포함된 객체
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">문자(String)</code>, <code class="language-plaintext highlighter-rouge">날짜(Date)</code>, <code class="language-plaintext highlighter-rouge">수학(Math)</code>, <code class="language-plaintext highlighter-rouge">숫자(Number)</code>, <code class="language-plaintext highlighter-rouge">배열(Array)</code>, …</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="-날짜date객체">🔸 날짜(Date)객체</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">day</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// 2022년 1월 1일</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">자바스크립트</code>에서의 <code class="language-plaintext highlighter-rouge">날짜객체</code>에서 좀 희안한 점이라면 월(Month)이 실제 숫자보다 <strong>1 적은 형태</strong>로 표현된다는 것이다. <code class="language-plaintext highlighter-rouge">new Date(2022,1,1);</code> 이라 쓰면 2022년 2월 1일이다.</li>
+</ul>
+
+<h3 id="-배열array객체">🔸 배열(Array)객체</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 다 가능</span>
+<span class="kd">let</span> <span class="nx">arr3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span> 
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">자바스크립트</code>에서 <code class="language-plaintext highlighter-rouge">배열</code>은 <code class="language-plaintext highlighter-rouge">배열객체</code>를 통해 생성 할 수도 있고 컴파일 언어와 비슷하게 <code class="language-plaintext highlighter-rouge">[]를 사용해서 초기화</code> 하는 형태로 선언할 수도 있다.</li>
+  <li>또 특이한 점이라면 <strong>하나의 배열에 서로 다른 자료형을 가진 값을 담을 수 있다</strong>는 것이다.</li>
+</ul>
+
+<h2 id="2-브라우저-객체-모델bom">2) 브라우저 객체 모델(BOM)</h2>
+<ul>
+  <li>웹 브라우저에 포함되어 브라우저를 표현하는 객체</li>
+  <li>계층형 구조로 되어 있다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         <span class="o">/</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">screen</span><span class="p">,</span> <span class="p">...</span>
+<span class="nb">window</span> <span class="o">-</span>   <span class="nx">location</span><span class="p">,</span> <span class="nx">history</span>
+         <span class="err">\</span> <span class="nb">navigator</span>
+</code></pre></div></div>
+
+<ul>
+  <li>알림창을 출력할 때
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">메시지 출력 메서드</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>를 많이 쓴다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+<span class="kd">function</span> <span class="nx">myOpen</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">test1.html</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">test1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">width=300, height=200, top=150, left=500</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"팝업창 열기"</span> <span class="na">onclick=</span><span class="s">"myOpen();"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위 처럼 <code class="language-plaintext highlighter-rouge">HTML</code> 태그와 함께 쓸 수 있다.</li>
+</ul>
+
+<h3 id="-location-객체">🔸 location 객체</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">test1.html</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// test1.html로 이동</span>
+<span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span> <span class="c1">// 페이지 새로고침</span>
+<span class="nx">location</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">test2.html</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 현재 페이지를 test2.html로 변경</span>
+</code></pre></div></div>
+
+<ul>
+  <li>주소창과 관련된 기능을 가지고 있다.</li>
+  <li>특정 페이지로 이동하거나 현재 페이지를 다시 로드하는 등의 동작을 수행할 수 있다.</li>
+</ul>
+
+<h3 id="-history-객체">🔸 history 객체</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span> <span class="c1">// 뒤로 가기</span>
+<span class="nx">history</span><span class="p">.</span><span class="nx">forward</span><span class="p">();</span> <span class="c1">// 앞으로 가기</span>
+<span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="o">-</span><span class="nx">숫자</span><span class="p">);</span> <span class="c1">// 숫자만큼 뒤로 가기</span>
+<span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="nx">숫자</span><span class="p">);</span> <span class="c1">// 숫자만큼 앞으로 가기</span>
+</code></pre></div></div>
+
+<ul>
+  <li>페이지의 방문기록에 따른 동작을 수행할 수 있다.</li>
+</ul>
+
+<h3 id="-navigator-객체">🔸 navigator 객체</h3>
+<ul>
+  <li>방문자(클라이언트)의 브라우저 정보 및 운영체제정보 확인 가능</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<ul>
+  <li>위와 같이 쓰면 팝업창에서 사용자의 브라우저 정보와 운영체제정보를 볼 수 있다.</li>
+</ul>
+
+<h2 id="3-문서-객체-모델dom">3) 문서 객체 모델(DOM)</h2>
+<ul>
+  <li>HTML문서 구조(객체)</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">images</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">src</span><span class="p">;</span> <span class="c1">// 현재 페이지에 있는 이미지들 중 첫번째 소스에 접근</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">폼태그명</span><span class="p">.</span><span class="nx">속성</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HTML</code>의 <code class="language-plaintext highlighter-rouge">폼태그</code>와 결합해 사용할 수 있다.</li>
+</ul>
+
+<h3 id="-폼태그-form">🔸 폼태그 form</h3>
+<ul>
+  <li>사용자의 정보를 입력받아서 특정 페이지(action)로 정보를 전달하는(submit) 태그</li>
+  <li>전달 방식에서는 <code class="language-plaintext highlighter-rouge">Get</code>방식과 <code class="language-plaintext highlighter-rouge">Post</code>방식이 있다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;fieldset&gt;</span>
+    <span class="nt">&lt;legend&gt;</span>회원정보 가입하기<span class="nt">&lt;/legend&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"itwill.jsp"</span> <span class="na">name=</span><span class="s">"fr2"</span> <span class="na">method=</span><span class="s">"get"</span> <span class="na">onsubmit=</span><span class="s">"return fun8();"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>아이디 : <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span> <span class="nt">&lt;br&gt;</span>
+        비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pw"</span><span class="nt">&gt;</span> <span class="nt">&lt;br&gt;</span> 
+        주민번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"ju1"</span> <span class="na">onkeyup=</span><span class="s">"check1();"</span> <span class="na">maxlength=</span><span class="s">"6"</span><span class="nt">&gt;</span> - <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"ju2"</span> <span class="na">maxlength=</span><span class="s">"7"</span> <span class="na">onkeyup=</span><span class="s">"check2();"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;br&gt;</span> 메세지 :
+        <span class="nt">&lt;textarea</span> <span class="na">rows=</span><span class="s">"5"</span> <span class="na">cols=</span><span class="s">"10"</span> <span class="na">name=</span><span class="s">"msg"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+        <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"회원 가입하기"</span> <span class="na">onsubmit=</span><span class="s">"return fun8();"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;hr&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"속성 확인 버튼"</span> <span class="na">onclick=</span><span class="s">"fun5()"</span><span class="nt">&gt;</span> 
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"속성 변경 버튼"</span> <span class="na">onclick=</span><span class="s">"fun6()"</span><span class="nt">&gt;</span> 
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"데이터 확인 버튼"</span> <span class="na">onclick=</span><span class="s">"fun7()"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/fieldset&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위와 같이 사용 가능하다.</li>
+</ul>
+:ET
