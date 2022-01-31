@@ -1,0 +1,796 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>웹 프로그래밍 언어 종류 | Yujin Dev Log</title>
+<meta name="description" content="1. CGI(Common Gateway Interface)    응용 프로그램과 웹 서버 사이의 정보를 주고받는 방식이나 규약들을 정해 놓은 것   단순한 HTML 방식으로는 동적인 웹 페이지를 만들기가 어렵기 때문에 서버측에서 동적인 데이터를 처리해 클라이언트에 HTML 문서로 전송해 줄 수 있는 응용 프로그램(웹 프로그램)이 필요해져서 만들어졌다.   현재 웹 프로그래밍은 대부분 ASP, PHP, JSP를 이용한 것이 대부분인데, DBMS와의 간편한 연동, 객체 지향적인 특성, 편한 개발 환경 등 강력한 기능을 갖추었기 때문이다.">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="웹 프로그래밍 언어 종류">
+<meta property="og:url" content="http://localhost:4000/jsp/JSP-web-programming-languages/">
+
+
+  <meta property="og:description" content="1. CGI(Common Gateway Interface)    응용 프로그램과 웹 서버 사이의 정보를 주고받는 방식이나 규약들을 정해 놓은 것   단순한 HTML 방식으로는 동적인 웹 페이지를 만들기가 어렵기 때문에 서버측에서 동적인 데이터를 처리해 클라이언트에 HTML 문서로 전송해 줄 수 있는 응용 프로그램(웹 프로그램)이 필요해져서 만들어졌다.   현재 웹 프로그래밍은 대부분 ASP, PHP, JSP를 이용한 것이 대부분인데, DBMS와의 간편한 연동, 객체 지향적인 특성, 편한 개발 환경 등 강력한 기능을 갖추었기 때문이다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-31T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/jsp/JSP-web-programming-languages/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#jsp" itemprop="item"><span itemprop="name">Jsp</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">웹 프로그래밍 언어 종류</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="웹 프로그래밍 언어 종류">
+    <meta itemprop="description" content="1. CGI(Common Gateway Interface)  응용 프로그램과 웹 서버 사이의 정보를 주고받는 방식이나 규약들을 정해 놓은 것  단순한 HTML 방식으로는 동적인 웹 페이지를 만들기가 어렵기 때문에 서버측에서 동적인 데이터를 처리해 클라이언트에 HTML 문서로 전송해 줄 수 있는 응용 프로그램(웹 프로그램)이 필요해져서 만들어졌다.  현재 웹 프로그래밍은 대부분 ASP, PHP, JSP를 이용한 것이 대부분인데, DBMS와의 간편한 연동, 객체 지향적인 특성, 편한 개발 환경 등 강력한 기능을 갖추었기 때문이다.">
+    <meta itemprop="datePublished" content="2022-01-31T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/jsp/JSP-web-programming-languages/" class="u-url" itemprop="url">웹 프로그래밍 언어 종류
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#1-cgicommon-gateway-interface">1. CGI(Common Gateway Interface)</a><ul><li><a href="#-dbmsdatabase-management-system">🔸 DBMS(Database Management System)</a></li><li><a href="#-인터페이스interface">🔸 인터페이스(Interface)</a></li><li><a href="#-스크립트-언어script-language">🔸 스크립트 언어(Script Language)</a></li></ul></li><li><a href="#2-aspactive-server-page">2. ASP(Active Server Page)</a></li><li><a href="#3-phppersonal-hypertext-preprocessor">3. PHP(Personal Hypertext Preprocessor)</a></li><li><a href="#4-jsp">4. JSP</a><ul><li><a href="#-프로세스process">🔸 프로세스(Process)</a></li><li><a href="#-스레드thread">🔸 스레드(Thread)</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="1-cgicommon-gateway-interface">1. CGI(Common Gateway Interface)</h1>
+<ul>
+  <li>응용 프로그램과 웹 서버 사이의 정보를 주고받는 방식이나 규약들을 정해 놓은 것</li>
+  <li>단순한 <code class="language-plaintext highlighter-rouge">HTML</code> 방식으로는 동적인 웹 페이지를 만들기가 어렵기 때문에 서버측에서 동적인 데이터를 처리해 클라이언트에 <code class="language-plaintext highlighter-rouge">HTML</code> 문서로 전송해 줄 수 있는 <code class="language-plaintext highlighter-rouge">응용 프로그램(웹 프로그램)</code>이 필요해져서 만들어졌다.</li>
+  <li>현재 웹 프로그래밍은 대부분 <code class="language-plaintext highlighter-rouge">ASP</code>, <code class="language-plaintext highlighter-rouge">PHP</code>, <code class="language-plaintext highlighter-rouge">JSP</code>를 이용한 것이 대부분인데, <code class="language-plaintext highlighter-rouge">DBMS와의 간편한 연동</code>, <code class="language-plaintext highlighter-rouge">객체 지향적인 특성</code>, <code class="language-plaintext highlighter-rouge">편한 개발 환경</code> 등 강력한 기능을 갖추었기 때문이다.<br /><br /></li>
+</ul>
+
+<h2 id="-dbmsdatabase-management-system">🔸 DBMS(Database Management System)</h2>
+<ul>
+  <li>데이터베이스 관리자라고도 불리며 다수의 컴퓨터 사용자들이 데이터베이스 안에 데이터를 기록하거나 접근할 수 있게 해주는 프로그램</li>
+  <li><code class="language-plaintext highlighter-rouge">DBMS</code>는 데이터베이스 내의 정보를 검색하거나, 데이터베이스에 정보를 저장하기 편리하고 효율적인 환경을 제공하며, 응용 소프트웨어별로 흩어져 있는 자료들을 통합하고 통합된 자료들을 각 응용 소프트웨어가 공유하여 정보의 체계적인 활용을 가능하게 한다.</li>
+  <li>일반적인 형태의 DBMS는 관계형 데이터베이스 관리 시스템(<code class="language-plaintext highlighter-rouge">RDBMS</code>)인데, <code class="language-plaintext highlighter-rouge">RDBMS</code>의 표준화된 사용자 및 프로그램 인터페이스를 <code class="language-plaintext highlighter-rouge">SQL(Strutured Query Language)</code>이라고 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">RDBMS</code>로는 <code class="language-plaintext highlighter-rouge">오라클(Oracle)</code>, <code class="language-plaintext highlighter-rouge">사이베이스(Sybase)</code>, <code class="language-plaintext highlighter-rouge">인포믹스(Infomix)</code>등이 쓰인다.<br /><br /></li>
+</ul>
+
+<h2 id="-인터페이스interface">🔸 인터페이스(Interface)</h2>
+<ul>
+  <li>사물과 사물간의 소통이 가능하도록 만들어진 매개체 또는 규약</li>
+  <li>웹 프로그래밍에서는 서버와 응용 프로그램 간의 원활한 통신이 가능하도록 만들어진 규약을 말한다.<br /><br /></li>
+</ul>
+
+<h2 id="-스크립트-언어script-language">🔸 스크립트 언어(Script Language)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C</code>와 같은 일반적인 프로그래밍 언어는 컴파일러에 의해 컴파일 되어 2진수로 되어있는 기계어로 변환되어야지만 컴퓨터 상에서 실행될 수 있다.</li>
+  <li>이와는 달리 컴파일이 필요 없이 해석기(<code class="language-plaintext highlighter-rouge">인터프리터</code>)에 의해 즉시 실행될 수 있는 프로그램 언어를 <code class="language-plaintext highlighter-rouge">스크립트 언어</code>라고 한다.</li>
+  <li>대표적으로 <code class="language-plaintext highlighter-rouge">브라우저</code>에 의해 해석되어 실행되는 <code class="language-plaintext highlighter-rouge">JavaScript</code>가 있으며, <code class="language-plaintext highlighter-rouge">Unix</code>의 쉘 스크립트, <code class="language-plaintext highlighter-rouge">윈도우</code>의 Batch 파일도 스크립트 언어라 할 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="2-aspactive-server-page">2. ASP(Active Server Page)</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C#(.Net)</code>과 유사하다.</li>
+  <li>동적인 웹 페이지의 구현을 위해 <code class="language-plaintext highlighter-rouge">Visual Basic</code> 언어를 기반으로 만들어진 <code class="language-plaintext highlighter-rouge">VBScript</code>라는 스크립트 언어를 사용해서 구성된 웹 프로그래밍 기술</li>
+  <li>쉬운 문법을 가지고 있어 빠르고 쉽게 개발할 수 있고 Active-X 및 DDL 컴포넌트를 사용하여 어느 정도의 확장성도 갖추었지만 웹 서버로 오직 <code class="language-plaintext highlighter-rouge">Windows</code> 기반의 <code class="language-plaintext highlighter-rouge">IIS(Internet Information Server)</code>만을 사용할 수 있기 때문에 플랫폼에 비독립적이라는 큰 단점을 가디고 있다.</li>
+  <li>또한 <code class="language-plaintext highlighter-rouge">Java</code> 기반의 <code class="language-plaintext highlighter-rouge">JSP</code>에 비해 시스템 자원의 효율성과 확장성이 떨어진다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="3-phppersonal-hypertext-preprocessor">3. PHP(Personal Hypertext Preprocessor)</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ASP</code>와 유사한 스크립트 기반의 언어이지만 <code class="language-plaintext highlighter-rouge">C</code>를 기반으로 만들어져서 빠른 속도를 가지고 있다.</li>
+  <li>다양한 플랫폼에서 사용 가능하며 100% 무료로 사용할 수 있다.</li>
+  <li>하지만 서버측의 지원 인프라가 매우 부족하여 확장성이 떨어지고, 기업형의 복잡한 시스템 구조에 적용하기가 힘들고 보안상의 약점을 가지고 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="4-jsp">4. JSP</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Java</code>를 기반으로 만들어진 <code class="language-plaintext highlighter-rouge">서블릿(Servlet)</code>이라는 동적 웹 구현 기술이 개발된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">서블릿</code>은 객체지향적이며 플랫폼 독립적인 자바의 장점을 그대로 웹에서 구현할 수 있었으며 <code class="language-plaintext highlighter-rouge">스레드(Thread)</code> 기반의 요청 처리 방식을 채택했기에 사용자가 많을수록 효율적으로 동작하는 기술이었다.</li>
+  <li>하지만 익히기가 쉽지 않은 편이었기 때문에 유저인터페이스의 구현이 쉬운 <code class="language-plaintext highlighter-rouge">ASP</code>의 장점을 수용하여 <code class="language-plaintext highlighter-rouge">JSP</code>가 개발된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 또한 스크립트 기반으로 개발되어 훨씬 쉽게 작성할 수 있었고 <strong><code class="language-plaintext highlighter-rouge">서블릿</code>과 함께 구동함으로써 <code class="language-plaintext highlighter-rouge">서블릿</code>의 기능을 그대로 사용할 수 있고 <code class="language-plaintext highlighter-rouge">자바빈즈(JavaBeans)</code>, <code class="language-plaintext highlighter-rouge">EJB</code>같은 기술로 보다 강력한 객체지향적 지원이 가능</strong>해졌다.</li>
+  <li>또한 <code class="language-plaintext highlighter-rouge">JSTL</code>을 지원하게 되면서 웹 프로그램의 가독성이 좋아지고 유지 및 보수가 훨씬 쉬워지는 장점을 가지게 되었다.</li>
+  <li>이러한 장점들은 대규모 프로젝트에서 유용하기 때문에 최근에는 일정 규모 이상의 웹사이트를 개발할 때에는 주로 <code class="language-plaintext highlighter-rouge">JSP</code>를 사용한다.<br /><br /></li>
+</ul>
+
+<h2 id="-프로세스process">🔸 프로세스(Process)</h2>
+<ul>
+  <li>실행 중인 프로그램을 나타내는 말로 <code class="language-plaintext highlighter-rouge">태스크(Task)</code>라고도 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">윈도우</code>와 같이 멀티태스킹을 지원하는 운영체제에서는 동시에 실행되고 있는 여러 개의 프로세스에 대하여 <code class="language-plaintext highlighter-rouge">CPU</code>와 <code class="language-plaintext highlighter-rouge">메모리 자원</code>을 안정되게 분배해 주어야 하며 이러한 역할은 그 운영체제의 성능을 결정하는 데 있어 아주 중요한 요소이다.</li>
+  <li>그런데 운영체제는 똑같은 프로그램이 두 개 이상 실행되면 같은 프로그램이라 하더라도 서로 다른 자원을 할당해 두 개 이상의 프로세스를 만든다.</li>
+  <li>이는 실행되는 프로그램의 수가 늘어날수록 할당해야 하는 자원이 늘어나게 되어 굉장히 비효율적이고 성능의 하락을 가져올 것이다.</li>
+  <li>이러한 단점을 극복하기 위해 개발된 것이 <code class="language-plaintext highlighter-rouge">스레드(Thread)</code>이다.<br /><br /></li>
+</ul>
+
+<h2 id="-스레드thread">🔸 스레드(Thread)</h2>
+<ul>
+  <li>하나의 프로세스 내에서 해당 프로세스가 할당받은 자원을 공유하며 실행되는 독립적인 작업단위</li>
+  <li>프로세스의 자원을 참조할 뿐 새로 할당받을 필요가 없기 때문에 프로세스를 생성하는 것보다 훨씬 빠른 생성 속도를 가진다.</li>
+</ul>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a><span class="sep">, </span>
+    
+      <a href="/tags/#web" class="page__taxonomy-item p-category" rel="tag">WEB</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-31T00:00:00+09:00">January 31, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%9B%B9+%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D+%EC%96%B8%EC%96%B4+%EC%A2%85%EB%A5%98%20http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-web-programming-languages%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-web-programming-languages%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-web-programming-languages%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/jsp/JSP-web-beginning/" class="pagination--pager" title="웹페이지 기초
+">이전</a>
+    
+    
+      <a href="/database/SQL-SELECT/" class="pagination--pager" title="SELECT 구문을 사용한 데이터 검색
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/story/decorate-github-profile/" rel="permalink">깃허브 프로필(Github Profile) 꾸미기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">🎬 시작
+드디어 깃헙 블로그를 만들고… 다른 깃헙들을 구경하다 보니까 깃헙 메인 화면 자체를 예쁘게 꾸며놓으신 분들이 많더라고요!
+
+이렇게요!
+되게 좋아 보이잖아요?ㅎㅎㅎ 그래서 저도 꾸며보기로 했습니다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/SQL-use-quotes-in-query/" rel="permalink">쿼리구문에 큰 따옴표 사용 문법
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">쿼리구문에 큰 따옴표(“ “)가 사용되는 경우
+
+  컬럼명 [AS] “Alias”
+    
+      대소문자 구분
+      특수문자 포함
+      공백 포함하는 경우
+
+    
+  
+  TO_CHAR(sysdate, 'YYYY-MM-DD "Time" HH24:MI')
+    ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/SQL-single-func/" rel="permalink">단일 행 함수
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">1. 함수란?
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/SQL-WHERE-ORDER-BY/" rel="permalink">WHERE(조건문)절과 ORDER BY(정렬)절
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">☑️ 문법
+SELECT * | {[DISTINCT] column | expression [alias], ...}
+FROM   table
+[WHERE condition(s)]
+[ORDER BY {column, expr, alias} [ASC | DESC]];
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-31T19:04:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">쿼리구문에 큰 따옴표 사용 문법</title><link href="http://localhost:4000/database/SQL-use-quotes-in-query/" rel="alternate" type="text/html" title="쿼리구문에 큰 따옴표 사용 문법" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-use-quotes-in-query</id><content type="html" xml:base="http://localhost:4000/database/SQL-use-quotes-in-query/"><![CDATA[<h1 id="쿼리구문에-큰-따옴표-가-사용되는-경우">쿼리구문에 큰 따옴표(“ “)가 사용되는 경우</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-31T20:03:45+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">쿼리구문에 큰 따옴표 사용 문법</title><link href="http://localhost:4000/database/SQL-use-quotes-in-query/" rel="alternate" type="text/html" title="쿼리구문에 큰 따옴표 사용 문법" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-use-quotes-in-query</id><content type="html" xml:base="http://localhost:4000/database/SQL-use-quotes-in-query/"><![CDATA[<h1 id="쿼리구문에-큰-따옴표-가-사용되는-경우">쿼리구문에 큰 따옴표(“ “)가 사용되는 경우</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">컬럼명</code> [AS] “Alias”
     <ul>
@@ -144,7 +144,73 @@
   <li><code class="language-plaintext highlighter-rouge">도메인 네임서버</code></li>
   <li>IP주소를 도메인 주소로 바꾼 것</li>
   <li>숫자로 된 IP주소는 외우기 힘드니까 좀 더 읽기 쉬운 문자형 주소로 바꾸는 것</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><summary type="html"><![CDATA[🔸 웹페이지에는 정적데이터와 동적데이터가 있다.]]></summary></entry><entry><title type="html">SELECT 구문을 사용한 데이터 검색</title><link href="http://localhost:4000/database/SQL-SELECT/" rel="alternate" type="text/html" title="SELECT 구문을 사용한 데이터 검색" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-SELECT</id><content type="html" xml:base="http://localhost:4000/database/SQL-SELECT/"><![CDATA[<h1 id="-sql-문법은-기본적으로-대소문자를-구분하지-않는다-">🎬 SQL 문법은 기본적으로 대소문자를 구분하지 않는다. <br /></h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><summary type="html"><![CDATA[🔸 웹페이지에는 정적데이터와 동적데이터가 있다.]]></summary></entry><entry><title type="html">웹 프로그래밍 언어 종류</title><link href="http://localhost:4000/jsp/JSP-web-programming-languages/" rel="alternate" type="text/html" title="웹 프로그래밍 언어 종류" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-web-programming-languages</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-web-programming-languages/"><![CDATA[<h1 id="1-cgicommon-gateway-interface">1. CGI(Common Gateway Interface)</h1>
+<ul>
+  <li>응용 프로그램과 웹 서버 사이의 정보를 주고받는 방식이나 규약들을 정해 놓은 것</li>
+  <li>단순한 <code class="language-plaintext highlighter-rouge">HTML</code> 방식으로는 동적인 웹 페이지를 만들기가 어렵기 때문에 서버측에서 동적인 데이터를 처리해 클라이언트에 <code class="language-plaintext highlighter-rouge">HTML</code> 문서로 전송해 줄 수 있는 <code class="language-plaintext highlighter-rouge">응용 프로그램(웹 프로그램)</code>이 필요해져서 만들어졌다.</li>
+  <li>현재 웹 프로그래밍은 대부분 <code class="language-plaintext highlighter-rouge">ASP</code>, <code class="language-plaintext highlighter-rouge">PHP</code>, <code class="language-plaintext highlighter-rouge">JSP</code>를 이용한 것이 대부분인데, <code class="language-plaintext highlighter-rouge">DBMS와의 간편한 연동</code>, <code class="language-plaintext highlighter-rouge">객체 지향적인 특성</code>, <code class="language-plaintext highlighter-rouge">편한 개발 환경</code> 등 강력한 기능을 갖추었기 때문이다.<br /><br /></li>
+</ul>
+
+<h2 id="-dbmsdatabase-management-system">🔸 DBMS(Database Management System)</h2>
+<ul>
+  <li>데이터베이스 관리자라고도 불리며 다수의 컴퓨터 사용자들이 데이터베이스 안에 데이터를 기록하거나 접근할 수 있게 해주는 프로그램</li>
+  <li><code class="language-plaintext highlighter-rouge">DBMS</code>는 데이터베이스 내의 정보를 검색하거나, 데이터베이스에 정보를 저장하기 편리하고 효율적인 환경을 제공하며, 응용 소프트웨어별로 흩어져 있는 자료들을 통합하고 통합된 자료들을 각 응용 소프트웨어가 공유하여 정보의 체계적인 활용을 가능하게 한다.</li>
+  <li>일반적인 형태의 DBMS는 관계형 데이터베이스 관리 시스템(<code class="language-plaintext highlighter-rouge">RDBMS</code>)인데, <code class="language-plaintext highlighter-rouge">RDBMS</code>의 표준화된 사용자 및 프로그램 인터페이스를 <code class="language-plaintext highlighter-rouge">SQL(Strutured Query Language)</code>이라고 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">RDBMS</code>로는 <code class="language-plaintext highlighter-rouge">오라클(Oracle)</code>, <code class="language-plaintext highlighter-rouge">사이베이스(Sybase)</code>, <code class="language-plaintext highlighter-rouge">인포믹스(Infomix)</code>등이 쓰인다.<br /><br /></li>
+</ul>
+
+<h2 id="-인터페이스interface">🔸 인터페이스(Interface)</h2>
+<ul>
+  <li>사물과 사물간의 소통이 가능하도록 만들어진 매개체 또는 규약</li>
+  <li>웹 프로그래밍에서는 서버와 응용 프로그램 간의 원활한 통신이 가능하도록 만들어진 규약을 말한다.<br /><br /></li>
+</ul>
+
+<h2 id="-스크립트-언어script-language">🔸 스크립트 언어(Script Language)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C</code>와 같은 일반적인 프로그래밍 언어는 컴파일러에 의해 컴파일 되어 2진수로 되어있는 기계어로 변환되어야지만 컴퓨터 상에서 실행될 수 있다.</li>
+  <li>이와는 달리 컴파일이 필요 없이 해석기(<code class="language-plaintext highlighter-rouge">인터프리터</code>)에 의해 즉시 실행될 수 있는 프로그램 언어를 <code class="language-plaintext highlighter-rouge">스크립트 언어</code>라고 한다.</li>
+  <li>대표적으로 <code class="language-plaintext highlighter-rouge">브라우저</code>에 의해 해석되어 실행되는 <code class="language-plaintext highlighter-rouge">JavaScript</code>가 있으며, <code class="language-plaintext highlighter-rouge">Unix</code>의 쉘 스크립트, <code class="language-plaintext highlighter-rouge">윈도우</code>의 Batch 파일도 스크립트 언어라 할 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="2-aspactive-server-page">2. ASP(Active Server Page)</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C#(.Net)</code>과 유사하다.</li>
+  <li>동적인 웹 페이지의 구현을 위해 <code class="language-plaintext highlighter-rouge">Visual Basic</code> 언어를 기반으로 만들어진 <code class="language-plaintext highlighter-rouge">VBScript</code>라는 스크립트 언어를 사용해서 구성된 웹 프로그래밍 기술</li>
+  <li>쉬운 문법을 가지고 있어 빠르고 쉽게 개발할 수 있고 Active-X 및 DDL 컴포넌트를 사용하여 어느 정도의 확장성도 갖추었지만 웹 서버로 오직 <code class="language-plaintext highlighter-rouge">Windows</code> 기반의 <code class="language-plaintext highlighter-rouge">IIS(Internet Information Server)</code>만을 사용할 수 있기 때문에 플랫폼에 비독립적이라는 큰 단점을 가디고 있다.</li>
+  <li>또한 <code class="language-plaintext highlighter-rouge">Java</code> 기반의 <code class="language-plaintext highlighter-rouge">JSP</code>에 비해 시스템 자원의 효율성과 확장성이 떨어진다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="3-phppersonal-hypertext-preprocessor">3. PHP(Personal Hypertext Preprocessor)</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ASP</code>와 유사한 스크립트 기반의 언어이지만 <code class="language-plaintext highlighter-rouge">C</code>를 기반으로 만들어져서 빠른 속도를 가지고 있다.</li>
+  <li>다양한 플랫폼에서 사용 가능하며 100% 무료로 사용할 수 있다.</li>
+  <li>하지만 서버측의 지원 인프라가 매우 부족하여 확장성이 떨어지고, 기업형의 복잡한 시스템 구조에 적용하기가 힘들고 보안상의 약점을 가지고 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="4-jsp">4. JSP</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Java</code>를 기반으로 만들어진 <code class="language-plaintext highlighter-rouge">서블릿(Servlet)</code>이라는 동적 웹 구현 기술이 개발된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">서블릿</code>은 객체지향적이며 플랫폼 독립적인 자바의 장점을 그대로 웹에서 구현할 수 있었으며 <code class="language-plaintext highlighter-rouge">스레드(Thread)</code> 기반의 요청 처리 방식을 채택했기에 사용자가 많을수록 효율적으로 동작하는 기술이었다.</li>
+  <li>하지만 익히기가 쉽지 않은 편이었기 때문에 유저인터페이스의 구현이 쉬운 <code class="language-plaintext highlighter-rouge">ASP</code>의 장점을 수용하여 <code class="language-plaintext highlighter-rouge">JSP</code>가 개발된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 또한 스크립트 기반으로 개발되어 훨씬 쉽게 작성할 수 있었고 <strong><code class="language-plaintext highlighter-rouge">서블릿</code>과 함께 구동함으로써 <code class="language-plaintext highlighter-rouge">서블릿</code>의 기능을 그대로 사용할 수 있고 <code class="language-plaintext highlighter-rouge">자바빈즈(JavaBeans)</code>, <code class="language-plaintext highlighter-rouge">EJB</code>같은 기술로 보다 강력한 객체지향적 지원이 가능</strong>해졌다.</li>
+  <li>또한 <code class="language-plaintext highlighter-rouge">JSTL</code>을 지원하게 되면서 웹 프로그램의 가독성이 좋아지고 유지 및 보수가 훨씬 쉬워지는 장점을 가지게 되었다.</li>
+  <li>이러한 장점들은 대규모 프로젝트에서 유용하기 때문에 최근에는 일정 규모 이상의 웹사이트를 개발할 때에는 주로 <code class="language-plaintext highlighter-rouge">JSP</code>를 사용한다.<br /><br /></li>
+</ul>
+
+<h2 id="-프로세스process">🔸 프로세스(Process)</h2>
+<ul>
+  <li>실행 중인 프로그램을 나타내는 말로 <code class="language-plaintext highlighter-rouge">태스크(Task)</code>라고도 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">윈도우</code>와 같이 멀티태스킹을 지원하는 운영체제에서는 동시에 실행되고 있는 여러 개의 프로세스에 대하여 <code class="language-plaintext highlighter-rouge">CPU</code>와 <code class="language-plaintext highlighter-rouge">메모리 자원</code>을 안정되게 분배해 주어야 하며 이러한 역할은 그 운영체제의 성능을 결정하는 데 있어 아주 중요한 요소이다.</li>
+  <li>그런데 운영체제는 똑같은 프로그램이 두 개 이상 실행되면 같은 프로그램이라 하더라도 서로 다른 자원을 할당해 두 개 이상의 프로세스를 만든다.</li>
+  <li>이는 실행되는 프로그램의 수가 늘어날수록 할당해야 하는 자원이 늘어나게 되어 굉장히 비효율적이고 성능의 하락을 가져올 것이다.</li>
+  <li>이러한 단점을 극복하기 위해 개발된 것이 <code class="language-plaintext highlighter-rouge">스레드(Thread)</code>이다.<br /><br /></li>
+</ul>
+
+<h2 id="-스레드thread">🔸 스레드(Thread)</h2>
+<ul>
+  <li>하나의 프로세스 내에서 해당 프로세스가 할당받은 자원을 공유하며 실행되는 독립적인 작업단위</li>
+  <li>프로세스의 자원을 참조할 뿐 새로 할당받을 필요가 없기 때문에 프로세스를 생성하는 것보다 훨씬 빠른 생성 속도를 가진다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><summary type="html"><![CDATA[1. CGI(Common Gateway Interface) 응용 프로그램과 웹 서버 사이의 정보를 주고받는 방식이나 규약들을 정해 놓은 것 단순한 HTML 방식으로는 동적인 웹 페이지를 만들기가 어렵기 때문에 서버측에서 동적인 데이터를 처리해 클라이언트에 HTML 문서로 전송해 줄 수 있는 응용 프로그램(웹 프로그램)이 필요해져서 만들어졌다. 현재 웹 프로그래밍은 대부분 ASP, PHP, JSP를 이용한 것이 대부분인데, DBMS와의 간편한 연동, 객체 지향적인 특성, 편한 개발 환경 등 강력한 기능을 갖추었기 때문이다.]]></summary></entry><entry><title type="html">SELECT 구문을 사용한 데이터 검색</title><link href="http://localhost:4000/database/SQL-SELECT/" rel="alternate" type="text/html" title="SELECT 구문을 사용한 데이터 검색" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-SELECT</id><content type="html" xml:base="http://localhost:4000/database/SQL-SELECT/"><![CDATA[<h1 id="-sql-문법은-기본적으로-대소문자를-구분하지-않는다-">🎬 SQL 문법은 기본적으로 대소문자를 구분하지 않는다. <br /></h1>
 
 <h2 id="️-문법">☑️ 문법</h2>
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="o">|</span> <span class="p">{[</span><span class="k">DISTINCT</span><span class="p">]</span> <span class="k">column</span> <span class="o">|</span> <span class="n">expression</span> <span class="p">[</span><span class="k">alias</span><span class="p">],</span> <span class="p">...}</span>
@@ -1076,127 +1142,7 @@ c#은 C Sharp 이라는 이름으로 등록되어 있었습니다.<br /><br /></
 그리고 제 깃헙 프로필 메인 페이지를 확인해보면 이렇게 있어보이게 바꼈습니다! 😄 뿌듯~~!!<br /><br />
 이렇게 보니까 할 줄 아는거 되게 많네요! ㅎㅎ 더 뿌듯하다…<br /><br /></p>
 
-<p>앞으로 공부 더 열심히 해야겠습니다. 그럼 다음 글에서 만나요! 👋<br /></p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Story" /><category term="story" /><summary type="html"><![CDATA[🎬 시작 드디어 깃헙 블로그를 만들고… 다른 깃헙들을 구경하다 보니까 깃헙 메인 화면 자체를 예쁘게 꾸며놓으신 분들이 많더라고요! 이렇게요! 되게 좋아 보이잖아요?ㅎㅎㅎ 그래서 저도 꾸며보기로 했습니다.]]></summary></entry><entry><title type="html">컴퓨터 하드웨어 - 반도체 메모리</title><link href="http://localhost:4000/computer%20science/CS10/" rel="alternate" type="text/html" title="컴퓨터 하드웨어 - 반도체 메모리" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS10</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS10/"><![CDATA[<h1 id="반도체-메모리">반도체 메모리</h1>
-<ul>
-  <li>현재 주기억 장치로 사용되고 있는 반도체 메모리는 하나의 칩(chip)상에 수메가 비트를 저장할 수 있다. 반도체 제조공법상 쌍극성(bipolar type)과 모스형(mos type)의 두 가지로 구분된다.<br /><br /></li>
-</ul>
-
-<h2 id="메모리의-제조기술적인-분류에-따른-특성">메모리의 제조기술적인 분류에 따른 특성<br /></h2>
-<p>1) 밀도(chip당 bit 용량)<br />
-2) 속도<br />
-3) 소비전력(bit당 mW)<br />
-4) bit당 cost(반도체 제조가격 측면)<br />
-5) Noise 면역성<br /><br /></p>
-
-<h2 id="읽기동작read-operation과-쓰기동작">읽기동작(read operation)과 쓰기동작</h2>
-<ul>
-  <li>특별한 메모리위치(주소)에 저장되어 있는 2진 워드가 감지되어 다른 소자에 전달되는 동작</li>
-  <li>만약 100번 주소에 있는 메모리에서 워드 4를 사용하려 한다면 주소 100번에서 읽기동작을 실행해야 한다.</li>
-  <li>한 워드를 메모리부터 가져오기 때문에 패치(fetch)동작이라고도 한다.<br /><br /></li>
-</ul>
-
-<h2 id="접근-시간access-time">접근 시간(access time)</h2>
-<ul>
-  <li>기억 장치가 출력 신호를 받은 시간부터 데이터가 출력된 때까지의 시간</li>
-  <li>자기 코어 기억 장치에서는 접근 시간과 복원 시간을 합해서 사이클(cycle) 시간이라 하며, IC 메모리에서는 사이클 시간이 접근 시간과 같다.</li>
-  <li>메모리소자 동작속도의 측정치로 읽기동작하는 데 필요한 시간이라고도 할 수 있으며, 이는 주소입력 순간으로부터 메모리 내용의 출력순간까지의 시간이다.<br /><br /></li>
-</ul>
-
-<h2 id="랜덤-액세스메모리ram">랜덤 액세스메모리(RAM)</h2>
-<ul>
-  <li>한 메모리 워드의 실제 물리적 위치가 그 위치로부터 읽거나 쓰는 데 걸리는 시간이 얼마나 걸리는가에는 영향을 받지 않는 메모리이다. 즉 액세스시간이 메모리의 모든 주소에 대해서 같은 메모리이다.</li>
-  <li>대부분의 반도체메모리와 코어메모리는 RAM이다.
-    <ul>
-      <li>사용 예 : CDP(컴팩트 디스크 플레이어)는 적당한 코드를 입력함으로써 어떤 한 노래를 선택하든간에 같은 시간을 갖는다.<br /><br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="순차-액세스-메모리sam">순차 액세스 메모리(SAM)</h1>
-<ul>
-  <li>액세스시간이 일정하지 않고 주소위치에 따라 변하는 메모리의 한 형태이다.</li>
-  <li>원하는 주소에 도달할 때까지 모든 주소위치를 통하여 저장된 워드를 순차적으로 찾기 때문에 랜덤 액세스메모리보다 더 긴 액세스시간을 갖는다.
-    <ul>
-      <li>사용 예 : 자기테이프, 디스크, 자기버블메모리<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="읽기전용메모리rom">읽기전용메모리(ROM)</h2>
-<ul>
-  <li>읽기동작이 쓰기동작보다 매우 많은 응용분야를 위해 설계된 반도체메모리의 종류</li>
-  <li>기술적으로 (주로 제작자에 의해)단 한 번만 프로그래밍되어 쓸 수 있으며, 이후로는 내용을 수정할 수 없으며 읽기만 가능하다.</li>
-  <li>모든 ROM은 비휘발성이며 전원이 제거되어도 데이터는 그대로 저장된다.</li>
-  <li>한 번 이상 쓰기동작을 할 수 있는 메모리 RMM(Read Mostly Memory)도 있는데 읽기동작보다 쓰기동작이 훨씬 복잡하기 때문에 자주 사용되지는 않는다.<br /><br />
-<img src="../../assets/images/rom.png" alt="rom" /><br />
-    <blockquote>
-      <p>ROM의 구성도<br /></p>
-    </blockquote>
-  </li>
-  <li>ROM은 읽어내기만 하기 때문에 기억부와 번지 해독기, 출력 버퍼만으로 구성된다.<br /><br /></li>
-</ul>
-
-<h3 id="프로그램이나-자료-저장-방법에-따른-rom-분류">프로그램이나 자료 저장 방법에 따른 ROM 분류</h3>
-<ul>
-  <li>마스크(Mask) ROM : 사용자의 요구에 따라 제작사가 자료를 넣기 때문에 내용을 바꿀 수는 없지만 대량 생산에 적합</li>
-  <li>PROM(Programmable ROM) : 제작시에 아무런 내용을 넣지 않은 상태로 만들어져서 사용자가 원하는 내용을 저장할 수 있다. 하지만 한 번 기억되면 그 내용을 변경할 수 없다.</li>
-  <li>EPROM(Erasable ROM) : ROM의 내용을 자외선 삭제 장치로 지울 수 있다. 지운 후에 새로운 내용을 써 넣는 것도 가능</li>
-  <li>EEPROM(Electrically Erasable PROM) : ROM의 내용을 전기신호로 지울 수 있다. 지운 후에 새로운 내용을 써 넣는 것도 가능<br /><br /></li>
-</ul>
-
-<h2 id="정적-램static-ram-device-sram">정적 램(static RAM device, SRAM)</h2>
-<ul>
-  <li>전원이 인가되는 동안은 저장된 데이터가 영원히 저장되고, 주기적으로 데이터를 다시 쓸 필요가 없는 반도체 메모리장치</li>
-  <li>플립플롭 조합으로 구성되어 있다.<br /><br /></li>
-</ul>
-
-<h2 id="동적-램dynamic-ram-device-dram">동적 램(dynamic RAM device, DRAM)</h2>
-<ul>
-  <li>전원이 인가되어도 저장된 데이터가 영원히 유지되지 못하며, 데이터가 메모리에 주기적으로 다시 쓰여져야 저장된 데이터가 계속 저장되는 반도체메모리</li>
-  <li>이러한 주기적 동작을 리플레시(refresh)동작이라 한다.<br /><br /></li>
-</ul>
-
-<h2 id="휘발성-메모리volatile-memory">휘발성 메모리(volatile memory)</h2>
-<ul>
-  <li>전원이 제거되면 메모리에 있는 모든 정보가 소실된다.</li>
-  <li>반도체메모리가 휘발성 메모리에 해당한다.<br /><br /></li>
-</ul>
-
-<h2 id="캐시-메모리cache-memory">캐시 메모리(cache memory)</h2>
-<ul>
-  <li>SRAM과 구성이 동일하다.</li>
-  <li>기억 용량은 작으나 속도가 매우 빠른 버퍼(buffer) 메모리로 주기억 장치와 CPU와의 속도 차이를 줄여서 처리의 효율을 높이기 위해서 사용된다.</li>
-  <li>캐시 기억 장치의 호출 시간은 주기억 장치의 호출 시간보다 5~10배 정도 빠르다.</li>
-  <li>전체 기억 장치 시스템의 총 소요 시간을 최소화하면서 가능한 하 높은 평균 액세스 속도를 얻기 위해서 사용한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="메모리의-연결">메모리의 연결</h1>
-<ul>
-  <li>컴퓨터 내부메모리는 어드레스(Address) 버스, 데이터(Data) 버스, 제어(Control) 버스라는 세 종류의 버스로 CPU에 연결되는 신호선이 구성된다.<br /><br /></li>
-</ul>
-
-<h2 id="버스">버스<br /></h2>
-<p>1) 어드레스 버스 : CPU에서 메모리 IC까지 2진 어드레스 출력을 전달하는 단방향 버스<br />
-2) 데이터 버스 : CPU와 메모리 IC 사이에 데이터를 옮기는 양방향 버스<br />
-3) 제어 버스 : CPU에서 메모리 IC까지 제어신호들 전달<br /><br /></p>
-
-<h2 id="cpu의-쓰기동작-순서">CPU의 쓰기동작 순서<br /></h2>
-<p>1) CPU가 데이터가 저장될 메모리 위치에 2진 어드레스 공급. 어드레스 버스선에서 이 어드레스를 인가한다.<br />
-2) CPU가 데이터 버스선에 저장될 데이터 인가<br />
-3) CPU가 메모리 쓰기 동작을 위해 제어신호선 동작시킴<br />
-4) 메모리 IC들은 저장될 위치를 선택하기 위해 2진 어드레스 해독<br />
-5) 데이터 버스에 있는 데이터가 선택된 메모리 위치로 전송됨<br /><br /></p>
-
-<h2 id="cpu의-읽기동작-순서">CPU의 읽기동작 순서<br /></h2>
-<p>1) 어드레스 버스선에 이 어드레스 인가. CPU가 데이터의 메모리 위치의 2진 어드레스 공급<br />
-2) CPU가 메모리 읽기동작을 위해 제어신호선 활성화 시킴<br />
-3) 메모리 IC중에서 읽기동작이 실행되는 위치를 선택하기 위해, 2진 어드레스를 해독한다.<br />
-4) 메모리 IC들은 선택된 메모리 위치로부터 데이터 버스에 데이터 인가. 데이터가 전송되는 곳으로부터 CPU로 데이터 인가<br /><br /></p>
-
-<h1 id="메모리-맵memory-map">메모리 맵(Memory Map)</h1>
-<ul>
-  <li>원하는 용량 및 워드사이즈에 알맞게 응용하기 위해 메모리칩을 조합하거나 큰 용량을 나누어 쓰는 것<br /><br /><br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[반도체 메모리 현재 주기억 장치로 사용되고 있는 반도체 메모리는 하나의 칩(chip)상에 수메가 비트를 저장할 수 있다. 반도체 제조공법상 쌍극성(bipolar type)과 모스형(mos type)의 두 가지로 구분된다.]]></summary></entry><entry><title type="html">컴퓨터 하드웨어 - 보조 기억 장치</title><link href="http://localhost:4000/computer%20science/CS11/" rel="alternate" type="text/html" title="컴퓨터 하드웨어 - 보조 기억 장치" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS11</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS11/"><![CDATA[<h1 id="보조-기억-장치">보조 기억 장치</h1>
+<p>앞으로 공부 더 열심히 해야겠습니다. 그럼 다음 글에서 만나요! 👋<br /></p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Story" /><category term="story" /><summary type="html"><![CDATA[🎬 시작 드디어 깃헙 블로그를 만들고… 다른 깃헙들을 구경하다 보니까 깃헙 메인 화면 자체를 예쁘게 꾸며놓으신 분들이 많더라고요! 이렇게요! 되게 좋아 보이잖아요?ㅎㅎㅎ 그래서 저도 꾸며보기로 했습니다.]]></summary></entry><entry><title type="html">컴퓨터 하드웨어 - 보조 기억 장치</title><link href="http://localhost:4000/computer%20science/CS11/" rel="alternate" type="text/html" title="컴퓨터 하드웨어 - 보조 기억 장치" /><published>2022-01-30T00:00:00+09:00</published><updated>2022-01-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS11</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS11/"><![CDATA[<h1 id="보조-기억-장치">보조 기억 장치</h1>
 <ul>
   <li>주기억 장치는 적은 자료를 기억하여 고속으로 처리한다.</li>
   <li><u>**그에 반해 많은 양의 자료를 기억시켜 관리하기 위한 장치**</u>를 보조 기억 장치 또는 2차 기억 장치(secondary memory)라 한다.</li>
