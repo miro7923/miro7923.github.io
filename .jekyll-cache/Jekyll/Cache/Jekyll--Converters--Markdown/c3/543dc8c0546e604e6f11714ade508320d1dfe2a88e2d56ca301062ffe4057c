@@ -1,0 +1,35 @@
+I"�<h1 id="1-사용자의-url-요청">1. 사용자의 URL 요청</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">웹 서버</code>가 <code class="language-plaintext highlighter-rouge">배포 서술자</code>를 통해 지금 받은 요청이 <code class="language-plaintext highlighter-rouge">서블릿</code> 요청이라는 것을 알게 되면 <code class="language-plaintext highlighter-rouge">서블릿</code>을 담당하는 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>로 그 요청을 전달한다.
+    <h2 id="-배포-서술자deployment-descriptor">🔸 배포 서술자(Deployment Descriptor)</h2>
+  </li>
+  <li>사전에 웹 서버측에 <code class="language-plaintext highlighter-rouge">URL</code>과 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스를 미리 매핑시켜놓은 것<br /><br /></li>
+</ul>
+
+<h1 id="2-request-response-객체-생성">2. request, response 객체 생성</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">웹 컨테이너</code>는 받은 요청을 처리하기 위해 <code class="language-plaintext highlighter-rouge">HTTP</code> 요청을 처리하기 위한 <code class="language-plaintext highlighter-rouge">request</code> 객체와 <code class="language-plaintext highlighter-rouge">HTTP</code> 응답을 위한 <code class="language-plaintext highlighter-rouge">response</code> 객체를 생성한다.<br /><br /></li>
+</ul>
+
+<h1 id="3-서블릿-인스턴스와-스레드-생성">3. 서블릿 인스턴스와 스레드 생성</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">request</code>, <code class="language-plaintext highlighter-rouge">response</code> 객체가 생성된 뒤 사용자의 URL 요청이 어떤 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스를 필요로 하는지 <code class="language-plaintext highlighter-rouge">배포 서술자</code>를 통해 알아낸다.</li>
+  <li>그 클래스가 한 번도 실행된 적이 없거나 현재 메모리에 <code class="language-plaintext highlighter-rouge">인스턴스(프로세스)</code>가 없으면 새로 생성한 뒤 <code class="language-plaintext highlighter-rouge">스레드</code>를 하나 생성하고 이미 <code class="language-plaintext highlighter-rouge">인스턴스</code>가 존재한다면 기존의 <code class="language-plaintext highlighter-rouge">인스턴스</code>에 <code class="language-plaintext highlighter-rouge">스레드</code>만 하나 새로 생성한다.</li>
+  <li>각 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스는 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>당 하나만 존재한다.<br /><br /></li>
+</ul>
+
+<h1 id="4-service-메소드-호출과-서블릿-클래스-실행">4. service() 메소드 호출과 서블릿 클래스 실행</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">스레드</code>가 생성되면 각 <code class="language-plaintext highlighter-rouge">스레드</code>에서 <code class="language-plaintext highlighter-rouge">service()</code> 메소드가 호출된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">service()</code> 메소드가 호출되면 <code class="language-plaintext highlighter-rouge">HTTP</code> 요청 방식이 <code class="language-plaintext highlighter-rouge">GET</code> 방식이면 <code class="language-plaintext highlighter-rouge">doGet()</code> 메소드가, <code class="language-plaintext highlighter-rouge">POST</code> 방식이면 <code class="language-plaintext highlighter-rouge">doPost()</code> 메소드가 <code class="language-plaintext highlighter-rouge">request</code>, <code class="language-plaintext highlighter-rouge">response</code> 객체를 인자로 자동으로 호출된다.</li>
+  <li>개발자가 실제로 동적인 웹 페이지 생성을 할 수 있는 코드를 만들어야 하는 부분이 <code class="language-plaintext highlighter-rouge">doGet()</code>과 <code class="language-plaintext highlighter-rouge">doPost()</code> 메소드 부분이다.<br /><br /></li>
+</ul>
+
+<h1 id="5-응답과-스레드의-소멸">5. 응답과 스레드의 소멸</h1>
+<ul>
+  <li>사용자의 요청에 따른 동적인 웹 페이지를 생성한 결과물이 담긴 <code class="language-plaintext highlighter-rouge">response</code> 객체를 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>가 <code class="language-plaintext highlighter-rouge">HTTP</code> 응답 형태로 바꾸어 <code class="language-plaintext highlighter-rouge">웹 서버</code>로 전송한다.</li>
+  <li>사용이 끝난 <code class="language-plaintext highlighter-rouge">request</code>와 <code class="language-plaintext highlighter-rouge">response</code> 객체를 소멸시키고 <code class="language-plaintext highlighter-rouge">스레드</code>를 종료한다.</li>
+  <li>웹 서버는 전송 받은 HTTP 응답 메시지를 사용자의 브라우저로 전송하게 되고 사용자는 브라우저를 통해 동적으로 생성된 페이지를 받아보게 된다.<br /><br />
+<img src="../../assets/images/servletRequestStep.jpg" alt="servletRequestStep" /></li>
+</ul>
+:ET
