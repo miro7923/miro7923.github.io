@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>컴퓨터 하드웨어 기억장치 | Yujin Dev Log</title>
-<meta name="description" content="컴퓨터 하드웨어 기억장치">
+<!-- begin _includes/seo.html --><title>DB 구동 및 접속 | Yujin Dev Log</title>
+<meta name="description" content="🎬 DB 구동 및 접속">
 
 
   <meta name="author" content="Yujin Hwang">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="컴퓨터 하드웨어 기억장치">
-<meta property="og:url" content="http://localhost:4000/computer%20science/CS08/">
+<meta property="og:title" content="DB 구동 및 접속">
+<meta property="og:url" content="http://localhost:4000/database/DB-start-conn/">
 
 
-  <meta property="og:description" content="컴퓨터 하드웨어 기억장치">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-01-30T00:00:00+09:00">
+  <meta property="og:description" content="🎬 DB 구동 및 접속">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-01-31T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/computer%20science/CS08/">
+
+<link rel="canonical" href="http://localhost:4000/database/DB-start-conn/">
 
 
 
@@ -167,7 +167,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#computer-science" itemprop="item"><span itemprop="name">Computer science</span></a>
+          <a href="/categories/#database" itemprop="item"><span itemprop="name">Database</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">컴퓨터 하드웨어 기억장치</li>
+        <li class="current">DB 구동 및 접속</li>
       
     
   </ol>
@@ -310,16 +310,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="컴퓨터 하드웨어 기억장치">
-    <meta itemprop="description" content="컴퓨터 하드웨어 기억장치">
-    <meta itemprop="datePublished" content="2022-01-30T00:00:00+09:00">
+    <meta itemprop="headline" content="DB 구동 및 접속">
+    <meta itemprop="description" content="🎬 DB 구동 및 접속">
+    <meta itemprop="datePublished" content="2022-01-31T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/computer%20science/CS08/" class="u-url" itemprop="url">컴퓨터 하드웨어 기억장치
+            <a href="http://localhost:4000/database/DB-start-conn/" class="u-url" itemprop="url">DB 구동 및 접속
 </a>
           </h1>
           
@@ -336,7 +336,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          최대 1 분 소요
         
       </span>
     
@@ -351,127 +351,62 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#컴퓨터-하드웨어-기억장치">컴퓨터 하드웨어 기억장치</a><ul><li><a href="#기억-장치">기억 장치</a><ul><li><a href="#1-주기억-장치main-memory-unit">1) 주기억 장치(main memory unit)</a></li><li><a href="#2-보조-기억-장치auxiliary-storage-unit">2) 보조 기억 장치(auxiliary storage unit)</a></li><li><a href="#3-기억-장치에서-사용되는-단위">3) 기억 장치에서 사용되는 단위</a></li></ul></li><li><a href="#주기억-장치">주기억 장치</a><ul><li><a href="#1-주기억-장치의-구성">1) 주기억 장치의 구성</a></li><li><a href="#2-기억-장치에-저장하는-외부-동작의-순서">2) 기억 장치에 저장하는 외부 동작의 순서</a></li><li><a href="#3-기억-장치로부터-읽어낼-때-외부-동작-순서">3) 기억 장치로부터 읽어낼 때 외부 동작 순서</a></li><li><a href="#4-어드레스address">4) 어드레스(Address)</a></li></ul></li></ul></li><li><a href="#모든-프로그램은-주기억-장치에서만-실행된다">!모든 프로그램은 주기억 장치에서만 실행된다!</a></li></ul>
+              <ul class="toc__menu"><li><a href="#-db-구동-및-접속">🎬 DB 구동 및 접속</a><ul><li><a href="#1-linux-부팅-및-터미널-실행">1. Linux 부팅 및 터미널 실행</a></li><li><a href="#2-listener-시작">2. Listener 시작</a></li><li><a href="#3-sqlplus-실행">3. SqlPlus 실행</a></li><li><a href="#4-database-접속">4. Database 접속</a><ul><li><a href="#-db-user">🔸 DB User</a></li></ul></li><li><a href="#5-database-시작">5. Database 시작</a></li><li><a href="#6-hr-사용자로-db-login">6. HR 사용자로 DB Login</a></li><li><a href="#7-사용자-확인">7. 사용자 확인</a><ul><li><a href="#-user-비밀번호-변경-방법">🔸 User 비밀번호 변경 방법</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="컴퓨터-하드웨어-기억장치">컴퓨터 하드웨어 기억장치<br /></h1>
+        <h1 id="-db-구동-및-접속">🎬 DB 구동 및 접속<br /></h1>
 
-<h2 id="기억-장치">기억 장치<br /></h2>
+<h2 id="1-linux-부팅-및-터미널-실행">1. Linux 부팅 및 터미널 실행</h2>
 <ul>
-  <li>입력 장치에서 읽어 들인 숫자, 문자, 각종 기호 등의 자료들을 저장하는 장치로 주기억 장치와 보조 기억 장치로 나누어진다.<br /><br /></li>
+  <li>Windows에서 가상 PC를 실행한 뒤 Linux 부팅 후 로그인한다.</li>
+  <li>Linux 부팅이 완료되면 <strong>마우스 우클릭 - 터미널 열기</strong></li>
 </ul>
 
-<h3 id="1-주기억-장치main-memory-unit">1) 주기억 장치(main memory unit)<br /></h3>
+<h2 id="2-listener-시작">2. Listener 시작</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ lsnrctl start
+</code></pre></div></div>
 <ul>
-  <li>컴퓨터 중앙 처리 장치(CPU)에 위치하며 실행하고자 하는 프로그램이나 자료를 기억시키는 장치<br /><br /></li>
+  <li>Listener를 시작한다.</li>
+  <li>Listener는 네트워크를 이용하여 클라이언트에서 오라클 서버로 연결하기 위한 오라클 네트워크 관리자이다.</li>
+  <li>리스너를 시작하지 않아도 DB 구동엔 문제가 없지만 네트워크를 통한 연결은 모두 리스너가 담당하기 때문에 리스너를 시작하지 않으면 DB에 접속하고자 하는 클라이언트들이 접속할 수 없다.</li>
+  <li>따라서 터미널이 실행되면 가장 먼저 리스너를 시작한 후 다음 프로세스를 진행한다.<br /><br /></li>
 </ul>
 
-<h3 id="2-보조-기억-장치auxiliary-storage-unit">2) 보조 기억 장치(auxiliary storage unit)<br /></h3>
+<h2 id="3-sqlplus-실행">3. SqlPlus 실행</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlplus /nolog
+</code></pre></div></div>
+
+<h2 id="4-database-접속">4. Database 접속</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ conn 아이디/비밀번호 as sysdba(권한)
+</code></pre></div></div>
+<h3 id="-db-user">🔸 DB User</h3>
 <ul>
-  <li>주변 장치로서(CPU에 속하지 않음!) 주기억 장치에 필요한 프로그램이나 자료를 보낼 수 있고, 처리된 자료 또는 개발된 프로그램 등을 저장할 수 있다.<br /><br /></li>
+  <li>sysdba : dba + DB 생성 + DB 시작/종료 권한</li>
+  <li>system : dba 권한</li>
+  <li>hr : Object(테이블, 뷰, 시퀀스 등) 생성 및 운영 권한<br /><br /></li>
 </ul>
 
-<h3 id="3-기억-장치에서-사용되는-단위">3) 기억 장치에서 사용되는 단위<br /></h3>
+<h2 id="5-database-시작">5. Database 시작</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; startup
+</code></pre></div></div>
+
+<h2 id="6-hr-사용자로-db-login">6. HR 사용자로 DB Login</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; conn 아이디/비밀번호
+</code></pre></div></div>
+
+<h2 id="7-사용자-확인">7. 사용자 확인</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; show user
+</code></pre></div></div>
 <ul>
-  <li>최소 단위는 비트(bit : binary digit)이다. <br /></li>
-  <li>8개의 비트가 모이면 1바이트가 된다.<br /></li>
-  <li>1바이트는 영문자 1개를 기억하며 한글 1문자를 저장하는 데엔 2바이트가 필요하다.<br /></li>
-  <li>
-    <p>1킬로 바이트(KB)는 1,024바이트로 구성되며, 1메가 바이트(MB)는 1,024킬로 바이트이고, 1기가 바이트(GB)는 1,024메가 바이트가 된다.<br /><br /></p>
-  </li>
-  <li>메모리 셀(memory cell)<br />
-    <ul>
-      <li><u>**한 소자나 전기회로가 하나의 비트를 저장**</u>하는 데 사용된다.<br /></li>
-      <li>(0 또는 1) 플립플롭, 충전된 커패시터, 자기테이프 또는 디스크 등을 예로 들 수 있다.<br /><br /></li>
-    </ul>
-  </li>
-  <li>메모리 워드(memory word)<br />
-    <ul>
-      <li>메모리에 있는 비트는 몇 가지 형태의 명령이나 데이터로 표현된다.<br /></li>
-      <li>예를 들면, 8개의 플립플롭으로 구성된 레지스터는 8비트 워드로 저장되는 메모리로 생각할 수 있다.<br /></li>
-      <li>워드의 용량은 보통 4~8바이트 사이이다.<br /><br /></li>
-    </ul>
-  </li>
-  <li>바이트(byte)<br />
-    <ul>
-      <li>8비트 워드에 대해 사용되는 용어이다.<br /></li>
-      <li>항상 8비트로 구성된다.<br /></li>
-      <li>마이크로컴퓨터에서 가장 일반적인 워드 크기이다.<br /><br /></li>
-    </ul>
-  </li>
-  <li>용량(capacity)<br />
-    <ul>
-      <li>비트들을 저장할 수 있는 공간<br /></li>
-      <li>메모리에 있어 워드수는 대개 1024의 곱이다.<br /></li>
-      <li>우리가 흔히 보는 하드 용량 몇 GB는 2^10(1,024), 2^20(1,048), … 와 같이 딱 나눠 떨어지는 10의 배수가 아닌 2의 거듭제곱들이다.<br /><br /></li>
-    </ul>
-  </li>
+  <li>HR 사용자로 최종 로그인 되었는지 확인한다.</li>
 </ul>
 
-<h2 id="주기억-장치">주기억 장치<br /></h2>
-<h3 id="1-주기억-장치의-구성">1) 주기억 장치의 구성<br /></h3>
-<ul>
-  <li>주기억 장치는 수많은 바이트로 구성된다.</li>
-  <li>입력 장치를 통하여 읽어 들은 자료는 1과 0의 상태가 모아져 바이트 단위로 구성되며 순서에 따라 특정한 장소에 저장된다.<br /></li>
-  <li>
-    <p>자료를 저장하거나 저장된 자료를 읽기 위하여 각 기억 장소는 고유한 주소를 갖는다.<br />
-<img src="../../assets/images/main_memory_unit.jpeg" alt="main_memory_unit" /><br /></p>
-  </li>
-  <li>기억부<br />
-    <ul>
-      <li>주어진 프로그램이나 데이터를 기억해 두는 2진 기억 소자(memory cell)들이 2차원 행렬(matrix)로 구성되어 있다.<br /><br /></li>
-    </ul>
-  </li>
-  <li>메모리 주소 레지스터(MAR : Memory Address Register)<br />
-    <ul>
-      <li>프로그램이나 데이터를 입출력하기 위한 번지를 가지고 있다.<br /><br /></li>
-    </ul>
-  </li>
-  <li>메모리 버퍼 레지스터(MBR : Memory Buffer Register)<br />
-    <ul>
-      <li>입출력하고자 하는 프로그램이나 데이터를 임시 보관하는 레지스터<br /><br /></li>
-    </ul>
-  </li>
-  <li>번지 선택 회로<br />
-    <ul>
-      <li>MAR(메모리 주소 레지스터)에 의하여 기억 장소를 선택하는 회로<br /><br /></li>
-    </ul>
-  </li>
-  <li>제어 회로<br />
-    <ul>
-      <li>기억 장치에 저장하라는 Write 신호와 기억 장치로부터 읽어내리는 Read 신호를 발생시키는 회로<br /></li>
-      <li>칩이나 모듈 개념으로 여러개로 나누어 구성될 경우 칩 선택 신호나 메모리 모듈 선택 신호가 필요하다.<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="2-기억-장치에-저장하는-외부-동작의-순서">2) 기억 장치에 저장하는 외부 동작의 순서<br /></h3>
-<ol>
-  <li>기억 장치의 위치(번지)를 MAR(메모리 주소 레지스터)에 넣는다.<br /></li>
-  <li>프로그램이나 데이터의 비트를 MBR(메모리 버퍼 레지스터)에 넣는다.<br /></li>
-  <li>입력 신호로 MBR(메모리 버퍼 레지스터)의 내용이 메모리에 저장된다.<br /><br /></li>
-</ol>
-
-<h3 id="3-기억-장치로부터-읽어낼-때-외부-동작-순서">3) 기억 장치로부터 읽어낼 때 외부 동작 순서<br /></h3>
-<ol>
-  <li>읽어내려는 프로그램이나 데이터 번지를 MAR에 넣은 후 출력신호를 준다.<br /></li>
-  <li>메모리의 해당 내용이 MBR로 옮겨져 외부로 출력하게 된다.<br /><br /></li>
-</ol>
-
-<h3 id="4-어드레스address">4) 어드레스(Address)<br /></h3>
-<ul>
-  <li>메모리에서 한 워드의 위치를 식별하는 주소(숫자)<br /></li>
-  <li>메모리소자 또는 시스템에 저장된 각 워드는 고유의 주소를 갖는다.<br /></li>
-  <li>주소는 보통 2진수, 8진수, 16진수로 표현되고, 편의를 위해 10진수로 표현되기도 한다.<br /></li>
-  <li>메모리에 있는 특정 워드의 위치를 언급할 때마다 그것을 식별하기 위해서 그 위치의 주소코드를 사용한다.<br /></li>
-</ul>
-
-<h1 id="모든-프로그램은-주기억-장치에서만-실행된다">!모든 프로그램은 주기억 장치에서만 실행된다!</h1>
-<ul>
-  <li>그래서 주기억 장치(RAM)의 용량이 클수록 더 많은 정보를 기억하고 실행할 수 있기 때문에 비싸다.<br /><br /><br /></li>
-</ul>
+<h3 id="-user-비밀번호-변경-방법">🔸 User 비밀번호 변경 방법</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; alter user 아이디
+     identified by 새 비밀번호;
+</code></pre></div></div>
 
         
       </section>
@@ -488,7 +423,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#cs" class="page__taxonomy-item p-category" rel="tag">CS</a>
+      <a href="/tags/#db" class="page__taxonomy-item p-category" rel="tag">DB</a>
     
     </span>
   </p>
@@ -505,7 +440,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#computer-science" class="page__taxonomy-item p-category" rel="tag">Computer Science</a>
+      <a href="/categories/#database" class="page__taxonomy-item p-category" rel="tag">Database</a>
     
     </span>
   </p>
@@ -513,7 +448,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-30T00:00:00+09:00">January 30, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-31T00:00:00+09:00">January 31, 2022</time></p>
 
       </footer>
 
@@ -522,22 +457,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EC%BB%B4%ED%93%A8%ED%84%B0+%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4+%EA%B8%B0%EC%96%B5%EC%9E%A5%EC%B9%98%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS08%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=DB+%EA%B5%AC%EB%8F%99+%EB%B0%8F+%EC%A0%91%EC%86%8D%20http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2FDB-start-conn%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS08%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2FDB-start-conn%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS08%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2FDB-start-conn%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/computer%20science/CS07/" class="pagination--pager" title="컴퓨터 하드웨어 구성
+      <a href="/story/making-github-blog/" class="pagination--pager" title="깃허브 블로그(Github Blog)를 만들기 위한 여정
 ">이전</a>
     
     
-      <a href="/computer%20science/CS09/" class="pagination--pager" title="컴퓨터 하드웨어 주기억 장치의 종류
+      <a href="/database/DB-start/" class="pagination--pager" title="DB 기초
 ">다음</a>
     
   </nav>
@@ -646,46 +581,6 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/database/DB-start-conn/" rel="permalink">DB 구동 및 접속
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">🎬 DB 구동 및 접속
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
         <a href="/story/making-github-blog/" rel="permalink">깃허브 블로그(Github Blog)를 만들기 위한 여정
 </a>
       
@@ -713,6 +608,49 @@
 
     <p class="archive__item-excerpt" itemprop="description">🎬 시작
 개발 공부를 시작하고 기존에 쓰던 티스토리 블로그가 있긴 했는데 뭔가 깃헙을 이용해서 블로그를 꾸미고 여기에 공부한 내용을 올리고 싶어졌습니다. 다른 개발자 분들이 쓰시는 걸 보니까 되게 있어보이기도 하고 만들어져 있는 큰 회사(?)의 블로그를 쓰는 것 보다는 내가 직접 ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS13/" rel="permalink">적재와 프로그램과 프로세스
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">🔸 적재(로드 load)
+
+  보조기억장치(HDD 등) -&gt; 주기억장치(RAM)로 이동
+
+</p>
   </article>
 </div>
 
