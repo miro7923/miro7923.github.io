@@ -8,6 +8,7 @@ categories:
     - Database
 tags:
     - DB
+    - SQL
 ---
 # 쿼리구문에 큰 따옴표(" ")가 사용되는 경우
 * `컬럼명` [AS] "Alias" 

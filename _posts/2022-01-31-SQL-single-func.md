@@ -8,6 +8,7 @@ categories:
     - Database
 tags:
     - DB
+    - SQL
 ---
 # 1. 함수란?
 ![whatIsFunction](../../assets/images/whatIsFunction.png)<br><br>

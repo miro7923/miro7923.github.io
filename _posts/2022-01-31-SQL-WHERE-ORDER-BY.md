@@ -8,6 +8,7 @@ categories:
     - Database
 tags:
     - DB
+    - SQL
 ---
 # ☑️ 문법
 ```sql
