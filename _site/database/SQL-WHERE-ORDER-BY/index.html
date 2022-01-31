@@ -1,0 +1,845 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>WHERE(조건문)절과 ORDER BY(정렬)절 | Yujin Dev Log</title>
+<meta name="description" content="☑️ 문법 SELECT * | {[DISTINCT] column | expression [alias], ...} FROM   table [WHERE condition(s)] [ORDER BY {column, expr, alias} [ASC | DESC]];">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="WHERE(조건문)절과 ORDER BY(정렬)절">
+<meta property="og:url" content="http://localhost:4000/database/SQL-WHERE-ORDER-BY/">
+
+
+  <meta property="og:description" content="☑️ 문법 SELECT * | {[DISTINCT] column | expression [alias], ...} FROM   table [WHERE condition(s)] [ORDER BY {column, expr, alias} [ASC | DESC]];">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-31T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/database/SQL-WHERE-ORDER-BY/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#database" itemprop="item"><span itemprop="name">Database</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">WHERE(조건문)절과 ORDER BY(정렬)절</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="WHERE(조건문)절과 ORDER BY(정렬)절">
+    <meta itemprop="description" content="☑️ 문법SELECT * | {[DISTINCT] column | expression [alias], ...}FROM   table[WHERE condition(s)][ORDER BY {column, expr, alias} [ASC | DESC]];">
+    <meta itemprop="datePublished" content="2022-01-31T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/database/SQL-WHERE-ORDER-BY/" class="u-url" itemprop="url">WHERE(조건문)절과 ORDER BY(정렬)절
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#️-문법">☑️ 문법</a></li><li><a href="#1-1-where절">1) 1. WHERE절</a><ul><li><a href="#-like-비교연산자">🔸 LIKE 비교연산자</a></li><li><a href="#-비교연산자에-not논리연산자이-조합으로-사용된-경우">🔸 비교연산자에 NOT(논리연산자)이 조합으로 사용된 경우</a></li></ul></li><li><a href="#2-order-by절">2. ORDER BY절</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="️-문법">☑️ 문법</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="o">|</span> <span class="p">{[</span><span class="k">DISTINCT</span><span class="p">]</span> <span class="k">column</span> <span class="o">|</span> <span class="n">expression</span> <span class="p">[</span><span class="k">alias</span><span class="p">],</span> <span class="p">...}</span>
+<span class="k">FROM</span>   <span class="k">table</span>
+<span class="p">[</span><span class="k">WHERE</span> <span class="n">condition</span><span class="p">(</span><span class="n">s</span><span class="p">)]</span>
+<span class="p">[</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="p">{</span><span class="k">column</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="k">alias</span><span class="p">}</span> <span class="p">[</span><span class="k">ASC</span> <span class="o">|</span> <span class="k">DESC</span><span class="p">]];</span>
+</code></pre></div></div>
+
+<h1 id="1-1-where절">1) 1. WHERE절</h1>
+<ul>
+  <li>WHERE절을 사용해서 특정 칼럼에서 어떤 값을 가진 필드값만 찾아달라고 할 수 있다.
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">department_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">department_id</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>employee_id, last_name, job_id, department_id 컬럼을 출력하는데 department_id가 90인 필드만 출력해라<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">department_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">last_name</span> <span class="o">=</span> <span class="s1">'Whalen'</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name, job_id, department_id 컬럼을 출력하는데 last_name이 ‘Whalen’인 필드만 출력해라<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">hire_date</span> <span class="o">=</span> <span class="s1">'17-FEB-96'</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name 컬럼을 출력하는데 hire_date가 96년 2월 17일인 필드를 출력해라</li>
+  <li>날짜를 쓸 때엔 ‘DD-MM-YY’형식으로 쓴다.<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">&lt;=</span> <span class="mi">3000</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>last_name, salary 컬럼을 출력하는데 salary가 3000 이하인 필드를 출력해라<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="k">BETWEEN</span> <span class="mi">2500</span> <span class="k">AND</span> <span class="mi">3500</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name, salary 컬럼을 출력하는데 salary가 2500 ~ 3500 사이인 필드를 출력해라<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span><span class="p">,</span> <span class="n">manager_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">manager_id</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">201</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>employee_id, last_name, salary, manager_id 컬럼을 출력하는데 manager_id가 100이거나 101이거나 201인 필드를 출력해라(or과 같은 역할)<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">last_name</span> <span class="k">LIKE</span> <span class="s1">'_O%'</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name 컬럼을 출력하는데 last_name의 두번째 문자가 o인 필드를 출력해라
+    <h2 id="-like-비교연산자">🔸 LIKE 비교연산자</h2>
+  </li>
+  <li>% : 0 char 또는 여러개 char</li>
+  <li>_ : 반드시 1 char
+    <ul>
+      <li>a로 시작되는 문자열 : ‘a%’</li>
+      <li>a가 포함된 문자열 : ‘%a%’</li>
+      <li>a로 끝나는 문자열 : ‘%a’</li>
+      <li>두번째 문자가 a인 문자열 : ‘_a%’</li>
+      <li>끝에서 세번째 문자가 a인 문자열 : ‘%a__‘<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">manager_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">manager_id</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>last_name, manager_id 컬럼을 출력하는데 manager_id가 null인 필드를 출력해라<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">&gt;=</span> <span class="mi">10000</span>
+<span class="k">AND</span>    <span class="n">job_id</span> <span class="k">LIKE</span> <span class="s1">'%MAN%'</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>employee_id, last_name, job_id, salary 컬럼을 출력하는데 salary가 10000 이상이고 job_id에 MAN이 포함되는 필드를 출력해라<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">&gt;=</span> <span class="mi">10000</span>
+<span class="k">OR</span>     <span class="n">job_id</span> <span class="k">LIKE</span> <span class="s1">'%MAN%'</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>employee_id, last_name, job_id, salary 컬럼을 출력하는데 salary가 10000 이상이거나 job_id에 MAN이 포함되는 필드를 출력해라<br /><br /></li>
+</ul>
+
+<h2 id="-비교연산자에-not논리연산자이-조합으로-사용된-경우">🔸 비교연산자에 NOT(논리연산자)이 조합으로 사용된 경우</h2>
+<p><img src="../../assets/images/notOperator.png" alt="notOperator" /><br /><br /></p>
+
+<h1 id="2-order-by절">2. ORDER BY절</h1>
+<ul>
+  <li>ORDER BY절을 사용해서 특정 조건에 따라 필드값을 정렬해서 볼 수 있다.</li>
+  <li>ASC : Ascending order, default 오름차순</li>
+  <li>DESC : Descending order 내림차순
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">hire_date</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">hire_date</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name, job_id, department_id, hire_date 컬럼을 출력하는데 hire_date의 내림차순으로 정렬해라<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span><span class="o">*</span><span class="mi">12</span> <span class="n">annsal</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">annsal</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>employee_id, last_name, salary<em>12 annsal 컬럼을 출력하는데 salary</em>12은 annsal이라는 Alias로 출력하고 annsal의 오름차순으로 정렬해라<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">hire_date</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>last_name, job_id, department_id, hire_date 컬럼을 출력하는데 3번째 컬럼(department_id)의 오름차순으로 정렬해라</li>
+  <li>하지만 숫자로 표시하면 알아보기 힘들어서 추천하는 방법은 아니다.<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>last_name, department_id, salary 컬럼을 출력하는데 department_id, salary 컬럼의 내림차순으로 정렬해라<br /><br /></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#db" class="page__taxonomy-item p-category" rel="tag">DB</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#database" class="page__taxonomy-item p-category" rel="tag">Database</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-31T00:00:00+09:00">January 31, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=WHERE%28%EC%A1%B0%EA%B1%B4%EB%AC%B8%29%EC%A0%88%EA%B3%BC+ORDER+BY%28%EC%A0%95%EB%A0%AC%29%EC%A0%88%20http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2FSQL-WHERE-ORDER-BY%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2FSQL-WHERE-ORDER-BY%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2FSQL-WHERE-ORDER-BY%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/database/SQL-SELECT/" class="pagination--pager" title="SELECT 구문을 사용한 데이터 검색
+">이전</a>
+    
+    
+      <a href="/story/decorate-github-profile/" class="pagination--pager" title="깃허브 프로필(Github Profile) 꾸미기
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/story/decorate-github-profile/" rel="permalink">깃허브 프로필(Github Profile) 꾸미기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">🎬 시작
+드디어 깃헙 블로그를 만들고… 다른 깃헙들을 구경하다 보니까 깃헙 메인 화면 자체를 예쁘게 꾸며놓으신 분들이 많더라고요!
+
+이렇게요!
+되게 좋아 보이잖아요?ㅎㅎㅎ 그래서 저도 꾸며보기로 했습니다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/SQL-SELECT/" rel="permalink">SELECT 구문을 사용한 데이터 검색
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">🎬 SQL 문법은 기본적으로 대소문자를 구분하지 않는다. 
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/DB-start/" rel="permalink">DB 기초
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">🎬 DB란?
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/DB-start-conn/" rel="permalink">DB 구동 및 접속
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">🎬 DB 구동 및 접속
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

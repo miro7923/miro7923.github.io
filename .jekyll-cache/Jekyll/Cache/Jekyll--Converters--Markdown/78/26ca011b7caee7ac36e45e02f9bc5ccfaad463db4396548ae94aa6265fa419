@@ -1,0 +1,135 @@
+I"�.<h1 id="️-문법">☑️ 문법</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="o">|</span> <span class="p">{[</span><span class="k">DISTINCT</span><span class="p">]</span> <span class="k">column</span> <span class="o">|</span> <span class="n">expression</span> <span class="p">[</span><span class="k">alias</span><span class="p">],</span> <span class="p">...}</span>
+<span class="k">FROM</span>   <span class="k">table</span>
+<span class="p">[</span><span class="k">WHERE</span> <span class="n">condition</span><span class="p">(</span><span class="n">s</span><span class="p">)]</span>
+<span class="p">[</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="p">{</span><span class="k">column</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="k">alias</span><span class="p">}</span> <span class="p">[</span><span class="k">ASC</span> <span class="o">|</span> <span class="k">DESC</span><span class="p">]];</span>
+</code></pre></div></div>
+
+<h1 id="1-1-where절">1) 1. WHERE절</h1>
+<ul>
+  <li>WHERE절을 사용해서 특정 칼럼에서 어떤 값을 가진 필드값만 찾아달라고 할 수 있다.
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">department_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">department_id</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>employee_id, last_name, job_id, department_id 컬럼을 출력하는데 department_id가 90인 필드만 출력해라<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">department_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">last_name</span> <span class="o">=</span> <span class="s1">'Whalen'</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name, job_id, department_id 컬럼을 출력하는데 last_name이 ‘Whalen’인 필드만 출력해라<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">hire_date</span> <span class="o">=</span> <span class="s1">'17-FEB-96'</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name 컬럼을 출력하는데 hire_date가 96년 2월 17일인 필드를 출력해라</li>
+  <li>날짜를 쓸 때엔 ‘DD-MM-YY’형식으로 쓴다.<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">&lt;=</span> <span class="mi">3000</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>last_name, salary 컬럼을 출력하는데 salary가 3000 이하인 필드를 출력해라<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="k">BETWEEN</span> <span class="mi">2500</span> <span class="k">AND</span> <span class="mi">3500</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name, salary 컬럼을 출력하는데 salary가 2500 ~ 3500 사이인 필드를 출력해라<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span><span class="p">,</span> <span class="n">manager_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">manager_id</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">201</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>employee_id, last_name, salary, manager_id 컬럼을 출력하는데 manager_id가 100이거나 101이거나 201인 필드를 출력해라(or과 같은 역할)<br /><br />
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">last_name</span> <span class="k">LIKE</span> <span class="s1">'_O%'</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name 컬럼을 출력하는데 last_name의 두번째 문자가 o인 필드를 출력해라
+    <h2 id="-like-비교연산자">🔸 LIKE 비교연산자</h2>
+  </li>
+  <li>% : 0 char 또는 여러개 char</li>
+  <li>_ : 반드시 1 char
+    <ul>
+      <li>a로 시작되는 문자열 : ‘a%’</li>
+      <li>a가 포함된 문자열 : ‘%a%’</li>
+      <li>a로 끝나는 문자열 : ‘%a’</li>
+      <li>두번째 문자가 a인 문자열 : ‘_a%’</li>
+      <li>끝에서 세번째 문자가 a인 문자열 : ‘%a__‘<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">manager_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">manager_id</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>last_name, manager_id 컬럼을 출력하는데 manager_id가 null인 필드를 출력해라<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">&gt;=</span> <span class="mi">10000</span>
+<span class="k">AND</span>    <span class="n">job_id</span> <span class="k">LIKE</span> <span class="s1">'%MAN%'</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>employee_id, last_name, job_id, salary 컬럼을 출력하는데 salary가 10000 이상이고 job_id에 MAN이 포함되는 필드를 출력해라<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">&gt;=</span> <span class="mi">10000</span>
+<span class="k">OR</span>     <span class="n">job_id</span> <span class="k">LIKE</span> <span class="s1">'%MAN%'</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>employee_id, last_name, job_id, salary 컬럼을 출력하는데 salary가 10000 이상이거나 job_id에 MAN이 포함되는 필드를 출력해라<br /><br /></li>
+</ul>
+
+<h2 id="-비교연산자에-not논리연산자이-조합으로-사용된-경우">🔸 비교연산자에 NOT(논리연산자)이 조합으로 사용된 경우</h2>
+<p><img src="../../assets/images/notOperator.png" alt="notOperator" /><br /><br /></p>
+
+<h1 id="2-order-by절">2. ORDER BY절</h1>
+<ul>
+  <li>ASC : Ascending order, default 오름차순</li>
+  <li>DESC : Descending order 내림차순
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">hire_date</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">hire_date</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>last_name, job_id, department_id, hire_date 컬럼을 출력하는데 hire_date의 내림차순으로 정렬해라<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span><span class="o">*</span><span class="mi">12</span> <span class="n">annsal</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">annsal</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>employee_id, last_name, salary<em>12 annsal 컬럼을 출력하는데 salary</em>12은 annsal이라는 Alias로 출력하고 annsal의 오름차순으로 정렬해라<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">hire_date</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>last_name, job_id, department_id, hire_date 컬럼을 출력하는데 3번째 컬럼(department_id)의 오름차순으로 정렬해라</li>
+  <li>하지만 숫자로 표시하면 알아보기 힘들어서 추천하는 방법은 아니다.<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>last_name, department_id, salary 컬럼을 출력하는데 department_id, salary 컬럼의 내림차순으로 정렬해라<br /><br /></li>
+</ul>
+:ET
