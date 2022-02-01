@@ -1,35 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-01T16:16:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP란?</title><link href="http://localhost:4000/jsp/What-is-JSP/" rel="alternate" type="text/html" title="JSP란?" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/What-is-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/What-is-JSP/"><![CDATA[<h1 id="-jspjava-server-page란">👀 JSP(Java Server Page)란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-01T16:27:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP 사용</title><link href="http://localhost:4000/jsp/use-JSP/" rel="alternate" type="text/html" title="JSP 사용" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/use-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/use-JSP/"><![CDATA[<h1 id="-jsp-사용">👀 JSP 사용</h1>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Java</code>를 이용하여 <code class="language-plaintext highlighter-rouge">동적인 웹 페이지</code>를 만들기 위해 Sun Microsystems사가 개발한 기술<br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">HTML</code> 태그와 <code class="language-plaintext highlighter-rouge">Java</code> 코드를 함께 사용한다.</li>
 </ul>
 
-<h1 id="jsp의-특징">JSP의 특징</h1>
-<h2 id="1-강력한-이식성">1. 강력한 이식성</h2>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;</span><span class="err">%</span>
+      <span class="err">//</span> <span class="na">스크립틀릿</span>
+  <span class="err">%</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">자바기반</code>의 언어로 어떤 <code class="language-plaintext highlighter-rouge">JSP 컨테이너</code>에서도 사용이 가능하므로 한 번 작성한 코드를 별다른 수정 없이 다른 플랫폼으로 이식이 가능하다.</li>
-  <li><code class="language-plaintext highlighter-rouge">모듈화</code>와 <code class="language-plaintext highlighter-rouge">모듈의 재사용성</code>이 좋다.</li>
+  <li><code class="language-plaintext highlighter-rouge">HTML</code> <code class="language-plaintext highlighter-rouge">body</code> 태그 안에서 스크립틀릿을 쓴 다음에 스크립틀릿의 범위 내에 코드를 작성한다.</li>
 </ul>
 
-<h2 id="2-서버-자원의-효율적인-사용">2. 서버 자원의 효율적인 사용</h2>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h2&gt;</span>자바코드로 테이블 생성<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span>번호<span class="nt">&lt;/td&gt;&lt;td&gt;</span>이름<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;</span><span class="err">%</span>
+        <span class="na">for</span> <span class="err">(</span><span class="na">int</span> <span class="na">i = </span><span class="s">1;</span> <span class="err">6</span> <span class="nt">&gt;</span> i; i++)
+        {
+            %&gt;
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;td&gt;&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;&lt;td&gt;</span>학생<span class="nt">&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;</span><span class="err">%</span>
+        <span class="err">}</span>
+    <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+</code></pre></div></div>
+
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">스레드(Thread)</code> 기반의 아키텍처 사용으로 불필요한 자원 낭비를 감소시켰다.</li>
+  <li>위와 같이 자바 코드 사이에 <code class="language-plaintext highlighter-rouge">스크립틀릿</code>이 끝나는 표시(<code class="language-plaintext highlighter-rouge">%&gt;</code>)를 하고 <code class="language-plaintext highlighter-rouge">HTML</code> 태그를 쓴 다음에 <code class="language-plaintext highlighter-rouge">&lt;%= %&gt;</code>를 이용해 자바 코드의 지역 변수를 출력하는 것이 가능하다.(신기…)</li>
 </ul>
 
-<h2 id="3-간편한-mvc-패턴디자인-패턴">3. 간편한 MVC 패턴(디자인 패턴)</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">MVC 패턴</code>을 <code class="language-plaintext highlighter-rouge">JSP(View)</code>와 <code class="language-plaintext highlighter-rouge">자바빈즈(Model)</code>, <code class="language-plaintext highlighter-rouge">서블릿(Controller)</code>을 이용해 쉽게 구현할 수 있다.</li>
-</ul>
+<h2 id="-jsp-주석">🔸 JSP 주석</h2>
 
-<h3 id="-mvc-패턴">🔸 MVC 패턴</h3>
-<ul>
-  <li>사용자에게 보여지는 화면인 <code class="language-plaintext highlighter-rouge">View</code> 부분과 실제 비즈니스 로직이 들어가는 <code class="language-plaintext highlighter-rouge">Model</code> 부분 그리고 <code class="language-plaintext highlighter-rouge">View</code>와 <code class="language-plaintext highlighter-rouge">Model</code>을 연결시켜주는 <code class="language-plaintext highlighter-rouge">Controller</code> 부분으로 구성</li>
-  <li>최근에 중대형 프로젝트에서 효과적이라 평가되어 많이 사용되고 있다.</li>
-</ul>
-
-<h3 id="-디자인-패턴">🔸 디자인 패턴</h3>
-<ul>
-  <li>프로젝트를 개발함에 있어서 특정한 문제가 주어졌을 때 그 문제를 해결하기 위한 방법을 설명해 놓은 일종의 지침</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP(Java Server Page)란? Java를 이용하여 동적인 웹 페이지를 만들기 위해 Sun Microsystems사가 개발한 기술]]></summary></entry><entry><title type="html">JavaScript 기본 문법</title><link href="http://localhost:4000/javascript/JavaScript/" rel="alternate" type="text/html" title="JavaScript 기본 문법" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/javascript/JavaScript</id><content type="html" xml:base="http://localhost:4000/javascript/JavaScript/"><![CDATA[<h1 id="자바스크립트란">자바스크립트란?</h1>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- --%&gt;</span> (웹페이지 개발자 도구창에서 나타나지 않기 때문에 보안상 이것을 쓰는 것이 더 좋다)
+// 자바 스타일도 사용 가능
+</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 사용 HTML 태그와 Java 코드를 함께 사용한다.]]></summary></entry><entry><title type="html">JavaScript 기본 문법</title><link href="http://localhost:4000/javascript/JavaScript/" rel="alternate" type="text/html" title="JavaScript 기본 문법" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/javascript/JavaScript</id><content type="html" xml:base="http://localhost:4000/javascript/JavaScript/"><![CDATA[<h1 id="자바스크립트란">자바스크립트란?</h1>
 <ul>
   <li>웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어</li>
   <li><code class="language-plaintext highlighter-rouge">인터프리터 언어</code>로 작성된 코드를 위에서 아래로 순차적으로 실행한다.</li>
@@ -348,7 +366,12 @@
 <ul>
   <li>선언문, 스크립틀릿에 생성한 변수, 메소드의 리턴값을 스크립틀릿 태그 외부에서 출력하기 위해 사용</li>
   <li>하나의 표현식 태그 내의 구문 전체가 <code class="language-plaintext highlighter-rouge">print()</code> 메소드의 괄호 안에 통채로 들어가기 때문에 표현식 태그 내부에서는 <code class="language-plaintext highlighter-rouge">세미콜론(;)</code>을 사용해서는 안된다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 스크립트 요소 1. 선언문]]></summary></entry><entry><title type="html">JSP 내장 객체</title><link href="http://localhost:4000/jsp/JSP-implicit-object/" rel="alternate" type="text/html" title="JSP 내장 객체" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-implicit-object</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-implicit-object/"><![CDATA[<h1 id="-내장-객체란">👀 내장 객체란?</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 스크립트 요소 1. 선언문]]></summary></entry><entry><title type="html">JSP 영역 객체와 속성</title><link href="http://localhost:4000/jsp/JSP-scope-attribute/" rel="alternate" type="text/html" title="JSP 영역 객체와 속성" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-scope-attribute</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-scope-attribute/"><![CDATA[<h1 id="-영역-객체scope와-속성attribute">👀 영역 객체(Scope)와 속성(Attribute)</h1>
+<ul>
+  <li>jsp 내장객체 중에서 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체</li>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code>에서는 <code class="language-plaintext highlighter-rouge">page</code>, <code class="language-plaintext highlighter-rouge">request</code>, <code class="language-plaintext highlighter-rouge">session</code>, <code class="language-plaintext highlighter-rouge">application</code> 4가지 영역으로 정의한다.<br /><br />
+<img src="../../assets/images/jspScope.png" alt="jspScope" /><br /><br /></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 영역 객체(Scope)와 속성(Attribute) jsp 내장객체 중에서 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체 JSP에서는 page, request, session, application 4가지 영역으로 정의한다.]]></summary></entry><entry><title type="html">JSP 내장 객체</title><link href="http://localhost:4000/jsp/JSP-implicit-object/" rel="alternate" type="text/html" title="JSP 내장 객체" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-implicit-object</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-implicit-object/"><![CDATA[<h1 id="-내장-객체란">👀 내장 객체란?</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">JSP</code> 페이지가 웹 컨테이너에 의해서 서블릿으로 변환할 때 웹 컨테이너가 자동으로 생성해 주는 객체(<code class="language-plaintext highlighter-rouge">클래스</code>, <code class="language-plaintext highlighter-rouge">import</code> 구분없이 사용 가능)<br /><br /></li>
 </ul>
@@ -711,56 +734,38 @@ response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 �
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">forward</code>와 <code class="language-plaintext highlighter-rouge">include</code> 태그를 사용하여 이동할 페이지에 추가적으로 넘겨줄 파라미터가 있으면 <code class="language-plaintext highlighter-rouge">&lt;jsp:param/&gt;</code> 태그를 사용할 수 있다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 액션 태그란?]]></summary></entry><entry><title type="html">JSP 사용</title><link href="http://localhost:4000/jsp/use-JSP/" rel="alternate" type="text/html" title="JSP 사용" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/use-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/use-JSP/"><![CDATA[<h1 id="-jsp-사용">👀 JSP 사용</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 액션 태그란?]]></summary></entry><entry><title type="html">JSP란?</title><link href="http://localhost:4000/jsp/What-is-JSP/" rel="alternate" type="text/html" title="JSP란?" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/What-is-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/What-is-JSP/"><![CDATA[<h1 id="-jspjava-server-page란">👀 JSP(Java Server Page)란?</h1>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code> 태그와 <code class="language-plaintext highlighter-rouge">Java</code> 코드를 함께 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Java</code>를 이용하여 <code class="language-plaintext highlighter-rouge">동적인 웹 페이지</code>를 만들기 위해 Sun Microsystems사가 개발한 기술<br /><br /></li>
 </ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;</span><span class="err">%</span>
-      <span class="err">//</span> <span class="na">스크립틀릿</span>
-  <span class="err">%</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
+<h1 id="jsp의-특징">JSP의 특징</h1>
+<h2 id="1-강력한-이식성">1. 강력한 이식성</h2>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code> <code class="language-plaintext highlighter-rouge">body</code> 태그 안에서 스크립틀릿을 쓴 다음에 스크립틀릿의 범위 내에 코드를 작성한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">자바기반</code>의 언어로 어떤 <code class="language-plaintext highlighter-rouge">JSP 컨테이너</code>에서도 사용이 가능하므로 한 번 작성한 코드를 별다른 수정 없이 다른 플랫폼으로 이식이 가능하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">모듈화</code>와 <code class="language-plaintext highlighter-rouge">모듈의 재사용성</code>이 좋다.</li>
 </ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h2&gt;</span>자바코드로 테이블 생성<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-        <span class="nt">&lt;td&gt;</span>번호<span class="nt">&lt;/td&gt;&lt;td&gt;</span>이름<span class="nt">&lt;/td&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
-    <span class="nt">&lt;</span><span class="err">%</span>
-        <span class="na">for</span> <span class="err">(</span><span class="na">int</span> <span class="na">i = </span><span class="s">1;</span> <span class="err">6</span> <span class="nt">&gt;</span> i; i++)
-        {
-            %&gt;
-            <span class="nt">&lt;tr&gt;</span>
-                <span class="nt">&lt;td&gt;&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;&lt;td&gt;</span>학생<span class="nt">&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;</span>
-            <span class="nt">&lt;/tr&gt;</span>
-            <span class="nt">&lt;</span><span class="err">%</span>
-        <span class="err">}</span>
-    <span class="err">%</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/table&gt;</span>
-</code></pre></div></div>
-
+<h2 id="2-서버-자원의-효율적인-사용">2. 서버 자원의 효율적인 사용</h2>
 <ul>
-  <li>위와 같이 자바 코드 사이에 <code class="language-plaintext highlighter-rouge">스크립틀릿</code>이 끝나는 표시(<code class="language-plaintext highlighter-rouge">%&gt;</code>)를 하고 <code class="language-plaintext highlighter-rouge">HTML</code> 태그를 쓴 다음에 <code class="language-plaintext highlighter-rouge">&lt;%= %&gt;</code>를 이용해 자바 코드의 지역 변수를 출력하는 것이 가능하다.(신기…)</li>
+  <li><code class="language-plaintext highlighter-rouge">스레드(Thread)</code> 기반의 아키텍처 사용으로 불필요한 자원 낭비를 감소시켰다.</li>
 </ul>
 
-<h2 id="-jsp-주석">🔸 JSP 주석</h2>
+<h2 id="3-간편한-mvc-패턴디자인-패턴">3. 간편한 MVC 패턴(디자인 패턴)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MVC 패턴</code>을 <code class="language-plaintext highlighter-rouge">JSP(View)</code>와 <code class="language-plaintext highlighter-rouge">자바빈즈(Model)</code>, <code class="language-plaintext highlighter-rouge">서블릿(Controller)</code>을 이용해 쉽게 구현할 수 있다.</li>
+</ul>
 
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- --%&gt;</span> (웹페이지 개발자 도구창에서 나타나지 않기 때문에 보안상 이것을 쓰는 것이 더 좋다)
-// 자바 스타일도 사용 가능
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 사용 HTML 태그와 Java 코드를 함께 사용한다.]]></summary></entry><entry><title type="html">DB 구동 및 접속</title><link href="http://localhost:4000/database/DB-start-conn/" rel="alternate" type="text/html" title="DB 구동 및 접속" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/DB-start-conn</id><content type="html" xml:base="http://localhost:4000/database/DB-start-conn/"><![CDATA[<h1 id="-db-구동-및-접속">🎬 DB 구동 및 접속<br /></h1>
+<h3 id="-mvc-패턴">🔸 MVC 패턴</h3>
+<ul>
+  <li>사용자에게 보여지는 화면인 <code class="language-plaintext highlighter-rouge">View</code> 부분과 실제 비즈니스 로직이 들어가는 <code class="language-plaintext highlighter-rouge">Model</code> 부분 그리고 <code class="language-plaintext highlighter-rouge">View</code>와 <code class="language-plaintext highlighter-rouge">Model</code>을 연결시켜주는 <code class="language-plaintext highlighter-rouge">Controller</code> 부분으로 구성</li>
+  <li>최근에 중대형 프로젝트에서 효과적이라 평가되어 많이 사용되고 있다.</li>
+</ul>
+
+<h3 id="-디자인-패턴">🔸 디자인 패턴</h3>
+<ul>
+  <li>프로젝트를 개발함에 있어서 특정한 문제가 주어졌을 때 그 문제를 해결하기 위한 방법을 설명해 놓은 일종의 지침</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP(Java Server Page)란? Java를 이용하여 동적인 웹 페이지를 만들기 위해 Sun Microsystems사가 개발한 기술]]></summary></entry><entry><title type="html">DB 구동 및 접속</title><link href="http://localhost:4000/database/DB-start-conn/" rel="alternate" type="text/html" title="DB 구동 및 접속" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/DB-start-conn</id><content type="html" xml:base="http://localhost:4000/database/DB-start-conn/"><![CDATA[<h1 id="-db-구동-및-접속">🎬 DB 구동 및 접속<br /></h1>
 
 <h2 id="1-linux-부팅-및-터미널-실행">1. Linux 부팅 및 터미널 실행</h2>
 <ul>
@@ -853,37 +858,4 @@ response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 �
 <img src="../../assets/images/table.png" alt="table" /><br /><br /></li>
   <li>세로는 <strong>열(column)</strong>, 가로는 <strong>행(row)</strong>!!</li>
   <li>column과 row가 만나는 곳은 <strong>Field(Record)값</strong>이라고 부른다.<br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB란?]]></summary></entry><entry><title type="html">서블릿의 동작 원리</title><link href="http://localhost:4000/jsp/JSP-servlet-process/" rel="alternate" type="text/html" title="서블릿의 동작 원리" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-servlet-process</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-servlet-process/"><![CDATA[<h1 id="1-사용자의-url-요청">1. 사용자의 URL 요청</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">웹 서버</code>가 <code class="language-plaintext highlighter-rouge">배포 서술자</code>를 통해 지금 받은 요청이 <code class="language-plaintext highlighter-rouge">서블릿</code> 요청이라는 것을 알게 되면 <code class="language-plaintext highlighter-rouge">서블릿</code>을 담당하는 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>로 그 요청을 전달한다.
-    <h2 id="-배포-서술자deployment-descriptor">🔸 배포 서술자(Deployment Descriptor)</h2>
-  </li>
-  <li>사전에 웹 서버측에 <code class="language-plaintext highlighter-rouge">URL</code>과 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스를 미리 매핑시켜놓은 것<br /><br /></li>
-</ul>
-
-<h1 id="2-request-response-객체-생성">2. request, response 객체 생성</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">웹 컨테이너</code>는 받은 요청을 처리하기 위해 <code class="language-plaintext highlighter-rouge">HTTP</code> 요청을 처리하기 위한 <code class="language-plaintext highlighter-rouge">request</code> 객체와 <code class="language-plaintext highlighter-rouge">HTTP</code> 응답을 위한 <code class="language-plaintext highlighter-rouge">response</code> 객체를 생성한다.<br /><br /></li>
-</ul>
-
-<h1 id="3-서블릿-인스턴스와-스레드-생성">3. 서블릿 인스턴스와 스레드 생성</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">request</code>, <code class="language-plaintext highlighter-rouge">response</code> 객체가 생성된 뒤 사용자의 URL 요청이 어떤 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스를 필요로 하는지 <code class="language-plaintext highlighter-rouge">배포 서술자</code>를 통해 알아낸다.</li>
-  <li>그 클래스가 한 번도 실행된 적이 없거나 현재 메모리에 <code class="language-plaintext highlighter-rouge">인스턴스(프로세스)</code>가 없으면 새로 생성한 뒤 <code class="language-plaintext highlighter-rouge">스레드</code>를 하나 생성하고 이미 <code class="language-plaintext highlighter-rouge">인스턴스</code>가 존재한다면 기존의 <code class="language-plaintext highlighter-rouge">인스턴스</code>에 <code class="language-plaintext highlighter-rouge">스레드</code>만 하나 새로 생성한다.</li>
-  <li>각 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스는 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>당 하나만 존재한다.<br /><br /></li>
-</ul>
-
-<h1 id="4-service-메소드-호출과-서블릿-클래스-실행">4. service() 메소드 호출과 서블릿 클래스 실행</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">스레드</code>가 생성되면 각 <code class="language-plaintext highlighter-rouge">스레드</code>에서 <code class="language-plaintext highlighter-rouge">service()</code> 메소드가 호출된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">service()</code> 메소드가 호출되면 <code class="language-plaintext highlighter-rouge">HTTP</code> 요청 방식이 <code class="language-plaintext highlighter-rouge">GET</code> 방식이면 <code class="language-plaintext highlighter-rouge">doGet()</code> 메소드가, <code class="language-plaintext highlighter-rouge">POST</code> 방식이면 <code class="language-plaintext highlighter-rouge">doPost()</code> 메소드가 <code class="language-plaintext highlighter-rouge">request</code>, <code class="language-plaintext highlighter-rouge">response</code> 객체를 인자로 자동으로 호출된다.</li>
-  <li>개발자가 실제로 동적인 웹 페이지 생성을 할 수 있는 코드를 만들어야 하는 부분이 <code class="language-plaintext highlighter-rouge">doGet()</code>과 <code class="language-plaintext highlighter-rouge">doPost()</code> 메소드 부분이다.<br /><br /></li>
-</ul>
-
-<h1 id="5-응답과-스레드의-소멸">5. 응답과 스레드의 소멸</h1>
-<ul>
-  <li>사용자의 요청에 따른 동적인 웹 페이지를 생성한 결과물이 담긴 <code class="language-plaintext highlighter-rouge">response</code> 객체를 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>가 <code class="language-plaintext highlighter-rouge">HTTP</code> 응답 형태로 바꾸어 <code class="language-plaintext highlighter-rouge">웹 서버</code>로 전송한다.</li>
-  <li>사용이 끝난 <code class="language-plaintext highlighter-rouge">request</code>와 <code class="language-plaintext highlighter-rouge">response</code> 객체를 소멸시키고 <code class="language-plaintext highlighter-rouge">스레드</code>를 종료한다.</li>
-  <li>웹 서버는 전송 받은 HTTP 응답 메시지를 사용자의 브라우저로 전송하게 되고 사용자는 브라우저를 통해 동적으로 생성된 페이지를 받아보게 된다.<br /><br />
-<img src="../../assets/images/servletRequestStep.jpg" alt="servletRequestStep" /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><category term="HTTP" /><category term="Servlet" /><summary type="html"><![CDATA[1. 사용자의 URL 요청 웹 서버가 배포 서술자를 통해 지금 받은 요청이 서블릿 요청이라는 것을 알게 되면 서블릿을 담당하는 웹 컨테이너로 그 요청을 전달한다. 🔸 배포 서술자(Deployment Descriptor) 사전에 웹 서버측에 URL과 서블릿 클래스를 미리 매핑시켜놓은 것]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB란?]]></summary></entry></feed>

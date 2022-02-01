@@ -173,6 +173,12 @@ var store = [{
         "url": "/jsp/JSP-implicit-object/",
         "teaser": null
       },{
+        "title": "JSP 영역 객체와 속성",
+        "excerpt":"👀 영역 객체(Scope)와 속성(Attribute)     jsp 내장객체 중에서 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체   JSP에서는 page, request, session, application 4가지 영역으로 정의한다.       ","categories": ["JSP"],
+        "tags": ["JSP","WEB"],
+        "url": "/jsp/JSP-scope-attribute/",
+        "teaser": null
+      },{
         "title": "JSP 스크립트 요소",
         "excerpt":"👀 JSP 스크립트 요소  1. 선언문   &lt;%!     // 멤버변수와 메서드 선언 %&gt;      멤버변수와 메서드를 선언하기 위한 영역   클래스에서 멤버변수와 메서드를 선언한 것과 동일한 결과로 같은 JSP 페이지 어느 위치에서든 참조가 가능하다.   2. 스크립틀릿(Scriptlet)   &lt;% 문장1; %&gt; &lt;%     문장2; 문장3; 문장4; ... %&gt;      JSP 코드를 작성하는 영역   서블릿 코드의 작성법이 다소 어려워서 이것을 보완하기 위해 만들어진 방식   스크립틀릿 영역에서 선언되는 변수들은 지역변수로 인식된다.   JSP 파일이 실행되면 웹 컨테이너에 의해 JSP 파일이 파싱되어 서블릿 클래스로 변환된 자바 소스 파일과 클래스 자바 파일이 서버에 저장된다.   3. 표현식(Expression)   &lt;%=변수 %&gt; &lt;%=리턴값이 있는 메소드 %&gt; &lt;%=수식(변수 또는 리턴값이 있는 메소드를 포함할 수 있음) %&gt;      선언문, 스크립틀릿에 생성한 변수, 메소드의 리턴값을 스크립틀릿 태그 외부에서 출력하기 위해 사용   하나의 표현식 태그 내의 구문 전체가 print() 메소드의 괄호 안에 통채로 들어가기 때문에 표현식 태그 내부에서는 세미콜론(;)을 사용해서는 안된다.  ","categories": ["JSP"],
         "tags": ["JSP","WEB"],
