@@ -1,0 +1,917 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>CSS 기초 | Yujin Dev Log</title>
+<meta name="description" content="👀 CSS란?    Cascading Style Sheets의 약자로 HTML로 만든 웹 문서 뼈대에 디자인을 적용하기 위한 것">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="CSS 기초">
+<meta property="og:url" content="http://localhost:4000/html/CSS-beginning/">
+
+
+  <meta property="og:description" content="👀 CSS란?    Cascading Style Sheets의 약자로 HTML로 만든 웹 문서 뼈대에 디자인을 적용하기 위한 것">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-01T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/html/CSS-beginning/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#html" itemprop="item"><span itemprop="name">Html</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">CSS 기초</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="CSS 기초">
+    <meta itemprop="description" content="👀 CSS란?  Cascading Style Sheets의 약자로 HTML로 만든 웹 문서 뼈대에 디자인을 적용하기 위한 것">
+    <meta itemprop="datePublished" content="2022-02-01T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/html/CSS-beginning/" class="u-url" itemprop="url">CSS 기초
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#-css란">👀 CSS란?</a><ul><li><a href="#-적용-방법">🔸 적용 방법</a></li></ul></li><li><a href="#-기본-문법">👀 기본 문법</a></li><li><a href="#-css-꾸미기-속성들">👀 CSS 꾸미기 속성들</a><ul><li><a href="#️-css-꾸미기-시작은">☑️ CSS 꾸미기 시작은</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="-css란">👀 CSS란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Cascading Style Sheets</code>의 약자로 <code class="language-plaintext highlighter-rouge">HTML</code>로 만든 웹 문서 뼈대에 디자인을 적용하기 위한 것</li>
+</ul>
+
+<h2 id="-적용-방법">🔸 적용 방법</h2>
+<ol>
+  <li>태그에 바로 스타일 적용 - 잘 안씀<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">head</code> 안에서 스타일 적용<br /></li>
+  <li>외부파일로 스타일 적용<br /><br /><br /></li>
+</ol>
+
+<h1 id="-기본-문법">👀 기본 문법</h1>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">태그</span> <span class="nt">대상</span>
+<span class="p">{</span>
+    <span class="py">속성</span><span class="p">:</span> <span class="n">값</span><span class="p">;</span>
+    <span class="py">속성</span><span class="p">:</span> <span class="n">값</span><span class="p">;</span> <span class="err">...</span>
+<span class="p">}</span>
+
+<span class="o">*</span>
+<span class="p">{</span>
+    <span class="err">HTML</span> <span class="err">내용</span> <span class="err">전체</span> <span class="err">선택</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span>
+<span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">skyblue</span><span class="p">;</span>
+    <span class="err">모든</span> <span class="err">h2</span> <span class="err">태그에</span> <span class="err">적용</span>
+<span class="p">}</span> 
+
+<span class="nf">#p1</span>
+<span class="p">{</span>
+    <span class="err">id="p1"</span> <span class="err">인</span> <span class="err">id</span> <span class="err">모두</span> <span class="err">선택</span>
+<span class="p">}</span>
+
+<span class="nc">.p2</span>
+<span class="p">{</span>
+    <span class="err">class="p2"</span> <span class="err">인</span> <span class="err">class</span> <span class="err">모두</span> <span class="err">선택</span>
+<span class="p">}</span>
+
+<span class="nf">#footer</span> <span class="nt">p</span>
+<span class="p">{</span>
+    <span class="err">footer</span> <span class="err">안에</span> <span class="err">있는</span> <span class="err">p</span> <span class="err">태그에만</span> <span class="err">적용</span>
+<span class="p">}</span>
+
+<span class="c">/* 하이퍼링크 태그에만 부분적으로 적용하는 것도 가능하다 */</span>
+<span class="nt">a</span><span class="nd">:link</span><span class="o">,</span> <span class="nt">a</span><span class="nd">:visited</span>
+<span class="p">{</span>
+	<span class="c">/* 하이퍼링크색, 방문한 하이퍼링크색 변경 */</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span><span class="nd">:hover</span>
+<span class="p">{</span>
+	<span class="c">/* 하이퍼링크에 마우스를 올리면 */</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;p id="p1"&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;span class="p2"&gt;</code> 와 같이 지정하며 <code class="language-plaintext highlighter-rouge">id</code>는 넓은 영역을 지정할 때 주로 사용하고 <code class="language-plaintext highlighter-rouge">class</code>는 좁은 영역을 지정할 때 주로 사용한다고 한다.
+<br /><br /></li>
+</ul>
+
+<h1 id="-css-꾸미기-속성들">👀 CSS 꾸미기 속성들</h1>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span>
+<span class="p">{</span>
+	<span class="c">/* 배치 */</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span> <span class="err">전체영역(문단영역)</span> <span class="err">:</span> <span class="err">블록레벨</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">inline</span><span class="p">;</span> <span class="py">요소영역</span> <span class="p">:</span> <span class="n">인라인</span> <span class="n">레벨</span><span class="p">(</span><span class="n">가로로</span> <span class="n">붙음</span><span class="p">)</span>
+	<span class="n">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span> <span class="err">메뉴</span> <span class="err">만들땐</span> <span class="err">인라인</span> <span class="err">블록이</span> <span class="err">편하다</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+    
+	<span class="c">/* 박스크기 계산 box-sizing */</span>
+    <span class="c">/* 웹 페이지의 내용물들을 배치할 때 박스크기 계산한 것을 바탕으로 배치하는 것이 좋다 */</span>
+	<span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span> <span class="err">내용</span> <span class="err">안여백</span> <span class="err">테두리선</span> <span class="err">포함해서</span> <span class="err">크기</span> <span class="err">계산</span>
+	<span class="nl">box-sizing</span><span class="p">:</span> <span class="n">content-box</span><span class="p">;</span> <span class="err">내용(기본값)물만</span> <span class="err">포함해서</span> <span class="err">크기</span> <span class="err">계산</span>
+    
+	<span class="c">/* 너비 */</span>
+	<span class="nl">width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+	
+	<span class="c">/* 높이 */</span>
+	<span class="nl">height</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+ 
+    <span class="c">/* 안 여백 10px */</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+	
+	<span class="c">/* 밖 여백 */</span>
+	<span class="nl">margin</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    
+	<span class="c">/* 배경색 */</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="no">silver</span><span class="p">;</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="m">#0000ff</span><span class="p">;</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+    
+    <span class="nl">color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.5</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#ff0000</span><span class="p">;</span>
+    
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s1">"바탕"</span><span class="p">;</span>
+    
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">3em</span><span class="p">;</span>
+    <span class="c">/* 절대크기(지정된 크기) : 상대크기(상대적인 글자크기) */</span>
+    <span class="c">/* 포인트 pt, 픽셀 px, em 대문자를 기준으로 비율값 적용, rem 1em 비율값 적용, ex 소문자를 기준으로 적용 */</span>
+    
+    <span class="nl">font-style</span><span class="p">:</span> <span class="nb">italic</span><span class="p">;</span>
+    
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+    
+    <span class="c">/* 글자 가운데 정렬 */</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    
+    <span class="nl">line-height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    
+    <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">overline</span><span class="p">;</span>
+    
+    <span class="c">/* 그림자 효과 */</span>
+    <span class="nl">text-shadow</span><span class="p">:</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">3px</span> <span class="no">black</span><span class="p">;</span> 
+    
+    <span class="c">/* 글자 하나사이 간격*/</span>
+    <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">0.5em</span><span class="p">;</span> 
+    
+    <span class="c">/* 단어 사이 간격 */</span>
+    <span class="nl">word-spacing</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span> 
+    
+    <span class="c">/* 목록 들여쓰기 내어쓰기 inside/outside */</span>
+    <span class="nl">list-style-position</span><span class="p">:</span> <span class="nb">outside</span><span class="p">;</span>
+    
+    <span class="c">/* 목록 점(불릿) 대신 이미지 사용 */</span>
+    <span class="nl">list-style-image</span><span class="p">:</span> <span class="sx">url("1.jpeg")</span><span class="p">;</span>
+    
+    <span class="c">/* 표 제목 위치 지정 caption-side: top/bottom; */</span>
+	<span class="nl">caption-side</span><span class="p">:</span> <span class="nb">top</span><span class="p">;</span>
+    
+	<span class="c">/* 표 테두리선 그려주기 border: 테두리선 두께 테두리선 모양 테두리선 색 */</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+    <span class="nl">border-style</span><span class="p">:</span> <span class="nb">dotted</span><span class="p">;</span>
+	<span class="nl">border-color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+    
+	<span class="c">/* 셀(칸) 사이에 여백 */</span>
+	<span class="nl">border-spacing</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+	
+	<span class="c">/* 표와 셀 테두리 합치기 */</span>
+	<span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span>
+    
+    <span class="c">/* 모서리 둥글게 */</span>
+	<span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    
+    <span class="c">/* 박스 그림자 (12시부터 시계방향으로) 색상 */</span>
+	<span class="nl">box-shadow</span><span class="p">:</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">15px</span> <span class="m">5px</span> <span class="no">green</span><span class="p">;</span>
+ 
+	<span class="c">/* 어울림 배치하는 법 */</span>
+	<span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span> <span class="c">/* 이미지를 왼쪽으로 기준으로 글자 어울림 배치 */</span>
+	<span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span> <span class="c">/* 이미지 오른쪽으로 기준으로 글자 어울림 배치 */</span>
+ 
+	<span class="c">/* 어울림 배치 해제 */</span>
+	<span class="c">/* 아까 설정한 방향 중 해제하고 싶은 방향을 입력해줌 */</span>
+	<span class="nl">clear</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+	<span class="nl">clear</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+	<span class="nl">clear</span><span class="p">:</span> <span class="nb">both</span><span class="p">;</span>  
+    
+    <span class="c">/* 배경 이미지 삽입 */</span>
+	<span class="c">/* 이미지 태그에서 안보이면 스타일시트에서 이미지를 넣은 것이다. */</span>
+	<span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("dot.png")</span><span class="p">;</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">repeat</span><span class="p">;</span> <span class="c">/* 이미지 바둑판 모양으로 반복 */</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">repeat-x</span><span class="p">;</span> <span class="c">/* x축만 반복 */</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">repeat-y</span><span class="p">;</span> <span class="c">/* y축만 반복 */</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">no-repeat</span><span class="p">;</span> <span class="c">/* 반복 안함 */</span> 
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span> <span class="c">/* 문단 가운데로 정렬 */</span>
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">bottom</span> <span class="nb">right</span><span class="p">;</span> <span class="c">/* 두개 넣으면 오른쪽 아래와 같이 정렬됨 */</span>
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">top</span> <span class="nb">left</span><span class="p">;</span>
+	<span class="nl">background-size</span><span class="p">:</span> <span class="m">50px</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="️-css-꾸미기-시작은">☑️ CSS 꾸미기 시작은</h2>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">*</span>
+<span class="p">{</span>
+	<span class="c">/* body 영역엔 기본적인 여백이 조금씩 있는데 이걸 다 0으로 만들고 시작한다. */</span>
+	<span class="nl">margin</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+	
+	<span class="c">/* 테두리포함 너비 계산하기 */</span>
+	<span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위와 같이 초기화하고 시작하는 것이 좋다.</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a><span class="sep">, </span>
+    
+      <a href="/tags/#front-end" class="page__taxonomy-item p-category" rel="tag">Front-end</a><span class="sep">, </span>
+    
+      <a href="/tags/#html" class="page__taxonomy-item p-category" rel="tag">HTML</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#html" class="page__taxonomy-item p-category" rel="tag">HTML</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-01T00:00:00+09:00">February 1, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=CSS+%EA%B8%B0%EC%B4%88%20http%3A%2F%2Flocalhost%3A4000%2Fhtml%2FCSS-beginning%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fhtml%2FCSS-beginning%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fhtml%2FCSS-beginning%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/story/decorate-github-profile/" class="pagination--pager" title="깃허브 프로필(Github Profile) 꾸미기
+">이전</a>
+    
+    
+      <a href="/html/HTML-language01/" class="pagination--pager" title="HTML 문법
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/use-JSP/" rel="permalink">JSP 사용
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 JSP 사용
+
+  HTML 태그와 Java 코드를 함께 사용한다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/What-is-JSP/" rel="permalink">JSP란?
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 JSP(Java Server Page)란?
+
+  Java를 이용하여 동적인 웹 페이지를 만들기 위해 Sun Microsystems사가 개발한 기술
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/javascript/JavaScript/" rel="permalink">JavaScript 기본 문법
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트란?
+
+  웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어
+  인터프리터 언어로 작성된 코드를 위에서 아래로 순차적으로 실행한다.
+  컴파일 언어와 다른 점은 일단 실행을 하고 에러가 발생하기 전 까지의 코드만 실행한다.
+  객체 기반 언어이다....</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/JSP-session-cookie/" rel="permalink">세션(Session)과 쿠키(Cookie)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 세션(Session)이란?
+☑️ 서버랑 클라이언트와의 관계(상태)를 유지하기 위해서 사용하는 값
+
+  HTTP 프로토콜은 상태가 유지되지 않기 때문에 요청에 대한 응답이 한 번씩 이뤄지고 나면 그 관계가 소멸된다.
+  하지만 이런 방식으로는 사용자가 회원 사이트에 로그인 했을 ...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

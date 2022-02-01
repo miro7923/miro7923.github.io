@@ -1,0 +1,195 @@
+I"�:<h1 id="-css란">👀 CSS란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Cascading Style Sheets</code>의 약자로 <code class="language-plaintext highlighter-rouge">HTML</code>로 만든 웹 문서 뼈대에 디자인을 적용하기 위한 것</li>
+</ul>
+
+<h2 id="-적용-방법">🔸 적용 방법</h2>
+<ol>
+  <li>태그에 바로 스타일 적용 - 잘 안씀<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">head</code> 안에서 스타일 적용<br /></li>
+  <li>외부파일로 스타일 적용<br /><br /><br /></li>
+</ol>
+
+<h1 id="-기본-문법">👀 기본 문법</h1>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">태그</span> <span class="nt">대상</span>
+<span class="p">{</span>
+    <span class="py">속성</span><span class="p">:</span> <span class="n">값</span><span class="p">;</span>
+    <span class="py">속성</span><span class="p">:</span> <span class="n">값</span><span class="p">;</span> <span class="err">...</span>
+<span class="p">}</span>
+
+<span class="o">*</span>
+<span class="p">{</span>
+    <span class="err">HTML</span> <span class="err">내용</span> <span class="err">전체</span> <span class="err">선택</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span>
+<span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">skyblue</span><span class="p">;</span>
+    <span class="err">모든</span> <span class="err">h2</span> <span class="err">태그에</span> <span class="err">적용</span>
+<span class="p">}</span> 
+
+<span class="nf">#p1</span>
+<span class="p">{</span>
+    <span class="err">id="p1"</span> <span class="err">인</span> <span class="err">id</span> <span class="err">모두</span> <span class="err">선택</span>
+<span class="p">}</span>
+
+<span class="nc">.p2</span>
+<span class="p">{</span>
+    <span class="err">class="p2"</span> <span class="err">인</span> <span class="err">class</span> <span class="err">모두</span> <span class="err">선택</span>
+<span class="p">}</span>
+
+<span class="nf">#footer</span> <span class="nt">p</span>
+<span class="p">{</span>
+    <span class="err">footer</span> <span class="err">안에</span> <span class="err">있는</span> <span class="err">p</span> <span class="err">태그에만</span> <span class="err">적용</span>
+<span class="p">}</span>
+
+<span class="c">/* 하이퍼링크 태그에만 부분적으로 적용하는 것도 가능하다 */</span>
+<span class="nt">a</span><span class="nd">:link</span><span class="o">,</span> <span class="nt">a</span><span class="nd">:visited</span>
+<span class="p">{</span>
+	<span class="c">/* 하이퍼링크색, 방문한 하이퍼링크색 변경 */</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span><span class="nd">:hover</span>
+<span class="p">{</span>
+	<span class="c">/* 하이퍼링크에 마우스를 올리면 */</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;p id="p1"&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;span class="p2"&gt;</code> 와 같이 지정하며 <code class="language-plaintext highlighter-rouge">id</code>는 넓은 영역을 지정할 때 주로 사용하고 <code class="language-plaintext highlighter-rouge">class</code>는 좁은 영역을 지정할 때 주로 사용한다고 한다.
+<br /><br /></li>
+</ul>
+
+<h1 id="-css-꾸미기-속성들">👀 CSS 꾸미기 속성들</h1>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span>
+<span class="p">{</span>
+	<span class="c">/* 배치 */</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span> <span class="err">전체영역(문단영역)</span> <span class="err">:</span> <span class="err">블록레벨</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">inline</span><span class="p">;</span> <span class="py">요소영역</span> <span class="p">:</span> <span class="n">인라인</span> <span class="n">레벨</span><span class="p">(</span><span class="n">가로로</span> <span class="n">붙음</span><span class="p">)</span>
+	<span class="n">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span> <span class="err">메뉴</span> <span class="err">만들땐</span> <span class="err">인라인</span> <span class="err">블록이</span> <span class="err">편하다</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+    
+	<span class="c">/* 박스크기 계산 box-sizing */</span>
+    <span class="c">/* 웹 페이지의 내용물들을 배치할 때 박스크기 계산한 것을 바탕으로 배치하는 것이 좋다 */</span>
+	<span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span> <span class="err">내용</span> <span class="err">안여백</span> <span class="err">테두리선</span> <span class="err">포함해서</span> <span class="err">크기</span> <span class="err">계산</span>
+	<span class="nl">box-sizing</span><span class="p">:</span> <span class="n">content-box</span><span class="p">;</span> <span class="err">내용(기본값)물만</span> <span class="err">포함해서</span> <span class="err">크기</span> <span class="err">계산</span>
+    
+	<span class="c">/* 너비 */</span>
+	<span class="nl">width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+	
+	<span class="c">/* 높이 */</span>
+	<span class="nl">height</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+ 
+    <span class="c">/* 안 여백 10px */</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+	
+	<span class="c">/* 밖 여백 */</span>
+	<span class="nl">margin</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    
+	<span class="c">/* 배경색 */</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="no">silver</span><span class="p">;</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="m">#0000ff</span><span class="p">;</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+    
+    <span class="nl">color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.5</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#ff0000</span><span class="p">;</span>
+    
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s1">"바탕"</span><span class="p">;</span>
+    
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">3em</span><span class="p">;</span>
+    <span class="c">/* 절대크기(지정된 크기) : 상대크기(상대적인 글자크기) */</span>
+    <span class="c">/* 포인트 pt, 픽셀 px, em 대문자를 기준으로 비율값 적용, rem 1em 비율값 적용, ex 소문자를 기준으로 적용 */</span>
+    
+    <span class="nl">font-style</span><span class="p">:</span> <span class="nb">italic</span><span class="p">;</span>
+    
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+    
+    <span class="c">/* 글자 가운데 정렬 */</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    
+    <span class="nl">line-height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    
+    <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">overline</span><span class="p">;</span>
+    
+    <span class="c">/* 그림자 효과 */</span>
+    <span class="nl">text-shadow</span><span class="p">:</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">3px</span> <span class="no">black</span><span class="p">;</span> 
+    
+    <span class="c">/* 글자 하나사이 간격*/</span>
+    <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">0.5em</span><span class="p">;</span> 
+    
+    <span class="c">/* 단어 사이 간격 */</span>
+    <span class="nl">word-spacing</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span> 
+    
+    <span class="c">/* 목록 들여쓰기 내어쓰기 inside/outside */</span>
+    <span class="nl">list-style-position</span><span class="p">:</span> <span class="nb">outside</span><span class="p">;</span>
+    
+    <span class="c">/* 목록 점(불릿) 대신 이미지 사용 */</span>
+    <span class="nl">list-style-image</span><span class="p">:</span> <span class="sx">url("1.jpeg")</span><span class="p">;</span>
+    
+    <span class="c">/* 표 제목 위치 지정 caption-side: top/bottom; */</span>
+	<span class="nl">caption-side</span><span class="p">:</span> <span class="nb">top</span><span class="p">;</span>
+    
+	<span class="c">/* 표 테두리선 그려주기 border: 테두리선 두께 테두리선 모양 테두리선 색 */</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+    <span class="nl">border-style</span><span class="p">:</span> <span class="nb">dotted</span><span class="p">;</span>
+	<span class="nl">border-color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+    
+	<span class="c">/* 셀(칸) 사이에 여백 */</span>
+	<span class="nl">border-spacing</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+	
+	<span class="c">/* 표와 셀 테두리 합치기 */</span>
+	<span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span>
+    
+    <span class="c">/* 모서리 둥글게 */</span>
+	<span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    
+    <span class="c">/* 박스 그림자 (12시부터 시계방향으로) 색상 */</span>
+	<span class="nl">box-shadow</span><span class="p">:</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">15px</span> <span class="m">5px</span> <span class="no">green</span><span class="p">;</span>
+ 
+	<span class="c">/* 어울림 배치하는 법 */</span>
+	<span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span> <span class="c">/* 이미지를 왼쪽으로 기준으로 글자 어울림 배치 */</span>
+	<span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span> <span class="c">/* 이미지 오른쪽으로 기준으로 글자 어울림 배치 */</span>
+ 
+	<span class="c">/* 어울림 배치 해제 */</span>
+	<span class="c">/* 아까 설정한 방향 중 해제하고 싶은 방향을 입력해줌 */</span>
+	<span class="nl">clear</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+	<span class="nl">clear</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+	<span class="nl">clear</span><span class="p">:</span> <span class="nb">both</span><span class="p">;</span>  
+    
+    <span class="c">/* 배경 이미지 삽입 */</span>
+	<span class="c">/* 이미지 태그에서 안보이면 스타일시트에서 이미지를 넣은 것이다. */</span>
+	<span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("dot.png")</span><span class="p">;</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">repeat</span><span class="p">;</span> <span class="c">/* 이미지 바둑판 모양으로 반복 */</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">repeat-x</span><span class="p">;</span> <span class="c">/* x축만 반복 */</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">repeat-y</span><span class="p">;</span> <span class="c">/* y축만 반복 */</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">no-repeat</span><span class="p">;</span> <span class="c">/* 반복 안함 */</span> 
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span> <span class="c">/* 문단 가운데로 정렬 */</span>
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">bottom</span> <span class="nb">right</span><span class="p">;</span> <span class="c">/* 두개 넣으면 오른쪽 아래와 같이 정렬됨 */</span>
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">top</span> <span class="nb">left</span><span class="p">;</span>
+	<span class="nl">background-size</span><span class="p">:</span> <span class="m">50px</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h2 id="️-css-꾸미기-시작은">☑️ CSS 꾸미기 시작은</h2>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">*</span>
+<span class="p">{</span>
+	<span class="c">/* body 영역엔 기본적인 여백이 조금씩 있는데 이걸 다 0으로 만들고 시작한다. */</span>
+	<span class="nl">margin</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+	
+	<span class="c">/* 테두리포함 너비 계산하기 */</span>
+	<span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위와 같이 초기화하고 시작하는 것이 좋다.</li>
+</ul>
+:ET
