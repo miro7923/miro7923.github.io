@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-01T15:22:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP란?</title><link href="http://localhost:4000/jsp/What-is-JSP/" rel="alternate" type="text/html" title="JSP란?" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/What-is-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/What-is-JSP/"><![CDATA[<h1 id="-jspjava-server-page란">👀 JSP(Java Server Page)란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-01T16:16:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP란?</title><link href="http://localhost:4000/jsp/What-is-JSP/" rel="alternate" type="text/html" title="JSP란?" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/What-is-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/What-is-JSP/"><![CDATA[<h1 id="-jspjava-server-page란">👀 JSP(Java Server Page)란?</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Java</code>를 이용하여 <code class="language-plaintext highlighter-rouge">동적인 웹 페이지</code>를 만들기 위해 Sun Microsystems사가 개발한 기술<br /><br /></li>
 </ul>
@@ -668,7 +668,50 @@ response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 �
 <h3 id="-prefix-속성">🔸 prefix 속성</h3>
 <ul>
   <li>사용할 커스텀 태그의 네임 스페이스(Name Space)를 지정</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 지시어란?(Directive)]]></summary></entry><entry><title type="html">JSP 사용</title><link href="http://localhost:4000/jsp/use-JSP/" rel="alternate" type="text/html" title="JSP 사용" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/use-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/use-JSP/"><![CDATA[<h1 id="-jsp-사용">👀 JSP 사용</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 지시어란?(Directive)]]></summary></entry><entry><title type="html">JSP 액션 태그</title><link href="http://localhost:4000/jsp/JSP-action-tag/" rel="alternate" type="text/html" title="JSP 액션 태그" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-action-tag</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-action-tag/"><![CDATA[<h1 id="-액션-태그란">👀 액션 태그란?</h1>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;jsp:</span>~ 형태로 시작하는 태그<span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 페이지에서 <code class="language-plaintext highlighter-rouge">HTML</code> 태그 형태로 <code class="language-plaintext highlighter-rouge">JSP</code> 코드의 역할을 수행하는 것</li>
+  <li>스크립틀릿 등의 스크립트 요소(자바 코드)를 사용하지 않기 때문에 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지의 내부적인 프로그램 로직을 사용자로부터 감출 수 있다.</li>
+  <li>즉, 사용자에게 보여지는 프레젠테이션 부분과 사용자의 요청을 처리하는 비즈니스 로직 부분(프로그램 부분)을 분리하는 것이 가능하다.</li>
+  <li>프로그램 재사용성을 높여주고 코드의 간결성을 향상시킨다.</li>
+</ul>
+
+<h2 id="--jspforward-">🔸 &lt; jsp:forward &gt;</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;jsp:forward </span><span class="na">page=</span><span class="s">"이동할 페이지(ex. forward.jsp)"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;jsp:forward </span><span class="na">page=</span><span class="s">"이동할 페이지"</span><span class="nt">&gt;&lt;/jsp:forward&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>액션 태그는 <code class="language-plaintext highlighter-rouge">XML</code> 문법을 이용하여 구현된 기능이므로 태그의 종료 끝에 반드시 종료 태그가 있어야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">forward</code> 액션은 현재 페이지의 요청과 응답에 관한 처리권을 <code class="language-plaintext highlighter-rouge">page</code> 속성에 지정된 이동할 페이지로 영구적으로 넘기는 기능을 한다.</li>
+</ul>
+
+<h2 id="--jspinclude-">🔸 &lt; jsp:include &gt;</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"이동할 페이지(ex. forward.jsp)"</span><span class="na"> flush=</span><span class="s">"false"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"이동할 페이지(ex. forward.jsp)"</span><span class="na"> flush=</span><span class="s">"false"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>특정 페이지를 <code class="language-plaintext highlighter-rouge">include</code> 한다.</li>
+  <li>각각의 페이지를 컴파일 후 해당 파일을 <code class="language-plaintext highlighter-rouge">include</code> 한다.</li>
+  <li>top, bottom과 같은 동일 사용 페이지를 추가할 때 사용한다.</li>
+</ul>
+
+<h2 id="--jspparam-">🔸 &lt; jsp:param &gt;</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;jsp:param </span><span class="na">name=</span><span class="s">"파라미터 이름1"</span><span class="na"> value=</span><span class="s">"파라미터 값1"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;jsp:param </span><span class="na">name=</span><span class="s">"파라미터 이름2"</span><span class="na"> value=</span><span class="s">"파라미터 값2"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">forward</code>와 <code class="language-plaintext highlighter-rouge">include</code> 태그를 사용하여 이동할 페이지에 추가적으로 넘겨줄 파라미터가 있으면 <code class="language-plaintext highlighter-rouge">&lt;jsp:param/&gt;</code> 태그를 사용할 수 있다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 액션 태그란?]]></summary></entry><entry><title type="html">JSP 사용</title><link href="http://localhost:4000/jsp/use-JSP/" rel="alternate" type="text/html" title="JSP 사용" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/use-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/use-JSP/"><![CDATA[<h1 id="-jsp-사용">👀 JSP 사용</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">HTML</code> 태그와 <code class="language-plaintext highlighter-rouge">Java</code> 코드를 함께 사용한다.</li>
 </ul>
@@ -767,56 +810,50 @@ response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 �
 <h3 id="-user-비밀번호-변경-방법">🔸 User 비밀번호 변경 방법</h3>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; alter user 아이디
      identified by 새 비밀번호;
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB 구동 및 접속]]></summary></entry><entry><title type="html">HTTP 프로토콜(HyperText Transfer Protocol)</title><link href="http://localhost:4000/jsp/JSP-http-protocol/" rel="alternate" type="text/html" title="HTTP 프로토콜(HyperText Transfer Protocol)" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-http-protocol</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-http-protocol/"><![CDATA[<h1 id="-http-프로토콜이란">🎬 HTTP 프로토콜이란?</h1>
+</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB 구동 및 접속]]></summary></entry><entry><title type="html">DB 기초</title><link href="http://localhost:4000/database/DB-start/" rel="alternate" type="text/html" title="DB 기초" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/DB-start</id><content type="html" xml:base="http://localhost:4000/database/DB-start/"><![CDATA[<h1 id="-db란">🎬 DB란?<br /></h1>
+
+<h2 id="-db를-쓰는-이유">🔸 DB를 쓰는 이유</h2>
 <ul>
-  <li>실제 사용자와 연결된 최상위 계층의 프로토콜로 가장 대표적인 웹브라우저의 통신에 관한 프로토콜<br /><br /></li>
+  <li>데이터를 오프라인으로 캐비넷에 저장하자니 물리적 저장 공간은 한정되어 있다.</li>
+  <li>그렇다면 엑셀 파일을 만들어 암호를 걸어 쓰는 방법이 있는데 만약 암호가 유출된다면 그 엑셀 파일 안에 저장된 정보도 모두 유출된다. 따라서 이것도 안전한 방법은 아니다.</li>
+  <li>그래서 서버에 데이터베이스를 구축하고 거기에 고객 정보를 저정하고 관리하는 것이다.
+    <ul>
+      <li>데이터베이스엔 애초에 허가받은 사용자만 접근할 수 있고 허가받은 권한 만큼만 데이터에 접근할 수 있다.<br /><br /></li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="-프로토콜protocol">🔸 프로토콜(Protocol)</h2>
+<h2 id="-dbms">🔸 DBMS</h2>
 <ul>
-  <li>네트워크상에서 데이터를 주고 받는 규칙</li>
-  <li>컴퓨터 상호간의 대화에 필요한 통신 규약<br /><br /><br /></li>
+  <li>데이터베이스 관리 시스템</li>
+  <li>DB에서 필요한 데이터를 검색하거나 삽입, 수정, 삭제하기 위한 프로그램</li>
+  <li>ORACLE, MySQL등이 있으며 이것들이 DB 자체를 의미하는 것은 아니다.
+    <ul>
+      <li>DB를 다루기 위한 수단으로서 MySQL을 사용하면 MySQL을 사용한 DB 프로그램인 것이다.<br /><br /></li>
+    </ul>
+  </li>
 </ul>
 
-<h1 id="1-http-프로토콜의-구조">1. HTTP 프로토콜의 구조</h1>
+<h2 id="-rdbms">🔸 RDBMS</h2>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">요청(Request)</code>과 <code class="language-plaintext highlighter-rouge">응답(Response)</code> 형태로 이루어졌다.</li>
-  <li>사용자가 웹 페이지의 링크를 클릭하면 브라우저는 <code class="language-plaintext highlighter-rouge">HTTP</code> 프로토콜의 요청 형태로 <code class="language-plaintext highlighter-rouge">HTTP</code> 메시지를 작성하여 웹 서버에 전송한다.</li>
-  <li>웹 서버에서는 지금 받은 <code class="language-plaintext highlighter-rouge">HTTP</code> 메시지가 <code class="language-plaintext highlighter-rouge">요청(Request)</code> 메시지임을 판단하고 그 데이터를 분석해서 <code class="language-plaintext highlighter-rouge">HTTP</code> 프로토콜의 <code class="language-plaintext highlighter-rouge">응답(Response)</code> 형태로 메시지를 작성하여 브라우저로 보내게 되면 브라우저는 메시지를 받아서 사용자의 화면에 표시하게 된다.<br /><br />
-<img src="../../assets/images/httpMsgSturcture.png" alt="httpMsgSturcture" /><br /><br /></li>
-  <li>각 <code class="language-plaintext highlighter-rouge">HTTP</code> 메시지는 지금 작성 된 메시지가 요청인지, 응답인지와 요청 URL 등 기본적인 정보가 담겨있는 시작 라인과 수행 날짜, 서버 정보, 브라우저 버전 등 부가적인 정보를 담는 헤더 그리고 요청이나 응답에 필요한 내용을 담고 있는 본문(Body)으로 구성된다.<br /><br /><br /></li>
+  <li>관계형 DBMS</li>
+  <li>시중에 나와있는 대부분의 DBMS라고 보면 된다.<br /><br /></li>
 </ul>
 
-<h1 id="2-http-요청request-메시지">2. HTTP 요청(Request) 메시지</h1>
+<h2 id="-sql">🔸 SQL</h2>
 <ul>
-  <li>기본적으로 <code class="language-plaintext highlighter-rouge">HTTP 메소드(Method)</code>와 접근할 주소(URL) 정보 그리고 서버에 전달할 데이터인 <code class="language-plaintext highlighter-rouge">폼 파라미터</code>로 구성된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">HTTP 메소드(Method)</code>는 클라이언트가 웹 서버가 해야 할 행동을 정해주는 정보로 <code class="language-plaintext highlighter-rouge">GET 메소드</code>와 <code class="language-plaintext highlighter-rouge">POST 메소드</code>가 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">GET 메소드</code>를 사용하는 요청 메시지를 <code class="language-plaintext highlighter-rouge">GET 방식의 요청</code>, <code class="language-plaintext highlighter-rouge">POST 메소드</code>를 사용하는 요청 메시지를 <code class="language-plaintext highlighter-rouge">POST 방식의 요청</code>이라고 한다.<br /><br /></li>
+  <li>데이터 액세스를 위해 ORACLE server와 통신하는 언어로 DB와 소통하기 위한 언어</li>
+  <li>모든 DBMS에서 사용하는 공용언어<br /><br /></li>
 </ul>
 
-<h2 id="-get-방식">🔸 GET 방식</h2>
+<h2 id="-table">🔸 TABLE</h2>
 <ul>
-  <li>전송할 파라미터 값들을 시작 라인의 URL 정보에 붙여서 같이 전송한다.</li>
-  <li>파라미터의 길이는 256바이트를 넘을 수 없다.</li>
-  <li>본문(Body)이 필요없기 때문에 전송 속도가 <code class="language-plaintext highlighter-rouge">POST</code> 방식에 비해 빠르다.</li>
-  <li>전송해야 할 데이터가 적을 때 유용하다.</li>
-  <li>파라미터가 URL뒤에 붙어서 전송되므로 사용자가 브라우저의 주소 창에서 전송되는 파라미터를 실제로 확인할 수 있다.<br /><br /></li>
-</ul>
-
-<h2 id="-post-방식">🔸 POST 방식</h2>
-<ul>
-  <li>전송할 파라미터 값들을 요청 메시지 본문(Body)에 담아서 전송한다.</li>
-  <li>따라서 전송할 수 있는 데이터의 양에 제한이 없으며 주소창에서 전송되는 파라미터 확인이 불가능하다.</li>
-  <li><code class="language-plaintext highlighter-rouge">GET</code> 방식에 비해 보안상 더 유용하다.<br /><br /></li>
-</ul>
-
-<p><img src="../../assets/images/getPostRequest.jpg" alt="getPostRequest" /><br /><br /><br /></p>
-
-<h1 id="3-http-응답response-메시지">3. HTTP 응답(Response) 메시지</h1>
-<ul>
-  <li>요쳥에 대한 서버의 처리 성공 여부를 표시하는 상태 코드(HTTP 404, 500 등) 번호와 웹 서버가 응답해주는 콘텐츠의 타입 정보(텍스트/HTML, 이미지 등), 콘텐츠의 내용으로 구성된다.</li>
-  <li>실제적으로 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스가 요청을 처리해 생성하는 페이지는 웹 서버에서 응답 메시지의 형태로 작성되어 사용자의 브라우저에 전송된다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><category term="HTTP" /><summary type="html"><![CDATA[🎬 HTTP 프로토콜이란? 실제 사용자와 연결된 최상위 계층의 프로토콜로 가장 대표적인 웹브라우저의 통신에 관한 프로토콜]]></summary></entry><entry><title type="html">서블릿의 동작 원리</title><link href="http://localhost:4000/jsp/JSP-servlet-process/" rel="alternate" type="text/html" title="서블릿의 동작 원리" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-servlet-process</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-servlet-process/"><![CDATA[<h1 id="1-사용자의-url-요청">1. 사용자의 URL 요청</h1>
+  <li>DB에서 사용하는 대표 객체(오브젝트)</li>
+  <li>테이블을 사용해서 데이터를 분류한다.<br /><br />
+<img src="../../assets/images/table.png" alt="table" /><br /><br /></li>
+  <li>세로는 <strong>열(column)</strong>, 가로는 <strong>행(row)</strong>!!</li>
+  <li>column과 row가 만나는 곳은 <strong>Field(Record)값</strong>이라고 부른다.<br /></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB란?]]></summary></entry><entry><title type="html">서블릿의 동작 원리</title><link href="http://localhost:4000/jsp/JSP-servlet-process/" rel="alternate" type="text/html" title="서블릿의 동작 원리" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-servlet-process</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-servlet-process/"><![CDATA[<h1 id="1-사용자의-url-요청">1. 사용자의 URL 요청</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">웹 서버</code>가 <code class="language-plaintext highlighter-rouge">배포 서술자</code>를 통해 지금 받은 요청이 <code class="language-plaintext highlighter-rouge">서블릿</code> 요청이라는 것을 알게 되면 <code class="language-plaintext highlighter-rouge">서블릿</code>을 담당하는 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>로 그 요청을 전달한다.
     <h2 id="-배포-서술자deployment-descriptor">🔸 배포 서술자(Deployment Descriptor)</h2>
@@ -849,40 +886,4 @@ response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 �
   <li>사용이 끝난 <code class="language-plaintext highlighter-rouge">request</code>와 <code class="language-plaintext highlighter-rouge">response</code> 객체를 소멸시키고 <code class="language-plaintext highlighter-rouge">스레드</code>를 종료한다.</li>
   <li>웹 서버는 전송 받은 HTTP 응답 메시지를 사용자의 브라우저로 전송하게 되고 사용자는 브라우저를 통해 동적으로 생성된 페이지를 받아보게 된다.<br /><br />
 <img src="../../assets/images/servletRequestStep.jpg" alt="servletRequestStep" /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><category term="HTTP" /><category term="Servlet" /><summary type="html"><![CDATA[1. 사용자의 URL 요청 웹 서버가 배포 서술자를 통해 지금 받은 요청이 서블릿 요청이라는 것을 알게 되면 서블릿을 담당하는 웹 컨테이너로 그 요청을 전달한다. 🔸 배포 서술자(Deployment Descriptor) 사전에 웹 서버측에 URL과 서블릿 클래스를 미리 매핑시켜놓은 것]]></summary></entry><entry><title type="html">웹페이지 기초</title><link href="http://localhost:4000/jsp/JSP-web-beginning/" rel="alternate" type="text/html" title="웹페이지 기초" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-web-beginning</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-web-beginning/"><![CDATA[<h1 id="-웹페이지에는-정적데이터와-동적데이터가-있다">🔸 웹페이지에는 정적데이터와 동적데이터가 있다.</h1>
-
-<ul>
-  <li>네이버 홈페이지에 접속하면 보이는 이미지 데이터들은 <code class="language-plaintext highlighter-rouge">정적데이터</code></li>
-  <li>
-    <p>HTML, CSS, JavaScript, … =&gt; WEB 서버에서 처리<br /><br /></p>
-  </li>
-  <li>신문 기사, 날씨, 코스피 지수 등 변하는 값들은 <code class="language-plaintext highlighter-rouge">동적데이터</code></li>
-  <li>DB에 저장되어 있는 데이터 =&gt; <code class="language-plaintext highlighter-rouge">WAS(Web Application Server - web에 application이 추가된 것)</code>서버에서 처리
-    <ul>
-      <li>예) 톰캣이라는 <code class="language-plaintext highlighter-rouge">서버</code>에서 <code class="language-plaintext highlighter-rouge">자바 애플리케이션</code>이 실행되고 있는 것<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="-웹페이지-동작">🔸 웹페이지 동작</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">[클라이언트/사용자]</code>가 naver에 요청 ➡️ <code class="language-plaintext highlighter-rouge">[naver - WEB서버]</code>가 판단해서 요청한 데이터가 <code class="language-plaintext highlighter-rouge">정적데이터</code>만 있다면 바로 실행하게 만듦 ➡️ <code class="language-plaintext highlighter-rouge">[클라이언트/사용자]</code>에게 naver가 응답(<code class="language-plaintext highlighter-rouge">정적데이터</code>)</li>
-  <li>
-    <p>👉 이 결과로 사용자는 naver 페이지를 볼 수 있게 된다.<br /><br /></p>
-  </li>
-  <li>하지만 <code class="language-plaintext highlighter-rouge">동적데이터</code>도 있다면…</li>
-  <li>naver가 <code class="language-plaintext highlighter-rouge">[naver서버 - WAS서버]</code>에 <code class="language-plaintext highlighter-rouge">동적데이터</code>를 요청한다.</li>
-  <li>
-    <p>그러면 <code class="language-plaintext highlighter-rouge">[Database서버]</code>에 데이터를 요청해서 사용자에게 보여준다.<br /><br />
-<img src="../../assets/images/webProcess.png" alt="webProcess" /><br /><br /></p>
-  </li>
-  <li>+) .com, .co.kr 과 같은 도메인은 비싸다.</li>
-  <li>.ar 같은 도메인들은 무료</li>
-</ul>
-
-<h1 id="-dns">🔸 DNS</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">도메인 네임서버</code></li>
-  <li>IP주소를 도메인 주소로 바꾼 것</li>
-  <li>숫자로 된 IP주소는 외우기 힘드니까 좀 더 읽기 쉬운 문자형 주소로 바꾸는 것</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><summary type="html"><![CDATA[🔸 웹페이지에는 정적데이터와 동적데이터가 있다.]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><category term="HTTP" /><category term="Servlet" /><summary type="html"><![CDATA[1. 사용자의 URL 요청 웹 서버가 배포 서술자를 통해 지금 받은 요청이 서블릿 요청이라는 것을 알게 되면 서블릿을 담당하는 웹 컨테이너로 그 요청을 전달한다. 🔸 배포 서술자(Deployment Descriptor) 사전에 웹 서버측에 URL과 서블릿 클래스를 미리 매핑시켜놓은 것]]></summary></entry></feed>
