@@ -1,0 +1,51 @@
+I"<h1 id="-jsp-사용">👀 JSP 사용</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HTML</code> 태그와 <code class="language-plaintext highlighter-rouge">Java</code> 코드를 함께 사용한다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;</span><span class="err">%</span>
+      <span class="err">//</span> <span class="na">스크립틀릿</span>
+  <span class="err">%</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HTML</code> <code class="language-plaintext highlighter-rouge">body</code> 태그 안에서 스크립틀릿을 쓴 다음에 스크립틀릿의 범위 내에 코드를 작성한다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h2&gt;</span>자바코드로 테이블 생성<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span>번호<span class="nt">&lt;/td&gt;&lt;td&gt;</span>이름<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;</span><span class="err">%</span>
+        <span class="na">for</span> <span class="err">(</span><span class="na">int</span> <span class="na">i = </span><span class="s">1;</span> <span class="err">6</span> <span class="nt">&gt;</span> i; i++)
+        {
+            %&gt;
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;td&gt;&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;&lt;td&gt;</span>학생<span class="nt">&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;</span><span class="err">%</span>
+        <span class="err">}</span>
+    <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위와 같이 자바 코드 사이에 <code class="language-plaintext highlighter-rouge">스크립틀릿</code>이 끝나는 표시(<code class="language-plaintext highlighter-rouge">%&gt;</code>)를 하고 <code class="language-plaintext highlighter-rouge">HTML</code> 태그를 쓴 다음에 <code class="language-plaintext highlighter-rouge">&lt;%= %&gt;</code>를 이용해 자바 코드의 지역 변수를 출력하는 것이 가능하다.(신기…)</li>
+</ul>
+
+<h2 id="-jsp-주석">🔸 JSP 주석</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- --%&gt;</span> (웹페이지 개발자 도구창에서 나타나지 않기 때문에 보안상 이것을 쓰는 것이 더 좋다)
+// 자바 스타일도 사용 가능
+</code></pre></div></div>
+:ET

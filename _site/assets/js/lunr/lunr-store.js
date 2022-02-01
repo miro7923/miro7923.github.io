@@ -164,6 +164,12 @@ var store = [{
         "title": "JSP란?",
         "excerpt":"👀 JSP(Java Server Page)란?     Java를 이용하여 동적인 웹 페이지를 만들기 위해 Sun Microsystems사가 개발한 기술     JSP의 특징  1. 강력한 이식성     자바기반의 언어로 어떤 JSP 컨테이너에서도 사용이 가능하므로 한 번 작성한 코드를 별다른 수정 없이 다른 플랫폼으로 이식이 가능하다.   모듈화와 모듈의 재사용성이 좋다.   2. 서버 자원의 효율적인 사용     스레드(Thread) 기반의 아키텍처 사용으로 불필요한 자원 낭비를 감소시켰다.   3. 간편한 MVC 패턴(디자인 패턴)     MVC 패턴을 JSP(View)와 자바빈즈(Model), 서블릿(Controller)을 이용해 쉽게 구현할 수 있다.   🔸 MVC 패턴     사용자에게 보여지는 화면인 View 부분과 실제 비즈니스 로직이 들어가는 Model 부분 그리고 View와 Model을 연결시켜주는 Controller 부분으로 구성   최근에 중대형 프로젝트에서 효과적이라 평가되어 많이 사용되고 있다.   🔸 디자인 패턴     프로젝트를 개발함에 있어서 특정한 문제가 주어졌을 때 그 문제를 해결하기 위한 방법을 설명해 놓은 일종의 지침   ","categories": ["JSP"],
         "tags": ["JSP","WEB"],
-        "url": "/jsp/WhatIsJSP/",
+        "url": "/jsp/What-is-JSP/",
+        "teaser": null
+      },{
+        "title": "JSP 사용",
+        "excerpt":"👀 JSP 사용     HTML 태그와 Java 코드를 함께 사용한다.   &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset=\"UTF-8\"&gt; &lt;title&gt;Insert title here&lt;/title&gt; &lt;/head&gt; &lt;body&gt;   &lt;%       // 스크립틀릿   %&gt; &lt;/body&gt; &lt;/html&gt;      HTML body 태그 안에서 스크립틀릿을 쓴 다음에 스크립틀릿의 범위 내에 코드를 작성한다.   &lt;h2&gt;자바코드로 테이블 생성&lt;/h2&gt;   &lt;table border=\"1\"&gt;     &lt;tr&gt;         &lt;td&gt;번호&lt;/td&gt;&lt;td&gt;이름&lt;/td&gt;     &lt;/tr&gt;     &lt;%         for (int i = 1; 6 &gt; i; i++)         {             %&gt;             &lt;tr&gt;                 &lt;td&gt;&lt;%=i %&gt;&lt;/td&gt;&lt;td&gt;학생&lt;%=i %&gt;&lt;/td&gt;             &lt;/tr&gt;             &lt;%         }     %&gt;   &lt;/table&gt;      위와 같이 자바 코드 사이에 스크립틀릿이 끝나는 표시(%&gt;)를 하고 HTML 태그를 쓴 다음에 &lt;%= %&gt;를 이용해 자바 코드의 지역 변수를 출력하는 것이 가능하다.(신기…)   🔸 JSP 주석   &lt;%-- --%&gt; (웹페이지 개발자 도구창에서 나타나지 않기 때문에 보안상 이것을 쓰는 것이 더 좋다) // 자바 스타일도 사용 가능  ","categories": ["JSP"],
+        "tags": ["JSP","WEB"],
+        "url": "/jsp/use-JSP/",
         "teaser": null
       }]
