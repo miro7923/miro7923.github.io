@@ -1,0 +1,40 @@
+I"`<h1 id="-jsp-스크립트-요소">👀 JSP 스크립트 요소</h1>
+<h2 id="1-선언문">1. 선언문</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%!</span>
+    <span class="c1">// 멤버변수와 메서드 선언</span>
+<span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>멤버변수와 메서드를 선언하기 위한 영역</li>
+  <li>클래스에서 멤버변수와 메서드를 선언한 것과 동일한 결과로 같은 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지 어느 위치에서든 참조가 가능하다.</li>
+</ul>
+
+<h2 id="2-스크립틀릿scriptlet">2. 스크립틀릿(Scriptlet)</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span> <span class="n">문장1</span><span class="o">;</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%</span>
+    <span class="n">문장2</span><span class="o">;</span> <span class="n">문장3</span><span class="o">;</span> <span class="n">문장4</span><span class="o">;</span> <span class="o">...</span>
+<span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 코드를 작성하는 영역</li>
+  <li>서블릿 코드의 작성법이 다소 어려워서 이것을 보완하기 위해 만들어진 방식</li>
+  <li>스크립틀릿 영역에서 선언되는 변수들은 지역변수로 인식된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 파일이 실행되면 웹 컨테이너에 의해 <code class="language-plaintext highlighter-rouge">JSP</code> 파일이 파싱되어 서블릿 클래스로 변환된 자바 소스 파일과 클래스 자바 파일이 서버에 저장된다.</li>
+</ul>
+
+<h2 id="3-표현식expression">3. 표현식(Expression)</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%=</span><span class="n">변수</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%=</span><span class="n">리턴값이</span> <span class="n">있는</span> <span class="n">메소드</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%=</span><span class="n">수식</span><span class="o">(</span><span class="n">변수</span> <span class="n">또는</span> <span class="n">리턴값이</span> <span class="n">있는</span> <span class="n">메소드를</span> <span class="n">포함할</span> <span class="n">수</span> <span class="n">있음</span><span class="o">)</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>선언문, 스크립틀릿에 생성한 변수, 메소드의 리턴값을 스크립틀릿 태그 외부에서 출력하기 위해 사용</li>
+  <li>하나의 표현식 태그 내의 구문 전체가 <code class="language-plaintext highlighter-rouge">print()</code> 메소드의 괄호 안에 통채로 들어가기 때문에 표현식 태그 내부에서는 <code class="language-plaintext highlighter-rouge">세미콜론(;)</code>을 사용해서는 안된다.</li>
+</ul>
+:ET

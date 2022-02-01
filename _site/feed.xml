@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-01T13:55:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP란?</title><link href="http://localhost:4000/jsp/What-is-JSP/" rel="alternate" type="text/html" title="JSP란?" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/What-is-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/What-is-JSP/"><![CDATA[<h1 id="-jspjava-server-page란">👀 JSP(Java Server Page)란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-01T13:58:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP란?</title><link href="http://localhost:4000/jsp/What-is-JSP/" rel="alternate" type="text/html" title="JSP란?" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/What-is-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/What-is-JSP/"><![CDATA[<h1 id="-jspjava-server-page란">👀 JSP(Java Server Page)란?</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Java</code>를 이용하여 <code class="language-plaintext highlighter-rouge">동적인 웹 페이지</code>를 만들기 위해 Sun Microsystems사가 개발한 기술<br /><br /></li>
 </ul>
@@ -310,7 +310,45 @@
 
 <ul>
   <li>위와 같이 사용 가능하다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JavaScript" /><category term="JSP" /><category term="JavaScript" /><summary type="html"><![CDATA[자바스크립트란? 웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어 인터프리터 언어로 작성된 코드를 위에서 아래로 순차적으로 실행한다. 컴파일 언어와 다른 점은 일단 실행을 하고 에러가 발생하기 전 까지의 코드만 실행한다. 객체 기반 언어이다. 오픈소스 언어 다양한 라이브러리(API) 사용 가능 Jquery 주로 사용 - Ajax, Json HTML5(웹표준) API 기반의 언어]]></summary></entry><entry><title type="html">JSP 지시어(Directive)</title><link href="http://localhost:4000/jsp/JSP-directive/" rel="alternate" type="text/html" title="JSP 지시어(Directive)" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-directive</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-directive/"><![CDATA[<h1 id="-jsp-지시어란directive">👀 JSP 지시어란?(Directive)</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JavaScript" /><category term="JSP" /><category term="JavaScript" /><summary type="html"><![CDATA[자바스크립트란? 웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어 인터프리터 언어로 작성된 코드를 위에서 아래로 순차적으로 실행한다. 컴파일 언어와 다른 점은 일단 실행을 하고 에러가 발생하기 전 까지의 코드만 실행한다. 객체 기반 언어이다. 오픈소스 언어 다양한 라이브러리(API) 사용 가능 Jquery 주로 사용 - Ajax, Json HTML5(웹표준) API 기반의 언어]]></summary></entry><entry><title type="html">JSP 스크립트 요소</title><link href="http://localhost:4000/jsp/JSP-script-elements/" rel="alternate" type="text/html" title="JSP 스크립트 요소" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-script-elements</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-script-elements/"><![CDATA[<h1 id="-jsp-스크립트-요소">👀 JSP 스크립트 요소</h1>
+<h2 id="1-선언문">1. 선언문</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%!</span>
+    <span class="c1">// 멤버변수와 메서드 선언</span>
+<span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>멤버변수와 메서드를 선언하기 위한 영역</li>
+  <li>클래스에서 멤버변수와 메서드를 선언한 것과 동일한 결과로 같은 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지 어느 위치에서든 참조가 가능하다.</li>
+</ul>
+
+<h2 id="2-스크립틀릿scriptlet">2. 스크립틀릿(Scriptlet)</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span> <span class="n">문장1</span><span class="o">;</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%</span>
+    <span class="n">문장2</span><span class="o">;</span> <span class="n">문장3</span><span class="o">;</span> <span class="n">문장4</span><span class="o">;</span> <span class="o">...</span>
+<span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 코드를 작성하는 영역</li>
+  <li>서블릿 코드의 작성법이 다소 어려워서 이것을 보완하기 위해 만들어진 방식</li>
+  <li>스크립틀릿 영역에서 선언되는 변수들은 지역변수로 인식된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 파일이 실행되면 웹 컨테이너에 의해 <code class="language-plaintext highlighter-rouge">JSP</code> 파일이 파싱되어 서블릿 클래스로 변환된 자바 소스 파일과 클래스 자바 파일이 서버에 저장된다.</li>
+</ul>
+
+<h2 id="3-표현식expression">3. 표현식(Expression)</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%=</span><span class="n">변수</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%=</span><span class="n">리턴값이</span> <span class="n">있는</span> <span class="n">메소드</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%=</span><span class="n">수식</span><span class="o">(</span><span class="n">변수</span> <span class="n">또는</span> <span class="n">리턴값이</span> <span class="n">있는</span> <span class="n">메소드를</span> <span class="n">포함할</span> <span class="n">수</span> <span class="n">있음</span><span class="o">)</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>선언문, 스크립틀릿에 생성한 변수, 메소드의 리턴값을 스크립틀릿 태그 외부에서 출력하기 위해 사용</li>
+  <li>하나의 표현식 태그 내의 구문 전체가 <code class="language-plaintext highlighter-rouge">print()</code> 메소드의 괄호 안에 통채로 들어가기 때문에 표현식 태그 내부에서는 <code class="language-plaintext highlighter-rouge">세미콜론(;)</code>을 사용해서는 안된다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 스크립트 요소 1. 선언문]]></summary></entry><entry><title type="html">JSP 지시어(Directive)</title><link href="http://localhost:4000/jsp/JSP-directive/" rel="alternate" type="text/html" title="JSP 지시어(Directive)" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-directive</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-directive/"><![CDATA[<h1 id="-jsp-지시어란directive">👀 JSP 지시어란?(Directive)</h1>
 
 <div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span><span class="err">@</span> <span class="o">...</span> <span class="nt">%&gt;</span>
 </code></pre></div></div>
@@ -512,50 +550,57 @@
 
 <div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- --%&gt;</span> (웹페이지 개발자 도구창에서 나타나지 않기 때문에 보안상 이것을 쓰는 것이 더 좋다)
 // 자바 스타일도 사용 가능
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 사용 HTML 태그와 Java 코드를 함께 사용한다.]]></summary></entry><entry><title type="html">DB 기초</title><link href="http://localhost:4000/database/DB-start/" rel="alternate" type="text/html" title="DB 기초" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/DB-start</id><content type="html" xml:base="http://localhost:4000/database/DB-start/"><![CDATA[<h1 id="-db란">🎬 DB란?<br /></h1>
+</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 사용 HTML 태그와 Java 코드를 함께 사용한다.]]></summary></entry><entry><title type="html">DB 구동 및 접속</title><link href="http://localhost:4000/database/DB-start-conn/" rel="alternate" type="text/html" title="DB 구동 및 접속" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/DB-start-conn</id><content type="html" xml:base="http://localhost:4000/database/DB-start-conn/"><![CDATA[<h1 id="-db-구동-및-접속">🎬 DB 구동 및 접속<br /></h1>
 
-<h2 id="-db를-쓰는-이유">🔸 DB를 쓰는 이유</h2>
+<h2 id="1-linux-부팅-및-터미널-실행">1. Linux 부팅 및 터미널 실행</h2>
 <ul>
-  <li>데이터를 오프라인으로 캐비넷에 저장하자니 물리적 저장 공간은 한정되어 있다.</li>
-  <li>그렇다면 엑셀 파일을 만들어 암호를 걸어 쓰는 방법이 있는데 만약 암호가 유출된다면 그 엑셀 파일 안에 저장된 정보도 모두 유출된다. 따라서 이것도 안전한 방법은 아니다.</li>
-  <li>그래서 서버에 데이터베이스를 구축하고 거기에 고객 정보를 저정하고 관리하는 것이다.
-    <ul>
-      <li>데이터베이스엔 애초에 허가받은 사용자만 접근할 수 있고 허가받은 권한 만큼만 데이터에 접근할 수 있다.<br /><br /></li>
-    </ul>
-  </li>
+  <li>Windows에서 가상 PC를 실행한 뒤 Linux 부팅 후 로그인한다.</li>
+  <li>Linux 부팅이 완료되면 <strong>마우스 우클릭 - 터미널 열기</strong></li>
 </ul>
 
-<h2 id="-dbms">🔸 DBMS</h2>
+<h2 id="2-listener-시작">2. Listener 시작</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ lsnrctl start
+</code></pre></div></div>
 <ul>
-  <li>데이터베이스 관리 시스템</li>
-  <li>DB에서 필요한 데이터를 검색하거나 삽입, 수정, 삭제하기 위한 프로그램</li>
-  <li>ORACLE, MySQL등이 있으며 이것들이 DB 자체를 의미하는 것은 아니다.
-    <ul>
-      <li>DB를 다루기 위한 수단으로서 MySQL을 사용하면 MySQL을 사용한 DB 프로그램인 것이다.<br /><br /></li>
-    </ul>
-  </li>
+  <li>Listener를 시작한다.</li>
+  <li>Listener는 네트워크를 이용하여 클라이언트에서 오라클 서버로 연결하기 위한 오라클 네트워크 관리자이다.</li>
+  <li>리스너를 시작하지 않아도 DB 구동엔 문제가 없지만 네트워크를 통한 연결은 모두 리스너가 담당하기 때문에 리스너를 시작하지 않으면 DB에 접속하고자 하는 클라이언트들이 접속할 수 없다.</li>
+  <li>따라서 터미널이 실행되면 가장 먼저 리스너를 시작한 후 다음 프로세스를 진행한다.<br /><br /></li>
 </ul>
 
-<h2 id="-rdbms">🔸 RDBMS</h2>
+<h2 id="3-sqlplus-실행">3. SqlPlus 실행</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlplus /nolog
+</code></pre></div></div>
+
+<h2 id="4-database-접속">4. Database 접속</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ conn 아이디/비밀번호 as sysdba(권한)
+</code></pre></div></div>
+<h3 id="-db-user">🔸 DB User</h3>
 <ul>
-  <li>관계형 DBMS</li>
-  <li>시중에 나와있는 대부분의 DBMS라고 보면 된다.<br /><br /></li>
+  <li>sysdba : dba + DB 생성 + DB 시작/종료 권한</li>
+  <li>system : dba 권한</li>
+  <li>hr : Object(테이블, 뷰, 시퀀스 등) 생성 및 운영 권한<br /><br /></li>
 </ul>
 
-<h2 id="-sql">🔸 SQL</h2>
+<h2 id="5-database-시작">5. Database 시작</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; startup
+</code></pre></div></div>
+
+<h2 id="6-hr-사용자로-db-login">6. HR 사용자로 DB Login</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; conn 아이디/비밀번호
+</code></pre></div></div>
+
+<h2 id="7-사용자-확인">7. 사용자 확인</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; show user
+</code></pre></div></div>
 <ul>
-  <li>데이터 액세스를 위해 ORACLE server와 통신하는 언어로 DB와 소통하기 위한 언어</li>
-  <li>모든 DBMS에서 사용하는 공용언어<br /><br /></li>
+  <li>HR 사용자로 최종 로그인 되었는지 확인한다.</li>
 </ul>
 
-<h2 id="-table">🔸 TABLE</h2>
-<ul>
-  <li>DB에서 사용하는 대표 객체(오브젝트)</li>
-  <li>테이블을 사용해서 데이터를 분류한다.<br /><br />
-<img src="../../assets/images/table.png" alt="table" /><br /><br /></li>
-  <li>세로는 <strong>열(column)</strong>, 가로는 <strong>행(row)</strong>!!</li>
-  <li>column과 row가 만나는 곳은 <strong>Field(Record)값</strong>이라고 부른다.<br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB란?]]></summary></entry><entry><title type="html">HTTP 프로토콜(HyperText Transfer Protocol)</title><link href="http://localhost:4000/jsp/JSP-http-protocol/" rel="alternate" type="text/html" title="HTTP 프로토콜(HyperText Transfer Protocol)" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-http-protocol</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-http-protocol/"><![CDATA[<h1 id="-http-프로토콜이란">🎬 HTTP 프로토콜이란?</h1>
+<h3 id="-user-비밀번호-변경-방법">🔸 User 비밀번호 변경 방법</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; alter user 아이디
+     identified by 새 비밀번호;
+</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB 구동 및 접속]]></summary></entry><entry><title type="html">HTTP 프로토콜(HyperText Transfer Protocol)</title><link href="http://localhost:4000/jsp/JSP-http-protocol/" rel="alternate" type="text/html" title="HTTP 프로토콜(HyperText Transfer Protocol)" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-http-protocol</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-http-protocol/"><![CDATA[<h1 id="-http-프로토콜이란">🎬 HTTP 프로토콜이란?</h1>
 <ul>
   <li>실제 사용자와 연결된 최상위 계층의 프로토콜로 가장 대표적인 웹브라우저의 통신에 관한 프로토콜<br /><br /></li>
 </ul>
@@ -684,70 +729,4 @@
   <li><code class="language-plaintext highlighter-rouge">서블릿</code> 클래스에 대한 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>를 <code class="language-plaintext highlighter-rouge">서블릿 컨테이너</code></li>
   <li><code class="language-plaintext highlighter-rouge">JSP</code> 파일에 대한 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>를 <code class="language-plaintext highlighter-rouge">JSP 컨테이너</code><br /><br /></li>
   <li>대표적으로 아파치 톰캣, 웹로직, Resin 등이 있다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><category term="HTTP" /><summary type="html"><![CDATA[🎬 웹 컨테이너란? JSP와 서블릿을 사용한 웹 서버는 크게 URL 주소의 해석을 담당하는 HTTP 서버와 서블릿 클래스 또는 JSP 파일의 실행 요청을 처리해주는 웹 컨테이너(Web Container)로 구성된다. HTTP 서버는 단순히 어떤 주소(URL) 요청이 들어왔을 경우 그 주소에 미리 매핑되어 있는 콘텐츠(HTML 파일이나 이미지 등)를 사용자의 브라우저에 응답 형태로 전송하는 역할을 한다. 이 때 요청된 URL이 서블릿 클래스 또는 JSP 파일일 경우 HTTP 서버는 이를 웹 컨테이너에서 처리하도록 클라이언트의 요청을 넘겨준다. 웹 컨테이너에서는 요청된 URL에 맞는(미리 설정된) 서블릿 클래스 또는 JSP 파일을 실행하여 결과를 HTTP 서버에 넘겨주게 되고 이는 응답 메시지의 형태로 사용자의 브라우저에 전송된다. 👉 즉 웹 컨테이너란 웹 서버 내부에서 서블릿 클래스 또는 JSP 파일을 실행하기 위한 실행 환경을 제공하는 역할을 한다. 서블릿 클래스에 대한 웹 컨테이너를 서블릿 컨테이너 JSP 파일에 대한 웹 컨테이너를 JSP 컨테이너 대표적으로 아파치 톰캣, 웹로직, Resin 등이 있다.]]></summary></entry><entry><title type="html">웹 프로그래밍 언어 종류</title><link href="http://localhost:4000/jsp/JSP-web-programming-languages/" rel="alternate" type="text/html" title="웹 프로그래밍 언어 종류" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-web-programming-languages</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-web-programming-languages/"><![CDATA[<h1 id="1-cgicommon-gateway-interface">1. CGI(Common Gateway Interface)</h1>
-<ul>
-  <li>응용 프로그램과 웹 서버 사이의 정보를 주고받는 방식이나 규약들을 정해 놓은 것</li>
-  <li>단순한 <code class="language-plaintext highlighter-rouge">HTML</code> 방식으로는 동적인 웹 페이지를 만들기가 어렵기 때문에 서버측에서 동적인 데이터를 처리해 클라이언트에 <code class="language-plaintext highlighter-rouge">HTML</code> 문서로 전송해 줄 수 있는 <code class="language-plaintext highlighter-rouge">응용 프로그램(웹 프로그램)</code>이 필요해져서 만들어졌다.</li>
-  <li>현재 웹 프로그래밍은 대부분 <code class="language-plaintext highlighter-rouge">ASP</code>, <code class="language-plaintext highlighter-rouge">PHP</code>, <code class="language-plaintext highlighter-rouge">JSP</code>를 이용한 것이 대부분인데, <code class="language-plaintext highlighter-rouge">DBMS와의 간편한 연동</code>, <code class="language-plaintext highlighter-rouge">객체 지향적인 특성</code>, <code class="language-plaintext highlighter-rouge">편한 개발 환경</code> 등 강력한 기능을 갖추었기 때문이다.<br /><br /></li>
-</ul>
-
-<h2 id="-dbmsdatabase-management-system">🔸 DBMS(Database Management System)</h2>
-<ul>
-  <li>데이터베이스 관리자라고도 불리며 다수의 컴퓨터 사용자들이 데이터베이스 안에 데이터를 기록하거나 접근할 수 있게 해주는 프로그램</li>
-  <li><code class="language-plaintext highlighter-rouge">DBMS</code>는 데이터베이스 내의 정보를 검색하거나, 데이터베이스에 정보를 저장하기 편리하고 효율적인 환경을 제공하며, 응용 소프트웨어별로 흩어져 있는 자료들을 통합하고 통합된 자료들을 각 응용 소프트웨어가 공유하여 정보의 체계적인 활용을 가능하게 한다.</li>
-  <li>일반적인 형태의 DBMS는 관계형 데이터베이스 관리 시스템(<code class="language-plaintext highlighter-rouge">RDBMS</code>)인데, <code class="language-plaintext highlighter-rouge">RDBMS</code>의 표준화된 사용자 및 프로그램 인터페이스를 <code class="language-plaintext highlighter-rouge">SQL(Strutured Query Language)</code>이라고 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">RDBMS</code>로는 <code class="language-plaintext highlighter-rouge">오라클(Oracle)</code>, <code class="language-plaintext highlighter-rouge">사이베이스(Sybase)</code>, <code class="language-plaintext highlighter-rouge">인포믹스(Infomix)</code>등이 쓰인다.<br /><br /></li>
-</ul>
-
-<h2 id="-인터페이스interface">🔸 인터페이스(Interface)</h2>
-<ul>
-  <li>사물과 사물간의 소통이 가능하도록 만들어진 매개체 또는 규약</li>
-  <li>웹 프로그래밍에서는 서버와 응용 프로그램 간의 원활한 통신이 가능하도록 만들어진 규약을 말한다.<br /><br /></li>
-</ul>
-
-<h2 id="-스크립트-언어script-language">🔸 스크립트 언어(Script Language)</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">C</code>와 같은 일반적인 프로그래밍 언어는 컴파일러에 의해 컴파일 되어 2진수로 되어있는 기계어로 변환되어야지만 컴퓨터 상에서 실행될 수 있다.</li>
-  <li>이와는 달리 컴파일이 필요 없이 해석기(<code class="language-plaintext highlighter-rouge">인터프리터</code>)에 의해 즉시 실행될 수 있는 프로그램 언어를 <code class="language-plaintext highlighter-rouge">스크립트 언어</code>라고 한다.</li>
-  <li>대표적으로 <code class="language-plaintext highlighter-rouge">브라우저</code>에 의해 해석되어 실행되는 <code class="language-plaintext highlighter-rouge">JavaScript</code>가 있으며, <code class="language-plaintext highlighter-rouge">Unix</code>의 쉘 스크립트, <code class="language-plaintext highlighter-rouge">윈도우</code>의 Batch 파일도 스크립트 언어라 할 수 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="2-aspactive-server-page">2. ASP(Active Server Page)</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">C#(.Net)</code>과 유사하다.</li>
-  <li>동적인 웹 페이지의 구현을 위해 <code class="language-plaintext highlighter-rouge">Visual Basic</code> 언어를 기반으로 만들어진 <code class="language-plaintext highlighter-rouge">VBScript</code>라는 스크립트 언어를 사용해서 구성된 웹 프로그래밍 기술</li>
-  <li>쉬운 문법을 가지고 있어 빠르고 쉽게 개발할 수 있고 Active-X 및 DDL 컴포넌트를 사용하여 어느 정도의 확장성도 갖추었지만 웹 서버로 오직 <code class="language-plaintext highlighter-rouge">Windows</code> 기반의 <code class="language-plaintext highlighter-rouge">IIS(Internet Information Server)</code>만을 사용할 수 있기 때문에 플랫폼에 비독립적이라는 큰 단점을 가디고 있다.</li>
-  <li>또한 <code class="language-plaintext highlighter-rouge">Java</code> 기반의 <code class="language-plaintext highlighter-rouge">JSP</code>에 비해 시스템 자원의 효율성과 확장성이 떨어진다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="3-phppersonal-hypertext-preprocessor">3. PHP(Personal Hypertext Preprocessor)</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">ASP</code>와 유사한 스크립트 기반의 언어이지만 <code class="language-plaintext highlighter-rouge">C</code>를 기반으로 만들어져서 빠른 속도를 가지고 있다.</li>
-  <li>다양한 플랫폼에서 사용 가능하며 100% 무료로 사용할 수 있다.</li>
-  <li>하지만 서버측의 지원 인프라가 매우 부족하여 확장성이 떨어지고, 기업형의 복잡한 시스템 구조에 적용하기가 힘들고 보안상의 약점을 가지고 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="4-jsp">4. JSP</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Java</code>를 기반으로 만들어진 <code class="language-plaintext highlighter-rouge">서블릿(Servlet)</code>이라는 동적 웹 구현 기술이 개발된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">서블릿</code>은 객체지향적이며 플랫폼 독립적인 자바의 장점을 그대로 웹에서 구현할 수 있었으며 <code class="language-plaintext highlighter-rouge">스레드(Thread)</code> 기반의 요청 처리 방식을 채택했기에 사용자가 많을수록 효율적으로 동작하는 기술이었다.</li>
-  <li>하지만 익히기가 쉽지 않은 편이었기 때문에 유저인터페이스의 구현이 쉬운 <code class="language-plaintext highlighter-rouge">ASP</code>의 장점을 수용하여 <code class="language-plaintext highlighter-rouge">JSP</code>가 개발된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">JSP</code> 또한 스크립트 기반으로 개발되어 훨씬 쉽게 작성할 수 있었고 <strong><code class="language-plaintext highlighter-rouge">서블릿</code>과 함께 구동함으로써 <code class="language-plaintext highlighter-rouge">서블릿</code>의 기능을 그대로 사용할 수 있고 <code class="language-plaintext highlighter-rouge">자바빈즈(JavaBeans)</code>, <code class="language-plaintext highlighter-rouge">EJB</code>같은 기술로 보다 강력한 객체지향적 지원이 가능</strong>해졌다.</li>
-  <li>또한 <code class="language-plaintext highlighter-rouge">JSTL</code>을 지원하게 되면서 웹 프로그램의 가독성이 좋아지고 유지 및 보수가 훨씬 쉬워지는 장점을 가지게 되었다.</li>
-  <li>이러한 장점들은 대규모 프로젝트에서 유용하기 때문에 최근에는 일정 규모 이상의 웹사이트를 개발할 때에는 주로 <code class="language-plaintext highlighter-rouge">JSP</code>를 사용한다.<br /><br /></li>
-</ul>
-
-<h2 id="-프로세스process">🔸 프로세스(Process)</h2>
-<ul>
-  <li>실행 중인 프로그램을 나타내는 말로 <code class="language-plaintext highlighter-rouge">태스크(Task)</code>라고도 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">윈도우</code>와 같이 멀티태스킹을 지원하는 운영체제에서는 동시에 실행되고 있는 여러 개의 프로세스에 대하여 <code class="language-plaintext highlighter-rouge">CPU</code>와 <code class="language-plaintext highlighter-rouge">메모리 자원</code>을 안정되게 분배해 주어야 하며 이러한 역할은 그 운영체제의 성능을 결정하는 데 있어 아주 중요한 요소이다.</li>
-  <li>그런데 운영체제는 똑같은 프로그램이 두 개 이상 실행되면 같은 프로그램이라 하더라도 서로 다른 자원을 할당해 두 개 이상의 프로세스를 만든다.</li>
-  <li>이는 실행되는 프로그램의 수가 늘어날수록 할당해야 하는 자원이 늘어나게 되어 굉장히 비효율적이고 성능의 하락을 가져올 것이다.</li>
-  <li>이러한 단점을 극복하기 위해 개발된 것이 <code class="language-plaintext highlighter-rouge">스레드(Thread)</code>이다.<br /><br /></li>
-</ul>
-
-<h2 id="-스레드thread">🔸 스레드(Thread)</h2>
-<ul>
-  <li>하나의 프로세스 내에서 해당 프로세스가 할당받은 자원을 공유하며 실행되는 독립적인 작업단위</li>
-  <li>프로세스의 자원을 참조할 뿐 새로 할당받을 필요가 없기 때문에 프로세스를 생성하는 것보다 훨씬 빠른 생성 속도를 가진다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><summary type="html"><![CDATA[1. CGI(Common Gateway Interface) 응용 프로그램과 웹 서버 사이의 정보를 주고받는 방식이나 규약들을 정해 놓은 것 단순한 HTML 방식으로는 동적인 웹 페이지를 만들기가 어렵기 때문에 서버측에서 동적인 데이터를 처리해 클라이언트에 HTML 문서로 전송해 줄 수 있는 응용 프로그램(웹 프로그램)이 필요해져서 만들어졌다. 현재 웹 프로그래밍은 대부분 ASP, PHP, JSP를 이용한 것이 대부분인데, DBMS와의 간편한 연동, 객체 지향적인 특성, 편한 개발 환경 등 강력한 기능을 갖추었기 때문이다.]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="WEB" /><category term="JSP" /><category term="HTTP" /><summary type="html"><![CDATA[🎬 웹 컨테이너란? JSP와 서블릿을 사용한 웹 서버는 크게 URL 주소의 해석을 담당하는 HTTP 서버와 서블릿 클래스 또는 JSP 파일의 실행 요청을 처리해주는 웹 컨테이너(Web Container)로 구성된다. HTTP 서버는 단순히 어떤 주소(URL) 요청이 들어왔을 경우 그 주소에 미리 매핑되어 있는 콘텐츠(HTML 파일이나 이미지 등)를 사용자의 브라우저에 응답 형태로 전송하는 역할을 한다. 이 때 요청된 URL이 서블릿 클래스 또는 JSP 파일일 경우 HTTP 서버는 이를 웹 컨테이너에서 처리하도록 클라이언트의 요청을 넘겨준다. 웹 컨테이너에서는 요청된 URL에 맞는(미리 설정된) 서블릿 클래스 또는 JSP 파일을 실행하여 결과를 HTTP 서버에 넘겨주게 되고 이는 응답 메시지의 형태로 사용자의 브라우저에 전송된다. 👉 즉 웹 컨테이너란 웹 서버 내부에서 서블릿 클래스 또는 JSP 파일을 실행하기 위한 실행 환경을 제공하는 역할을 한다. 서블릿 클래스에 대한 웹 컨테이너를 서블릿 컨테이너 JSP 파일에 대한 웹 컨테이너를 JSP 컨테이너 대표적으로 아파치 톰캣, 웹로직, Resin 등이 있다.]]></summary></entry></feed>
