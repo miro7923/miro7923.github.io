@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>적재와 프로그램과 프로세스 | Yujin Dev Log</title>
-<meta name="description" content="🔸 적재(로드 load)    보조기억장치(HDD 등) -&gt; 주기억장치(RAM)로 이동">
+<!-- begin _includes/seo.html --><title>JSP 지시어(Directive) | Yujin Dev Log</title>
+<meta name="description" content="👀 JSP 지시어란?(Directive)">
 
 
   <meta name="author" content="Yujin Hwang">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="적재와 프로그램과 프로세스">
-<meta property="og:url" content="http://localhost:4000/computer%20science/CS13/">
+<meta property="og:title" content="JSP 지시어(Directive)">
+<meta property="og:url" content="http://localhost:4000/jsp/JSP-directive/">
 
 
-  <meta property="og:description" content="🔸 적재(로드 load)    보조기억장치(HDD 등) -&gt; 주기억장치(RAM)로 이동">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-01-30T00:00:00+09:00">
+  <meta property="og:description" content="👀 JSP 지시어란?(Directive)">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-02-01T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/computer%20science/CS13/">
+
+<link rel="canonical" href="http://localhost:4000/jsp/JSP-directive/">
 
 
 
@@ -167,7 +167,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#computer-science" itemprop="item"><span itemprop="name">Computer science</span></a>
+          <a href="/categories/#jsp" itemprop="item"><span itemprop="name">Jsp</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">적재와 프로그램과 프로세스</li>
+        <li class="current">JSP 지시어(Directive)</li>
       
     
   </ol>
@@ -310,16 +310,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="적재와 프로그램과 프로세스">
-    <meta itemprop="description" content="🔸 적재(로드 load)  보조기억장치(HDD 등) -&gt; 주기억장치(RAM)로 이동">
-    <meta itemprop="datePublished" content="2022-01-30T00:00:00+09:00">
+    <meta itemprop="headline" content="JSP 지시어(Directive)">
+    <meta itemprop="description" content="👀 JSP 지시어란?(Directive)">
+    <meta itemprop="datePublished" content="2022-02-01T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/computer%20science/CS13/" class="u-url" itemprop="url">적재와 프로그램과 프로세스
+            <a href="http://localhost:4000/jsp/JSP-directive/" class="u-url" itemprop="url">JSP 지시어(Directive)
 </a>
           </h1>
           
@@ -336,7 +336,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          1 분 소요
         
       </span>
     
@@ -351,29 +351,164 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#-적재로드-load">🔸 적재(로드 load)</a></li><li><a href="#-프로그램program">🔸 프로그램(Program)</a></li><li><a href="#-프로세스process">🔸 프로세스(Process)</a><ul><li><a href="#️-실행load되면-비로소-프로세스가-된다">☑️ 실행(load)되면 비로소 프로세스가 된다.</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#-jsp-지시어란directive">👀 JSP 지시어란?(Directive)</a><ul><li><a href="#1-page-지시어">1. page 지시어</a></li><li><a href="#2-include-지시어">2. include 지시어</a></li><li><a href="#3-taglib-지시어">3. taglib 지시어</a><ul><li><a href="#-uri-속성">🔸 uri 속성</a></li><li><a href="#-prefix-속성">🔸 prefix 속성</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h2 id="-적재로드-load">🔸 적재(로드 load)</h2>
+        <h1 id="-jsp-지시어란directive">👀 JSP 지시어란?(Directive)</h1>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span><span class="err">@</span> <span class="o">...</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
 <ul>
-  <li>보조기억장치(HDD 등) -&gt; 주기억장치(RAM)로 이동</li>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 파일 내에서 <code class="language-plaintext highlighter-rouge">JSP</code>를 실행할 컨테이너에서 해당 페이지를 어떻게 처리할 것인가에 대한 설정 정보들을 지정해주는 데 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">page</code> 지시어, <code class="language-plaintext highlighter-rouge">include</code> 지시어, <code class="language-plaintext highlighter-rouge">taglib</code> 지시어 3가지로 나누어진다.</li>
 </ul>
 
-<h2 id="-프로그램program">🔸 프로그램(Program)</h2>
+<h2 id="1-page-지시어">1. page 지시어</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span>속성1="값1" 속성2="값2" 속성3="값3"... <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
 <ul>
-  <li>하드디스크에 들어있는 상태 (아직 실행은 되지 않은 상태임)</li>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 페이지에 대한 속성을 지정하는 지시어</li>
+  <li>속성에는 스크립트 언어, import할 패키지/클래스, 세션 사용 여부, 에러 페이지 등 12개의 설정 정보를 지정해 사용할 수 있다.</li>
 </ul>
 
-<h2 id="-프로세스process">🔸 프로세스(Process)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>사용법</th>
+      <th>기본값</th>
+      <th>설명</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>language</td>
+      <td>language=”java”</td>
+      <td>java</td>
+      <td>스크립트 요소에서 사용할 언어 설정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>extends</td>
+      <td>extends=”클래스명”</td>
+      <td>없음</td>
+      <td>상속받을 클래스를 설정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>import</td>
+      <td>import=”패키지.클래스명”</td>
+      <td>없음</td>
+      <td>import할 패키지.클래스 설정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>session</td>
+      <td>session=”true”</td>
+      <td>true</td>
+      <td>HttpSession 사용 여부를 설정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>buffer</td>
+      <td>buffer=”16kb”</td>
+      <td>8kb</td>
+      <td>JSP 페이지의 출력 버퍼 크기를 설정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>autoFlush</td>
+      <td>autoFlush=”true”</td>
+      <td>true</td>
+      <td>출력 버퍼가 다 찼을 경우 처리 방법을 설정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>isThreadSafe</td>
+      <td>isThreadSafe=”true”</td>
+      <td>true</td>
+      <td>다중 스레드의 동시 실행 여부를 설정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>info</td>
+      <td>info=”페이지 설명”</td>
+      <td>없음</td>
+      <td>페이지 설명</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>errorPage</td>
+      <td>errorPage=”에러 페이지.jsp”</td>
+      <td>없음</td>
+      <td>에러 페이지로 사용할 페이지를 지정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>contentType</td>
+      <td>contentType=”text/html”</td>
+      <td>text/html;charset=ISO-8859-1</td>
+      <td>JSP 페이지가 생성할 문서의 타입을 지정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>isErrorPage</td>
+      <td>isErrorPage=”false”</td>
+      <td>false</td>
+      <td>현재 페이지를 에러 페이지로 지정</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>pageEncoding</td>
+      <td>pageEncoding=”euc-kr”</td>
+      <td>ISO-8859-1</td>
+      <td>현재 페이지의 문자 인코딩 타입 설정</td>
+      <td><br /></td>
+    </tr>
+  </tbody>
+</table>
+
 <ul>
-  <li>주기억장치에 로드된 상태의 프로그램(실행되고 있는 프로그램)</li>
+  <li>각각의 속성을 하나의 <code class="language-plaintext highlighter-rouge">page 지시어</code>에 한 번에 지정할 수도 있으며 여러 개의 <code class="language-plaintext highlighter-rouge">page 지시어</code>에 나누어 지정할 수도 있다.</li>
+  <li>하지만 <code class="language-plaintext highlighter-rouge">import</code> 속성을 제외한 나머지 속성은 하나의 페이지에서 오직 한 번씩만 지정할 수 있다.<br /><br /></li>
 </ul>
 
-<h3 id="️-실행load되면-비로소-프로세스가-된다">☑️ 실행(load)되면 비로소 프로세스가 된다.</h3>
+<h2 id="2-include-지시어">2. include 지시어</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ include </span><span class="na">file=</span><span class="s">"header.jsp"</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
 <ul>
-  <li>그러므로 인터넷 브라우저를 켜서 쓰고 있다면 <strong>인터넷 브라우저 프로세스를 사용</strong>하고 있다고 할 수 있다.(인터넷 브라우저 프로그램 사용중이라고 하는거 <strong>아님!!</strong>)<br /></li>
+  <li>특정한 <code class="language-plaintext highlighter-rouge">JSP</code> 파일 또는 <code class="language-plaintext highlighter-rouge">HTML</code> 파일을 해당 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지에 삽입할 수 있도록 하는 기능을 제공한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">include</code>되는 <code class="language-plaintext highlighter-rouge">JSP</code> 코드 자체가 해당 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지에 복사되어 더해지므로 서블릿 컴파일 과정은 <code class="language-plaintext highlighter-rouge">include</code> 되는 페이지의 수가 아무리 많아도 단 한 번만 이루어지게 된다.</li>
+  <li>사용되는 공통 변수값들을 추가할 때 주로 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">include</code> 지시어는 중첩 사용이 가능하기 때문에 <code class="language-plaintext highlighter-rouge">include</code>되는 파일 안에서 또 다른 파일을 <code class="language-plaintext highlighter-rouge">include</code>하여도 문제없이 동작한다.<br /><br /></li>
+</ul>
+
+<h2 id="3-taglib-지시어">3. taglib 지시어</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ taglib </span><span class="na">url=</span><span class="s">"http://taglib.com/sampleURI"</span><span class="na"> prefix=</span><span class="s">"samplePrefix"</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSTL(JSP Standard Tag Library)이나 커스텀 태그 등 태그 라이브러리를 </code>JSP`에서 사용할 때 접두사를 지정하기 위해 사용된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">uri</code> 속성과 <code class="language-plaintext highlighter-rouge">prefix</code> 속성으로 이루어진다.</li>
+</ul>
+
+<h3 id="-uri-속성">🔸 uri 속성</h3>
+<ul>
+  <li>태그 라이브러리에서 정의한 태그와 속성 저보를 저장한 <code class="language-plaintext highlighter-rouge">TLD(Tag Library Descriptor)</code> 파일이 존재하는 위치 지정</li>
+</ul>
+
+<h3 id="-prefix-속성">🔸 prefix 속성</h3>
+<ul>
+  <li>사용할 커스텀 태그의 네임 스페이스(Name Space)를 지정</li>
 </ul>
 
         
@@ -391,7 +526,9 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#cs" class="page__taxonomy-item p-category" rel="tag">CS</a>
+      <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a><span class="sep">, </span>
+    
+      <a href="/tags/#web" class="page__taxonomy-item p-category" rel="tag">WEB</a>
     
     </span>
   </p>
@@ -408,7 +545,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#computer-science" class="page__taxonomy-item p-category" rel="tag">Computer Science</a>
+      <a href="/categories/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a>
     
     </span>
   </p>
@@ -416,7 +553,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-30T00:00:00+09:00">January 30, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-01T00:00:00+09:00">February 1, 2022</time></p>
 
       </footer>
 
@@ -425,22 +562,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EC%A0%81%EC%9E%AC%EC%99%80+%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%EA%B3%BC+%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS13%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=JSP+%EC%A7%80%EC%8B%9C%EC%96%B4%28Directive%29%20http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-directive%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS13%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-directive%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2FCS13%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-directive%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/computer%20science/CS12/" class="pagination--pager" title="컴퓨터 하드웨어 - 산술 논리 연산 장치
+      <a href="/story/decorate-github-profile/" class="pagination--pager" title="깃허브 프로필(Github Profile) 꾸미기
 ">이전</a>
     
     
-      <a href="/story/making-github-blog/" class="pagination--pager" title="깃허브 블로그(Github Blog)를 만들기 위한 여정
+      <a href="/javascript/JavaScript/" class="pagination--pager" title="JavaScript 기본 문법
 ">다음</a>
     
   </nav>
@@ -595,7 +732,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/jsp/JSP-directive/" rel="permalink">JSP 지시어(Directive)
+        <a href="/story/decorate-github-profile/" rel="permalink">깃허브 프로필(Github Profile) 꾸미기
 </a>
       
     </h2>
@@ -613,14 +750,18 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 분 소요
+          2 분 소요
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">👀 JSP 지시어란?(Directive)
+    <p class="archive__item-excerpt" itemprop="description">🎬 시작
+드디어 깃헙 블로그를 만들고… 다른 깃헙들을 구경하다 보니까 깃헙 메인 화면 자체를 예쁘게 꾸며놓으신 분들이 많더라고요!
+
+이렇게요!
+되게 좋아 보이잖아요?ㅎㅎㅎ 그래서 저도 꾸며보기로 했습니다.
 </p>
   </article>
 </div>
