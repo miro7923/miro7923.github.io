@@ -1,0 +1,169 @@
+I"� <h1 id="-내장-객체란">👀 내장 객체란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 페이지가 웹 컨테이너에 의해서 서블릿으로 변환할 때 웹 컨테이너가 자동으로 생성해 주는 객체(<code class="language-plaintext highlighter-rouge">클래스</code>, <code class="language-plaintext highlighter-rouge">import</code> 구분없이 사용 가능)<br /><br /></li>
+</ul>
+
+<p>javax.servlet 패키지 - 8개<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>내장 객체 변수명</th>
+      <th>설명</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>request</td>
+      <td>클라이언트의 <code class="language-plaintext highlighter-rouge">HTTP</code> 요청 정보를 저장한 객체(<code class="language-plaintext highlighter-rouge">HTTP</code>헤더 정보, 파라미터 등)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>response</td>
+      <td>클라이언트 요청에 대한(<code class="language-plaintext highlighter-rouge">HTTP</code>) 응답 정보를 저장한 객체</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>session</td>
+      <td>클라이언트의 세션 정보를 저장한 객체</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>pageContext</td>
+      <td>페이지 실행에 필요한 컨텍스트 정보를 저장한 객체</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>out</td>
+      <td>응답 페이지 정보를 전송하기 위한 출력 스트림 객체</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>application</td>
+      <td>동일한 애플리케이션의 컨텍스트 정보를 저장한 객체</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>config</td>
+      <td>해당 페이지의 서블릿 설정 정보(초기화 정보)를 저장한 객체</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>page</td>
+      <td>해당 페이지 서블릿 객체(인스턴스)</td>
+      <td><br /><br /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>java.lang 패키지 - 1개<br /></p>
+<ul>
+  <li>exception : 예외 처리를 위한 객체</li>
+</ul>
+
+<h2 id="1-request-객체">1. request 객체</h2>
+<ul>
+  <li>
+    <p>사용자의 요청에 관한 정보를 얻기 위한 객체<br /><br /></p>
+  </li>
+  <li>서버 도메인명 : <code class="language-plaintext highlighter-rouge">request.getServerName();</code></li>
+  <li>서버 포트번호 : <code class="language-plaintext highlighter-rouge">request.getServerPort();</code></li>
+  <li>URL : <code class="language-plaintext highlighter-rouge">request.getRequestURL();</code></li>
+  <li>URI : <code class="language-plaintext highlighter-rouge">request.getRequestURI();</code></li>
+  <li>클라이언트 호스트명 : <code class="language-plaintext highlighter-rouge">request.getRemoteHost();</code></li>
+  <li>클라이언트 IP주소 : <code class="language-plaintext highlighter-rouge">request.getRemoteAddr();</code></li>
+  <li>프로토콜 : <code class="language-plaintext highlighter-rouge">request.getProtocol();</code></li>
+  <li>페이지 요청(전송)방식 : <code class="language-plaintext highlighter-rouge">request.getMethod();</code></li>
+  <li>프로젝트 경로 : <code class="language-plaintext highlighter-rouge">request.getContextPath();</code></li>
+  <li>물리적 경로 : <code class="language-plaintext highlighter-rouge">request.getRealPath("/");</code></li>
+  <li>http헤더 (user-agent): <code class="language-plaintext highlighter-rouge">request.getHeader("user-agent");</code></li>
+  <li>http헤더 (accept-language) : <code class="language-plaintext highlighter-rouge">request.getHeader("accept-language");</code></li>
+  <li>http헤더 (host) : <code class="language-plaintext highlighter-rouge">request.getHeader("host");</code></li>
+  <li>
+    <p>http헤더 (connection) : <code class="language-plaintext highlighter-rouge">request.getHeader("connection");</code></p>
+  </li>
+  <li>전송을 통해 다른 페이지에서 전달받은 (이름 등의)정보를 얻을 때</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>String name = request.getParameter("name");
+</code></pre></div></div>
+<p><br /></p>
+
+<ul>
+  <li>정보들을 배열로 얻을 때</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>String hobbies[] = request.getParameterValues("hobby");
+</code></pre></div></div>
+
+<h3 id="-uri">🔸 URI</h3>
+<ul>
+  <li>URI는 특정 리소스를 식별하는 <code class="language-plaintext highlighter-rouge">통합 자원 식별자(Uniform Resource Identifier)</code>를 의미한다.</li>
+  <li>웹 기술에서 사용하는 논리적 또는 물리적 리소스를 식별하는 고유한 문자열 시퀀스다.</li>
+</ul>
+
+<h3 id="-url">🔸 URL</h3>
+<ul>
+  <li>URL은 흔히 웹 주소라고도 하며, 컴퓨터 네트워크 상에서 리소스가 어디 있는지 알려주기 위한 규약이다. URI의 서브셋이다.</li>
+  <li>한마디로 URI가 자원 자체에 대한 고유 식별자라면 URL은 자원이 실제로 존재하는 위치를 가리킨다. <br /><br />
+<img src="../../assets/images/uri-url.png" alt="uri-url" /><br /><br /></li>
+</ul>
+
+<h2 id="2-response-객체">2. response 객체</h2>
+<ul>
+  <li>
+    <p>클라이언트의 요청에 대한 <code class="language-plaintext highlighter-rouge">HTTP</code> 응답(HTTP Response)을 나타내는 객체<br /><br /></p>
+  </li>
+  <li>
+    <p>response.setHeader(“헤더이름”, 값);</p>
+  </li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>response.addHeader("Refresh", "3"); // 3초에 한번씩 새로고침
+response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 다음 페이지로 이동
+</code></pre></div></div>
+
+<ul>
+  <li>response.sendRedirect(“주소”); // “주소”로 요청 재전송</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>response.sendRedirect("http://www.naver.co.kr"); // 해당 페이지로 바로 이동
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">response.setContentType("속성값"); 컨텐츠 타입 지정</code></li>
+  <li><code class="language-plaintext highlighter-rouge">response.addCookie("쿠키값"); 쿠키 추가</code></li>
+</ul>
+
+<h2 id="3-session-객체">3. session 객체</h2>
+<ul>
+  <li>
+    <p>클라이언트의 정보가 유지되어야 할 필요가 있는 경우를 위해 가상 연결을 구현해주는 세션<br /><br /></p>
+  </li>
+  <li>세션ID값 : <code class="language-plaintext highlighter-rouge">session.getId();</code></li>
+  <li>세션생성시간 정보(ms) : <code class="language-plaintext highlighter-rouge">session.getCreationTime();</code></li>
+  <li>최종 접속 시간(ms) : <code class="language-plaintext highlighter-rouge">session.getLastAccessedTime();</code></li>
+  <li>세션 유지시간(기본)(1800s,30m) : <code class="language-plaintext highlighter-rouge">session.getMaxInactiveInterval();</code><br /></li>
+</ul>
+
+<h2 id="4-application-객체">4. application 객체</h2>
+<ul>
+  <li>
+    <p>해당 웹 애플리케이션의 실행 환경을 제공하는 서버의 정보와 서버측 자원에 대한 정보를 얻어내거나 해당 애플리케이션의 이벤트 로그를 다루는 메소드들을 제공<br /><br /></p>
+  </li>
+  <li>서버정보 : <code class="language-plaintext highlighter-rouge">application.getServerInfo();</code></li>
+  <li>서버의 물리적 경로 : <code class="language-plaintext highlighter-rouge">application.getRealPath("/");</code></li>
+</ul>
+
+<h2 id="5-out-객체">5. out 객체</h2>
+<ul>
+  <li>서블릿/JSP 컨테이너가 응답 페이지를 만들기 위해 사용하는 출력 스트림 객체</li>
+  <li>
+    <p>하지만 표현식을 사용해서 자바 코드의 변수 값들과 메소드의 리턴 값들을 출력할 수 있기 때문에 잘 사용되지 않는다.<br /><br /></p>
+  </li>
+  <li>출력 : <code class="language-plaintext highlighter-rouge">out.print("Hello");</code></li>
+  <li>버퍼 사이즈 : <code class="language-plaintext highlighter-rouge">&lt;%=out.getBufferSize() %&gt;byte&lt;br&gt;</code></li>
+  <li>버퍼 사용후 : <code class="language-plaintext highlighter-rouge">&lt;%=out.getRemaining() %&gt;byte&lt;br&gt;</code></li>
+</ul>
+:ET
