@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-01T16:27:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP 사용</title><link href="http://localhost:4000/jsp/use-JSP/" rel="alternate" type="text/html" title="JSP 사용" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/use-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/use-JSP/"><![CDATA[<h1 id="-jsp-사용">👀 JSP 사용</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-01T17:39:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP 사용</title><link href="http://localhost:4000/jsp/use-JSP/" rel="alternate" type="text/html" title="JSP 사용" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/use-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/use-JSP/"><![CDATA[<h1 id="-jsp-사용">👀 JSP 사용</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">HTML</code> 태그와 <code class="language-plaintext highlighter-rouge">Java</code> 코드를 함께 사용한다.</li>
 </ul>
@@ -328,7 +328,102 @@
 
 <ul>
   <li>위와 같이 사용 가능하다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JavaScript" /><category term="JSP" /><category term="JavaScript" /><summary type="html"><![CDATA[자바스크립트란? 웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어 인터프리터 언어로 작성된 코드를 위에서 아래로 순차적으로 실행한다. 컴파일 언어와 다른 점은 일단 실행을 하고 에러가 발생하기 전 까지의 코드만 실행한다. 객체 기반 언어이다. 오픈소스 언어 다양한 라이브러리(API) 사용 가능 Jquery 주로 사용 - Ajax, Json HTML5(웹표준) API 기반의 언어]]></summary></entry><entry><title type="html">JSP 스크립트 요소</title><link href="http://localhost:4000/jsp/JSP-script-elements/" rel="alternate" type="text/html" title="JSP 스크립트 요소" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-script-elements</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-script-elements/"><![CDATA[<h1 id="-jsp-스크립트-요소">👀 JSP 스크립트 요소</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JavaScript" /><category term="JSP" /><category term="JavaScript" /><summary type="html"><![CDATA[자바스크립트란? 웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어 인터프리터 언어로 작성된 코드를 위에서 아래로 순차적으로 실행한다. 컴파일 언어와 다른 점은 일단 실행을 하고 에러가 발생하기 전 까지의 코드만 실행한다. 객체 기반 언어이다. 오픈소스 언어 다양한 라이브러리(API) 사용 가능 Jquery 주로 사용 - Ajax, Json HTML5(웹표준) API 기반의 언어]]></summary></entry><entry><title type="html">세션(Session)과 쿠키(Cookie)</title><link href="http://localhost:4000/jsp/JSP-session-cookie/" rel="alternate" type="text/html" title="세션(Session)과 쿠키(Cookie)" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-session-cookie</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-session-cookie/"><![CDATA[<h1 id="-세션session이란">👀 세션(Session)이란?</h1>
+<h2 id="️-서버랑-클라이언트와의-관계상태를-유지하기-위해서-사용하는-값">☑️ 서버랑 클라이언트와의 관계(상태)를 유지하기 위해서 사용하는 값</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HTTP 프로토콜</code>은 상태가 유지되지 않기 때문에 요청에 대한 응답이 한 번씩 이뤄지고 나면 그 관계가 소멸된다.</li>
+  <li>하지만 이런 방식으로는 사용자가 회원 사이트에 로그인 했을 때 지속적으로 업무를 볼 수 없게 된다.</li>
+  <li>그래서 사용자가 지속적으로 업무를 볼 수 있도록 서버와 클라이언트간의 관계를 일정 시간동안 유지해주기 위해 쓰는 것이 <code class="language-plaintext highlighter-rouge">세션</code>이다.</li>
+  <li>세션객체(영역)는 브라우저당 1개씩 생성된다.</li>
+</ul>
+
+<h2 id="-세션-메소드">🔸 세션 메소드</h2>
+<ul>
+  <li>세션값 생성 : <code class="language-plaintext highlighter-rouge">session.setAttribute("이름", 값);</code></li>
+  <li>세션값 사용 : <code class="language-plaintext highlighter-rouge">session.getAttribute("이름");</code></li>
+  <li>세션값 제거 : <code class="language-plaintext highlighter-rouge">session.removeAttribute("이름");</code></li>
+  <li>세션값 초기화 : <code class="language-plaintext highlighter-rouge">session.invalidate();</code>
+    <ul>
+      <li>❗️ 세션값 제거 메소드를 통한 부분제거보다는 세션값 초기화를 시켜야 한다.</li>
+      <li>일부만 제거하면 사용자가 로그아웃 했는데 로그인 했을 때와 같은 행동이 일부 가능할 수 있다.
+<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="-쿠키cookie란">👀 쿠키(Cookie)란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">클라이언트</code> 측에서 관리되는 정보</li>
+  <li>사용 가능한 기간동안 하드디스크에 저장되기 때문에 웹 브라우저가 사라져도 사용이 가능하다.</li>
+  <li>하지만 그만큼 보안적으로 취약하다. (그래서 보안이 필요한 정보는 <code class="language-plaintext highlighter-rouge">세션</code> 사용)</li>
+</ul>
+
+<h2 id="-쿠키-생성-절차">🔸 쿠키 생성 절차</h2>
+<h3 id="1-쿠키-생성">1. 쿠키 생성</h3>
+<h3 id="2-쿠키가-필요로-하는-설정값-저장유효기간-설명-도메인-">2. 쿠키가 필요로 하는 설정값 저장(유효기간, 설명, 도메인, …)</h3>
+<h3 id="3-웹-브라우저에-생성된-쿠키-정보-전달">3. 웹 브라우저에 생성된 쿠키 정보 전달</h3>
+<h3 id="4-웹-브라우저-요청에서-쿠키를-얻어온다">4. 웹 브라우저 요청에서 쿠키를 얻어온다.</h3>
+<h3 id="5-쿠키-정보는-이름-값의-데이터-쌍으로-형성된다">5. 쿠키 정보는 이름, 값의 데이터 쌍으로 형성된다.</h3>
+<h3 id="6-쿠키-이름을-사용해서-해당-값을-사용한다">6. 쿠키 이름을 사용해서 해당 값을 사용한다.</h3>
+
+<h2 id="-쿠키-사용-방법">🔸 쿠키 사용 방법</h2>
+<h3 id="1-http-헤더-정보-사용---안씀-xx">1) <code class="language-plaintext highlighter-rouge">HTTP</code> 헤더 정보 사용 - 안씀 XX</h3>
+<h3 id="2-서블릿-api-사용---현재-쓰는-방식">2) 서블릿 API 사용 - 현재 쓰는 방식</h3>
+
+<ul>
+  <li>쿠키 생성하는 예제 코드</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span>
+    <span class="c1">// 쿠키값 생성 - 서블릿 API 사용</span>
+    <span class="nc">Cookie</span> <span class="n">cookie</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cookie</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"CookieValue"</span><span class="o">);</span> <span class="c1">// HDD 저장X, 메모리에만 있는 상태</span>
+		
+    <span class="c1">// 쿠키값 설정 - 유효기간 설정</span>
+    <span class="n">cookie</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="mi">600</span><span class="o">);</span> <span class="c1">// 초 단위 - 10분</span>
+		
+    <span class="c1">// 쿠키값을 저장(응답정보(response)에 저장)</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">addCookie</span><span class="o">(</span><span class="n">cookie</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"쿠키정보가 전달 완료시 사용자의 HDD에 저장"</span><span class="o">);</span>
+<span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>먼저 쿠키를 생성한 다음 클라이언트에게 전송한다.</p>
+  </li>
+  <li>
+    <p>쿠키값 가져오는 예제 코드</p>
+  </li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span>
+    <span class="c1">// 쿠키값 가져오기(request - 요청정보로부터 꺼내오기)</span>
+    <span class="nc">Cookie</span><span class="o">[]</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getCookies</span><span class="o">();</span>
+			
+    <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">cookies</span><span class="o">)</span> <span class="c1">// !!배열을 반복문 돌리기 전에 예외처리 꼭 하기!!</span>
+    <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">cookies</span><span class="o">.</span><span class="na">length</span> <span class="err">&gt;</span> <span class="n">i</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+        <span class="o">{</span>
+            <span class="c1">//System.out.println(cookies[i]);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"name"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// Cookie cookie = new Cookie("name", "CookieValue"); // HDD 저장X, 메모리O</span>
+                <span class="c1">// ⬆️ 얘를 가져올 것임</span>
+                <span class="c1">// 이름이 같다면 내가 직접 생성한 쿠키임</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getValue</span><span class="o">());</span>
+						
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"쿠키명: "</span> <span class="o">+</span> <span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"쿠키값 : "</span> <span class="o">+</span> <span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getValue</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>그 다음 클라이언트 측에서 쿠키를 가져온다.</li>
+  <li>쿠키값을 가져올 때엔 꼭 예외처리를 해서 <code class="language-plaintext highlighter-rouge">null</code>값이 아닐 때에만 가져오는 동작을 수행하도록 해야한다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><category term="Session" /><category term="Cookie" /><summary type="html"><![CDATA[👀 세션(Session)이란? ☑️ 서버랑 클라이언트와의 관계(상태)를 유지하기 위해서 사용하는 값 HTTP 프로토콜은 상태가 유지되지 않기 때문에 요청에 대한 응답이 한 번씩 이뤄지고 나면 그 관계가 소멸된다. 하지만 이런 방식으로는 사용자가 회원 사이트에 로그인 했을 때 지속적으로 업무를 볼 수 없게 된다. 그래서 사용자가 지속적으로 업무를 볼 수 있도록 서버와 클라이언트간의 관계를 일정 시간동안 유지해주기 위해 쓰는 것이 세션이다. 세션객체(영역)는 브라우저당 1개씩 생성된다.]]></summary></entry><entry><title type="html">JSP 스크립트 요소</title><link href="http://localhost:4000/jsp/JSP-script-elements/" rel="alternate" type="text/html" title="JSP 스크립트 요소" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-script-elements</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-script-elements/"><![CDATA[<h1 id="-jsp-스크립트-요소">👀 JSP 스크립트 요소</h1>
 <h2 id="1-선언문">1. 선언문</h2>
 
 <div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%!</span>
@@ -815,47 +910,4 @@ response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 �
 <h3 id="-user-비밀번호-변경-방법">🔸 User 비밀번호 변경 방법</h3>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL&gt; alter user 아이디
      identified by 새 비밀번호;
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB 구동 및 접속]]></summary></entry><entry><title type="html">DB 기초</title><link href="http://localhost:4000/database/DB-start/" rel="alternate" type="text/html" title="DB 기초" /><published>2022-01-31T00:00:00+09:00</published><updated>2022-01-31T00:00:00+09:00</updated><id>http://localhost:4000/database/DB-start</id><content type="html" xml:base="http://localhost:4000/database/DB-start/"><![CDATA[<h1 id="-db란">🎬 DB란?<br /></h1>
-
-<h2 id="-db를-쓰는-이유">🔸 DB를 쓰는 이유</h2>
-<ul>
-  <li>데이터를 오프라인으로 캐비넷에 저장하자니 물리적 저장 공간은 한정되어 있다.</li>
-  <li>그렇다면 엑셀 파일을 만들어 암호를 걸어 쓰는 방법이 있는데 만약 암호가 유출된다면 그 엑셀 파일 안에 저장된 정보도 모두 유출된다. 따라서 이것도 안전한 방법은 아니다.</li>
-  <li>그래서 서버에 데이터베이스를 구축하고 거기에 고객 정보를 저정하고 관리하는 것이다.
-    <ul>
-      <li>데이터베이스엔 애초에 허가받은 사용자만 접근할 수 있고 허가받은 권한 만큼만 데이터에 접근할 수 있다.<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="-dbms">🔸 DBMS</h2>
-<ul>
-  <li>데이터베이스 관리 시스템</li>
-  <li>DB에서 필요한 데이터를 검색하거나 삽입, 수정, 삭제하기 위한 프로그램</li>
-  <li>ORACLE, MySQL등이 있으며 이것들이 DB 자체를 의미하는 것은 아니다.
-    <ul>
-      <li>DB를 다루기 위한 수단으로서 MySQL을 사용하면 MySQL을 사용한 DB 프로그램인 것이다.<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="-rdbms">🔸 RDBMS</h2>
-<ul>
-  <li>관계형 DBMS</li>
-  <li>시중에 나와있는 대부분의 DBMS라고 보면 된다.<br /><br /></li>
-</ul>
-
-<h2 id="-sql">🔸 SQL</h2>
-<ul>
-  <li>데이터 액세스를 위해 ORACLE server와 통신하는 언어로 DB와 소통하기 위한 언어</li>
-  <li>모든 DBMS에서 사용하는 공용언어<br /><br /></li>
-</ul>
-
-<h2 id="-table">🔸 TABLE</h2>
-<ul>
-  <li>DB에서 사용하는 대표 객체(오브젝트)</li>
-  <li>테이블을 사용해서 데이터를 분류한다.<br /><br />
-<img src="../../assets/images/table.png" alt="table" /><br /><br /></li>
-  <li>세로는 <strong>열(column)</strong>, 가로는 <strong>행(row)</strong>!!</li>
-  <li>column과 row가 만나는 곳은 <strong>Field(Record)값</strong>이라고 부른다.<br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB란?]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[🎬 DB 구동 및 접속]]></summary></entry></feed>
