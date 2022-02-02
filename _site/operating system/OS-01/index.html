@@ -1,0 +1,928 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>운영체제 | Yujin Dev Log</title>
+<meta name="description" content="👀 운영체제란?    Operating System, OS   컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="운영체제">
+<meta property="og:url" content="http://localhost:4000/operating%20system/OS-01/">
+
+
+  <meta property="og:description" content="👀 운영체제란?    Operating System, OS   컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-02T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/operating%20system/OS-01/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#operating-system" itemprop="item"><span itemprop="name">Operating system</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">운영체제</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="운영체제">
+    <meta itemprop="description" content="👀 운영체제란?  Operating System, OS  컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층">
+    <meta itemprop="datePublished" content="2022-02-02T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/operating%20system/OS-01/" class="u-url" itemprop="url">운영체제
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#-운영체제란">👀 운영체제란?</a><ul><li><a href="#-운영체제의-목적">🔸 운영체제의 목적</a></li><li><a href="#-운영체제의-분류">🔸 운영체제의 분류</a><ul><li><a href="#️-동시-작업-가능-여부">☑️ 동시 작업 가능 여부</a><ul><li><a href="#단일-작업single-tasking">단일 작업(single tasking)</a></li><li><a href="#다중-작업multi-tasking">다중 작업(multi tasking)</a></li></ul></li><li><a href="#️-사용자의-수">☑️ 사용자의 수</a><ul><li><a href="#단일-사용자single-user">단일 사용자(single user)</a></li><li><a href="#다중-사용자multi-user">다중 사용자(multi user)</a></li></ul></li><li><a href="#️-처리-방식">☑️ 처리 방식</a><ul><li><a href="#일괄-처리batch-processing">일괄 처리(batch processing)</a></li><li><a href="#시분할time-sharing">시분할(time sharing)</a></li><li><a href="#실시간realtime-os">실시간(Realtime OS)</a><ul><li><a href="#️-실시간-시스템의-개념-확장">▪️ 실시간 시스템의 개념 확장</a></li></ul></li></ul></li></ul></li><li><a href="#-비슷한-의미로-사용되지만-약간-다른-용어들">🔸 비슷한 의미로 사용되지만 약간 다른 용어들</a><ul><li><a href="#️-multiprocessor">☑️ Multiprocessor</a></li></ul></li><li><a href="#-운영체제의-예">🔸 운영체제의 예</a><ul><li><a href="#️-유닉스unix">☑️ 유닉스(UNIX)</a></li><li><a href="#️-dosdisk-operating-system">☑️ DOS(Disk Operating System)</a></li><li><a href="#️-ms-windows">☑️ MS Windows</a></li><li><a href="#️-handheld-device를-위한-os">☑️ Handheld device를 위한 OS</a></li></ul></li><li><a href="#-운영체제의-구조">🔸 운영체제의 구조</a><ul><li><a href="#️-cpu">☑️ CPU</a></li><li><a href="#️-memory">☑️ memory</a></li><li><a href="#️-disk">☑️ Disk</a></li><li><a href="#️-io-device">☑️ I/O device</a></li><li><a href="#️-프로세스-관리">☑️ 프로세스 관리</a></li><li><a href="#️-그-외">☑️ 그 외</a></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="-운영체제란">👀 운영체제란?</h1>
+<ul>
+  <li>Operating System, OS</li>
+  <li>
+    <p>컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층<br /><br />
+<img src="../../assets/images/os.png" alt="os" /><br /><br /></p>
+  </li>
+  <li>좁은 의미의 운영체제(커널)
+    <ul>
+      <li>운영체제의 핵심 부분으로 메모리에 상주하는 부분</li>
+      <li>전공자 입장에서는 운영체제 하면 커널만을 이야기한다.</li>
+    </ul>
+  </li>
+  <li>넓은 의미의 운영체제
+    <ul>
+      <li>커널 뿐 아니라 메모리에 상주하지 않는 각종 주변 시스템 유틸리티를 포함한 개념<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-운영체제의-목적">🔸 운영체제의 목적<br /></h2>
+<ol>
+  <li>컴퓨터 시스템을 편라하게 사용할 수 있는 환경 제공</li>
+  <li>컴퓨터 시스템의 <strong>자원을 효율적으로 관리</strong>
+    <ul>
+      <li>하드웨어 자원인 프로세서, 기억장치, 입출력 장치들의 관리와</li>
+      <li>소프트웨어 자원인 프로세스, 파일, 메시지 등 모든 것을 관리한다.</li>
+      <li>사용자간의 형평성 있는 자원 분배가 가능해야 하고 <strong>주어진 자원으로 최대한의 성능</strong>을 낼 수 있어야 한다.</li>
+      <li>실행 중인 프로그램들은 CPU를 번갈아가며 차지하며 동작을 하게 되는데 이 때 운영체제는 한 프로그램이 CPU를 너무 오랫동안 쓰지 않고 짧은 시간동안 번갈아 쓰도록 할당해 주어야 한다.</li>
+      <li>또한 실행 중인 프로그램들에게 메모리 공간을 적절히 분배해 주어야 한다.<br /><br /></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="-운영체제의-분류">🔸 운영체제의 분류</h2>
+<ul>
+  <li>동시 작업 가능 여부</li>
+  <li>사용자의 수</li>
+  <li>처리 방식<br /><br /></li>
+  <li>위 세 가지에 따라 분류할 수 있는데 현대 운영체제는 동시 작업이 가능하고 다중 사용자를 지원하며 시분할이 가능하다고 정리할 수 있다.</li>
+</ul>
+
+<h3 id="️-동시-작업-가능-여부">☑️ 동시 작업 가능 여부</h3>
+<h4 id="단일-작업single-tasking">단일 작업(single tasking)</h4>
+<ul>
+  <li>한 번에 하나의 작업만을 처리한다.</li>
+  <li>예) MS-DOS 프롬프트 상에서는 한 명령의 수행을 끝내기 전에 다른 명령을 수행시킬 수 없음</li>
+  <li>과거에 MS-DOS에서 주로 사용되던 방식으로 현대 컴퓨터에선 쓰이지 않지만 엘리베이터처럼 기능이 단순하거나 특수 목적을 수행하는 기계에는 지금도 사용되고 있다.</li>
+</ul>
+
+<h4 id="다중-작업multi-tasking">다중 작업(multi tasking)</h4>
+<ul>
+  <li>동시에 두 개 이상의 작업 처리</li>
+  <li>예) UNIX, MS Windows 등에서는 한 명령의 수행이 끝나기 전에 다른 명령이나 프로그램을 수행할 수 있음</li>
+  <li>스마트폰을 포함한 현대의 대부분의 하드웨어에서 사용되는 운영체제이다.<br /><br /></li>
+</ul>
+
+<h3 id="️-사용자의-수">☑️ 사용자의 수</h3>
+<h4 id="단일-사용자single-user">단일 사용자(single user)</h4>
+<ul>
+  <li>예) MS-DOS, MS Windows</li>
+</ul>
+
+<h4 id="다중-사용자multi-user">다중 사용자(multi user)</h4>
+<ul>
+  <li>예) UNIX, NT server</li>
+  <li>사용자가 많아지면 파일에 대한 접근 권한이나 사용자간 자원 분배를 형평성 있게 해 줄 수 있어야 한다.<br /><br /></li>
+</ul>
+
+<h3 id="️-처리-방식">☑️ 처리 방식</h3>
+<h4 id="일괄-처리batch-processing">일괄 처리(batch processing)</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Interactive</code> 하지 않은 방식</li>
+  <li>작업 요청을 일정량 모아서 한꺼번에 처리</li>
+  <li>작업이 완전 종료될 때까지 기다려야 함(하루 이상 걸림)</li>
+  <li>에) 초기 Punch Card 처리 시스템</li>
+</ul>
+
+<h4 id="시분할time-sharing">시분할(time sharing)</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Interactive</code>한 방식</li>
+  <li>현대에 주로 사용하는 운영체제로 일반적인 범용 컴퓨터에서 사용</li>
+  <li>여러 작업을 수행할 때 컴퓨터 처리 능력을 일정한 시간 단위로 분할해서 사용</li>
+  <li>일괄 처리 시스템에 비해 짧은 응답 시간을 가짐(UNIX)</li>
+  <li>하지만 응답 시간이 항상 고정된 것은 아니며 사용자가 많아지면 느려질 수 있다.</li>
+  <li>사람이 빠르다고 느끼면서 주어진 자원과 시간을 최대한 활용하는 것이 목적이다.</li>
+</ul>
+
+<h4 id="실시간realtime-os">실시간(Realtime OS)</h4>
+<ul>
+  <li>정해진 시간 안에 어떠한 일이 반드시 종료됨이 보장되어야 하는 실시간시스템을 위한 OS</li>
+  <li>원자로/공장 제어, 미사일 제어, 반도체 장비, 로보트 제어 등 특수 목적을 가진 시스템에서 사용된다.</li>
+</ul>
+
+<h5 id="️-실시간-시스템의-개념-확장">▪️ 실시간 시스템의 개념 확장</h5>
+<ul>
+  <li>Hard realtime system(경성 실시간 시스템)
+    <ul>
+      <li>데드라인을 지키지 않으면 큰일나는 시스템</li>
+      <li>예) 반도체, 미사일 등</li>
+    </ul>
+  </li>
+  <li>Soft realtime system(연성 실시간 시스템)
+    <ul>
+      <li>데드라인을 좀 못 지켜도 괜찮은 시스템</li>
+      <li>예) OTT<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-비슷한-의미로-사용되지만-약간-다른-용어들">🔸 비슷한 의미로 사용되지만 약간 다른 용어들</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Multitasking</code> : 하나의 프로그램이 끝나기 전에 다른 프로그램 작업이 가능한 것</li>
+  <li><code class="language-plaintext highlighter-rouge">Multiprogramming</code> : 여러 프로그램이 메모리에 올라가 있는 것을 강조</li>
+  <li><code class="language-plaintext highlighter-rouge">Time sharing</code> : <code class="language-plaintext highlighter-rouge">CPU</code>의 시간을 분할하여 나누어 쓴다는 것을 강조</li>
+  <li><code class="language-plaintext highlighter-rouge">Multiprocess</code> : 여러 프로그램이 동시에 실행된다.</li>
+  <li>=&gt; 모두 컴퓨터에서 여러 작업을 동시에 수행한다는 것을 뜻하지만 어디에 더 초점을 맞추느냐에 따라 다르게 사용된다.</li>
+</ul>
+
+<h3 id="️-multiprocessor">☑️ Multiprocessor</h3>
+<ul>
+  <li>하나의 컴퓨터에 <code class="language-plaintext highlighter-rouge">CPU(processor)</code>가 여러 개 붙어 있음을 의미</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 하나임을 전제로 하는 위의 네 가지 용어들과는 하드웨어적으로 다르다.<br /><br /></li>
+</ul>
+
+<h2 id="-운영체제의-예">🔸 운영체제의 예</h2>
+<h3 id="️-유닉스unix">☑️ 유닉스(UNIX)</h3>
+<ul>
+  <li>멀티태스킹 가능</li>
+  <li>다중 사용자용</li>
+  <li>대형 서버용</li>
+  <li>코드의 대부분을 C언어로 작성 - 기계어 사용에 어려움이 많아서 유닉스 개발용으로 C언어를 만들었다.</li>
+  <li>높은 이식성 - 다른 기계어 집합을 사용하는 컴퓨터에 이식이 쉽다.</li>
+  <li>최소한의 커널 구조</li>
+  <li>복잡한 시스템에 맞게 확장 용이</li>
+  <li>소스 코드 공개 - 학술적으로 사용하기 좋다.</li>
+  <li>프로그램 개발에 용이</li>
+  <li>다양한 버전
+    <ul>
+      <li>System V, FeeBSD, SunOS, Solaris - 유로. 소스 코드 비공개</li>
+      <li>Linux - 무료. 소스 코드 공개. 유닉스보다는 규모가 작은 환경이나 개인용 컴퓨터에 사용된다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="️-dosdisk-operating-system">☑️ DOS(Disk Operating System)</h3>
+<ul>
+  <li>MS사에서 1981년 IBM-PC를 위해 개발</li>
+  <li>단일 사용자용 운영체제</li>
+  <li>싱글태스크</li>
+  <li>메모리 관리 능력의 한계(주 기억 장치 최대 용량 : 640KB)</li>
+</ul>
+
+<h3 id="️-ms-windows">☑️ MS Windows</h3>
+<ul>
+  <li>MS사의 다중 작업용 GUI 기반 운영체제</li>
+  <li>Plug and Play, 네트워크 환경 강화</li>
+  <li>DOS용 응용 프로그램과 호환성 제공</li>
+  <li>불안정성(초창기 윈도우즈)</li>
+  <li>풍부한 지원 소프트웨어</li>
+</ul>
+
+<h3 id="️-handheld-device를-위한-os">☑️ Handheld device를 위한 OS</h3>
+<ul>
+  <li>PalmOS, Pocket PC(WinCE), Tiny OS<br /><br /></li>
+</ul>
+
+<h2 id="-운영체제의-구조">🔸 운영체제의 구조</h2>
+<ul>
+  <li>크게 <code class="language-plaintext highlighter-rouge">CPU</code> - <code class="language-plaintext highlighter-rouge">memory</code> - <code class="language-plaintext highlighter-rouge">Disk</code> - <code class="language-plaintext highlighter-rouge">I/O device</code> 구조</li>
+</ul>
+
+<h3 id="️-cpu">☑️ CPU</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU 스케줄링</code>을 통해 실행중인 프로그램들에게 <code class="language-plaintext highlighter-rouge">CPU</code>를 효율적으로 할당해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>에게는 선착순 처리가 효율적이지 않기 때문에 프로그램마다 걸리는 작업 시간에 따라 처리하도록 스케줄링한다.</li>
+</ul>
+
+<h3 id="️-memory">☑️ memory</h3>
+<ul>
+  <li>프로그램을 실행하려면 <code class="language-plaintext highlighter-rouge">memory</code>에 올려야 하는데 <code class="language-plaintext highlighter-rouge">memory</code>는 한정되어 있기 때문에 적당히 잘 쪼개어 써야 한다.</li>
+  <li>최근에 많이 사용된 데이터는 오래 보관하고 그렇지 않으면 쫓아내는 방식으로 관리</li>
+</ul>
+
+<h3 id="️-disk">☑️ Disk</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Disk</code>에는 헤드가 있고 그 헤드를 움직이면서 일정 위치에 파일을 기록하기 때문에 <code class="language-plaintext highlighter-rouge">I/O</code> 요청이 들어왔을 때 헤드를 최대한 적게 움직이면서 최대한 빠르게 많이 처리할 수 있도록 처리 순서를 스케줄링 해야 한다.</li>
+</ul>
+
+<h3 id="️-io-device">☑️ I/O device</h3>
+<ul>
+  <li>지금까지 나온 장치들 중에선 가장 느리다.</li>
+  <li>때문에 <code class="language-plaintext highlighter-rouge">인터럽트</code> 기반으로 관리되며 <code class="language-plaintext highlighter-rouge">CPU</code>는 평소에는 자기 할 일을 하고 있다가 <code class="language-plaintext highlighter-rouge">I/O</code> 장치에서 <code class="language-plaintext highlighter-rouge">인터럽트</code> 요청이 들어오면 입출력을 수행하는 방식으로 진행된다.</li>
+</ul>
+
+<h3 id="️-프로세스-관리">☑️ 프로세스 관리</h3>
+<ul>
+  <li>프로세스의 생성과 삭제</li>
+  <li>자원 할당 및 반환</li>
+  <li>프로세스 간 협력</li>
+</ul>
+
+<h3 id="️-그-외">☑️ 그 외</h3>
+<ul>
+  <li>보호 시스템</li>
+  <li>네트워킹</li>
+  <li>명령어 해석기(command line interpreter)</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cs" class="page__taxonomy-item p-category" rel="tag">CS</a><span class="sep">, </span>
+    
+      <a href="/tags/#os" class="page__taxonomy-item p-category" rel="tag">OS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#operating-system" class="page__taxonomy-item p-category" rel="tag">Operating System</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-02T00:00:00+09:00">February 2, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%20http%3A%2F%2Flocalhost%3A4000%2Foperating%2520system%2FOS-01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Foperating%2520system%2FOS-01%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Foperating%2520system%2FOS-01%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/jsp/use-JSP/" class="pagination--pager" title="JSP 사용
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/use-JSP/" rel="permalink">JSP 사용
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 JSP 사용
+
+  HTML 태그와 Java 코드를 함께 사용한다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/What-is-JSP/" rel="permalink">JSP란?
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 JSP(Java Server Page)란?
+
+  Java를 이용하여 동적인 웹 페이지를 만들기 위해 Sun Microsystems사가 개발한 기술
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/javascript/JavaScript/" rel="permalink">JavaScript 기본 문법
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트란?
+
+  웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어
+  인터프리터 언어로 작성된 코드를 위에서 아래로 순차적으로 실행한다.
+  컴파일 언어와 다른 점은 일단 실행을 하고 에러가 발생하기 전 까지의 코드만 실행한다.
+  객체 기반 언어이다....</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/JSP-session-cookie/" rel="permalink">세션(Session)과 쿠키(Cookie)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 세션(Session)이란?
+☑️ 서버랑 클라이언트와의 관계(상태)를 유지하기 위해서 사용하는 값
+
+  HTTP 프로토콜은 상태가 유지되지 않기 때문에 요청에 대한 응답이 한 번씩 이뤄지고 나면 그 관계가 소멸된다.
+  하지만 이런 방식으로는 사용자가 회원 사이트에 로그인 했을 ...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

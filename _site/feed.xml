@@ -1,53 +1,242 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-01T20:54:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP 사용</title><link href="http://localhost:4000/jsp/use-JSP/" rel="alternate" type="text/html" title="JSP 사용" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/use-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/use-JSP/"><![CDATA[<h1 id="-jsp-사용">👀 JSP 사용</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-02T22:57:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">운영체제</title><link href="http://localhost:4000/operating%20system/OS-01/" rel="alternate" type="text/html" title="운영체제" /><published>2022-02-02T00:00:00+09:00</published><updated>2022-02-02T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-01</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-01/"><![CDATA[<h1 id="-운영체제란">👀 운영체제란?</h1>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code> 태그와 <code class="language-plaintext highlighter-rouge">Java</code> 코드를 함께 사용한다.</li>
+  <li>Operating System, OS</li>
+  <li>
+    <p>컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층<br /><br />
+<img src="../../assets/images/os.png" alt="os" /><br /><br /></p>
+  </li>
+  <li>좁은 의미의 운영체제(커널)
+    <ul>
+      <li>운영체제의 핵심 부분으로 메모리에 상주하는 부분</li>
+      <li>전공자 입장에서는 운영체제 하면 커널만을 이야기한다.</li>
+    </ul>
+  </li>
+  <li>넓은 의미의 운영체제
+    <ul>
+      <li>커널 뿐 아니라 메모리에 상주하지 않는 각종 주변 시스템 유틸리티를 포함한 개념<br /><br /></li>
+    </ul>
+  </li>
 </ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;</span><span class="err">%</span>
-      <span class="err">//</span> <span class="na">스크립틀릿</span>
-  <span class="err">%</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
+<h2 id="-운영체제의-목적">🔸 운영체제의 목적<br /></h2>
+<ol>
+  <li>컴퓨터 시스템을 편라하게 사용할 수 있는 환경 제공</li>
+  <li>컴퓨터 시스템의 <strong>자원을 효율적으로 관리</strong>
+    <ul>
+      <li>하드웨어 자원인 프로세서, 기억장치, 입출력 장치들의 관리와</li>
+      <li>소프트웨어 자원인 프로세스, 파일, 메시지 등 모든 것을 관리한다.</li>
+      <li>사용자간의 형평성 있는 자원 분배가 가능해야 하고 <strong>주어진 자원으로 최대한의 성능</strong>을 낼 수 있어야 한다.</li>
+      <li>실행 중인 프로그램들은 CPU를 번갈아가며 차지하며 동작을 하게 되는데 이 때 운영체제는 한 프로그램이 CPU를 너무 오랫동안 쓰지 않고 짧은 시간동안 번갈아 쓰도록 할당해 주어야 한다.</li>
+      <li>또한 실행 중인 프로그램들에게 메모리 공간을 적절히 분배해 주어야 한다.<br /><br /></li>
+    </ul>
+  </li>
+</ol>
 
+<h2 id="-운영체제의-분류">🔸 운영체제의 분류</h2>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code> <code class="language-plaintext highlighter-rouge">body</code> 태그 안에서 스크립틀릿을 쓴 다음에 스크립틀릿의 범위 내에 코드를 작성한다.</li>
+  <li>동시 작업 가능 여부</li>
+  <li>사용자의 수</li>
+  <li>처리 방식<br /><br /></li>
+  <li>위 세 가지에 따라 분류할 수 있는데 현대 운영체제는 동시 작업이 가능하고 다중 사용자를 지원하며 시분할이 가능하다고 정리할 수 있다.</li>
 </ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h2&gt;</span>자바코드로 테이블 생성<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-        <span class="nt">&lt;td&gt;</span>번호<span class="nt">&lt;/td&gt;&lt;td&gt;</span>이름<span class="nt">&lt;/td&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
-    <span class="nt">&lt;</span><span class="err">%</span>
-        <span class="na">for</span> <span class="err">(</span><span class="na">int</span> <span class="na">i = </span><span class="s">1;</span> <span class="err">6</span> <span class="nt">&gt;</span> i; i++)
-        {
-            %&gt;
-            <span class="nt">&lt;tr&gt;</span>
-                <span class="nt">&lt;td&gt;&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;&lt;td&gt;</span>학생<span class="nt">&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;</span>
-            <span class="nt">&lt;/tr&gt;</span>
-            <span class="nt">&lt;</span><span class="err">%</span>
-        <span class="err">}</span>
-    <span class="err">%</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/table&gt;</span>
-</code></pre></div></div>
-
+<h3 id="️-동시-작업-가능-여부">☑️ 동시 작업 가능 여부</h3>
+<h4 id="단일-작업single-tasking">단일 작업(single tasking)</h4>
 <ul>
-  <li>위와 같이 자바 코드 사이에 <code class="language-plaintext highlighter-rouge">스크립틀릿</code>이 끝나는 표시(<code class="language-plaintext highlighter-rouge">%&gt;</code>)를 하고 <code class="language-plaintext highlighter-rouge">HTML</code> 태그를 쓴 다음에 <code class="language-plaintext highlighter-rouge">&lt;%= %&gt;</code>를 이용해 자바 코드의 지역 변수를 출력하는 것이 가능하다.(신기…)</li>
+  <li>한 번에 하나의 작업만을 처리한다.</li>
+  <li>예) MS-DOS 프롬프트 상에서는 한 명령의 수행을 끝내기 전에 다른 명령을 수행시킬 수 없음</li>
+  <li>과거에 MS-DOS에서 주로 사용되던 방식으로 현대 컴퓨터에선 쓰이지 않지만 엘리베이터처럼 기능이 단순하거나 특수 목적을 수행하는 기계에는 지금도 사용되고 있다.</li>
 </ul>
 
-<h2 id="-jsp-주석">🔸 JSP 주석</h2>
+<h4 id="다중-작업multi-tasking">다중 작업(multi tasking)</h4>
+<ul>
+  <li>동시에 두 개 이상의 작업 처리</li>
+  <li>예) UNIX, MS Windows 등에서는 한 명령의 수행이 끝나기 전에 다른 명령이나 프로그램을 수행할 수 있음</li>
+  <li>스마트폰을 포함한 현대의 대부분의 하드웨어에서 사용되는 운영체제이다.<br /><br /></li>
+</ul>
 
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- --%&gt;</span> (웹페이지 개발자 도구창에서 나타나지 않기 때문에 보안상 이것을 쓰는 것이 더 좋다)
-// 자바 스타일도 사용 가능
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 사용 HTML 태그와 Java 코드를 함께 사용한다.]]></summary></entry><entry><title type="html">JavaScript 기본 문법</title><link href="http://localhost:4000/javascript/JavaScript/" rel="alternate" type="text/html" title="JavaScript 기본 문법" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/javascript/JavaScript</id><content type="html" xml:base="http://localhost:4000/javascript/JavaScript/"><![CDATA[<h1 id="자바스크립트란">자바스크립트란?</h1>
+<h3 id="️-사용자의-수">☑️ 사용자의 수</h3>
+<h4 id="단일-사용자single-user">단일 사용자(single user)</h4>
+<ul>
+  <li>예) MS-DOS, MS Windows</li>
+</ul>
+
+<h4 id="다중-사용자multi-user">다중 사용자(multi user)</h4>
+<ul>
+  <li>예) UNIX, NT server</li>
+  <li>사용자가 많아지면 파일에 대한 접근 권한이나 사용자간 자원 분배를 형평성 있게 해 줄 수 있어야 한다.<br /><br /></li>
+</ul>
+
+<h3 id="️-처리-방식">☑️ 처리 방식</h3>
+<h4 id="일괄-처리batch-processing">일괄 처리(batch processing)</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Interactive</code> 하지 않은 방식</li>
+  <li>작업 요청을 일정량 모아서 한꺼번에 처리</li>
+  <li>작업이 완전 종료될 때까지 기다려야 함(하루 이상 걸림)</li>
+  <li>에) 초기 Punch Card 처리 시스템</li>
+</ul>
+
+<h4 id="시분할time-sharing">시분할(time sharing)</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Interactive</code>한 방식</li>
+  <li>현대에 주로 사용하는 운영체제로 일반적인 범용 컴퓨터에서 사용</li>
+  <li>여러 작업을 수행할 때 컴퓨터 처리 능력을 일정한 시간 단위로 분할해서 사용</li>
+  <li>일괄 처리 시스템에 비해 짧은 응답 시간을 가짐(UNIX)</li>
+  <li>하지만 응답 시간이 항상 고정된 것은 아니며 사용자가 많아지면 느려질 수 있다.</li>
+  <li>사람이 빠르다고 느끼면서 주어진 자원과 시간을 최대한 활용하는 것이 목적이다.</li>
+</ul>
+
+<h4 id="실시간realtime-os">실시간(Realtime OS)</h4>
+<ul>
+  <li>정해진 시간 안에 어떠한 일이 반드시 종료됨이 보장되어야 하는 실시간시스템을 위한 OS</li>
+  <li>원자로/공장 제어, 미사일 제어, 반도체 장비, 로보트 제어 등 특수 목적을 가진 시스템에서 사용된다.</li>
+</ul>
+
+<h5 id="️-실시간-시스템의-개념-확장">▪️ 실시간 시스템의 개념 확장</h5>
+<ul>
+  <li>Hard realtime system(경성 실시간 시스템)
+    <ul>
+      <li>데드라인을 지키지 않으면 큰일나는 시스템</li>
+      <li>예) 반도체, 미사일 등</li>
+    </ul>
+  </li>
+  <li>Soft realtime system(연성 실시간 시스템)
+    <ul>
+      <li>데드라인을 좀 못 지켜도 괜찮은 시스템</li>
+      <li>예) OTT<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-비슷한-의미로-사용되지만-약간-다른-용어들">🔸 비슷한 의미로 사용되지만 약간 다른 용어들</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Multitasking</code> : 하나의 프로그램이 끝나기 전에 다른 프로그램 작업이 가능한 것</li>
+  <li><code class="language-plaintext highlighter-rouge">Multiprogramming</code> : 여러 프로그램이 메모리에 올라가 있는 것을 강조</li>
+  <li><code class="language-plaintext highlighter-rouge">Time sharing</code> : <code class="language-plaintext highlighter-rouge">CPU</code>의 시간을 분할하여 나누어 쓴다는 것을 강조</li>
+  <li><code class="language-plaintext highlighter-rouge">Multiprocess</code> : 여러 프로그램이 동시에 실행된다.</li>
+  <li>=&gt; 모두 컴퓨터에서 여러 작업을 동시에 수행한다는 것을 뜻하지만 어디에 더 초점을 맞추느냐에 따라 다르게 사용된다.</li>
+</ul>
+
+<h3 id="️-multiprocessor">☑️ Multiprocessor</h3>
+<ul>
+  <li>하나의 컴퓨터에 <code class="language-plaintext highlighter-rouge">CPU(processor)</code>가 여러 개 붙어 있음을 의미</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 하나임을 전제로 하는 위의 네 가지 용어들과는 하드웨어적으로 다르다.<br /><br /></li>
+</ul>
+
+<h2 id="-운영체제의-예">🔸 운영체제의 예</h2>
+<h3 id="️-유닉스unix">☑️ 유닉스(UNIX)</h3>
+<ul>
+  <li>멀티태스킹 가능</li>
+  <li>다중 사용자용</li>
+  <li>대형 서버용</li>
+  <li>코드의 대부분을 C언어로 작성 - 기계어 사용에 어려움이 많아서 유닉스 개발용으로 C언어를 만들었다.</li>
+  <li>높은 이식성 - 다른 기계어 집합을 사용하는 컴퓨터에 이식이 쉽다.</li>
+  <li>최소한의 커널 구조</li>
+  <li>복잡한 시스템에 맞게 확장 용이</li>
+  <li>소스 코드 공개 - 학술적으로 사용하기 좋다.</li>
+  <li>프로그램 개발에 용이</li>
+  <li>다양한 버전
+    <ul>
+      <li>System V, FeeBSD, SunOS, Solaris - 유로. 소스 코드 비공개</li>
+      <li>Linux - 무료. 소스 코드 공개. 유닉스보다는 규모가 작은 환경이나 개인용 컴퓨터에 사용된다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="️-dosdisk-operating-system">☑️ DOS(Disk Operating System)</h3>
+<ul>
+  <li>MS사에서 1981년 IBM-PC를 위해 개발</li>
+  <li>단일 사용자용 운영체제</li>
+  <li>싱글태스크</li>
+  <li>메모리 관리 능력의 한계(주 기억 장치 최대 용량 : 640KB)</li>
+</ul>
+
+<h3 id="️-ms-windows">☑️ MS Windows</h3>
+<ul>
+  <li>MS사의 다중 작업용 GUI 기반 운영체제</li>
+  <li>Plug and Play, 네트워크 환경 강화</li>
+  <li>DOS용 응용 프로그램과 호환성 제공</li>
+  <li>불안정성(초창기 윈도우즈)</li>
+  <li>풍부한 지원 소프트웨어</li>
+</ul>
+
+<h3 id="️-handheld-device를-위한-os">☑️ Handheld device를 위한 OS</h3>
+<ul>
+  <li>PalmOS, Pocket PC(WinCE), Tiny OS<br /><br /></li>
+</ul>
+
+<h2 id="-운영체제의-구조">🔸 운영체제의 구조</h2>
+<ul>
+  <li>크게 <code class="language-plaintext highlighter-rouge">CPU</code> - <code class="language-plaintext highlighter-rouge">memory</code> - <code class="language-plaintext highlighter-rouge">Disk</code> - <code class="language-plaintext highlighter-rouge">I/O device</code> 구조</li>
+</ul>
+
+<h3 id="️-cpu">☑️ CPU</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU 스케줄링</code>을 통해 실행중인 프로그램들에게 <code class="language-plaintext highlighter-rouge">CPU</code>를 효율적으로 할당해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>에게는 선착순 처리가 효율적이지 않기 때문에 프로그램마다 걸리는 작업 시간에 따라 처리하도록 스케줄링한다.</li>
+</ul>
+
+<h3 id="️-memory">☑️ memory</h3>
+<ul>
+  <li>프로그램을 실행하려면 <code class="language-plaintext highlighter-rouge">memory</code>에 올려야 하는데 <code class="language-plaintext highlighter-rouge">memory</code>는 한정되어 있기 때문에 적당히 잘 쪼개어 써야 한다.</li>
+  <li>최근에 많이 사용된 데이터는 오래 보관하고 그렇지 않으면 쫓아내는 방식으로 관리</li>
+</ul>
+
+<h3 id="️-disk">☑️ Disk</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Disk</code>에는 헤드가 있고 그 헤드를 움직이면서 일정 위치에 파일을 기록하기 때문에 <code class="language-plaintext highlighter-rouge">I/O</code> 요청이 들어왔을 때 헤드를 최대한 적게 움직이면서 최대한 빠르게 많이 처리할 수 있도록 처리 순서를 스케줄링 해야 한다.</li>
+</ul>
+
+<h3 id="️-io-device">☑️ I/O device</h3>
+<ul>
+  <li>지금까지 나온 장치들 중에선 가장 느리다.</li>
+  <li>때문에 <code class="language-plaintext highlighter-rouge">인터럽트</code> 기반으로 관리되며 <code class="language-plaintext highlighter-rouge">CPU</code>는 평소에는 자기 할 일을 하고 있다가 <code class="language-plaintext highlighter-rouge">I/O</code> 장치에서 <code class="language-plaintext highlighter-rouge">인터럽트</code> 요청이 들어오면 입출력을 수행하는 방식으로 진행된다.</li>
+</ul>
+
+<h3 id="️-프로세스-관리">☑️ 프로세스 관리</h3>
+<ul>
+  <li>프로세스의 생성과 삭제</li>
+  <li>자원 할당 및 반환</li>
+  <li>프로세스 간 협력</li>
+</ul>
+
+<h3 id="️-그-외">☑️ 그 외</h3>
+<ul>
+  <li>보호 시스템</li>
+  <li>네트워킹</li>
+  <li>명령어 해석기(command line interpreter)</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><summary type="html"><![CDATA[👀 운영체제란? Operating System, OS 컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층]]></summary></entry><entry><title type="html">JSP란?</title><link href="http://localhost:4000/jsp/What-is-JSP/" rel="alternate" type="text/html" title="JSP란?" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/What-is-JSP</id><content type="html" xml:base="http://localhost:4000/jsp/What-is-JSP/"><![CDATA[<h1 id="-jspjava-server-page란">👀 JSP(Java Server Page)란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Java</code>를 이용하여 <code class="language-plaintext highlighter-rouge">동적인 웹 페이지</code>를 만들기 위해 Sun Microsystems사가 개발한 기술<br /><br /></li>
+</ul>
+
+<h1 id="jsp의-특징">JSP의 특징</h1>
+<h2 id="1-강력한-이식성">1. 강력한 이식성</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">자바기반</code>의 언어로 어떤 <code class="language-plaintext highlighter-rouge">JSP 컨테이너</code>에서도 사용이 가능하므로 한 번 작성한 코드를 별다른 수정 없이 다른 플랫폼으로 이식이 가능하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">모듈화</code>와 <code class="language-plaintext highlighter-rouge">모듈의 재사용성</code>이 좋다.</li>
+</ul>
+
+<h2 id="2-서버-자원의-효율적인-사용">2. 서버 자원의 효율적인 사용</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">스레드(Thread)</code> 기반의 아키텍처 사용으로 불필요한 자원 낭비를 감소시켰다.</li>
+</ul>
+
+<h2 id="3-간편한-mvc-패턴디자인-패턴">3. 간편한 MVC 패턴(디자인 패턴)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MVC 패턴</code>을 <code class="language-plaintext highlighter-rouge">JSP(View)</code>와 <code class="language-plaintext highlighter-rouge">자바빈즈(Model)</code>, <code class="language-plaintext highlighter-rouge">서블릿(Controller)</code>을 이용해 쉽게 구현할 수 있다.</li>
+</ul>
+
+<h3 id="-mvc-패턴">🔸 MVC 패턴</h3>
+<ul>
+  <li>사용자에게 보여지는 화면인 <code class="language-plaintext highlighter-rouge">View</code> 부분과 실제 비즈니스 로직이 들어가는 <code class="language-plaintext highlighter-rouge">Model</code> 부분 그리고 <code class="language-plaintext highlighter-rouge">View</code>와 <code class="language-plaintext highlighter-rouge">Model</code>을 연결시켜주는 <code class="language-plaintext highlighter-rouge">Controller</code> 부분으로 구성</li>
+  <li>최근에 중대형 프로젝트에서 효과적이라 평가되어 많이 사용되고 있다.</li>
+</ul>
+
+<h3 id="-디자인-패턴">🔸 디자인 패턴</h3>
+<ul>
+  <li>프로젝트를 개발함에 있어서 특정한 문제가 주어졌을 때 그 문제를 해결하기 위한 방법을 설명해 놓은 일종의 지침</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP(Java Server Page)란? Java를 이용하여 동적인 웹 페이지를 만들기 위해 Sun Microsystems사가 개발한 기술]]></summary></entry><entry><title type="html">JavaScript 기본 문법</title><link href="http://localhost:4000/javascript/JavaScript/" rel="alternate" type="text/html" title="JavaScript 기본 문법" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/javascript/JavaScript</id><content type="html" xml:base="http://localhost:4000/javascript/JavaScript/"><![CDATA[<h1 id="자바스크립트란">자바스크립트란?</h1>
 <ul>
   <li>웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어</li>
   <li><code class="language-plaintext highlighter-rouge">인터프리터 언어</code>로 작성된 코드를 위에서 아래로 순차적으로 실행한다.</li>
@@ -846,343 +1035,4 @@ response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 �
   <li><code class="language-plaintext highlighter-rouge">Markup</code> : 표시한다(텍스트, 이미지, 영상, …) 웹 문서를 만드는 기본 언어</li>
   <li><code class="language-plaintext highlighter-rouge">HTML</code>은 태그로 구성되어 있으며, 태그를 이용해 인터넷에 문자와 그림을 표현하거나 하이퍼링크로 서로 다른 문서들을 연결한다.</li>
   <li>학습에 참고하면 좋은 사이트 : <a href="http://www.w3schools.com">http://www.w3schools.com</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="HTML" /><category term="HTML" /><category term="Front-end" /><category term="Back-end" /><summary type="html"><![CDATA[👀 프론트엔드란? 웹 화면에 보여지는 모든 것들을 프론트엔드라 칭한다.]]></summary></entry><entry><title type="html">HTML 문법</title><link href="http://localhost:4000/html/HTML-language01/" rel="alternate" type="text/html" title="HTML 문법" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/html/HTML-language01</id><content type="html" xml:base="http://localhost:4000/html/HTML-language01/"><![CDATA[<h1 id="-시작-전에">👀 시작 전에</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code> 문서는 크게 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 부분과 <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> 부분으로 나누어져 있다.</li>
-  <li>크롬 탭에서 보이는 제목을 지정하고 싶으면 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 부분에 <code class="language-plaintext highlighter-rouge">&lt;title&gt;</code> 태그를 이용해 제목을 적어준다.</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> 부분에 본격적인 웹 페이지 내용을 작성한다.<br /><br /></li>
-</ul>
-
-<h2 id="-html-주석문">🔸 HTML 주석문</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 주석 --&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code>에서의 주석문은 다른 프로그래밍 언어와는 다르게 위와 같이 쓴다.</li>
-</ul>
-
-<h2 id="-제목-태그">🔸 제목 태그</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>제목<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;h2&gt;</span>제목2<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;h3&gt;</span>제목3<span class="nt">&lt;/h3&gt;</span>
-<span class="nt">&lt;h4&gt;</span>제목4<span class="nt">&lt;/h4&gt;</span>
-<span class="nt">&lt;h5&gt;</span>제목5<span class="nt">&lt;/h5&gt;</span>
-<span class="nt">&lt;h6&gt;</span>제목6<span class="nt">&lt;/h6&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>제목 태그에는 6가지가 있다.</li>
-  <li>1번이 글씨 크기가 가장 크고 숫자가 커질수록 글씨 크기가 작아진다.</li>
-</ul>
-
-<h2 id="-문단-태그">🔸 문단 태그</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>문단 내용<span class="nt">&lt;/p&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>아래위로 공백이 약간 생기면서 한 문단을 만드는 것과 같은 효과를 줄 수 있다.</li>
-</ul>
-
-<h2 id="-글씨-꾸미기-태그">🔸 글씨 꾸미기 태그</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;b&gt;</span>진하게<span class="nt">&lt;/b&gt;</span>
-<span class="nt">&lt;strong&gt;</span>진하게<span class="nt">&lt;/strong&gt;</span>
-<span class="nt">&lt;i&gt;</span>기울이기(이탤릭체)<span class="nt">&lt;/i&gt;</span>
-<span class="nt">&lt;em&gt;</span>기울이기<span class="nt">&lt;/em&gt;</span>
-<span class="nt">&lt;small&gt;</span>작게<span class="nt">&lt;/small&gt;</span>
-<span class="nt">&lt;u&gt;</span>밑줄<span class="nt">&lt;/u&gt;</span>
-<span class="nt">&lt;sup&gt;</span>위 첨자<span class="nt">&lt;/sup&gt;</span>
-<span class="nt">&lt;sub&gt;</span>아래 첨자<span class="nt">&lt;/sub&gt;</span>
-<span class="nt">&lt;del&gt;</span>취소선 긋기<span class="nt">&lt;/del&gt;</span>
-
-<span class="nt">&lt;blockquote&gt;</span>인용문 들여쓰기 효과<span class="nt">&lt;/blockquote&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span> <span class="c">&lt;!-- 수평선 긋는 태그 --&gt;</span>
-
-<span class="nt">&lt;pre&gt;</span>
-    원하는 
-		모양대로
-				출력
-			이 가능한 태그
-<span class="nt">&lt;/pre&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;b&gt;</code> 태그를 쓰면 글씨를 진하게 표현할 수 있고 <code class="language-plaintext highlighter-rouge">&lt;i&gt;</code> 태그를 쓰면 글씨를 옆으로 기울일 수 있다.</li>
-</ul>
-
-<h2 id="-줄바꿈-태그">🔸 줄바꿈 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>안녕하세요!<span class="nt">&lt;br&gt;</span>
-Hello!
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code>에서는 단순히 엔터를 치는 것으로는 줄을 바꿀 수 없다.</li>
-  <li>줄을 바꾸고 싶은 곳에서 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code> 태그를 적어줘야 줄바꿈이 적용된다.</li>
-</ul>
-
-<h2 id="-하이퍼링크-태그">🔸 하이퍼링크 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.naver.com"</span><span class="nt">&gt;</span> 네이버 하이퍼링크 <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"test1.html"</span><span class="nt">&gt;</span> test1.html 문서 하이퍼링크 <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"4.jpeg"</span> <span class="na">download=</span><span class="s">""</span><span class="nt">&gt;</span> 이미지 다운로드 <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"ex4.html"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>새 창에서 연결<span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>웹 페이지 링크를 걸 수도 있고 내가 만든 <code class="language-plaintext highlighter-rouge">HTML</code> 페이지를 링크로 걸 수도 있다.</li>
-  <li>웹 페이지 링크를 작성할 땐 <code class="language-plaintext highlighter-rouge">http://</code>도 꼭 써주어야 제대로 동작한다.</li>
-</ul>
-
-<h3 id="️-문서-내에서-하이퍼링크">☑️ 문서 내에서 하이퍼링크</h3>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#content1"</span> <span class="na">id=</span><span class="s">"menu"</span><span class="nt">&gt;</span>메뉴1<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#content2"</span><span class="nt">&gt;</span>메뉴2<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#content3"</span><span class="nt">&gt;</span>메뉴3<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"content1"</span><span class="nt">&gt;</span>메뉴1 문서<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#menu"</span><span class="nt">&gt;</span>메뉴 위로 이동<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"content2"</span><span class="nt">&gt;</span>메뉴2 문서<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#menu"</span><span class="nt">&gt;</span>메뉴 위로 이동<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"content3"</span><span class="nt">&gt;</span>메뉴3 문서<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#menu"</span><span class="nt">&gt;</span>메뉴 위로 이동<span class="nt">&lt;/a&gt;</span>
-</code></pre></div></div>
-
-<h2 id="-이미지-삽입-태그">🔸 이미지 삽입 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"1.jpeg"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"2.gif"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"3번이미지"</span> <span class="na">src=</span><span class="s">"./3.png"</span> <span class="na">width=</span><span class="s">"50%"</span> <span class="na">height=</span><span class="s">"50%"</span> <span class="na">border=</span><span class="s">"5"</span><span class="nt">&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>이미지를 삽입할 때엔 닫는 태그가 없어도 된다.</li>
-  <li>이미지 파일은 삽입하고자 하는 <code class="language-plaintext highlighter-rouge">HTML</code> 파일과 동일한 위치에 있어야 경로지정 없이 삽입할 수 있다.</li>
-  <li>같은 위치에 없다면 경로지정을 해 주어야 하는데
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">.</code> : 현재폴더(생략가능)</li>
-      <li><code class="language-plaintext highlighter-rouge">..</code> : 상위폴더</li>
-      <li><code class="language-plaintext highlighter-rouge">상대참조</code> : 현재 페이지를 기준으로 상대적 파일을 찾는 방법</li>
-      <li><code class="language-plaintext highlighter-rouge">절대참조</code> : /(root) 기준으로 파일 경로를 찾아가는 방법</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="️-img-태그-속성">☑️ img 태그 속성</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">src</code> : 원본(그림) 파일</li>
-  <li><code class="language-plaintext highlighter-rouge">alt</code> : 원본이 안 보일 때 표시할 그림 설명</li>
-  <li><code class="language-plaintext highlighter-rouge">width</code> : 이미지 너비(픽셀) 지정
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">px</code> : 이미지 크기를 픽셀 단위로 지정. 고정값</li>
-      <li><code class="language-plaintext highlighter-rouge">%</code> : 이미지 크기가 브라우저 크기에 따라 변동됨</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="️-픽셀pixel">☑️ 픽셀(Pixel)</h3>
-<ul>
-  <li>화면을 이루는 빛(하나의 점)</li>
-</ul>
-
-<h3 id="️-해상도">☑️ 해상도</h3>
-<ul>
-  <li>화면을 이루는 점(빛)의 개수</li>
-</ul>
-
-<h3 id="️-웹에서-사용하는-이미지-형식">☑️ 웹에서 사용하는 이미지 형식</h3>
-<ul>
-  <li>.jpg : 사진형태. 색상과 명암을 다양하게 표현</li>
-  <li>.gif : 256색상 사용. 작은 아이콘, 작은 이미지 사용. 움직이는 이미지</li>
-  <li>.png : 색상 다양하게 표현. 투명한 배경색 가능. 웹에서 많이 사용</li>
-</ul>
-
-<h2 id="-목록-만드는-태그">🔸 목록 만드는 태그</h2>
-<h3 id="순서-있는-목록">순서 있는 목록</h3>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol&gt;</span>
-  <span class="nt">&lt;li&gt;</span> 항목1 <span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span> 항목2 <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ol&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>1부터 차례대로 순서가 매겨지면서 목록이 만들어진다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol</span> <span class="na">type=</span><span class="s">"i"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목1<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목2<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ol&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">type</code>에 <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">i</code>, <code class="language-plaintext highlighter-rouge">I</code>(이탤릭)들을 사용해 순서를 매길 포맷을 지정해 줄 수 있다.</li>
-</ul>
-
-<h3 id="순서-없는-목록">순서 없는 목록</h3>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목1<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목2<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>순서가 없이 점만 찍히는 목록이 만들어진다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">type=</span><span class="s">"circle"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목1<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목2<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>마찬가지로 <code class="language-plaintext highlighter-rouge">disc</code>, <code class="language-plaintext highlighter-rouge">square</code>, <code class="language-plaintext highlighter-rouge">circle</code> 점 모양 속성을 지정해 줄 수 있다.</li>
-</ul>
-
-<h2 id="-표-만드는-태그">🔸 표 만드는 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;caption&gt;</span>표제목<span class="nt">&lt;/caption&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td&gt;</span>1행1열<span class="nt">&lt;/td&gt;&lt;td&gt;</span>1행2열<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td&gt;</span>2행1열<span class="nt">&lt;/td&gt;&lt;td&gt;</span>2행2열<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;table&gt;</code> 태그를 이용해 틀을 만든 다음 <code class="language-plaintext highlighter-rouge">&lt;tr&gt;</code>을 사용해 가로로 줄을 그어 칸을 만들고 <code class="language-plaintext highlighter-rouge">&lt;td&gt;</code> 태그로 세로로 줄을 그어 칸을 만들 수 있다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;thead&gt;</span> <span class="c">&lt;!-- 코드 상에서 영역 나눠서 작업할 때 사용 --&gt;</span>
-<span class="nt">&lt;tr&gt;&lt;th&gt;</span>제목1<span class="nt">&lt;/th&gt;&lt;th&gt;</span>제목2<span class="nt">&lt;/th&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/thead&gt;</span>
-
-<span class="nt">&lt;tbody&gt;</span>
-<span class="nt">&lt;tr&gt;&lt;td&gt;</span>내용1<span class="nt">&lt;/td&gt;&lt;td&gt;</span>내용2<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/tbody&gt;</span>
-
-<span class="nt">&lt;tfoot&gt;</span>
-<span class="nt">&lt;tr&gt;&lt;td&gt;</span>내용3<span class="nt">&lt;/td&gt;&lt;td&gt;</span>내용4<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/tfoot&gt;</span>
-</code></pre></div></div>
-
-<h3 id="표-합치기">표 합치기</h3>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td&gt;</span>용도<span class="nt">&lt;/td&gt;&lt;td&gt;</span>중량<span class="nt">&lt;/td&gt;</span>  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>개수가격<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">rowspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>선물용<span class="nt">&lt;/td&gt;&lt;td&gt;</span>3kg<span class="nt">&lt;/td&gt;&lt;td&gt;</span>11-16과<span class="nt">&lt;/td&gt;&lt;td&gt;</span>35000원<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;</span>                         <span class="nt">&lt;td&gt;</span>5kg<span class="nt">&lt;/td&gt;&lt;td&gt;</span>18-26과<span class="nt">&lt;/td&gt;&lt;td&gt;</span>52000원<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">rowspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>가정용<span class="nt">&lt;/td&gt;&lt;td&gt;</span>3kg<span class="nt">&lt;/td&gt;&lt;td&gt;</span>11-16과<span class="nt">&lt;/td&gt;&lt;td&gt;</span>30000원<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;</span>                         <span class="nt">&lt;td&gt;</span>5kg<span class="nt">&lt;/td&gt;&lt;td&gt;</span>18-26과<span class="nt">&lt;/td&gt;&lt;td&gt;</span>47000원<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">colspan</code>으로 가로로 나란히 위치한 칸들을 합치고 <code class="language-plaintext highlighter-rouge">rowspan</code>으로 세로로 나란히 위치한 칸들을 합칠 수 있다.</li>
-</ul>
-
-<h2 id="-폼양식-태그">🔸 폼(양식) 태그</h2>
-<ul>
-  <li>기능과 데이터들을 묶어주는 것</li>
-  <li><code class="language-plaintext highlighter-rouge">submit</code> 버튼을 클릭하면 <code class="language-plaintext highlighter-rouge">폼태그</code>에 있는 내용(데이터, 이름 =&gt; 값)을 <code class="language-plaintext highlighter-rouge">서버(백엔드)</code>로 전송하는 기능을 <code class="language-plaintext highlighter-rouge">폼태그</code>를 사용해 만들 수 있다.</li>
-  <li>전송 방식에는 <code class="language-plaintext highlighter-rouge">Get</code> 방식과 <code class="language-plaintext highlighter-rouge">Post</code> 방식이 있다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;fieldset&gt;</span> <span class="c">&lt;!-- 테두리를 그려서 그룹으로 묶어주는 태그 --&gt;</span>
-	<span class="nt">&lt;legend&gt;</span>그룹이름1<span class="nt">&lt;/legend&gt;</span>
-	<span class="nt">&lt;label&gt;</span>아이디 :<span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"아이디"</span> <span class="na">size=</span><span class="s">"30"</span> <span class="na">maxlength=</span><span class="s">"5"</span> <span class="na">readonly=</span><span class="s">"readonly"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="c">&lt;!-- size="30" 30자를 적을 수 있는 크기 maxlength="5" 입력학 글자개수 readonly="readonly" 읽기전용 --&gt;</span>
-	<span class="nt">&lt;label&gt;</span>비밀번호 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span> <span class="na">required</span> <span class="na">autofocus</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="c">&lt;!-- 비밀번호 필수요소로 입력제어
-	autofocus : 입력상자에 커서 깜박이게 하기  --&gt;</span>
-	<span class="nt">&lt;label&gt;</span>자기소개 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;textarea</span> <span class="na">rows=</span><span class="s">"5"</span> <span class="na">cols=</span><span class="s">"10"</span><span class="nt">&gt;&lt;/textarea&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>이메일 :<span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span> <span class="na">placeholder=</span><span class="s">"이메일 형식"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="c">&lt;!-- placeholer : 배경이미지 형태로 설명글 --&gt;</span>
-	<span class="nt">&lt;label&gt;</span>날짜 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"date, name="</span><span class="na">date</span><span class="err">"</span> <span class="na">min=</span><span class="s">"2022-01-01"</span> <span class="na">max=</span><span class="s">"22022-01-14"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;label&gt;</span>날짜(월) : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"week"</span> <span class="na">name=</span><span class="s">"week"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;label&gt;</span>시간 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"time"</span> <span class="na">name=</span><span class="s">"time"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>날짜 시간 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"datetime-local"</span> <span class="na">name=</span><span class="s">"datetime"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;/fieldset&gt;</span>```
-
-* `type`의 `text`는 입력하는 글자를 보여주는 것이고 `password`는 입력하는 글자를 보여주지 않는 것이다.
-
-```html
-<span class="nt">&lt;textarea</span> <span class="na">rows=</span><span class="s">"5"</span> <span class="na">cols=</span><span class="s">"30"</span> <span class="na">placeholder=</span><span class="s">"본사 지원 동기를 간략히 적어주세요."</span><span class="nt">&gt;&lt;/textarea&gt;&lt;br&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code>를 사용하면 긴 텍스트를 입력할 수 있는 <code class="language-plaintext highlighter-rouge">텍스트박스</code>를 만들 수 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">placeholder=""</code> 속성은 회색 글씨로 안내 사항을 입력해 놓는 것. 입력을 시작하면 사라진다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;fieldset&gt;</span>
-	<span class="nt">&lt;legend&gt;</span>그룹이름2<span class="nt">&lt;/legend&gt;</span>
-	<span class="nt">&lt;label&gt;</span>검색 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">name=</span><span class="s">"search"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>웹주소 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"url"</span> <span class="na">name=</span><span class="s">"url"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>연락처(모바일) : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"tel"</span><span class="nt">&gt;&lt;br&gt;</span> <span class="c">&lt;!-- 모바일 환경에서는 숫자 키패드 나옴 --&gt;</span>
-	<span class="nt">&lt;label&gt;</span>숫자 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">name=</span><span class="s">"number"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>슬라이드 밸류값 설정 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"range"</span> <span class="na">name=</span><span class="s">"range"</span><span class="nt">&gt;&lt;br&gt;</span> 
-<span class="nt">&lt;/fieldset&gt;</span>
-</code></pre></div></div>
-
-<h2 id="-라디오-버튼radio과-체크박스checkbox">🔸 라디오 버튼(radio)과 체크박스(checkbox)</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>성별 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"남"</span><span class="nt">&gt;</span>남성 
-      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"여"</span><span class="nt">&gt;</span>여성<span class="nt">&lt;br&gt;</span>
-취미 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"hobby"</span> <span class="na">value=</span><span class="s">"여행"</span><span class="nt">&gt;</span>여행
-	  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"hobby"</span> <span class="na">value=</span><span class="s">"게임"</span><span class="nt">&gt;</span>게임
-      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"hobby"</span> <span class="na">value=</span><span class="s">"독서"</span><span class="nt">&gt;</span>독서<span class="nt">&lt;br&gt;</span>
-목록상자 : <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"sel"</span> <span class="na">size=</span><span class="s">"5"</span> <span class="na">multiple=</span><span class="s">"multiple"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"목1"</span><span class="nt">&gt;</span>목록1<span class="nt">&lt;/option&gt;</span>
-		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"목2"</span><span class="nt">&gt;</span>목록2<span class="nt">&lt;/option&gt;</span>
-		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"목3"</span><span class="nt">&gt;</span>목록3<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;/select&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">radio</code>는 하나만 선택 가능할 때 사용하고 <code class="language-plaintext highlighter-rouge">checkbox</code>는 여러개를 선택할 수 있을 때 사용한다.</li>
-  <li>이 때 <code class="language-plaintext highlighter-rouge">name</code>을 동일하게 해야 같은 그룹으로 취합되고 그 안에서 선택하는 것이 가능하다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"test1.html"</span> <span class="na">method=</span><span class="s">"get"</span><span class="nt">&gt;</span> 
-파일업로드 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"file"</span><span class="nt">&gt;&lt;br&gt;</span>
-히든값 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"hi"</span> <span class="na">value=</span><span class="s">"값"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- 사용자에게는 보이지 않는 숨겨진 입력 필드 정의 --&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"버튼"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"전송"</span><span class="nt">&gt;&lt;br&gt;</span> <span class="c">&lt;!-- action="test1.html"으로 작성 내용들을 전달함. 폼태그 밖에서 쓰면 작동 안됨  --&gt;</span> 
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"image"</span> <span class="na">scr=</span><span class="s">"5.jpeg"</span> <span class="na">width=</span><span class="s">"100"</span> <span class="na">height=</span><span class="s">"100"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"reset"</span> <span class="na">value=</span><span class="s">"초기화"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div></div>
-
-<h2 id="-영역-지정-태그">🔸 영역 지정 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
-  큰 영역을 지정할 때 사용(웹 블록 지정)
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;span&gt;</span> 인라인(작은 영역) 블록 지정 <span class="nt">&lt;/span&gt;</span>
-</code></pre></div></div>
-
-<h2 id="-특수-문자-입력-태그">🔸 특수 문자 입력 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="ni">&amp;nbsp;</span>  공백 표시
-<span class="ni">&amp;lt;</span>    꺽쇄(<span class="nt">&lt;</span> <span class="nt">&gt;</span>) 표시
-<span class="ni">&amp;copy;</span>  © 
-<span class="ni">&amp;amp;</span>   <span class="err">&amp;</span> 
-<span class="ni">&amp;quot;</span>  " 
-<span class="ni">&amp;clubs;</span> ♣
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="HTML" /><category term="HTML" /><category term="Front-end" /><summary type="html"><![CDATA[👀 시작 전에 HTML 문서는 크게 &lt;head&gt; 부분과 &lt;body&gt; 부분으로 나누어져 있다. 크롬 탭에서 보이는 제목을 지정하고 싶으면 &lt;head&gt; 부분에 &lt;title&gt; 태그를 이용해 제목을 적어준다. &lt;body&gt; 부분에 본격적인 웹 페이지 내용을 작성한다. 🔸 HTML 주석문]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="HTML" /><category term="HTML" /><category term="Front-end" /><category term="Back-end" /><summary type="html"><![CDATA[👀 프론트엔드란? 웹 화면에 보여지는 모든 것들을 프론트엔드라 칭한다.]]></summary></entry></feed>
