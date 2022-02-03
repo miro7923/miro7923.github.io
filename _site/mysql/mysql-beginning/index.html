@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>JSP 사용 | Yujin Dev Log</title>
-<meta name="description" content="👀 JSP 사용    HTML 태그와 Java 코드를 함께 사용한다.">
+<!-- begin _includes/seo.html --><title>MySQL 시작하기 | Yujin Dev Log</title>
+<meta name="description" content="👀 MySql 시작하기    맥 기준으로 MySql을 설치하는 방법에는 2가지가 있는데   homebrew를 통해 설치하는 방법과   MySql 홈페이지에서 dmg 파일을 다운받아 설치하는 방법이 있다.">
 
 
   <meta name="author" content="Yujin Hwang">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="JSP 사용">
-<meta property="og:url" content="http://localhost:4000/jsp/use-JSP/">
+<meta property="og:title" content="MySQL 시작하기">
+<meta property="og:url" content="http://localhost:4000/mysql/mysql-beginning/">
 
 
-  <meta property="og:description" content="👀 JSP 사용    HTML 태그와 Java 코드를 함께 사용한다.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-02-01T00:00:00+09:00">
+  <meta property="og:description" content="👀 MySql 시작하기    맥 기준으로 MySql을 설치하는 방법에는 2가지가 있는데   homebrew를 통해 설치하는 방법과   MySql 홈페이지에서 dmg 파일을 다운받아 설치하는 방법이 있다.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-02-03T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/jsp/use-JSP/">
+
+<link rel="canonical" href="http://localhost:4000/mysql/mysql-beginning/">
 
 
 
@@ -167,7 +167,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#jsp" itemprop="item"><span itemprop="name">Jsp</span></a>
+          <a href="/categories/#mysql" itemprop="item"><span itemprop="name">Mysql</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">JSP 사용</li>
+        <li class="current">MySQL 시작하기</li>
       
     
   </ol>
@@ -310,199 +310,19 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="JSP 사용">
-    <meta itemprop="description" content="👀 JSP 사용  HTML 태그와 Java 코드를 함께 사용한다.">
-    <meta itemprop="datePublished" content="2022-02-01T00:00:00+09:00">
+    <meta itemprop="headline" content="MySQL 시작하기">
+    <meta itemprop="description" content="👀 MySql 시작하기  맥 기준으로 MySql을 설치하는 방법에는 2가지가 있는데  homebrew를 통해 설치하는 방법과  MySql 홈페이지에서 dmg 파일을 다운받아 설치하는 방법이 있다. ">
+    <meta itemprop="datePublished" content="2022-02-03T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/jsp/use-JSP/" class="u-url" itemprop="url">JSP 사용
+            <a href="http://localhost:4000/mysql/mysql-beginning/" class="u-url" itemprop="url">MySQL 시작하기
 </a>
           </h1>
           
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        </header>
-      
-
-      <section class="page__content e-content" itemprop="text">
-        
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#-jsp-사용">👀 JSP 사용</a><ul><li><a href="#-jsp-주석">🔸 JSP 주석</a></li></ul></li></ul>
-
-            </nav>
-          </aside>
-        
-        <h1 id="-jsp-사용">👀 JSP 사용</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code> 태그와 <code class="language-plaintext highlighter-rouge">Java</code> 코드를 함께 사용한다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;</span><span class="err">%</span>
-      <span class="err">//</span> <span class="na">스크립틀릿</span>
-  <span class="err">%</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code> <code class="language-plaintext highlighter-rouge">body</code> 태그 안에서 스크립틀릿을 쓴 다음에 스크립틀릿의 범위 내에 코드를 작성한다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h2&gt;</span>자바코드로 테이블 생성<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-        <span class="nt">&lt;td&gt;</span>번호<span class="nt">&lt;/td&gt;&lt;td&gt;</span>이름<span class="nt">&lt;/td&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
-    <span class="nt">&lt;</span><span class="err">%</span>
-        <span class="na">for</span> <span class="err">(</span><span class="na">int</span> <span class="na">i = </span><span class="s">1;</span> <span class="err">6</span> <span class="nt">&gt;</span> i; i++)
-        {
-            %&gt;
-            <span class="nt">&lt;tr&gt;</span>
-                <span class="nt">&lt;td&gt;&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;&lt;td&gt;</span>학생<span class="nt">&lt;</span><span class="err">%=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;</span>
-            <span class="nt">&lt;/tr&gt;</span>
-            <span class="nt">&lt;</span><span class="err">%</span>
-        <span class="err">}</span>
-    <span class="err">%</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/table&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>위와 같이 자바 코드 사이에 <code class="language-plaintext highlighter-rouge">스크립틀릿</code>이 끝나는 표시(<code class="language-plaintext highlighter-rouge">%&gt;</code>)를 하고 <code class="language-plaintext highlighter-rouge">HTML</code> 태그를 쓴 다음에 <code class="language-plaintext highlighter-rouge">&lt;%= %&gt;</code>를 이용해 자바 코드의 지역 변수를 출력하는 것이 가능하다.(신기…)</li>
-</ul>
-
-<h2 id="-jsp-주석">🔸 JSP 주석</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- --%&gt;</span> (웹페이지 개발자 도구창에서 나타나지 않기 때문에 보안상 이것을 쓰는 것이 더 좋다)
-// 자바 스타일도 사용 가능
-</code></pre></div></div>
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a><span class="sep">, </span>
-    
-      <a href="/tags/#web" class="page__taxonomy-item p-category" rel="tag">WEB</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/categories/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a>
-    
-    </span>
-  </p>
-
-
-        
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-01T00:00:00+09:00">February 1, 2022</time></p>
-
-      </footer>
-
-      <section class="page__share">
-  
-    <h4 class="page__share-title">공유하기</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=JSP+%EC%82%AC%EC%9A%A9%20http%3A%2F%2Flocalhost%3A4000%2Fjsp%2Fuse-JSP%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2Fuse-JSP%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2Fuse-JSP%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/jsp/What-is-JSP/" class="pagination--pager" title="JSP란?
-">이전</a>
-    
-    
-      <a href="/operating%20system/OS-01/" class="pagination--pager" title="운영체제
-">다음</a>
-    
-  </nav>
-
-    </div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h2 class="page__related-title">참고</h2>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/mysql-beginning/" rel="permalink">MySQL 시작하기
-</a>
-      
-    </h2>
-    
 
   <p class="page__meta">
     
@@ -523,16 +343,250 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">👀 MySql 시작하기
+        </header>
+      
 
-  맥 기준으로 MySql을 설치하는 방법에는 2가지가 있는데
-  homebrew를 통해 설치하는 방법과
-  MySql 홈페이지에서 dmg 파일을 다운받아 설치하는 방법이 있다. 
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#-mysql-시작하기">👀 MySql 시작하기</a><ul><li><a href="#mysql-설치">MySql 설치</a></li><li><a href="#mysql-실행">MySql 실행</a></li><li><a href="#mysql-초기-설정">MySql 초기 설정</a></li><li><a href="#mysql-접속">MySql 접속</a></li><li><a href="#mysql-종료">MySql 종료</a></li></ul></li></ul>
 
-</p>
+            </nav>
+          </aside>
+        
+        <h1 id="-mysql-시작하기">👀 MySql 시작하기</h1>
+<ul>
+  <li>맥 기준으로 <code class="language-plaintext highlighter-rouge">MySql</code>을 설치하는 방법에는 2가지가 있는데</li>
+  <li><code class="language-plaintext highlighter-rouge">homebrew</code>를 통해 설치하는 방법과</li>
+  <li>
+    <p>MySql 홈페이지에서 <code class="language-plaintext highlighter-rouge">dmg</code> 파일을 다운받아 설치하는 방법이 있다. <br /><br /></p>
+  </li>
+  <li>나는 여기서 <code class="language-plaintext highlighter-rouge">homebrew</code>를 통해 설치하는 방법을 택했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">homebrew</code>는 맥에서 쓸 수 있는 터미널 버전 앱스토어 같은 느낌으로 개발에 필요한 각종 소프트웨어들을 명령어 한 줄로 간편하게 설치할 수 있다.</li>
+</ul>
+
+<h2 id="mysql-설치">MySql 설치</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">homebrew</code>가 설치되어 있다는 전제하에 <code class="language-plaintext highlighter-rouge">homebrew</code> 터미널을 열어 명령어 입력을 통한 설치를 진행할 것인데, 먼저 홈 브루를 최신 버전으로 업데이트 시켜주고 시작하자.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew update
+</code></pre></div>    </div>
+  </li>
+  <li>업데이트가 완료되면 아래 명령어를 입력하면 MySql이 설치된다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install mysql
+</code></pre></div>    </div>
+  </li>
+  <li>설치가 완료된 후
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew list
+</code></pre></div>    </div>
+  </li>
+  <li>를 입력하면 홈 브루를 통해 설치된 프로그램들이 나열되는데 그 중에 mysql이 있으면 설치가 잘 된 것임</li>
+</ul>
+
+<h2 id="mysql-실행">MySql 실행</h2>
+<ul>
+  <li>아까 설치할 때 썼던 터미널창에서 명령어 입력을 통해 <code class="language-plaintext highlighter-rouge">MySql</code>을 실행할 수 있는데 역시 2가지 방법이 있다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services start mysql 혹은
+mysql.server start
+</code></pre></div>    </div>
+  </li>
+  <li>둘 중 하나를 입력해서 <code class="language-plaintext highlighter-rouge">MySql</code>서버를 시작할 수 있다.</li>
+  <li>네트워크 연결 허용하겠냐는 창이 뜨면 허용하겠다고 하면 된다.</li>
+</ul>
+
+<h2 id="mysql-초기-설정">MySql 초기 설정</h2>
+<ul>
+  <li>서버가 시작되었다고 바로 쓸 수 있는 것은 아니고 간단한 설정을 해 주어야 한다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql_secure_installation
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>위 명령어를 입력하면 <code class="language-plaintext highlighter-rouge">MySql</code> 초기 세팅을 시작할 수 있다.<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Would you like to setup VALIDATE PASSWORD component? (Press y</td>
+          <td>Y for Yes, any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>비밀번호를 복잡하게 설정하겠느냐는 것인데 아직 초보 단계니까 <code class="language-plaintext highlighter-rouge">No</code>를 입력해서 ‘1234’와 같은 쉬운 비밀번호를 설정한다. (<code class="language-plaintext highlighter-rouge">Yes</code>를 입력하면 복잡한 비밀번호 설정)</li>
+  <li>
+    <p>새 비밀번호를 입력하라는 메시지가 나오면 입력하고 엔터 누르면 된다.<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Remove anonymous users? (Press y</td>
+          <td>Y for Yes. any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>사용자 설정을 묻는 것인데 <code class="language-plaintext highlighter-rouge">Yes</code>를 선택했다.</li>
+  <li>Yes - 접속하는 경우 “mysql -uroot”처럼 -u 옵션 필요</li>
+  <li>
+    <p>No - 접속하는 경우 “mysql”처럼 -u 옵션 불필요<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Disallow root login remotely? (Press y</td>
+          <td>Y for Yes, any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>다른 IP에서 root 아이디로 원격 접속이 가능한지 묻는 것인데 <code class="language-plaintext highlighter-rouge">Yes</code>는 불가능, <code class="language-plaintext highlighter-rouge">No</code>는 가능</li>
+  <li>
+    <p>나는 <code class="language-plaintext highlighter-rouge">Yes</code>로 선택했다.<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Remove test database and access to it? (Press y</td>
+          <td>Y for Yes, any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>테스트 데이터베이스를 삭제할건지 말건지 묻는 것인데 나는 <code class="language-plaintext highlighter-rouge">Yes</code>로 선택했다.<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Reload privilege tables now? (Press y</td>
+          <td>Y for Yes, any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>변경된 권한을 테이블에 적용하는 설정에 대한 질문인데 이 질문은 무조건 <code class="language-plaintext highlighter-rouge">Yes</code>로 선택하는 것이 좋다고 한다.<br /><br /></p>
+  </li>
+  <li>여기까지 하면 모든 초기 설정이 완료된다.</li>
+</ul>
+
+<h2 id="mysql-접속">MySql 접속</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql -u root -p
+</code></pre></div></div>
+<ul>
+  <li>위 명령어를 입력하면 root 아이디로 로그인할 수 있다.</li>
+  <li>비밀번호 입력창이 나오면 비밀번호를 입력 후(보이지 않지만 그냥 치면 됨) 엔터를 누르면 로그인이 완료된다.</li>
+  <li>정상적으로 로그인 되면 쉘이 <code class="language-plaintext highlighter-rouge">mysql&gt;</code>로 바뀐다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; status;
+</code></pre></div></div>
+<ul>
+  <li>위 명령어를 입력하면 현재 설정을 확인할 수 있다.</li>
+</ul>
+
+<h2 id="mysql-종료">MySql 종료</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; exit
+</code></pre></div></div>
+<ul>
+  <li>위 명령어를 입력하면 <code class="language-plaintext highlighter-rouge">Bye</code>라는 메시지와 함께 <code class="language-plaintext highlighter-rouge">mysql</code>에서 빠져나올 수 있다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services stop mysql 혹은
+mysql.server stop
+</code></pre></div></div>
+<ul>
+  <li>둘 중 하나를 입력하면 <code class="language-plaintext highlighter-rouge">MySql</code> 서버가 종료된다.</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#database" class="page__taxonomy-item p-category" rel="tag">Database</a><span class="sep">, </span>
+    
+      <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a><span class="sep">, </span>
+    
+      <a href="/tags/#mysql" class="page__taxonomy-item p-category" rel="tag">MySQL</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#mysql" class="page__taxonomy-item p-category" rel="tag">MySQL</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-03T00:00:00+09:00">February 3, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=MySQL+%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Fmysql%2Fmysql-beginning%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fmysql%2Fmysql-beginning%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fmysql%2Fmysql-beginning%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/operating%20system/OS-01/" class="pagination--pager" title="운영체제
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
-</div>
 
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
         
           
 
@@ -561,7 +615,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          4 분 소요
+          3 분 소요
         
       </span>
     
@@ -573,6 +627,49 @@
   Operating System, OS
   컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층
 
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/use-JSP/" rel="permalink">JSP 사용
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 JSP 사용
+
+  HTML 태그와 Java 코드를 함께 사용한다.
 
 </p>
   </article>

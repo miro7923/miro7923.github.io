@@ -1,4 +1,151 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-02T22:57:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">운영체제</title><link href="http://localhost:4000/operating%20system/OS-01/" rel="alternate" type="text/html" title="운영체제" /><published>2022-02-02T00:00:00+09:00</published><updated>2022-02-02T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-01</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-01/"><![CDATA[<h1 id="-운영체제란">👀 운영체제란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-03T16:31:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">MySQL 시작하기</title><link href="http://localhost:4000/mysql/mysql-beginning/" rel="alternate" type="text/html" title="MySQL 시작하기" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-03T00:00:00+09:00</updated><id>http://localhost:4000/mysql/mysql-beginning</id><content type="html" xml:base="http://localhost:4000/mysql/mysql-beginning/"><![CDATA[<h1 id="-mysql-시작하기">👀 MySql 시작하기</h1>
+<ul>
+  <li>맥 기준으로 <code class="language-plaintext highlighter-rouge">MySql</code>을 설치하는 방법에는 2가지가 있는데</li>
+  <li><code class="language-plaintext highlighter-rouge">homebrew</code>를 통해 설치하는 방법과</li>
+  <li>
+    <p>MySql 홈페이지에서 <code class="language-plaintext highlighter-rouge">dmg</code> 파일을 다운받아 설치하는 방법이 있다. <br /><br /></p>
+  </li>
+  <li>나는 여기서 <code class="language-plaintext highlighter-rouge">homebrew</code>를 통해 설치하는 방법을 택했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">homebrew</code>는 맥에서 쓸 수 있는 터미널 버전 앱스토어 같은 느낌으로 개발에 필요한 각종 소프트웨어들을 명령어 한 줄로 간편하게 설치할 수 있다.</li>
+</ul>
+
+<h2 id="mysql-설치">MySql 설치</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">homebrew</code>가 설치되어 있다는 전제하에 <code class="language-plaintext highlighter-rouge">homebrew</code> 터미널을 열어 명령어 입력을 통한 설치를 진행할 것인데, 먼저 홈 브루를 최신 버전으로 업데이트 시켜주고 시작하자.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew update
+</code></pre></div>    </div>
+  </li>
+  <li>업데이트가 완료되면 아래 명령어를 입력하면 MySql이 설치된다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install mysql
+</code></pre></div>    </div>
+  </li>
+  <li>설치가 완료된 후
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew list
+</code></pre></div>    </div>
+  </li>
+  <li>를 입력하면 홈 브루를 통해 설치된 프로그램들이 나열되는데 그 중에 mysql이 있으면 설치가 잘 된 것임</li>
+</ul>
+
+<h2 id="mysql-실행">MySql 실행</h2>
+<ul>
+  <li>아까 설치할 때 썼던 터미널창에서 명령어 입력을 통해 <code class="language-plaintext highlighter-rouge">MySql</code>을 실행할 수 있는데 역시 2가지 방법이 있다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services start mysql 혹은
+mysql.server start
+</code></pre></div>    </div>
+  </li>
+  <li>둘 중 하나를 입력해서 <code class="language-plaintext highlighter-rouge">MySql</code>서버를 시작할 수 있다.</li>
+  <li>네트워크 연결 허용하겠냐는 창이 뜨면 허용하겠다고 하면 된다.</li>
+</ul>
+
+<h2 id="mysql-초기-설정">MySql 초기 설정</h2>
+<ul>
+  <li>서버가 시작되었다고 바로 쓸 수 있는 것은 아니고 간단한 설정을 해 주어야 한다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql_secure_installation
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>위 명령어를 입력하면 <code class="language-plaintext highlighter-rouge">MySql</code> 초기 세팅을 시작할 수 있다.<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Would you like to setup VALIDATE PASSWORD component? (Press y</td>
+          <td>Y for Yes, any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>비밀번호를 복잡하게 설정하겠느냐는 것인데 아직 초보 단계니까 <code class="language-plaintext highlighter-rouge">No</code>를 입력해서 ‘1234’와 같은 쉬운 비밀번호를 설정한다. (<code class="language-plaintext highlighter-rouge">Yes</code>를 입력하면 복잡한 비밀번호 설정)</li>
+  <li>
+    <p>새 비밀번호를 입력하라는 메시지가 나오면 입력하고 엔터 누르면 된다.<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Remove anonymous users? (Press y</td>
+          <td>Y for Yes. any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>사용자 설정을 묻는 것인데 <code class="language-plaintext highlighter-rouge">Yes</code>를 선택했다.</li>
+  <li>Yes - 접속하는 경우 “mysql -uroot”처럼 -u 옵션 필요</li>
+  <li>
+    <p>No - 접속하는 경우 “mysql”처럼 -u 옵션 불필요<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Disallow root login remotely? (Press y</td>
+          <td>Y for Yes, any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>다른 IP에서 root 아이디로 원격 접속이 가능한지 묻는 것인데 <code class="language-plaintext highlighter-rouge">Yes</code>는 불가능, <code class="language-plaintext highlighter-rouge">No</code>는 가능</li>
+  <li>
+    <p>나는 <code class="language-plaintext highlighter-rouge">Yes</code>로 선택했다.<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Remove test database and access to it? (Press y</td>
+          <td>Y for Yes, any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>테스트 데이터베이스를 삭제할건지 말건지 묻는 것인데 나는 <code class="language-plaintext highlighter-rouge">Yes</code>로 선택했다.<br /><br /></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>“Reload privilege tables now? (Press y</td>
+          <td>Y for Yes, any other key for No)”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>변경된 권한을 테이블에 적용하는 설정에 대한 질문인데 이 질문은 무조건 <code class="language-plaintext highlighter-rouge">Yes</code>로 선택하는 것이 좋다고 한다.<br /><br /></p>
+  </li>
+  <li>여기까지 하면 모든 초기 설정이 완료된다.</li>
+</ul>
+
+<h2 id="mysql-접속">MySql 접속</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql -u root -p
+</code></pre></div></div>
+<ul>
+  <li>위 명령어를 입력하면 root 아이디로 로그인할 수 있다.</li>
+  <li>비밀번호 입력창이 나오면 비밀번호를 입력 후(보이지 않지만 그냥 치면 됨) 엔터를 누르면 로그인이 완료된다.</li>
+  <li>정상적으로 로그인 되면 쉘이 <code class="language-plaintext highlighter-rouge">mysql&gt;</code>로 바뀐다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; status;
+</code></pre></div></div>
+<ul>
+  <li>위 명령어를 입력하면 현재 설정을 확인할 수 있다.</li>
+</ul>
+
+<h2 id="mysql-종료">MySql 종료</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; exit
+</code></pre></div></div>
+<ul>
+  <li>위 명령어를 입력하면 <code class="language-plaintext highlighter-rouge">Bye</code>라는 메시지와 함께 <code class="language-plaintext highlighter-rouge">mysql</code>에서 빠져나올 수 있다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services stop mysql 혹은
+mysql.server stop
+</code></pre></div></div>
+<ul>
+  <li>둘 중 하나를 입력하면 <code class="language-plaintext highlighter-rouge">MySql</code> 서버가 종료된다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="MySQL" /><category term="MySQL" /><category term="Database" /><category term="JSP" /><summary type="html"><![CDATA[👀 MySql 시작하기 맥 기준으로 MySql을 설치하는 방법에는 2가지가 있는데 homebrew를 통해 설치하는 방법과 MySql 홈페이지에서 dmg 파일을 다운받아 설치하는 방법이 있다.]]></summary></entry><entry><title type="html">운영체제</title><link href="http://localhost:4000/operating%20system/OS-01/" rel="alternate" type="text/html" title="운영체제" /><published>2022-02-02T00:00:00+09:00</published><updated>2022-02-02T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-01</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-01/"><![CDATA[<h1 id="-운영체제란">👀 운영체제란?</h1>
 <ul>
   <li>Operating System, OS</li>
   <li>
@@ -1018,21 +1165,4 @@ response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 �
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">forward</code>와 <code class="language-plaintext highlighter-rouge">include</code> 태그를 사용하여 이동할 페이지에 추가적으로 넘겨줄 파라미터가 있으면 <code class="language-plaintext highlighter-rouge">&lt;jsp:param/&gt;</code> 태그를 사용할 수 있다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 액션 태그란?]]></summary></entry><entry><title type="html">프론트엔드와 백엔드</title><link href="http://localhost:4000/html/HTML/" rel="alternate" type="text/html" title="프론트엔드와 백엔드" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/html/HTML</id><content type="html" xml:base="http://localhost:4000/html/HTML/"><![CDATA[<h1 id="-프론트엔드란">👀 프론트엔드란?</h1>
-<ul>
-  <li>웹 화면에 보여지는 모든 것들을 프론트엔드라 칭한다.<br /><br /></li>
-</ul>
-
-<h1 id="-백엔드란">👀 백엔드란?</h1>
-<ul>
-  <li>웹 화면에 보여지지 않지만 화면에 표시하기 위해 서버로부터 보내는 데이터, 데이터베이스에 있는 고객의 정보 등 화면에 보여지지 않지만 웹 화면 구성을 위해서 필요한 것들<br /><br /></li>
-</ul>
-
-<h1 id="-html이란">👀 HTML이란?</h1>
-<ul>
-  <li>Hyper Text Markup Language의 약자로 웹 문서를 작성하는 마크업 언어(Markup Language)이다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Hyper Text</code> : 문서를 서로 연결해주는 링크</li>
-  <li><code class="language-plaintext highlighter-rouge">Markup</code> : 표시한다(텍스트, 이미지, 영상, …) 웹 문서를 만드는 기본 언어</li>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code>은 태그로 구성되어 있으며, 태그를 이용해 인터넷에 문자와 그림을 표현하거나 하이퍼링크로 서로 다른 문서들을 연결한다.</li>
-  <li>학습에 참고하면 좋은 사이트 : <a href="http://www.w3schools.com">http://www.w3schools.com</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="HTML" /><category term="HTML" /><category term="Front-end" /><category term="Back-end" /><summary type="html"><![CDATA[👀 프론트엔드란? 웹 화면에 보여지는 모든 것들을 프론트엔드라 칭한다.]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 액션 태그란?]]></summary></entry></feed>
