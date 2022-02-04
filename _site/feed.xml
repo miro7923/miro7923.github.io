@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-04T17:10:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 5622. 다이얼</title><link href="http://localhost:4000/boj/boj5622/" rel="alternate" type="text/html" title="Java) BOJ 5622. 다이얼" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj5622</id><content type="html" xml:base="http://localhost:4000/boj/boj5622/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-04T21:39:13+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">MySQL Workbench 시작하기</title><link href="http://localhost:4000/mysql/mysql-workbench-beginning/" rel="alternate" type="text/html" title="MySQL Workbench 시작하기" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/mysql/mysql-workbench-beginning</id><content type="html" xml:base="http://localhost:4000/mysql/mysql-workbench-beginning/"><![CDATA[<h1 id="-mysql-workbench란">👀 MySQL Workbench란?</h1>
+<ul>
+  <li>터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구</li>
+  <li><code class="language-plaintext highlighter-rouge">IDE</code>를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다.</li>
+  <li>최신버전에는 버그가 있어서 <code class="language-plaintext highlighter-rouge">8.0.19</code> 버전으로 수업을 진행할 예정</li>
+  <li>윈도우라면 <code class="language-plaintext highlighter-rouge">MySQL</code> 인스톨러에서 <code class="language-plaintext highlighter-rouge">Remove</code> 버튼을 눌러 개별 프로그램만 간편히 제거한 후 <code class="language-plaintext highlighter-rouge">Add</code> 버튼을 눌러 원하는 버전으로 선택해서 설치할 수 있다.</li>
+  <li>하지만 난 맥을 써서 <code class="language-plaintext highlighter-rouge">homebrew</code>로 <code class="language-plaintext highlighter-rouge">MySQL</code>만 따로 깔았기 때문에 <code class="language-plaintext highlighter-rouge">Workbench</code>는 홈페이지에서 dmg 파일을 따로 받아서 설치했다.
+<br /><br /><br /></li>
+</ul>
+
+<h1 id="mysql-주석문">MySQL 주석문</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="err">주석문</span>
+<span class="c1">-- 주석문</span>
+<span class="cm">/* 주석문 */</span>
+</code></pre></div></div>
+
+<ul>
+  <li>셋 다 사용가능하다.
+<br /><br /><br /></li>
+</ul>
+
+<h1 id="db-조회">DB 조회</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">jspdb</span><span class="p">.</span><span class="n">tbl_member</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Workbench</code>에서 테이블을 조회하려면 테이블 앞에 <code class="language-plaintext highlighter-rouge">DB명</code>을 꼭 붙여줘야 한다.</li>
+  <li>그런데 매번 이렇게 쓰려면 좀 귀찮다…</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">use</span> <span class="n">jspdb</span><span class="p">;</span>
+
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tbl_member</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C++</code>에서 <code class="language-plaintext highlighter-rouge">using</code>을 쓰듯 <code class="language-plaintext highlighter-rouge">use</code>를 써서 <code class="language-plaintext highlighter-rouge">DB명</code>을 선언해주면 그 다음부터는 <code class="language-plaintext highlighter-rouge">DB명</code> 없이 테이블을 부를 수 있다.</li>
+</ul>
+
+<h2 id="쿼리문-실행">쿼리문 실행</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows) ctrl + enter
+Mac) command + enter
+</code></pre></div></div>
+
+<ul>
+  <li>일정 쿼리 구문들만 실행하고 싶으면 해당 쿼리문들을 블록으로 선택한 후 위 명령어를 입력하면 해당 쿼리문들만 실행된다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows) ctrl + shift + enter
+Mac) command + shift + enter
+</code></pre></div></div>
+
+<ul>
+  <li>전체 쿼리 실행은 위 명령어를 입력한다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="MySQL" /><category term="MySQL" /><category term="Workbench" /><category term="Database" /><category term="JSP" /><summary type="html"><![CDATA[👀 MySQL Workbench란? 터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구 IDE를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다. 최신버전에는 버그가 있어서 8.0.19 버전으로 수업을 진행할 예정 윈도우라면 MySQL 인스톨러에서 Remove 버튼을 눌러 개별 프로그램만 간편히 제거한 후 Add 버튼을 눌러 원하는 버전으로 선택해서 설치할 수 있다. 하지만 난 맥을 써서 homebrew로 MySQL만 따로 깔았기 때문에 Workbench는 홈페이지에서 dmg 파일을 따로 받아서 설치했다.]]></summary></entry><entry><title type="html">Java) BOJ 2908. 상수</title><link href="http://localhost:4000/boj/boj2908/" rel="alternate" type="text/html" title="Java) BOJ 2908. 상수" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2908</id><content type="html" xml:base="http://localhost:4000/boj/boj2908/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2908">https://www.acmicpc.net/problem/2908</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>
+    <p>상근이의 동생 상수는 수학을 정말 못한다. 상수는 숫자를 읽는데 문제가 있다. 이렇게 수학을 못하는 상수를 위해서 상근이는 수의 크기를 비교하는 문제를 내주었다. 상근이는 세 자리 수 두 개를 칠판에 써주었다. 그 다음에 크기가 큰 수를 말해보라고 했다.</p>
+  </li>
+  <li>
+    <p>상수는 수를 다른 사람과 다르게 거꾸로 읽는다. 예를 들어, 734와 893을 칠판에 적었다면, 상수는 이 수를 437과 398로 읽는다. 따라서, 상수는 두 수중 큰 수인 437을 큰 수라고 말할 것이다.</p>
+  </li>
+  <li>
+    <p>두 수가 주어졌을 때, 상수의 대답을 출력하는 프로그램을 작성하시오.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<ul>
+  <li>첫째 줄에 상근이가 칠판에 적은 두 수 A와 B가 주어진다. 두 수는 같지 않은 세 자리 수이며, 0이 포함되어 있지 않다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<ul>
+  <li>첫째 줄에 상수의 대답을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<ul>
+  <li>입력으로 주어지는 숫자들을 % 연산을 이용해 뒤집은 다음 뒤집은 수들을 비교한 뒤 큰 값을 출력한다.</li>
+  <li>버퍼입출력을 이용해 출력할 때 주의점은 정수형은 string으로 타입캐스팅을 해 주어야 제대로 출력된다.(처음에 이걸 모르고 정수형 그대로 넣어서 이상한 값이 출력되어서 헤멨다…)<br /><br /></li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/b980385c09874e8349d10b6b1dfe72d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2908" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2908]]></summary></entry><entry><title type="html">Java) BOJ 5622. 다이얼</title><link href="http://localhost:4000/boj/boj5622/" rel="alternate" type="text/html" title="Java) BOJ 5622. 다이얼" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj5622</id><content type="html" xml:base="http://localhost:4000/boj/boj5622/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <ul>
   <li><a href="https://www.acmicpc.net/problem/5622">https://www.acmicpc.net/problem/5622</a><br /><br /></li>
 </ul>
@@ -38,41 +126,7 @@
   <li>다소 하드코딩으로 풀었는데… 1~9까지 돌리는데 걸리는 최소 시간을 배열에 저장한 다음에 각 문자의 범위별로 인덱스값을 정해주어 시간을 저장한 배열에서 시간을 가져와서 더해주었다.<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/dab5efa1b825e30802d5afffe75fb522.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No5622" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/5622]]></summary></entry><entry><title type="html">Java) BOJ 2908. 상수</title><link href="http://localhost:4000/boj/boj2908/" rel="alternate" type="text/html" title="Java) BOJ 2908. 상수" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2908</id><content type="html" xml:base="http://localhost:4000/boj/boj2908/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2908">https://www.acmicpc.net/problem/2908</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<ul>
-  <li>
-    <p>상근이의 동생 상수는 수학을 정말 못한다. 상수는 숫자를 읽는데 문제가 있다. 이렇게 수학을 못하는 상수를 위해서 상근이는 수의 크기를 비교하는 문제를 내주었다. 상근이는 세 자리 수 두 개를 칠판에 써주었다. 그 다음에 크기가 큰 수를 말해보라고 했다.</p>
-  </li>
-  <li>
-    <p>상수는 수를 다른 사람과 다르게 거꾸로 읽는다. 예를 들어, 734와 893을 칠판에 적었다면, 상수는 이 수를 437과 398로 읽는다. 따라서, 상수는 두 수중 큰 수인 437을 큰 수라고 말할 것이다.</p>
-  </li>
-  <li>
-    <p>두 수가 주어졌을 때, 상수의 대답을 출력하는 프로그램을 작성하시오.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<ul>
-  <li>첫째 줄에 상근이가 칠판에 적은 두 수 A와 B가 주어진다. 두 수는 같지 않은 세 자리 수이며, 0이 포함되어 있지 않다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<ul>
-  <li>첫째 줄에 상수의 대답을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<ul>
-  <li>입력으로 주어지는 숫자들을 % 연산을 이용해 뒤집은 다음 뒤집은 수들을 비교한 뒤 큰 값을 출력한다.</li>
-  <li>버퍼입출력을 이용해 출력할 때 주의점은 정수형은 string으로 타입캐스팅을 해 주어야 제대로 출력된다.(처음에 이걸 모르고 정수형 그대로 넣어서 이상한 값이 출력되어서 헤멨다…)<br /><br /></li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/b980385c09874e8349d10b6b1dfe72d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2908" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2908]]></summary></entry><entry><title type="html">MySQL 시작하기</title><link href="http://localhost:4000/mysql/mysql-beginning/" rel="alternate" type="text/html" title="MySQL 시작하기" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-03T00:00:00+09:00</updated><id>http://localhost:4000/mysql/mysql-beginning</id><content type="html" xml:base="http://localhost:4000/mysql/mysql-beginning/"><![CDATA[<h1 id="-mysql-시작하기">👀 MySql 시작하기</h1>
+<script src="https://gist.github.com/miro7923/dab5efa1b825e30802d5afffe75fb522.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No5622" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/5622]]></summary></entry><entry><title type="html">MySQL 시작하기</title><link href="http://localhost:4000/mysql/mysql-beginning/" rel="alternate" type="text/html" title="MySQL 시작하기" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-03T00:00:00+09:00</updated><id>http://localhost:4000/mysql/mysql-beginning</id><content type="html" xml:base="http://localhost:4000/mysql/mysql-beginning/"><![CDATA[<h1 id="-mysql-시작하기">👀 MySql 시작하기</h1>
 <ul>
   <li>맥 기준으로 <code class="language-plaintext highlighter-rouge">MySql</code>을 설치하는 방법에는 2가지가 있는데</li>
   <li><code class="language-plaintext highlighter-rouge">homebrew</code>를 통해 설치하는 방법과</li>
@@ -426,288 +480,7 @@ mysql.server stop
   <li>보호 시스템</li>
   <li>네트워킹</li>
   <li>명령어 해석기(command line interpreter)</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><summary type="html"><![CDATA[👀 운영체제란? Operating System, OS 컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층]]></summary></entry><entry><title type="html">JavaScript 기본 문법</title><link href="http://localhost:4000/javascript/JavaScript/" rel="alternate" type="text/html" title="JavaScript 기본 문법" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/javascript/JavaScript</id><content type="html" xml:base="http://localhost:4000/javascript/JavaScript/"><![CDATA[<h1 id="자바스크립트란">자바스크립트란?</h1>
-<ul>
-  <li>웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어</li>
-  <li><code class="language-plaintext highlighter-rouge">인터프리터 언어</code>로 작성된 코드를 위에서 아래로 순차적으로 실행한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">컴파일 언어</code>와 다른 점은 일단 실행을 하고 에러가 발생하기 전 까지의 코드만 실행한다.</li>
-  <li>객체 기반 언어이다.</li>
-  <li>오픈소스 언어</li>
-  <li>다양한 라이브러리(API) 사용 가능
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">Jquery</code> 주로 사용 - <code class="language-plaintext highlighter-rouge">Ajax</code>, <code class="language-plaintext highlighter-rouge">Json</code></li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">HTML5</code>(웹표준) API 기반의 언어<br /><br /><br /></li>
-</ul>
-
-<h1 id="변수-선언">변수 선언</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">var</code> 키워드를 이용해 선언한다.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>일반적인 프로그래밍 언어와 다르게 자료형별로 구분해서 선언하지 않는다. 변수 선언과 동시에 초기화하는 내용물에 따라서 자바스트립트가 알아서 자료형을 지정한다.</li>
-  <li>편한 듯 하면서도 원래 하던 언어가 있어서 그런지 무의식적으로 int num … 과 같이 타이핑하게 될 때가 많다.</li>
-</ul>
-
-<h2 id="-var">🔸 var</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">var</code> 키워드는 같은 이름으로 중복해서 선언하고 값을 넣는 것이 가능하다.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">james</span><span class="dl">"</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// james</span>
-
-<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">lily</span><span class="dl">"</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// lily</span>
-</code></pre></div></div>
-
-<ul>
-  <li>컴파일 언어를 하다 온 입장에서는 다소 이해가 되지 않지만 <code class="language-plaintext highlighter-rouge">자바스크립트</code>에서의 <code class="language-plaintext highlighter-rouge">var</code> 키워드는 이런 흐름이 가능하다.</li>
-  <li>변수가 많아지면 중간에 꼬일 가능성이 아주 많아 보이는 속성이다. 그래서 이것을 보완하기 위해 나온 것이 <code class="language-plaintext highlighter-rouge">let</code> 키워드이다.</li>
-</ul>
-
-<h2 id="-let">🔸 let</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">let</code> 키워드도 <code class="language-plaintext highlighter-rouge">var</code>처럼 변수를 선언하는 키워드지만 약간 속성이 다르다.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">james</span><span class="dl">"</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// james</span>
-
-<span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">lily</span><span class="dl">"</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> 
-<span class="c1">// Uncaught SyntaxError: Identifier 'name' has already been declared</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">let</code> 키워드를 사용하니까 컴파일 언어와 같은 흐름을 보인다.</li>
-</ul>
-
-<h2 id="-const">🔸 const</h2>
-<ul>
-  <li>컴파일 언어에서와 마찬가지로 상수 선언 키워드이다.</li>
-  <li><code class="language-plaintext highlighter-rouge">const</code> 다음에 자료형은 쓸 필요 없이 바로 변수 이름을 선언하고 초기화하면 된다.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">james</span><span class="dl">"</span><span class="p">;</span>
-</code></pre></div></div>
-<p><br /><br /></p>
-
-<h1 id="연산자">연산자</h1>
-<ul>
-  <li>연산자의 사용은 동일하지만 자바스크립트에는 <code class="language-plaintext highlighter-rouge">===</code>과 <code class="language-plaintext highlighter-rouge">!==</code>이라는 연산자가 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">데이터값</code>과 <code class="language-plaintext highlighter-rouge">자료형</code>이 <strong>모두 동일</strong>한지 확인하는 연산자이다.</li>
-  <li><code class="language-plaintext highlighter-rouge">==</code>, <code class="language-plaintext highlighter-rouge">!=</code> 연산자들은 단순히 값만 확인하고 자료형이 같은지는 확인하지 않는다.
-    <ul>
-      <li>그래서 문자 100과 숫자 100을 <code class="language-plaintext highlighter-rouge">==</code>을 이용해서 값이 같은지 비교하면 <code class="language-plaintext highlighter-rouge">true</code>를 리턴한다.</li>
-      <li><code class="language-plaintext highlighter-rouge">===</code> 연산자 사용시 <code class="language-plaintext highlighter-rouge">false</code> 리턴</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="-연산자-우선순위">🔸 연산자 우선순위<br /></h2>
-<ol>
-  <li>()<br /></li>
-  <li>단항연산자(++, –, !)<br /></li>
-  <li>산술연산자(+, -, *, /, %)<br /></li>
-  <li>비교연산자(&gt;, &lt;, &gt;=, &lt;=, ==, !=, ===, !==)<br /></li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>논리연산자(&amp;&amp;,</td>
-          <td> </td>
-          <td>)<br /></td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>복합대입연산자(=, +=, -=, *=, /=, %=)<br /><br /></li>
-</ol>
-
-<h1 id="함수">함수</h1>
-<ul>
-  <li>함수 또한 자료형을 구분하지 않고 <code class="language-plaintext highlighter-rouge">function</code> 키워드 하나만 쓴다.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">함수명</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nx">실행문</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nl">호출법</span> <span class="p">:</span> <span class="nx">함수명</span><span class="p">();</span>
-</code></pre></div></div>
-<p><br /><br /></p>
-
-<ul>
-  <li>익명함수도 사용 가능하다.
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">변수</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span>
-<span class="p">{</span>
-  <span class="nx">실행문</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nl">호출법</span> <span class="p">:</span> <span class="nx">참조</span> <span class="nx">변수명</span><span class="p">();</span>
-</code></pre></div>    </div>
-    <p><br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="객체">객체</h1>
-<ul>
-  <li>내 눈앞에 보이는 모든 대상</li>
-</ul>
-
-<h3 id="-객체-생성은-new-키워드를-이용해서-생성한다">🔸 객체 생성은 new 키워드를 이용해서 생성한다.</h3>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">참조변수</span><span class="p">(</span><span class="nx">레퍼런스</span><span class="p">)</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
-</code></pre></div></div>
-<p><br /><br /></p>
-
-<h2 id="1-내장객체">1) 내장객체</h2>
-<ul>
-  <li>자바스크립트 안에 포함된 객체
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">문자(String)</code>, <code class="language-plaintext highlighter-rouge">날짜(Date)</code>, <code class="language-plaintext highlighter-rouge">수학(Math)</code>, <code class="language-plaintext highlighter-rouge">숫자(Number)</code>, <code class="language-plaintext highlighter-rouge">배열(Array)</code>, …</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="-날짜date객체">🔸 날짜(Date)객체</h3>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">day</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// 2022년 1월 1일</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">자바스크립트</code>에서의 <code class="language-plaintext highlighter-rouge">날짜객체</code>에서 좀 희안한 점이라면 월(Month)이 실제 숫자보다 <strong>1 적은 형태</strong>로 표현된다는 것이다. <code class="language-plaintext highlighter-rouge">new Date(2022,1,1);</code> 이라 쓰면 2022년 2월 1일이다.</li>
-</ul>
-
-<h3 id="-배열array객체">🔸 배열(Array)객체</h3>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 다 가능</span>
-<span class="kd">let</span> <span class="nx">arr3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span> 
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">자바스크립트</code>에서 <code class="language-plaintext highlighter-rouge">배열</code>은 <code class="language-plaintext highlighter-rouge">배열객체</code>를 통해 생성 할 수도 있고 컴파일 언어와 비슷하게 <code class="language-plaintext highlighter-rouge">[]를 사용해서 초기화</code> 하는 형태로 선언할 수도 있다.</li>
-  <li>또 특이한 점이라면 <strong>하나의 배열에 서로 다른 자료형을 가진 값을 담을 수 있다</strong>는 것이다.</li>
-</ul>
-
-<h2 id="2-브라우저-객체-모델bom">2) 브라우저 객체 모델(BOM)</h2>
-<ul>
-  <li>웹 브라우저에 포함되어 브라우저를 표현하는 객체</li>
-  <li>계층형 구조로 되어 있다.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         <span class="o">/</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">screen</span><span class="p">,</span> <span class="p">...</span>
-<span class="nb">window</span> <span class="o">-</span>   <span class="nx">location</span><span class="p">,</span> <span class="nx">history</span>
-         <span class="err">\</span> <span class="nb">navigator</span>
-</code></pre></div></div>
-
-<ul>
-  <li>알림창을 출력할 때
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">메시지 출력 메서드</span><span class="dl">"</span><span class="p">);</span>
-</code></pre></div>    </div>
-  </li>
-  <li>를 많이 쓴다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-<span class="kd">function</span> <span class="nx">myOpen</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">test1.html</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">test1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">width=300, height=200, top=150, left=500</span><span class="dl">"</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nt">&lt;/script&gt;</span>
-
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"팝업창 열기"</span> <span class="na">onclick=</span><span class="s">"myOpen();"</span><span class="nt">&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>위 처럼 <code class="language-plaintext highlighter-rouge">HTML</code> 태그와 함께 쓸 수 있다.</li>
-</ul>
-
-<h3 id="-location-객체">🔸 location 객체</h3>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">test1.html</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// test1.html로 이동</span>
-<span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span> <span class="c1">// 페이지 새로고침</span>
-<span class="nx">location</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">test2.html</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 현재 페이지를 test2.html로 변경</span>
-</code></pre></div></div>
-
-<ul>
-  <li>주소창과 관련된 기능을 가지고 있다.</li>
-  <li>특정 페이지로 이동하거나 현재 페이지를 다시 로드하는 등의 동작을 수행할 수 있다.</li>
-</ul>
-
-<h3 id="-history-객체">🔸 history 객체</h3>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span> <span class="c1">// 뒤로 가기</span>
-<span class="nx">history</span><span class="p">.</span><span class="nx">forward</span><span class="p">();</span> <span class="c1">// 앞으로 가기</span>
-<span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="o">-</span><span class="nx">숫자</span><span class="p">);</span> <span class="c1">// 숫자만큼 뒤로 가기</span>
-<span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="nx">숫자</span><span class="p">);</span> <span class="c1">// 숫자만큼 앞으로 가기</span>
-</code></pre></div></div>
-
-<ul>
-  <li>페이지의 방문기록에 따른 동작을 수행할 수 있다.</li>
-</ul>
-
-<h3 id="-navigator-객체">🔸 navigator 객체</h3>
-<ul>
-  <li>방문자(클라이언트)의 브라우저 정보 및 운영체제정보 확인 가능</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">);</span>
-<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span></code></pre></div></div>
-
-<ul>
-  <li>위와 같이 쓰면 팝업창에서 사용자의 브라우저 정보와 운영체제정보를 볼 수 있다.</li>
-</ul>
-
-<h2 id="3-문서-객체-모델dom">3) 문서 객체 모델(DOM)</h2>
-<ul>
-  <li>HTML문서 구조(객체)</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">images</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">src</span><span class="p">;</span> <span class="c1">// 현재 페이지에 있는 이미지들 중 첫번째 소스에 접근</span>
-</code></pre></div></div>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">폼태그명</span><span class="p">.</span><span class="nx">속성</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code>의 <code class="language-plaintext highlighter-rouge">폼태그</code>와 결합해 사용할 수 있다.</li>
-</ul>
-
-<h3 id="-폼태그-form">🔸 폼태그 form</h3>
-<ul>
-  <li>사용자의 정보를 입력받아서 특정 페이지(action)로 정보를 전달하는(submit) 태그</li>
-  <li>전달 방식에서는 <code class="language-plaintext highlighter-rouge">Get</code>방식과 <code class="language-plaintext highlighter-rouge">Post</code>방식이 있다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;fieldset&gt;</span>
-    <span class="nt">&lt;legend&gt;</span>회원정보 가입하기<span class="nt">&lt;/legend&gt;</span>
-    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"itwill.jsp"</span> <span class="na">name=</span><span class="s">"fr2"</span> <span class="na">method=</span><span class="s">"get"</span> <span class="na">onsubmit=</span><span class="s">"return fun8();"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label&gt;</span>아이디 : <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span> <span class="nt">&lt;br&gt;</span>
-        비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pw"</span><span class="nt">&gt;</span> <span class="nt">&lt;br&gt;</span> 
-        주민번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"ju1"</span> <span class="na">onkeyup=</span><span class="s">"check1();"</span> <span class="na">maxlength=</span><span class="s">"6"</span><span class="nt">&gt;</span> - <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"ju2"</span> <span class="na">maxlength=</span><span class="s">"7"</span> <span class="na">onkeyup=</span><span class="s">"check2();"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;br&gt;</span> 메세지 :
-        <span class="nt">&lt;textarea</span> <span class="na">rows=</span><span class="s">"5"</span> <span class="na">cols=</span><span class="s">"10"</span> <span class="na">name=</span><span class="s">"msg"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
-        <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"회원 가입하기"</span> <span class="na">onsubmit=</span><span class="s">"return fun8();"</span><span class="nt">&gt;</span>
-
-        <span class="nt">&lt;hr&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"속성 확인 버튼"</span> <span class="na">onclick=</span><span class="s">"fun5()"</span><span class="nt">&gt;</span> 
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"속성 변경 버튼"</span> <span class="na">onclick=</span><span class="s">"fun6()"</span><span class="nt">&gt;</span> 
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"데이터 확인 버튼"</span> <span class="na">onclick=</span><span class="s">"fun7()"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/form&gt;</span>
-<span class="nt">&lt;/fieldset&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>위와 같이 사용 가능하다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JavaScript" /><category term="JSP" /><category term="JavaScript" /><summary type="html"><![CDATA[자바스크립트란? 웹 페이지에 방문했을 때 사용자의 동작(이벤트)에 따른 처리를 하는 언어 인터프리터 언어로 작성된 코드를 위에서 아래로 순차적으로 실행한다. 컴파일 언어와 다른 점은 일단 실행을 하고 에러가 발생하기 전 까지의 코드만 실행한다. 객체 기반 언어이다. 오픈소스 언어 다양한 라이브러리(API) 사용 가능 Jquery 주로 사용 - Ajax, Json HTML5(웹표준) API 기반의 언어]]></summary></entry><entry><title type="html">세션(Session)과 쿠키(Cookie)</title><link href="http://localhost:4000/jsp/JSP-session-cookie/" rel="alternate" type="text/html" title="세션(Session)과 쿠키(Cookie)" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-session-cookie</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-session-cookie/"><![CDATA[<h1 id="-세션session이란">👀 세션(Session)이란?</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><summary type="html"><![CDATA[👀 운영체제란? Operating System, OS 컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층]]></summary></entry><entry><title type="html">세션(Session)과 쿠키(Cookie)</title><link href="http://localhost:4000/jsp/JSP-session-cookie/" rel="alternate" type="text/html" title="세션(Session)과 쿠키(Cookie)" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-session-cookie</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-session-cookie/"><![CDATA[<h1 id="-세션session이란">👀 세션(Session)이란?</h1>
 <h2 id="️-서버랑-클라이언트와의-관계상태를-유지하기-위해서-사용하는-값">☑️ 서버랑 클라이언트와의 관계(상태)를 유지하기 위해서 사용하는 값</h2>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">HTTP 프로토콜</code>은 상태가 유지되지 않기 때문에 요청에 대한 응답이 한 번씩 이뤄지고 나면 그 관계가 소멸된다.</li>
@@ -1012,157 +785,197 @@ response.addHeader("Refresh", "3;url=http://www.naver.co.kr"); // 3초 후에 �
   <li>출력 : <code class="language-plaintext highlighter-rouge">out.print("Hello");</code></li>
   <li>버퍼 사이즈 : <code class="language-plaintext highlighter-rouge">&lt;%=out.getBufferSize() %&gt;byte&lt;br&gt;</code></li>
   <li>버퍼 사용후 : <code class="language-plaintext highlighter-rouge">&lt;%=out.getRemaining() %&gt;byte&lt;br&gt;</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 내장 객체란? JSP 페이지가 웹 컨테이너에 의해서 서블릿으로 변환할 때 웹 컨테이너가 자동으로 생성해 주는 객체(클래스, import 구분없이 사용 가능)]]></summary></entry><entry><title type="html">JSP 지시어(Directive)</title><link href="http://localhost:4000/jsp/JSP-directive/" rel="alternate" type="text/html" title="JSP 지시어(Directive)" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-directive</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-directive/"><![CDATA[<h1 id="-jsp-지시어란directive">👀 JSP 지시어란?(Directive)</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 내장 객체란? JSP 페이지가 웹 컨테이너에 의해서 서블릿으로 변환할 때 웹 컨테이너가 자동으로 생성해 주는 객체(클래스, import 구분없이 사용 가능)]]></summary></entry><entry><title type="html">CSS 기초</title><link href="http://localhost:4000/html/CSS-beginning/" rel="alternate" type="text/html" title="CSS 기초" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/html/CSS-beginning</id><content type="html" xml:base="http://localhost:4000/html/CSS-beginning/"><![CDATA[<h1 id="-css란">👀 CSS란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Cascading Style Sheets</code>의 약자로 <code class="language-plaintext highlighter-rouge">HTML</code>로 만든 웹 문서 뼈대에 디자인을 적용하기 위한 것</li>
+</ul>
 
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span><span class="err">@</span> <span class="o">...</span> <span class="nt">%&gt;</span>
+<h2 id="-적용-방법">🔸 적용 방법</h2>
+<ol>
+  <li>태그에 바로 스타일 적용 - 잘 안씀<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">head</code> 안에서 스타일 적용<br /></li>
+  <li>외부파일로 스타일 적용<br /><br /><br /></li>
+</ol>
+
+<h1 id="-기본-문법">👀 기본 문법</h1>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">태그</span> <span class="nt">대상</span>
+<span class="p">{</span>
+    <span class="py">속성</span><span class="p">:</span> <span class="n">값</span><span class="p">;</span>
+    <span class="py">속성</span><span class="p">:</span> <span class="n">값</span><span class="p">;</span> <span class="err">...</span>
+<span class="p">}</span>
+
+<span class="o">*</span>
+<span class="p">{</span>
+    <span class="err">HTML</span> <span class="err">내용</span> <span class="err">전체</span> <span class="err">선택</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span>
+<span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">skyblue</span><span class="p">;</span>
+    <span class="err">모든</span> <span class="err">h2</span> <span class="err">태그에</span> <span class="err">적용</span>
+<span class="p">}</span> 
+
+<span class="nf">#p1</span>
+<span class="p">{</span>
+    <span class="err">id="p1"</span> <span class="err">인</span> <span class="err">id</span> <span class="err">모두</span> <span class="err">선택</span>
+<span class="p">}</span>
+
+<span class="nc">.p2</span>
+<span class="p">{</span>
+    <span class="err">class="p2"</span> <span class="err">인</span> <span class="err">class</span> <span class="err">모두</span> <span class="err">선택</span>
+<span class="p">}</span>
+
+<span class="nf">#footer</span> <span class="nt">p</span>
+<span class="p">{</span>
+    <span class="err">footer</span> <span class="err">안에</span> <span class="err">있는</span> <span class="err">p</span> <span class="err">태그에만</span> <span class="err">적용</span>
+<span class="p">}</span>
+
+<span class="c">/* 하이퍼링크 태그에만 부분적으로 적용하는 것도 가능하다 */</span>
+<span class="nt">a</span><span class="nd">:link</span><span class="o">,</span> <span class="nt">a</span><span class="nd">:visited</span>
+<span class="p">{</span>
+	<span class="c">/* 하이퍼링크색, 방문한 하이퍼링크색 변경 */</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span><span class="nd">:hover</span>
+<span class="p">{</span>
+	<span class="c">/* 하이퍼링크에 마우스를 올리면 */</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">JSP</code> 파일 내에서 <code class="language-plaintext highlighter-rouge">JSP</code>를 실행할 컨테이너에서 해당 페이지를 어떻게 처리할 것인가에 대한 설정 정보들을 지정해주는 데 사용</li>
-  <li><code class="language-plaintext highlighter-rouge">page</code> 지시어, <code class="language-plaintext highlighter-rouge">include</code> 지시어, <code class="language-plaintext highlighter-rouge">taglib</code> 지시어 3가지로 나누어진다.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;p id="p1"&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;span class="p2"&gt;</code> 와 같이 지정하며 <code class="language-plaintext highlighter-rouge">id</code>는 넓은 영역을 지정할 때 주로 사용하고 <code class="language-plaintext highlighter-rouge">class</code>는 좁은 영역을 지정할 때 주로 사용한다고 한다.
+<br /><br /></li>
 </ul>
 
-<h2 id="1-page-지시어">1. page 지시어</h2>
+<h1 id="-css-꾸미기-속성들">👀 CSS 꾸미기 속성들</h1>
 
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span>속성1="값1" 속성2="값2" 속성3="값3"... <span class="nt">%&gt;</span>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span>
+<span class="p">{</span>
+	<span class="c">/* 배치 */</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span> <span class="err">전체영역(문단영역)</span> <span class="err">:</span> <span class="err">블록레벨</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">inline</span><span class="p">;</span> <span class="py">요소영역</span> <span class="p">:</span> <span class="n">인라인</span> <span class="n">레벨</span><span class="p">(</span><span class="n">가로로</span> <span class="n">붙음</span><span class="p">)</span>
+	<span class="n">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span> <span class="err">메뉴</span> <span class="err">만들땐</span> <span class="err">인라인</span> <span class="err">블록이</span> <span class="err">편하다</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+    
+	<span class="c">/* 박스크기 계산 box-sizing */</span>
+    <span class="c">/* 웹 페이지의 내용물들을 배치할 때 박스크기 계산한 것을 바탕으로 배치하는 것이 좋다 */</span>
+	<span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span> <span class="err">내용</span> <span class="err">안여백</span> <span class="err">테두리선</span> <span class="err">포함해서</span> <span class="err">크기</span> <span class="err">계산</span>
+	<span class="nl">box-sizing</span><span class="p">:</span> <span class="n">content-box</span><span class="p">;</span> <span class="err">내용(기본값)물만</span> <span class="err">포함해서</span> <span class="err">크기</span> <span class="err">계산</span>
+    
+	<span class="c">/* 너비 */</span>
+	<span class="nl">width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+	
+	<span class="c">/* 높이 */</span>
+	<span class="nl">height</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+ 
+    <span class="c">/* 안 여백 10px */</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+	
+	<span class="c">/* 밖 여백 */</span>
+	<span class="nl">margin</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    
+	<span class="c">/* 배경색 */</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="no">silver</span><span class="p">;</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="m">#0000ff</span><span class="p">;</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+    
+    <span class="nl">color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.5</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#ff0000</span><span class="p">;</span>
+    
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s1">"바탕"</span><span class="p">;</span>
+    
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">3em</span><span class="p">;</span>
+    <span class="c">/* 절대크기(지정된 크기) : 상대크기(상대적인 글자크기) */</span>
+    <span class="c">/* 포인트 pt, 픽셀 px, em 대문자를 기준으로 비율값 적용, rem 1em 비율값 적용, ex 소문자를 기준으로 적용 */</span>
+    
+    <span class="nl">font-style</span><span class="p">:</span> <span class="nb">italic</span><span class="p">;</span>
+    
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+    
+    <span class="c">/* 글자 가운데 정렬 */</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    
+    <span class="nl">line-height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    
+    <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">overline</span><span class="p">;</span>
+    
+    <span class="c">/* 그림자 효과 */</span>
+    <span class="nl">text-shadow</span><span class="p">:</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">3px</span> <span class="no">black</span><span class="p">;</span> 
+    
+    <span class="c">/* 글자 하나사이 간격*/</span>
+    <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">0.5em</span><span class="p">;</span> 
+    
+    <span class="c">/* 단어 사이 간격 */</span>
+    <span class="nl">word-spacing</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span> 
+    
+    <span class="c">/* 목록 들여쓰기 내어쓰기 inside/outside */</span>
+    <span class="nl">list-style-position</span><span class="p">:</span> <span class="nb">outside</span><span class="p">;</span>
+    
+    <span class="c">/* 목록 점(불릿) 대신 이미지 사용 */</span>
+    <span class="nl">list-style-image</span><span class="p">:</span> <span class="sx">url("1.jpeg")</span><span class="p">;</span>
+    
+    <span class="c">/* 표 제목 위치 지정 caption-side: top/bottom; */</span>
+	<span class="nl">caption-side</span><span class="p">:</span> <span class="nb">top</span><span class="p">;</span>
+    
+	<span class="c">/* 표 테두리선 그려주기 border: 테두리선 두께 테두리선 모양 테두리선 색 */</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+    <span class="nl">border-style</span><span class="p">:</span> <span class="nb">dotted</span><span class="p">;</span>
+	<span class="nl">border-color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+    
+	<span class="c">/* 셀(칸) 사이에 여백 */</span>
+	<span class="nl">border-spacing</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+	
+	<span class="c">/* 표와 셀 테두리 합치기 */</span>
+	<span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span>
+    
+    <span class="c">/* 모서리 둥글게 */</span>
+	<span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    
+    <span class="c">/* 박스 그림자 (12시부터 시계방향으로) 색상 */</span>
+	<span class="nl">box-shadow</span><span class="p">:</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">15px</span> <span class="m">5px</span> <span class="no">green</span><span class="p">;</span>
+ 
+	<span class="c">/* 어울림 배치하는 법 */</span>
+	<span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span> <span class="c">/* 이미지를 왼쪽으로 기준으로 글자 어울림 배치 */</span>
+	<span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span> <span class="c">/* 이미지 오른쪽으로 기준으로 글자 어울림 배치 */</span>
+ 
+	<span class="c">/* 어울림 배치 해제 */</span>
+	<span class="c">/* 아까 설정한 방향 중 해제하고 싶은 방향을 입력해줌 */</span>
+	<span class="nl">clear</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+	<span class="nl">clear</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+	<span class="nl">clear</span><span class="p">:</span> <span class="nb">both</span><span class="p">;</span>  
+    
+    <span class="c">/* 배경 이미지 삽입 */</span>
+	<span class="c">/* 이미지 태그에서 안보이면 스타일시트에서 이미지를 넣은 것이다. */</span>
+	<span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("dot.png")</span><span class="p">;</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">repeat</span><span class="p">;</span> <span class="c">/* 이미지 바둑판 모양으로 반복 */</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">repeat-x</span><span class="p">;</span> <span class="c">/* x축만 반복 */</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">repeat-y</span><span class="p">;</span> <span class="c">/* y축만 반복 */</span>
+	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">no-repeat</span><span class="p">;</span> <span class="c">/* 반복 안함 */</span> 
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span> <span class="c">/* 문단 가운데로 정렬 */</span>
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">bottom</span> <span class="nb">right</span><span class="p">;</span> <span class="c">/* 두개 넣으면 오른쪽 아래와 같이 정렬됨 */</span>
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">top</span> <span class="nb">left</span><span class="p">;</span>
+	<span class="nl">background-size</span><span class="p">:</span> <span class="m">50px</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="️-css-꾸미기-시작은">☑️ CSS 꾸미기 시작은</h2>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">*</span>
+<span class="p">{</span>
+	<span class="c">/* body 영역엔 기본적인 여백이 조금씩 있는데 이걸 다 0으로 만들고 시작한다. */</span>
+	<span class="nl">margin</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+	
+	<span class="c">/* 테두리포함 너비 계산하기 */</span>
+	<span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">JSP</code> 페이지에 대한 속성을 지정하는 지시어</li>
-  <li>속성에는 스크립트 언어, import할 패키지/클래스, 세션 사용 여부, 에러 페이지 등 12개의 설정 정보를 지정해 사용할 수 있다.</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th>속성</th>
-      <th>사용법</th>
-      <th>기본값</th>
-      <th>설명</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>language</td>
-      <td>language=”java”</td>
-      <td>java</td>
-      <td>스크립트 요소에서 사용할 언어 설정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>extends</td>
-      <td>extends=”클래스명”</td>
-      <td>없음</td>
-      <td>상속받을 클래스를 설정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>import</td>
-      <td>import=”패키지.클래스명”</td>
-      <td>없음</td>
-      <td>import할 패키지.클래스 설정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>session</td>
-      <td>session=”true”</td>
-      <td>true</td>
-      <td>HttpSession 사용 여부를 설정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>buffer</td>
-      <td>buffer=”16kb”</td>
-      <td>8kb</td>
-      <td>JSP 페이지의 출력 버퍼 크기를 설정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>autoFlush</td>
-      <td>autoFlush=”true”</td>
-      <td>true</td>
-      <td>출력 버퍼가 다 찼을 경우 처리 방법을 설정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>isThreadSafe</td>
-      <td>isThreadSafe=”true”</td>
-      <td>true</td>
-      <td>다중 스레드의 동시 실행 여부를 설정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>info</td>
-      <td>info=”페이지 설명”</td>
-      <td>없음</td>
-      <td>페이지 설명</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>errorPage</td>
-      <td>errorPage=”에러 페이지.jsp”</td>
-      <td>없음</td>
-      <td>에러 페이지로 사용할 페이지를 지정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>contentType</td>
-      <td>contentType=”text/html”</td>
-      <td>text/html;charset=ISO-8859-1</td>
-      <td>JSP 페이지가 생성할 문서의 타입을 지정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>isErrorPage</td>
-      <td>isErrorPage=”false”</td>
-      <td>false</td>
-      <td>현재 페이지를 에러 페이지로 지정</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>pageEncoding</td>
-      <td>pageEncoding=”euc-kr”</td>
-      <td>ISO-8859-1</td>
-      <td>현재 페이지의 문자 인코딩 타입 설정</td>
-      <td><br /></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul>
-  <li>각각의 속성을 하나의 <code class="language-plaintext highlighter-rouge">page 지시어</code>에 한 번에 지정할 수도 있으며 여러 개의 <code class="language-plaintext highlighter-rouge">page 지시어</code>에 나누어 지정할 수도 있다.</li>
-  <li>하지만 <code class="language-plaintext highlighter-rouge">import</code> 속성을 제외한 나머지 속성은 하나의 페이지에서 오직 한 번씩만 지정할 수 있다.<br /><br /></li>
-</ul>
-
-<h2 id="2-include-지시어">2. include 지시어</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ include </span><span class="na">file=</span><span class="s">"header.jsp"</span> <span class="nt">%&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>특정한 <code class="language-plaintext highlighter-rouge">JSP</code> 파일 또는 <code class="language-plaintext highlighter-rouge">HTML</code> 파일을 해당 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지에 삽입할 수 있도록 하는 기능을 제공한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">include</code>되는 <code class="language-plaintext highlighter-rouge">JSP</code> 코드 자체가 해당 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지에 복사되어 더해지므로 서블릿 컴파일 과정은 <code class="language-plaintext highlighter-rouge">include</code> 되는 페이지의 수가 아무리 많아도 단 한 번만 이루어지게 된다.</li>
-  <li>사용되는 공통 변수값들을 추가할 때 주로 사용한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">include</code> 지시어는 중첩 사용이 가능하기 때문에 <code class="language-plaintext highlighter-rouge">include</code>되는 파일 안에서 또 다른 파일을 <code class="language-plaintext highlighter-rouge">include</code>하여도 문제없이 동작한다.<br /><br /></li>
-</ul>
-
-<h2 id="3-taglib-지시어">3. taglib 지시어</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ taglib </span><span class="na">url=</span><span class="s">"http://taglib.com/sampleURI"</span><span class="na"> prefix=</span><span class="s">"samplePrefix"</span> <span class="nt">%&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">JSTL(JSP Standard Tag Library)이나 커스텀 태그 등 태그 라이브러리를 </code>JSP`에서 사용할 때 접두사를 지정하기 위해 사용된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">uri</code> 속성과 <code class="language-plaintext highlighter-rouge">prefix</code> 속성으로 이루어진다.</li>
-</ul>
-
-<h3 id="-uri-속성">🔸 uri 속성</h3>
-<ul>
-  <li>태그 라이브러리에서 정의한 태그와 속성 저보를 저장한 <code class="language-plaintext highlighter-rouge">TLD(Tag Library Descriptor)</code> 파일이 존재하는 위치 지정</li>
-</ul>
-
-<h3 id="-prefix-속성">🔸 prefix 속성</h3>
-<ul>
-  <li>사용할 커스텀 태그의 네임 스페이스(Name Space)를 지정</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="WEB" /><summary type="html"><![CDATA[👀 JSP 지시어란?(Directive)]]></summary></entry></feed>
+  <li>위와 같이 초기화하고 시작하는 것이 좋다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="HTML" /><category term="HTML" /><category term="Front-end" /><category term="CSS" /><summary type="html"><![CDATA[👀 CSS란? Cascading Style Sheets의 약자로 HTML로 만든 웹 문서 뼈대에 디자인을 적용하기 위한 것]]></summary></entry></feed>

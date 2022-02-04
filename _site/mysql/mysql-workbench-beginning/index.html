@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>JSP 영역 객체와 속성 | Yujin Dev Log</title>
-<meta name="description" content="👀 영역 객체(Scope)와 속성(Attribute)    jsp 내장객체 중에서 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체   JSP에서는 page, request, session, application 4가지 영역으로 정의한다.">
+<!-- begin _includes/seo.html --><title>MySQL Workbench 시작하기 | Yujin Dev Log</title>
+<meta name="description" content="👀 MySQL Workbench란?    터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구   IDE를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다.   최신버전에는 버그가 있어서 8.0.19 버전으로 수업을 진행할 예정   윈도우라면 MySQL 인스톨러에서 Remove 버튼을 눌러 개별 프로그램만 간편히 제거한 후 Add 버튼을 눌러 원하는 버전으로 선택해서 설치할 수 있다.   하지만 난 맥을 써서 homebrew로 MySQL만 따로 깔았기 때문에 Workbench는 홈페이지에서 dmg 파일을 따로 받아서 설치했다.">
 
 
   <meta name="author" content="Yujin Hwang">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="JSP 영역 객체와 속성">
-<meta property="og:url" content="http://localhost:4000/jsp/JSP-scope-attribute/">
+<meta property="og:title" content="MySQL Workbench 시작하기">
+<meta property="og:url" content="http://localhost:4000/mysql/mysql-workbench-beginning/">
 
 
-  <meta property="og:description" content="👀 영역 객체(Scope)와 속성(Attribute)    jsp 내장객체 중에서 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체   JSP에서는 page, request, session, application 4가지 영역으로 정의한다.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-02-01T00:00:00+09:00">
+  <meta property="og:description" content="👀 MySQL Workbench란?    터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구   IDE를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다.   최신버전에는 버그가 있어서 8.0.19 버전으로 수업을 진행할 예정   윈도우라면 MySQL 인스톨러에서 Remove 버튼을 눌러 개별 프로그램만 간편히 제거한 후 Add 버튼을 눌러 원하는 버전으로 선택해서 설치할 수 있다.   하지만 난 맥을 써서 homebrew로 MySQL만 따로 깔았기 때문에 Workbench는 홈페이지에서 dmg 파일을 따로 받아서 설치했다.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-02-04T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/jsp/JSP-scope-attribute/">
+
+<link rel="canonical" href="http://localhost:4000/mysql/mysql-workbench-beginning/">
 
 
 
@@ -167,7 +167,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#jsp" itemprop="item"><span itemprop="name">Jsp</span></a>
+          <a href="/categories/#mysql" itemprop="item"><span itemprop="name">Mysql</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">JSP 영역 객체와 속성</li>
+        <li class="current">MySQL Workbench 시작하기</li>
       
     
   </ol>
@@ -310,16 +310,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="JSP 영역 객체와 속성">
-    <meta itemprop="description" content="👀 영역 객체(Scope)와 속성(Attribute)  jsp 내장객체 중에서 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체  JSP에서는 page, request, session, application 4가지 영역으로 정의한다.">
-    <meta itemprop="datePublished" content="2022-02-01T00:00:00+09:00">
+    <meta itemprop="headline" content="MySQL Workbench 시작하기">
+    <meta itemprop="description" content="👀 MySQL Workbench란?  터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구  IDE를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다.  최신버전에는 버그가 있어서 8.0.19 버전으로 수업을 진행할 예정  윈도우라면 MySQL 인스톨러에서 Remove 버튼을 눌러 개별 프로그램만 간편히 제거한 후 Add 버튼을 눌러 원하는 버전으로 선택해서 설치할 수 있다.  하지만 난 맥을 써서 homebrew로 MySQL만 따로 깔았기 때문에 Workbench는 홈페이지에서 dmg 파일을 따로 받아서 설치했다.">
+    <meta itemprop="datePublished" content="2022-02-04T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/jsp/JSP-scope-attribute/" class="u-url" itemprop="url">JSP 영역 객체와 속성
+            <a href="http://localhost:4000/mysql/mysql-workbench-beginning/" class="u-url" itemprop="url">MySQL Workbench 시작하기
 </a>
           </h1>
           
@@ -351,16 +351,65 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#-영역-객체scope와-속성attribute">👀 영역 객체(Scope)와 속성(Attribute)</a></li></ul>
+              <ul class="toc__menu"><li><a href="#-mysql-workbench란">👀 MySQL Workbench란?</a></li><li><a href="#mysql-주석문">MySQL 주석문</a></li><li><a href="#db-조회">DB 조회</a><ul><li><a href="#쿼리문-실행">쿼리문 실행</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="-영역-객체scope와-속성attribute">👀 영역 객체(Scope)와 속성(Attribute)</h1>
+        <h1 id="-mysql-workbench란">👀 MySQL Workbench란?</h1>
 <ul>
-  <li>jsp 내장객체 중에서 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체</li>
-  <li><code class="language-plaintext highlighter-rouge">JSP</code>에서는 <code class="language-plaintext highlighter-rouge">page</code>, <code class="language-plaintext highlighter-rouge">request</code>, <code class="language-plaintext highlighter-rouge">session</code>, <code class="language-plaintext highlighter-rouge">application</code> 4가지 영역으로 정의한다.<br /><br />
-<img src="../../assets/images/jspScope.png" alt="jspScope" /><br /><br /></li>
+  <li>터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구</li>
+  <li><code class="language-plaintext highlighter-rouge">IDE</code>를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다.</li>
+  <li>최신버전에는 버그가 있어서 <code class="language-plaintext highlighter-rouge">8.0.19</code> 버전으로 수업을 진행할 예정</li>
+  <li>윈도우라면 <code class="language-plaintext highlighter-rouge">MySQL</code> 인스톨러에서 <code class="language-plaintext highlighter-rouge">Remove</code> 버튼을 눌러 개별 프로그램만 간편히 제거한 후 <code class="language-plaintext highlighter-rouge">Add</code> 버튼을 눌러 원하는 버전으로 선택해서 설치할 수 있다.</li>
+  <li>하지만 난 맥을 써서 <code class="language-plaintext highlighter-rouge">homebrew</code>로 <code class="language-plaintext highlighter-rouge">MySQL</code>만 따로 깔았기 때문에 <code class="language-plaintext highlighter-rouge">Workbench</code>는 홈페이지에서 dmg 파일을 따로 받아서 설치했다.
+<br /><br /><br /></li>
+</ul>
+
+<h1 id="mysql-주석문">MySQL 주석문</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="err">주석문</span>
+<span class="c1">-- 주석문</span>
+<span class="cm">/* 주석문 */</span>
+</code></pre></div></div>
+
+<ul>
+  <li>셋 다 사용가능하다.
+<br /><br /><br /></li>
+</ul>
+
+<h1 id="db-조회">DB 조회</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">jspdb</span><span class="p">.</span><span class="n">tbl_member</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Workbench</code>에서 테이블을 조회하려면 테이블 앞에 <code class="language-plaintext highlighter-rouge">DB명</code>을 꼭 붙여줘야 한다.</li>
+  <li>그런데 매번 이렇게 쓰려면 좀 귀찮다…</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">use</span> <span class="n">jspdb</span><span class="p">;</span>
+
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tbl_member</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C++</code>에서 <code class="language-plaintext highlighter-rouge">using</code>을 쓰듯 <code class="language-plaintext highlighter-rouge">use</code>를 써서 <code class="language-plaintext highlighter-rouge">DB명</code>을 선언해주면 그 다음부터는 <code class="language-plaintext highlighter-rouge">DB명</code> 없이 테이블을 부를 수 있다.</li>
+</ul>
+
+<h2 id="쿼리문-실행">쿼리문 실행</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows) ctrl + enter
+Mac) command + enter
+</code></pre></div></div>
+
+<ul>
+  <li>일정 쿼리 구문들만 실행하고 싶으면 해당 쿼리문들을 블록으로 선택한 후 위 명령어를 입력하면 해당 쿼리문들만 실행된다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows) ctrl + shift + enter
+Mac) command + shift + enter
+</code></pre></div></div>
+
+<ul>
+  <li>전체 쿼리 실행은 위 명령어를 입력한다.</li>
 </ul>
 
         
@@ -378,9 +427,13 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
+      <a href="/tags/#database" class="page__taxonomy-item p-category" rel="tag">Database</a><span class="sep">, </span>
+    
       <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a><span class="sep">, </span>
     
-      <a href="/tags/#web" class="page__taxonomy-item p-category" rel="tag">WEB</a>
+      <a href="/tags/#mysql" class="page__taxonomy-item p-category" rel="tag">MySQL</a><span class="sep">, </span>
+    
+      <a href="/tags/#workbench" class="page__taxonomy-item p-category" rel="tag">Workbench</a>
     
     </span>
   </p>
@@ -397,7 +450,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a>
+      <a href="/categories/#mysql" class="page__taxonomy-item p-category" rel="tag">MySQL</a>
     
     </span>
   </p>
@@ -405,7 +458,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-01T00:00:00+09:00">February 1, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-04T00:00:00+09:00">February 4, 2022</time></p>
 
       </footer>
 
@@ -414,23 +467,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=JSP+%EC%98%81%EC%97%AD+%EA%B0%9D%EC%B2%B4%EC%99%80+%EC%86%8D%EC%84%B1%20http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-scope-attribute%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=MySQL+Workbench+%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Fmysql%2Fmysql-workbench-beginning%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-scope-attribute%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fmysql%2Fmysql-workbench-beginning%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-scope-attribute%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fmysql%2Fmysql-workbench-beginning%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/jsp/JSP-implicit-object/" class="pagination--pager" title="JSP 내장 객체
+      <a href="/boj/boj5622/" class="pagination--pager" title="Java) BOJ 5622. 다이얼
 ">이전</a>
     
     
-      <a href="/jsp/JSP-script-elements/" class="pagination--pager" title="JSP 스크립트 요소
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -444,49 +496,6 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/mysql-workbench-beginning/" rel="permalink">MySQL Workbench 시작하기
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">👀 MySQL Workbench란?
-
-  터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구
-  IDE를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다.
-  최신버전에는 버그가 있어서 8....</p>
-  </article>
-</div>
-
         
           
 
@@ -613,6 +622,51 @@
   맥 기준으로 MySql을 설치하는 방법에는 2가지가 있는데
   homebrew를 통해 설치하는 방법과
   MySql 홈페이지에서 dmg 파일을 다운받아 설치하는 방법이 있다. 
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/operating%20system/OS-01/" rel="permalink">운영체제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 운영체제란?
+
+  Operating System, OS
+  컴퓨터 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층
+
 
 </p>
   </article>

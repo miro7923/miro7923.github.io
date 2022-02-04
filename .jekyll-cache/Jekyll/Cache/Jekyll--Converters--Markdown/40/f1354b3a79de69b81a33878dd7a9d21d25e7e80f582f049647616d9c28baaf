@@ -1,0 +1,56 @@
+I"�<h1 id="-mysql-workbench란">👀 MySQL Workbench란?</h1>
+<ul>
+  <li>터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구</li>
+  <li><code class="language-plaintext highlighter-rouge">IDE</code>를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다.</li>
+  <li>최신버전에는 버그가 있어서 <code class="language-plaintext highlighter-rouge">8.0.19</code> 버전으로 수업을 진행할 예정</li>
+  <li>윈도우라면 <code class="language-plaintext highlighter-rouge">MySQL</code> 인스톨러에서 <code class="language-plaintext highlighter-rouge">Remove</code> 버튼을 눌러 개별 프로그램만 간편히 제거한 후 <code class="language-plaintext highlighter-rouge">Add</code> 버튼을 눌러 원하는 버전으로 선택해서 설치할 수 있다.</li>
+  <li>하지만 난 맥을 써서 <code class="language-plaintext highlighter-rouge">homebrew</code>로 <code class="language-plaintext highlighter-rouge">MySQL</code>만 따로 깔았기 때문에 <code class="language-plaintext highlighter-rouge">Workbench</code>는 홈페이지에서 dmg 파일을 따로 받아서 설치했다.
+<br /><br /><br /></li>
+</ul>
+
+<h1 id="mysql-주석문">MySQL 주석문</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="err">주석문</span>
+<span class="c1">-- 주석문</span>
+<span class="cm">/* 주석문 */</span>
+</code></pre></div></div>
+
+<ul>
+  <li>셋 다 사용가능하다.
+<br /><br /><br /></li>
+</ul>
+
+<h1 id="db-조회">DB 조회</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">jspdb</span><span class="p">.</span><span class="n">tbl_member</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Workbench</code>에서 테이블을 조회하려면 테이블 앞에 <code class="language-plaintext highlighter-rouge">DB명</code>을 꼭 붙여줘야 한다.</li>
+  <li>그런데 매번 이렇게 쓰려면 좀 귀찮다…</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">use</span> <span class="n">jspdb</span><span class="p">;</span>
+
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tbl_member</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C++</code>에서 <code class="language-plaintext highlighter-rouge">using</code>을 쓰듯 <code class="language-plaintext highlighter-rouge">use</code>를 써서 <code class="language-plaintext highlighter-rouge">DB명</code>을 선언해주면 그 다음부터는 <code class="language-plaintext highlighter-rouge">DB명</code> 없이 테이블을 부를 수 있다.</li>
+</ul>
+
+<h2 id="쿼리문-실행">쿼리문 실행</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows) ctrl + enter
+Mac) command + enter
+</code></pre></div></div>
+
+<ul>
+  <li>일정 쿼리 구문들만 실행하고 싶으면 해당 쿼리문들을 블록으로 선택한 후 위 명령어를 입력하면 해당 쿼리문들만 실행된다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows) ctrl + shift + enter
+Mac) command + shift + enter
+</code></pre></div></div>
+
+<ul>
+  <li>전체 쿼리 실행은 위 명령어를 입력한다.</li>
+</ul>
+:ET
