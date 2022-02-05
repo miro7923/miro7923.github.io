@@ -1,0 +1,244 @@
+I"�J<h1 id="-컴퓨터-시스템-구조">👀 컴퓨터 시스템 구조<br /></h1>
+
+<p><img src="../../assets/images/systemStructure.png" alt="systemStructure" /><br /><br /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>는 매 시간마다 <code class="language-plaintext highlighter-rouge">Memory</code>에서 기계어 <code class="language-plaintext highlighter-rouge">Instruction</code>을 읽어서 실행하게 된다.</li>
+  <li>따라서 <code class="language-plaintext highlighter-rouge">Memory</code>는 <code class="language-plaintext highlighter-rouge">CPU</code>의 작업공간이라 할 수 있다.</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Disk</code>가 <code class="language-plaintext highlighter-rouge">I/O</code> 장치인 이유는 데이터를 <code class="language-plaintext highlighter-rouge">Memory</code>에서 읽어들이기도 하고 처리된 데이터를 가져와서 저장하기도 하기 때문이다.<br /><br /></p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">device controller</code>는 각 <code class="language-plaintext highlighter-rouge">I/O device</code>를 전담하는 작은 <code class="language-plaintext highlighter-rouge">CPU</code> 역할을 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">I/O device</code>가 <code class="language-plaintext highlighter-rouge">CPU</code>에 비해 많이 느려서 <code class="language-plaintext highlighter-rouge">CPU</code>가 <code class="language-plaintext highlighter-rouge">I/O</code> 작업 처리가 끝나는 것을 마냥 기다릴 수는 없기 때문에 중간에 <code class="language-plaintext highlighter-rouge">controller</code>를 둬서 <code class="language-plaintext highlighter-rouge">I/O</code> 작업이 끝나면 <code class="language-plaintext highlighter-rouge">CPU</code>에게 알려준다.</li>
+  <li><code class="language-plaintext highlighter-rouge">local buffer</code>는 각 <code class="language-plaintext highlighter-rouge">I/O device controller</code>의 작업공간이다.</li>
+  <li>입력받은 내용이나 출력할 내용을 여기에 저장해뒀다가 <code class="language-plaintext highlighter-rouge">device controller</code>가 사용자 프로그램으로 전달하거나 화면에 출력하는 등의 작업을 한다.<br /><br /></li>
+</ul>
+
+<h2 id="mode-bit">Mode bit</h2>
+<ul>
+  <li>사용자 프로그램의 잘못된 수행으로 다른 프로그램 및 운영체제에 피해가 가지 않도록 하기 위한 보호 장치가 필요해서 사용한다.</li>
+  <li>현재 수행중인 <code class="language-plaintext highlighter-rouge">Instruction</code>이 운영체제인지 사용자 프로그램인지 구분하기 위한 것</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code>과 <code class="language-plaintext highlighter-rouge">1</code>이라는 두 가지 <code class="language-plaintext highlighter-rouge">operation</code>을 사용해 <code class="language-plaintext highlighter-rouge">모니터 모드</code>와 <code class="language-plaintext highlighter-rouge">사용자 모드</code>를 구분한다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">1</code> 사용자 모드 : 사용자 프로그램 수행</li>
+      <li><code class="language-plaintext highlighter-rouge">0</code> 모니터 모드(= 커널 모드, 시스템 모드) : <code class="language-plaintext highlighter-rouge">OS</code> 코드 수행</li>
+    </ul>
+  </li>
+  <li>보안을 해칠 수 있는 중요한 명령어는 모니터 모드에서만 수행 가능한 <code class="language-plaintext highlighter-rouge">특권명령</code>으로 규정한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Interrupt</code>나 <code class="language-plaintext highlighter-rouge">Exception</code> 발생시 <code class="language-plaintext highlighter-rouge">하드웨어</code>가 <code class="language-plaintext highlighter-rouge">mode bit</code>을 0으로 바꾼다.</li>
+  <li>사용자 프로그램에게 <code class="language-plaintext highlighter-rouge">CPU</code>를 넘기기 전에 <code class="language-plaintext highlighter-rouge">mode bit</code>을 1로 세팅<br /><br /></li>
+</ul>
+
+<h2 id="timer">Timer</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 특정 프로그램이 독점하는 것으로부터 보호하기 위해서 사용한다.
+    <ul>
+      <li>정해진 시간이 흐른 뒤 운영체제에게 제어권이 넘어가도록 <code class="language-plaintext highlighter-rouge">Interrupt</code>를 발생시킨다.</li>
+      <li><code class="language-plaintext highlighter-rouge">Timer</code>는 매 클럭 틱 때마다 1씩 감소한다.</li>
+      <li><code class="language-plaintext highlighter-rouge">Timer</code> 값이 0이 되면 <code class="language-plaintext highlighter-rouge">Timer Interrupt</code> 발생<br /><br /></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">time sharing</code>을 구현하기 위해 널리 이용된다.</li>
+  <li>현재 시간을 계산하기 위해서도 사용된다.<br /><br /></li>
+</ul>
+
+<h2 id="device-controller">Device Controller</h2>
+<ul>
+  <li>해당 <code class="language-plaintext highlighter-rouge">I/O</code> 장치유형을 관리하는 일종의 작은 <code class="language-plaintext highlighter-rouge">CPU</code></li>
+  <li>제어 정보를 위해 <code class="language-plaintext highlighter-rouge">control register</code>, <code class="language-plaintext highlighter-rouge">status register</code>를 가진다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">CPU</code>는 <code class="language-plaintext highlighter-rouge">device controller</code>를 통해 일을 시키는데 이 때 <code class="language-plaintext highlighter-rouge">control register</code>와 <code class="language-plaintext highlighter-rouge">status register</code>를 사용한다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">local buffer</code>를 가진다.(일종의 <code class="language-plaintext highlighter-rouge">data register</code>)<br /><br /></p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">I/O</code>는 실제 <code class="language-plaintext highlighter-rouge">device</code>와 <code class="language-plaintext highlighter-rouge">local buffer</code> 사이에서 일어난다.</li>
+  <li><code class="language-plaintext highlighter-rouge">device controller</code>는 <code class="language-plaintext highlighter-rouge">I/O</code>가 끝났을 경우 <code class="language-plaintext highlighter-rouge">Interrupt</code>로 <code class="language-plaintext highlighter-rouge">CPU</code>에 그 사실을 알린다.<br /><br /></li>
+</ul>
+
+<h3 id="️-device-driver장치구동기">☑️ device driver(장치구동기)</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">OS</code> 코드 중 각 장치별 처리루틴 ➡️ <code class="language-plaintext highlighter-rouge">software</code>
+    <ul>
+      <li>ex) 새 프린터를 사면 설치하는 프린터용 드라이버</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="️-device-controller장치제어기">☑️ device controller(장치제어기)</h3>
+<ul>
+  <li>각 장치를 통제하는 일종의 작은 <code class="language-plaintext highlighter-rouge">CPU</code> ➡️ <code class="language-plaintext highlighter-rouge">hardware</code><br /><br /></li>
+</ul>
+
+<h2 id="입출력io의-수행">입출력(I/O)의 수행</h2>
+<ul>
+  <li>모든 입출력 명령은 <code class="language-plaintext highlighter-rouge">특권명령</code>이다.</li>
+</ul>
+
+<h3 id="️-사용자-프로그램의-io-방법">☑️ 사용자 프로그램의 <code class="language-plaintext highlighter-rouge">I/O</code> 방법</h3>
+<ul>
+  <li>시스템콜(<code class="language-plaintext highlighter-rouge">system call</code>)
+    <ul>
+      <li>사용자 프로그램은 운영체제에게 <code class="language-plaintext highlighter-rouge">I/O</code> 요청</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">trap</code>을 사용하여 인터럽트 벡터의 특정 위치로 이동</li>
+  <li>제어권이 인터럽트 벡터가 가리키는 인터럽트 서비스 루틴으로 이동</li>
+  <li>올바른 <code class="language-plaintext highlighter-rouge">I/O</code> 요청인지 확인 후 <code class="language-plaintext highlighter-rouge">I/O</code> 수행</li>
+  <li><code class="language-plaintext highlighter-rouge">I/O</code> 완료 시 제어권을 <code class="language-plaintext highlighter-rouge">system call</code> 다음 명령으로 옮김<br /><br /></li>
+</ul>
+
+<h2 id="인터럽트interrupt">인터럽트(Interrupt)</h2>
+<ul>
+  <li>인터럽트 당한 시점의 레지스터와 <code class="language-plaintext highlighter-rouge">program counter</code>를 저장한 후 <code class="language-plaintext highlighter-rouge">CPU</code>의 제어를 인터럽트 처리 루틴에 넘긴다.</li>
+</ul>
+
+<h3 id="️-넓은-의미의-인터럽트">☑️ 넓은 의미의 인터럽트</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Interrupt</code> (하드웨어 인터럽트) : 하드웨어가 발생시킨 인터럽트로 일반적인 의미의 인터럽트</li>
+  <li><code class="language-plaintext highlighter-rouge">Trap</code> (소프트웨어 인터럽트)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Exception</code> : 프로그램이 오류를 범한 경우(프로그램 강제종료 등으로 대응)</li>
+      <li><code class="language-plaintext highlighter-rouge">System call</code> : 프로그램이 커널 함수를 호출하는 경우</li>
+    </ul>
+  </li>
+  <li>일반적으로 인터럽트 하면 하드웨어적인 인터럽트를 의미하고 소프트웨어적인 인터럽트는 <code class="language-plaintext highlighter-rouge">Trap</code>이라고 따로 지칭한다.</li>
+</ul>
+
+<h3 id="️-인터럽트-관련-용어">☑️ 인터럽트 관련 용어</h3>
+<ul>
+  <li>인터럽트 벡터
+    <ul>
+      <li>해당 인터럽트의 처리 루틴 주소(처리 위치)를 가지고 있다.</li>
+    </ul>
+  </li>
+  <li>인터럽트 처리 루틴(= <code class="language-plaintext highlighter-rouge">Interrupt Service Routine</code>, 인터럽트 핸들러)
+    <ul>
+      <li>해당 인터럽트를 처리하는 커널 함수</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="-현대의-운영체제는-인터럽트에-의해-구동된다">🔸 현대의 운영체제는 인터럽트에 의해 구동된다.</h3>
+<ul>
+  <li>만약 인터럽트가 없으면 <code class="language-plaintext highlighter-rouge">CPU</code>는 항상 사용자 프로그램이 쓰고 있게 될 것이다.<br /><br /></li>
+</ul>
+
+<h2 id="시스템콜system-call">시스템콜(System Call)</h2>
+<ul>
+  <li>사용자 프로그램이 운영체제의 서비스를 받기 위해 <code class="language-plaintext highlighter-rouge">커널 함수</code>를 호출하는 것</li>
+  <li>사용자 프로그램이 <code class="language-plaintext highlighter-rouge">I/O</code> 등의 작업을 수행해야 할 때 <code class="language-plaintext highlighter-rouge">시스템콜</code>을 통해 운영체제에게 <code class="language-plaintext highlighter-rouge">CPU</code>를 넘겨줌으로서 필요한 서비스를 받을 수 있게 된다.<br /><br /></li>
+</ul>
+
+<h2 id="동기식-입출력과-비동기식-입출력">동기식 입출력과 비동기식 입출력</h2>
+<h3 id="️-동기식-입출력-synchronous-io">☑️ 동기식 입출력 (Synchronous I/O)</h3>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">I/O</code> 요청 후 입출력 작업이 완료된 후에야 제어가 사용자 프로그램에게 넘어간다.<br /><br /></p>
+  </li>
+  <li>구현 방법 1 (잘 안 씀)
+    <ul>
+      <li>하나의 <code class="language-plaintext highlighter-rouge">I/O</code>가 끝날 때까지 그거 하나만 한다.</li>
+      <li><code class="language-plaintext highlighter-rouge">I/O</code>가 끝날 때까지 <code class="language-plaintext highlighter-rouge">CPU</code>를 낭비시킴</li>
+      <li>매시점 하나의 <code class="language-plaintext highlighter-rouge">I/O</code>만 일어날 수 있음<br /><br /></li>
+    </ul>
+  </li>
+  <li>구현 방법 2 (보통 이렇게 구현함)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">I/O</code>가 완료될 때까지 해당 프로그램에게서 <code class="language-plaintext highlighter-rouge">CPU</code>를 빼앗음</li>
+      <li><code class="language-plaintext highlighter-rouge">I/O</code> 처리를 기다리는 줄에 그 프로그램을 줄 세움</li>
+      <li>다른 프로그램에게 <code class="language-plaintext highlighter-rouge">CPU</code>를 줌</li>
+      <li>이 프로그램의 <code class="language-plaintext highlighter-rouge">I/O</code> 작업이 끝나면 다시 <code class="language-plaintext highlighter-rouge">CPU</code>를 준다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="️-비동기식-입출력-asynchronous-io">☑️ 비동기식 입출력 (Asynchronous I/O)</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">I/O</code>가 시작된 후 입출력 작업이 끝나기를 기다리지 않고 제어가 사용자 프로그램에게 즉시 넘어간다.</li>
+</ul>
+
+<h3 id="-두-경우-모두-io의-완료는-인터럽트로-알려준다">🔸 두 경우 모두 <code class="language-plaintext highlighter-rouge">I/O</code>의 완료는 인터럽트로 알려준다.</h3>
+
+<h2 id="dmadirect-memory-access">DMA(Direct Memory Access)</h2>
+<ul>
+  <li>입출력 장치를 메모리에 가까운 속도로 처리하기 위해 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>의 중재 없이 <code class="language-plaintext highlighter-rouge">device controller</code>가 <code class="language-plaintext highlighter-rouge">device</code>의 <code class="language-plaintext highlighter-rouge">buffer storage</code>의 내용을 메모리에 <code class="language-plaintext highlighter-rouge">block</code> 단위로 직접 전송</li>
+  <li><code class="language-plaintext highlighter-rouge">byte</code> 단위가 아니라 <code class="language-plaintext highlighter-rouge">block</code> 단위로 인터럽트를 발생시킴<br /><br /></li>
+</ul>
+
+<h2 id="서로-다른-입출력-명령어">서로 다른 입출력 명령어<br /></h2>
+
+<p><img src="../../assets/images/ioInstruction.png" alt="ioInstruction" /><br /><br /></p>
+
+<ul>
+  <li>일반적인 <code class="language-plaintext highlighter-rouge">I/O</code> 방식은 메모리를 관리하는 주소와 디바이스를 관리하는 주소를 따로 관리한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Memory Mapped</code> 방식은 디바이스를 관리하는 주소도 메모리 영역에서 함께 관리한다.<br /><br /></li>
+</ul>
+
+<h2 id="저장장치-계층-구조">저장장치 계층 구조<br /></h2>
+
+<p><img src="../../assets/images/storageHierarchy.png" alt="storageHierarchy" class="align-center" width="450" height="500" /><br /><br /></p>
+
+<ul>
+  <li>위로 갈수록 <code class="language-plaintext highlighter-rouge">Speed</code> ⬆️  <code class="language-plaintext highlighter-rouge">Cost</code> ⬆️(단위공간당 용량이 적어진다)  <code class="language-plaintext highlighter-rouge">Volatility</code> ⭕️ (<code class="language-plaintext highlighter-rouge">휘발성</code> - 전원을 끄면 데이터가 사라진다)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">CPU</code>에서 직접 접근 가능(<code class="language-plaintext highlighter-rouge">byte</code> 단위 접근 가능)</li>
+    </ul>
+  </li>
+  <li>아래로 갈수록 <code class="language-plaintext highlighter-rouge">Speed</code> ⬇️  <code class="language-plaintext highlighter-rouge">Cost</code> ⬇️(단위공간당 용량이 커진다)  <code class="language-plaintext highlighter-rouge">Volatility</code> ❌ (<code class="language-plaintext highlighter-rouge">비휘발성</code> - 전원을 꺼도 데이터가 사라지지 않는다)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">CPU</code> 직접 접근 불가(<code class="language-plaintext highlighter-rouge">byte</code> 단위 접근이 불가능하며 <code class="language-plaintext highlighter-rouge">섹터</code> 단위 접근 가능)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="️-caching">☑️ Caching</h3>
+<ul>
+  <li>메인 메모리에 있는 내용 중 당장 필요한 것만 캐시 메모리에 올려 쓰는 것으로 재사용을 빠르게 하기 위한 목적<br /><br /></li>
+</ul>
+
+<h2 id="프로그램의-실행메모리-load">프로그램의 실행(메모리 load)<br /></h2>
+
+<p><img src="../../assets/images/memoryLoad.png" alt="memoryLoad" /><br /><br /></p>
+
+<h2 id="커널-주소-공간의-내용">커널 주소 공간의 내용<br /></h2>
+
+<p><img src="../../assets/images/kernalAddress.png" alt="kernalAddress" /><br /><br /></p>
+
+<h2 id="사용자-프로그램이-사용하는-함수">사용자 프로그램이 사용하는 함수</h2>
+<ul>
+  <li>
+    <p>모든 프로그램은 함수 구조로 짜여 있다. (기계어 레벨에서도 함수의 시작과 끝이 표시됨)<br /><br /></p>
+  </li>
+  <li>사용자 정의 함수
+    <ul>
+      <li>자신의 프로그램에서 정의한 함수<br /><br /></li>
+    </ul>
+  </li>
+  <li>라이브러리 함수
+    <ul>
+      <li>자신의 프로그램에서 정의하지 않고 만들어져 있는 것을 가져다 쓴 함수</li>
+      <li>자신의 프로그램의 실행 파일에 포함되어 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="️-이-두-가지는-자신의-프로그램의-코드-영역에-포함되어-있어서-가상-메모리-안에서-자유롭게-점프가-가능하다">☑️ 이 두 가지는 자신의 프로그램의 코드 영역에 포함되어 있어서 가상 메모리 안에서 자유롭게 점프가 가능하다.<br /><br /></h3>
+
+<ul>
+  <li>커널 함수
+    <ul>
+      <li>운영체제 프로그램의 함수</li>
+      <li>커널 함수의 호출 = 시스템 콜</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="️-커널-함수는-커널의-코드-영역에-포함되어-있기-때문에-사용자-프로그램에서-자유로운-점프를-할-수-없다-️-system-call을-통해-운영체제에게-cpu-제어권을-넘기게-된다">☑️ 커널 함수는 커널의 코드 영역에 포함되어 있기 때문에 사용자 프로그램에서 자유로운 점프를 할 수 없다. ➡️ <code class="language-plaintext highlighter-rouge">System call</code>을 통해 운영체제에게 <code class="language-plaintext highlighter-rouge">CPU</code> 제어권을 넘기게 된다.<br /><br /></h3>
+
+<h2 id="프로그램의-실행">프로그램의 실행<br /></h2>
+
+<p><img src="../../assets/images/programCycle.png" alt="programCycle" /></p>
+:ET
