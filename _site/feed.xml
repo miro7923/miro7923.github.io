@@ -1,4 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-06T17:00:18+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1316. 그룹 단어 체커</title><link href="http://localhost:4000/boj/boj1316/" rel="alternate" type="text/html" title="Java) BOJ 1316. 그룹 단어 체커" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1316</id><content type="html" xml:base="http://localhost:4000/boj/boj1316/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-06T17:06:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 2941. 크로아티아 알파벳</title><link href="http://localhost:4000/boj/boj2941/" rel="alternate" type="text/html" title="Java) BOJ 2941. 크로아티아 알파벳" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2941</id><content type="html" xml:base="http://localhost:4000/boj/boj2941/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2941">https://www.acmicpc.net/problem/2941</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>예전에는 운영체제에서 크로아티아 알파벳을 입력할 수가 없었다. 따라서, 다음과 같이 크로아티아 알파벳을 변경해서 입력했다.</li>
+  <li>예를 들어, ljes=njak은 크로아티아 알파벳 6개(lj, e, š, nj, a, k)로 이루어져 있다.</li>
+  <li>단어가 주어졌을 때, 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.</li>
+  <li>dž는 무조건 하나의 알파벳으로 쓰이고, d와 ž가 분리된 것으로 보지 않는다. lj와 nj도 마찬가지이다. 위 목록에 없는 알파벳은 한 글자씩 센다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<ul>
+  <li>첫째 줄에 최대 100글자의 단어가 주어진다. 알파벳 소문자와 ‘-‘, ‘=’로만 이루어져 있다.</li>
+  <li>단어는 크로아티아 알파벳으로 이루어져 있다. 문제 설명의 표에 나와있는 알파벳은 변경된 형태로 입력된다. <br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<ul>
+  <li>입력으로 주어진 단어가 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<ul>
+  <li>특정 크로아티아 문자들 (“c=”, “c-“, “dz=”, “d-“, “lj”, “nj”, “s=”, “z=”)의 첫글자가 나오면 다음에 연속되는 문자를 검사해서 지정된 크로아티아 문자이면 그 길이만큼 반복문의 반복자를 증가시키고 아니면 반복자를 1씩 증가시키면서 글자수를 셌다.</li>
+  <li>이러한 조건문을 작성할 때 처음에는 반복자의 범위에 대한 예외처리를 해주지 않아서 제출하니까 <code class="language-plaintext highlighter-rouge">string index out of bounds</code>가 떴다.</li>
+  <li>배열을 다룰 때엔 항상 인덱스 범위를 잘 지키는 것에 유의하자.<br /><br /></li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/a797dc761e39b833f0a761d1978bf6c8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2941" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2941]]></summary></entry><entry><title type="html">Java) BOJ 9012. 괄호</title><link href="http://localhost:4000/boj/boj9012/" rel="alternate" type="text/html" title="Java) BOJ 9012. 괄호" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9012</id><content type="html" xml:base="http://localhost:4000/boj/boj9012/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/9012">https://www.acmicpc.net/problem/9012</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다.</li>
+  <li>그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다.</li>
+  <li>한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의 괄호에 넣은 새로운 문자열 “(x)”도 VPS 가 된다.</li>
+  <li>그리고 두 VPS x 와 y를 접합(concatenation)시킨 새로운 문자열 xy도 VPS 가 된다.</li>
+  <li>예를 들어 “(())()”와 “((()))” 는 VPS 이지만 “(()(”, “(())()))” , 그리고 “(()” 는 모두 VPS 가 아닌 문자열이다.</li>
+  <li>여러분은 입력으로 주어진 괄호 문자열이 VPS 인지 아닌지를 판단해서 그 결과를 YES 와 NO 로 나타내어야 한다. <br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<ul>
+  <li>입력 데이터는 표준 입력을 사용한다. 입력은 T개의 테스트 데이터로 주어진다. 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T가 주어진다.</li>
+  <li>각 테스트 데이터의 첫째 줄에는 괄호 문자열이 한 줄에 주어진다. 하나의 괄호 문자열의 길이는 2 이상 50 이하이다. <br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<ul>
+  <li>출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<ul>
+  <li>
+    <p>처음엔 왼쪽 오른쪽 괄호 개수를 세서 같으면 정답처리하는 방식으로 짰는데 2번 테케에서 틀렸다.<br /><br /></p>
+  </li>
+  <li>
+    <p>그래서 왼쪽 오른쪽 괄호가 나왔는지 확인하는 boolean 배열을 만들어서 확인하는 방식으로 수정했는데 사실상 1번이랑 다를 바 없었기 때문에 또 틀렸다.<br /><br /></p>
+  </li>
+  <li>그 다음엔 괄호의 개수를 세는데 왼쪽 괄호가 나오면 1을 더해주고 오른쪽 괄호가 나오면 1을 빼주는 방식으로 코드를 짰다.</li>
+  <li>그러면 양쪽 괄호가 맞게 나오면 최종 결과값은 0일 것이고,</li>
+  <li>왼쪽 괄호가 더 많다면 결과값이 양수일 것이다.</li>
+  <li>오른쪽 괄호가 더 많다면 음수가 나오게 되는데 처음으로 음수가 나오는 시점부터 이 테스트케이스는 매치되지 않는다고 판단하고 탐색을 중단하고 오답처리하면 된다.</li>
+  <li>
+    <p>왜냐면 <code class="language-plaintext highlighter-rouge">)(</code> 같은 경우에는 끝까지 카운트하면 0이 나오게 되는데 숫자상으로 보면 정답이지만 사실 매치되지 않는 괄호쌍이기 때문에 <code class="language-plaintext highlighter-rouge">)</code>이 처음 나와서 음수가 되는 순간부터 이 문장에 있는 괄호들은 매치되지 않는다.<br /><br /></p>
+  </li>
+  <li>따라서 한 문장에 대한 탐색이 끝나고 난 후 결과값이 0일 때에만 <code class="language-plaintext highlighter-rouge">"YES"</code>를 출력하고 나머지 경우엔 <code class="language-plaintext highlighter-rouge">"NO"</code>를 출력하면 된다.<br /><br /></li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/ddec4aae60e81f2a6e622a2acf426ec0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No9012" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/9012]]></summary></entry><entry><title type="html">Java) BOJ 1316. 그룹 단어 체커</title><link href="http://localhost:4000/boj/boj1316/" rel="alternate" type="text/html" title="Java) BOJ 1316. 그룹 단어 체커" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1316</id><content type="html" xml:base="http://localhost:4000/boj/boj1316/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <ul>
   <li><a href="https://www.acmicpc.net/problem/1316">https://www.acmicpc.net/problem/1316</a><br /><br /></li>
 </ul>
@@ -45,38 +120,7 @@
   <li>나온 적이 있는데 바로 앞 문자와 같지 않으면 더 이상 확인을 중단하고 다음 문자를 확인하는 방식으로 코드를 짰다.<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/64c6fbcb9681289f77807122ffbdf303.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1316" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1316]]></summary></entry><entry><title type="html">Java) BOJ 2941. 크로아티아 알파벳</title><link href="http://localhost:4000/boj/boj2941/" rel="alternate" type="text/html" title="Java) BOJ 2941. 크로아티아 알파벳" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2941</id><content type="html" xml:base="http://localhost:4000/boj/boj2941/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2941">https://www.acmicpc.net/problem/2941</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<ul>
-  <li>예전에는 운영체제에서 크로아티아 알파벳을 입력할 수가 없었다. 따라서, 다음과 같이 크로아티아 알파벳을 변경해서 입력했다.</li>
-  <li>예를 들어, ljes=njak은 크로아티아 알파벳 6개(lj, e, š, nj, a, k)로 이루어져 있다.</li>
-  <li>단어가 주어졌을 때, 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.</li>
-  <li>dž는 무조건 하나의 알파벳으로 쓰이고, d와 ž가 분리된 것으로 보지 않는다. lj와 nj도 마찬가지이다. 위 목록에 없는 알파벳은 한 글자씩 센다.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<ul>
-  <li>첫째 줄에 최대 100글자의 단어가 주어진다. 알파벳 소문자와 ‘-‘, ‘=’로만 이루어져 있다.</li>
-  <li>단어는 크로아티아 알파벳으로 이루어져 있다. 문제 설명의 표에 나와있는 알파벳은 변경된 형태로 입력된다. <br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<ul>
-  <li>입력으로 주어진 단어가 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<ul>
-  <li>특정 크로아티아 문자들 (“c=”, “c-“, “dz=”, “d-“, “lj”, “nj”, “s=”, “z=”)의 첫글자가 나오면 다음에 연속되는 문자를 검사해서 지정된 크로아티아 문자이면 그 길이만큼 반복문의 반복자를 증가시키고 아니면 반복자를 1씩 증가시키면서 글자수를 셌다.</li>
-  <li>이러한 조건문을 작성할 때 처음에는 반복자의 범위에 대한 예외처리를 해주지 않아서 제출하니까 <code class="language-plaintext highlighter-rouge">string index out of bounds</code>가 떴다.</li>
-  <li>배열을 다룰 때엔 항상 인덱스 범위를 잘 지키는 것에 유의하자.<br /><br /></li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/a797dc761e39b833f0a761d1978bf6c8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2941" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2941]]></summary></entry><entry><title type="html">Java) BOJ 2908. 상수</title><link href="http://localhost:4000/boj/boj2908/" rel="alternate" type="text/html" title="Java) BOJ 2908. 상수" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2908</id><content type="html" xml:base="http://localhost:4000/boj/boj2908/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/64c6fbcb9681289f77807122ffbdf303.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1316" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1316]]></summary></entry><entry><title type="html">Java) BOJ 2908. 상수</title><link href="http://localhost:4000/boj/boj2908/" rel="alternate" type="text/html" title="Java) BOJ 2908. 상수" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2908</id><content type="html" xml:base="http://localhost:4000/boj/boj2908/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <ul>
   <li><a href="https://www.acmicpc.net/problem/2908">https://www.acmicpc.net/problem/2908</a><br /><br /></li>
 </ul>
@@ -800,346 +844,7 @@ mysql.server stop
 
 <h2 id="프로그램의-실행">프로그램의 실행<br /></h2>
 
-<p><img src="../../assets/images/programCycle.png" alt="programCycle" /></p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="System Structure" /><category term="Program Execurion" /><summary type="html"><![CDATA[👀 컴퓨터 시스템 구조]]></summary></entry><entry><title type="html">HTML 문법</title><link href="http://localhost:4000/html/HTML-language01/" rel="alternate" type="text/html" title="HTML 문법" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/html/HTML-language01</id><content type="html" xml:base="http://localhost:4000/html/HTML-language01/"><![CDATA[<h1 id="-시작-전에">👀 시작 전에</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code> 문서는 크게 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 부분과 <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> 부분으로 나누어져 있다.</li>
-  <li>크롬 탭에서 보이는 제목을 지정하고 싶으면 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 부분에 <code class="language-plaintext highlighter-rouge">&lt;title&gt;</code> 태그를 이용해 제목을 적어준다.</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> 부분에 본격적인 웹 페이지 내용을 작성한다.<br /><br /></li>
-</ul>
-
-<h2 id="-html-주석문">🔸 HTML 주석문</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 주석 --&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code>에서의 주석문은 다른 프로그래밍 언어와는 다르게 위와 같이 쓴다.</li>
-</ul>
-
-<h2 id="-제목-태그">🔸 제목 태그</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>제목<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;h2&gt;</span>제목2<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;h3&gt;</span>제목3<span class="nt">&lt;/h3&gt;</span>
-<span class="nt">&lt;h4&gt;</span>제목4<span class="nt">&lt;/h4&gt;</span>
-<span class="nt">&lt;h5&gt;</span>제목5<span class="nt">&lt;/h5&gt;</span>
-<span class="nt">&lt;h6&gt;</span>제목6<span class="nt">&lt;/h6&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>제목 태그에는 6가지가 있다.</li>
-  <li>1번이 글씨 크기가 가장 크고 숫자가 커질수록 글씨 크기가 작아진다.</li>
-</ul>
-
-<h2 id="-문단-태그">🔸 문단 태그</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>문단 내용<span class="nt">&lt;/p&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>아래위로 공백이 약간 생기면서 한 문단을 만드는 것과 같은 효과를 줄 수 있다.</li>
-</ul>
-
-<h2 id="-글씨-꾸미기-태그">🔸 글씨 꾸미기 태그</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;b&gt;</span>진하게<span class="nt">&lt;/b&gt;</span>
-<span class="nt">&lt;strong&gt;</span>진하게<span class="nt">&lt;/strong&gt;</span>
-<span class="nt">&lt;i&gt;</span>기울이기(이탤릭체)<span class="nt">&lt;/i&gt;</span>
-<span class="nt">&lt;em&gt;</span>기울이기<span class="nt">&lt;/em&gt;</span>
-<span class="nt">&lt;small&gt;</span>작게<span class="nt">&lt;/small&gt;</span>
-<span class="nt">&lt;u&gt;</span>밑줄<span class="nt">&lt;/u&gt;</span>
-<span class="nt">&lt;sup&gt;</span>위 첨자<span class="nt">&lt;/sup&gt;</span>
-<span class="nt">&lt;sub&gt;</span>아래 첨자<span class="nt">&lt;/sub&gt;</span>
-<span class="nt">&lt;del&gt;</span>취소선 긋기<span class="nt">&lt;/del&gt;</span>
-
-<span class="nt">&lt;blockquote&gt;</span>인용문 들여쓰기 효과<span class="nt">&lt;/blockquote&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span> <span class="c">&lt;!-- 수평선 긋는 태그 --&gt;</span>
-
-<span class="nt">&lt;pre&gt;</span>
-    원하는 
-		모양대로
-				출력
-			이 가능한 태그
-<span class="nt">&lt;/pre&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;b&gt;</code> 태그를 쓰면 글씨를 진하게 표현할 수 있고 <code class="language-plaintext highlighter-rouge">&lt;i&gt;</code> 태그를 쓰면 글씨를 옆으로 기울일 수 있다.</li>
-</ul>
-
-<h2 id="-줄바꿈-태그">🔸 줄바꿈 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>안녕하세요!<span class="nt">&lt;br&gt;</span>
-Hello!
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code>에서는 단순히 엔터를 치는 것으로는 줄을 바꿀 수 없다.</li>
-  <li>줄을 바꾸고 싶은 곳에서 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code> 태그를 적어줘야 줄바꿈이 적용된다.</li>
-</ul>
-
-<h2 id="-하이퍼링크-태그">🔸 하이퍼링크 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.naver.com"</span><span class="nt">&gt;</span> 네이버 하이퍼링크 <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"test1.html"</span><span class="nt">&gt;</span> test1.html 문서 하이퍼링크 <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"4.jpeg"</span> <span class="na">download=</span><span class="s">""</span><span class="nt">&gt;</span> 이미지 다운로드 <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"ex4.html"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>새 창에서 연결<span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>웹 페이지 링크를 걸 수도 있고 내가 만든 <code class="language-plaintext highlighter-rouge">HTML</code> 페이지를 링크로 걸 수도 있다.</li>
-  <li>웹 페이지 링크를 작성할 땐 <code class="language-plaintext highlighter-rouge">http://</code>도 꼭 써주어야 제대로 동작한다.</li>
-</ul>
-
-<h3 id="️-문서-내에서-하이퍼링크">☑️ 문서 내에서 하이퍼링크</h3>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#content1"</span> <span class="na">id=</span><span class="s">"menu"</span><span class="nt">&gt;</span>메뉴1<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#content2"</span><span class="nt">&gt;</span>메뉴2<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#content3"</span><span class="nt">&gt;</span>메뉴3<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"content1"</span><span class="nt">&gt;</span>메뉴1 문서<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#menu"</span><span class="nt">&gt;</span>메뉴 위로 이동<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"content2"</span><span class="nt">&gt;</span>메뉴2 문서<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#menu"</span><span class="nt">&gt;</span>메뉴 위로 이동<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"content3"</span><span class="nt">&gt;</span>메뉴3 문서<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#menu"</span><span class="nt">&gt;</span>메뉴 위로 이동<span class="nt">&lt;/a&gt;</span>
-</code></pre></div></div>
-
-<h2 id="-이미지-삽입-태그">🔸 이미지 삽입 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"1.jpeg"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"2.gif"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"3번이미지"</span> <span class="na">src=</span><span class="s">"./3.png"</span> <span class="na">width=</span><span class="s">"50%"</span> <span class="na">height=</span><span class="s">"50%"</span> <span class="na">border=</span><span class="s">"5"</span><span class="nt">&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>이미지를 삽입할 때엔 닫는 태그가 없어도 된다.</li>
-  <li>이미지 파일은 삽입하고자 하는 <code class="language-plaintext highlighter-rouge">HTML</code> 파일과 동일한 위치에 있어야 경로지정 없이 삽입할 수 있다.</li>
-  <li>같은 위치에 없다면 경로지정을 해 주어야 하는데
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">.</code> : 현재폴더(생략가능)</li>
-      <li><code class="language-plaintext highlighter-rouge">..</code> : 상위폴더</li>
-      <li><code class="language-plaintext highlighter-rouge">상대참조</code> : 현재 페이지를 기준으로 상대적 파일을 찾는 방법</li>
-      <li><code class="language-plaintext highlighter-rouge">절대참조</code> : /(root) 기준으로 파일 경로를 찾아가는 방법</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="️-img-태그-속성">☑️ img 태그 속성</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">src</code> : 원본(그림) 파일</li>
-  <li><code class="language-plaintext highlighter-rouge">alt</code> : 원본이 안 보일 때 표시할 그림 설명</li>
-  <li><code class="language-plaintext highlighter-rouge">width</code> : 이미지 너비(픽셀) 지정
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">px</code> : 이미지 크기를 픽셀 단위로 지정. 고정값</li>
-      <li><code class="language-plaintext highlighter-rouge">%</code> : 이미지 크기가 브라우저 크기에 따라 변동됨</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="️-픽셀pixel">☑️ 픽셀(Pixel)</h3>
-<ul>
-  <li>화면을 이루는 빛(하나의 점)</li>
-</ul>
-
-<h3 id="️-해상도">☑️ 해상도</h3>
-<ul>
-  <li>화면을 이루는 점(빛)의 개수</li>
-</ul>
-
-<h3 id="️-웹에서-사용하는-이미지-형식">☑️ 웹에서 사용하는 이미지 형식</h3>
-<ul>
-  <li>.jpg : 사진형태. 색상과 명암을 다양하게 표현</li>
-  <li>.gif : 256색상 사용. 작은 아이콘, 작은 이미지 사용. 움직이는 이미지</li>
-  <li>.png : 색상 다양하게 표현. 투명한 배경색 가능. 웹에서 많이 사용</li>
-</ul>
-
-<h2 id="-목록-만드는-태그">🔸 목록 만드는 태그</h2>
-<h3 id="순서-있는-목록">순서 있는 목록</h3>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol&gt;</span>
-  <span class="nt">&lt;li&gt;</span> 항목1 <span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span> 항목2 <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ol&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>1부터 차례대로 순서가 매겨지면서 목록이 만들어진다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol</span> <span class="na">type=</span><span class="s">"i"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목1<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목2<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ol&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">type</code>에 <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">i</code>, <code class="language-plaintext highlighter-rouge">I</code>(이탤릭)들을 사용해 순서를 매길 포맷을 지정해 줄 수 있다.</li>
-</ul>
-
-<h3 id="순서-없는-목록">순서 없는 목록</h3>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목1<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목2<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>순서가 없이 점만 찍히는 목록이 만들어진다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">type=</span><span class="s">"circle"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목1<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span>항목2<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>마찬가지로 <code class="language-plaintext highlighter-rouge">disc</code>, <code class="language-plaintext highlighter-rouge">square</code>, <code class="language-plaintext highlighter-rouge">circle</code> 점 모양 속성을 지정해 줄 수 있다.</li>
-</ul>
-
-<h2 id="-표-만드는-태그">🔸 표 만드는 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;caption&gt;</span>표제목<span class="nt">&lt;/caption&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td&gt;</span>1행1열<span class="nt">&lt;/td&gt;&lt;td&gt;</span>1행2열<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td&gt;</span>2행1열<span class="nt">&lt;/td&gt;&lt;td&gt;</span>2행2열<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;table&gt;</code> 태그를 이용해 틀을 만든 다음 <code class="language-plaintext highlighter-rouge">&lt;tr&gt;</code>을 사용해 가로로 줄을 그어 칸을 만들고 <code class="language-plaintext highlighter-rouge">&lt;td&gt;</code> 태그로 세로로 줄을 그어 칸을 만들 수 있다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;thead&gt;</span> <span class="c">&lt;!-- 코드 상에서 영역 나눠서 작업할 때 사용 --&gt;</span>
-<span class="nt">&lt;tr&gt;&lt;th&gt;</span>제목1<span class="nt">&lt;/th&gt;&lt;th&gt;</span>제목2<span class="nt">&lt;/th&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/thead&gt;</span>
-
-<span class="nt">&lt;tbody&gt;</span>
-<span class="nt">&lt;tr&gt;&lt;td&gt;</span>내용1<span class="nt">&lt;/td&gt;&lt;td&gt;</span>내용2<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/tbody&gt;</span>
-
-<span class="nt">&lt;tfoot&gt;</span>
-<span class="nt">&lt;tr&gt;&lt;td&gt;</span>내용3<span class="nt">&lt;/td&gt;&lt;td&gt;</span>내용4<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/tfoot&gt;</span>
-</code></pre></div></div>
-
-<h3 id="표-합치기">표 합치기</h3>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td&gt;</span>용도<span class="nt">&lt;/td&gt;&lt;td&gt;</span>중량<span class="nt">&lt;/td&gt;</span>  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>개수가격<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">rowspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>선물용<span class="nt">&lt;/td&gt;&lt;td&gt;</span>3kg<span class="nt">&lt;/td&gt;&lt;td&gt;</span>11-16과<span class="nt">&lt;/td&gt;&lt;td&gt;</span>35000원<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;</span>                         <span class="nt">&lt;td&gt;</span>5kg<span class="nt">&lt;/td&gt;&lt;td&gt;</span>18-26과<span class="nt">&lt;/td&gt;&lt;td&gt;</span>52000원<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">rowspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>가정용<span class="nt">&lt;/td&gt;&lt;td&gt;</span>3kg<span class="nt">&lt;/td&gt;&lt;td&gt;</span>11-16과<span class="nt">&lt;/td&gt;&lt;td&gt;</span>30000원<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-  <span class="nt">&lt;tr&gt;</span>                         <span class="nt">&lt;td&gt;</span>5kg<span class="nt">&lt;/td&gt;&lt;td&gt;</span>18-26과<span class="nt">&lt;/td&gt;&lt;td&gt;</span>47000원<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">colspan</code>으로 가로로 나란히 위치한 칸들을 합치고 <code class="language-plaintext highlighter-rouge">rowspan</code>으로 세로로 나란히 위치한 칸들을 합칠 수 있다.</li>
-</ul>
-
-<h2 id="-폼양식-태그">🔸 폼(양식) 태그</h2>
-<ul>
-  <li>기능과 데이터들을 묶어주는 것</li>
-  <li><code class="language-plaintext highlighter-rouge">submit</code> 버튼을 클릭하면 <code class="language-plaintext highlighter-rouge">폼태그</code>에 있는 내용(데이터, 이름 =&gt; 값)을 <code class="language-plaintext highlighter-rouge">서버(백엔드)</code>로 전송하는 기능을 <code class="language-plaintext highlighter-rouge">폼태그</code>를 사용해 만들 수 있다.</li>
-  <li>전송 방식에는 <code class="language-plaintext highlighter-rouge">Get</code> 방식과 <code class="language-plaintext highlighter-rouge">Post</code> 방식이 있다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;fieldset&gt;</span> <span class="c">&lt;!-- 테두리를 그려서 그룹으로 묶어주는 태그 --&gt;</span>
-	<span class="nt">&lt;legend&gt;</span>그룹이름1<span class="nt">&lt;/legend&gt;</span>
-	<span class="nt">&lt;label&gt;</span>아이디 :<span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"아이디"</span> <span class="na">size=</span><span class="s">"30"</span> <span class="na">maxlength=</span><span class="s">"5"</span> <span class="na">readonly=</span><span class="s">"readonly"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="c">&lt;!-- size="30" 30자를 적을 수 있는 크기 maxlength="5" 입력학 글자개수 readonly="readonly" 읽기전용 --&gt;</span>
-	<span class="nt">&lt;label&gt;</span>비밀번호 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span> <span class="na">required</span> <span class="na">autofocus</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="c">&lt;!-- 비밀번호 필수요소로 입력제어
-	autofocus : 입력상자에 커서 깜박이게 하기  --&gt;</span>
-	<span class="nt">&lt;label&gt;</span>자기소개 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;textarea</span> <span class="na">rows=</span><span class="s">"5"</span> <span class="na">cols=</span><span class="s">"10"</span><span class="nt">&gt;&lt;/textarea&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>이메일 :<span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span> <span class="na">placeholder=</span><span class="s">"이메일 형식"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="c">&lt;!-- placeholer : 배경이미지 형태로 설명글 --&gt;</span>
-	<span class="nt">&lt;label&gt;</span>날짜 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"date, name="</span><span class="na">date</span><span class="err">"</span> <span class="na">min=</span><span class="s">"2022-01-01"</span> <span class="na">max=</span><span class="s">"22022-01-14"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;label&gt;</span>날짜(월) : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"week"</span> <span class="na">name=</span><span class="s">"week"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;label&gt;</span>시간 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"time"</span> <span class="na">name=</span><span class="s">"time"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>날짜 시간 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"datetime-local"</span> <span class="na">name=</span><span class="s">"datetime"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;/fieldset&gt;</span>```
-
-* `type`의 `text`는 입력하는 글자를 보여주는 것이고 `password`는 입력하는 글자를 보여주지 않는 것이다.
-
-```html
-<span class="nt">&lt;textarea</span> <span class="na">rows=</span><span class="s">"5"</span> <span class="na">cols=</span><span class="s">"30"</span> <span class="na">placeholder=</span><span class="s">"본사 지원 동기를 간략히 적어주세요."</span><span class="nt">&gt;&lt;/textarea&gt;&lt;br&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code>를 사용하면 긴 텍스트를 입력할 수 있는 <code class="language-plaintext highlighter-rouge">텍스트박스</code>를 만들 수 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">placeholder=""</code> 속성은 회색 글씨로 안내 사항을 입력해 놓는 것. 입력을 시작하면 사라진다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;fieldset&gt;</span>
-	<span class="nt">&lt;legend&gt;</span>그룹이름2<span class="nt">&lt;/legend&gt;</span>
-	<span class="nt">&lt;label&gt;</span>검색 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">name=</span><span class="s">"search"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>웹주소 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"url"</span> <span class="na">name=</span><span class="s">"url"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>연락처(모바일) : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"tel"</span><span class="nt">&gt;&lt;br&gt;</span> <span class="c">&lt;!-- 모바일 환경에서는 숫자 키패드 나옴 --&gt;</span>
-	<span class="nt">&lt;label&gt;</span>숫자 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">name=</span><span class="s">"number"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;label&gt;</span>슬라이드 밸류값 설정 : <span class="nt">&lt;/label&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"range"</span> <span class="na">name=</span><span class="s">"range"</span><span class="nt">&gt;&lt;br&gt;</span> 
-<span class="nt">&lt;/fieldset&gt;</span>
-</code></pre></div></div>
-
-<h2 id="-라디오-버튼radio과-체크박스checkbox">🔸 라디오 버튼(radio)과 체크박스(checkbox)</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>성별 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"남"</span><span class="nt">&gt;</span>남성 
-      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"여"</span><span class="nt">&gt;</span>여성<span class="nt">&lt;br&gt;</span>
-취미 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"hobby"</span> <span class="na">value=</span><span class="s">"여행"</span><span class="nt">&gt;</span>여행
-	  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"hobby"</span> <span class="na">value=</span><span class="s">"게임"</span><span class="nt">&gt;</span>게임
-      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"hobby"</span> <span class="na">value=</span><span class="s">"독서"</span><span class="nt">&gt;</span>독서<span class="nt">&lt;br&gt;</span>
-목록상자 : <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"sel"</span> <span class="na">size=</span><span class="s">"5"</span> <span class="na">multiple=</span><span class="s">"multiple"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"목1"</span><span class="nt">&gt;</span>목록1<span class="nt">&lt;/option&gt;</span>
-		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"목2"</span><span class="nt">&gt;</span>목록2<span class="nt">&lt;/option&gt;</span>
-		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"목3"</span><span class="nt">&gt;</span>목록3<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;/select&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">radio</code>는 하나만 선택 가능할 때 사용하고 <code class="language-plaintext highlighter-rouge">checkbox</code>는 여러개를 선택할 수 있을 때 사용한다.</li>
-  <li>이 때 <code class="language-plaintext highlighter-rouge">name</code>을 동일하게 해야 같은 그룹으로 취합되고 그 안에서 선택하는 것이 가능하다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"test1.html"</span> <span class="na">method=</span><span class="s">"get"</span><span class="nt">&gt;</span> 
-파일업로드 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"file"</span><span class="nt">&gt;&lt;br&gt;</span>
-히든값 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"hi"</span> <span class="na">value=</span><span class="s">"값"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- 사용자에게는 보이지 않는 숨겨진 입력 필드 정의 --&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"버튼"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"전송"</span><span class="nt">&gt;&lt;br&gt;</span> <span class="c">&lt;!-- action="test1.html"으로 작성 내용들을 전달함. 폼태그 밖에서 쓰면 작동 안됨  --&gt;</span> 
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"image"</span> <span class="na">scr=</span><span class="s">"5.jpeg"</span> <span class="na">width=</span><span class="s">"100"</span> <span class="na">height=</span><span class="s">"100"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"reset"</span> <span class="na">value=</span><span class="s">"초기화"</span><span class="nt">&gt;&lt;br&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div></div>
-
-<h2 id="-영역-지정-태그">🔸 영역 지정 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
-  큰 영역을 지정할 때 사용(웹 블록 지정)
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;span&gt;</span> 인라인(작은 영역) 블록 지정 <span class="nt">&lt;/span&gt;</span>
-</code></pre></div></div>
-
-<h2 id="-특수-문자-입력-태그">🔸 특수 문자 입력 태그</h2>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="ni">&amp;nbsp;</span>  공백 표시
-<span class="ni">&amp;lt;</span>    꺽쇄(<span class="nt">&lt;</span> <span class="nt">&gt;</span>) 표시
-<span class="ni">&amp;copy;</span>  © 
-<span class="ni">&amp;amp;</span>   <span class="err">&amp;</span> 
-<span class="ni">&amp;quot;</span>  " 
-<span class="ni">&amp;clubs;</span> ♣
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="HTML" /><category term="HTML" /><category term="Front-end" /><summary type="html"><![CDATA[👀 시작 전에 HTML 문서는 크게 &lt;head&gt; 부분과 &lt;body&gt; 부분으로 나누어져 있다. 크롬 탭에서 보이는 제목을 지정하고 싶으면 &lt;head&gt; 부분에 &lt;title&gt; 태그를 이용해 제목을 적어준다. &lt;body&gt; 부분에 본격적인 웹 페이지 내용을 작성한다. 🔸 HTML 주석문]]></summary></entry><entry><title type="html">JSP 액션 태그</title><link href="http://localhost:4000/jsp/JSP-action-tag/" rel="alternate" type="text/html" title="JSP 액션 태그" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-action-tag</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-action-tag/"><![CDATA[<h1 id="-액션-태그란">👀 액션 태그란?</h1>
+<p><img src="../../assets/images/programCycle.png" alt="programCycle" /></p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="System Structure" /><category term="Program Execurion" /><summary type="html"><![CDATA[👀 컴퓨터 시스템 구조]]></summary></entry><entry><title type="html">JSP 액션 태그</title><link href="http://localhost:4000/jsp/JSP-action-tag/" rel="alternate" type="text/html" title="JSP 액션 태그" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-action-tag</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-action-tag/"><![CDATA[<h1 id="-액션-태그란">👀 액션 태그란?</h1>
 
 <div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;jsp:</span>~ 형태로 시작하는 태그<span class="nt">&gt;</span>
 </code></pre></div></div>
