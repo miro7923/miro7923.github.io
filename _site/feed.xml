@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-12T01:04:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JDBC</title><link href="http://localhost:4000/jsp/jdbc/" rel="alternate" type="text/html" title="JDBC" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc/"><![CDATA[<h1 id="-jdbcjava-database-connectivity란">👀 JDBC(Java Database Connectivity)란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-12T02:22:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JDBC</title><link href="http://localhost:4000/jsp/jdbc/" rel="alternate" type="text/html" title="JDBC" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc/"><![CDATA[<h1 id="-jdbcjava-database-connectivity란">👀 JDBC(Java Database Connectivity)란?</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Java</code>랑 <code class="language-plaintext highlighter-rouge">DBMS</code>를 연결시켜주는 <code class="language-plaintext highlighter-rouge">API</code></li>
   <li>즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다.</li>
@@ -236,7 +236,105 @@
   
     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"회원정보 삭제 완료!"</span><span class="o">);</span>
   <span class="nt">%&gt;</span>
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="Database" /><category term="JSP" /><category term="JDBC" /><summary type="html"><![CDATA[👀 JDBC(Java Database Connectivity)란? Java랑 DBMS를 연결시켜주는 API 즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다. 데이터베이스에 데이터를 삽입, 수정, 삭제할 때 SQL 프롬프트에서 SQL문을 사용하지 않아도 자바 프로그램에서 SQL문을 사용하여 데이터베이스에 데이터를 추가하고 삭제하는 작업을 할 수 있게 하는 API이다. JDBC는 DBMS 종류에 상관없이 독립적으로 사용 가능하다. 여러 언어에서 작동하는 방법이 전반적으로 같다고 할 수 있다.]]></summary></entry><entry><title type="html">회원관리 서비스 요구사항</title><link href="http://localhost:4000/jsp/customer-management/" rel="alternate" type="text/html" title="회원관리 서비스 요구사항" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/customer-management</id><content type="html" xml:base="http://localhost:4000/jsp/customer-management/"><![CDATA[<h1 id="-회원관리-서비스-요구사항">👀 회원관리 서비스 요구사항</h1>
+</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="Database" /><category term="JSP" /><category term="JDBC" /><summary type="html"><![CDATA[👀 JDBC(Java Database Connectivity)란? Java랑 DBMS를 연결시켜주는 API 즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다. 데이터베이스에 데이터를 삽입, 수정, 삭제할 때 SQL 프롬프트에서 SQL문을 사용하지 않아도 자바 프로그램에서 SQL문을 사용하여 데이터베이스에 데이터를 추가하고 삭제하는 작업을 할 수 있게 하는 API이다. JDBC는 DBMS 종류에 상관없이 독립적으로 사용 가능하다. 여러 언어에서 작동하는 방법이 전반적으로 같다고 할 수 있다.]]></summary></entry><entry><title type="html">Java) BOJ 2869. 달팽이는 올라가고 싶다</title><link href="http://localhost:4000/boj/boj2869-java/" rel="alternate" type="text/html" title="Java) BOJ 2869. 달팽이는 올라가고 싶다" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2869-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2869-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2869">https://www.acmicpc.net/problem/2869</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>땅 위에 달팽이가 있다. 이 달팽이는 높이가 V미터인 나무 막대를 올라갈 것이다.</li>
+  <li>달팽이는 낮에 A미터 올라갈 수 있다. 하지만, 밤에 잠을 자는 동안 B미터 미끄러진다. 또, 정상에 올라간 후에는 미끄러지지 않는다.</li>
+  <li>달팽이가 나무 막대를 모두 올라가려면, 며칠이 걸리는지 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<ul>
+  <li>시간 제한 : 0.15초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<ul>
+  <li>첫째 줄에 세 정수 A, B, V가 공백으로 구분되어서 주어진다. (1 ≤ B &lt; A ≤ V ≤ 1,000,000,000)<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<ul>
+  <li>첫째 줄에 달팽이가 나무 막대를 모두 올라가는데 며칠이 걸리는지 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<ul>
+  <li>아주 오랜만에 스스로 풀이과정을 생각해 낸 수학문제… 그만큼 쉬운 문제였다.</li>
+  <li>
+    <p>입력의 최대 크기가 10억이기 때문에 반복문을 돌리면 안 되고 사칙연산을 이용해서 풀었다.<br /><br /></p>
+  </li>
+  <li>달팽이가 하루에 갈 수 있는 거리는 (총 이동거리 A - 자는동안 미끄러지는 거리 B) 이다.</li>
+  <li>그런데 정상에 도착하면 미끄러지지 않는다고 했으므로 A 거리만큼 이동해서 정상에 도착할 수 있는 날이면 B를 뺄 필요 없이 A만큼만 이동하면 된다.</li>
+  <li>그러면 (총 이동거리 A - 자는동안 미끄러지는 거리 B)만큼 이동하는 날수는 정상에서 A 거리만큼을 뺀 길이까지이다.</li>
+  <li>그래서 (정상 V - A) / (총 이동거리 A - 자는동안 미끄러지는 거리 B) 연산을 통해 마지막 날이 되기 전까지 며칠이 걸리는지 구할 수 있는데</li>
+  <li>나누기 연산을 하고 나서 나머지(짜투리 길이)가 생길 수 있다.</li>
+  <li>짜투리 길이만큼을 이동하는데에도 하루를 소모해야 하기 때문에 나누기 연산 후 나머지가 생기면 하루를 더해줘야 한다.</li>
+  <li>그 다음 마지막날을 더해주면 된다.<br /><br /></li>
+</ul>
+
+<h2 id="️-결과--메모리-2020-kb-시간-0-ms">☑️ 결과 : 메모리) 2020 kb, 시간) 0 ms<br /><br /></h2>
+
+<h1 id="코드">코드</h1>
+
+<script src="https://gist.github.com/miro7923/d225d330ace769161d03ed7e6ca36013.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2869" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2869]]></summary></entry><entry><title type="html">C++) BOJ 2869. 달팽이는 올라가고 싶다</title><link href="http://localhost:4000/boj/boj2869-cpp/" rel="alternate" type="text/html" title="C++) BOJ 2869. 달팽이는 올라가고 싶다" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2869-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj2869-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2869">https://www.acmicpc.net/problem/2869</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>땅 위에 달팽이가 있다. 이 달팽이는 높이가 V미터인 나무 막대를 올라갈 것이다.</li>
+  <li>달팽이는 낮에 A미터 올라갈 수 있다. 하지만, 밤에 잠을 자는 동안 B미터 미끄러진다. 또, 정상에 올라간 후에는 미끄러지지 않는다.</li>
+  <li>달팽이가 나무 막대를 모두 올라가려면, 며칠이 걸리는지 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<ul>
+  <li>시간 제한 : 0.15초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<ul>
+  <li>첫째 줄에 세 정수 A, B, V가 공백으로 구분되어서 주어진다. (1 ≤ B &lt; A ≤ V ≤ 1,000,000,000)<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<ul>
+  <li>첫째 줄에 달팽이가 나무 막대를 모두 올라가는데 며칠이 걸리는지 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Java</code>로 풀었는데 <code class="language-plaintext highlighter-rouge">C++</code> 실행속도가 궁금해서 한 번 더 풀어보았다.</li>
+  <li>
+    <p>확실히 엄청 빠름<br /><br /></p>
+  </li>
+  <li>아주 오랜만에 스스로 풀이과정을 생각해 낸 수학문제… 그만큼 쉬운 문제였다.</li>
+  <li>
+    <p>입력의 최대 크기가 10억이기 때문에 반복문을 돌리면 안 되고 사칙연산을 이용해서 풀었다.<br /><br /></p>
+  </li>
+  <li>달팽이가 하루에 갈 수 있는 거리는 (총 이동거리 A - 자는동안 미끄러지는 거리 B) 이다.</li>
+  <li>그런데 정상에 도착하면 미끄러지지 않는다고 했으므로 A 거리만큼 이동해서 정상에 도착할 수 있는 날이면 B를 뺄 필요 없이 A만큼만 이동하면 된다.</li>
+  <li>그러면 (총 이동거리 A - 자는동안 미끄러지는 거리 B)만큼 이동하는 날수는 정상에서 A 거리만큼을 뺀 길이까지이다.</li>
+  <li>그래서 (정상 V - A) / (총 이동거리 A - 자는동안 미끄러지는 거리 B) 연산을 통해 마지막 날이 되기 전까지 며칠이 걸리는지 구할 수 있는데</li>
+  <li>나누기 연산을 하고 나서 나머지(짜투리 길이)가 생길 수 있다.</li>
+  <li>짜투리 길이만큼을 이동하는데에도 하루를 소모해야 하기 때문에 나누기 연산 후 나머지가 생기면 하루를 더해줘야 한다.</li>
+  <li>그 다음 마지막날을 더해주면 된다.<br /><br /></li>
+</ul>
+
+<h2 id="️-결과--메모리-2020-kb-시간-0-ms">☑️ 결과 : 메모리) 2020 kb, 시간) 0 ms<br /><br /></h2>
+
+<h1 id="코드">코드</h1>
+
+<script src="https://gist.github.com/miro7923/a27273b2fcacf3ce5695b69af2b48e8c.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2869" /><category term="Math" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2869]]></summary></entry><entry><title type="html">회원관리 서비스 요구사항</title><link href="http://localhost:4000/jsp/customer-management/" rel="alternate" type="text/html" title="회원관리 서비스 요구사항" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/customer-management</id><content type="html" xml:base="http://localhost:4000/jsp/customer-management/"><![CDATA[<h1 id="-회원관리-서비스-요구사항">👀 회원관리 서비스 요구사항</h1>
 <ul>
   <li>모든 웹페이지의 기본 서비스라고 할 수 있는 회원관리 서비스! 아래와 같은 사항들이 가능해야 한다.<br /><br /></li>
 </ul>
@@ -568,99 +666,4 @@
   <li>배열을 다룰 때엔 항상 인덱스 범위를 잘 지키는 것에 유의하자.<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/a797dc761e39b833f0a761d1978bf6c8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2941" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2941]]></summary></entry><entry><title type="html">Java) BOJ 1316. 그룹 단어 체커</title><link href="http://localhost:4000/boj/boj1316/" rel="alternate" type="text/html" title="Java) BOJ 1316. 그룹 단어 체커" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1316</id><content type="html" xml:base="http://localhost:4000/boj/boj1316/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1316">https://www.acmicpc.net/problem/1316</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<ul>
-  <li>그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다.</li>
-  <li>예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만,</li>
-  <li>aabbbccb는 b가 떨어져서 나타나기 때문에 그룹 단어가 아니다.</li>
-  <li>단어 N개를 입력으로 받아 그룹 단어의 개수를 출력하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<ul>
-  <li>첫째 줄에 단어의 개수 N이 들어온다. N은 100보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에 단어가 들어온다.</li>
-  <li>단어는 알파벳 소문자로만 되어있고 중복되지 않으며, 길이는 최대 100이다. <br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<ul>
-  <li>첫째 줄에 그룹 단어의 개수를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<ul>
-  <li>
-    <p>문제 이해가 잘 되지 않아서 질문게시판의 문제 해설을 참고했다.<br /><br /></p>
-  </li>
-  <li>
-    <ol>
-      <li>현재 문자가 이미 나온 적이 있고</li>
-    </ol>
-  </li>
-  <li>
-    <ol>
-      <li>바로 이전 문자가 아니면</li>
-    </ol>
-  </li>
-  <li>
-    <p>-&gt; 그 단어는 그룹 단어가 아니다.<br /><br /></p>
-  </li>
-  <li>이 흐름에 따라 알파벳이 등장했는지 확인할 boolean 배열을 만들어 알파벳이 이전에 나왔는지 확인한 후</li>
-  <li>나온 적이 없고 바로 앞 문자와 같으면 그룹단어로 카운트하였고</li>
-  <li>나온 적이 있는데 바로 앞 문자와 같지 않으면 더 이상 확인을 중단하고 다음 문자를 확인하는 방식으로 코드를 짰다.<br /><br /></li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/64c6fbcb9681289f77807122ffbdf303.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1316" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1316]]></summary></entry><entry><title type="html">Java) BOJ 1259. 팰린드롬수</title><link href="http://localhost:4000/boj/boj1259/" rel="alternate" type="text/html" title="Java) BOJ 1259. 팰린드롬수" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1259</id><content type="html" xml:base="http://localhost:4000/boj/boj1259/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1259">https://www.acmicpc.net/problem/1259</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>어떤 단어를 뒤에서부터 읽어도 똑같다면 그 단어를 팰린드롬이라고 한다. ‘radar’, ‘sees’는 팰린드롬이다.<br /><br /></p>
-  </li>
-  <li>수도 팰린드롬으로 취급할 수 있다. 수의 숫자들을 뒤에서부터 읽어도 같다면 그 수는 팰린드롬수다. 121, 12421 등은 팰린드롬수다.</li>
-  <li>123, 1231은 뒤에서부터 읽으면 다르므로 팰린드롬수가 아니다.</li>
-  <li>또한 10도 팰린드롬수가 아닌데, 앞에 무의미한 0이 올 수 있다면 010이 되어 팰린드롬수로 취급할 수도 있지만,</li>
-  <li>특별히 이번 문제에서는 무의미한 0이 앞에 올 수 없다고 하자. <br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>입력은 여러 개의 테스트 케이스로 이루어져 있으며, 각 줄마다 1 이상 99999 이하의 정수가 주어진다.</li>
-  <li>입력의 마지막 줄에는 0이 주어지며, 이 줄은 문제에 포함되지 않는다.  <br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>각 줄마다 주어진 수가 팰린드롬수면 ‘yes’, 아니면 ‘no’를 출력한다. <br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>예제의 팰린드롬수를 보면 수의 개수가 짝수개일 땐 절반으로 나눈 앞뒤가 같아야 하고</li>
-  <li>
-    <p>홀수개일 땐 가운데 숫자를 제외한 나머지 앞뒤가 같아야 한다.<br /><br /></p>
-  </li>
-  <li>그래서 반복문으로 반복자는 문자열 길이의 절반까지만 반복하며</li>
-  <li>첫 글자와 맨 뒤 글자를 비교하면서 첫 글자를 가리키는 반복자는 증가시키고 끝 글자를 가리키는 반복자는 감소시켜가면서</li>
-  <li>두 반복자간의 거리를 좁히면서 검사하면 해당 수가 팰린드롬인지 아닌지 쉽게 확인할 수 있다.<br /><br /></li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/f713c3925b8bc32bcf05f5e75d0cceaa.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1259" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1259]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/a797dc761e39b833f0a761d1978bf6c8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2941" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2941]]></summary></entry></feed>
