@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-12T02:22:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JDBC</title><link href="http://localhost:4000/jsp/jdbc/" rel="alternate" type="text/html" title="JDBC" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc/"><![CDATA[<h1 id="-jdbcjava-database-connectivity란">👀 JDBC(Java Database Connectivity)란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-12T03:04:33+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JDBC</title><link href="http://localhost:4000/jsp/jdbc/" rel="alternate" type="text/html" title="JDBC" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc/"><![CDATA[<h1 id="-jdbcjava-database-connectivity란">👀 JDBC(Java Database Connectivity)란?</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Java</code>랑 <code class="language-plaintext highlighter-rouge">DBMS</code>를 연결시켜주는 <code class="language-plaintext highlighter-rouge">API</code></li>
   <li>즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다.</li>
@@ -334,7 +334,70 @@
 
 <h1 id="코드">코드</h1>
 
-<script src="https://gist.github.com/miro7923/a27273b2fcacf3ce5695b69af2b48e8c.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2869" /><category term="Math" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2869]]></summary></entry><entry><title type="html">회원관리 서비스 요구사항</title><link href="http://localhost:4000/jsp/customer-management/" rel="alternate" type="text/html" title="회원관리 서비스 요구사항" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/customer-management</id><content type="html" xml:base="http://localhost:4000/jsp/customer-management/"><![CDATA[<h1 id="-회원관리-서비스-요구사항">👀 회원관리 서비스 요구사항</h1>
+<script src="https://gist.github.com/miro7923/a27273b2fcacf3ce5695b69af2b48e8c.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2869" /><category term="Math" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2869]]></summary></entry><entry><title type="html">Java) BOJ 10250. ACM 호텔</title><link href="http://localhost:4000/boj/boj10250-java/" rel="alternate" type="text/html" title="Java) BOJ 10250. ACM 호텔" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10250-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10250-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/10250">https://www.acmicpc.net/problem/10250</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>ACM 호텔 매니저 지우는 손님이 도착하는 대로 빈 방을 배정하고 있다.</li>
+  <li>고객 설문조사에 따르면 손님들은 호텔 정문으로부터 걸어서 가장 짧은 거리에 있는 방을 선호한다고 한다.</li>
+  <li>여러분은 지우를 도와 줄 프로그램을 작성하고자 한다.</li>
+  <li>즉 설문조사 결과 대로 호텔 정문으로부터 걷는 거리가 가장 짧도록 방을 배정하는 프로그램을 작성하고자 한다.</li>
+  <li>문제를 단순화하기 위해서 호텔은 직사각형 모양이라고 가정하자.</li>
+  <li>각 층에 W 개의 방이 있는 H 층 건물이라고 가정하자 (1 ≤ H, W ≤ 99).</li>
+  <li>그리고 엘리베이터는 가장 왼쪽에 있다고 가정하자(그림 1 참고). 이런 형태의 호텔을 H × W 형태 호텔이라고 부른다.</li>
+  <li>호텔 정문은 일층 엘리베이터 바로 앞에 있는데, 정문에서 엘리베이터까지의 거리는 무시한다.</li>
+  <li>또 모든 인접한 두 방 사이의 거리는 같은 거리(거리 1)라고 가정하고 호텔의 정면 쪽에만 방이 있다고 가정한다.</li>
+  <li>방 번호는 YXX 나 YYXX 형태인데 여기서 Y 나 YY 는 층 수를 나타내고 XX 는 엘리베이터에서부터 세었을 때의 번호를 나타낸다.</li>
+  <li>즉, 그림 1 에서 빗금으로 표시한 방은 305 호가 된다.</li>
+  <li>손님은 엘리베이터를 타고 이동하는 거리는 신경 쓰지 않는다. 다만 걷는 거리가 같을 때에는 아래층의 방을 더 선호한다.</li>
+  <li>예를 들면 102 호 방보다는 301 호 방을 더 선호하는데, 102 호는 거리 2 만큼 걸어야 하지만 301 호는 거리 1 만큼만 걸으면 되기 때문이다.</li>
+  <li>같은 이유로 102 호보다 2101 호를 더 선호한다.</li>
+  <li>여러분이 작성할 프로그램은 초기에 모든 방이 비어있다고 가정하에 이 정책에 따라 N 번째로 도착한 손님에게 배정될 방 번호를 계산하는 프로그램이다.</li>
+  <li>첫 번째 손님은 101 호, 두 번째 손님은 201 호 등과 같이 배정한다. 그림 1 의 경우를 예로 들면, H = 6이므로 10 번째 손님은 402 호에 배정해야 한다.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<ul>
+  <li>프로그램은 표준 입력에서 입력 데이터를 받는다. 프로그램의 입력은 T 개의 테스트 데이터로 이루어져 있는데 T 는 입력의 맨 첫 줄에 주어진다.</li>
+  <li>각 테스트 데이터는 한 행으로서 H, W, N, 세 정수를 포함하고 있으며 각각 호텔의 층 수, 각 층의 방 수, 몇 번째 손님인지를 나타낸다(1 ≤ H, W ≤ 99, 1 ≤ N ≤ H × W).<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<ul>
+  <li>프로그램은 표준 출력에 출력한다. 각 테스트 데이터마다 정확히 한 행을 출력하는데, 내용은 N 번째 손님에게 배정되어야 하는 방 번호를 출력한다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<ul>
+  <li>
+    <p>N을 H로 나눈 몫 + 1이 방 번호의 맨 뒷자리가 되고 N을 H로 나눈 나머지만큼 앞자리 층수를 올려주면 되기 때문에 정답을 구하기 위한 계산식은 <code class="language-plaintext highlighter-rouge">(N % H) * 100 + (N / H + 1) * 100</code> 이 된다.<br /><br /></p>
+  </li>
+  <li>그런데 처음엔 <code class="language-plaintext highlighter-rouge">N == H</code> 인 경우를 생각하지 않아서 틀렸다.</li>
+  <li><code class="language-plaintext highlighter-rouge">N == H</code> 일 경우 N을 H로 나눈 몫이 1이 되고 나머지는 0이기 때문에 처음에 생각했던 경우의 계산식만 적용하면 <code class="language-plaintext highlighter-rouge">(N % H) * 100 = 0</code> 이 된다.</li>
+  <li>
+    <p>거기다 1을 더하면 2가 나온다. 항상 오답됨<br /><br /></p>
+  </li>
+  <li>그래서 <code class="language-plaintext highlighter-rouge">N == H</code> 경우에는 층수는 H로 항상 고정되기 때문에 <code class="language-plaintext highlighter-rouge">H * 100 + (N / H)</code> 로 계산했다. <br /><br /></li>
+</ul>
+
+<h2 id="️-결과">☑️ 결과</h2>
+<ul>
+  <li>메모리 : 14372 kb</li>
+  <li>시간 : 136 ms<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+
+<script src="https://gist.github.com/miro7923/7ba02c656a129b3f41f434886eedebb5.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10250" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10250]]></summary></entry><entry><title type="html">회원관리 서비스 요구사항</title><link href="http://localhost:4000/jsp/customer-management/" rel="alternate" type="text/html" title="회원관리 서비스 요구사항" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/customer-management</id><content type="html" xml:base="http://localhost:4000/jsp/customer-management/"><![CDATA[<h1 id="-회원관리-서비스-요구사항">👀 회원관리 서비스 요구사항</h1>
 <ul>
   <li>모든 웹페이지의 기본 서비스라고 할 수 있는 회원관리 서비스! 아래와 같은 사항들이 가능해야 한다.<br /><br /></li>
 </ul>
@@ -635,35 +698,4 @@
   <li>문제를 제대로 읽자………….. 한시간 버렸다…….<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/a4b1ef77b01b458260552e3b3a1528f8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4949" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4949]]></summary></entry><entry><title type="html">Java) BOJ 2941. 크로아티아 알파벳</title><link href="http://localhost:4000/boj/boj2941/" rel="alternate" type="text/html" title="Java) BOJ 2941. 크로아티아 알파벳" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2941</id><content type="html" xml:base="http://localhost:4000/boj/boj2941/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2941">https://www.acmicpc.net/problem/2941</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<ul>
-  <li>예전에는 운영체제에서 크로아티아 알파벳을 입력할 수가 없었다. 따라서, 다음과 같이 크로아티아 알파벳을 변경해서 입력했다.</li>
-  <li>예를 들어, ljes=njak은 크로아티아 알파벳 6개(lj, e, š, nj, a, k)로 이루어져 있다.</li>
-  <li>단어가 주어졌을 때, 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.</li>
-  <li>dž는 무조건 하나의 알파벳으로 쓰이고, d와 ž가 분리된 것으로 보지 않는다. lj와 nj도 마찬가지이다. 위 목록에 없는 알파벳은 한 글자씩 센다.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<ul>
-  <li>첫째 줄에 최대 100글자의 단어가 주어진다. 알파벳 소문자와 ‘-‘, ‘=’로만 이루어져 있다.</li>
-  <li>단어는 크로아티아 알파벳으로 이루어져 있다. 문제 설명의 표에 나와있는 알파벳은 변경된 형태로 입력된다. <br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<ul>
-  <li>입력으로 주어진 단어가 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<ul>
-  <li>특정 크로아티아 문자들 (“c=”, “c-“, “dz=”, “d-“, “lj”, “nj”, “s=”, “z=”)의 첫글자가 나오면 다음에 연속되는 문자를 검사해서 지정된 크로아티아 문자이면 그 길이만큼 반복문의 반복자를 증가시키고 아니면 반복자를 1씩 증가시키면서 글자수를 셌다.</li>
-  <li>이러한 조건문을 작성할 때 처음에는 반복자의 범위에 대한 예외처리를 해주지 않아서 제출하니까 <code class="language-plaintext highlighter-rouge">string index out of bounds</code>가 떴다.</li>
-  <li>배열을 다룰 때엔 항상 인덱스 범위를 잘 지키는 것에 유의하자.<br /><br /></li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/a797dc761e39b833f0a761d1978bf6c8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2941" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2941]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/a4b1ef77b01b458260552e3b3a1528f8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4949" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4949]]></summary></entry></feed>
