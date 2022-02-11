@@ -1,0 +1,961 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JDBC | Yujin Dev Log</title>
+<meta name="description" content="👀 JDBC(Java Database Connectivity)란?    Java랑 DBMS를 연결시켜주는 API   즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다.   데이터베이스에 데이터를 삽입, 수정, 삭제할 때 SQL 프롬프트에서 SQL문을 사용하지 않아도 자바 프로그램에서 SQL문을 사용하여 데이터베이스에 데이터를 추가하고 삭제하는 작업을 할 수 있게 하는 API이다.   JDBC는 DBMS 종류에 상관없이 독립적으로 사용 가능하다.            여러 언어에서 작동하는 방법이 전반적으로 같다고 할 수 있다.">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="JDBC">
+<meta property="og:url" content="http://localhost:4000/jsp/jdbc/">
+
+
+  <meta property="og:description" content="👀 JDBC(Java Database Connectivity)란?    Java랑 DBMS를 연결시켜주는 API   즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다.   데이터베이스에 데이터를 삽입, 수정, 삭제할 때 SQL 프롬프트에서 SQL문을 사용하지 않아도 자바 프로그램에서 SQL문을 사용하여 데이터베이스에 데이터를 추가하고 삭제하는 작업을 할 수 있게 하는 API이다.   JDBC는 DBMS 종류에 상관없이 독립적으로 사용 가능하다.            여러 언어에서 작동하는 방법이 전반적으로 같다고 할 수 있다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-12T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/jsp/jdbc/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#jsp" itemprop="item"><span itemprop="name">Jsp</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">JDBC</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JDBC">
+    <meta itemprop="description" content="👀 JDBC(Java Database Connectivity)란?  Java랑 DBMS를 연결시켜주는 API  즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다.  데이터베이스에 데이터를 삽입, 수정, 삭제할 때 SQL 프롬프트에서 SQL문을 사용하지 않아도 자바 프로그램에서 SQL문을 사용하여 데이터베이스에 데이터를 추가하고 삭제하는 작업을 할 수 있게 하는 API이다.  JDBC는 DBMS 종류에 상관없이 독립적으로 사용 가능하다.          여러 언어에서 작동하는 방법이 전반적으로 같다고 할 수 있다.      ">
+    <meta itemprop="datePublished" content="2022-02-12T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/jsp/jdbc/" class="u-url" itemprop="url">JDBC
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#-jdbcjava-database-connectivity란">👀 JDBC(Java Database Connectivity)란?</a><ul><li><a href="#jdbc-드라이버-설치">JDBC 드라이버 설치</a></li><li><a href="#jdbc-연동">JDBC 연동</a><ul><li><a href="#1-드라이버-로드하드디스크에-있는-프로그램을-메모리로-불러오기">1. 드라이버 로드(하드디스크에 있는 프로그램을 메모리로 불러오기)</a></li><li><a href="#2-db-연결">2. DB 연결</a></li></ul></li><li><a href="#jdbc-사용-예제-1-사용자가-홈페이지에-회원가입-하는-상황">JDBC 사용 예제 1) 사용자가 홈페이지에 회원가입 하는 상황</a><ul><li><a href="#1-insertformjsp라는-이름으로-간단한-회원가입-페이지를-만든다">1. insertForm.jsp라는 이름으로 간단한 회원가입 페이지를 만든다.</a></li><li><a href="#2-insertprojsp라는-이름으로-회원가입-정보를-받아서-db에-사용자-정보를-추가하는-페이지를-만든다">2. insertPro.jsp라는 이름으로 회원가입 정보를 받아서 DB에 사용자 정보를 추가하는 페이지를 만든다.</a></li><li><a href="#️-페이지를-실행할-땐-formjsp-페이지에서-한다">❗️ 페이지를 실행할 땐 ~Form.jsp 페이지에서 한다.</a></li></ul></li><li><a href="#jdbc-사용-예제-2-회원-정보를-수정하는-상황">JDBC 사용 예제 2) 회원 정보를 수정하는 상황</a><ul><li><a href="#1-updateformjsp라는-이름으로-수정할-정보를-입력받을-간단한-페이지를-하나-만든다">1. updateForm.jsp라는 이름으로 수정할 정보를 입력받을 간단한 페이지를 하나 만든다.</a></li><li><a href="#2-updateprojsp라는-이름으로-전송받은-정보를-db에-삽입할-페이지를-만든다">2. updatePro.jsp라는 이름으로 전송받은 정보를 DB에 삽입할 페이지를 만든다.</a></li></ul></li><li><a href="#jdbc-사용-예제-3-사용자-정보를-삭제하는-상황">JDBC 사용 예제 3) 사용자 정보를 삭제하는 상황</a><ul><li><a href="#1-deleteformjsp라는-이름으로-삭제할-사용자의-정보를-입력받는-페이지를-만든다">1. deleteForm.jsp라는 이름으로 삭제할 사용자의 정보를 입력받는 페이지를 만든다.</a></li><li><a href="#2-deleteprojsp라는-이름으로-db에서-전달받은-정보를-삭제하는-작업을-하는-페이지를-만든다">2. deletePro.jsp라는 이름으로 DB에서 전달받은 정보를 삭제하는 작업을 하는 페이지를 만든다.</a></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="-jdbcjava-database-connectivity란">👀 JDBC(Java Database Connectivity)란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Java</code>랑 <code class="language-plaintext highlighter-rouge">DBMS</code>를 연결시켜주는 <code class="language-plaintext highlighter-rouge">API</code></li>
+  <li>즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다.</li>
+  <li>데이터베이스에 데이터를 삽입, 수정, 삭제할 때 <code class="language-plaintext highlighter-rouge">SQL</code> 프롬프트에서 <code class="language-plaintext highlighter-rouge">SQL</code>문을 사용하지 않아도 자바 프로그램에서 <code class="language-plaintext highlighter-rouge">SQL</code>문을 사용하여 데이터베이스에 데이터를 추가하고 삭제하는 작업을 할 수 있게 하는 <code class="language-plaintext highlighter-rouge">API</code>이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">JDBC</code>는 <code class="language-plaintext highlighter-rouge">DBMS</code> 종류에 상관없이 독립적으로 사용 가능하다.
+    <ul>
+      <li>여러 언어에서 작동하는 방법이 전반적으로 같다고 할 수 있다.
+<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="jdbc-드라이버-설치">JDBC 드라이버 설치</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">mysql</code> 홈페이지에서 <code class="language-plaintext highlighter-rouge">Connect J</code>를 다운받는다.(현재 최신버전인 8.0.28)</li>
+  <li>윈도우라면 <code class="language-plaintext highlighter-rouge">.zip</code> 파일을 받으면 되고 맥이라면 <code class="language-plaintext highlighter-rouge">.tar</code> 파일을 받는다.</li>
+  <li>압축을 풀면 <code class="language-plaintext highlighter-rouge">mysql-connector-java-8.0.28.jar</code>란 파일이 있다.</li>
+  <li>저걸 <code class="language-plaintext highlighter-rouge">JDBC</code>를 사용하고자 하는 (이클립스)프로젝트의 <code class="language-plaintext highlighter-rouge">WEB-INF/lib</code> 폴더에 넣는다.(경로 다르면 안 됨!! 무조건 저기에 넣어야 함)</li>
+  <li>그러면 설치 끝!
+<br /><br /></li>
+</ul>
+
+<h2 id="jdbc-연동">JDBC 연동</h2>
+<h3 id="1-드라이버-로드하드디스크에-있는-프로그램을-메모리로-불러오기">1. 드라이버 로드(하드디스크에 있는 프로그램을 메모리로 불러오기)</h3>
+<ul>
+  <li>아까 설치한 <code class="language-plaintext highlighter-rouge">JDBC</code> 드라이버를 불러올 것이다.
+    <div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Class.forName("com.mysql.cj.jdbc.Driver"); // static method라서 객체 생성 없이 바로 호출할 수 있음
+</code></pre></div>    </div>
+  </li>
+  <li>이렇게 입력하면 드라이버를 로드할 수 있다.</li>
+  <li>MySQL 홈페이지 가서 Documentation 페이지 - Connector/J 8.0 Developer Guide - 6. ConnectJ reference - 6.1 Driver/Datasource Class Name 가면 드라이버를 로드할 때 무슨 클래스명을 입력해야 하는지 찾을 수 있다.
+    <ul>
+      <li>그 외에도 레퍼런스가 필요하면 참고하자.</li>
+    </ul>
+  </li>
+  <li>만약 설치를 안 했다면 실행시 참고할 드라이버가 없어서 <code class="language-plaintext highlighter-rouge">HTTP500</code> 에러가 뜬다.<br /><br /></li>
+</ul>
+
+<h3 id="2-db-연결">2. DB 연결</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DriverManager.getConnection("디비주소", "디비아이디", "디비비밀번호");</code></li>
+  <li><code class="language-plaintext highlighter-rouge">DriverManager</code> 객체를 이용해 <code class="language-plaintext highlighter-rouge">DB</code>와 드라이버를 연결한다.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jspdb", "root", "1234");
+</code></pre></div></div>
+
+<ul>
+  <li>이런 식으로 <code class="language-plaintext highlighter-rouge">DB</code>의 주소와 아이디, 비밀번호를 입력한 뒤 연결 객체 정보를 <code class="language-plaintext highlighter-rouge">Connection</code>에 저장한다.</li>
+  <li>이러면 <code class="language-plaintext highlighter-rouge">mysql</code>과 연결된 것이다. 이제 <code class="language-plaintext highlighter-rouge">jsp</code> 파일에서 <code class="language-plaintext highlighter-rouge">SQL</code>문을 작성해 데이터베이스를 관리할 수 있다.</li>
+</ul>
+
+<h2 id="jdbc-사용-예제-1-사용자가-홈페이지에-회원가입-하는-상황">JDBC 사용 예제 1) 사용자가 홈페이지에 회원가입 하는 상황</h2>
+
+<h3 id="1-insertformjsp라는-이름으로-간단한-회원가입-페이지를-만든다">1. <code class="language-plaintext highlighter-rouge">insertForm.jsp</code>라는 이름으로 간단한 회원가입 페이지를 만든다.</h3>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"insertPro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+    비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+    이름 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"전송하기"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>여기서 사용자가 정보를 입력하고 <code class="language-plaintext highlighter-rouge">submit</code>버튼을 클릭하면 <code class="language-plaintext highlighter-rouge">insertPro.jsp</code> 페이지로 전달된다.<br /><br /></li>
+</ul>
+
+<h3 id="2-insertprojsp라는-이름으로-회원가입-정보를-받아서-db에-사용자-정보를-추가하는-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">insertPro.jsp</code>라는 이름으로 회원가입 정보를 받아서 <code class="language-plaintext highlighter-rouge">DB</code>에 사용자 정보를 추가하는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span> <span class="c1">// 스크립틀릿 사용</span>
+    <span class="c1">// 0단계 : 드라이버 설치 - 완료됐으니 로드 단계로 넘어간다.</span>
+    <span class="c1">// 1단계 : 드라이버 로드</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">);</span>
+  
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 성공!"</span><span class="o">);</span>
+    
+    <span class="c1">// 2단계 : 디비 연결 (디비 바꾸려면 jdbc:mysql://localhost:3306/뒤에 디비 이름만 바꿔주면 됨)</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">,</span> <span class="s">"root"</span><span class="o">,</span> <span class="s">"1234"</span><span class="o">);</span>
+    
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"디비 연결 성공!"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"연결정보 : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">);</span>
+    
+    <span class="c1">// 3단계 : SQL 구문 생성 &amp; stmt(statement) 객체 생성</span>
+    <span class="c1">// String sql = "insert into itwill_member (id, pass, name) values('id', 'pw', 'name')";</span>
+    
+    <span class="c1">// secure 코딩 예시) values에 담을 데이터의 개수만큼 ?를 넣는다.</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into itwill_member (id, pass, name) values(?, ?, ?)"</span><span class="o">;</span>
+    
+    <span class="c1">// stmt 객체 만들기 : sql 구문을 실행하는 객체 	   </span>
+    <span class="c1">// Statement stmt = con.createStatement(); // 하지만 이렇게 쓰려면 valuse 괄호 안에 따옴표를 넘 많이 써야해서 안 쓸 예정</span>
+                            <span class="c1">// 그리고 따옴표 안에 정보를 노출해서 써야해서 보안적으로 좋지 않다.</span>
+    <span class="c1">// Statement랑 PreparedStatement 객체 둘 중 하나만 쓸 수 있음</span>
+    
+    <span class="c1">// pstmt 객체 : sql 구문을 실행하는 객체</span>
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">// 객체를 만들 때 쿼리 정보를 가져가서 사전준비함</span>
+    
+    <span class="c1">// ??? 값 sql 구문에 채워넣기</span>
+    <span class="c1">// pstmt.setXXXXXX(물음표의 위치, 실제 들어갈 값);</span>
+    <span class="c1">// =</span><span class="err">&gt;</span> <span class="no">XXXXX</span> <span class="o">:</span> <span class="n">컬럼의</span> <span class="n">데이터타입</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">double</span><span class="o">,</span> <span class="n">string</span><span class="o">,</span> <span class="o">...)</span><span class="n">에</span> <span class="n">따라</span> <span class="n">변경</span>
+    <span class="c1">// * ? 개수와 동일한 구문을 수행해야 함 - ?가 3개면 채우는 구문 3개 있어야 함</span>
+    <span class="c1">// null 넣고 싶으면 쿼리문(String sql) 안에 직접 넣으면 됨</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span> <span class="c1">// 뜻 : 1번 물음표에 id에 해당하는 값을 넣는다.</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">pass</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+    
+    <span class="c1">// 4단계 : SQL 구문 실행</span>
+    <span class="c1">// stmt.executeUpdate(sql); // 얘는 미리 준비 안해서 파라미터로 넣어줌</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span> <span class="c1">// 그리고 바로 실행</span>
+    
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"insert 동작 완료!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위 과정을 완료하면 터미널이나 워크벤치에서 직접 <code class="language-plaintext highlighter-rouge">SQL</code>문을 작성하지 않았는데도 <code class="language-plaintext highlighter-rouge">DB</code>에 데이터가 삽입된다!<br /><br /></li>
+</ul>
+
+<h3 id="️-페이지를-실행할-땐-formjsp-페이지에서-한다">❗️ 페이지를 실행할 땐 <code class="language-plaintext highlighter-rouge">~Form.jsp</code> 페이지에서 한다.</h3>
+<ul>
+  <li>사용자가 보는 페이지는 <code class="language-plaintext highlighter-rouge">Form</code> 페이지이지 처리를 하는 <code class="language-plaintext highlighter-rouge">Pro</code> 페이지를 사용자가 볼 수 없고 그럴 필요도 없기 때문이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Pro</code> 페이지는 개발과정에서 개발자만 보는 페이지이다.</li>
+</ul>
+
+<h2 id="jdbc-사용-예제-2-회원-정보를-수정하는-상황">JDBC 사용 예제 2) 회원 정보를 수정하는 상황</h2>
+<h3 id="1-updateformjsp라는-이름으로-수정할-정보를-입력받을-간단한-페이지를-하나-만든다">1. <code class="language-plaintext highlighter-rouge">updateForm.jsp</code>라는 이름으로 수정할 정보를 입력받을 간단한 페이지를 하나 만든다.</h3>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"updatePro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+    비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+    수정할 이름 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"update_name"</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"전송하기"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h3 id="2-updateprojsp라는-이름으로-전송받은-정보를-db에-삽입할-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">updatePro.jsp</code>라는 이름으로 전송받은 정보를 <code class="language-plaintext highlighter-rouge">DB</code>에 삽입할 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span>
+    <span class="c1">// 그냥 받으면 한글이 깨지기 때문에 꼭 한글처리 후 데이터 받기를 시작한다.</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+    
+    <span class="c1">// 전달된 파라미터 저장</span>
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">pass</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">uName</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"update_name"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  아이디 : <span class="nt">&lt;%=</span><span class="n">id</span> <span class="nt">%&gt;&lt;br&gt;</span>
+  비밀번호 : <span class="nt">&lt;%=</span><span class="n">pass</span> <span class="nt">%&gt;&lt;br&gt;</span>
+  수정할 이름 : <span class="nt">&lt;%=</span><span class="n">uName</span> <span class="nt">%&gt;&lt;br&gt;</span>
+  <span class="nt">&lt;hr&gt;</span>
+  
+  <span class="nt">&lt;%</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DRIVER</span> <span class="o">=</span> <span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBURL</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBID</span> <span class="o">=</span> <span class="s">"root"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBPASS</span> <span class="o">=</span> <span class="s">"1234"</span><span class="o">;</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 1. 드라이버 로드 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="no">DRIVER</span><span class="o">);</span> <span class="c1">// Class는 java.lang 패키지에 들어서 임포트 없이 쓸 수 있음.</span>
+    
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 성공!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 2. 디비 연결 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="no">DBURL</span><span class="o">,</span> <span class="no">DBID</span><span class="o">,</span> <span class="no">DBPASS</span><span class="o">);</span>
+    
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"디비연결 성공!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 3. sql 작성 <span class="err">&amp;</span> pstmt 생성 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"update itwill_member set name=? where id=? and pass=?"</span><span class="o">;</span> <span class="c1">// ?는 mysql 문법이 아니고 jsp 코드에서만 쓸 수 있는 문법</span>
+    
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">// 인터페이스를 통해 객체를 생성하지 않고 만들어진 정보를 전달</span>
+    
+    <span class="c1">// ? 채우기</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">uName</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">pass</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 4. sql 실행 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"회원정보 수정 완료!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<h2 id="jdbc-사용-예제-3-사용자-정보를-삭제하는-상황">JDBC 사용 예제 3) 사용자 정보를 삭제하는 상황</h2>
+<h3 id="1-deleteformjsp라는-이름으로-삭제할-사용자의-정보를-입력받는-페이지를-만든다">1. <code class="language-plaintext highlighter-rouge">deleteForm.jsp</code>라는 이름으로 삭제할 사용자의 정보를 입력받는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"deletePro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+    비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"전송하기"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h3 id="2-deleteprojsp라는-이름으로-db에서-전달받은-정보를-삭제하는-작업을-하는-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">deletePro.jsp</code>라는 이름으로 <code class="language-plaintext highlighter-rouge">DB</code>에서 전달받은 정보를 삭제하는 작업을 하는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+  
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">pass</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;%</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DRIVER</span> <span class="o">=</span> <span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBURL</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBID</span> <span class="o">=</span> <span class="s">"root"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBPASS</span> <span class="o">=</span> <span class="s">"1234"</span><span class="o">;</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 1. 드라이버 로드 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="no">DRIVER</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 2. 디비 연결 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="no">DBURL</span><span class="o">,</span> <span class="no">DBID</span><span class="o">,</span> <span class="no">DBPASS</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 3. sql 작성 <span class="err">&amp;</span> pstmt 생성 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from itwill_member where id=? and pass=?"</span><span class="o">;</span>
+    
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">pass</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 4. sql 실행 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+  
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"회원정보 삭제 완료!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#database" class="page__taxonomy-item p-category" rel="tag">Database</a><span class="sep">, </span>
+    
+      <a href="/tags/#jdbc" class="page__taxonomy-item p-category" rel="tag">JDBC</a><span class="sep">, </span>
+    
+      <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-12T00:00:00+09:00">February 12, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JDBC%20http%3A%2F%2Flocalhost%3A4000%2Fjsp%2Fjdbc%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2Fjdbc%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2Fjdbc%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/jsp/javabean/" class="pagination--pager" title="자바빈(JavaBean)
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/javabean/" rel="permalink">자바빈(JavaBean)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바빈(JavaBean)
+
+  관련있는 데이터를 하나의 클래스에 설계해서 한 번에 관리하는 것
+  디자인과 비즈니스 로직을 분리하기 위해 사용한다.
+    
+      자바 코드로만 입력하면 프로그래밍 언어를 모르는 디자이너가 알아보기 어렵고 그렇다고 프로그래머가 자바 코드를 안 ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/customer-management/" rel="permalink">회원관리 서비스 요구사항
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 회원관리 서비스 요구사항
+
+  모든 웹페이지의 기본 서비스라고 할 수 있는 회원관리 서비스! 아래와 같은 사항들이 가능해야 한다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj2292/" rel="permalink">Java) BOJ 2292. 벌집
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+  https://www.acmicpc.net/problem/2292
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj1712/" rel="permalink">Java) BOJ 1712. 손익분기점
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+  https://www.acmicpc.net/problem/1712
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

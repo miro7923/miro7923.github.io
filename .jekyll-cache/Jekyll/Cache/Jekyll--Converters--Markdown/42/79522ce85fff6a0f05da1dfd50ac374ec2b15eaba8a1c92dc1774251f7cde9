@@ -1,0 +1,404 @@
+I"9�<h1 id="자바빈javabean">자바빈(JavaBean)</h1>
+<ul>
+  <li>관련있는 데이터를 하나의 클래스에 설계해서 한 번에 관리하는 것</li>
+  <li>디자인과 비즈니스 로직을 분리하기 위해 사용한다.
+    <ul>
+      <li>자바 코드로만 입력하면 프로그래밍 언어를 모르는 디자이너가 알아보기 어렵고 그렇다고 프로그래머가 자바 코드를 안 쓸 수는 없는 일이니 중간 지점을 찾기 위해 사용한다고 보면 될 거 같다.<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="자바빈-설계-규약">자바빈 설계 규약</h2>
+<p>1) 기본패키지(default)를 제외한 특정 패키지 안에 있어야 함
+2) 기본 생성자가 있어야 함
+3) 멤버 변수는 접근지정자 <code class="language-plaintext highlighter-rouge">private</code> 선언
+4) 멤버 변수에 접근하기 위해서 <code class="language-plaintext highlighter-rouge">get</code>, <code class="language-plaintext highlighter-rouge">set</code> 메서드 선언(<code class="language-plaintext highlighter-rouge">public</code>)<br /><br /></p>
+
+<h2 id="자바빈을-사용한-db-관리-예제-1-회원가입-하는-상황">자바빈을 사용한 DB 관리 예제 1) 회원가입 하는 상황</h2>
+<h3 id="1-사용자-정보를-저장할-클래스를-만든다">1. 사용자 정보를 저장할 클래스를 만든다.</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.itwillbs.member</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.sql.Timestamp</span><span class="o">;</span>
+
+<span class="c1">// Object 클래스는 자바의 최상위 클래스 =&gt; 자바에서 사용하는 모든 클래스는 Object 클래스를 상속받는다.</span>
+<span class="c1">// 명시된 상속관계가 없을 경우 자동으로 Object 클래스를 상속한다.(생략가능)</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberBean</span> <span class="o">{</span>
+	
+	<span class="c1">// member 테이블정보를 한 번에 저장하는 객체</span>
+	<span class="c1">// MemberDTO / MemberVO 다 Bean이랑 같은거라고 보면 된다.</span>
+	
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">pass</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">Timestamp</span> <span class="n">regdate</span><span class="o">;</span>
+	
+	<span class="c1">// 하나하나 타이핑하지 말고 generate getter/setter를 사용해 get/set 메서드를 세팅한다.</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getPass</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">pass</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPass</span><span class="o">(</span><span class="nc">String</span> <span class="n">pass</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">pass</span> <span class="o">=</span> <span class="n">pass</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getGender</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGender</span><span class="o">(</span><span class="nc">String</span> <span class="n">gender</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">gender</span> <span class="o">=</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getEmail</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">email</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEmail</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">Timestamp</span> <span class="nf">getRegdate</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">regdate</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRegdate</span><span class="o">(</span><span class="nc">Timestamp</span> <span class="n">regdate</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">regdate</span> <span class="o">=</span> <span class="n">regdate</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// alt + shift + s + s를 누르면 오버라이딩 할 수 있는 메서드 목록을 불러올 수 있다.</span>
+    <span class="c1">// String 클래스에 있는 toString()이 오버라이딩 되는 이유는 자바의 모든 클래스는 Object 클래스를 상속받는데 </span>
+    <span class="c1">// Object 클래스로 가보면 toString() 메서드의 원형이 작성되어 있다.(원형은 객체가 생성된 메모리의 주소를 리턴)</span>
+    <span class="c1">// 자바의 모든 클래스는 Object 클래스를 상속받기 때문에 String 클래스에서도 toString()을 오버라이딩해서 우리가 자주 쓰는 동작을 보여주는 것이고</span>
+    <span class="c1">// 사용자 정의로 만든 이 클래스 또한 Object를 상속받기 때문에 toString() 메서드의 오버라이딩이 가능한 것이다.  </span>
+	<span class="nd">@Override</span> <span class="c1">// memberBean 정보를 모두 한 번에 확인하기 위해서 사용(하나하나 get 메서드로 부르려면 복잡하니깐..)</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="s">"MemberBean [id="</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">", pass="</span> <span class="o">+</span> <span class="n">pass</span> <span class="o">+</span> <span class="s">", name="</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">", age="</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span> <span class="s">", gender="</span> <span class="o">+</span> <span class="n">gender</span>
+				<span class="o">+</span> <span class="s">", email="</span> <span class="o">+</span> <span class="n">email</span> <span class="o">+</span> <span class="s">", regdate="</span> <span class="o">+</span> <span class="n">regdate</span> <span class="o">+</span> <span class="s">"]"</span><span class="o">;</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="2-insertformjsp라는-이름으로-가입정보를-입력받는-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">insertForm.jsp</code>라는 이름으로 가입정보를 입력받는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">&lt;!-- name은 컬럼명과 일치시켜 주는 것이 좋다 --&gt;</span>
+  <span class="nt">&lt;fieldset&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"insertPro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+	  아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+	  비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+	  이름 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;&lt;br&gt;</span>
+	  나이 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">name=</span><span class="s">"age"</span><span class="nt">&gt;&lt;br&gt;</span><span class="c">&lt;!-- number: 옆에 숫자 증감시키는 화살표 생김 --&gt;</span>
+	  성별 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"남자"</span><span class="nt">&gt;</span>남
+	  		<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"여자"</span><span class="nt">&gt;</span>여<span class="nt">&lt;br&gt;</span>
+	  이메일 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span><span class="nt">&gt;&lt;br&gt;</span><span class="c">&lt;!-- email: 이메일 형식이 맞는지 확인해줌 --&gt;</span>
+	  
+	  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"회원가입하기"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/fieldset&gt;</span>
+</code></pre></div></div>
+
+<h3 id="3-insertprojsp라는-이름으로-전달받은-정보를-db에-삽입하는-페이지를-만든다">3. <code class="language-plaintext highlighter-rouge">insertPro.jsp</code>라는 이름으로 전달받은 정보를 <code class="language-plaintext highlighter-rouge">DB</code>에 삽입하는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+  
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">pass</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+	<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"age"</span><span class="o">));</span>
+    <span class="nc">String</span> <span class="n">gender</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"gender"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"email"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>전달받은 회원정보<span class="nt">&lt;/h2&gt;</span>
+	  아이디 : <span class="nt">&lt;%=</span><span class="n">id</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  비밀번호 : <span class="nt">&lt;%=</span><span class="n">pass</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  이름 : <span class="nt">&lt;%=</span><span class="n">name</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  나이 : <span class="nt">&lt;%=</span><span class="n">age</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  성별 : <span class="nt">&lt;%=</span><span class="n">gender</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  이메일 : <span class="nt">&lt;%=</span><span class="n">email</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  
+	  <span class="nt">&lt;%</span>
+<span class="c1">//	    MemberBean mb = new MemberBean();</span>
+<span class="c1">//	    System.out.println(mb);</span>
+<span class="c1">//	    System.out.println(mb.toString()); // 둘은 같은 코드</span>
+                                           <span class="c1">// MemberBean 클래스에서 toString()을 오버라이딩하지 않았으면 객체가 할당된 메모리 주소를 출력한다.</span>
+	  <span class="nt">%&gt;</span>
+  <span class="nt">&lt;hr&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span>액션태그를 사용한 자바빈 객체 사용<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;jsp:useBean </span><span class="na">id=</span><span class="s">"mb"</span><span class="na"> class=</span><span class="s">"com.itwillbs.member.MemberBean"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;jsp:setProperty </span><span class="na">property=</span><span class="s">"*"</span><span class="na"> name=</span><span class="s">"mb"</span><span class="nt">/&gt;</span>
+  
+  <span class="nt">&lt;%=</span><span class="n">mb</span> <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;%</span>
+    <span class="c1">// 회원가입하는 날짜정보를 저장</span>
+    <span class="c1">// 내 컴퓨터에 있는 최근 시간정보를 가져다가 Timestamp 객체 초기화 &amp; 호출</span>
+    <span class="n">mb</span><span class="o">.</span><span class="na">setRegdate</span><span class="o">(</span><span class="k">new</span> <span class="nc">Timestamp</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()));</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;%=</span><span class="n">mb</span> <span class="nt">%&gt;</span>
+  <span class="c">&lt;!-- 여기까지 데이터를 전달하는 동작 --&gt;</span>
+  
+  <span class="nt">&lt;hr&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>전달된 정보(mb)를 DB에 저장<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="c1">// 1. 드라이버 로드</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 성공!"</span><span class="o">);</span>
+    
+    <span class="c1">// 2. 디비 연결</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">,</span> <span class="s">"root"</span><span class="o">,</span> <span class="s">"1234"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"디비 연결 성공 : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">);</span>
+    
+    <span class="c1">// 3. sql 작성 &amp; pstmt 객체 생성</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into itwill_member(id, pass, name, age, gender, email, regdate) values(?, ?, ?, ?, ?, ?, ?)"</span><span class="o">;</span>
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+    
+    <span class="c1">// ??? </span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getPass</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getGender</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">());</span>
+    
+    <span class="c1">// 4. sql 실행</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"회원 가입 완료!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">정상적으로 회원가입 완료!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">location</span><span class="p">.</span><span class="nx">herf</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">loginForm.jsp</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="자바빈을-사용한-db-관리-예제-2-로그인하는-상황">자바빈을 사용한 DB 관리 예제 2) 로그인하는 상황</h2>
+<h3 id="1-정보를-저장할-클래스는-아까-만들었으니까-생략">1. 정보를 저장할 클래스는 아까 만들었으니까 생략</h3>
+
+<h3 id="2-loginformjsp라는-이름으로-로그인용-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">loginForm.jsp</code>라는 이름으로 로그인용 페이지를 만든다.</h3>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"loginPro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+    비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"로그인"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"회원가입"</span> <span class="na">onclick=</span><span class="s">" location.href='insertForm.jsp'; "</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h3 id="3-loginprojsp라는-이름으로-전달받은-정보를-db와-매칭하는-페이지를-만든다">3. <code class="language-plaintext highlighter-rouge">loginPro.jsp</code>라는 이름으로 전달받은 정보를 <code class="language-plaintext highlighter-rouge">DB</code>와 매칭하는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span>
+    <span class="c1">// 한글처리</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+    
+    <span class="c1">// 전달받은 정보를 액션태그를 사용하여 저장</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;jsp:useBean </span><span class="na">id=</span><span class="s">"mb"</span><span class="na"> class=</span><span class="s">"com.itwillbs.member.MemberBean"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;jsp:setProperty </span><span class="na">property=</span><span class="s">"*"</span><span class="na"> name=</span><span class="s">"mb"</span><span class="nt">/&gt;</span>
+  
+  <span class="nt">&lt;%=</span><span class="n">mb</span> <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;hr&gt;</span>
+  
+  <span class="nt">&lt;%</span>
+    <span class="c1">// 1. 드라이버 로드</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 성공!"</span><span class="o">);</span>
+    
+    <span class="c1">// 2. 디비 연결</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">,</span> <span class="s">"root"</span><span class="o">,</span> <span class="s">"1234"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"디비 연결 성공 : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">);</span>
+    
+    <span class="c1">// 3. sql 작성() &amp; pstmt 생성</span>
+    <span class="c1">// String sql = "select * from itwill_member where id=? and pass=?"; -</span><span class="err">&gt;</span> <span class="n">sql</span> <span class="n">인젝션이라</span> <span class="n">하는데</span> <span class="n">안</span> <span class="n">쓸</span> <span class="n">것임</span>
+    
+    <span class="c1">// 이 테이블에서 pass를 가져오는데 where의 조건에 해당하는 id만 가져온다.</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"select pass from itwill_member where id=?"</span><span class="o">;</span>
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+    
+    <span class="c1">// ?</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+    
+    <span class="c1">// 4. sql 실행</span>
+    <span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+    
+    <span class="c1">// 5. 데이터 처리</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+    <span class="o">{</span>
+    	<span class="c1">// 데이터 있음 -</span><span class="err">&gt;</span> <span class="nc">DB저장</span> <span class="no">O</span> <span class="o">-</span><span class="err">&gt;</span> <span class="n">회원</span>
+    	<span class="c1">// 비밀번호 체크</span>
+    	<span class="k">if</span> <span class="o">(</span><span class="n">mb</span><span class="o">.</span><span class="na">getPass</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"pass"</span><span class="o">)))</span>
+    	<span class="o">{</span>
+    		<span class="c1">// 회원이면서 비밀번호도 동일 -</span><span class="err">&gt;</span> <span class="n">본인</span> <span class="n">로그인</span> <span class="n">성공</span>
+    		<span class="c1">// 로그인 정보를 같이 가지고 이동</span>
+    		<span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+    		
+    		<span class="c1">// 메인페이지 이동</span>
+    		<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"main.jsp"</span><span class="o">);</span>
+    	<span class="o">}</span>
+    	<span class="k">else</span> 
+    	<span class="o">{</span>
+    		<span class="c1">// 회원이긴 하나 비밀번호 틀림</span>
+    		<span class="nt">%&gt;</span> <span class="c">&lt;!-- 여기까지 아이디-비밀번호 확인 및 처리 과정 --&gt;</span>
+    		  <span class="c">&lt;!-- html 코드 --&gt;</span>
+    		  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    		    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">아이디 혹은 비밀번호 오류!</span><span class="dl">"</span><span class="p">);</span> <span class="cm">/* 아이디나 비밀번호 하나만 오류라고 알려주는 것이 보안적으로 취약해서 둘 다 오류라고 알려줌 */</span>
+    		    <span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
+    		  <span class="nt">&lt;/script&gt;</span>
+    		<span class="nt">&lt;%</span>
+    	<span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">else</span> 
+    <span class="o">{</span>
+    	<span class="c1">// 데이터 없음 -</span><span class="err">&gt;</span> <span class="nc">DB저장</span> <span class="no">X</span> <span class="o">-</span><span class="err">&gt;</span> <span class="n">비회원</span>
+		<span class="nt">%&gt;</span> <span class="c">&lt;!-- 여기까지 아이디-비밀번호 확인 및 처리 과정 --&gt;</span>
+		  <span class="c">&lt;!-- html 코드 --&gt;</span>
+		  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+		    <span class="c1">// alert("아이디 혹은 비밀번호 오류!"); /* 아이디나 비밀번호 하나만 오류라고 알려주는 것이 보안적으로 취약해서 둘 다 오류라고 알려줌 */</span>
+		    <span class="nx">confirm</span><span class="p">(</span><span class="dl">"</span><span class="s2">회원정보가 없습니다. 가입하시겠습니까?</span><span class="dl">"</span><span class="p">);</span> <span class="cm">/* yes 누르면 가입페이지로 이동/ no 누르면 다시 뒤로 이동 */</span>
+		    <span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
+		  <span class="nt">&lt;/script&gt;</span>
+		<span class="nt">&lt;%</span>
+    <span class="o">}</span>
+  <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<h2 id="로그인-후-메인-페이지로-이동하는-예제">로그인 후 메인 페이지로 이동하는 예제</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">main.jsp</code>라는 이름으로 페이지를 만든다.</li>
+</ul>
+
+<p>```jsp, html
+  <!-- 항상 로그인된 회원만 사용가능하게 만들기 -->
+  &lt;%
+    // 로그인 정보가 없을 경우 다시 로그인 페이지로 이동
+    // 로그인 정보 가져오기(세션값)
+    // String id = (String)session.getAttribute(“id”); // 다운캐스팅 - session.setAttribute(String name, Object value) 함수 원형에서
+                                    // Object 객체에 String 객체를 업캐스팅해서 씀 =&gt; 그래서 다운캐스팅 가능
+    //if (id == null)
+    //{
+    //	response.sendRedirect(“loginForm.jsp”); // alert 창 띄우기는 불가능 - jsp 코드가 먼저 실행된 다음에 javascript 코드가 실행되기 때문에
+                                    // 이 시점에 javascript는 로드되지도 않았음 - 그래서 javascript 코드는 못 쓴다.
+    //}
+  %&gt;</p>
+
+<h2>&lt;%=id %&gt;님 환영합니다.</h2>
+<hr />
+
+<p><input type="button" value="로그아웃" onclick="location.href='logout.jsp';" /></p>
+
+<hr />
+<hr />
+
+<h3><a href="info.jsp"> 회원정보 보기 </a></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+## 로그인 후 회원정보를 볼 수 있는 페이지로 이동하는 예제
+* `info.jsp`라는 이름으로 페이지를 만든다.
+
+```html, jsp
+  &lt;h2&gt;로그인한 회원 정보를 모두 출력하는 페이지&lt;/h2&gt;
+  &lt;%
+    // 로그인정보(세션값)
+    String id = (String) session.getAttribute("id");
+    if (id == null)
+    {
+    	response.sendRedirect("loginForm.jsp");
+    }
+    
+    // DB에서 필요한 정보를 가져오기
+    final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    final String URL = "jdbc:mysql://localhost:3306/jspdb";
+    final String ID = "root";
+    final String PASS = "1234"; // 실제 코드 작성시엔 이렇게 계정정보 노출하면 안됨. 이런 코드는 지우는 것이 좋다.
+    
+	MemberBean mb = null; // 전역변수로 쓸 수 있도록 처음엔 MemberBean 객체의 레퍼런스만 준비함
+                    // 미리 객체를 만들지 않고 필요할 때 생성하도록 한다. (메모리 낭비를 줄이기 위해)
+    
+    // 1. 드라이버 로드
+    Class.forName(DRIVER);
+    
+    // 2. 디비 연결
+    Connection con = DriverManager.getConnection(URL, ID, PASS);
+    
+    // 3. sql 작성(select) &amp; pstmt 객체 생성
+    String sql = "select * from itwill_member where id=?";
+    PreparedStatement pstmt = con.prepareStatement(sql);
+    
+    // ?
+    pstmt.setString(1, id);
+    
+    // 4. sql 실행
+    ResultSet rs = pstmt.executeQuery();
+    
+    // 5. 데이터 처리
+    // DB에 있는 정보를 -&gt; 화면(jsp)에 출력
+    if (rs.next())
+    {
+    	// 무조건 저장이 아니라 정보가 있을 때만 저장
+    	// 한 명의 회원정보를 저장하는 객체 생성
+    	mb = new MemberBean();
+    	
+    	mb.setId(rs.getString("id"));
+    	mb.setPass(rs.getString("pass"));
+    	mb.setName(rs.getString("name"));
+    	mb.setAge(rs.getInt("age"));
+    	mb.setGender(rs.getString("gender"));
+    	mb.setEmail(rs.getString("email"));
+    	mb.setRegdate(rs.getTimestamp("regdate"));
+    }
+    
+    System.out.println("회원정보 가져오기 성공!");
+  %&gt;
+  
+  &lt;hr&gt;
+  
+  &lt;%-- 아이디 : &lt;%=mb.getId() %&gt;&lt;br&gt; =&gt; if문 안에서 객체를 만들시(지역변수) 사용 불가 --%&gt; 
+  아이디 : &lt;%=mb.getId() %&gt;&lt;br&gt; 
+  비밀번호 : &lt;%=mb.getPass() %&gt;&lt;br&gt;
+  이름 : &lt;%=mb.getName() %&gt;&lt;br&gt;
+  나이 : &lt;%=mb.getAge() %&gt;&lt;br&gt;
+  성별 : &lt;%=mb.getGender() %&gt;&lt;br&gt;
+  이메일 : &lt;%=mb.getEmail() %&gt;&lt;br&gt;
+  회원가입일 : &lt;%=mb.getRegdate() %&gt;&lt;br&gt;
+  
+  &lt;h3&gt;&lt;a href="main.jsp"&gt;메인페이지로...&lt;/a&gt;&lt;/h3&gt; &lt;!-- 메인 페이지랑 왔다갔다하기  --&gt;
+</code></pre></div></div>
+
+<h2 id="로그아웃하는-동작-예제">로그아웃하는 동작 예제</h2>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">logout.jsp</code>라는 이름으로 페이지를 만든다.
+```jsp, javascript
+&lt;%
+  // 로그아웃 - session 초기화
+  session.invalidate();
+%&gt;</p>
+
+    <script type="text/javascript">
+  alert('로그아웃!');
+  location.href = 'main.jsp'; 
+  /* 메인페이지로 넘어갔을 때 로그인 세션 정보가 없으면 로그인 페이지로 이동되게 해 놨음 
+     그래서 난 메인페이지로 이동시켰지만 세션 정보가 초기화 되었기 때문에 로그인 페이지로 이동하게 된다. */
+</script>
+
+    <p>```</p>
+  </li>
+</ul>
+:ET

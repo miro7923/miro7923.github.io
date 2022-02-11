@@ -1,52 +1,573 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-07T20:28:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1712. 손익분기점</title><link href="http://localhost:4000/boj/boj1712/" rel="alternate" type="text/html" title="Java) BOJ 1712. 손익분기점" /><published>2022-02-07T00:00:00+09:00</published><updated>2022-02-07T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1712</id><content type="html" xml:base="http://localhost:4000/boj/boj1712/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-12T00:49:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JDBC</title><link href="http://localhost:4000/jsp/jdbc/" rel="alternate" type="text/html" title="JDBC" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc/"><![CDATA[<h1 id="-jdbcjava-database-connectivity란">👀 JDBC(Java Database Connectivity)란?</h1>
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/1712">https://www.acmicpc.net/problem/1712</a><br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">Java</code>랑 <code class="language-plaintext highlighter-rouge">DBMS</code>를 연결시켜주는 <code class="language-plaintext highlighter-rouge">API</code></li>
+  <li>즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다.</li>
+  <li>데이터베이스에 데이터를 삽입, 수정, 삭제할 때 <code class="language-plaintext highlighter-rouge">SQL</code> 프롬프트에서 <code class="language-plaintext highlighter-rouge">SQL</code>문을 사용하지 않아도 자바 프로그램에서 <code class="language-plaintext highlighter-rouge">SQL</code>문을 사용하여 데이터베이스에 데이터를 추가하고 삭제하는 작업을 할 수 있게 하는 <code class="language-plaintext highlighter-rouge">API</code>이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">JDBC</code>는 <code class="language-plaintext highlighter-rouge">DBMS</code> 종류에 상관없이 독립적으로 사용 가능하다.
+    <ul>
+      <li>여러 언어에서 작동하는 방법이 전반적으로 같다고 할 수 있다.
+<br /><br /></li>
+    </ul>
+  </li>
 </ul>
 
-<h1 id="문제">문제</h1>
+<h2 id="jdbc-드라이버-설치">JDBC 드라이버 설치</h2>
 <ul>
-  <li>월드전자는 노트북을 제조하고 판매하는 회사이다. 노트북 판매 대수에 상관없이 매년 임대료, 재산세, 보험료, 급여 등 A만원의 고정 비용이 들며,</li>
-  <li>
-    <p>한 대의 노트북을 생산하는 데에는 재료비와 인건비 등 총 B만원의 가변 비용이 든다고 한다.<br /><br /></p>
-  </li>
-  <li>
-    <p>예를 들어 A=1,000, B=70이라고 하자. 이 경우 노트북을 한 대 생산하는 데는 총 1,070만원이 들며, 열 대 생산하는 데는 총 1,700만원이 든다.<br /><br /></p>
-  </li>
-  <li>노트북 가격이 C만원으로 책정되었다고 한다. 일반적으로 생산 대수를 늘려 가다 보면 어느 순간 총 수입(판매비용)이 총 비용(=고정비용+가변비용)보다 많아지게 된다.</li>
-  <li>
-    <p>최초로 총 수입이 총 비용보다 많아져 이익이 발생하는 지점을 손익분기점(BREAK-EVEN POINT)이라고 한다.<br /><br /></p>
-  </li>
-  <li>A, B, C가 주어졌을 때, 손익분기점을 구하는 프로그램을 작성하시오. <br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">mysql</code> 홈페이지에서 <code class="language-plaintext highlighter-rouge">Connect J</code>를 다운받는다.(현재 최신버전인 8.0.28)</li>
+  <li>윈도우라면 <code class="language-plaintext highlighter-rouge">.zip</code> 파일을 받으면 되고 맥이라면 <code class="language-plaintext highlighter-rouge">.tar</code> 파일을 받는다.</li>
+  <li>압축을 풀면 <code class="language-plaintext highlighter-rouge">mysql-connector-java-8.0.28.jar</code>란 파일이 있다.</li>
+  <li>저걸 <code class="language-plaintext highlighter-rouge">JDBC</code>를 사용하고자 하는 (이클립스)프로젝트의 <code class="language-plaintext highlighter-rouge">WEB-INF/lib</code> 폴더에 넣는다.(경로 다르면 안 됨!! 무조건 저기에 넣어야 함)</li>
+  <li>그러면 설치 끝!
+<br /><br /></li>
 </ul>
 
-<h1 id="입력">입력</h1>
+<h2 id="jdbc-연동">JDBC 연동</h2>
+<h3 id="1-드라이버-로드하드디스크에-있는-프로그램을-메모리로-불러오기">1. 드라이버 로드(하드디스크에 있는 프로그램을 메모리로 불러오기)</h3>
 <ul>
-  <li>첫째 줄에 A, B, C가 빈 칸을 사이에 두고 순서대로 주어진다. A, B, C는 21억 이하의 자연수이다.  <br /><br /></li>
+  <li>아까 설치한 <code class="language-plaintext highlighter-rouge">JDBC</code> 드라이버를 불러올 것이다.
+    <div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Class.forName("com.mysql.cj.jdbc.Driver"); // static method라서 객체 생성 없이 바로 호출할 수 있음
+</code></pre></div>    </div>
+  </li>
+  <li>이렇게 입력하면 드라이버를 로드할 수 있다.</li>
+  <li>MySQL 홈페이지 가서 Documentation 페이지 - Connector/J 8.0 Developer Guide - 6. ConnectJ reference - 6.1 Driver/Datasource Class Name 가면 드라이버를 로드할 때 무슨 클래스명을 입력해야 하는지 찾을 수 있다.
+    <ul>
+      <li>그 외에도 레퍼런스가 필요하면 참고하자.</li>
+    </ul>
+  </li>
+  <li>만약 설치를 안 했다면 실행시 참고할 드라이버가 없어서 <code class="language-plaintext highlighter-rouge">HTTP500</code> 에러가 뜬다.<br /><br /></li>
 </ul>
 
-<h1 id="출력">출력</h1>
+<h3 id="2-db-연결">2. DB 연결</h3>
 <ul>
-  <li>첫 번째 줄에 손익분기점 즉 최초로 이익이 발생하는 판매량을 출력한다. 손익분기점이 존재하지 않으면 -1을 출력한다. <br /><br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">DriverManager.getConnection("디비주소", "디비아이디", "디비비밀번호");</code></li>
+  <li><code class="language-plaintext highlighter-rouge">DriverManager</code> 객체를 이용해 <code class="language-plaintext highlighter-rouge">DB</code>와 드라이버를 연결한다.</li>
 </ul>
 
-<h1 id="-풀이">👀 풀이</h1>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jspdb", "root", "1234");
+</code></pre></div></div>
+
+<ul>
+  <li>이런 식으로 <code class="language-plaintext highlighter-rouge">DB</code>의 주소와 아이디, 비밀번호를 입력한 뒤 연결 객체 정보를 <code class="language-plaintext highlighter-rouge">Connection</code>에 저장한다.</li>
+  <li>이러면 <code class="language-plaintext highlighter-rouge">mysql</code>과 연결된 것이다. 이제 <code class="language-plaintext highlighter-rouge">jsp</code> 파일에서 <code class="language-plaintext highlighter-rouge">SQL</code>문을 작성해 데이터베이스를 관리할 수 있다.</li>
+</ul>
+
+<h2 id="jdbc-사용-예제-1-사용자가-홈페이지에-회원가입-하는-상황">JDBC 사용 예제 1) 사용자가 홈페이지에 회원가입 하는 상황</h2>
+
+<h3 id="1-insertformjsp라는-이름으로-간단한-회원가입-페이지를-만든다">1. <code class="language-plaintext highlighter-rouge">insertForm.jsp</code>라는 이름으로 간단한 회원가입 페이지를 만든다.</h3>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"insertPro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+    비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+    이름 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"전송하기"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>여기서 사용자가 정보를 입력하고 <code class="language-plaintext highlighter-rouge">submit</code>버튼을 클릭하면 <code class="language-plaintext highlighter-rouge">insertPro.jsp</code> 페이지로 전달된다.<br /><br /></li>
+</ul>
+
+<h3 id="2-insertprojsp라는-이름으로-회원가입-정보를-받아서-db에-사용자-정보를-추가하는-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">insertPro.jsp</code>라는 이름으로 회원가입 정보를 받아서 <code class="language-plaintext highlighter-rouge">DB</code>에 사용자 정보를 추가하는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span> <span class="c1">// 스크립틀릿 사용</span>
+    <span class="c1">// 0단계 : 드라이버 설치 - 완료됐으니 로드 단계로 넘어간다.</span>
+    <span class="c1">// 1단계 : 드라이버 로드</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">);</span>
+  
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 성공!"</span><span class="o">);</span>
+    
+    <span class="c1">// 2단계 : 디비 연결 (디비 바꾸려면 jdbc:mysql://localhost:3306/뒤에 디비 이름만 바꿔주면 됨)</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">,</span> <span class="s">"root"</span><span class="o">,</span> <span class="s">"1234"</span><span class="o">);</span>
+    
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"디비 연결 성공!"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"연결정보 : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">);</span>
+    
+    <span class="c1">// 3단계 : SQL 구문 생성 &amp; stmt(statement) 객체 생성</span>
+    <span class="c1">// String sql = "insert into itwill_member (id, pass, name) values('id', 'pw', 'name')";</span>
+    
+    <span class="c1">// secure 코딩 예시) values에 담을 데이터의 개수만큼 ?를 넣는다.</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into itwill_member (id, pass, name) values(?, ?, ?)"</span><span class="o">;</span>
+    
+    <span class="c1">// stmt 객체 만들기 : sql 구문을 실행하는 객체 	   </span>
+    <span class="c1">// Statement stmt = con.createStatement(); // 하지만 이렇게 쓰려면 valuse 괄호 안에 따옴표를 넘 많이 써야해서 안 쓸 예정</span>
+                            <span class="c1">// 그리고 따옴표 안에 정보를 노출해서 써야해서 보안적으로 좋지 않다.</span>
+    <span class="c1">// Statement랑 PreparedStatement 객체 둘 중 하나만 쓸 수 있음</span>
+    
+    <span class="c1">// pstmt 객체 : sql 구문을 실행하는 객체</span>
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">// 객체를 만들 때 쿼리 정보를 가져가서 사전준비함</span>
+    
+    <span class="c1">// ??? 값 sql 구문에 채워넣기</span>
+    <span class="c1">// pstmt.setXXXXXX(물음표의 위치, 실제 들어갈 값);</span>
+    <span class="c1">// =</span><span class="err">&gt;</span> <span class="no">XXXXX</span> <span class="o">:</span> <span class="n">컬럼의</span> <span class="n">데이터타입</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">double</span><span class="o">,</span> <span class="n">string</span><span class="o">,</span> <span class="o">...)</span><span class="n">에</span> <span class="n">따라</span> <span class="n">변경</span>
+    <span class="c1">// * ? 개수와 동일한 구문을 수행해야 함 - ?가 3개면 채우는 구문 3개 있어야 함</span>
+    <span class="c1">// null 넣고 싶으면 쿼리문(String sql) 안에 직접 넣으면 됨</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span> <span class="c1">// 뜻 : 1번 물음표에 id에 해당하는 값을 넣는다.</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">pass</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+    
+    <span class="c1">// 4단계 : SQL 구문 실행</span>
+    <span class="c1">// stmt.executeUpdate(sql); // 얘는 미리 준비 안해서 파라미터로 넣어줌</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span> <span class="c1">// 그리고 바로 실행</span>
+    
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"insert 동작 완료!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위 과정을 완료하면 터미널이나 워크벤치에서 직접 <code class="language-plaintext highlighter-rouge">SQL</code>문을 작성하지 않았는데도 <code class="language-plaintext highlighter-rouge">DB</code>에 데이터가 삽입된다!<br /><br /></li>
+</ul>
+
+<h3 id="️-페이지를-실행할-땐-formjsp-페이지에서-한다">❗️ 페이지를 실행할 땐 <code class="language-plaintext highlighter-rouge">~Form.jsp</code> 페이지에서 한다.</h3>
+<ul>
+  <li>사용자가 보는 페이지는 <code class="language-plaintext highlighter-rouge">Form</code> 페이지이지 처리를 하는 <code class="language-plaintext highlighter-rouge">Pro</code> 페이지를 사용자가 볼 수 없고 그럴 필요도 없기 때문이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Pro</code> 페이지는 개발과정에서 개발자만 보는 페이지이다.</li>
+</ul>
+
+<h2 id="jdbc-사용-예제-2-회원-정보를-수정하는-상황">JDBC 사용 예제 2) 회원 정보를 수정하는 상황</h2>
+<h3 id="1-updateformjsp라는-이름으로-수정할-정보를-입력받을-간단한-페이지를-하나-만든다">1. <code class="language-plaintext highlighter-rouge">updateForm.jsp</code>라는 이름으로 수정할 정보를 입력받을 간단한 페이지를 하나 만든다.</h3>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"updatePro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+    비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+    수정할 이름 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"update_name"</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"전송하기"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h3 id="2-updateprojsp라는-이름으로-전송받은-정보를-db에-삽입할-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">updatePro.jsp</code>라는 이름으로 전송받은 정보를 <code class="language-plaintext highlighter-rouge">DB</code>에 삽입할 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span>
+    <span class="c1">// 그냥 받으면 한글이 깨지기 때문에 꼭 한글처리 후 데이터 받기를 시작한다.</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+    
+    <span class="c1">// 전달된 파라미터 저장</span>
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">pass</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">uName</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"update_name"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  아이디 : <span class="nt">&lt;%=</span><span class="n">id</span> <span class="nt">%&gt;&lt;br&gt;</span>
+  비밀번호 : <span class="nt">&lt;%=</span><span class="n">pass</span> <span class="nt">%&gt;&lt;br&gt;</span>
+  수정할 이름 : <span class="nt">&lt;%=</span><span class="n">uName</span> <span class="nt">%&gt;&lt;br&gt;</span>
+  <span class="nt">&lt;hr&gt;</span>
+  
+  <span class="nt">&lt;%</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DRIVER</span> <span class="o">=</span> <span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBURL</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBID</span> <span class="o">=</span> <span class="s">"root"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBPASS</span> <span class="o">=</span> <span class="s">"1234"</span><span class="o">;</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 1. 드라이버 로드 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="no">DRIVER</span><span class="o">);</span> <span class="c1">// Class는 java.lang 패키지에 들어서 임포트 없이 쓸 수 있음.</span>
+    
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 성공!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 2. 디비 연결 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="no">DBURL</span><span class="o">,</span> <span class="no">DBID</span><span class="o">,</span> <span class="no">DBPASS</span><span class="o">);</span>
+    
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"디비연결 성공!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 3. sql 작성 <span class="err">&amp;</span> pstmt 생성 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"update itwill_member set name=? where id=? and pass=?"</span><span class="o">;</span> <span class="c1">// ?는 mysql 문법이 아니고 jsp 코드에서만 쓸 수 있는 문법</span>
+    
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">// 인터페이스를 통해 객체를 생성하지 않고 만들어진 정보를 전달</span>
+    
+    <span class="c1">// ? 채우기</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">uName</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">pass</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 4. sql 실행 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"회원정보 수정 완료!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<h2 id="jdbc-사용-예제-3-사용자-정보를-삭제하는-상황">JDBC 사용 예제 3) 사용자 정보를 삭제하는 상황</h2>
+<h3 id="1-deleteformjsp라는-이름으로-삭제할-사용자의-정보를-입력받는-페이지를-만든다">1. <code class="language-plaintext highlighter-rouge">deleteForm.jsp</code>라는 이름으로 삭제할 사용자의 정보를 입력받는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"deletePro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+    비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"전송하기"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h3 id="2-deleteprojsp라는-이름으로-db에서-전달받은-정보를-삭제하는-작업을-하는-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">deletePro.jsp</code>라는 이름으로 <code class="language-plaintext highlighter-rouge">DB</code>에서 전달받은 정보를 삭제하는 작업을 하는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+  
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">pass</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;%</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DRIVER</span> <span class="o">=</span> <span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBURL</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBID</span> <span class="o">=</span> <span class="s">"root"</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DBPASS</span> <span class="o">=</span> <span class="s">"1234"</span><span class="o">;</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 1. 드라이버 로드 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="no">DRIVER</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 2. 디비 연결 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="no">DBURL</span><span class="o">,</span> <span class="no">DBID</span><span class="o">,</span> <span class="no">DBPASS</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 3. sql 작성 <span class="err">&amp;</span> pstmt 생성 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from itwill_member where id=? and pass=?"</span><span class="o">;</span>
+    
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">pass</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span> 4. sql 실행 <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+  
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"회원정보 삭제 완료!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="Database" /><category term="JSP" /><category term="JDBC" /><summary type="html"><![CDATA[👀 JDBC(Java Database Connectivity)란? Java랑 DBMS를 연결시켜주는 API 즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다. 데이터베이스에 데이터를 삽입, 수정, 삭제할 때 SQL 프롬프트에서 SQL문을 사용하지 않아도 자바 프로그램에서 SQL문을 사용하여 데이터베이스에 데이터를 추가하고 삭제하는 작업을 할 수 있게 하는 API이다. JDBC는 DBMS 종류에 상관없이 독립적으로 사용 가능하다. 여러 언어에서 작동하는 방법이 전반적으로 같다고 할 수 있다.]]></summary></entry><entry><title type="html">회원관리 서비스 요구사항</title><link href="http://localhost:4000/jsp/customer-management/" rel="alternate" type="text/html" title="회원관리 서비스 요구사항" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/customer-management</id><content type="html" xml:base="http://localhost:4000/jsp/customer-management/"><![CDATA[<h1 id="-회원관리-서비스-요구사항">👀 회원관리 서비스 요구사항</h1>
+<ul>
+  <li>모든 웹페이지의 기본 서비스라고 할 수 있는 회원관리 서비스! 아래와 같은 사항들이 가능해야 한다.<br /><br /></li>
+</ul>
+
+<p>1) 회원가입 페이지 - 아이디는 이메일을 사용하거나 전화번호를 입력받는 등 회원가입에 필요한 정보 입력<br />
+2) 로그인<br />
+3) 메인페이지<br />
+4) 회원정보 조회<br />
+5) 회원정보 수정<br />
+6) 회원정보 삭제<br />
+7) 관리자 - 회원 전체 목록 조회<br /><br /></p>
+
+<ul>
+  <li>이렇게 작성하는 것을 <code class="language-plaintext highlighter-rouge">요구사항 확인</code> 혹은 <code class="language-plaintext highlighter-rouge">요구사항 명세</code>라고 한다.</li>
+  <li>이 과정을 진행하기 전에 <code class="language-plaintext highlighter-rouge">DB</code> 테이블 생성을 먼저 진행한다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="Database" /><category term="JSP" /><category term="JDBC" /><summary type="html"><![CDATA[👀 회원관리 서비스 요구사항 모든 웹페이지의 기본 서비스라고 할 수 있는 회원관리 서비스! 아래와 같은 사항들이 가능해야 한다.]]></summary></entry><entry><title type="html">자바빈(JavaBean)</title><link href="http://localhost:4000/jsp/javabean/" rel="alternate" type="text/html" title="자바빈(JavaBean)" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/javabean</id><content type="html" xml:base="http://localhost:4000/jsp/javabean/"><![CDATA[<h1 id="자바빈javabean">자바빈(JavaBean)</h1>
+<ul>
+  <li>관련있는 데이터를 하나의 클래스에 설계해서 한 번에 관리하는 것</li>
+  <li>디자인과 비즈니스 로직을 분리하기 위해 사용한다.
+    <ul>
+      <li>자바 코드로만 입력하면 프로그래밍 언어를 모르는 디자이너가 알아보기 어렵고 그렇다고 프로그래머가 자바 코드를 안 쓸 수는 없는 일이니 중간 지점을 찾기 위해 사용한다고 보면 될 거 같다.<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="자바빈-설계-규약">자바빈 설계 규약</h2>
+<p>1) 기본패키지(default)를 제외한 특정 패키지 안에 있어야 함
+2) 기본 생성자가 있어야 함
+3) 멤버 변수는 접근지정자 <code class="language-plaintext highlighter-rouge">private</code> 선언
+4) 멤버 변수에 접근하기 위해서 <code class="language-plaintext highlighter-rouge">get</code>, <code class="language-plaintext highlighter-rouge">set</code> 메서드 선언(<code class="language-plaintext highlighter-rouge">public</code>)<br /><br /></p>
+
+<h2 id="자바빈을-사용한-db-관리-예제-1-회원가입-하는-상황">자바빈을 사용한 DB 관리 예제 1) 회원가입 하는 상황</h2>
+<h3 id="1-사용자-정보를-저장할-클래스를-만든다">1. 사용자 정보를 저장할 클래스를 만든다.</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.itwillbs.member</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.sql.Timestamp</span><span class="o">;</span>
+
+<span class="c1">// Object 클래스는 자바의 최상위 클래스 =&gt; 자바에서 사용하는 모든 클래스는 Object 클래스를 상속받는다.</span>
+<span class="c1">// 명시된 상속관계가 없을 경우 자동으로 Object 클래스를 상속한다.(생략가능)</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberBean</span> <span class="o">{</span>
+	
+	<span class="c1">// member 테이블정보를 한 번에 저장하는 객체</span>
+	<span class="c1">// MemberDTO / MemberVO 다 Bean이랑 같은거라고 보면 된다.</span>
+	
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">pass</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">Timestamp</span> <span class="n">regdate</span><span class="o">;</span>
+	
+	<span class="c1">// 하나하나 타이핑하지 말고 generate getter/setter를 사용해 get/set 메서드를 세팅한다.</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getPass</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">pass</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPass</span><span class="o">(</span><span class="nc">String</span> <span class="n">pass</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">pass</span> <span class="o">=</span> <span class="n">pass</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getGender</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGender</span><span class="o">(</span><span class="nc">String</span> <span class="n">gender</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">gender</span> <span class="o">=</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getEmail</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">email</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEmail</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">Timestamp</span> <span class="nf">getRegdate</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">regdate</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRegdate</span><span class="o">(</span><span class="nc">Timestamp</span> <span class="n">regdate</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">regdate</span> <span class="o">=</span> <span class="n">regdate</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// alt + shift + s + s를 누르면 오버라이딩 할 수 있는 메서드 목록을 불러올 수 있다.</span>
+    <span class="c1">// String 클래스에 있는 toString()이 오버라이딩 되는 이유는 자바의 모든 클래스는 Object 클래스를 상속받는데 </span>
+    <span class="c1">// Object 클래스로 가보면 toString() 메서드의 원형이 작성되어 있다.(원형은 객체가 생성된 메모리의 주소를 리턴)</span>
+    <span class="c1">// 자바의 모든 클래스는 Object 클래스를 상속받기 때문에 String 클래스에서도 toString()을 오버라이딩해서 우리가 자주 쓰는 동작을 보여주는 것이고</span>
+    <span class="c1">// 사용자 정의로 만든 이 클래스 또한 Object를 상속받기 때문에 toString() 메서드의 오버라이딩이 가능한 것이다.  </span>
+	<span class="nd">@Override</span> <span class="c1">// memberBean 정보를 모두 한 번에 확인하기 위해서 사용(하나하나 get 메서드로 부르려면 복잡하니깐..)</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="s">"MemberBean [id="</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">", pass="</span> <span class="o">+</span> <span class="n">pass</span> <span class="o">+</span> <span class="s">", name="</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">", age="</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span> <span class="s">", gender="</span> <span class="o">+</span> <span class="n">gender</span>
+				<span class="o">+</span> <span class="s">", email="</span> <span class="o">+</span> <span class="n">email</span> <span class="o">+</span> <span class="s">", regdate="</span> <span class="o">+</span> <span class="n">regdate</span> <span class="o">+</span> <span class="s">"]"</span><span class="o">;</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="2-insertformjsp라는-이름으로-가입정보를-입력받는-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">insertForm.jsp</code>라는 이름으로 가입정보를 입력받는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">&lt;!-- name은 컬럼명과 일치시켜 주는 것이 좋다 --&gt;</span>
+  <span class="nt">&lt;fieldset&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"insertPro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+	  아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+	  비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+	  이름 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;&lt;br&gt;</span>
+	  나이 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">name=</span><span class="s">"age"</span><span class="nt">&gt;&lt;br&gt;</span><span class="c">&lt;!-- number: 옆에 숫자 증감시키는 화살표 생김 --&gt;</span>
+	  성별 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"남자"</span><span class="nt">&gt;</span>남
+	  		<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"여자"</span><span class="nt">&gt;</span>여<span class="nt">&lt;br&gt;</span>
+	  이메일 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span><span class="nt">&gt;&lt;br&gt;</span><span class="c">&lt;!-- email: 이메일 형식이 맞는지 확인해줌 --&gt;</span>
+	  
+	  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"회원가입하기"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/fieldset&gt;</span>
+</code></pre></div></div>
+
+<h3 id="3-insertprojsp라는-이름으로-전달받은-정보를-db에-삽입하는-페이지를-만든다">3. <code class="language-plaintext highlighter-rouge">insertPro.jsp</code>라는 이름으로 전달받은 정보를 <code class="language-plaintext highlighter-rouge">DB</code>에 삽입하는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+  
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">pass</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+	<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"age"</span><span class="o">));</span>
+    <span class="nc">String</span> <span class="n">gender</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"gender"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"email"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>전달받은 회원정보<span class="nt">&lt;/h2&gt;</span>
+	  아이디 : <span class="nt">&lt;%=</span><span class="n">id</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  비밀번호 : <span class="nt">&lt;%=</span><span class="n">pass</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  이름 : <span class="nt">&lt;%=</span><span class="n">name</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  나이 : <span class="nt">&lt;%=</span><span class="n">age</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  성별 : <span class="nt">&lt;%=</span><span class="n">gender</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  이메일 : <span class="nt">&lt;%=</span><span class="n">email</span> <span class="nt">%&gt;&lt;br&gt;</span>
+	  
+	  <span class="nt">&lt;%</span>
+<span class="c1">//	    MemberBean mb = new MemberBean();</span>
+<span class="c1">//	    System.out.println(mb);</span>
+<span class="c1">//	    System.out.println(mb.toString()); // 둘은 같은 코드</span>
+                                           <span class="c1">// MemberBean 클래스에서 toString()을 오버라이딩하지 않았으면 객체가 할당된 메모리 주소를 출력한다.</span>
+	  <span class="nt">%&gt;</span>
+  <span class="nt">&lt;hr&gt;</span>
+  
+  <span class="nt">&lt;h2&gt;</span>액션태그를 사용한 자바빈 객체 사용<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;jsp:useBean </span><span class="na">id=</span><span class="s">"mb"</span><span class="na"> class=</span><span class="s">"com.itwillbs.member.MemberBean"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;jsp:setProperty </span><span class="na">property=</span><span class="s">"*"</span><span class="na"> name=</span><span class="s">"mb"</span><span class="nt">/&gt;</span>
+  
+  <span class="nt">&lt;%=</span><span class="n">mb</span> <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;%</span>
+    <span class="c1">// 회원가입하는 날짜정보를 저장</span>
+    <span class="c1">// 내 컴퓨터에 있는 최근 시간정보를 가져다가 Timestamp 객체 초기화 &amp; 호출</span>
+    <span class="n">mb</span><span class="o">.</span><span class="na">setRegdate</span><span class="o">(</span><span class="k">new</span> <span class="nc">Timestamp</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()));</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;%=</span><span class="n">mb</span> <span class="nt">%&gt;</span>
+  <span class="c">&lt;!-- 여기까지 데이터를 전달하는 동작 --&gt;</span>
+  
+  <span class="nt">&lt;hr&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>전달된 정보(mb)를 DB에 저장<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="c1">// 1. 드라이버 로드</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 성공!"</span><span class="o">);</span>
+    
+    <span class="c1">// 2. 디비 연결</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">,</span> <span class="s">"root"</span><span class="o">,</span> <span class="s">"1234"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"디비 연결 성공 : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">);</span>
+    
+    <span class="c1">// 3. sql 작성 &amp; pstmt 객체 생성</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into itwill_member(id, pass, name, age, gender, email, regdate) values(?, ?, ?, ?, ?, ?, ?)"</span><span class="o">;</span>
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+    
+    <span class="c1">// ??? </span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getPass</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getGender</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">());</span>
+    
+    <span class="c1">// 4. sql 실행</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"회원 가입 완료!"</span><span class="o">);</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">정상적으로 회원가입 완료!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">location</span><span class="p">.</span><span class="nx">herf</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">loginForm.jsp</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="자바빈을-사용한-db-관리-예제-2-로그인하는-상황">자바빈을 사용한 DB 관리 예제 2) 로그인하는 상황</h2>
+<h3 id="1-정보를-저장할-클래스는-아까-만들었으니까-생략">1. 정보를 저장할 클래스는 아까 만들었으니까 생략</h3>
+
+<h3 id="2-loginformjsp라는-이름으로-로그인용-페이지를-만든다">2. <code class="language-plaintext highlighter-rouge">loginForm.jsp</code>라는 이름으로 로그인용 페이지를 만든다.</h3>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"loginPro.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    아이디 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;&lt;br&gt;</span>
+    비밀번호 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"로그인"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"회원가입"</span> <span class="na">onclick=</span><span class="s">" location.href='insertForm.jsp'; "</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h3 id="3-loginprojsp라는-이름으로-전달받은-정보를-db와-매칭하는-페이지를-만든다">3. <code class="language-plaintext highlighter-rouge">loginPro.jsp</code>라는 이름으로 전달받은 정보를 <code class="language-plaintext highlighter-rouge">DB</code>와 매칭하는 페이지를 만든다.</h3>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;%</span>
+    <span class="c1">// 한글처리</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+    
+    <span class="c1">// 전달받은 정보를 액션태그를 사용하여 저장</span>
+  <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;jsp:useBean </span><span class="na">id=</span><span class="s">"mb"</span><span class="na"> class=</span><span class="s">"com.itwillbs.member.MemberBean"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;jsp:setProperty </span><span class="na">property=</span><span class="s">"*"</span><span class="na"> name=</span><span class="s">"mb"</span><span class="nt">/&gt;</span>
+  
+  <span class="nt">&lt;%=</span><span class="n">mb</span> <span class="nt">%&gt;</span>
+  
+  <span class="nt">&lt;hr&gt;</span>
+  
+  <span class="nt">&lt;%</span>
+    <span class="c1">// 1. 드라이버 로드</span>
+    <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 성공!"</span><span class="o">);</span>
+    
+    <span class="c1">// 2. 디비 연결</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">,</span> <span class="s">"root"</span><span class="o">,</span> <span class="s">"1234"</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"디비 연결 성공 : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">);</span>
+    
+    <span class="c1">// 3. sql 작성() &amp; pstmt 생성</span>
+    <span class="c1">// String sql = "select * from itwill_member where id=? and pass=?"; -</span><span class="err">&gt;</span> <span class="n">sql</span> <span class="n">인젝션이라</span> <span class="n">하는데</span> <span class="n">안</span> <span class="n">쓸</span> <span class="n">것임</span>
+    
+    <span class="c1">// 이 테이블에서 pass를 가져오는데 where의 조건에 해당하는 id만 가져온다.</span>
+    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"select pass from itwill_member where id=?"</span><span class="o">;</span>
+    <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+    
+    <span class="c1">// ?</span>
+    <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+    
+    <span class="c1">// 4. sql 실행</span>
+    <span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+    
+    <span class="c1">// 5. 데이터 처리</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+    <span class="o">{</span>
+    	<span class="c1">// 데이터 있음 -</span><span class="err">&gt;</span> <span class="nc">DB저장</span> <span class="no">O</span> <span class="o">-</span><span class="err">&gt;</span> <span class="n">회원</span>
+    	<span class="c1">// 비밀번호 체크</span>
+    	<span class="k">if</span> <span class="o">(</span><span class="n">mb</span><span class="o">.</span><span class="na">getPass</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"pass"</span><span class="o">)))</span>
+    	<span class="o">{</span>
+    		<span class="c1">// 회원이면서 비밀번호도 동일 -</span><span class="err">&gt;</span> <span class="n">본인</span> <span class="n">로그인</span> <span class="n">성공</span>
+    		<span class="c1">// 로그인 정보를 같이 가지고 이동</span>
+    		<span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+    		
+    		<span class="c1">// 메인페이지 이동</span>
+    		<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"main.jsp"</span><span class="o">);</span>
+    	<span class="o">}</span>
+    	<span class="k">else</span> 
+    	<span class="o">{</span>
+    		<span class="c1">// 회원이긴 하나 비밀번호 틀림</span>
+    		<span class="nt">%&gt;</span> <span class="c">&lt;!-- 여기까지 아이디-비밀번호 확인 및 처리 과정 --&gt;</span>
+    		  <span class="c">&lt;!-- html 코드 --&gt;</span>
+    		  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    		    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">아이디 혹은 비밀번호 오류!</span><span class="dl">"</span><span class="p">);</span> <span class="cm">/* 아이디나 비밀번호 하나만 오류라고 알려주는 것이 보안적으로 취약해서 둘 다 오류라고 알려줌 */</span>
+    		    <span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
+    		  <span class="nt">&lt;/script&gt;</span>
+    		<span class="nt">&lt;%</span>
+    	<span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">else</span> 
+    <span class="o">{</span>
+    	<span class="c1">// 데이터 없음 -</span><span class="err">&gt;</span> <span class="nc">DB저장</span> <span class="no">X</span> <span class="o">-</span><span class="err">&gt;</span> <span class="n">비회원</span>
+		<span class="nt">%&gt;</span> <span class="c">&lt;!-- 여기까지 아이디-비밀번호 확인 및 처리 과정 --&gt;</span>
+		  <span class="c">&lt;!-- html 코드 --&gt;</span>
+		  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+		    <span class="c1">// alert("아이디 혹은 비밀번호 오류!"); /* 아이디나 비밀번호 하나만 오류라고 알려주는 것이 보안적으로 취약해서 둘 다 오류라고 알려줌 */</span>
+		    <span class="nx">confirm</span><span class="p">(</span><span class="dl">"</span><span class="s2">회원정보가 없습니다. 가입하시겠습니까?</span><span class="dl">"</span><span class="p">);</span> <span class="cm">/* yes 누르면 가입페이지로 이동/ no 누르면 다시 뒤로 이동 */</span>
+		    <span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
+		  <span class="nt">&lt;/script&gt;</span>
+		<span class="nt">&lt;%</span>
+    <span class="o">}</span>
+  <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<h2 id="로그인-후-메인-페이지로-이동하는-예제">로그인 후 메인 페이지로 이동하는 예제</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">main.jsp</code>라는 이름으로 페이지를 만든다.</li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/c5b30ef769d6e5358214ecbeb20371cd.js"></script>
+
+<h2 id="로그인-후-회원정보를-볼-수-있는-페이지로-이동하는-예제">로그인 후 회원정보를 볼 수 있는 페이지로 이동하는 예제</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">info.jsp</code>라는 이름으로 페이지를 만든다.</li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/d6b2f347b534cf9707b8962bcc2b611f.js"></script>
+
+<h2 id="로그아웃하는-동작-예제">로그아웃하는 동작 예제</h2>
 <ul>
   <li>
-    <p>반복문으로 수익이 날 때까지 개수를 늘려가면서 계산했더니 시간초과가 나서 질문게시판을 검색했다..<br /><br /></p>
-  </li>
-  <li>반복문이 아닌 수학적으로 접근해야 하는 문제였으며 이 문제를 풀기 위해서는 순이익이 얼마인지 알아야 한다.</li>
-  <li>순이익은 (순이익 = 판매금액 C - 생산비용 B)로 구할 수 있다.</li>
-  <li>
-    <p>그런데 순이익이 0이거나 음수면 평생 팔아도 절대 수익이 나지 않는다. 그래서 이 경우엔 -1을 출력한다.<br /><br /></p>
-  </li>
-  <li>순이익이 양수라면 언젠가는 수익이 난다는 뜻이므로 정답을 구할 수 있다.</li>
-  <li>순이익은 판매비용에서 생산비용을 뺀 값이므로 순이익을 계산하는 과정에서 판매비용에 대한 계산은 끝나게 된다.</li>
-  <li>그럼 남은 것은 건설비용 A인데 물건을 판매할 때마다 순이익으로 건설비용 A를 갚다보면 언젠가는 남은 건설비용이 -가 될 것이다.</li>
-  <li>그러므로 건설비용을 순이익으로 나눈 몫이 손해가 나지 않을 최소 금액이라는 것을 알 수 있다.</li>
-  <li>그런데 문제에서 요구하는 손익분기점은 마이너스에서 최초로 이익이 발생하는 지점이므로 (건설비용 / 순이익)에다 1을 더해줘야 최초로 수익이 나는 지점이 된다.<br /><br /></li>
-</ul>
+    <p><code class="language-plaintext highlighter-rouge">logout.jsp</code>라는 이름으로 페이지를 만든다.
+```jsp, javascript
+&lt;%
+  // 로그아웃 - session 초기화
+  session.invalidate();
+%&gt;</p>
 
-<script src="https://gist.github.com/miro7923/7bd959b23dce959551b0c6c40206eadc.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1712" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1712]]></summary></entry><entry><title type="html">Java) BOJ 2292. 벌집</title><link href="http://localhost:4000/boj/boj2292/" rel="alternate" type="text/html" title="Java) BOJ 2292. 벌집" /><published>2022-02-07T00:00:00+09:00</published><updated>2022-02-07T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2292</id><content type="html" xml:base="http://localhost:4000/boj/boj2292/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+    <script type="text/javascript">
+  alert('로그아웃!');
+  location.href = 'main.jsp'; 
+  /* 메인페이지로 넘어갔을 때 로그인 세션 정보가 없으면 로그인 페이지로 이동되게 해 놨음 
+     그래서 난 메인페이지로 이동시켰지만 세션 정보가 초기화 되었기 때문에 로그인 페이지로 이동하게 된다. */
+</script>
+
+    <p>```</p>
+  </li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="Database" /><category term="JSP" /><category term="JDBC" /><category term="JavaBean" /><summary type="html"><![CDATA[자바빈(JavaBean) 관련있는 데이터를 하나의 클래스에 설계해서 한 번에 관리하는 것 디자인과 비즈니스 로직을 분리하기 위해 사용한다. 자바 코드로만 입력하면 프로그래밍 언어를 모르는 디자이너가 알아보기 어렵고 그렇다고 프로그래머가 자바 코드를 안 쓸 수는 없는 일이니 중간 지점을 찾기 위해 사용한다고 보면 될 거 같다. 자바빈 설계 규약 1) 기본패키지(default)를 제외한 특정 패키지 안에 있어야 함 2) 기본 생성자가 있어야 함 3) 멤버 변수는 접근지정자 private 선언 4) 멤버 변수에 접근하기 위해서 get, set 메서드 선언(public)]]></summary></entry><entry><title type="html">Java) BOJ 2292. 벌집</title><link href="http://localhost:4000/boj/boj2292/" rel="alternate" type="text/html" title="Java) BOJ 2292. 벌집" /><published>2022-02-07T00:00:00+09:00</published><updated>2022-02-07T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2292</id><content type="html" xml:base="http://localhost:4000/boj/boj2292/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <ul>
   <li><a href="https://www.acmicpc.net/problem/2292">https://www.acmicpc.net/problem/2292</a><br /><br /></li>
 </ul>
@@ -96,102 +617,99 @@
   <li>그러면 N=i가 되는 것이고 이렇게 구한 N에다 첫 시작지점인 1을 더해주면 정답을 구할 수 있다.<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/b002c6e181b9342bc1384ec1a2d97bdc.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2292" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2292]]></summary></entry><entry><title type="html">Java) BOJ 1259. 팰린드롬수</title><link href="http://localhost:4000/boj/boj1259/" rel="alternate" type="text/html" title="Java) BOJ 1259. 팰린드롬수" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1259</id><content type="html" xml:base="http://localhost:4000/boj/boj1259/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
+<script src="https://gist.github.com/miro7923/b002c6e181b9342bc1384ec1a2d97bdc.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2292" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2292]]></summary></entry><entry><title type="html">Java) BOJ 1712. 손익분기점</title><link href="http://localhost:4000/boj/boj1712/" rel="alternate" type="text/html" title="Java) BOJ 1712. 손익분기점" /><published>2022-02-07T00:00:00+09:00</published><updated>2022-02-07T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1712</id><content type="html" xml:base="http://localhost:4000/boj/boj1712/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/1259">https://www.acmicpc.net/problem/1259</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>어떤 단어를 뒤에서부터 읽어도 똑같다면 그 단어를 팰린드롬이라고 한다. ‘radar’, ‘sees’는 팰린드롬이다.<br /><br /></p>
-  </li>
-  <li>수도 팰린드롬으로 취급할 수 있다. 수의 숫자들을 뒤에서부터 읽어도 같다면 그 수는 팰린드롬수다. 121, 12421 등은 팰린드롬수다.</li>
-  <li>123, 1231은 뒤에서부터 읽으면 다르므로 팰린드롬수가 아니다.</li>
-  <li>또한 10도 팰린드롬수가 아닌데, 앞에 무의미한 0이 올 수 있다면 010이 되어 팰린드롬수로 취급할 수도 있지만,</li>
-  <li>특별히 이번 문제에서는 무의미한 0이 앞에 올 수 없다고 하자. <br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>입력은 여러 개의 테스트 케이스로 이루어져 있으며, 각 줄마다 1 이상 99999 이하의 정수가 주어진다.</li>
-  <li>입력의 마지막 줄에는 0이 주어지며, 이 줄은 문제에 포함되지 않는다.  <br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>각 줄마다 주어진 수가 팰린드롬수면 ‘yes’, 아니면 ‘no’를 출력한다. <br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>예제의 팰린드롬수를 보면 수의 개수가 짝수개일 땐 절반으로 나눈 앞뒤가 같아야 하고</li>
-  <li>
-    <p>홀수개일 땐 가운데 숫자를 제외한 나머지 앞뒤가 같아야 한다.<br /><br /></p>
-  </li>
-  <li>그래서 반복문으로 반복자는 문자열 길이의 절반까지만 반복하며</li>
-  <li>첫 글자와 맨 뒤 글자를 비교하면서 첫 글자를 가리키는 반복자는 증가시키고 끝 글자를 가리키는 반복자는 감소시켜가면서</li>
-  <li>두 반복자간의 거리를 좁히면서 검사하면 해당 수가 팰린드롬인지 아닌지 쉽게 확인할 수 있다.<br /><br /></li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/f713c3925b8bc32bcf05f5e75d0cceaa.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1259" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1259]]></summary></entry><entry><title type="html">Java) BOJ 1316. 그룹 단어 체커</title><link href="http://localhost:4000/boj/boj1316/" rel="alternate" type="text/html" title="Java) BOJ 1316. 그룹 단어 체커" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1316</id><content type="html" xml:base="http://localhost:4000/boj/boj1316/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1316">https://www.acmicpc.net/problem/1316</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/1712">https://www.acmicpc.net/problem/1712</a><br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <ul>
-  <li>그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다.</li>
-  <li>예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만,</li>
-  <li>aabbbccb는 b가 떨어져서 나타나기 때문에 그룹 단어가 아니다.</li>
-  <li>단어 N개를 입력으로 받아 그룹 단어의 개수를 출력하는 프로그램을 작성하시오.<br /><br /></li>
+  <li>월드전자는 노트북을 제조하고 판매하는 회사이다. 노트북 판매 대수에 상관없이 매년 임대료, 재산세, 보험료, 급여 등 A만원의 고정 비용이 들며,</li>
+  <li>
+    <p>한 대의 노트북을 생산하는 데에는 재료비와 인건비 등 총 B만원의 가변 비용이 든다고 한다.<br /><br /></p>
+  </li>
+  <li>
+    <p>예를 들어 A=1,000, B=70이라고 하자. 이 경우 노트북을 한 대 생산하는 데는 총 1,070만원이 들며, 열 대 생산하는 데는 총 1,700만원이 든다.<br /><br /></p>
+  </li>
+  <li>노트북 가격이 C만원으로 책정되었다고 한다. 일반적으로 생산 대수를 늘려 가다 보면 어느 순간 총 수입(판매비용)이 총 비용(=고정비용+가변비용)보다 많아지게 된다.</li>
+  <li>
+    <p>최초로 총 수입이 총 비용보다 많아져 이익이 발생하는 지점을 손익분기점(BREAK-EVEN POINT)이라고 한다.<br /><br /></p>
+  </li>
+  <li>A, B, C가 주어졌을 때, 손익분기점을 구하는 프로그램을 작성하시오. <br /><br /></li>
 </ul>
 
 <h1 id="입력">입력</h1>
 <ul>
-  <li>첫째 줄에 단어의 개수 N이 들어온다. N은 100보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에 단어가 들어온다.</li>
-  <li>단어는 알파벳 소문자로만 되어있고 중복되지 않으며, 길이는 최대 100이다. <br /><br /></li>
+  <li>첫째 줄에 A, B, C가 빈 칸을 사이에 두고 순서대로 주어진다. A, B, C는 21억 이하의 자연수이다.  <br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <ul>
-  <li>첫째 줄에 그룹 단어의 개수를 출력한다.<br /><br /><br /></li>
+  <li>첫 번째 줄에 손익분기점 즉 최초로 이익이 발생하는 판매량을 출력한다. 손익분기점이 존재하지 않으면 -1을 출력한다. <br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <ul>
   <li>
-    <p>문제 이해가 잘 되지 않아서 질문게시판의 문제 해설을 참고했다.<br /><br /></p>
+    <p>반복문으로 수익이 날 때까지 개수를 늘려가면서 계산했더니 시간초과가 나서 질문게시판을 검색했다..<br /><br /></p>
   </li>
+  <li>반복문이 아닌 수학적으로 접근해야 하는 문제였으며 이 문제를 풀기 위해서는 순이익이 얼마인지 알아야 한다.</li>
+  <li>순이익은 (순이익 = 판매금액 C - 생산비용 B)로 구할 수 있다.</li>
   <li>
-    <ol>
-      <li>현재 문자가 이미 나온 적이 있고</li>
-    </ol>
+    <p>그런데 순이익이 0이거나 음수면 평생 팔아도 절대 수익이 나지 않는다. 그래서 이 경우엔 -1을 출력한다.<br /><br /></p>
   </li>
-  <li>
-    <ol>
-      <li>바로 이전 문자가 아니면</li>
-    </ol>
-  </li>
-  <li>
-    <p>-&gt; 그 단어는 그룹 단어가 아니다.<br /><br /></p>
-  </li>
-  <li>이 흐름에 따라 알파벳이 등장했는지 확인할 boolean 배열을 만들어 알파벳이 이전에 나왔는지 확인한 후</li>
-  <li>나온 적이 없고 바로 앞 문자와 같으면 그룹단어로 카운트하였고</li>
-  <li>나온 적이 있는데 바로 앞 문자와 같지 않으면 더 이상 확인을 중단하고 다음 문자를 확인하는 방식으로 코드를 짰다.<br /><br /></li>
+  <li>순이익이 양수라면 언젠가는 수익이 난다는 뜻이므로 정답을 구할 수 있다.</li>
+  <li>순이익은 판매비용에서 생산비용을 뺀 값이므로 순이익을 계산하는 과정에서 판매비용에 대한 계산은 끝나게 된다.</li>
+  <li>그럼 남은 것은 건설비용 A인데 물건을 판매할 때마다 순이익으로 건설비용 A를 갚다보면 언젠가는 남은 건설비용이 -가 될 것이다.</li>
+  <li>그러므로 건설비용을 순이익으로 나눈 몫이 손해가 나지 않을 최소 금액이라는 것을 알 수 있다.</li>
+  <li>그런데 문제에서 요구하는 손익분기점은 마이너스에서 최초로 이익이 발생하는 지점이므로 (건설비용 / 순이익)에다 1을 더해줘야 최초로 수익이 나는 지점이 된다.<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/64c6fbcb9681289f77807122ffbdf303.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1316" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1316]]></summary></entry><entry><title type="html">Java) BOJ 4949. 균형잡힌 세상</title><link href="http://localhost:4000/boj/boj4949/" rel="alternate" type="text/html" title="Java) BOJ 4949. 균형잡힌 세상" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4949</id><content type="html" xml:base="http://localhost:4000/boj/boj4949/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/7bd959b23dce959551b0c6c40206eadc.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1712" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1712]]></summary></entry><entry><title type="html">Java) BOJ 9012. 괄호</title><link href="http://localhost:4000/boj/boj9012/" rel="alternate" type="text/html" title="Java) BOJ 9012. 괄호" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9012</id><content type="html" xml:base="http://localhost:4000/boj/boj9012/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/9012">https://www.acmicpc.net/problem/9012</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다.</li>
+  <li>그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다.</li>
+  <li>한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의 괄호에 넣은 새로운 문자열 “(x)”도 VPS 가 된다.</li>
+  <li>그리고 두 VPS x 와 y를 접합(concatenation)시킨 새로운 문자열 xy도 VPS 가 된다.</li>
+  <li>예를 들어 “(())()”와 “((()))” 는 VPS 이지만 “(()(”, “(())()))” , 그리고 “(()” 는 모두 VPS 가 아닌 문자열이다.</li>
+  <li>여러분은 입력으로 주어진 괄호 문자열이 VPS 인지 아닌지를 판단해서 그 결과를 YES 와 NO 로 나타내어야 한다. <br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<ul>
+  <li>입력 데이터는 표준 입력을 사용한다. 입력은 T개의 테스트 데이터로 주어진다. 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T가 주어진다.</li>
+  <li>각 테스트 데이터의 첫째 줄에는 괄호 문자열이 한 줄에 주어진다. 하나의 괄호 문자열의 길이는 2 이상 50 이하이다. <br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<ul>
+  <li>출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<ul>
+  <li>
+    <p>처음엔 왼쪽 오른쪽 괄호 개수를 세서 같으면 정답처리하는 방식으로 짰는데 2번 테케에서 틀렸다.<br /><br /></p>
+  </li>
+  <li>
+    <p>그래서 왼쪽 오른쪽 괄호가 나왔는지 확인하는 boolean 배열을 만들어서 확인하는 방식으로 수정했는데 사실상 1번이랑 다를 바 없었기 때문에 또 틀렸다.<br /><br /></p>
+  </li>
+  <li>그 다음엔 괄호의 개수를 세는데 왼쪽 괄호가 나오면 1을 더해주고 오른쪽 괄호가 나오면 1을 빼주는 방식으로 코드를 짰다.</li>
+  <li>그러면 양쪽 괄호가 맞게 나오면 최종 결과값은 0일 것이고,</li>
+  <li>왼쪽 괄호가 더 많다면 결과값이 양수일 것이다.</li>
+  <li>오른쪽 괄호가 더 많다면 음수가 나오게 되는데 처음으로 음수가 나오는 시점부터 이 테스트케이스는 매치되지 않는다고 판단하고 탐색을 중단하고 오답처리하면 된다.</li>
+  <li>
+    <p>왜냐면 <code class="language-plaintext highlighter-rouge">)(</code> 같은 경우에는 끝까지 카운트하면 0이 나오게 되는데 숫자상으로 보면 정답이지만 사실 매치되지 않는 괄호쌍이기 때문에 <code class="language-plaintext highlighter-rouge">)</code>이 처음 나와서 음수가 되는 순간부터 이 문장에 있는 괄호들은 매치되지 않는다.<br /><br /></p>
+  </li>
+  <li>따라서 한 문장에 대한 탐색이 끝나고 난 후 결과값이 0일 때에만 <code class="language-plaintext highlighter-rouge">"YES"</code>를 출력하고 나머지 경우엔 <code class="language-plaintext highlighter-rouge">"NO"</code>를 출력하면 된다.<br /><br /></li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/ddec4aae60e81f2a6e622a2acf426ec0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No9012" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/9012]]></summary></entry><entry><title type="html">Java) BOJ 4949. 균형잡힌 세상</title><link href="http://localhost:4000/boj/boj4949/" rel="alternate" type="text/html" title="Java) BOJ 4949. 균형잡힌 세상" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4949</id><content type="html" xml:base="http://localhost:4000/boj/boj4949/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -250,51 +768,7 @@
   <li>문제를 제대로 읽자………….. 한시간 버렸다…….<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/a4b1ef77b01b458260552e3b3a1528f8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4949" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4949]]></summary></entry><entry><title type="html">Java) BOJ 9012. 괄호</title><link href="http://localhost:4000/boj/boj9012/" rel="alternate" type="text/html" title="Java) BOJ 9012. 괄호" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9012</id><content type="html" xml:base="http://localhost:4000/boj/boj9012/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/9012">https://www.acmicpc.net/problem/9012</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<ul>
-  <li>괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다.</li>
-  <li>그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다.</li>
-  <li>한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의 괄호에 넣은 새로운 문자열 “(x)”도 VPS 가 된다.</li>
-  <li>그리고 두 VPS x 와 y를 접합(concatenation)시킨 새로운 문자열 xy도 VPS 가 된다.</li>
-  <li>예를 들어 “(())()”와 “((()))” 는 VPS 이지만 “(()(”, “(())()))” , 그리고 “(()” 는 모두 VPS 가 아닌 문자열이다.</li>
-  <li>여러분은 입력으로 주어진 괄호 문자열이 VPS 인지 아닌지를 판단해서 그 결과를 YES 와 NO 로 나타내어야 한다. <br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<ul>
-  <li>입력 데이터는 표준 입력을 사용한다. 입력은 T개의 테스트 데이터로 주어진다. 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T가 주어진다.</li>
-  <li>각 테스트 데이터의 첫째 줄에는 괄호 문자열이 한 줄에 주어진다. 하나의 괄호 문자열의 길이는 2 이상 50 이하이다. <br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<ul>
-  <li>출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다. <br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<ul>
-  <li>
-    <p>처음엔 왼쪽 오른쪽 괄호 개수를 세서 같으면 정답처리하는 방식으로 짰는데 2번 테케에서 틀렸다.<br /><br /></p>
-  </li>
-  <li>
-    <p>그래서 왼쪽 오른쪽 괄호가 나왔는지 확인하는 boolean 배열을 만들어서 확인하는 방식으로 수정했는데 사실상 1번이랑 다를 바 없었기 때문에 또 틀렸다.<br /><br /></p>
-  </li>
-  <li>그 다음엔 괄호의 개수를 세는데 왼쪽 괄호가 나오면 1을 더해주고 오른쪽 괄호가 나오면 1을 빼주는 방식으로 코드를 짰다.</li>
-  <li>그러면 양쪽 괄호가 맞게 나오면 최종 결과값은 0일 것이고,</li>
-  <li>왼쪽 괄호가 더 많다면 결과값이 양수일 것이다.</li>
-  <li>오른쪽 괄호가 더 많다면 음수가 나오게 되는데 처음으로 음수가 나오는 시점부터 이 테스트케이스는 매치되지 않는다고 판단하고 탐색을 중단하고 오답처리하면 된다.</li>
-  <li>
-    <p>왜냐면 <code class="language-plaintext highlighter-rouge">)(</code> 같은 경우에는 끝까지 카운트하면 0이 나오게 되는데 숫자상으로 보면 정답이지만 사실 매치되지 않는 괄호쌍이기 때문에 <code class="language-plaintext highlighter-rouge">)</code>이 처음 나와서 음수가 되는 순간부터 이 문장에 있는 괄호들은 매치되지 않는다.<br /><br /></p>
-  </li>
-  <li>따라서 한 문장에 대한 탐색이 끝나고 난 후 결과값이 0일 때에만 <code class="language-plaintext highlighter-rouge">"YES"</code>를 출력하고 나머지 경우엔 <code class="language-plaintext highlighter-rouge">"NO"</code>를 출력하면 된다.<br /><br /></li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/ddec4aae60e81f2a6e622a2acf426ec0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No9012" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/9012]]></summary></entry><entry><title type="html">Java) BOJ 2941. 크로아티아 알파벳</title><link href="http://localhost:4000/boj/boj2941/" rel="alternate" type="text/html" title="Java) BOJ 2941. 크로아티아 알파벳" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2941</id><content type="html" xml:base="http://localhost:4000/boj/boj2941/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/a4b1ef77b01b458260552e3b3a1528f8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4949" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4949]]></summary></entry><entry><title type="html">Java) BOJ 2941. 크로아티아 알파벳</title><link href="http://localhost:4000/boj/boj2941/" rel="alternate" type="text/html" title="Java) BOJ 2941. 크로아티아 알파벳" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2941</id><content type="html" xml:base="http://localhost:4000/boj/boj2941/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <ul>
   <li><a href="https://www.acmicpc.net/problem/2941">https://www.acmicpc.net/problem/2941</a><br /><br /></li>
 </ul>
@@ -325,176 +799,99 @@
   <li>배열을 다룰 때엔 항상 인덱스 범위를 잘 지키는 것에 유의하자.<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/a797dc761e39b833f0a761d1978bf6c8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2941" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2941]]></summary></entry><entry><title type="html">Java) BOJ 5430. AC</title><link href="http://localhost:4000/boj/boj5430/" rel="alternate" type="text/html" title="Java) BOJ 5430. AC" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj5430</id><content type="html" xml:base="http://localhost:4000/boj/boj5430/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/a797dc761e39b833f0a761d1978bf6c8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2941" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2941]]></summary></entry><entry><title type="html">Java) BOJ 1316. 그룹 단어 체커</title><link href="http://localhost:4000/boj/boj1316/" rel="alternate" type="text/html" title="Java) BOJ 1316. 그룹 단어 체커" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1316</id><content type="html" xml:base="http://localhost:4000/boj/boj1316/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1316">https://www.acmicpc.net/problem/1316</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다.</li>
+  <li>예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만,</li>
+  <li>aabbbccb는 b가 떨어져서 나타나기 때문에 그룹 단어가 아니다.</li>
+  <li>단어 N개를 입력으로 받아 그룹 단어의 개수를 출력하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<ul>
+  <li>첫째 줄에 단어의 개수 N이 들어온다. N은 100보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에 단어가 들어온다.</li>
+  <li>단어는 알파벳 소문자로만 되어있고 중복되지 않으며, 길이는 최대 100이다. <br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<ul>
+  <li>첫째 줄에 그룹 단어의 개수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<ul>
+  <li>
+    <p>문제 이해가 잘 되지 않아서 질문게시판의 문제 해설을 참고했다.<br /><br /></p>
+  </li>
+  <li>
+    <ol>
+      <li>현재 문자가 이미 나온 적이 있고</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>바로 이전 문자가 아니면</li>
+    </ol>
+  </li>
+  <li>
+    <p>-&gt; 그 단어는 그룹 단어가 아니다.<br /><br /></p>
+  </li>
+  <li>이 흐름에 따라 알파벳이 등장했는지 확인할 boolean 배열을 만들어 알파벳이 이전에 나왔는지 확인한 후</li>
+  <li>나온 적이 없고 바로 앞 문자와 같으면 그룹단어로 카운트하였고</li>
+  <li>나온 적이 있는데 바로 앞 문자와 같지 않으면 더 이상 확인을 중단하고 다음 문자를 확인하는 방식으로 코드를 짰다.<br /><br /></li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/64c6fbcb9681289f77807122ffbdf303.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1316" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1316]]></summary></entry><entry><title type="html">Java) BOJ 1259. 팰린드롬수</title><link href="http://localhost:4000/boj/boj1259/" rel="alternate" type="text/html" title="Java) BOJ 1259. 팰린드롬수" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1259</id><content type="html" xml:base="http://localhost:4000/boj/boj1259/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/5430">https://www.acmicpc.net/problem/5430</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/1259">https://www.acmicpc.net/problem/1259</a><br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <hr />
 
 <ul>
-  <li>선영이는 주말에 할 일이 없어서 새로운 언어 AC를 만들었다. AC는 정수 배열에 연산을 하기 위해 만든 언어이다.</li>
   <li>
-    <p>이 언어에는 두 가지 함수 R(뒤집기)과 D(버리기)가 있다.<br /><br /></p>
+    <p>어떤 단어를 뒤에서부터 읽어도 똑같다면 그 단어를 팰린드롬이라고 한다. ‘radar’, ‘sees’는 팰린드롬이다.<br /><br /></p>
   </li>
-  <li>
-    <p>함수 R은 배열에 있는 수의 순서를 뒤집는 함수이고, D는 첫 번째 수를 버리는 함수이다. 배열이 비어있는데 D를 사용한 경우에는 에러가 발생한다.<br /><br /></p>
-  </li>
-  <li>함수는 조합해서 한 번에 사용할 수 있다. 예를 들어, “AB”는 A를 수행한 다음에 바로 이어서 B를 수행하는 함수이다.</li>
-  <li>
-    <p>예를 들어, “RDD”는 배열을 뒤집은 다음 처음 두 수를 버리는 함수이다.<br /><br /></p>
-  </li>
-  <li>배열의 초기값과 수행할 함수가 주어졌을 때, 최종 결과를 구하는 프로그램을 작성하시오. <br /><br /></li>
+  <li>수도 팰린드롬으로 취급할 수 있다. 수의 숫자들을 뒤에서부터 읽어도 같다면 그 수는 팰린드롬수다. 121, 12421 등은 팰린드롬수다.</li>
+  <li>123, 1231은 뒤에서부터 읽으면 다르므로 팰린드롬수가 아니다.</li>
+  <li>또한 10도 팰린드롬수가 아닌데, 앞에 무의미한 0이 올 수 있다면 010이 되어 팰린드롬수로 취급할 수도 있지만,</li>
+  <li>특별히 이번 문제에서는 무의미한 0이 앞에 올 수 없다고 하자. <br /><br /></li>
 </ul>
 
 <h1 id="입력">입력</h1>
 <hr />
 
 <ul>
-  <li>
-    <p>첫째 줄에 테스트 케이스의 개수 T가 주어진다. T는 최대 100이다.<br /><br /></p>
-  </li>
-  <li>
-    <p>각 테스트 케이스의 첫째 줄에는 수행할 함수 p가 주어진다. p의 길이는 1보다 크거나 같고, 100,000보다 작거나 같다.<br /><br /></p>
-  </li>
-  <li>
-    <p>다음 줄에는 배열에 들어있는 수의 개수 n이 주어진다. (0 ≤ n ≤ 100,000)<br /><br /></p>
-  </li>
-  <li>
-    <p>다음 줄에는 [x1,…,xn]과 같은 형태로 배열에 들어있는 정수가 주어진다. (1 ≤ xi ≤ 100)<br /><br /></p>
-  </li>
-  <li>
-    <p>전체 테스트 케이스에 주어지는 p의 길이의 합과 n의 합은 70만을 넘지 않는다.<br /><br /></p>
-  </li>
+  <li>입력은 여러 개의 테스트 케이스로 이루어져 있으며, 각 줄마다 1 이상 99999 이하의 정수가 주어진다.</li>
+  <li>입력의 마지막 줄에는 0이 주어지며, 이 줄은 문제에 포함되지 않는다.  <br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <hr />
 
 <ul>
-  <li>각 테스트 케이스에 대해서, 입력으로 주어진 정수 배열에 함수를 수행한 결과를 출력한다. 만약, 에러가 발생한 경우에는 error를 출력한다. <br /><br /><br /></li>
+  <li>각 줄마다 주어진 수가 팰린드롬수면 ‘yes’, 아니면 ‘no’를 출력한다. <br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>처음엔 스택과 큐를 이용해서</li>
+  <li>예제의 팰린드롬수를 보면 수의 개수가 짝수개일 땐 절반으로 나눈 앞뒤가 같아야 하고</li>
   <li>
-    <p>큐에 원래 순서대로 숫자를 집어넣고 뒤집어야 하면 스택에 push했다가 다시 큐로 pop 하는 방식을 썼는데 수의 최대 개수가 10만개라 예상대로 시간초과가 발생했다.<br /><br /></p>
+    <p>홀수개일 땐 가운데 숫자를 제외한 나머지 앞뒤가 같아야 한다.<br /><br /></p>
   </li>
-  <li>
-    <p>그래서 질문게시판을 찾아보다 덱을 사용하는 것을 보고 컨테이너를 덱으로 바꿨다.<br /><br /></p>
-  </li>
-  <li>그리고 R 연산이 짝수번이면 뒤집었다 다시 뒤집는 것이기 때문에 결국 뒤집지 않은 것이랑 같다.</li>
-  <li>그래서 연속된 R의 개수를 세어서 홀수번이면 덱의 맨 뒤에서 D 연산을 수행하고</li>
-  <li>
-    <p>연속된 R이 짝수번이면 맨 앞에서 D 연산을 수행하도록 하였다.<br /><br /></p>
-  </li>
-  <li>
-    <p>그 후 뒤집힌 상태라면 덱의 맨 뒤에서부터 pop연산을 수행하고 뒤집히지 않았다면 덱의 맨 앞에서부터 pop연산을 수행했다.<br /><br /></p>
-  </li>
-  <li>
-    <p>하지만 덱에 들어있는 숫자들을 정답 형태로 만들 때 단순 string에 더하는 형태로 만들었더니 가비지 컬렉션이 많이 발생해서… 거기서 최적화가 되지 않아서 또 시간초과를 받았다.<br /><br /></p>
-  </li>
-  <li>그래서 StringBuilder로 바꾼 뒤 정답 형태의 문자열로 만드는 부분을 좀 더 최적화 해 주었더니 932ms에 통과할 수 있었다…<br /><br /></li>
+  <li>그래서 반복문으로 반복자는 문자열 길이의 절반까지만 반복하며</li>
+  <li>첫 글자와 맨 뒤 글자를 비교하면서 첫 글자를 가리키는 반복자는 증가시키고 끝 글자를 가리키는 반복자는 감소시켜가면서</li>
+  <li>두 반복자간의 거리를 좁히면서 검사하면 해당 수가 팰린드롬인지 아닌지 쉽게 확인할 수 있다.<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/16948d6ee681d1724d75832447627534.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No5430" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/5430]]></summary></entry><entry><title type="html">Java) BOJ 5622. 다이얼</title><link href="http://localhost:4000/boj/boj5622/" rel="alternate" type="text/html" title="Java) BOJ 5622. 다이얼" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj5622</id><content type="html" xml:base="http://localhost:4000/boj/boj5622/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/5622">https://www.acmicpc.net/problem/5622</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<ul>
-  <li>
-    <p>상근이의 할머니는 아래 그림과 같이 오래된 다이얼 전화기를 사용한다.
-<img src="https://upload.acmicpc.net/9c88dd24-3a4c-4a09-bc50-e6496958214d/-/preview/" alt="dial" class="align-center" width="250" height="150" /></p>
-  </li>
-  <li>
-    <p>전화를 걸고 싶은 번호가 있다면, 숫자를 하나를 누른 다음에 금속 핀이 있는 곳 까지 시계방향으로 돌려야 한다. 숫자를 하나 누르면 다이얼이 처음 위치로 돌아가고, 다음 숫자를 누르려면 다이얼을 처음 위치에서 다시 돌려야 한다.</p>
-  </li>
-  <li>
-    <p>숫자 1을 걸려면 총 2초가 필요하다. 1보다 큰 수를 거는데 걸리는 시간은 이보다 더 걸리며, 한 칸 옆에 있는 숫자를 걸기 위해선 1초씩 더 걸린다.</p>
-  </li>
-  <li>
-    <p>상근이의 할머니는 전화 번호를 각 숫자에 해당하는 문자로 외운다. 즉, 어떤 단어를 걸 때, 각 알파벳에 해당하는 숫자를 걸면 된다. 예를 들어, UNUCIC는 868242와 같다.</p>
-  </li>
-  <li>
-    <p>할머니가 외운 단어가 주어졌을 때, 이 전화를 걸기 위해서 필요한 최소 시간을 구하는 프로그램을 작성하시오.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<ul>
-  <li>첫째 줄에 알파벳 대문자로 이루어진 단어가 주어진다. 단어의 길이는 2보다 크거나 같고, 15보다 작거나 같다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<ul>
-  <li>첫째 줄에 다이얼을 걸기 위해서 필요한 최소 시간을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<ul>
-  <li>다소 하드코딩으로 풀었는데… 1~9까지 돌리는데 걸리는 최소 시간을 배열에 저장한 다음에 각 문자의 범위별로 인덱스값을 정해주어 시간을 저장한 배열에서 시간을 가져와서 더해주었다.<br /><br /></li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/dab5efa1b825e30802d5afffe75fb522.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No5622" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/5622]]></summary></entry><entry><title type="html">MySQL Workbench 시작하기</title><link href="http://localhost:4000/mysql/mysql-workbench-beginning/" rel="alternate" type="text/html" title="MySQL Workbench 시작하기" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/mysql/mysql-workbench-beginning</id><content type="html" xml:base="http://localhost:4000/mysql/mysql-workbench-beginning/"><![CDATA[<h1 id="-mysql-workbench란">👀 MySQL Workbench란?</h1>
-<ul>
-  <li>터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구</li>
-  <li><code class="language-plaintext highlighter-rouge">IDE</code>를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다.</li>
-  <li>최신버전에는 버그가 있어서 <code class="language-plaintext highlighter-rouge">8.0.19</code> 버전으로 수업을 진행할 예정</li>
-  <li>윈도우라면 <code class="language-plaintext highlighter-rouge">MySQL</code> 인스톨러에서 <code class="language-plaintext highlighter-rouge">Remove</code> 버튼을 눌러 개별 프로그램만 간편히 제거한 후 <code class="language-plaintext highlighter-rouge">Add</code> 버튼을 눌러 원하는 버전으로 선택해서 설치할 수 있다.</li>
-  <li>하지만 난 맥을 써서 <code class="language-plaintext highlighter-rouge">homebrew</code>로 <code class="language-plaintext highlighter-rouge">MySQL</code>만 따로 깔았기 때문에 <code class="language-plaintext highlighter-rouge">Workbench</code>는 홈페이지에서 dmg 파일을 따로 받아서 설치했다.
-<br /><br /><br /></li>
-</ul>
-
-<h1 id="mysql-주석문">MySQL 주석문</h1>
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="err">주석문</span>
-<span class="c1">-- 주석문</span>
-<span class="cm">/* 주석문 */</span>
-</code></pre></div></div>
-
-<ul>
-  <li>셋 다 사용가능하다.
-<br /><br /><br /></li>
-</ul>
-
-<h1 id="db-조회">DB 조회</h1>
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">jspdb</span><span class="p">.</span><span class="n">tbl_member</span><span class="p">;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Workbench</code>에서 테이블을 조회하려면 테이블 앞에 <code class="language-plaintext highlighter-rouge">DB명</code>을 꼭 붙여줘야 한다.</li>
-  <li>그런데 매번 이렇게 쓰려면 좀 귀찮다…</li>
-</ul>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">use</span> <span class="n">jspdb</span><span class="p">;</span>
-
-<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tbl_member</span><span class="p">;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">C++</code>에서 <code class="language-plaintext highlighter-rouge">using</code>을 쓰듯 <code class="language-plaintext highlighter-rouge">use</code>를 써서 <code class="language-plaintext highlighter-rouge">DB명</code>을 선언해주면 그 다음부터는 <code class="language-plaintext highlighter-rouge">DB명</code> 없이 테이블을 부를 수 있다.</li>
-</ul>
-
-<h2 id="쿼리문-실행">쿼리문 실행</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows) ctrl + enter
-Mac) command + enter
-</code></pre></div></div>
-
-<ul>
-  <li>일정 쿼리 구문들만 실행하고 싶으면 해당 쿼리문들을 블록으로 선택한 후 위 명령어를 입력하면 해당 쿼리문들만 실행된다.</li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows) ctrl + shift + enter
-Mac) command + shift + enter
-</code></pre></div></div>
-
-<ul>
-  <li>전체 쿼리 실행은 위 명령어를 입력한다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="MySQL" /><category term="MySQL" /><category term="Workbench" /><category term="Database" /><category term="JSP" /><summary type="html"><![CDATA[👀 MySQL Workbench란? 터미널을 통한 데이터베이스 관리를 좀 더 편하게 할 수 있게 해주는 도구 IDE를 이용해서 프로그래밍 하는 것처럼 자동완성도 되고 테이블도 시각적으로 좀 더 편하게 볼 수 있고 터미널보다 훨씬 편하다. 최신버전에는 버그가 있어서 8.0.19 버전으로 수업을 진행할 예정 윈도우라면 MySQL 인스톨러에서 Remove 버튼을 눌러 개별 프로그램만 간편히 제거한 후 Add 버튼을 눌러 원하는 버전으로 선택해서 설치할 수 있다. 하지만 난 맥을 써서 homebrew로 MySQL만 따로 깔았기 때문에 Workbench는 홈페이지에서 dmg 파일을 따로 받아서 설치했다.]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/f713c3925b8bc32bcf05f5e75d0cceaa.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1259" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1259]]></summary></entry></feed>
