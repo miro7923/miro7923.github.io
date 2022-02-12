@@ -1,0 +1,241 @@
+I";A<h1 id="-프로세스란">👀 프로세스란?</h1>
+<ul>
+  <li>프로세스란 실행 중인 프로그램을 말한다.</li>
+  <li>앞으로 얘기할 것은 모두 사용자 프로그램의 관점에서 보는 것이다.(운영체제 아님❗️)<br /><br /></li>
+</ul>
+
+<h2 id="프로세스의-문맥context">프로세스의 문맥(context)</h2>
+<ul>
+  <li>
+    <p>현대 프로세스는 멀티태스킹 환경이기 때문에 이 작업 저 작업 왔다갔다 하면서 실행하려면 프로세스가 어디까지 실행했었는지를 알 수 있는 문맥 정보가 필요하다.<br /><br /></p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code> 수행 상태를 나타내는 하드웨어 문맥
+    <ul>
+      <li>Program Counter</li>
+      <li>각종 register<br /><br /></li>
+    </ul>
+  </li>
+  <li>프로세스의 주소 공간
+    <ul>
+      <li>code, data, stack<br /><br /></li>
+    </ul>
+  </li>
+  <li>프로세스 관련 커널 자료 구조
+    <ul>
+      <li>PCB (Process Control Block) : 프로세스가 실행될 때마다 하나씩 만들어서 프로세스에 <code class="language-plaintext highlighter-rouge">CPU</code>, <code class="language-plaintext highlighter-rouge">메모리</code>를 얼마나 줘야 할 지, 어디까지 실행했는지 이상 행동을 하지는 않는지 관리하기 위한 자료구조</li>
+      <li>Kernal stack : 프로세스마다 별도로 둔다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="프로세스의-상태-process-state">프로세스의 상태 (Process State)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 하나라고 가정했을 때 프로세스는 상태가 변경되며 수행된다.</li>
+</ul>
+
+<h3 id="running">Running</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 잡고 <code class="language-plaintext highlighter-rouge">instruction</code>을 수행중인 상태</li>
+  <li><code class="language-plaintext highlighter-rouge">Time interrupt</code>, <code class="language-plaintext highlighter-rouge">System call</code>이 생기게 되면 <code class="language-plaintext highlighter-rouge">CPU</code>를 다시 내어주게 된다.</li>
+</ul>
+
+<h3 id="ready">Ready</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 기다리는 상태(메모리 등 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻기 위한 다른 조건을 모두 만족하고)</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 얻기 위한 <code class="language-plaintext highlighter-rouge">Ready queue</code>에서 기다리고 있다.</li>
+</ul>
+
+<h3 id="blocked-wait-sleep">Blocked (wait, sleep)</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 주어도 당장 <code class="language-plaintext highlighter-rouge">instruction</code>을 수행할 수 없는 상태</li>
+  <li><code class="language-plaintext highlighter-rouge">Process</code> 자신이 요청한 event(ex. I/O)가 즉시 만족되지 않아 이를 기다리는 상태
+    <ul>
+      <li>예) 디스크에서 파일을 읽어와야 하는 경우</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="new">New</h3>
+<ul>
+  <li>프로세스가 생성중인 상태</li>
+</ul>
+
+<h3 id="terminated">Terminated</h3>
+<ul>
+  <li>수행(execution)이 끝난 상태인데 작업이 완전히 끝난 것은 아니고 정리할 것이 남아있는 상태이다.<br /><br /></li>
+</ul>
+
+<h2 id="pcb-process-control-block">PCB (Process Control Block)</h2>
+<ul>
+  <li>운영체제가 각 프로세스를 관리하기 위해 프로세스당 유지하는 정보</li>
+  <li>다음의 구성 요소를 가진다(구조체로 유지).
+1) <code class="language-plaintext highlighter-rouge">OS</code>가 관리상 사용하는 정보</li>
+  <li>Process state, Process ID</li>
+  <li>scheduling information, priority<br /><br /></li>
+</ul>
+
+<p>2) <code class="language-plaintext highlighter-rouge">CPU</code> 수행 관련 하드웨어 값</p>
+<ul>
+  <li>Program counter, registers<br /><br /></li>
+</ul>
+
+<p>3) 메모리 관련</p>
+<ul>
+  <li>Code, data, stack의 위치 정보<br /><br /></li>
+</ul>
+
+<p>4) 파일 관련</p>
+<ul>
+  <li>Open file descriptors…<br /><br /></li>
+</ul>
+
+<h2 id="문맥-교환-context-switch">문맥 교환 (Context Switch)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 한 프로세스에서 다른 프로세스로 넘겨주는 과정</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 다른 프로세스에게 넘어갈 때 운영체제는 다음을 수행한다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">CPU</code>를 내어주는 프로세스의 상태를 그 프로세스의 <code class="language-plaintext highlighter-rouge">PCB</code>에 저장</li>
+      <li><code class="language-plaintext highlighter-rouge">CPU</code>를 새롭게 얻는 프로세스의 상태를 <code class="language-plaintext highlighter-rouge">PCB</code>에서 읽어옴<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<p>❗️ <code class="language-plaintext highlighter-rouge">System call</code>이나 <code class="language-plaintext highlighter-rouge">Interrupt</code> 발생시 반드시 <code class="language-plaintext highlighter-rouge">Context switch</code>가 일어나는 것은 아니다.<br />
+<code class="language-plaintext highlighter-rouge">System call</code>이나 <code class="language-plaintext highlighter-rouge">Interrupt</code> 발생 후 다른 프로세스에게 <code class="language-plaintext highlighter-rouge">CPU</code>를 넘겨줬을 때 <code class="language-plaintext highlighter-rouge">Context switch</code>가 일어나는 것이지 같은 프로세스에게 다시 <code class="language-plaintext highlighter-rouge">CPU</code>를 줬을 때엔 <code class="language-plaintext highlighter-rouge">Context switch</code>가 일어난 것이 아니다.<br /><br /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Context switch</code>가 일어나면 <code class="language-plaintext highlighter-rouge">cache memory</code>를 비워야 하는데 이거 자체가 상당한 오버헤드를 일으킨다.<br /><br /></li>
+</ul>
+
+<h2 id="프로세스를-스케줄링하기-위한-큐">프로세스를 스케줄링하기 위한 큐</h2>
+<h3 id="job-queue">Job queue</h3>
+<ul>
+  <li>현재 시스템 내에 있는 모든 프로세스의 집합</li>
+</ul>
+
+<h3 id="ready-queue">Ready queue</h3>
+<ul>
+  <li>현재 메모리 내에 있으면서 <code class="language-plaintext highlighter-rouge">CPU</code>를 잡아서 실행되기를 기다리는 프로세스의 집합</li>
+</ul>
+
+<h3 id="device-queues">Device queues</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">I/O device</code>의 처리를 기다리는 프로세스의 집합<br /><br /></li>
+</ul>
+
+<p>🔸 프로세스들은 각 큐들을 오가며 수행된다.<br /><br /></p>
+
+<h1 id="스케줄러-scheduler">스케줄러 (Scheduler)</h1>
+<h2 id="long-term-scheduler-장기-스케줄러-or-job-scheduler">Long-term scheduler (장기 스케줄러 or job scheduler)</h2>
+<ul>
+  <li>시작 프로세스 중 어떤 것들을 <code class="language-plaintext highlighter-rouge">ready queue</code>로 보낼지 결정</li>
+  <li>프로세스에 <code class="language-plaintext highlighter-rouge">memory(및 각종 자원)</code>을 주는 문제 결정</li>
+  <li><code class="language-plaintext highlighter-rouge">degree of Multiprogramming</code>(메모리에 올라가 있는 프로세스의 수) 제어</li>
+  <li>하지만 <code class="language-plaintext highlighter-rouge">time sharing system</code>에는 보통 장기 스케줄러가 없다(무조건 <code class="language-plaintext highlighter-rouge">ready</code>)</li>
+</ul>
+
+<h2 id="short-term-scheduler-단기-스케줄러-or-cpu-scheduler">Short-term scheduler (단기 스케줄러 or CPU scheduler)</h2>
+<ul>
+  <li>어떤 프로세스를 다음번에 <code class="language-plaintext highlighter-rouge">running</code> 시킬지 결정</li>
+  <li>프로세스에 <code class="language-plaintext highlighter-rouge">CPU</code>를 주는 문제 결정</li>
+  <li>충분히 빨라야 함 (millisecond 단위)</li>
+</ul>
+
+<h2 id="medium-term-scheduler-중기-스케줄러-or-swapper">Medium-term scheduler (중기 스케줄러 or Swapper)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">time sharing system</code>에서는 중기 스케줄러를 사용한다.</li>
+  <li>여유 공간 마련을 위해 일부 프로세스를 통째로 메모리에서 디스크로 쫓아낸다.</li>
+  <li>프로세스에게서 <code class="language-plaintext highlighter-rouge">memory</code>를 뺏는 문제 결정</li>
+  <li><code class="language-plaintext highlighter-rouge">degree of Multiprogramming</code> 제어</li>
+</ul>
+
+<h2 id="중기-스케줄러를-사용하면서-바뀌는-프로세스의-상태">중기 스케줄러를 사용하면서 바뀌는 프로세스의 상태</h2>
+<h3 id="running-1">Running</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 잡고 <code class="language-plaintext highlighter-rouge">instruction</code>을 수행중인 상태</li>
+  <li><code class="language-plaintext highlighter-rouge">Time interrupt</code>, <code class="language-plaintext highlighter-rouge">System call</code>이 생기게 되면 <code class="language-plaintext highlighter-rouge">CPU</code>를 다시 내어주게 된다.</li>
+</ul>
+
+<h3 id="ready-1">Ready</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 기다리는 상태(메모리 등 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻기 위한 다른 조건을 모두 만족하고)</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 얻기 위한 <code class="language-plaintext highlighter-rouge">Ready queue</code>에서 기다리고 있다.</li>
+</ul>
+
+<h3 id="blocked-wait-sleep-1">Blocked (wait, sleep)</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">I/O</code>등의 <code class="language-plaintext highlighter-rouge">event</code>를 (스스로) 기다리는 상태
+    <ul>
+      <li>예) 디스크에서 파일을 읽어와야 하는 경우</li>
+    </ul>
+  </li>
+  <li>자신이 요청한 <code class="language-plaintext highlighter-rouge">event</code>가 만족되면 <code class="language-plaintext highlighter-rouge">Ready</code> 상태가 된다.</li>
+</ul>
+
+<h3 id="suspended-stopped">Suspended (stopped)</h3>
+<ul>
+  <li>외부적인 이유로 프로세스의 수행이 정지된 상태</li>
+  <li>프로세스는 통째로 디스크에 <code class="language-plaintext highlighter-rouge">swap out</code> 된다.
+    <ul>
+      <li>예) 사용자가 프로그램을 일시 정지시킨 경우 (break key)</li>
+      <li>시스템이 여러 이유로 프로그램을 잠시 중단시킴(메모리에 너무 많은 프로세스가 올라와 있을 때)</li>
+    </ul>
+  </li>
+  <li>외부에서 <code class="language-plaintext highlighter-rouge">resume</code> 해 주어야 <code class="language-plaintext highlighter-rouge">Active</code> 상태가 된다.<br /><br /></li>
+</ul>
+
+<h1 id="스레드-thread">스레드 (Thread)</h1>
+<ul>
+  <li>프로세스 하나에 <code class="language-plaintext highlighter-rouge">CPU</code> 수행단위(<code class="language-plaintext highlighter-rouge">Program Counter</code>)만 여러개 두고 있는 것</li>
+  <li>스레드를 사용하는 이유는 메모리 절약과 수행속도를 높이기 위해서라고 볼 수 있다.</li>
+  <li>만약 같은 프로세스를 여러개 실행시키고 싶을 때 프로세스를 여러개 만들면 그만큼 메모리 공간을 할당해야 하니까 메모리 낭비가 커진다. 그리고 그 프로세스들 간에 문맥 교환이 일어난다면 오버헤드도 클 것이다.</li>
+  <li>하지만 프로세스의 주소공간(메모리)은 함께 쓰면서 각 프로그램마다 <code class="language-plaintext highlighter-rouge">PCB</code>에 코드를 어디까지 실행했는지만 저장해 놓고 코드 영역에서 각자 다른 부분의 코드만 실행하면 메모리를 아낄 수 있다(그 프로그램에 저장된 데이터와 코드가 바뀌는 것이 아니니까). 즉, 프로세스의 <code class="language-plaintext highlighter-rouge">Code</code>와 <code class="language-plaintext highlighter-rouge">Data</code> 영역만 함께 쓰는 것이다.</li>
+  <li>하지만 각 스레드별로 함수를 어디까지 실행했는지 등의 정보는 각자 알고 있어야 하기 때문에 함수 실행과 관련된 정보를 저장하는 <code class="language-plaintext highlighter-rouge">Stack</code>영역은 따로 사용해야 한다.</li>
+  <li>그래서 하나의 프로세스를 만들고 스레드를 생성하면 <code class="language-plaintext highlighter-rouge">code</code>와 <code class="language-plaintext highlighter-rouge">data</code> 영역은 공유하고 각 스레드의 <code class="language-plaintext highlighter-rouge">stack</code> 영역이 여러개 만들어진다.<br /><br /></li>
+</ul>
+
+<h1 id="-스레드-사용의-장점">👀 스레드 사용의 장점</h1>
+<h2 id="응답성---사용자-입장에서-빠르게-느껴진다">응답성 - 사용자 입장에서 빠르게 느껴진다</h2>
+<ul>
+  <li>만약 웹페이지를 로드한다고 했을 때 이미지와 텍스트를 불러오는 작업은 상당히 시간이 걸리는 작업인데 스레드를 하나만 써서 웹페이지가 완전히 완성될 때까지 기다렸다가 사용자에게 보여주면 웹페이지를 표시하기 위한 작업이 끝날 때까지 사용자는 빈 화면만 보고 있을 것이다. 이것은 굉장히 답답하게 느껴진다.</li>
+  <li>이 때 멀티 스레드를 사용해 작업을 하면 한 스레드가 이미지를 불러오는 동안 다른 스레드는 일찍 로드된 텍스트를 사용자에게 먼저 보여주고 있는다든지 하는 일을 수행할 수 있게 된다. 그러면 답답함을 많이 줄일 수 있다.</li>
+</ul>
+
+<h2 id="자원-공유">자원 공유</h2>
+<ul>
+  <li>위에서 서술했듯이 프로세스는 하나만 두고 <code class="language-plaintext highlighter-rouge">PC</code>랑 <code class="language-plaintext highlighter-rouge">register</code>만 따로 사용해서 프로세스를 실행하면 자원을 효율적으로 쓸 수 있다.</li>
+</ul>
+
+<h2 id="경제성">경제성</h2>
+<ul>
+  <li>실행 속도 측면에서도 프로세스를 추가하는 것 보다는 스레드를 추가하는 것이 훨씬 빠르다.</li>
+  <li>문맥 교환이 일어났을 때에도 스레드 간에 하는 것이 오버헤드가 훨씬 적다.</li>
+</ul>
+
+<h2 id="병렬성">병렬성</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 여러개인 환경에서 각각의 스레드가 병렬적으로 작업을 할 수 있어 동시에 처리할 수 있는 작업이 늘어난다.<br /><br /></li>
+</ul>
+
+<h1 id="-스레드의-구현-스타일">👀 스레드의 구현 스타일</h1>
+<ul>
+  <li>스레드를 구현하는 스타일이 다 같지 않다.</li>
+</ul>
+
+<h2 id="kernel-threads">Kernel Threads</h2>
+<ul>
+  <li>운영체제의 지원을 받아 관리되는 스레드</li>
+  <li>그래서 <code class="language-plaintext highlighter-rouge">OS</code>가 스레드의 존재를 알고 있다.</li>
+  <li>예) <code class="language-plaintext highlighter-rouge">Windows 95/98/NT</code>, <code class="language-plaintext highlighter-rouge">Solaris</code>, <code class="language-plaintext highlighter-rouge">Digital UNIX</code>, <code class="language-plaintext highlighter-rouge">Mach</code></li>
+</ul>
+
+<h2 id="user-threads">User Threads</h2>
+<ul>
+  <li>사용자 레벨에서 라이브러리의 지원을 받아 관리되는 스레드</li>
+  <li>그래서 <code class="language-plaintext highlighter-rouge">OS</code>는 스레드의 존재를 알 수 없다. <code class="language-plaintext highlighter-rouge">OS</code> 입장에서 보면 프로세스 하나가 실행되고 있는 것이다.</li>
+  <li>사용자 프로세스 스스로가 스레드를 관리한다.</li>
+  <li>예) <code class="language-plaintext highlighter-rouge">POSIX Pthreads</code>, <code class="language-plaintext highlighter-rouge">Mach C-threads</code>, <code class="language-plaintext highlighter-rouge">Solaris threads</code><br /><br /></li>
+</ul>
+
+<p>그리고 <code class="language-plaintext highlighter-rouge">real-time</code>으로 관리되는 스레드가 있는데 그냥 이런게 있구나 정도로 알고 있으면 된다고 한다.</p>
+:ET
