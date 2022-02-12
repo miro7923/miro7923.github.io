@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-12T03:04:33+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JDBC</title><link href="http://localhost:4000/jsp/jdbc/" rel="alternate" type="text/html" title="JDBC" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc/"><![CDATA[<h1 id="-jdbcjava-database-connectivity란">👀 JDBC(Java Database Connectivity)란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-12T12:23:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JDBC</title><link href="http://localhost:4000/jsp/jdbc/" rel="alternate" type="text/html" title="JDBC" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc/"><![CDATA[<h1 id="-jdbcjava-database-connectivity란">👀 JDBC(Java Database Connectivity)란?</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Java</code>랑 <code class="language-plaintext highlighter-rouge">DBMS</code>를 연결시켜주는 <code class="language-plaintext highlighter-rouge">API</code></li>
   <li>즉 자바랑 DB를 연결시켜서 사용할 수 있게 해주는 기능들이 모여있는 라이브러리라 할 수 있다.</li>
@@ -397,7 +397,97 @@
 
 <h1 id="코드">코드</h1>
 
-<script src="https://gist.github.com/miro7923/7ba02c656a129b3f41f434886eedebb5.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10250" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10250]]></summary></entry><entry><title type="html">회원관리 서비스 요구사항</title><link href="http://localhost:4000/jsp/customer-management/" rel="alternate" type="text/html" title="회원관리 서비스 요구사항" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/customer-management</id><content type="html" xml:base="http://localhost:4000/jsp/customer-management/"><![CDATA[<h1 id="-회원관리-서비스-요구사항">👀 회원관리 서비스 요구사항</h1>
+<script src="https://gist.github.com/miro7923/7ba02c656a129b3f41f434886eedebb5.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10250" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10250]]></summary></entry><entry><title type="html">GROUP BY절과 HAVING절</title><link href="http://localhost:4000/database/SQL-groupby-having/" rel="alternate" type="text/html" title="GROUP BY절과 HAVING절" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-groupby-having</id><content type="html" xml:base="http://localhost:4000/database/SQL-groupby-having/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
+<ul>
+  <li>그룹함수와 함께 사용하며 조건에 맞는 그룹으로 묶어서 보여준다.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>    <span class="k">column</span><span class="p">,</span> <span class="n">group_function</span>
+<span class="k">FROM</span>      <span class="k">table</span>
+<span class="p">[</span><span class="k">WHERE</span>    <span class="n">contition</span><span class="p">]</span>
+<span class="p">[</span><span class="k">GROUP</span> <span class="k">BY</span> <span class="n">group_by_expression</span><span class="p">]</span>
+<span class="p">[</span><span class="k">HAVING</span>   <span class="n">group_condition</span><span class="p">]</span>
+<span class="p">[</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="k">column</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h1 id="그룹함수">그룹함수</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">AVG</code> : 평균을 구해주는 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">COUNT</code> : 개수를 세어주는 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">MAX</code> : 최대값을 구해주는 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">MIN</code> : 최소값을 구해주는 함수
+    <ul>
+      <li>날짜와 문자의 최대값과 최소값도 구할 수 있는데</li>
+      <li>날짜에서의 최대값은 가장 최근 날짜, 최소값은 가장 과거 날짜</li>
+      <li>문자에서는 알파벳/가나다 오름차순으로 보여준다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">STDDEV</code> : 표준편차를 구해주는 함수(쓸 일이 많지는 않다)</li>
+  <li><code class="language-plaintext highlighter-rouge">SUM</code> : 합계를 구해주는 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">VARIANCE</code> : 분산을 구해주는 함수(쓸 일이 많지는 않다)</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span>
+       <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">job_id</span> <span class="k">LIKE</span> <span class="s1">'%REP%'</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">commission_pct</span><span class="p">)</span>
+<span class="k">FROM</span>   <span class="n">employess</span>
+<span class="k">WHERE</span>  <span class="n">department_id</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h1 id="group-by절">GROUP BY절</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span>     <span class="n">employees</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span>     <span class="n">employees</span>
+<span class="k">WHERE</span>    <span class="n">department_id</span> <span class="o">&gt;</span> <span class="mi">40</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">job_id</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">select</code>절에 있는 컬럼 리스트 중에서 그룹함수에 포함되어 있지 않은 컬럼은 반드시 <code class="language-plaintext highlighter-rouge">group by</code>절에 포함되어 있어야 문법 오류가 안 난다.<br /><br /></li>
+</ul>
+
+<h1 id="having절">HAVING절</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">job_id</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">PAYROLL</span>
+<span class="k">FROM</span>     <span class="n">employees</span>
+<span class="k">WHERE</span>    <span class="n">job_id</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">'%REP%'</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">job_id</span>
+<span class="k">HAVING</span>   <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">13000</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">);</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">GROUP BY</code>절과 <code class="language-plaintext highlighter-rouge">HAVING</code>절 사이에 순서는 없으나 <code class="language-plaintext highlighter-rouge">ORDER BY</code>절은 맨 마지막에 쓰는 것이 좋다.</li>
+  <li>왜냐면 최종 결과를 가지고 정렬하는 것이 가장 정확하니까.<br /><br /><br /></li>
+</ul>
+
+<h1 id="join">JOIN</h1>
+<ul>
+  <li>여러 테이블을 묶어서 데이터를 볼 때 사용한다. <br /><br /></li>
+</ul>
+
+<h2 id="on절을-사용한-join">ON절을 사용한 JOIN</h2>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span>
+       <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">location_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">e</span> <span class="k">JOIN</span> <span class="n">departments</span> <span class="n">d</span>
+<span class="k">ON</span>     <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">);</span> <span class="c1">-- 여기에 연결시킬 컬럼명을 입력한다.</span>
+</code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span>
+       <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">location_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">e</span> <span class="k">JOIN</span> <span class="n">departments</span> <span class="n">d</span>
+<span class="k">ON</span>     <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">)</span>
+<span class="k">WHERE</span>  <span class="n">e</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="mi">149</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>컬럼명을 입력할 때 해당 컬럼이 속해있는 테이블명을 입력하면 해당 범위에서만 검색을 시행하기 때문에 실행속도가 훨씬 빨라진다. (테이블명을 적지 않아도 실행되지만 그만큼 모든 테이블을 대상으로 검색해서 결과를 가져오기 때문에 실행속도가 훨씬 느리다.)</li>
+  <li>그래서 실행속도가 빠른 쿼리문을 작성하는 것이 중요하다.</li>
+  <li>그런데 테이블 풀네임을 일일이 적어주면 너무 길어서 가독성이 떨어지니까 약자로 적을 수 있는데 대신 약자로 적었다면 <code class="language-plaintext highlighter-rouge">FROM</code>절에서 어떤 테이블명의 약자인지 꼭 명시해줘야 <code class="language-plaintext highlighter-rouge">SQL</code>이 헷갈리지 않고 잘 찾아올 수 있다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[☑️ 문법 그룹함수와 함께 사용하며 조건에 맞는 그룹으로 묶어서 보여준다.]]></summary></entry><entry><title type="html">회원관리 서비스 요구사항</title><link href="http://localhost:4000/jsp/customer-management/" rel="alternate" type="text/html" title="회원관리 서비스 요구사항" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/jsp/customer-management</id><content type="html" xml:base="http://localhost:4000/jsp/customer-management/"><![CDATA[<h1 id="-회원관리-서비스-요구사항">👀 회원관리 서비스 요구사항</h1>
 <ul>
   <li>모든 웹페이지의 기본 서비스라고 할 수 있는 회원관리 서비스! 아래와 같은 사항들이 가능해야 한다.<br /><br /></li>
 </ul>
@@ -639,63 +729,4 @@
   <li>따라서 한 문장에 대한 탐색이 끝나고 난 후 결과값이 0일 때에만 <code class="language-plaintext highlighter-rouge">"YES"</code>를 출력하고 나머지 경우엔 <code class="language-plaintext highlighter-rouge">"NO"</code>를 출력하면 된다.<br /><br /></li>
 </ul>
 
-<script src="https://gist.github.com/miro7923/ddec4aae60e81f2a6e622a2acf426ec0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No9012" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/9012]]></summary></entry><entry><title type="html">Java) BOJ 4949. 균형잡힌 세상</title><link href="http://localhost:4000/boj/boj4949/" rel="alternate" type="text/html" title="Java) BOJ 4949. 균형잡힌 세상" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4949</id><content type="html" xml:base="http://localhost:4000/boj/boj4949/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/4949">https://www.acmicpc.net/problem/4949</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>세계는 균형이 잘 잡혀있어야 한다. 양과 음, 빛과 어둠 그리고 왼쪽 괄호와 오른쪽 괄호처럼 말이다.<br /><br /></p>
-  </li>
-  <li>
-    <p>정민이의 임무는 어떤 문자열이 주어졌을 때, 괄호들의 균형이 잘 맞춰져 있는지 판단하는 프로그램을 짜는 것이다.<br /><br /></p>
-  </li>
-  <li>
-    <p>문자열에 포함되는 괄호는 소괄호(“()”) 와 대괄호(“[]”)로 2종류이고, 문자열이 균형을 이루는 조건은 아래와 같다.<br /><br /></p>
-  </li>
-  <li>모든 왼쪽 소괄호(“(“)는 오른쪽 소괄호(“)”)와만 짝을 이뤄야 한다.</li>
-  <li>모든 왼쪽 대괄호(“[“)는 오른쪽 대괄호(“]”)와만 짝을 이뤄야 한다.</li>
-  <li>모든 오른쪽 괄호들은 자신과 짝을 이룰 수 있는 왼쪽 괄호가 존재한다.</li>
-  <li>모든 괄호들의 짝은 1:1 매칭만 가능하다. 즉, 괄호 하나가 둘 이상의 괄호와 짝지어지지 않는다.</li>
-  <li>
-    <p>짝을 이루는 두 괄호가 있을 때, 그 사이에 있는 문자열도 균형이 잡혀야 한다.<br /><br /></p>
-  </li>
-  <li>정민이를 도와 문자열이 주어졌을 때 균형잡힌 문자열인지 아닌지를 판단해보자. <br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>하나 또는 여러줄에 걸쳐서 문자열이 주어진다.</li>
-  <li>
-    <p>각 문자열은 영문 알파벳, 공백, 소괄호(“( )”) 대괄호(“[ ]”)등으로 이루어져 있으며, 길이는 100글자보다 작거나 같다.<br /><br /></p>
-  </li>
-  <li>입력의 종료조건으로 맨 마지막에 점 하나(“.”)가 들어온다.  <br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>각 줄마다 해당 문자열이 균형을 이루고 있으면 “yes”를, 아니면 “no”를 출력한다. <br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>’(‘, ‘[’ 괄호가 나오면 스택에 넣고 ‘)’, ‘]’ 괄호가 나오면 스택에서 마지막 값을 pop해서 매치되는 괄호면 넘어가고 매치되지 않으면 오답처리하고 탐색을 중단하고 “no”를 출력하는 방식으로 짰는데…<br /><br /></p>
-  </li>
-  <li>문제를 제대로 안 읽어서 소문자 “yes”, “no”로 출력해야 할 것을 대문자 “YES”, “NO”로 출력해서 20%에서 계속 틀렸다 ㅠ.ㅠ</li>
-  <li>문제를 제대로 읽자………….. 한시간 버렸다…….<br /><br /></li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/a4b1ef77b01b458260552e3b3a1528f8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4949" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4949]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/ddec4aae60e81f2a6e622a2acf426ec0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No9012" /><category term="String" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/9012]]></summary></entry></feed>
