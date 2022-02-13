@@ -1,65 +1,258 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-13T19:30:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 10757. 큰 수 A+B</title><link href="http://localhost:4000/boj/boj10757-java/" rel="alternate" type="text/html" title="Java) BOJ 10757. 큰 수 A+B" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10757-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10757-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/10757">https://www.acmicpc.net/problem/10757</a><br /><br /></li>
-</ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-13T19:46:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 11653. 소인수분해</title><link href="http://localhost:4000/boj/boj11653-java/" rel="alternate" type="text/html" title="Java) BOJ 11653. 소인수분해" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11653-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11653-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
 
-<h1 id="문제">문제</h1>
 <ul>
-  <li>두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오.<br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/11653">https://www.acmicpc.net/problem/11653</a><br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
+<hr />
+
 <ul>
   <li>시간 제한 : 1 초</li>
   <li>메모리 제한 : 256 MB<br /><br /></li>
 </ul>
 
-<h1 id="입력">입력</h1>
+<h1 id="문제">문제</h1>
+<hr />
+
 <ul>
-  <li>첫째 줄에 A와 B가 주어진다. (0 &lt; A,B &lt; 1010000)<br /><br /></li>
+  <li>정수 N이 주어졌을 때, 소인수분해하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 정수 N (1 ≤ N ≤ 10,000,000)이 주어진다.<br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
+<hr />
+
 <ul>
-  <li>첫째 줄에 A+B를 출력한다.<br /><br /><br /></li>
+  <li>N의 소인수분해 결과를 한 줄에 하나씩 오름차순으로 출력한다. N이 1인 경우 아무것도 출력하지 않는다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
+<hr />
+
 <ul>
-  <li>브론즈5였는데 브론즈가 아닌데…ㅠ</li>
-  <li>c/c++로만 푸는 같은 문제도 있는데 그건 난이도가 실버3인거 보니까 어려운 문제가 맞는거 같다.</li>
-  <li>쉽게 책정된 이유는 파이썬은 그냥 계산해줘서 그렇다고 하는데… 정말 쉽지 않은 문제였다 ㅠㅠ</li>
-  <li>
-    <p>풀이와 코드의 흐름 자체는 비교적 빨리 생각해 냈지만 자잘한 예외 케이스에 걸려서 많이 틀렸다.<br /><br /></p>
-  </li>
-  <li>입력으로 들어오는 A, B는 long형을 써도 표현범위를 초과하기 때문에 정수를 저장하는 자료형으로 연산을 할 수 없고 다른 방법으로 해결해야 한다.</li>
-  <li>c/c++이었으면 unsigned long long형으로 해결할 수도 있다는 글을 봤는데 자바에는 없는 것 같다.</li>
-  <li>자바는 부호가 있는 정수만 저장할 수 있나?(이거 쓰고 찾아보기)</li>
-  <li>
-    <p>찾아본 결과는 <a href="https://kirkim.github.io/java/2021/06/13/unsigned.html">[Java] 부호없는 자료형이 없는 자바</a> 인데 그냥 자료없는 부호형 만들어주지… 자바는 귀찮은 게 참 많은 것 같다.<br /><br /></p>
-  </li>
-  <li>그래서 입력으로 들어오는 숫자를 문자열로 받은 뒤 두 문자열의 맨 뒤에서부터 앞으로 이동하면서 두 수를 int형으로 바꿔 더한 뒤</li>
-  <li>
-    <p>계산한 수를 다시 char로 바꿔 스택에 저장하고 만약 10이 넘어가면 다음 자리수를 계산할 때 계산 결과에 1을 더해주도록 했다.<br /><br /></p>
-  </li>
-  <li>그리고 두 문자열의 길이가 다를 수 있기 때문에 두 문자열 중 더 짧은 문자열의 길이만큼만 위 연산을 하고</li>
-  <li>만약 다음 자리수에 1을 더해줘야 한다면 남은 숫자들 중 마지막 자리수에 1을 더해주고 스택에 넣고</li>
-  <li>더 긴 문자열의 앞에 계산되지 않고 남은 숫자들을 정답 문자열 변수에 넣어준 다음</li>
-  <li>
-    <p>아까 더한 숫자들을 저장해 놓은 스택에서 하나씩 꺼내서 합쳐주었다. <br /><br /></p>
-  </li>
-  <li>자세한 것은 코드 옆 주석에…<br /><br /></li>
+  <li>소인수분해 하는 방법 그대로 코드로 구현했다.</li>
+  <li>2부터 시작해서 N이 2로 나눠 떨어지면 N을 2로 나누고 2를 출력하고 나눠 떨어지지 않으면 1 증가시켜서 다음 수로 같은 과정을 반복하도록 했다.</li>
+  <li>최대입력인 10,000,000을 가장 작은 수인 2로 나눠도 최대 5,000,000번의 연산을 하기 때문에 시간복잡도는 충분할 것이라 생각하고 제출해 봤는데 통과되었다.<br /><br /></li>
 </ul>
 
-<h2 id="️-결과">☑️ 결과</h2>
+<h1 id="결과">결과</h1>
+<hr />
+
 <ul>
-  <li>메모리 : 14208 kb</li>
-  <li>시간 : 132 ms<br /><br /></li>
+  <li>시간 : 172 ms</li>
+  <li>메모리 : 14280 KB</li>
 </ul>
 
 <h1 id="코드">코드</h1>
+<hr />
 
-<script src="https://gist.github.com/miro7923/ca957e5250a372f39e64ca5b3b63139b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10757" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10757]]></summary></entry><entry><title type="html">Java) BOJ 2581. 소수</title><link href="http://localhost:4000/boj/boj2581-java/" rel="alternate" type="text/html" title="Java) BOJ 2581. 소수" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2581-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2581-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/8e358173fb3a2fe43ebbfc4fe642f2e2.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11653" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11653 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 1011. Fly me to the Alpha Centauri</title><link href="http://localhost:4000/boj/boj1011-java/" rel="alternate" type="text/html" title="Java) BOJ 1011. Fly me to the Alpha Centauri" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1011-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1011-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1011">https://www.acmicpc.net/problem/1011</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 512 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>우현이는 어린 시절, 지구 외의 다른 행성에서도 인류들이 살아갈 수 있는 미래가 오리라 믿었다.</li>
+  <li>그리고 그가 지구라는 세상에 발을 내려 놓은 지 23년이 지난 지금, 세계 최연소 ASNA 우주 비행사가 되어 새로운 세계에 발을 내려 놓는 영광의 순간을 기다리고 있다.</li>
+  <li>그가 탑승하게 될 우주선은 Alpha Centauri라는 새로운 인류의 보금자리를 개척하기 위한 대규모 생활 유지 시스템을 탑재하고 있기 때문에,</li>
+  <li>그 크기와 질량이 엄청난 이유로 최신기술력을 총 동원하여 개발한 공간이동 장치를 탑재하였다.</li>
+  <li>하지만 이 공간이동 장치는 이동 거리를 급격하게 늘릴 경우 기계에 심각한 결함이 발생하는 단점이 있어서,</li>
+  <li>이전 작동시기에 k광년을 이동하였을 때는 k-1 , k 혹은 k+1 광년만을 다시 이동할 수 있다.</li>
+  <li>예를 들어, 이 장치를 처음 작동시킬 경우 -1 , 0 , 1 광년을 이론상 이동할 수 있으나</li>
+  <li>사실상 음수 혹은 0 거리만큼의 이동은 의미가 없으므로 1 광년을 이동할 수 있으며,</li>
+  <li>
+    <p>그 다음에는 0 , 1 , 2 광년을 이동할 수 있는 것이다. ( 여기서 다시 2광년을 이동한다면 다음 시기엔 1, 2, 3 광년을 이동할 수 있다. ) <br /><br />
+<img src="https://www.acmicpc.net/upload/201003/rlaehdgur.JPG" alt="img" /></p>
+  </li>
+  <li>김우현은 공간이동 장치 작동시의 에너지 소모가 크다는 점을 잘 알고 있기 때문에 x지점에서 y지점을 향해 최소한의 작동 횟수로 이동하려 한다.</li>
+  <li>하지만 y지점에 도착해서도 공간 이동장치의 안전성을 위하여 y지점에 도착하기 바로 직전의 이동거리는 반드시 1광년으로 하려 한다.</li>
+  <li>김우현을 위해 x지점부터 정확히 y지점으로 이동하는데 필요한 공간 이동 장치 작동 횟수의 최솟값을 구하는 프로그램을 작성하라.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>입력의 첫 줄에는 테스트케이스의 개수 T가 주어진다.</li>
+  <li>각각의 테스트 케이스에 대해 현재 위치 x 와 목표 위치 y 가 정수로 주어지며, x는 항상 y보다 작은 값을 갖는다. (0 ≤ x &lt; y &lt; 231)<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>각 테스트 케이스에 대해 x지점으로부터 y지점까지 정확히 도달하는데 필요한 최소한의 공간이동 장치 작동 횟수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/board/view/75491">https://www.acmicpc.net/board/view/75491</a></li>
+  <li>
+    <p>참고 해설<br /><br /></p>
+  </li>
+  <li>30분 고민해 봤으나 <code class="language-plaintext highlighter-rouge">k1 = 1, kn = 1</code>이어야 한다까지만 알겠고 나머지 풀이는 영 감이 안 와서 질문게시판을 검색했다.</li>
+  <li>내가 처음에 했던 생각에서 아주 구체화 된 풀이를 찾을 수 있었는데</li>
+  <li><code class="language-plaintext highlighter-rouge">121</code> <code class="language-plaintext highlighter-rouge">12321</code> <code class="language-plaintext highlighter-rouge">123421</code> <code class="language-plaintext highlighter-rouge">123454321</code> … 이런식으로 이동해야 한다. (각 자리수마다 장치를 작동하는 것임)</li>
+  <li>저 수들에서 찾을 수 있는 규칙은 각 자리수의 합은 <code class="language-plaintext highlighter-rouge">2의 제곱</code>, <code class="language-plaintext highlighter-rouge">3의 제곱</code>, <code class="language-plaintext highlighter-rouge">4의 제곱</code>, … 과 같다.</li>
+  <li>
+    <p>그리고 수의 길이는 <code class="language-plaintext highlighter-rouge">2의 제곱-1</code>, <code class="language-plaintext highlighter-rouge">3의 제곱-1</code>, <code class="language-plaintext highlighter-rouge">4의 제곱-1</code>, … 과 같다. =&gt; 이건 장치의 작동 회수가 된다.<br /><br /></p>
+  </li>
+  <li>이제 도착지 <code class="language-plaintext highlighter-rouge">y</code>와 출발지 <code class="language-plaintext highlighter-rouge">x</code> 사이의 거리를 구한다.</li>
+  <li>그리고 거리보다 작거나 같으면서 가장 가까운 <code class="language-plaintext highlighter-rouge">제곱수</code>의 <code class="language-plaintext highlighter-rouge">제곱근</code>을 구한다. (제곱근 구해주는 함수는 <code class="language-plaintext highlighter-rouge">Math.sqrt()</code> 쓰면 됨)</li>
+  <li>그 다음 <code class="language-plaintext highlighter-rouge">거리</code>에서 <code class="language-plaintext highlighter-rouge">제곱수</code>를 뺀다.</li>
+  <li>
+    <p>이 때 뺀 수가 <code class="language-plaintext highlighter-rouge">0</code>이면 아까 구했던 수의 길이를 그대로 출력하면 되고<br /><br /></p>
+  </li>
+  <li>예) 이동해야 하는 거리가 25일 때</li>
+  <li>25</li>
+  <li>
+    <p>123454321 &lt;- 5*2-1 = 9 번만에 이동할 수 있다.<br /><br /></p>
+  </li>
+  <li>0보다 크면서 제곱근보다 작거나 같으면 위에서 구했던 수의 길이에다 1을 더해주면 된다.</li>
+  <li>26</li>
+  <li>
+    <p>1234543211 &lt;- 9번 이동한 다음 1번 더 이동해야 각 자리수를 더한 합이 26이 된다.<br /><br /></p>
+  </li>
+  <li>27</li>
+  <li>
+    <p>1234543221 &lt;- 마찬가지로 9번 이동하고 1번 더 이동해야 한다.<br /><br /></p>
+  </li>
+  <li>28</li>
+  <li>
+    <p>1234543321<br /><br /></p>
+  </li>
+  <li>29</li>
+  <li>
+    <p>1234544321<br /><br /></p>
+  </li>
+  <li>30</li>
+  <li>
+    <p>1234554321<br /><br /></p>
+  </li>
+  <li>
+    <p>왜냐면 위의 예시와 같이 중간에 이동할 수 있기 때문이다. <br /><br /></p>
+  </li>
+  <li>하지만 뺀 수가 0보다 크면서 제곱근보다 크면 수의 길이에다 2를 더해줘야 한다.</li>
+  <li>31 (여기서 한자리 숫자가 더 늘어나죠?)</li>
+  <li>12345543211 &lt;- 31보다 작으면서 가장 가까운 제곱수는 5<em>5=25이기 때문에 (6</em>6=36은 초과해서 안됨) 31-25를 해야 한다.</li>
+  <li>…</li>
+  <li>35</li>
+  <li>
+    <p>12345554321 &lt;- 여기까지는 (5*2-1) + 2 = 11 <br /><br /></p>
+  </li>
+  <li>36(여기는 6의 제곱)</li>
+  <li>
+    <p>12345654321 &lt;- 6*2-1 = 11<br /><br /></p>
+  </li>
+  <li>이 과정을 코드로 구현하면 통과할 수 있다.</li>
+  <li>수학 문제는 규칙을 찾는 것이 중요하다는 것을 알 수 있었다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 128 ms</li>
+  <li>메모리 : 14084 KB</li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/37d48b05cb8e98f33ac7988203013727.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1011" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1011 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 4948. 베르트랑 공준</title><link href="http://localhost:4000/boj/boj4948-java/" rel="alternate" type="text/html" title="Java) BOJ 4948. 베르트랑 공준" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4948-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4948-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/4948">https://www.acmicpc.net/problem/4948</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>베르트랑 공준은 임의의 자연수 n에 대하여, n보다 크고, 2n보다 작거나 같은 소수는 적어도 하나 존재한다는 내용을 담고 있다.</li>
+  <li>이 명제는 조제프 베르트랑이 1845년에 추측했고, 파프누티 체비쇼프가 1850년에 증명했다.</li>
+  <li>예를 들어, 10보다 크고, 20보다 작거나 같은 소수는 4개가 있다. (11, 13, 17, 19) 또, 14보다 크고, 28보다 작거나 같은 소수는 3개가 있다. (17,19, 23)</li>
+  <li>자연수 n이 주어졌을 때, n보다 크고, 2n보다 작거나 같은 소수의 개수를 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>입력은 여러 개의 테스트 케이스로 이루어져 있다. 각 케이스는 n을 포함하는 한 줄로 이루어져 있다.</li>
+  <li>입력의 마지막에는 0이 주어진다. 1 ≤ n ≤ 123,456<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>각 테스트 케이스에 대해서, n보다 크고, 2n보다 작거나 같은 소수의 개수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>n초과 2n이하의 수들을 소수를 판별하는 연산을 해서 소수면 카운트해서 2n까지 판별이 끝나면 총 개수를 출력했다.</li>
+  <li>하지만 정직하게 2부터 i까지의 수의 나머지를 구하면서 소수를 판별하면 시간이 오래 걸리기 때문에 i의 제곱근 만큼만 반복하는 알고리즘을 썼다.</li>
+  <li>i의 제곱근만큼만 반복해도 소수인지 판별이 되는 이유는 제곱근을 넘어가는 수 부터는 앞전에 구했던 곱해서 i가 되는 수들이 순서만 바뀌어서 똑같이 나오기 때문이다.</li>
+  <li>예를 들어 i=16라면</li>
+  <li>1*16</li>
+  <li>2*8</li>
+  <li>4*4</li>
+  <li>8*2</li>
+  <li>16*1</li>
+  <li>위와 같이 16의 제곱근인 4를 기점으로 앞전에 나왔던 수들이 순서만 바뀌어서 나온다.</li>
+  <li>
+    <p>그래서 제곱근을 초과하는 수에 대해 소수를 판별하는 연산을 하는 것은 생략해도 결과에 영향이 없다.<br /><br /></p>
+  </li>
+  <li><a href="https://notepad96.tistory.com/entry/C-%EC%86%8C%EC%88%98-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">소수 구하기</a></li>
+  <li>예전에 참고했던 글인데 언어 상관없이 개념적으로 참고하기 좋은 글이다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 696 ms</li>
+  <li>메모리 : 14660 KB</li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/aefd8a5c816d3e500f28493fdae88fbe.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4948" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4948 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 2581. 소수</title><link href="http://localhost:4000/boj/boj2581-java/" rel="alternate" type="text/html" title="Java) BOJ 2581. 소수" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2581-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2581-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -269,240 +462,68 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/65438ec85ee19941aabdcd7467e9670c.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1929" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1929 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 11653. 소인수분해</title><link href="http://localhost:4000/boj/boj11653-java/" rel="alternate" type="text/html" title="Java) BOJ 11653. 소인수분해" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11653-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11653-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
+<script src="https://gist.github.com/miro7923/65438ec85ee19941aabdcd7467e9670c.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1929" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1929 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 10757. 큰 수 A+B</title><link href="http://localhost:4000/boj/boj10757-java/" rel="alternate" type="text/html" title="Java) BOJ 10757. 큰 수 A+B" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10757-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10757-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/11653">https://www.acmicpc.net/problem/11653</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/10757">https://www.acmicpc.net/problem/10757</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오.<br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
-<hr />
-
 <ul>
   <li>시간 제한 : 1 초</li>
   <li>메모리 제한 : 256 MB<br /><br /></li>
 </ul>
 
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>정수 N이 주어졌을 때, 소인수분해하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 정수 N (1 ≤ N ≤ 10,000,000)이 주어진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>N의 소인수분해 결과를 한 줄에 하나씩 오름차순으로 출력한다. N이 1인 경우 아무것도 출력하지 않는다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>소인수분해 하는 방법 그대로 코드로 구현했다.</li>
-  <li>2부터 시작해서 N이 2로 나눠 떨어지면 N을 2로 나누고 2를 출력하고 나눠 떨어지지 않으면 1 증가시켜서 다음 수로 같은 과정을 반복하도록 했다.</li>
-  <li>최대입력인 10,000,000을 가장 작은 수인 2로 나눠도 최대 5,000,000번의 연산을 하기 때문에 시간복잡도는 충분할 것이라 생각하고 제출해 봤는데 통과되었다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 172 ms</li>
-  <li>메모리 : 14280 KB</li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/8e358173fb3a2fe43ebbfc4fe642f2e2.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11653" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11653 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 1011. Fly me to the Alpha Centauri</title><link href="http://localhost:4000/boj/boj1011-java/" rel="alternate" type="text/html" title="Java) BOJ 1011. Fly me to the Alpha Centauri" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1011-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1011-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1011">https://www.acmicpc.net/problem/1011</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>우현이는 어린 시절, 지구 외의 다른 행성에서도 인류들이 살아갈 수 있는 미래가 오리라 믿었다.</li>
-  <li>그리고 그가 지구라는 세상에 발을 내려 놓은 지 23년이 지난 지금, 세계 최연소 ASNA 우주 비행사가 되어 새로운 세계에 발을 내려 놓는 영광의 순간을 기다리고 있다.</li>
-  <li>그가 탑승하게 될 우주선은 Alpha Centauri라는 새로운 인류의 보금자리를 개척하기 위한 대규모 생활 유지 시스템을 탑재하고 있기 때문에,</li>
-  <li>그 크기와 질량이 엄청난 이유로 최신기술력을 총 동원하여 개발한 공간이동 장치를 탑재하였다.</li>
-  <li>하지만 이 공간이동 장치는 이동 거리를 급격하게 늘릴 경우 기계에 심각한 결함이 발생하는 단점이 있어서,</li>
-  <li>이전 작동시기에 k광년을 이동하였을 때는 k-1 , k 혹은 k+1 광년만을 다시 이동할 수 있다.</li>
-  <li>예를 들어, 이 장치를 처음 작동시킬 경우 -1 , 0 , 1 광년을 이론상 이동할 수 있으나</li>
-  <li>사실상 음수 혹은 0 거리만큼의 이동은 의미가 없으므로 1 광년을 이동할 수 있으며,</li>
-  <li>
-    <p>그 다음에는 0 , 1 , 2 광년을 이동할 수 있는 것이다. ( 여기서 다시 2광년을 이동한다면 다음 시기엔 1, 2, 3 광년을 이동할 수 있다. ) <br /><br />
-<img src="https://www.acmicpc.net/upload/201003/rlaehdgur.JPG" alt="img" /></p>
-  </li>
-  <li>김우현은 공간이동 장치 작동시의 에너지 소모가 크다는 점을 잘 알고 있기 때문에 x지점에서 y지점을 향해 최소한의 작동 횟수로 이동하려 한다.</li>
-  <li>하지만 y지점에 도착해서도 공간 이동장치의 안전성을 위하여 y지점에 도착하기 바로 직전의 이동거리는 반드시 1광년으로 하려 한다.</li>
-  <li>김우현을 위해 x지점부터 정확히 y지점으로 이동하는데 필요한 공간 이동 장치 작동 횟수의 최솟값을 구하는 프로그램을 작성하라.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>입력의 첫 줄에는 테스트케이스의 개수 T가 주어진다.</li>
-  <li>각각의 테스트 케이스에 대해 현재 위치 x 와 목표 위치 y 가 정수로 주어지며, x는 항상 y보다 작은 값을 갖는다. (0 ≤ x &lt; y &lt; 231)<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>각 테스트 케이스에 대해 x지점으로부터 y지점까지 정확히 도달하는데 필요한 최소한의 공간이동 장치 작동 횟수를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/board/view/75491">https://www.acmicpc.net/board/view/75491</a></li>
-  <li>
-    <p>참고 해설<br /><br /></p>
-  </li>
-  <li>30분 고민해 봤으나 <code class="language-plaintext highlighter-rouge">k1 = 1, kn = 1</code>이어야 한다까지만 알겠고 나머지 풀이는 영 감이 안 와서 질문게시판을 검색했다.</li>
-  <li>내가 처음에 했던 생각에서 아주 구체화 된 풀이를 찾을 수 있었는데</li>
-  <li><code class="language-plaintext highlighter-rouge">121</code> <code class="language-plaintext highlighter-rouge">12321</code> <code class="language-plaintext highlighter-rouge">123421</code> <code class="language-plaintext highlighter-rouge">123454321</code> … 이런식으로 이동해야 한다. (각 자리수마다 장치를 작동하는 것임)</li>
-  <li>저 수들에서 찾을 수 있는 규칙은 각 자리수의 합은 <code class="language-plaintext highlighter-rouge">2의 제곱</code>, <code class="language-plaintext highlighter-rouge">3의 제곱</code>, <code class="language-plaintext highlighter-rouge">4의 제곱</code>, … 과 같다.</li>
-  <li>
-    <p>그리고 수의 길이는 <code class="language-plaintext highlighter-rouge">2의 제곱-1</code>, <code class="language-plaintext highlighter-rouge">3의 제곱-1</code>, <code class="language-plaintext highlighter-rouge">4의 제곱-1</code>, … 과 같다. =&gt; 이건 장치의 작동 회수가 된다.<br /><br /></p>
-  </li>
-  <li>이제 도착지 <code class="language-plaintext highlighter-rouge">y</code>와 출발지 <code class="language-plaintext highlighter-rouge">x</code> 사이의 거리를 구한다.</li>
-  <li>그리고 거리보다 작거나 같으면서 가장 가까운 <code class="language-plaintext highlighter-rouge">제곱수</code>의 <code class="language-plaintext highlighter-rouge">제곱근</code>을 구한다. (제곱근 구해주는 함수는 <code class="language-plaintext highlighter-rouge">Math.sqrt()</code> 쓰면 됨)</li>
-  <li>그 다음 <code class="language-plaintext highlighter-rouge">거리</code>에서 <code class="language-plaintext highlighter-rouge">제곱수</code>를 뺀다.</li>
-  <li>
-    <p>이 때 뺀 수가 <code class="language-plaintext highlighter-rouge">0</code>이면 아까 구했던 수의 길이를 그대로 출력하면 되고<br /><br /></p>
-  </li>
-  <li>예) 이동해야 하는 거리가 25일 때</li>
-  <li>25</li>
-  <li>
-    <p>123454321 &lt;- 5*2-1 = 9 번만에 이동할 수 있다.<br /><br /></p>
-  </li>
-  <li>0보다 크면서 제곱근보다 작거나 같으면 위에서 구했던 수의 길이에다 1을 더해주면 된다.</li>
-  <li>26</li>
-  <li>
-    <p>1234543211 &lt;- 9번 이동한 다음 1번 더 이동해야 각 자리수를 더한 합이 26이 된다.<br /><br /></p>
-  </li>
-  <li>27</li>
-  <li>
-    <p>1234543221 &lt;- 마찬가지로 9번 이동하고 1번 더 이동해야 한다.<br /><br /></p>
-  </li>
-  <li>28</li>
-  <li>
-    <p>1234543321<br /><br /></p>
-  </li>
-  <li>29</li>
-  <li>
-    <p>1234544321<br /><br /></p>
-  </li>
-  <li>30</li>
-  <li>
-    <p>1234554321<br /><br /></p>
-  </li>
-  <li>
-    <p>왜냐면 위의 예시와 같이 중간에 이동할 수 있기 때문이다. <br /><br /></p>
-  </li>
-  <li>하지만 뺀 수가 0보다 크면서 제곱근보다 크면 수의 길이에다 2를 더해줘야 한다.</li>
-  <li>31 (여기서 한자리 숫자가 더 늘어나죠?)</li>
-  <li>12345543211 &lt;- 31보다 작으면서 가장 가까운 제곱수는 5<em>5=25이기 때문에 (6</em>6=36은 초과해서 안됨) 31-25를 해야 한다.</li>
-  <li>…</li>
-  <li>35</li>
-  <li>
-    <p>12345554321 &lt;- 여기까지는 (5*2-1) + 2 = 11 <br /><br /></p>
-  </li>
-  <li>36(여기는 6의 제곱)</li>
-  <li>
-    <p>12345654321 &lt;- 6*2-1 = 11<br /><br /></p>
-  </li>
-  <li>이 과정을 코드로 구현하면 통과할 수 있다.</li>
-  <li>수학 문제는 규칙을 찾는 것이 중요하다는 것을 알 수 있었다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 128 ms</li>
-  <li>메모리 : 14084 KB</li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/37d48b05cb8e98f33ac7988203013727.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1011" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1011 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">C++) BOJ 2869. 달팽이는 올라가고 싶다</title><link href="http://localhost:4000/boj/boj2869-cpp/" rel="alternate" type="text/html" title="C++) BOJ 2869. 달팽이는 올라가고 싶다" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2869-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj2869-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2869">https://www.acmicpc.net/problem/2869</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<ul>
-  <li>땅 위에 달팽이가 있다. 이 달팽이는 높이가 V미터인 나무 막대를 올라갈 것이다.</li>
-  <li>달팽이는 낮에 A미터 올라갈 수 있다. 하지만, 밤에 잠을 자는 동안 B미터 미끄러진다. 또, 정상에 올라간 후에는 미끄러지지 않는다.</li>
-  <li>달팽이가 나무 막대를 모두 올라가려면, 며칠이 걸리는지 구하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<ul>
-  <li>시간 제한 : 0.15초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
 <h1 id="입력">입력</h1>
 <ul>
-  <li>첫째 줄에 세 정수 A, B, V가 공백으로 구분되어서 주어진다. (1 ≤ B &lt; A ≤ V ≤ 1,000,000,000)<br /><br /></li>
+  <li>첫째 줄에 A와 B가 주어진다. (0 &lt; A,B &lt; 1010000)<br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <ul>
-  <li>첫째 줄에 달팽이가 나무 막대를 모두 올라가는데 며칠이 걸리는지 출력한다.<br /><br /><br /></li>
+  <li>첫째 줄에 A+B를 출력한다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Java</code>로 풀었는데 <code class="language-plaintext highlighter-rouge">C++</code> 실행속도가 궁금해서 한 번 더 풀어보았다.</li>
+  <li>브론즈5였는데 브론즈가 아닌데…ㅠ</li>
+  <li>c/c++로만 푸는 같은 문제도 있는데 그건 난이도가 실버3인거 보니까 어려운 문제가 맞는거 같다.</li>
+  <li>쉽게 책정된 이유는 파이썬은 그냥 계산해줘서 그렇다고 하는데… 정말 쉽지 않은 문제였다 ㅠㅠ</li>
   <li>
-    <p>확실히 엄청 빠름<br /><br /></p>
+    <p>풀이와 코드의 흐름 자체는 비교적 빨리 생각해 냈지만 자잘한 예외 케이스에 걸려서 많이 틀렸다.<br /><br /></p>
   </li>
-  <li>아주 오랜만에 스스로 풀이과정을 생각해 낸 수학문제… 그만큼 쉬운 문제였다.</li>
+  <li>입력으로 들어오는 A, B는 long형을 써도 표현범위를 초과하기 때문에 정수를 저장하는 자료형으로 연산을 할 수 없고 다른 방법으로 해결해야 한다.</li>
+  <li>c/c++이었으면 unsigned long long형으로 해결할 수도 있다는 글을 봤는데 자바에는 없는 것 같다.</li>
+  <li>자바는 부호가 있는 정수만 저장할 수 있나?(이거 쓰고 찾아보기)</li>
   <li>
-    <p>입력의 최대 크기가 10억이기 때문에 반복문을 돌리면 안 되고 사칙연산을 이용해서 풀었다.<br /><br /></p>
+    <p>찾아본 결과는 <a href="https://kirkim.github.io/java/2021/06/13/unsigned.html">[Java] 부호없는 자료형이 없는 자바</a> 인데 그냥 자료없는 부호형 만들어주지… 자바는 귀찮은 게 참 많은 것 같다.<br /><br /></p>
   </li>
-  <li>달팽이가 하루에 갈 수 있는 거리는 (총 이동거리 A - 자는동안 미끄러지는 거리 B) 이다.</li>
-  <li>그런데 정상에 도착하면 미끄러지지 않는다고 했으므로 A 거리만큼 이동해서 정상에 도착할 수 있는 날이면 B를 뺄 필요 없이 A만큼만 이동하면 된다.</li>
-  <li>그러면 (총 이동거리 A - 자는동안 미끄러지는 거리 B)만큼 이동하는 날수는 정상에서 A 거리만큼을 뺀 길이까지이다.</li>
-  <li>그래서 (정상 V - A) / (총 이동거리 A - 자는동안 미끄러지는 거리 B) 연산을 통해 마지막 날이 되기 전까지 며칠이 걸리는지 구할 수 있는데</li>
-  <li>나누기 연산을 하고 나서 나머지(짜투리 길이)가 생길 수 있다.</li>
-  <li>짜투리 길이만큼을 이동하는데에도 하루를 소모해야 하기 때문에 나누기 연산 후 나머지가 생기면 하루를 더해줘야 한다.</li>
-  <li>그 다음 마지막날을 더해주면 된다.<br /><br /></li>
+  <li>그래서 입력으로 들어오는 숫자를 문자열로 받은 뒤 두 문자열의 맨 뒤에서부터 앞으로 이동하면서 두 수를 int형으로 바꿔 더한 뒤</li>
+  <li>
+    <p>계산한 수를 다시 char로 바꿔 스택에 저장하고 만약 10이 넘어가면 다음 자리수를 계산할 때 계산 결과에 1을 더해주도록 했다.<br /><br /></p>
+  </li>
+  <li>그리고 두 문자열의 길이가 다를 수 있기 때문에 두 문자열 중 더 짧은 문자열의 길이만큼만 위 연산을 하고</li>
+  <li>만약 다음 자리수에 1을 더해줘야 한다면 남은 숫자들 중 마지막 자리수에 1을 더해주고 스택에 넣고</li>
+  <li>더 긴 문자열의 앞에 계산되지 않고 남은 숫자들을 정답 문자열 변수에 넣어준 다음</li>
+  <li>
+    <p>아까 더한 숫자들을 저장해 놓은 스택에서 하나씩 꺼내서 합쳐주었다. <br /><br /></p>
+  </li>
+  <li>자세한 것은 코드 옆 주석에…<br /><br /></li>
 </ul>
 
-<h2 id="️-결과--메모리-2020-kb-시간-0-ms">☑️ 결과 : 메모리) 2020 kb, 시간) 0 ms<br /><br /></h2>
+<h2 id="️-결과">☑️ 결과</h2>
+<ul>
+  <li>메모리 : 14208 kb</li>
+  <li>시간 : 132 ms<br /><br /></li>
+</ul>
 
 <h1 id="코드">코드</h1>
 
-<script src="https://gist.github.com/miro7923/a27273b2fcacf3ce5695b69af2b48e8c.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2869" /><category term="Math" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2869]]></summary></entry><entry><title type="html">Java) BOJ 10250. ACM 호텔</title><link href="http://localhost:4000/boj/boj10250-java/" rel="alternate" type="text/html" title="Java) BOJ 10250. ACM 호텔" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10250-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10250-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/ca957e5250a372f39e64ca5b3b63139b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10757" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10757]]></summary></entry><entry><title type="html">Java) BOJ 10250. ACM 호텔</title><link href="http://localhost:4000/boj/boj10250-java/" rel="alternate" type="text/html" title="Java) BOJ 10250. ACM 호텔" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10250-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10250-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <ul>
   <li><a href="https://www.acmicpc.net/problem/10250">https://www.acmicpc.net/problem/10250</a><br /><br /></li>
 </ul>
