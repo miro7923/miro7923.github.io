@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-13T19:46:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 11653. 소인수분해</title><link href="http://localhost:4000/boj/boj11653-java/" rel="alternate" type="text/html" title="Java) BOJ 11653. 소인수분해" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11653-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11653-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-13T20:43:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 11653. 소인수분해</title><link href="http://localhost:4000/boj/boj11653-java/" rel="alternate" type="text/html" title="Java) BOJ 11653. 소인수분해" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11653-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11653-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -180,7 +180,95 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/37d48b05cb8e98f33ac7988203013727.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1011" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1011 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 4948. 베르트랑 공준</title><link href="http://localhost:4000/boj/boj4948-java/" rel="alternate" type="text/html" title="Java) BOJ 4948. 베르트랑 공준" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4948-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4948-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/37d48b05cb8e98f33ac7988203013727.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1011" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1011 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 9020. 골드바흐의 추측</title><link href="http://localhost:4000/boj/boj9020-java/" rel="alternate" type="text/html" title="Java) BOJ 9020. 골드바흐의 추측" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9020-java</id><content type="html" xml:base="http://localhost:4000/boj/boj9020-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/9020">https://www.acmicpc.net/problem/9020</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>1보다 큰 자연수 중에서 1과 자기 자신을 제외한 약수가 없는 자연수를 소수라고 한다.</li>
+  <li>예를 들어, 5는 1과 5를 제외한 약수가 없기 때문에 소수이다. 하지만, 6은 6 = 2 × 3 이기 때문에 소수가 아니다.</li>
+  <li>골드바흐의 추측은 유명한 정수론의 미해결 문제로, 2보다 큰 모든 짝수는 두 소수의 합으로 나타낼 수 있다는 것이다. 이러한 수를 골드바흐 수라고 한다.</li>
+  <li>또, 짝수를 두 소수의 합으로 나타내는 표현을 그 수의 골드바흐 파티션이라고 한다.</li>
+  <li>예를 들면, 4 = 2 + 2, 6 = 3 + 3, 8 = 3 + 5, 10 = 5 + 5, 12 = 5 + 7, 14 = 3 + 11, 14 = 7 + 7이다.</li>
+  <li>10000보다 작거나 같은 모든 짝수 n에 대한 골드바흐 파티션은 존재한다.</li>
+  <li>2보다 큰 짝수 n이 주어졌을 때, n의 골드바흐 파티션을 출력하는 프로그램을 작성하시오.</li>
+  <li>만약 가능한 n의 골드바흐 파티션이 여러 가지인 경우에는 두 소수의 차이가 가장 작은 것을 출력한다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고 짝수 n이 주어진다.</li>
+  <li>4 ≤ n ≤ 10,000<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>각 테스트 케이스에 대해서 주어진 n의 골드바흐 파티션을 출력한다. 출력하는 소수는 작은 것부터 먼저 출력하며, 공백으로 구분한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>골드바흐 파티션의 두 수가 소수인지 판별한 다음 소수면 출력하는 것이 기본 아이디어이다.</li>
+  <li>그런데 문제에서 골드바흐 파티션이 여러 개인 경우에는 두 수의 차가 가장 적은 것을 출력하라고 했기 때문에</li>
+  <li>이전에 나왔던 골드바흐 파티션과 현재 골드바흐 파티션의 차를 비교해야 한다.</li>
+  <li>그렇기 때문에 두 수의 차를 저장할 필요가 있고 이전 골드바흐 파티션도 저장할 필요가 있다. =&gt; <code class="language-plaintext highlighter-rouge">diff</code>, <code class="language-plaintext highlighter-rouge">prevFirstNum</code>, <code class="language-plaintext highlighter-rouge">prevSecondNum</code></li>
+  <li>이전에 구했던 차(diff)와 비교해서 현재 골드바흐 파티션의 차가 더 적으면 <code class="language-plaintext highlighter-rouge">diff</code>를 갱신하고 <code class="language-plaintext highlighter-rouge">prevFirstNum</code>, <code class="language-plaintext highlighter-rouge">prevSecondNum</code>을 현재 골드바흐 파티션을 저장한다.</li>
+  <li>그러면 <code class="language-plaintext highlighter-rouge">prevFirstNum</code>, <code class="language-plaintext highlighter-rouge">prevSecondNum</code>에는 항상 정답이 되는 수가 들어있다.</li>
+  <li>
+    <p>마지막에 <code class="language-plaintext highlighter-rouge">prevFirstNum</code>, <code class="language-plaintext highlighter-rouge">prevSecondNum</code>들을 출력하면 정답이다. <br /><br /></p>
+  </li>
+  <li>
+    <p>그런데 좀 고민했던 것이 골드바흐 파티션을 조사하기 위해 반복하는 범위였는데 예제를 보니까 나올 수 있는 가장 큰 수가 n을 2로 나눈 수여서 현재 골드바흐 파티션의 첫번째 숫자가 n/2가 되는 지점까지만 반복했다.<br /><br /></p>
+  </li>
+  <li>소수를 구하는 알고리즘은 아래 설명글을 참조. O(log n)에 구하는 알고리즘을 사용했다.</li>
+  <li>하지만 정직하게 2부터 i까지의 수의 나머지를 구하면서 소수를 판별하면 시간이 오래 걸리기 때문에 i의 제곱근 만큼만 반복하는 알고리즘을 썼다.</li>
+  <li>i의 제곱근만큼만 반복해도 소수인지 판별이 되는 이유는 제곱근을 넘어가는 수 부터는 앞전에 구했던 곱해서 i가 되는 수들이 순서만 바뀌어서 똑같이 나오기 때문이다.</li>
+  <li>예를 들어 i=16라면</li>
+  <li>1*16</li>
+  <li>2*8</li>
+  <li>4*4</li>
+  <li>8*2</li>
+  <li>16*1</li>
+  <li>위와 같이 16의 제곱근인 4를 기점으로 앞전에 나왔던 수들이 순서만 바뀌어서 나온다.</li>
+  <li>
+    <p>그래서 제곱근을 초과하는 수에 대해 소수를 판별하는 연산을 하는 것은 생략해도 결과에 영향이 없다.<br /><br /></p>
+  </li>
+  <li><a href="https://notepad96.tistory.com/entry/C-%EC%86%8C%EC%88%98-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">소수 구하기</a></li>
+  <li>예전에 참고했던 글인데 언어 상관없이 개념적으로 참고하기 좋은 글이다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 904 ms</li>
+  <li>메모리 : 18440 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/98fc2e567a2f7c3becd7ba2e1a7a3da5.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No9020" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/9020 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 4948. 베르트랑 공준</title><link href="http://localhost:4000/boj/boj4948-java/" rel="alternate" type="text/html" title="Java) BOJ 4948. 베르트랑 공준" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4948-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4948-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -523,396 +611,102 @@
 
 <h1 id="코드">코드</h1>
 
-<script src="https://gist.github.com/miro7923/ca957e5250a372f39e64ca5b3b63139b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10757" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10757]]></summary></entry><entry><title type="html">Java) BOJ 10250. ACM 호텔</title><link href="http://localhost:4000/boj/boj10250-java/" rel="alternate" type="text/html" title="Java) BOJ 10250. ACM 호텔" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10250-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10250-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/ca957e5250a372f39e64ca5b3b63139b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10757" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10757]]></summary></entry><entry><title type="html">Java) BOJ 2869. 달팽이는 올라가고 싶다</title><link href="http://localhost:4000/boj/boj2869-java/" rel="alternate" type="text/html" title="Java) BOJ 2869. 달팽이는 올라가고 싶다" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2869-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2869-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/10250">https://www.acmicpc.net/problem/10250</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/2869">https://www.acmicpc.net/problem/2869</a><br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <ul>
-  <li>ACM 호텔 매니저 지우는 손님이 도착하는 대로 빈 방을 배정하고 있다.</li>
-  <li>고객 설문조사에 따르면 손님들은 호텔 정문으로부터 걸어서 가장 짧은 거리에 있는 방을 선호한다고 한다.</li>
-  <li>여러분은 지우를 도와 줄 프로그램을 작성하고자 한다.</li>
-  <li>즉 설문조사 결과 대로 호텔 정문으로부터 걷는 거리가 가장 짧도록 방을 배정하는 프로그램을 작성하고자 한다.</li>
-  <li>문제를 단순화하기 위해서 호텔은 직사각형 모양이라고 가정하자.</li>
-  <li>각 층에 W 개의 방이 있는 H 층 건물이라고 가정하자 (1 ≤ H, W ≤ 99).</li>
-  <li>그리고 엘리베이터는 가장 왼쪽에 있다고 가정하자(그림 1 참고). 이런 형태의 호텔을 H × W 형태 호텔이라고 부른다.</li>
-  <li>호텔 정문은 일층 엘리베이터 바로 앞에 있는데, 정문에서 엘리베이터까지의 거리는 무시한다.</li>
-  <li>또 모든 인접한 두 방 사이의 거리는 같은 거리(거리 1)라고 가정하고 호텔의 정면 쪽에만 방이 있다고 가정한다.</li>
-  <li>방 번호는 YXX 나 YYXX 형태인데 여기서 Y 나 YY 는 층 수를 나타내고 XX 는 엘리베이터에서부터 세었을 때의 번호를 나타낸다.</li>
-  <li>즉, 그림 1 에서 빗금으로 표시한 방은 305 호가 된다.</li>
-  <li>손님은 엘리베이터를 타고 이동하는 거리는 신경 쓰지 않는다. 다만 걷는 거리가 같을 때에는 아래층의 방을 더 선호한다.</li>
-  <li>예를 들면 102 호 방보다는 301 호 방을 더 선호하는데, 102 호는 거리 2 만큼 걸어야 하지만 301 호는 거리 1 만큼만 걸으면 되기 때문이다.</li>
-  <li>같은 이유로 102 호보다 2101 호를 더 선호한다.</li>
-  <li>여러분이 작성할 프로그램은 초기에 모든 방이 비어있다고 가정하에 이 정책에 따라 N 번째로 도착한 손님에게 배정될 방 번호를 계산하는 프로그램이다.</li>
-  <li>첫 번째 손님은 101 호, 두 번째 손님은 201 호 등과 같이 배정한다. 그림 1 의 경우를 예로 들면, H = 6이므로 10 번째 손님은 402 호에 배정해야 한다.<br /><br /></li>
+  <li>땅 위에 달팽이가 있다. 이 달팽이는 높이가 V미터인 나무 막대를 올라갈 것이다.</li>
+  <li>달팽이는 낮에 A미터 올라갈 수 있다. 하지만, 밤에 잠을 자는 동안 B미터 미끄러진다. 또, 정상에 올라간 후에는 미끄러지지 않는다.</li>
+  <li>달팽이가 나무 막대를 모두 올라가려면, 며칠이 걸리는지 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<ul>
+  <li>시간 제한 : 0.15초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<ul>
+  <li>첫째 줄에 세 정수 A, B, V가 공백으로 구분되어서 주어진다. (1 ≤ B &lt; A ≤ V ≤ 1,000,000,000)<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<ul>
+  <li>첫째 줄에 달팽이가 나무 막대를 모두 올라가는데 며칠이 걸리는지 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<ul>
+  <li>아주 오랜만에 스스로 풀이과정을 생각해 낸 수학문제… 그만큼 쉬운 문제였다.</li>
+  <li>
+    <p>입력의 최대 크기가 10억이기 때문에 반복문을 돌리면 안 되고 사칙연산을 이용해서 풀었다.<br /><br /></p>
+  </li>
+  <li>달팽이가 하루에 갈 수 있는 거리는 (총 이동거리 A - 자는동안 미끄러지는 거리 B) 이다.</li>
+  <li>그런데 정상에 도착하면 미끄러지지 않는다고 했으므로 A 거리만큼 이동해서 정상에 도착할 수 있는 날이면 B를 뺄 필요 없이 A만큼만 이동하면 된다.</li>
+  <li>그러면 (총 이동거리 A - 자는동안 미끄러지는 거리 B)만큼 이동하는 날수는 정상에서 A 거리만큼을 뺀 길이까지이다.</li>
+  <li>그래서 (정상 V - A) / (총 이동거리 A - 자는동안 미끄러지는 거리 B) 연산을 통해 마지막 날이 되기 전까지 며칠이 걸리는지 구할 수 있는데</li>
+  <li>나누기 연산을 하고 나서 나머지(짜투리 길이)가 생길 수 있다.</li>
+  <li>짜투리 길이만큼을 이동하는데에도 하루를 소모해야 하기 때문에 나누기 연산 후 나머지가 생기면 하루를 더해줘야 한다.</li>
+  <li>그 다음 마지막날을 더해주면 된다.<br /><br /></li>
+</ul>
+
+<h2 id="️-결과--메모리-2020-kb-시간-0-ms">☑️ 결과 : 메모리) 2020 kb, 시간) 0 ms<br /><br /></h2>
+
+<h1 id="코드">코드</h1>
+
+<script src="https://gist.github.com/miro7923/d225d330ace769161d03ed7e6ca36013.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2869" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2869]]></summary></entry><entry><title type="html">Java) BOJ 2775. 부녀회장이 될테야</title><link href="http://localhost:4000/boj/boj2775-java/" rel="alternate" type="text/html" title="Java) BOJ 2775. 부녀회장이 될테야" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2775-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2775-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2775">https://www.acmicpc.net/problem/2775</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<ul>
+  <li>평소 반상회에 참석하는 것을 좋아하는 주희는 이번 기회에 부녀회장이 되고 싶어 각 층의 사람들을 불러 모아 반상회를 주최하려고 한다.</li>
+  <li>이 아파트에 거주를 하려면 조건이 있는데,</li>
+  <li>“a층의 b호에 살려면 자신의 아래(a-1)층의 1호부터 b호까지 사람들의 수의 합만큼 사람들을 데려와 살아야 한다” 는 계약 조항을 꼭 지키고 들어와야 한다.</li>
+  <li>아파트에 비어있는 집은 없고 모든 거주민들이 이 계약 조건을 지키고 왔다고 가정했을 때,</li>
+  <li>주어지는 양의 정수 k와 n에 대해 k층에 n호에는 몇 명이 살고 있는지 출력하라.</li>
+  <li>단, 아파트에는 0층부터 있고 각층에는 1호부터 있으며, 0층의 i호에는 i명이 산다.<br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
 <ul>
   <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
 </ul>
 
 <h1 id="입력">입력</h1>
 <ul>
-  <li>프로그램은 표준 입력에서 입력 데이터를 받는다. 프로그램의 입력은 T 개의 테스트 데이터로 이루어져 있는데 T 는 입력의 맨 첫 줄에 주어진다.</li>
-  <li>각 테스트 데이터는 한 행으로서 H, W, N, 세 정수를 포함하고 있으며 각각 호텔의 층 수, 각 층의 방 수, 몇 번째 손님인지를 나타낸다(1 ≤ H, W ≤ 99, 1 ≤ N ≤ H × W).<br /><br /></li>
+  <li>첫 번째 줄에 Test case의 수 T가 주어진다. 그리고 각각의 케이스마다 입력으로 첫 번째 줄에 정수 k, 두 번째 줄에 정수 n이 주어진다.<br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <ul>
-  <li>프로그램은 표준 출력에 출력한다. 각 테스트 데이터마다 정확히 한 행을 출력하는데, 내용은 N 번째 손님에게 배정되어야 하는 방 번호를 출력한다. <br /><br /><br /></li>
+  <li>각각의 Test case에 대해서 해당 집에 거주민 수를 출력하라.  <br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <ul>
+  <li>문제 이해를 잘못 한건지 틀리게 구현한 거 같아서 긴가민가 하면서 냈는데 맞았다…</li>
   <li>
-    <p>N을 H로 나눈 몫 + 1이 방 번호의 맨 뒷자리가 되고 N을 H로 나눈 나머지만큼 앞자리 층수를 올려주면 되기 때문에 정답을 구하기 위한 계산식은 <code class="language-plaintext highlighter-rouge">(N % H) * 100 + (N / H + 1) * 100</code> 이 된다.<br /><br /></p>
+    <p>문제를 다시 읽어보니까 k-1층까지의 누적합이 아니고 k-1층에서의 누적합만 구하면 되는 것이었네… 😅<br /><br /></p>
   </li>
-  <li>그런데 처음엔 <code class="language-plaintext highlighter-rouge">N == H</code> 인 경우를 생각하지 않아서 틀렸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">N == H</code> 일 경우 N을 H로 나눈 몫이 1이 되고 나머지는 0이기 때문에 처음에 생각했던 경우의 계산식만 적용하면 <code class="language-plaintext highlighter-rouge">(N % H) * 100 = 0</code> 이 된다.</li>
-  <li>
-    <p>거기다 1을 더하면 2가 나온다. 항상 오답됨<br /><br /></p>
-  </li>
-  <li>그래서 <code class="language-plaintext highlighter-rouge">N == H</code> 경우에는 층수는 H로 항상 고정되기 때문에 <code class="language-plaintext highlighter-rouge">H * 100 + (N / H)</code> 로 계산했다. <br /><br /></li>
+  <li>기본적인 접근은 DP로 했다.</li>
+  <li>k층에 사는 사람들의 합계는 구할 필요가 없이 k-1층에 사는 사람들 중 n번째 집에 사는 사람들까지의 누적합계만 구하면 되기 때문에</li>
+  <li>[k][n]에 사는 사람들의 수는 [k-1][1] + [k-1][2] + [k-1][3] + … [k-1][n]이 된다.</li>
+  <li>그런데 층수가 올라가면서 이전 층의 데이터가 필요하기 때문에 이 데이터들을 저장할 장소가 필요하니까 2차원 배열을 만들어서 반복문으로 위의 식을 구현한 후 2차원 배열의 [k][n] 인덱스의 원소값을 출력했다.<br /><br /></li>
 </ul>
 
 <h2 id="️-결과">☑️ 결과</h2>
 <ul>
-  <li>메모리 : 14372 kb</li>
-  <li>시간 : 136 ms<br /><br /></li>
+  <li>메모리 : 14208 kb</li>
+  <li>시간 : 132 ms<br /><br /></li>
 </ul>
 
 <h1 id="코드">코드</h1>
 
-<script src="https://gist.github.com/miro7923/7ba02c656a129b3f41f434886eedebb5.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10250" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10250]]></summary></entry><entry><title type="html">GROUP BY절과 HAVING절</title><link href="http://localhost:4000/database/SQL-groupby-having/" rel="alternate" type="text/html" title="GROUP BY절과 HAVING절" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-groupby-having</id><content type="html" xml:base="http://localhost:4000/database/SQL-groupby-having/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
-<ul>
-  <li>그룹함수와 함께 사용하며 조건에 맞는 그룹으로 묶어서 보여준다.</li>
-</ul>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>    <span class="k">column</span><span class="p">,</span> <span class="n">group_function</span>
-<span class="k">FROM</span>      <span class="k">table</span>
-<span class="p">[</span><span class="k">WHERE</span>    <span class="n">contition</span><span class="p">]</span>
-<span class="p">[</span><span class="k">GROUP</span> <span class="k">BY</span> <span class="n">group_by_expression</span><span class="p">]</span>
-<span class="p">[</span><span class="k">HAVING</span>   <span class="n">group_condition</span><span class="p">]</span>
-<span class="p">[</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="k">column</span><span class="p">];</span>
-</code></pre></div></div>
-
-<h1 id="그룹함수">그룹함수</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">AVG</code> : 평균을 구해주는 함수</li>
-  <li><code class="language-plaintext highlighter-rouge">COUNT</code> : 개수를 세어주는 함수</li>
-  <li><code class="language-plaintext highlighter-rouge">MAX</code> : 최대값을 구해주는 함수</li>
-  <li><code class="language-plaintext highlighter-rouge">MIN</code> : 최소값을 구해주는 함수
-    <ul>
-      <li>날짜와 문자의 최대값과 최소값도 구할 수 있는데</li>
-      <li>날짜에서의 최대값은 가장 최근 날짜, 최소값은 가장 과거 날짜</li>
-      <li>문자에서는 알파벳/가나다 오름차순으로 보여준다.</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">STDDEV</code> : 표준편차를 구해주는 함수(쓸 일이 많지는 않다)</li>
-  <li><code class="language-plaintext highlighter-rouge">SUM</code> : 합계를 구해주는 함수</li>
-  <li><code class="language-plaintext highlighter-rouge">VARIANCE</code> : 분산을 구해주는 함수(쓸 일이 많지는 않다)</li>
-</ul>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span>
-       <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
-<span class="k">FROM</span>   <span class="n">employees</span>
-<span class="k">WHERE</span>  <span class="n">job_id</span> <span class="k">LIKE</span> <span class="s1">'%REP%'</span><span class="p">;</span>
-</code></pre></div></div>
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">commission_pct</span><span class="p">)</span>
-<span class="k">FROM</span>   <span class="n">employess</span>
-<span class="k">WHERE</span>  <span class="n">department_id</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
-</code></pre></div></div>
-<p><br /><br /></p>
-
-<h1 id="group-by절">GROUP BY절</h1>
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
-<span class="k">FROM</span>     <span class="n">employees</span>
-<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">;</span>
-</code></pre></div></div>
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
-<span class="k">FROM</span>     <span class="n">employees</span>
-<span class="k">WHERE</span>    <span class="n">department_id</span> <span class="o">&gt;</span> <span class="mi">40</span>
-<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">job_id</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">;</span>
-</code></pre></div></div>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">select</code>절에 있는 컬럼 리스트 중에서 그룹함수에 포함되어 있지 않은 컬럼은 반드시 <code class="language-plaintext highlighter-rouge">group by</code>절에 포함되어 있어야 문법 오류가 안 난다.<br /><br /></li>
-</ul>
-
-<h1 id="having절">HAVING절</h1>
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">job_id</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">PAYROLL</span>
-<span class="k">FROM</span>     <span class="n">employees</span>
-<span class="k">WHERE</span>    <span class="n">job_id</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">'%REP%'</span>
-<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">job_id</span>
-<span class="k">HAVING</span>   <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">13000</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">);</span>
-</code></pre></div></div>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">GROUP BY</code>절과 <code class="language-plaintext highlighter-rouge">HAVING</code>절 사이에 순서는 없으나 <code class="language-plaintext highlighter-rouge">ORDER BY</code>절은 맨 마지막에 쓰는 것이 좋다.</li>
-  <li>왜냐면 최종 결과를 가지고 정렬하는 것이 가장 정확하니까.<br /><br /><br /></li>
-</ul>
-
-<h1 id="join">JOIN</h1>
-<ul>
-  <li>여러 테이블을 묶어서 데이터를 볼 때 사용한다. <br /><br /></li>
-</ul>
-
-<h2 id="on절을-사용한-join">ON절을 사용한 JOIN</h2>
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span>
-       <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">location_id</span>
-<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">e</span> <span class="k">JOIN</span> <span class="n">departments</span> <span class="n">d</span>
-<span class="k">ON</span>     <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">);</span> <span class="c1">-- 여기에 연결시킬 컬럼명을 입력한다.</span>
-</code></pre></div></div>
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span>
-       <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">location_id</span>
-<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">e</span> <span class="k">JOIN</span> <span class="n">departments</span> <span class="n">d</span>
-<span class="k">ON</span>     <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">)</span>
-<span class="k">WHERE</span>  <span class="n">e</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="mi">149</span><span class="p">;</span>
-</code></pre></div></div>
-<ul>
-  <li>컬럼명을 입력할 때 해당 컬럼이 속해있는 테이블명을 입력하면 해당 범위에서만 검색을 시행하기 때문에 실행속도가 훨씬 빨라진다. (테이블명을 적지 않아도 실행되지만 그만큼 모든 테이블을 대상으로 검색해서 결과를 가져오기 때문에 실행속도가 훨씬 느리다.)</li>
-  <li>그래서 실행속도가 빠른 쿼리문을 작성하는 것이 중요하다.</li>
-  <li>그런데 테이블 풀네임을 일일이 적어주면 너무 길어서 가독성이 떨어지니까 약자로 적을 수 있는데 대신 약자로 적었다면 <code class="language-plaintext highlighter-rouge">FROM</code>절에서 어떤 테이블명의 약자인지 꼭 명시해줘야 <code class="language-plaintext highlighter-rouge">SQL</code>이 헷갈리지 않고 잘 찾아올 수 있다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[☑️ 문법 그룹함수와 함께 사용하며 조건에 맞는 그룹으로 묶어서 보여준다.]]></summary></entry><entry><title type="html">Process</title><link href="http://localhost:4000/operating%20system/OS-03-Process/" rel="alternate" type="text/html" title="Process" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-03-Process</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-03-Process/"><![CDATA[<h1 id="-프로세스란">👀 프로세스란?</h1>
-<ul>
-  <li>프로세스란 실행 중인 프로그램을 말한다.</li>
-  <li>앞으로 얘기할 것은 모두 사용자 프로그램의 관점에서 보는 것이다.(운영체제 아님❗️)<br /><br /></li>
-</ul>
-
-<h2 id="프로세스의-문맥context">프로세스의 문맥(context)</h2>
-<ul>
-  <li>
-    <p>현대 프로세스는 멀티태스킹 환경이기 때문에 이 작업 저 작업 왔다갔다 하면서 실행하려면 프로세스가 어디까지 실행했었는지를 알 수 있는 문맥 정보가 필요하다.<br /><br /></p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code> 수행 상태를 나타내는 하드웨어 문맥
-    <ul>
-      <li>Program Counter</li>
-      <li>각종 register<br /><br /></li>
-    </ul>
-  </li>
-  <li>프로세스의 주소 공간
-    <ul>
-      <li>code, data, stack<br /><br /></li>
-    </ul>
-  </li>
-  <li>프로세스 관련 커널 자료 구조
-    <ul>
-      <li>PCB (Process Control Block) : 프로세스가 실행될 때마다 하나씩 만들어서 프로세스에 <code class="language-plaintext highlighter-rouge">CPU</code>, <code class="language-plaintext highlighter-rouge">메모리</code>를 얼마나 줘야 할 지, 어디까지 실행했는지 이상 행동을 하지는 않는지 관리하기 위한 자료구조</li>
-      <li>Kernal stack : 프로세스마다 별도로 둔다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="프로세스의-상태-process-state">프로세스의 상태 (Process State)</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 하나라고 가정했을 때 프로세스는 상태가 변경되며 수행된다.</li>
-</ul>
-
-<h3 id="running">Running</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 잡고 <code class="language-plaintext highlighter-rouge">instruction</code>을 수행중인 상태</li>
-  <li><code class="language-plaintext highlighter-rouge">Time interrupt</code>, <code class="language-plaintext highlighter-rouge">System call</code>이 생기게 되면 <code class="language-plaintext highlighter-rouge">CPU</code>를 다시 내어주게 된다.</li>
-</ul>
-
-<h3 id="ready">Ready</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 기다리는 상태(메모리 등 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻기 위한 다른 조건을 모두 만족하고)</li>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 얻기 위한 <code class="language-plaintext highlighter-rouge">Ready queue</code>에서 기다리고 있다.</li>
-</ul>
-
-<h3 id="blocked-wait-sleep">Blocked (wait, sleep)</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 주어도 당장 <code class="language-plaintext highlighter-rouge">instruction</code>을 수행할 수 없는 상태</li>
-  <li><code class="language-plaintext highlighter-rouge">Process</code> 자신이 요청한 event(ex. I/O)가 즉시 만족되지 않아 이를 기다리는 상태
-    <ul>
-      <li>예) 디스크에서 파일을 읽어와야 하는 경우</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="new">New</h3>
-<ul>
-  <li>프로세스가 생성중인 상태</li>
-</ul>
-
-<h3 id="terminated">Terminated</h3>
-<ul>
-  <li>수행(execution)이 끝난 상태인데 작업이 완전히 끝난 것은 아니고 정리할 것이 남아있는 상태이다.<br /><br /></li>
-</ul>
-
-<h2 id="pcb-process-control-block">PCB (Process Control Block)</h2>
-<ul>
-  <li>운영체제가 각 프로세스를 관리하기 위해 프로세스당 유지하는 정보</li>
-  <li>다음의 구성 요소를 가진다(구조체로 유지).
-1) <code class="language-plaintext highlighter-rouge">OS</code>가 관리상 사용하는 정보</li>
-  <li>Process state, Process ID</li>
-  <li>scheduling information, priority<br /><br /></li>
-</ul>
-
-<p>2) <code class="language-plaintext highlighter-rouge">CPU</code> 수행 관련 하드웨어 값</p>
-<ul>
-  <li>Program counter, registers<br /><br /></li>
-</ul>
-
-<p>3) 메모리 관련</p>
-<ul>
-  <li>Code, data, stack의 위치 정보<br /><br /></li>
-</ul>
-
-<p>4) 파일 관련</p>
-<ul>
-  <li>Open file descriptors…<br /><br /></li>
-</ul>
-
-<h2 id="문맥-교환-context-switch">문맥 교환 (Context Switch)</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 한 프로세스에서 다른 프로세스로 넘겨주는 과정</li>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 다른 프로세스에게 넘어갈 때 운영체제는 다음을 수행한다.
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">CPU</code>를 내어주는 프로세스의 상태를 그 프로세스의 <code class="language-plaintext highlighter-rouge">PCB</code>에 저장</li>
-      <li><code class="language-plaintext highlighter-rouge">CPU</code>를 새롭게 얻는 프로세스의 상태를 <code class="language-plaintext highlighter-rouge">PCB</code>에서 읽어옴<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<p>❗️ <code class="language-plaintext highlighter-rouge">System call</code>이나 <code class="language-plaintext highlighter-rouge">Interrupt</code> 발생시 반드시 <code class="language-plaintext highlighter-rouge">Context switch</code>가 일어나는 것은 아니다.<br />
-<code class="language-plaintext highlighter-rouge">System call</code>이나 <code class="language-plaintext highlighter-rouge">Interrupt</code> 발생 후 다른 프로세스에게 <code class="language-plaintext highlighter-rouge">CPU</code>를 넘겨줬을 때 <code class="language-plaintext highlighter-rouge">Context switch</code>가 일어나는 것이지 같은 프로세스에게 다시 <code class="language-plaintext highlighter-rouge">CPU</code>를 줬을 때엔 <code class="language-plaintext highlighter-rouge">Context switch</code>가 일어난 것이 아니다.<br /><br /></p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Context switch</code>가 일어나면 <code class="language-plaintext highlighter-rouge">cache memory</code>를 비워야 하는데 이거 자체가 상당한 오버헤드를 일으킨다.<br /><br /></li>
-</ul>
-
-<h2 id="프로세스를-스케줄링하기-위한-큐">프로세스를 스케줄링하기 위한 큐</h2>
-<h3 id="job-queue">Job queue</h3>
-<ul>
-  <li>현재 시스템 내에 있는 모든 프로세스의 집합</li>
-</ul>
-
-<h3 id="ready-queue">Ready queue</h3>
-<ul>
-  <li>현재 메모리 내에 있으면서 <code class="language-plaintext highlighter-rouge">CPU</code>를 잡아서 실행되기를 기다리는 프로세스의 집합</li>
-</ul>
-
-<h3 id="device-queues">Device queues</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">I/O device</code>의 처리를 기다리는 프로세스의 집합<br /><br /></li>
-</ul>
-
-<p>🔸 프로세스들은 각 큐들을 오가며 수행된다.<br /><br /></p>
-
-<h1 id="-스케줄러-scheduler">👀 스케줄러 (Scheduler)</h1>
-<h2 id="long-term-scheduler-장기-스케줄러-or-job-scheduler">Long-term scheduler (장기 스케줄러 or job scheduler)</h2>
-<ul>
-  <li>시작 프로세스 중 어떤 것들을 <code class="language-plaintext highlighter-rouge">ready queue</code>로 보낼지 결정</li>
-  <li>프로세스에 <code class="language-plaintext highlighter-rouge">memory(및 각종 자원)</code>을 주는 문제 결정</li>
-  <li><code class="language-plaintext highlighter-rouge">degree of Multiprogramming</code>(메모리에 올라가 있는 프로세스의 수) 제어</li>
-  <li>하지만 <code class="language-plaintext highlighter-rouge">time sharing system</code>에는 보통 장기 스케줄러가 없다(무조건 <code class="language-plaintext highlighter-rouge">ready</code>)</li>
-</ul>
-
-<h2 id="short-term-scheduler-단기-스케줄러-or-cpu-scheduler">Short-term scheduler (단기 스케줄러 or CPU scheduler)</h2>
-<ul>
-  <li>어떤 프로세스를 다음번에 <code class="language-plaintext highlighter-rouge">running</code> 시킬지 결정</li>
-  <li>프로세스에 <code class="language-plaintext highlighter-rouge">CPU</code>를 주는 문제 결정</li>
-  <li>충분히 빨라야 함 (millisecond 단위)</li>
-</ul>
-
-<h2 id="medium-term-scheduler-중기-스케줄러-or-swapper">Medium-term scheduler (중기 스케줄러 or Swapper)</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">time sharing system</code>에서는 중기 스케줄러를 사용한다.</li>
-  <li>여유 공간 마련을 위해 일부 프로세스를 통째로 메모리에서 디스크로 쫓아낸다.</li>
-  <li>프로세스에게서 <code class="language-plaintext highlighter-rouge">memory</code>를 뺏는 문제 결정</li>
-  <li><code class="language-plaintext highlighter-rouge">degree of Multiprogramming</code> 제어</li>
-</ul>
-
-<h2 id="중기-스케줄러를-사용하면서-바뀌는-프로세스의-상태">중기 스케줄러를 사용하면서 바뀌는 프로세스의 상태</h2>
-<h3 id="running-1">Running</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 잡고 <code class="language-plaintext highlighter-rouge">instruction</code>을 수행중인 상태</li>
-  <li><code class="language-plaintext highlighter-rouge">Time interrupt</code>, <code class="language-plaintext highlighter-rouge">System call</code>이 생기게 되면 <code class="language-plaintext highlighter-rouge">CPU</code>를 다시 내어주게 된다.</li>
-</ul>
-
-<h3 id="ready-1">Ready</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 기다리는 상태(메모리 등 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻기 위한 다른 조건을 모두 만족하고)</li>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 얻기 위한 <code class="language-plaintext highlighter-rouge">Ready queue</code>에서 기다리고 있다.</li>
-</ul>
-
-<h3 id="blocked-wait-sleep-1">Blocked (wait, sleep)</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">I/O</code>등의 <code class="language-plaintext highlighter-rouge">event</code>를 (스스로) 기다리는 상태
-    <ul>
-      <li>예) 디스크에서 파일을 읽어와야 하는 경우</li>
-    </ul>
-  </li>
-  <li>자신이 요청한 <code class="language-plaintext highlighter-rouge">event</code>가 만족되면 <code class="language-plaintext highlighter-rouge">Ready</code> 상태가 된다.</li>
-</ul>
-
-<h3 id="suspended-stopped">Suspended (stopped)</h3>
-<ul>
-  <li>외부적인 이유로 프로세스의 수행이 정지된 상태</li>
-  <li>프로세스는 통째로 디스크에 <code class="language-plaintext highlighter-rouge">swap out</code> 된다.
-    <ul>
-      <li>예) 사용자가 프로그램을 일시 정지시킨 경우 (break key)</li>
-      <li>시스템이 여러 이유로 프로그램을 잠시 중단시킴(메모리에 너무 많은 프로세스가 올라와 있을 때)</li>
-    </ul>
-  </li>
-  <li>외부에서 <code class="language-plaintext highlighter-rouge">resume</code> 해 주어야 <code class="language-plaintext highlighter-rouge">Active</code> 상태가 된다.<br /><br /></li>
-</ul>
-
-<h1 id="-스레드-thread">👀 스레드 (Thread)</h1>
-<ul>
-  <li>프로세스 하나에 <code class="language-plaintext highlighter-rouge">CPU</code> 수행단위(<code class="language-plaintext highlighter-rouge">Program Counter</code>)만 여러개 두고 있는 것</li>
-  <li>스레드를 사용하는 이유는 메모리 절약과 수행속도를 높이기 위해서라고 볼 수 있다.</li>
-  <li>만약 같은 프로세스를 여러개 실행시키고 싶을 때 프로세스를 여러개 만들면 그만큼 메모리 공간을 할당해야 하니까 메모리 낭비가 커진다. 그리고 그 프로세스들 간에 문맥 교환이 일어난다면 오버헤드도 클 것이다.</li>
-  <li>하지만 프로세스의 주소공간(메모리)은 함께 쓰면서 각 프로그램마다 <code class="language-plaintext highlighter-rouge">PCB</code>에 코드를 어디까지 실행했는지만 저장해 놓고 코드 영역에서 각자 다른 부분의 코드만 실행하면 메모리를 아낄 수 있다(그 프로그램에 저장된 데이터와 코드가 바뀌는 것이 아니니까). 즉, 프로세스의 <code class="language-plaintext highlighter-rouge">Code</code>와 <code class="language-plaintext highlighter-rouge">Data</code> 영역만 함께 쓰는 것이다.</li>
-  <li>하지만 각 스레드별로 함수를 어디까지 실행했는지 등의 정보는 각자 알고 있어야 하기 때문에 함수 실행과 관련된 정보를 저장하는 <code class="language-plaintext highlighter-rouge">Stack</code>영역은 따로 사용해야 한다.</li>
-  <li>그래서 하나의 프로세스를 만들고 스레드를 생성하면 <code class="language-plaintext highlighter-rouge">code</code>와 <code class="language-plaintext highlighter-rouge">data</code> 영역은 공유하고 각 스레드의 <code class="language-plaintext highlighter-rouge">stack</code> 영역이 여러개 만들어진다.<br /><br /></li>
-</ul>
-
-<h2 id="스레드-사용의-장점">스레드 사용의 장점</h2>
-<h3 id="응답성---사용자-입장에서-빠르게-느껴진다">응답성 - 사용자 입장에서 빠르게 느껴진다</h3>
-<ul>
-  <li>만약 웹페이지를 로드한다고 했을 때 이미지와 텍스트를 불러오는 작업은 상당히 시간이 걸리는 작업인데 스레드를 하나만 써서 웹페이지가 완전히 완성될 때까지 기다렸다가 사용자에게 보여주면 웹페이지를 표시하기 위한 작업이 끝날 때까지 사용자는 빈 화면만 보고 있을 것이다. 이것은 굉장히 답답하게 느껴진다.</li>
-  <li>이 때 멀티 스레드를 사용해 작업을 하면 한 스레드가 이미지를 불러오는 동안 다른 스레드는 일찍 로드된 텍스트를 사용자에게 먼저 보여주고 있는다든지 하는 일을 수행할 수 있게 된다. 그러면 답답함을 많이 줄일 수 있다.</li>
-</ul>
-
-<h3 id="자원-공유">자원 공유</h3>
-<ul>
-  <li>위에서 서술했듯이 프로세스는 하나만 두고 <code class="language-plaintext highlighter-rouge">PC</code>랑 <code class="language-plaintext highlighter-rouge">register</code>만 따로 사용해서 프로세스를 실행하면 자원을 효율적으로 쓸 수 있다.</li>
-</ul>
-
-<h3 id="경제성">경제성</h3>
-<ul>
-  <li>실행 속도 측면에서도 프로세스를 추가하는 것 보다는 스레드를 추가하는 것이 훨씬 빠르다.</li>
-  <li>문맥 교환이 일어났을 때에도 스레드 간에 하는 것이 오버헤드가 훨씬 적다.</li>
-</ul>
-
-<h3 id="병렬성">병렬성</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 여러개인 환경에서 각각의 스레드가 병렬적으로 작업을 할 수 있어 동시에 처리할 수 있는 작업이 늘어난다.<br /><br /></li>
-</ul>
-
-<h2 id="스레드의-구현-스타일">스레드의 구현 스타일</h2>
-<ul>
-  <li>스레드를 구현하는 스타일이 다 같지 않다.</li>
-</ul>
-
-<h3 id="kernel-threads">Kernel Threads</h3>
-<ul>
-  <li>운영체제의 지원을 받아 관리되는 스레드</li>
-  <li>그래서 <code class="language-plaintext highlighter-rouge">OS</code>가 스레드의 존재를 알고 있다.</li>
-  <li>예) <code class="language-plaintext highlighter-rouge">Windows 95/98/NT</code>, <code class="language-plaintext highlighter-rouge">Solaris</code>, <code class="language-plaintext highlighter-rouge">Digital UNIX</code>, <code class="language-plaintext highlighter-rouge">Mach</code></li>
-</ul>
-
-<h3 id="user-threads">User Threads</h3>
-<ul>
-  <li>사용자 레벨에서 라이브러리의 지원을 받아 관리되는 스레드</li>
-  <li>그래서 <code class="language-plaintext highlighter-rouge">OS</code>는 스레드의 존재를 알 수 없다. <code class="language-plaintext highlighter-rouge">OS</code> 입장에서 보면 프로세스 하나가 실행되고 있는 것이다.</li>
-  <li>사용자 프로세스 스스로가 스레드를 관리한다.</li>
-  <li>예) <code class="language-plaintext highlighter-rouge">POSIX Pthreads</code>, <code class="language-plaintext highlighter-rouge">Mach C-threads</code>, <code class="language-plaintext highlighter-rouge">Solaris threads</code><br /><br /></li>
-</ul>
-
-<p>그리고 <code class="language-plaintext highlighter-rouge">real-time</code>으로 관리되는 스레드가 있는데 그냥 이런게 있구나 정도로 알고 있으면 된다고 한다.</p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="Process" /><summary type="html"><![CDATA[👀 프로세스란? 프로세스란 실행 중인 프로그램을 말한다. 앞으로 얘기할 것은 모두 사용자 프로그램의 관점에서 보는 것이다.(운영체제 아님❗️)]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/66534b8b1a9d1704a0721688ccb0aab9.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2775" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2775]]></summary></entry></feed>
