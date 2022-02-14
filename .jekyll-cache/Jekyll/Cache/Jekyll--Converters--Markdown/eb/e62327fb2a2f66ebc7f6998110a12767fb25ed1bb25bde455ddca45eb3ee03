@@ -1,0 +1,63 @@
+I"�<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1085">https://www.acmicpc.net/problem/1085</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>한수는 지금 (x, y)에 있다. 직사각형은 각 변이 좌표축에 평행하고, 왼쪽 아래 꼭짓점은 (0, 0), 오른쪽 위 꼭짓점은 (w, h)에 있다.</li>
+  <li>직사각형의 경계선까지 가는 거리의 최솟값을 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 x, y, w, h가 주어진다.</li>
+  <li>1 ≤ w, h ≤ 1,000</li>
+  <li>1 ≤ x ≤ w-1</li>
+  <li>1 ≤ y ≤ h-1</li>
+  <li>x, y, w, h는 정수<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 문제의 정답을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>예제를 보니까 (x, y)에서 가로와 세로 직선 방향으로 직사각형의 변으로 가면 되는 것이라</li>
+  <li>x는 x와 w - x 값 중 더 작은 값을, y는 y와 h - y 중 더 작은 값을 찾은 다음에 저 둘 중 더 작은 값을 최종 출력하면 정답인 거 같아서 그대로 썼는데 통과되었다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 140 ms</li>
+  <li>메모리 : 14216 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/842a7990b2c0aeee814beb998cd21d67.js"></script>
+
+:ET

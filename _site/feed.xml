@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-13T20:43:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 11653. 소인수분해</title><link href="http://localhost:4000/boj/boj11653-java/" rel="alternate" type="text/html" title="Java) BOJ 11653. 소인수분해" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11653-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11653-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-14T14:30:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 11653. 소인수분해</title><link href="http://localhost:4000/boj/boj11653-java/" rel="alternate" type="text/html" title="Java) BOJ 11653. 소인수분해" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11653-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11653-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -180,11 +180,11 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/37d48b05cb8e98f33ac7988203013727.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1011" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1011 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 9020. 골드바흐의 추측</title><link href="http://localhost:4000/boj/boj9020-java/" rel="alternate" type="text/html" title="Java) BOJ 9020. 골드바흐의 추측" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9020-java</id><content type="html" xml:base="http://localhost:4000/boj/boj9020-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/37d48b05cb8e98f33ac7988203013727.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1011" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1011 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 1085. 직사각형에서 탈출</title><link href="http://localhost:4000/boj/boj9020-java/" rel="alternate" type="text/html" title="Java) BOJ 1085. 직사각형에서 탈출" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9020-java</id><content type="html" xml:base="http://localhost:4000/boj/boj9020-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/9020">https://www.acmicpc.net/problem/9020</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/1085">https://www.acmicpc.net/problem/1085</a><br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
@@ -192,83 +192,55 @@
 
 <ul>
   <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <hr />
 
 <ul>
-  <li>1보다 큰 자연수 중에서 1과 자기 자신을 제외한 약수가 없는 자연수를 소수라고 한다.</li>
-  <li>예를 들어, 5는 1과 5를 제외한 약수가 없기 때문에 소수이다. 하지만, 6은 6 = 2 × 3 이기 때문에 소수가 아니다.</li>
-  <li>골드바흐의 추측은 유명한 정수론의 미해결 문제로, 2보다 큰 모든 짝수는 두 소수의 합으로 나타낼 수 있다는 것이다. 이러한 수를 골드바흐 수라고 한다.</li>
-  <li>또, 짝수를 두 소수의 합으로 나타내는 표현을 그 수의 골드바흐 파티션이라고 한다.</li>
-  <li>예를 들면, 4 = 2 + 2, 6 = 3 + 3, 8 = 3 + 5, 10 = 5 + 5, 12 = 5 + 7, 14 = 3 + 11, 14 = 7 + 7이다.</li>
-  <li>10000보다 작거나 같은 모든 짝수 n에 대한 골드바흐 파티션은 존재한다.</li>
-  <li>2보다 큰 짝수 n이 주어졌을 때, n의 골드바흐 파티션을 출력하는 프로그램을 작성하시오.</li>
-  <li>만약 가능한 n의 골드바흐 파티션이 여러 가지인 경우에는 두 소수의 차이가 가장 작은 것을 출력한다.<br /><br /></li>
+  <li>한수는 지금 (x, y)에 있다. 직사각형은 각 변이 좌표축에 평행하고, 왼쪽 아래 꼭짓점은 (0, 0), 오른쪽 위 꼭짓점은 (w, h)에 있다.</li>
+  <li>직사각형의 경계선까지 가는 거리의 최솟값을 구하는 프로그램을 작성하시오.<br /><br /></li>
 </ul>
 
 <h1 id="입력">입력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고 짝수 n이 주어진다.</li>
-  <li>4 ≤ n ≤ 10,000<br /><br /></li>
+  <li>첫째 줄에 x, y, w, h가 주어진다.</li>
+  <li>1 ≤ w, h ≤ 1,000</li>
+  <li>1 ≤ x ≤ w-1</li>
+  <li>1 ≤ y ≤ h-1</li>
+  <li>x, y, w, h는 정수<br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <hr />
 
 <ul>
-  <li>각 테스트 케이스에 대해서 주어진 n의 골드바흐 파티션을 출력한다. 출력하는 소수는 작은 것부터 먼저 출력하며, 공백으로 구분한다.<br /><br /><br /></li>
+  <li>첫째 줄에 문제의 정답을 출력한다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>골드바흐 파티션의 두 수가 소수인지 판별한 다음 소수면 출력하는 것이 기본 아이디어이다.</li>
-  <li>그런데 문제에서 골드바흐 파티션이 여러 개인 경우에는 두 수의 차가 가장 적은 것을 출력하라고 했기 때문에</li>
-  <li>이전에 나왔던 골드바흐 파티션과 현재 골드바흐 파티션의 차를 비교해야 한다.</li>
-  <li>그렇기 때문에 두 수의 차를 저장할 필요가 있고 이전 골드바흐 파티션도 저장할 필요가 있다. =&gt; <code class="language-plaintext highlighter-rouge">diff</code>, <code class="language-plaintext highlighter-rouge">prevFirstNum</code>, <code class="language-plaintext highlighter-rouge">prevSecondNum</code></li>
-  <li>이전에 구했던 차(diff)와 비교해서 현재 골드바흐 파티션의 차가 더 적으면 <code class="language-plaintext highlighter-rouge">diff</code>를 갱신하고 <code class="language-plaintext highlighter-rouge">prevFirstNum</code>, <code class="language-plaintext highlighter-rouge">prevSecondNum</code>을 현재 골드바흐 파티션을 저장한다.</li>
-  <li>그러면 <code class="language-plaintext highlighter-rouge">prevFirstNum</code>, <code class="language-plaintext highlighter-rouge">prevSecondNum</code>에는 항상 정답이 되는 수가 들어있다.</li>
-  <li>
-    <p>마지막에 <code class="language-plaintext highlighter-rouge">prevFirstNum</code>, <code class="language-plaintext highlighter-rouge">prevSecondNum</code>들을 출력하면 정답이다. <br /><br /></p>
-  </li>
-  <li>
-    <p>그런데 좀 고민했던 것이 골드바흐 파티션을 조사하기 위해 반복하는 범위였는데 예제를 보니까 나올 수 있는 가장 큰 수가 n을 2로 나눈 수여서 현재 골드바흐 파티션의 첫번째 숫자가 n/2가 되는 지점까지만 반복했다.<br /><br /></p>
-  </li>
-  <li>소수를 구하는 알고리즘은 아래 설명글을 참조. O(log n)에 구하는 알고리즘을 사용했다.</li>
-  <li>하지만 정직하게 2부터 i까지의 수의 나머지를 구하면서 소수를 판별하면 시간이 오래 걸리기 때문에 i의 제곱근 만큼만 반복하는 알고리즘을 썼다.</li>
-  <li>i의 제곱근만큼만 반복해도 소수인지 판별이 되는 이유는 제곱근을 넘어가는 수 부터는 앞전에 구했던 곱해서 i가 되는 수들이 순서만 바뀌어서 똑같이 나오기 때문이다.</li>
-  <li>예를 들어 i=16라면</li>
-  <li>1*16</li>
-  <li>2*8</li>
-  <li>4*4</li>
-  <li>8*2</li>
-  <li>16*1</li>
-  <li>위와 같이 16의 제곱근인 4를 기점으로 앞전에 나왔던 수들이 순서만 바뀌어서 나온다.</li>
-  <li>
-    <p>그래서 제곱근을 초과하는 수에 대해 소수를 판별하는 연산을 하는 것은 생략해도 결과에 영향이 없다.<br /><br /></p>
-  </li>
-  <li><a href="https://notepad96.tistory.com/entry/C-%EC%86%8C%EC%88%98-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">소수 구하기</a></li>
-  <li>예전에 참고했던 글인데 언어 상관없이 개념적으로 참고하기 좋은 글이다.<br /><br /></li>
+  <li>예제를 보니까 (x, y)에서 가로와 세로 직선 방향으로 직사각형의 변으로 가면 되는 것이라</li>
+  <li>x는 x와 w - x 값 중 더 작은 값을, y는 y와 h - y 중 더 작은 값을 찾은 다음에 저 둘 중 더 작은 값을 최종 출력하면 정답인 거 같아서 그대로 썼는데 통과되었다.<br /><br /></li>
 </ul>
 
 <h1 id="결과">결과</h1>
 <hr />
 
 <ul>
-  <li>시간 : 904 ms</li>
-  <li>메모리 : 18440 KB<br /><br /></li>
+  <li>시간 : 140 ms</li>
+  <li>메모리 : 14216 KB<br /><br /></li>
 </ul>
 
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/98fc2e567a2f7c3becd7ba2e1a7a3da5.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No9020" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/9020 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 4948. 베르트랑 공준</title><link href="http://localhost:4000/boj/boj4948-java/" rel="alternate" type="text/html" title="Java) BOJ 4948. 베르트랑 공준" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4948-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4948-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/842a7990b2c0aeee814beb998cd21d67.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1085" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1085 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 4948. 베르트랑 공준</title><link href="http://localhost:4000/boj/boj4948-java/" rel="alternate" type="text/html" title="Java) BOJ 4948. 베르트랑 공준" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4948-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4948-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
