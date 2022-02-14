@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>서블릿의 동작 원리 | Yujin Dev Log</title>
-<meta name="description" content="1. 사용자의 URL 요청    웹 서버가 배포 서술자를 통해 지금 받은 요청이 서블릿 요청이라는 것을 알게 되면 서블릿을 담당하는 웹 컨테이너로 그 요청을 전달한다.     🔸 배포 서술자(Deployment Descriptor)      사전에 웹 서버측에 URL과 서블릿 클래스를 미리 매핑시켜놓은 것">
+<!-- begin _includes/seo.html --><title>Java) BOJ 4153. 직각삼각형 | Yujin Dev Log</title>
+<meta name="description" content="문제 링크      https://www.acmicpc.net/problem/4153   제한      시간 제한 : 1 초   메모리 제한 : 128 MB">
 
 
   <meta name="author" content="Yujin Hwang">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="서블릿의 동작 원리">
-<meta property="og:url" content="http://localhost:4000/jsp/JSP-servlet-process/">
+<meta property="og:title" content="Java) BOJ 4153. 직각삼각형">
+<meta property="og:url" content="http://localhost:4000/boj/boj4153-java/">
 
 
-  <meta property="og:description" content="1. 사용자의 URL 요청    웹 서버가 배포 서술자를 통해 지금 받은 요청이 서블릿 요청이라는 것을 알게 되면 서블릿을 담당하는 웹 컨테이너로 그 요청을 전달한다.     🔸 배포 서술자(Deployment Descriptor)      사전에 웹 서버측에 URL과 서블릿 클래스를 미리 매핑시켜놓은 것">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-01-31T00:00:00+09:00">
+  <meta property="og:description" content="문제 링크      https://www.acmicpc.net/problem/4153   제한      시간 제한 : 1 초   메모리 제한 : 128 MB">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-02-14T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/jsp/JSP-servlet-process/">
+
+<link rel="canonical" href="http://localhost:4000/boj/boj4153-java/">
 
 
 
@@ -167,7 +167,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#jsp" itemprop="item"><span itemprop="name">Jsp</span></a>
+          <a href="/categories/#boj" itemprop="item"><span itemprop="name">Boj</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">서블릿의 동작 원리</li>
+        <li class="current">Java) BOJ 4153. 직각삼각형</li>
       
     
   </ol>
@@ -310,16 +310,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="서블릿의 동작 원리">
-    <meta itemprop="description" content="1. 사용자의 URL 요청  웹 서버가 배포 서술자를 통해 지금 받은 요청이 서블릿 요청이라는 것을 알게 되면 서블릿을 담당하는 웹 컨테이너로 그 요청을 전달한다.    🔸 배포 서술자(Deployment Descriptor)    사전에 웹 서버측에 URL과 서블릿 클래스를 미리 매핑시켜놓은 것">
-    <meta itemprop="datePublished" content="2022-01-31T00:00:00+09:00">
+    <meta itemprop="headline" content="Java) BOJ 4153. 직각삼각형">
+    <meta itemprop="description" content="문제 링크  https://www.acmicpc.net/problem/4153제한  시간 제한 : 1 초  메모리 제한 : 128 MB">
+    <meta itemprop="datePublished" content="2022-02-14T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/jsp/JSP-servlet-process/" class="u-url" itemprop="url">서블릿의 동작 원리
+            <a href="http://localhost:4000/boj/boj4153-java/" class="u-url" itemprop="url">Java) BOJ 4153. 직각삼각형
 </a>
           </h1>
           
@@ -336,7 +336,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 분 소요
+          최대 1 분 소요
         
       </span>
     
@@ -351,45 +351,70 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#1-사용자의-url-요청">1. 사용자의 URL 요청</a><ul><li><a href="#-배포-서술자deployment-descriptor">🔸 배포 서술자(Deployment Descriptor)</a></li></ul></li><li><a href="#2-request-response-객체-생성">2. request, response 객체 생성</a></li><li><a href="#3-서블릿-인스턴스와-스레드-생성">3. 서블릿 인스턴스와 스레드 생성</a></li><li><a href="#4-service-메소드-호출과-서블릿-클래스-실행">4. service() 메소드 호출과 서블릿 클래스 실행</a></li><li><a href="#5-응답과-스레드의-소멸">5. 응답과 스레드의 소멸</a></li></ul>
+              <ul class="toc__menu"><li><a href="#문제-링크">문제 링크</a></li><li><a href="#제한">제한</a></li><li><a href="#문제">문제</a></li><li><a href="#입력">입력</a></li><li><a href="#출력">출력</a></li><li><a href="#-풀이">👀 풀이</a></li><li><a href="#결과">결과</a></li><li><a href="#코드">코드</a></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="1-사용자의-url-요청">1. 사용자의 URL 요청</h1>
+        <h1 id="문제-링크">문제 링크</h1>
+<hr />
+
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">웹 서버</code>가 <code class="language-plaintext highlighter-rouge">배포 서술자</code>를 통해 지금 받은 요청이 <code class="language-plaintext highlighter-rouge">서블릿</code> 요청이라는 것을 알게 되면 <code class="language-plaintext highlighter-rouge">서블릿</code>을 담당하는 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>로 그 요청을 전달한다.
-    <h2 id="-배포-서술자deployment-descriptor">🔸 배포 서술자(Deployment Descriptor)</h2>
-  </li>
-  <li>사전에 웹 서버측에 <code class="language-plaintext highlighter-rouge">URL</code>과 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스를 미리 매핑시켜놓은 것<br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/4153">https://www.acmicpc.net/problem/4153</a><br /><br /></li>
 </ul>
 
-<h1 id="2-request-response-객체-생성">2. request, response 객체 생성</h1>
+<h1 id="제한">제한</h1>
+<hr />
+
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">웹 컨테이너</code>는 받은 요청을 처리하기 위해 <code class="language-plaintext highlighter-rouge">HTTP</code> 요청을 처리하기 위한 <code class="language-plaintext highlighter-rouge">request</code> 객체와 <code class="language-plaintext highlighter-rouge">HTTP</code> 응답을 위한 <code class="language-plaintext highlighter-rouge">response</code> 객체를 생성한다.<br /><br /></li>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
 </ul>
 
-<h1 id="3-서블릿-인스턴스와-스레드-생성">3. 서블릿 인스턴스와 스레드 생성</h1>
+<h1 id="문제">문제</h1>
+<hr />
+
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">request</code>, <code class="language-plaintext highlighter-rouge">response</code> 객체가 생성된 뒤 사용자의 URL 요청이 어떤 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스를 필요로 하는지 <code class="language-plaintext highlighter-rouge">배포 서술자</code>를 통해 알아낸다.</li>
-  <li>그 클래스가 한 번도 실행된 적이 없거나 현재 메모리에 <code class="language-plaintext highlighter-rouge">인스턴스(프로세스)</code>가 없으면 새로 생성한 뒤 <code class="language-plaintext highlighter-rouge">스레드</code>를 하나 생성하고 이미 <code class="language-plaintext highlighter-rouge">인스턴스</code>가 존재한다면 기존의 <code class="language-plaintext highlighter-rouge">인스턴스</code>에 <code class="language-plaintext highlighter-rouge">스레드</code>만 하나 새로 생성한다.</li>
-  <li>각 <code class="language-plaintext highlighter-rouge">서블릿</code> 클래스는 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>당 하나만 존재한다.<br /><br /></li>
+  <li>과거 이집트인들은 각 변들의 길이가 3, 4, 5인 삼각형이 직각 삼각형인것을 알아냈다. 주어진 세변의 길이로 삼각형이 직각인지 아닌지 구분하시오.<br /><br /></li>
 </ul>
 
-<h1 id="4-service-메소드-호출과-서블릿-클래스-실행">4. service() 메소드 호출과 서블릿 클래스 실행</h1>
+<h1 id="입력">입력</h1>
+<hr />
+
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">스레드</code>가 생성되면 각 <code class="language-plaintext highlighter-rouge">스레드</code>에서 <code class="language-plaintext highlighter-rouge">service()</code> 메소드가 호출된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">service()</code> 메소드가 호출되면 <code class="language-plaintext highlighter-rouge">HTTP</code> 요청 방식이 <code class="language-plaintext highlighter-rouge">GET</code> 방식이면 <code class="language-plaintext highlighter-rouge">doGet()</code> 메소드가, <code class="language-plaintext highlighter-rouge">POST</code> 방식이면 <code class="language-plaintext highlighter-rouge">doPost()</code> 메소드가 <code class="language-plaintext highlighter-rouge">request</code>, <code class="language-plaintext highlighter-rouge">response</code> 객체를 인자로 자동으로 호출된다.</li>
-  <li>개발자가 실제로 동적인 웹 페이지 생성을 할 수 있는 코드를 만들어야 하는 부분이 <code class="language-plaintext highlighter-rouge">doGet()</code>과 <code class="language-plaintext highlighter-rouge">doPost()</code> 메소드 부분이다.<br /><br /></li>
+  <li>입력은 여러개의 테스트케이스로 주어지며 마지막줄에는 0 0 0이 입력된다. 각 테스트케이스는 모두 30,000보다 작은 양의 정수로 주어지며, 각 입력은 변의 길이를 의미한다.<br /><br /></li>
 </ul>
 
-<h1 id="5-응답과-스레드의-소멸">5. 응답과 스레드의 소멸</h1>
+<h1 id="출력">출력</h1>
+<hr />
+
 <ul>
-  <li>사용자의 요청에 따른 동적인 웹 페이지를 생성한 결과물이 담긴 <code class="language-plaintext highlighter-rouge">response</code> 객체를 <code class="language-plaintext highlighter-rouge">웹 컨테이너</code>가 <code class="language-plaintext highlighter-rouge">HTTP</code> 응답 형태로 바꾸어 <code class="language-plaintext highlighter-rouge">웹 서버</code>로 전송한다.</li>
-  <li>사용이 끝난 <code class="language-plaintext highlighter-rouge">request</code>와 <code class="language-plaintext highlighter-rouge">response</code> 객체를 소멸시키고 <code class="language-plaintext highlighter-rouge">스레드</code>를 종료한다.</li>
-  <li>웹 서버는 전송 받은 HTTP 응답 메시지를 사용자의 브라우저로 전송하게 되고 사용자는 브라우저를 통해 동적으로 생성된 페이지를 받아보게 된다.<br /><br />
-<img src="../../assets/images/servletRequestStep.jpg" alt="servletRequestStep" /></li>
+  <li>각 입력에 대해 직각 삼각형이 맞다면 “right”, 아니라면 “wrong”을 출력한다.<br /><br /><br /></li>
 </ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>피타고라스의 정리로 풀었는데 예제에는 입력이 오름차순으로만 주어져 있어서 처음엔 (a의 제곱 + b의 제곱 = c의 제곱) 수식을 썼는데</li>
+  <li>중간에 입력이 오름차순으로 들어오지 않는 경우가 있는지 틀렸다.</li>
+  <li>문제에 오름차순으로 입력이 들어온다는 말이 없어서 예상했긴 하지만… 처음부터 그냥 예외처리 해서 쓸 걸 그랬다.</li>
+  <li>세 수 중 최대값과 나머지 두 수를 찾아서 피타고라스의 정리 수식을 적용해 주었다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 124 ms</li>
+  <li>메모리 : 14012 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/196d69b177d3d418eaaa0638d14ae211.js"></script>
+
 
         
       </section>
@@ -406,13 +431,15 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#http" class="page__taxonomy-item p-category" rel="tag">HTTP</a><span class="sep">, </span>
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a><span class="sep">, </span>
     
-      <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a><span class="sep">, </span>
+      <a href="/tags/#boj" class="page__taxonomy-item p-category" rel="tag">BOJ</a><span class="sep">, </span>
     
-      <a href="/tags/#servlet" class="page__taxonomy-item p-category" rel="tag">Servlet</a><span class="sep">, </span>
+      <a href="/tags/#java" class="page__taxonomy-item p-category" rel="tag">Java</a><span class="sep">, </span>
     
-      <a href="/tags/#web" class="page__taxonomy-item p-category" rel="tag">WEB</a>
+      <a href="/tags/#math" class="page__taxonomy-item p-category" rel="tag">Math</a><span class="sep">, </span>
+    
+      <a href="/tags/#no4153" class="page__taxonomy-item p-category" rel="tag">No4153</a>
     
     </span>
   </p>
@@ -429,7 +456,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a>
+      <a href="/categories/#boj" class="page__taxonomy-item p-category" rel="tag">BOJ</a>
     
     </span>
   </p>
@@ -437,7 +464,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-31T00:00:00+09:00">January 31, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-14T00:00:00+09:00">February 14, 2022</time></p>
 
       </footer>
 
@@ -446,22 +473,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EC%84%9C%EB%B8%94%EB%A6%BF%EC%9D%98+%EB%8F%99%EC%9E%91+%EC%9B%90%EB%A6%AC%20http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-servlet-process%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Java%29+BOJ+4153.+%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95%20http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj4153-java%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-servlet-process%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj4153-java%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-servlet-process%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj4153-java%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/jsp/JSP-http-protocol/" class="pagination--pager" title="HTTP 프로토콜(HyperText Transfer Protocol)
+      <a href="/boj/boj3009-java/" class="pagination--pager" title="Java) BOJ 3009. 네 번째 점
 ">이전</a>
     
     
-      <a href="/jsp/JSP-web-beginning/" class="pagination--pager" title="웹페이지 기초
+      <a href="/boj/boj9020-java/" class="pagination--pager" title="Java) BOJ 1085. 직사각형에서 탈출
 ">다음</a>
     
   </nav>
@@ -523,59 +550,6 @@
 
 
   시간 제한 : 2 초
-  메모리 제한 : 128 MB
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/boj/boj4153-java/" rel="permalink">Java) BOJ 4153. 직각삼각형
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">문제 링크
-
-
-
-  https://www.acmicpc.net/problem/4153
-
-
-제한
-
-
-
-  시간 제한 : 1 초
   메모리 제한 : 128 MB
 
 </p>
@@ -683,6 +657,59 @@
 
   시간 제한 : 1 초
   메모리 제한 : 256 MB
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj2581-java/" rel="permalink">Java) BOJ 2581. 소수
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://www.acmicpc.net/problem/2581
+
+
+제한
+
+
+
+  시간 제한 : 1 초
+  메모리 제한 : 128 MB
 
 </p>
   </article>
