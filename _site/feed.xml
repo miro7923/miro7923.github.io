@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-15T23:12:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1002. 터렛</title><link href="http://localhost:4000/boj/boj1002-java/" rel="alternate" type="text/html" title="Java) BOJ 1002. 터렛" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1002-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1002-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-15T23:49:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1002. 터렛</title><link href="http://localhost:4000/boj/boj1002-java/" rel="alternate" type="text/html" title="Java) BOJ 1002. 터렛" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1002-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1002-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -150,7 +150,61 @@
   <li>사용중이던 8버전 외에 11버전도 추가로 잘 설치된 것을 볼 수 있다. <br /><br /></li>
 </ul>
 
-<h1 id="기본으로-사용할-openjdk-버전-바꾸기">기본으로 사용할 OpenJDK 버전 바꾸기</h1>
+<h1 id="그런데-실리콘-맥용이-아니라서-다시-설치">그런데… 실리콘 맥용이 아니라서 다시 설치</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">M1</code> 맥북을 사용중인데 설치하고 보니까 인텔맥 버전(x86_64)이라 왠지 최적화가 좀 덜 될 거 같아서 지우고 실리콘 맥용으로 다시 설치했다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">cd</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span>
+<span class="nc">JavaVirtualMachines</span> <span class="o">%</span> <span class="n">ls</span>  
+<span class="n">adoptopenjdk</span><span class="o">-</span><span class="mi">11</span><span class="o">.</span><span class="na">jdk</span>	<span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span>		<span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JVM</code> 폴더로 이동해서 <code class="language-plaintext highlighter-rouge">ls</code> 명령어로 설치된 <code class="language-plaintext highlighter-rouge">JDK</code>들을 확인해 보면 목록들이 나온다.
+<br /><br /></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">sudo</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">adoptopenjdk</span><span class="o">-</span><span class="mi">11</span><span class="o">.</span><span class="na">jdk</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">rm</code> 명령어를 사용해 삭제하고 싶은 버전을 입력하면 삭제할 수 있다.
+<br /><br /></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">ls</span>
+<span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span>	<span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span>
+</code></pre></div></div>
+<ul>
+  <li>다시 확인해보면 없다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="no">V</span>
+<span class="nc">Matching</span> <span class="nc">Java</span> <span class="nc">Virtual</span> <span class="nf">Machines</span> <span class="o">(</span><span class="mi">2</span><span class="o">):</span>
+    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span> <span class="o">(</span><span class="n">arm64</span><span class="o">)</span> <span class="s">"Azul Systems, Inc."</span> <span class="o">-</span> <span class="s">"Zulu 8.58.0.13"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
+    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_302</span> <span class="o">(</span><span class="n">x86_64</span><span class="o">)</span> <span class="s">"Eclipse Temurin"</span> <span class="o">-</span> <span class="s">"Eclipse Temurin 8"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h2 id="zulu-jdk-다운로드">Zulu JDK 다운로드</h2>
+<ul>
+  <li><a href="https://www.azul.com/downloads/?version=java-11-lts&amp;os=macos&amp;architecture=arm-64-bit&amp;package=jdk">Azul JDK</a></li>
+  <li><code class="language-plaintext highlighter-rouge">Azul Systems</code> 홈페이지에 가면 <code class="language-plaintext highlighter-rouge">Arm Architecture</code>용으로 나온 <code class="language-plaintext highlighter-rouge">JDK</code>를 다운받을 수 있다.</li>
+  <li>11버전을 선택해서 다운로드한다. (<code class="language-plaintext highlighter-rouge">.dmg</code> 파일이 편해서 사용)</li>
+  <li>더블클릭 후 다음만 누르면 설치가 완료된다.</li>
+</ul>
+
+<h2 id="zulu-jdk-설치-확인">Zulu JDK 설치 확인</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="no">V</span>
+<span class="nc">Matching</span> <span class="nc">Java</span> <span class="nc">Virtual</span> <span class="nf">Machines</span> <span class="o">(</span><span class="mi">3</span><span class="o">):</span>
+    <span class="mf">11.0</span><span class="o">.</span><span class="mi">14</span> <span class="o">(</span><span class="n">arm64</span><span class="o">)</span> <span class="s">"Azul Systems, Inc."</span> <span class="o">-</span> <span class="s">"Zulu 11.54.23"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">zulu</span><span class="o">-</span><span class="mi">11</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
+    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span> <span class="o">(</span><span class="n">arm64</span><span class="o">)</span> <span class="s">"Azul Systems, Inc."</span> <span class="o">-</span> <span class="s">"Zulu 8.58.0.13"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
+    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_302</span> <span class="o">(</span><span class="n">x86_64</span><span class="o">)</span> <span class="s">"Eclipse Temurin"</span> <span class="o">-</span> <span class="s">"Eclipse Temurin 8"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
+</code></pre></div></div>
+<ul>
+  <li>11 버전도 <code class="language-plaintext highlighter-rouge">arm64</code>로 잘 설치되었다.<br /><br /></li>
+</ul>
+
+<h1 id="단어-하나로-기본으로-사용할-openjdk-버전-바꾸기">단어 하나로 기본으로 사용할 OpenJDK 버전 바꾸기</h1>
 <ul>
   <li>컴퓨터에 설치된 자바가 하나뿐이라면 그게 자동으로 기본값으로 설정이 되지만 나는 사정상 11로 완전 갈아타면 안 되고 8버전도 써야 하기 때문에 두 개를 바꿔가며 써야 하는데 매번 환경설정을 해주려면 참 귀찮을거 같아서 좀 미뤄왔었다.</li>
   <li>그런데 구글링 해 보니까 완전 편한 방법이 있었다.</li>
@@ -162,15 +216,15 @@
 <span class="n">alias</span> <span class="n">setJava11</span><span class="o">=</span><span class="err">'</span><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mi">11</span><span class="o">)</span><span class="err">'</span>
 </code></pre></div></div>
 <ul>
-  <li>위 명령어를 한 줄씩 복붙해서 실행하면 자바 버전별로 <code class="language-plaintext highlighter-rouge">앨리어스</code>를 지정해 사용할 수 있다.</li>
-  <li>이제 터미널에서 <code class="language-plaintext highlighter-rouge">setJava11</code>만 입력하면 11버전으로 바꿀 수 있다! 8로 돌아가는 것도 마찬가지</li>
+  <li>위 명령어를 한 줄씩 복붙해서 실행하면 자바 버전별로 <code class="language-plaintext highlighter-rouge">앨리어스</code>를 지정해 사용할 수 있다.
+<br /><br /></li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">setJava11</span>
 <span class="o">%</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
-<span class="n">openjdk</span> <span class="n">version</span> <span class="s">"11.0.11"</span> <span class="mi">2021</span><span class="o">-</span><span class="mo">04</span><span class="o">-</span><span class="mi">20</span>
-<span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nc">Environment</span> <span class="nc">AdoptOpenJDK</span><span class="o">-</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span><span class="o">+</span><span class="mi">9</span> <span class="o">(</span><span class="n">build</span> <span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span><span class="o">+</span><span class="mi">9</span><span class="o">)</span>
-<span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="no">VM</span> <span class="nc">AdoptOpenJDK</span><span class="o">-</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span><span class="o">+</span><span class="mi">9</span> <span class="o">(</span><span class="n">build</span> <span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span><span class="o">+</span><span class="mi">9</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
+<span class="n">openjdk</span> <span class="n">version</span> <span class="s">"11.0.14"</span> <span class="mi">2022</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">18</span> <span class="no">LTS</span>
+<span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nc">Environment</span> <span class="nc">Zulu11</span><span class="o">.</span><span class="mi">54</span><span class="o">+</span><span class="mi">23</span><span class="o">-</span><span class="no">CA</span> <span class="o">(</span><span class="n">build</span> <span class="mf">11.0</span><span class="o">.</span><span class="mi">14</span><span class="o">+</span><span class="mi">9</span><span class="o">-</span><span class="no">LTS</span><span class="o">)</span>
+<span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="no">VM</span> <span class="nc">Zulu11</span><span class="o">.</span><span class="mi">54</span><span class="o">+</span><span class="mi">23</span><span class="o">-</span><span class="no">CA</span> <span class="o">(</span><span class="n">build</span> <span class="mf">11.0</span><span class="o">.</span><span class="mi">14</span><span class="o">+</span><span class="mi">9</span><span class="o">-</span><span class="no">LTS</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
 
 <span class="o">%</span> <span class="n">setJava8</span>
 <span class="o">%</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
@@ -178,7 +232,10 @@
 <span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nf">Environment</span> <span class="o">(</span><span class="nc">Zulu</span> <span class="mf">8.58</span><span class="o">.</span><span class="mf">0.13</span><span class="o">-</span><span class="no">CA</span><span class="o">-</span><span class="n">macos</span><span class="o">-</span><span class="n">aarch64</span><span class="o">)</span> <span class="o">(</span><span class="n">build</span> <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span><span class="o">-</span><span class="n">b07</span><span class="o">)</span>
 <span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="nf">VM</span> <span class="o">(</span><span class="nc">Zulu</span> <span class="mf">8.58</span><span class="o">.</span><span class="mf">0.13</span><span class="o">-</span><span class="no">CA</span><span class="o">-</span><span class="n">macos</span><span class="o">-</span><span class="n">aarch64</span><span class="o">)</span> <span class="o">(</span><span class="n">build</span> <span class="mf">25.312</span><span class="o">-</span><span class="n">b07</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
 </code></pre></div></div>
-<p><br /><br /></p>
+<ul>
+  <li>이제 터미널에서 <code class="language-plaintext highlighter-rouge">setJava11</code>만 입력하면 11버전으로 바꿀 수 있다! 8로 돌아가는 것도 마찬가지
+<br /><br /></li>
+</ul>
 
 <h2 id="출처">출처</h2>
 <ul>

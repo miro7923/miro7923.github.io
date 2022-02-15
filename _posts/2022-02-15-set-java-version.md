@@ -65,7 +65,54 @@ Matching Java Virtual Machines (3):
 * 설치된 모든 자바 버전을 보고 싶으면 `/usr/libexec/java_home -V` 명령어를 입력하면 된다.
 * 사용중이던 8버전 외에 11버전도 추가로 잘 설치된 것을 볼 수 있다. <br><br>
 
-# 기본으로 사용할 OpenJDK 버전 바꾸기
+# 그런데... 실리콘 맥용이 아니라서 다시 설치
+* `M1` 맥북을 사용중인데 설치하고 보니까 인텔맥 버전(x86_64)이라 왠지 최적화가 좀 덜 될 거 같아서 지우고 실리콘 맥용으로 다시 설치했다.
+
+```java
+% cd /Library/Java/JavaVirtualMachines/
+JavaVirtualMachines % ls  
+adoptopenjdk-11.jdk	temurin-8.jdk		zulu-8.jdk
+```
+* `JVM` 폴더로 이동해서 `ls` 명령어로 설치된 `JDK`들을 확인해 보면 목록들이 나온다.
+<br><br>
+
+```java
+% sudo rm -rf adoptopenjdk-11.jdk
+```
+* `rm` 명령어를 사용해 삭제하고 싶은 버전을 입력하면 삭제할 수 있다.
+<br><br>
+
+```java
+% ls
+temurin-8.jdk	zulu-8.jdk
+```
+* 다시 확인해보면 없다.
+
+```java
+% /usr/libexec/java_home -V
+Matching Java Virtual Machines (2):
+    1.8.0_312 (arm64) "Azul Systems, Inc." - "Zulu 8.58.0.13" /Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
+    1.8.0_302 (x86_64) "Eclipse Temurin" - "Eclipse Temurin 8" /Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
+```
+<br><br>
+
+## Zulu JDK 다운로드
+* [Azul JDK](https://www.azul.com/downloads/?version=java-11-lts&os=macos&architecture=arm-64-bit&package=jdk)
+* `Azul Systems` 홈페이지에 가면 `Arm Architecture`용으로 나온 `JDK`를 다운받을 수 있다.
+* 11버전을 선택해서 다운로드한다. (`.dmg` 파일이 편해서 사용)
+* 더블클릭 후 다음만 누르면 설치가 완료된다.
+
+## Zulu JDK 설치 확인
+```java
+% /usr/libexec/java_home -V
+Matching Java Virtual Machines (3):
+    11.0.14 (arm64) "Azul Systems, Inc." - "Zulu 11.54.23" /Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
+    1.8.0_312 (arm64) "Azul Systems, Inc." - "Zulu 8.58.0.13" /Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
+    1.8.0_302 (x86_64) "Eclipse Temurin" - "Eclipse Temurin 8" /Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
+```
+* 11 버전도 `arm64`로 잘 설치되었다.<br><br>
+
+# 단어 하나로 기본으로 사용할 OpenJDK 버전 바꾸기
 * 컴퓨터에 설치된 자바가 하나뿐이라면 그게 자동으로 기본값으로 설정이 되지만 나는 사정상 11로 완전 갈아타면 안 되고 8버전도 써야 하기 때문에 두 개를 바꿔가며 써야 하는데 매번 환경설정을 해주려면 참 귀찮을거 같아서 좀 미뤄왔었다.
 * 그런데 구글링 해 보니까 완전 편한 방법이 있었다.
 
@@ -76,14 +123,14 @@ alias setJava8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 alias setJava11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
 ```
 * 위 명령어를 한 줄씩 복붙해서 실행하면 자바 버전별로 `앨리어스`를 지정해 사용할 수 있다.
-* 이제 터미널에서 `setJava11`만 입력하면 11버전으로 바꿀 수 있다! 8로 돌아가는 것도 마찬가지
+<br><br>
 
 ```java
 % setJava11
 % java -version
-openjdk version "11.0.11" 2021-04-20
-OpenJDK Runtime Environment AdoptOpenJDK-11.0.11+9 (build 11.0.11+9)
-OpenJDK 64-Bit Server VM AdoptOpenJDK-11.0.11+9 (build 11.0.11+9, mixed mode)
+openjdk version "11.0.14" 2022-01-18 LTS
+OpenJDK Runtime Environment Zulu11.54+23-CA (build 11.0.14+9-LTS)
+OpenJDK 64-Bit Server VM Zulu11.54+23-CA (build 11.0.14+9-LTS, mixed mode)
 
 % setJava8
 % java -version
@@ -91,6 +138,7 @@ openjdk version "1.8.0_312"
 OpenJDK Runtime Environment (Zulu 8.58.0.13-CA-macos-aarch64) (build 1.8.0_312-b07)
 OpenJDK 64-Bit Server VM (Zulu 8.58.0.13-CA-macos-aarch64) (build 25.312-b07, mixed mode)
 ```
+* 이제 터미널에서 `setJava11`만 입력하면 11버전으로 바꿀 수 있다! 8로 돌아가는 것도 마찬가지
 <br><br>
 
 ## 출처
