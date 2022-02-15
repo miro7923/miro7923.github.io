@@ -1,0 +1,95 @@
+I"�6<p>👀 터미널에서 단어 하나만 입력하면 <code class="language-plaintext highlighter-rouge">OpenJDK 8</code> 버전과 <code class="language-plaintext highlighter-rouge">OpenJDK 11</code> 버전을 그 때 그 때 기본으로 세팅할 수 있다.</p>
+
+<h1 id="homebrew로-openjdk-설치">Homebrew로 OpenJDK 설치</h1>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Homebrew</code>가 설치되어 있지 않다면 위 명령어를 터미널에 입력해서 설치한다.</li>
+  <li>처음엔 그림도 없고 <code class="language-plaintext highlighter-rouge">CLI</code> 환경이라 겁 먹었는데 적응되니까 세상에서 젤 편한 브루~ 😄
+<br /><br /></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">brew</span> <span class="n">install</span> <span class="o">--</span><span class="n">cask</span> <span class="n">adoptopenjdk</span>
+</code></pre></div></div>
+<ul>
+  <li>브루용 터미널을 켠 다음에 위 명령어를 입력하면 현재 <code class="language-plaintext highlighter-rouge">OpenJDK</code>의 최신버전을 설치할 수 있다.</li>
+  <li>현재 17, 18 버전까지 나와있는데 많이 사용하는 버전은 8과 11 버전인 거 같다.</li>
+  <li>그래서 나도 8과 11 버전만 설치할 것이다.</li>
+</ul>
+
+<h2 id="버전별-명령어-리스트">버전별 명령어 리스트</h2>
+<p><img src="../../assets/images/openjdkVersions.png" alt="openjdkVersions" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">brew</span> <span class="n">tap</span> <span class="nc">AdoptOpenJDK</span><span class="o">/</span><span class="n">openjdk</span>
+<span class="n">brew</span> <span class="n">install</span> <span class="o">--</span><span class="n">cask</span> <span class="n">adoptopenjdk11</span>
+</code></pre></div></div>
+<ul>
+  <li>현재 8버전은 깔려 있어서 11버전만 추가로 설치했다.</li>
+  <li>위 목록에서 설치하고 싶은 버전을 <code class="language-plaintext highlighter-rouge">--cask</code> 뒤에 입력하면 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Homebrew</code>를 통해 설치하는 것은 정식 루트를 통하는 것은 아니고 커뮤니티에 배포되어 있는 것을 사용하는 것이라고 하는데 오라클 JDK가 유료화 된 이후로 다 이렇게 써서 문제 되는 것은 없다고 한다. 
+<br /><br /></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">🍺</span>  <span class="n">adoptopenjdk11</span> <span class="n">was</span> <span class="n">successfully</span> <span class="n">installed</span><span class="o">!</span>
+</code></pre></div></div>
+<ul>
+  <li>정상적으로 설치가 되면 마지막에 성공적으로 설치되었다는 메세지를 볼 수 있다. 
+<br /><br /></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
+<span class="n">openjdk</span> <span class="n">version</span> <span class="s">"1.8.0_302"</span>
+<span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nf">Environment</span> <span class="o">(</span><span class="nc">Temurin</span><span class="o">)(</span><span class="n">build</span> <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_302</span><span class="o">-</span><span class="n">b08</span><span class="o">)</span>
+<span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="nf">VM</span> <span class="o">(</span><span class="nc">Temurin</span><span class="o">)(</span><span class="n">build</span> <span class="mf">25.302</span><span class="o">-</span><span class="n">b08</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
+</code></pre></div></div>
+<ul>
+  <li>현재 사용중인 자바의 버전을 확인해보면 기존에 사용하던 것이 있어서 8버전이 나온다.
+<br /><br /></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="no">V</span>
+<span class="nc">Matching</span> <span class="nc">Java</span> <span class="nc">Virtual</span> <span class="nf">Machines</span> <span class="o">(</span><span class="mi">3</span><span class="o">):</span>
+    <span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span> <span class="o">(</span><span class="n">x86_64</span><span class="o">)</span> <span class="s">"AdoptOpenJDK"</span> <span class="o">-</span> <span class="s">"AdoptOpenJDK 11"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">adoptopenjdk</span><span class="o">-</span><span class="mi">11</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
+    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span> <span class="o">(</span><span class="n">arm64</span><span class="o">)</span> <span class="s">"Azul Systems, Inc."</span> <span class="o">-</span> <span class="s">"Zulu 8.58.0.13"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
+    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_302</span> <span class="o">(</span><span class="n">x86_64</span><span class="o">)</span> <span class="s">"Eclipse Temurin"</span> <span class="o">-</span> <span class="s">"Eclipse Temurin 8"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
+</code></pre></div></div>
+<ul>
+  <li>설치된 모든 자바 버전을 보고 싶으면 <code class="language-plaintext highlighter-rouge">/usr/libexec/java_home -V</code> 명령어를 입력하면 된다.</li>
+  <li>사용중이던 8버전 외에 11버전도 추가로 잘 설치된 것을 볼 수 있다.</li>
+</ul>
+
+<h1 id="기본으로-사용할-openjdk-버전-바꾸기">기본으로 사용할 OpenJDK 버전 바꾸기</h1>
+<ul>
+  <li>컴퓨터에 설치된 자바가 하나뿐이라면 그게 자동으로 기본값으로 설정이 되지만 나는 사정상 11로 완전 갈아타면 안 되고 8버전도 써야 하기 때문에 두 개를 바꿔가며 써야 하는데 매번 환경설정을 해주려면 참 귀찮을거 같아서 좀 미뤄왔었다.</li>
+  <li>그런데 구글링 해 보니까 완전 편한 방법이 있었다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mf">1.8</span><span class="o">)</span>
+<span class="n">export</span> <span class="no">PATH</span><span class="o">=</span><span class="s">"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$JAVA_HOME"</span>
+<span class="n">alias</span> <span class="n">setJava8</span><span class="o">=</span><span class="err">'</span><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mf">1.8</span><span class="o">)</span><span class="err">'</span>
+<span class="n">alias</span> <span class="n">setJava11</span><span class="o">=</span><span class="err">'</span><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mi">11</span><span class="o">)</span><span class="err">'</span>
+</code></pre></div></div>
+<ul>
+  <li>위 명령어를 한 줄씩 복붙해서 실행하면 자바 버전별로 <code class="language-plaintext highlighter-rouge">앨리어스</code>를 지정해 사용할 수 있다.</li>
+  <li>이제 터미널에서 <code class="language-plaintext highlighter-rouge">setJava11</code>만 입력하면 11버전으로 바꿀 수 있다! 8로 돌아가는 것도 마찬가지</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">setJava11</span>
+<span class="o">%</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
+<span class="n">openjdk</span> <span class="n">version</span> <span class="s">"11.0.11"</span> <span class="mi">2021</span><span class="o">-</span><span class="mo">04</span><span class="o">-</span><span class="mi">20</span>
+<span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nc">Environment</span> <span class="nc">AdoptOpenJDK</span><span class="o">-</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span><span class="o">+</span><span class="mi">9</span> <span class="o">(</span><span class="n">build</span> <span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span><span class="o">+</span><span class="mi">9</span><span class="o">)</span>
+<span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="no">VM</span> <span class="nc">AdoptOpenJDK</span><span class="o">-</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span><span class="o">+</span><span class="mi">9</span> <span class="o">(</span><span class="n">build</span> <span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span><span class="o">+</span><span class="mi">9</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
+
+<span class="o">%</span> <span class="n">setJava8</span>
+<span class="o">%</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
+<span class="n">openjdk</span> <span class="n">version</span> <span class="s">"1.8.0_312"</span>
+<span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nf">Environment</span> <span class="o">(</span><span class="nc">Zulu</span> <span class="mf">8.58</span><span class="o">.</span><span class="mf">0.13</span><span class="o">-</span><span class="no">CA</span><span class="o">-</span><span class="n">macos</span><span class="o">-</span><span class="n">aarch64</span><span class="o">)</span> <span class="o">(</span><span class="n">build</span> <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span><span class="o">-</span><span class="n">b07</span><span class="o">)</span>
+<span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="nf">VM</span> <span class="o">(</span><span class="nc">Zulu</span> <span class="mf">8.58</span><span class="o">.</span><span class="mf">0.13</span><span class="o">-</span><span class="no">CA</span><span class="o">-</span><span class="n">macos</span><span class="o">-</span><span class="n">aarch64</span><span class="o">)</span> <span class="o">(</span><span class="n">build</span> <span class="mf">25.312</span><span class="o">-</span><span class="n">b07</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>출처</li>
+  <li><a href="https://yonguri.tistory.com/119">[Mac] OpenJDK 버전별로 여러개 설치하기 ( using Homebrew )</a></li>
+  <li><a href="https://velog.io/@jsoh/%EC%98%A4%EB%9D%BC%ED%81%B4-JDK%EB%A5%BC-%EC%82%AD%EC%A0%9C%ED%95%98%EA%B3%A0-OpenJDK-11-%EC%84%A4%EC%B9%98">MacOS에서 오라클 JDK를 삭제하고 OpenJDK 11 설치</a></li>
+</ul>
+:ET
