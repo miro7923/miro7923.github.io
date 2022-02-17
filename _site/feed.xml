@@ -1,4 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-17T13:10:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">컴퓨터 하드웨어) 제어 장치</title><link href="http://localhost:4000/computer%20science/CS-14/" rel="alternate" type="text/html" title="컴퓨터 하드웨어) 제어 장치" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS-14</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS-14/"><![CDATA[<h1 id="-제어-장치란">👀 제어 장치란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-17T15:12:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 10872. 팩토리얼</title><link href="http://localhost:4000/boj/boj10872-java/" rel="alternate" type="text/html" title="Java) BOJ 10872. 팩토리얼" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10872-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10872-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/10872">https://www.acmicpc.net/problem/10872</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 정수 N(0 ≤ N ≤ 12)이 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 N!을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>N팩토리얼이 1부터 N까지의 누적곱이기 때문에 누적합을 구하는 코드에서 곱하기로만 바꿨다.
+단 구한 팩토리얼을 저장할 변수가 0부터 시작하면 무슨 수를 곱해도 0이 되어버리기 때문에 1부터 시작해야 하는 것만 주의하면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 128 ms</li>
+  <li>메모리 : 14220 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/da7ed92be7ff49728b3582171ca25fe8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10872" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10872 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">컴퓨터 하드웨어) 제어 장치</title><link href="http://localhost:4000/computer%20science/CS-14/" rel="alternate" type="text/html" title="컴퓨터 하드웨어) 제어 장치" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS-14</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS-14/"><![CDATA[<h1 id="-제어-장치란">👀 제어 장치란?</h1>
 <ul>
   <li>프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분</li>
   <li>컴퓨터의 중추선이라 할 수 있다.</li>
@@ -131,99 +186,7 @@
 <h2 id="출처">출처</h2>
 <ul>
   <li>컴퓨터 사이언스(김철 저)</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Computer Hardware" /><category term="Control Unit" /><summary type="html"><![CDATA[👀 제어 장치란? 프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분 컴퓨터의 중추선이라 할 수 있다. 컴퓨터의 자료 처리 속도를 MIPS(Million Instructions Per Second)로 나타내는데 1MIPS는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.]]></summary></entry><entry><title type="html">Java) BOJ 1002. 터렛</title><link href="http://localhost:4000/boj/boj1002-java/" rel="alternate" type="text/html" title="Java) BOJ 1002. 터렛" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1002-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1002-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1002">https://www.acmicpc.net/problem/1002</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>조규현과 백승환은 터렛에 근무하는 직원이다. 하지만 워낙 존재감이 없어서 인구수는 차지하지 않는다. 다음은 조규현과 백승환의 사진이다.</li>
-  <li>이석원은 조규현과 백승환에게 상대편 마린(류재명)의 위치를 계산하라는 명령을 내렸다.</li>
-  <li>조규현과 백승환은 각각 자신의 터렛 위치에서 현재 적까지의 거리를 계산했다.</li>
-  <li>조규현의 좌표 (x1, y1)와 백승환의 좌표 (x2, y2)가 주어지고, 조규현이 계산한 류재명과의 거리 r1과 백승환이 계산한 류재명과의 거리 r2가 주어졌을 때,</li>
-  <li>류재명이 있을 수 있는 좌표의 수를 출력하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 다음과 같이 이루어져 있다.</li>
-  <li>한 줄에 x1, y1, r1, x2, y2, r2가 주어진다. x1, y1, x2, y2는 -10,000보다 크거나 같고, 10,000보다 작거나 같은 정수이고,</li>
-  <li>r1, r2는 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>각 테스트 케이스마다 류재명이 있을 수 있는 위치의 수를 출력한다. 만약 류재명이 있을 수 있는 위치의 개수가 무한대일 경우에는 -1을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>처음엔 무슨 문제인가 싶어서 질문게시판을 보니까 두 원 사이의 접점을 구하는 문제였다.</li>
-  <li>두 원의 관계는 내접하는 경우, 외접하는 경우, 만나지 않는 경우, 겹쳐지는 경우가 있는데</li>
-  <li>내접과 외접하는 경우에는 접점이 1개이다. (원 그려보면 됨)</li>
-  <li>만나지 않는 경우에는 접점이 0이다. 이 땐 서로 멀리 떨어져 있거나 큰 원 안에 작은 원이 있는데 두 원 사이의 접점이 없는 경우이다.</li>
-  <li>겹쳐지는 경우에는 완전히 똑같이 겹쳐지느냐 조금 겹쳐지느냐에 따라 달라지는데</li>
-  <li>원점의 위치가 똑같고 반지름도 똑같으면 완전히 겹쳐진다. 이럴 때엔 원의 테두리 어디에든 존재할 수 있으니 무한대이다.</li>
-  <li>
-    <p>조금 겹쳐지는 경우엔 접점이 항상 2개이다. (이것도 원 그려보면 됨)<br /><br /></p>
-  </li>
-  <li>원이 서로 내접하는지 아닌지 보려면 두 원점 사이의 거리를 구해야 하는데 이것은 피타고라스의 정리로 구했다.</li>
-  <li>그런데 피타고라스의 정리를 사용하면 거리는 원래 거리의 제곱값이 나오기 때문에 이것의 제곱근을 구하기 위해 sqrt 함수를 사용했는데 여기서 오차가 생겨서 틀렸다.</li>
-  <li>4의 제곱근을 구하는 경우라면 문제 없지만 5의 제곱근을 구하는 경우에는 정수로 나눠 떨어지지 않으니까… 여기서 오차가 생긴다.</li>
-  <li>
-    <p>그래서 두 원점 사이의 거리는 제곱한 상태로 사용해야 한다.<br /><br /></p>
-  </li>
-  <li>그래서 위의 케이스들을 잘 나눠서 분기처리를 해주면 되는데 처음에는 내접하는 경우와 큰 원 안에 작은 원이 있는데 접점이 없는 경우를 생각하지 못해서 틀렸다.</li>
-  <li>처음에는 두 원점 사이의 거리와 두 반지름의 합만을 이용해서 연산을 했기 때문에 내접하거나 큰 원 안에 작은 원이 있는제 접점이 없는 경우를 처리할 수 없었다.</li>
-  <li>(다 귀찮아서 원을 안 그려봐서 생긴 일…)</li>
-  <li>그래서 또 질문게시판을 참고해서 원을 그려보니까 두 반지름의 차도 이용을 해야 완벽하게 답을 구할 수 있다는 것을 알게 되었다.</li>
-  <li>두 원점 사이의 거리와 두 반지름의 차가 같으면 내접하고 (거리와 합이 같으면 외접)</li>
-  <li>두 원점 사이의 거리가 두 반지름의 차보다 작으면 큰 원 안의 작은 원이 접점이 없는 경우였다. (합보다 작으면 서로 겹침)</li>
-  <li>
-    <p>=&gt; 이거 해결하고 통과했다.<br /><br /></p>
-  </li>
-  <li>그래서 최종적인 분기처리는
-    <ol>
-      <li>두 원의 원점이 같고 반지름도 같으면 -1</li>
-      <li>원점이 같지만 반지름이 다르면 -1</li>
-      <li>거리의 제곱이 반지름 합의 제곱과 같거나 반지름 차의 제곱과 같으면 1</li>
-      <li>거리의 제곱이 반지름 합의 제곱보다 크거나 반지름 차의 제곱보다 작으면 0</li>
-      <li>나머지 경우는 2<br /><br /></li>
-    </ol>
-  </li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 136 ms</li>
-  <li>메모리 : 14292 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/8d5e174a8b0e3b6d4b77580e1424b9c7.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1002" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1002 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기</title><link href="http://localhost:4000/java/set-java-version/" rel="alternate" type="text/html" title="Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/java/set-java-version</id><content type="html" xml:base="http://localhost:4000/java/set-java-version/"><![CDATA[<p>👀 터미널에서 단어 하나만 입력하면 <code class="language-plaintext highlighter-rouge">OpenJDK 8</code> 버전과 <code class="language-plaintext highlighter-rouge">OpenJDK 11</code> 버전을 그 때 그 때 기본으로 세팅할 수 있다.</p>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Computer Hardware" /><category term="Control Unit" /><summary type="html"><![CDATA[👀 제어 장치란? 프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분 컴퓨터의 중추선이라 할 수 있다. 컴퓨터의 자료 처리 속도를 MIPS(Million Instructions Per Second)로 나타내는데 1MIPS는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.]]></summary></entry><entry><title type="html">Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기</title><link href="http://localhost:4000/java/set-java-version/" rel="alternate" type="text/html" title="Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/java/set-java-version</id><content type="html" xml:base="http://localhost:4000/java/set-java-version/"><![CDATA[<p>👀 터미널에서 단어 하나만 입력하면 <code class="language-plaintext highlighter-rouge">OpenJDK 8</code> 버전과 <code class="language-plaintext highlighter-rouge">OpenJDK 11</code> 버전을 그 때 그 때 기본으로 세팅할 수 있다.</p>
 
 <h1 id="homebrew로-openjdk-설치">Homebrew로 OpenJDK 설치</h1>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span>
@@ -374,7 +337,99 @@
 <ul>
   <li><a href="https://yonguri.tistory.com/119">[Mac] OpenJDK 버전별로 여러개 설치하기 ( using Homebrew )</a></li>
   <li><a href="https://velog.io/@jsoh/%EC%98%A4%EB%9D%BC%ED%81%B4-JDK%EB%A5%BC-%EC%82%AD%EC%A0%9C%ED%95%98%EA%B3%A0-OpenJDK-11-%EC%84%A4%EC%B9%98">MacOS에서 오라클 JDK를 삭제하고 OpenJDK 11 설치</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Java" /><category term="Java" /><category term="OpenJDK" /><category term="Homebrew" /><summary type="html"><![CDATA[👀 터미널에서 단어 하나만 입력하면 OpenJDK 8 버전과 OpenJDK 11 버전을 그 때 그 때 기본으로 세팅할 수 있다.]]></summary></entry><entry><title type="html">Java) BOJ 1085. 직사각형에서 탈출</title><link href="http://localhost:4000/boj/boj9020-java/" rel="alternate" type="text/html" title="Java) BOJ 1085. 직사각형에서 탈출" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9020-java</id><content type="html" xml:base="http://localhost:4000/boj/boj9020-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Java" /><category term="Java" /><category term="OpenJDK" /><category term="Homebrew" /><summary type="html"><![CDATA[👀 터미널에서 단어 하나만 입력하면 OpenJDK 8 버전과 OpenJDK 11 버전을 그 때 그 때 기본으로 세팅할 수 있다.]]></summary></entry><entry><title type="html">Java) BOJ 1002. 터렛</title><link href="http://localhost:4000/boj/boj1002-java/" rel="alternate" type="text/html" title="Java) BOJ 1002. 터렛" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1002-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1002-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1002">https://www.acmicpc.net/problem/1002</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>조규현과 백승환은 터렛에 근무하는 직원이다. 하지만 워낙 존재감이 없어서 인구수는 차지하지 않는다. 다음은 조규현과 백승환의 사진이다.</li>
+  <li>이석원은 조규현과 백승환에게 상대편 마린(류재명)의 위치를 계산하라는 명령을 내렸다.</li>
+  <li>조규현과 백승환은 각각 자신의 터렛 위치에서 현재 적까지의 거리를 계산했다.</li>
+  <li>조규현의 좌표 (x1, y1)와 백승환의 좌표 (x2, y2)가 주어지고, 조규현이 계산한 류재명과의 거리 r1과 백승환이 계산한 류재명과의 거리 r2가 주어졌을 때,</li>
+  <li>류재명이 있을 수 있는 좌표의 수를 출력하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 다음과 같이 이루어져 있다.</li>
+  <li>한 줄에 x1, y1, r1, x2, y2, r2가 주어진다. x1, y1, x2, y2는 -10,000보다 크거나 같고, 10,000보다 작거나 같은 정수이고,</li>
+  <li>r1, r2는 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>각 테스트 케이스마다 류재명이 있을 수 있는 위치의 수를 출력한다. 만약 류재명이 있을 수 있는 위치의 개수가 무한대일 경우에는 -1을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음엔 무슨 문제인가 싶어서 질문게시판을 보니까 두 원 사이의 접점을 구하는 문제였다.</li>
+  <li>두 원의 관계는 내접하는 경우, 외접하는 경우, 만나지 않는 경우, 겹쳐지는 경우가 있는데</li>
+  <li>내접과 외접하는 경우에는 접점이 1개이다. (원 그려보면 됨)</li>
+  <li>만나지 않는 경우에는 접점이 0이다. 이 땐 서로 멀리 떨어져 있거나 큰 원 안에 작은 원이 있는데 두 원 사이의 접점이 없는 경우이다.</li>
+  <li>겹쳐지는 경우에는 완전히 똑같이 겹쳐지느냐 조금 겹쳐지느냐에 따라 달라지는데</li>
+  <li>원점의 위치가 똑같고 반지름도 똑같으면 완전히 겹쳐진다. 이럴 때엔 원의 테두리 어디에든 존재할 수 있으니 무한대이다.</li>
+  <li>
+    <p>조금 겹쳐지는 경우엔 접점이 항상 2개이다. (이것도 원 그려보면 됨)<br /><br /></p>
+  </li>
+  <li>원이 서로 내접하는지 아닌지 보려면 두 원점 사이의 거리를 구해야 하는데 이것은 피타고라스의 정리로 구했다.</li>
+  <li>그런데 피타고라스의 정리를 사용하면 거리는 원래 거리의 제곱값이 나오기 때문에 이것의 제곱근을 구하기 위해 sqrt 함수를 사용했는데 여기서 오차가 생겨서 틀렸다.</li>
+  <li>4의 제곱근을 구하는 경우라면 문제 없지만 5의 제곱근을 구하는 경우에는 정수로 나눠 떨어지지 않으니까… 여기서 오차가 생긴다.</li>
+  <li>
+    <p>그래서 두 원점 사이의 거리는 제곱한 상태로 사용해야 한다.<br /><br /></p>
+  </li>
+  <li>그래서 위의 케이스들을 잘 나눠서 분기처리를 해주면 되는데 처음에는 내접하는 경우와 큰 원 안에 작은 원이 있는데 접점이 없는 경우를 생각하지 못해서 틀렸다.</li>
+  <li>처음에는 두 원점 사이의 거리와 두 반지름의 합만을 이용해서 연산을 했기 때문에 내접하거나 큰 원 안에 작은 원이 있는제 접점이 없는 경우를 처리할 수 없었다.</li>
+  <li>(다 귀찮아서 원을 안 그려봐서 생긴 일…)</li>
+  <li>그래서 또 질문게시판을 참고해서 원을 그려보니까 두 반지름의 차도 이용을 해야 완벽하게 답을 구할 수 있다는 것을 알게 되었다.</li>
+  <li>두 원점 사이의 거리와 두 반지름의 차가 같으면 내접하고 (거리와 합이 같으면 외접)</li>
+  <li>두 원점 사이의 거리가 두 반지름의 차보다 작으면 큰 원 안의 작은 원이 접점이 없는 경우였다. (합보다 작으면 서로 겹침)</li>
+  <li>
+    <p>=&gt; 이거 해결하고 통과했다.<br /><br /></p>
+  </li>
+  <li>그래서 최종적인 분기처리는
+    <ol>
+      <li>두 원의 원점이 같고 반지름도 같으면 -1</li>
+      <li>원점이 같지만 반지름이 다르면 -1</li>
+      <li>거리의 제곱이 반지름 합의 제곱과 같거나 반지름 차의 제곱과 같으면 1</li>
+      <li>거리의 제곱이 반지름 합의 제곱보다 크거나 반지름 차의 제곱보다 작으면 0</li>
+      <li>나머지 경우는 2<br /><br /></li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 136 ms</li>
+  <li>메모리 : 14292 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/8d5e174a8b0e3b6d4b77580e1424b9c7.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1002" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1002 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 1085. 직사각형에서 탈출</title><link href="http://localhost:4000/boj/boj9020-java/" rel="alternate" type="text/html" title="Java) BOJ 1085. 직사각형에서 탈출" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9020-java</id><content type="html" xml:base="http://localhost:4000/boj/boj9020-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -434,63 +489,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/842a7990b2c0aeee814beb998cd21d67.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1085" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1085 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 3009. 네 번째 점</title><link href="http://localhost:4000/boj/boj3009-java/" rel="alternate" type="text/html" title="Java) BOJ 3009. 네 번째 점" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj3009-java</id><content type="html" xml:base="http://localhost:4000/boj/boj3009-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/3009">https://www.acmicpc.net/problem/3009</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>세 점이 주어졌을 때, 축에 평행한 직사각형을 만들기 위해서 필요한 네 번째 점을 찾는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>세 점의 좌표가 한 줄에 하나씩 주어진다. 좌표는 1보다 크거나 같고, 1000보다 작거나 같은 정수이다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>직사각형의 네 번째 점의 좌표를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>x와 y의 값이 서로 다른 점끼리 더한 값이 같아야 하기 때문에</li>
-  <li>입력 받으면서 이전 x와 현재 x의 값이 같지 않으면 두 수를 더해주고 아니라면 수를 보관해 뒀다가 이전 x와 현재 x가 같지 않은 두 수의 합에서 빼 주었다.</li>
-  <li>(x, y 각각 적용)<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 148 ms</li>
-  <li>메모리 : 16056 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/afe7a25ef643fea5a5cb6861ef93fcb8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No3009" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/3009 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 3053. 택시 기하학</title><link href="http://localhost:4000/boj/boj3053-java/" rel="alternate" type="text/html" title="Java) BOJ 3053. 택시 기하학" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj3053-java</id><content type="html" xml:base="http://localhost:4000/boj/boj3053-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/842a7990b2c0aeee814beb998cd21d67.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1085" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1085 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 3053. 택시 기하학</title><link href="http://localhost:4000/boj/boj3053-java/" rel="alternate" type="text/html" title="Java) BOJ 3053. 택시 기하학" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj3053-java</id><content type="html" xml:base="http://localhost:4000/boj/boj3053-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -564,7 +563,63 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/13217f334d41da7de8cc2eef964c6af6.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No3053" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/3053 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 4153. 직각삼각형</title><link href="http://localhost:4000/boj/boj4153-java/" rel="alternate" type="text/html" title="Java) BOJ 4153. 직각삼각형" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4153-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4153-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/13217f334d41da7de8cc2eef964c6af6.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No3053" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/3053 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 3009. 네 번째 점</title><link href="http://localhost:4000/boj/boj3009-java/" rel="alternate" type="text/html" title="Java) BOJ 3009. 네 번째 점" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj3009-java</id><content type="html" xml:base="http://localhost:4000/boj/boj3009-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/3009">https://www.acmicpc.net/problem/3009</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>세 점이 주어졌을 때, 축에 평행한 직사각형을 만들기 위해서 필요한 네 번째 점을 찾는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>세 점의 좌표가 한 줄에 하나씩 주어진다. 좌표는 1보다 크거나 같고, 1000보다 작거나 같은 정수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>직사각형의 네 번째 점의 좌표를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>x와 y의 값이 서로 다른 점끼리 더한 값이 같아야 하기 때문에</li>
+  <li>입력 받으면서 이전 x와 현재 x의 값이 같지 않으면 두 수를 더해주고 아니라면 수를 보관해 뒀다가 이전 x와 현재 x가 같지 않은 두 수의 합에서 빼 주었다.</li>
+  <li>(x, y 각각 적용)<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 148 ms</li>
+  <li>메모리 : 16056 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/afe7a25ef643fea5a5cb6861ef93fcb8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No3009" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/3009 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 4153. 직각삼각형</title><link href="http://localhost:4000/boj/boj4153-java/" rel="alternate" type="text/html" title="Java) BOJ 4153. 직각삼각형" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4153-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4153-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -621,149 +676,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/196d69b177d3d418eaaa0638d14ae211.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4153" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4153 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 1978. 소수 찾기</title><link href="http://localhost:4000/boj/boj1978-java/" rel="alternate" type="text/html" title="Java) BOJ 1978. 소수 찾기" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1978-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1978-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1978">https://www.acmicpc.net/problem/1978</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>주어진 수 N개 중에서 소수가 몇 개인지 찾아서 출력하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫 줄에 수의 개수 N이 주어진다. N은 100이하이다. 다음으로 N개의 수가 주어지는데 수는 1,000 이하의 자연수이다.  <br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>주어진 수들 중 소수의 개수를 출력한다.  <br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>소수 구하기는 프로그래밍을 처음 배울 때 풀어봤던 문제이기도 하고 예전에 몇 번 풀어봐서 풀이를 떠올리는 것은 어렵지 않았다.</li>
-  <li>하지만 정직하게 2부터 i까지의 수의 나머지를 구하면서 소수를 판별하면 시간이 오래 걸리기 때문에 i의 제곱근 만큼만 반복하는 알고리즘을 썼다.</li>
-  <li>i의 제곱근만큼만 반복해도 소수인지 판별이 되는 이유는 제곱근을 넘어가는 수 부터는 앞전에 구했던 곱해서 i가 되는 수들이 순서만 바뀌어서 똑같이 나오기 때문이다.</li>
-  <li>예를 들어 i=16라면</li>
-  <li>1*16</li>
-  <li>2*8</li>
-  <li>4*4</li>
-  <li>8*2</li>
-  <li>16*1</li>
-  <li>위와 같이 16의 제곱근인 4를 기점으로 앞전에 나왔던 수들이 순서만 바뀌어서 나온다.</li>
-  <li>
-    <p>그래서 제곱근을 초과하는 수에 대해 소수를 판별하는 연산을 하는 것은 생략해도 결과에 영향이 없다.<br /><br /></p>
-  </li>
-  <li><a href="https://notepad96.tistory.com/entry/C-%EC%86%8C%EC%88%98-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">C++ 소수 판별하기</a></li>
-  <li>예전에 참고했던 글인데 언어 상관없이 개념적으로 참고하기 좋은 글이다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 132 ms</li>
-  <li>메모리 : 14152 KB</li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/afc35a36d6fd638ec39bc1c5be251d8f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1978" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1978 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2581. 소수</title><link href="http://localhost:4000/boj/boj2581-java/" rel="alternate" type="text/html" title="Java) BOJ 2581. 소수" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2581-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2581-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2581">https://www.acmicpc.net/problem/2581</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>자연수 M과 N이 주어질 때 M이상 N이하의 자연수 중 소수인 것을 모두 골라 이들 소수의 합과 최솟값을 찾는 프로그램을 작성하시오.</li>
-  <li>예를 들어 M=60, N=100인 경우 60이상 100이하의 자연수 중 소수는 61, 67, 71, 73, 79, 83, 89, 97 총 8개가 있으므로,</li>
-  <li>이들 소수의 합은 620이고, 최솟값은 61이 된다.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>입력의 첫째 줄에 M이, 둘째 줄에 N이 주어진다.</li>
-  <li>M과 N은 10,000이하의 자연수이며, M은 N보다 작거나 같다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>M이상 N이하의 자연수 중 소수인 것을 모두 찾아 첫째 줄에 그 합을, 둘째 줄에 그 중 최솟값을 출력한다.</li>
-  <li>단, M이상 N이하의 자연수 중 소수가 없을 경우는 첫째 줄에 -1을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>소수 구하기는 프로그래밍을 처음 배울 때 풀어봤던 문제이기도 하고 예전에 몇 번 풀어봐서 풀이를 떠올리는 것은 어렵지 않았다.</li>
-  <li>하지만 정직하게 2부터 i까지의 수의 나머지를 구하면서 소수를 판별하면 시간이 오래 걸리기 때문에 i의 제곱근 만큼만 반복하는 알고리즘을 썼다.</li>
-  <li>i의 제곱근만큼만 반복해도 소수인지 판별이 되는 이유는 제곱근을 넘어가는 수 부터는 앞전에 구했던 곱해서 i가 되는 수들이 순서만 바뀌어서 똑같이 나오기 때문이다.</li>
-  <li>예를 들어 i=16라면</li>
-  <li>1*16</li>
-  <li>2*8</li>
-  <li>4*4</li>
-  <li>8*2</li>
-  <li>16*1</li>
-  <li>위와 같이 16의 제곱근인 4를 기점으로 앞전에 나왔던 수들이 순서만 바뀌어서 나온다.</li>
-  <li>
-    <p>그래서 제곱근을 초과하는 수에 대해 소수를 판별하는 연산을 하는 것은 생략해도 결과에 영향이 없다.<br /><br /></p>
-  </li>
-  <li><a href="https://notepad96.tistory.com/entry/C-%EC%86%8C%EC%88%98-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">C++ 소수 판별하기</a></li>
-  <li>
-    <p>예전에 참고했던 글인데 언어 상관없이 개념적으로 참고하기 좋은 글이다.<br /><br /></p>
-  </li>
-  <li>이 문제에서는 M 이상 ~ N 이하 범위의 수들을 반복문을 돌리면서 i번째 수가 소수라면 합계에 더해주고 그 중 가장 작은 값도 함께 저장했다.</li>
-  <li>입력의 최대값이 10,000이기 때문에 소수를 판별하는 알고리즘은 최대한 빠른 것을 사용했다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 128 ms</li>
-  <li>메모리 : 14208 KB</li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/62010af0c3c1d5f4ee8a0b165d29a66b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2581" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2581 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 4948. 베르트랑 공준</title><link href="http://localhost:4000/boj/boj4948-java/" rel="alternate" type="text/html" title="Java) BOJ 4948. 베르트랑 공준" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4948-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4948-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/196d69b177d3d418eaaa0638d14ae211.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4153" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4153 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 4948. 베르트랑 공준</title><link href="http://localhost:4000/boj/boj4948-java/" rel="alternate" type="text/html" title="Java) BOJ 4948. 베르트랑 공준" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4948-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4948-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -835,4 +748,70 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/aefd8a5c816d3e500f28493fdae88fbe.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4948" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4948 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/aefd8a5c816d3e500f28493fdae88fbe.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4948" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4948 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 1978. 소수 찾기</title><link href="http://localhost:4000/boj/boj1978-java/" rel="alternate" type="text/html" title="Java) BOJ 1978. 소수 찾기" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1978-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1978-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1978">https://www.acmicpc.net/problem/1978</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>주어진 수 N개 중에서 소수가 몇 개인지 찾아서 출력하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫 줄에 수의 개수 N이 주어진다. N은 100이하이다. 다음으로 N개의 수가 주어지는데 수는 1,000 이하의 자연수이다.  <br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>주어진 수들 중 소수의 개수를 출력한다.  <br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>소수 구하기는 프로그래밍을 처음 배울 때 풀어봤던 문제이기도 하고 예전에 몇 번 풀어봐서 풀이를 떠올리는 것은 어렵지 않았다.</li>
+  <li>하지만 정직하게 2부터 i까지의 수의 나머지를 구하면서 소수를 판별하면 시간이 오래 걸리기 때문에 i의 제곱근 만큼만 반복하는 알고리즘을 썼다.</li>
+  <li>i의 제곱근만큼만 반복해도 소수인지 판별이 되는 이유는 제곱근을 넘어가는 수 부터는 앞전에 구했던 곱해서 i가 되는 수들이 순서만 바뀌어서 똑같이 나오기 때문이다.</li>
+  <li>예를 들어 i=16라면</li>
+  <li>1*16</li>
+  <li>2*8</li>
+  <li>4*4</li>
+  <li>8*2</li>
+  <li>16*1</li>
+  <li>위와 같이 16의 제곱근인 4를 기점으로 앞전에 나왔던 수들이 순서만 바뀌어서 나온다.</li>
+  <li>
+    <p>그래서 제곱근을 초과하는 수에 대해 소수를 판별하는 연산을 하는 것은 생략해도 결과에 영향이 없다.<br /><br /></p>
+  </li>
+  <li><a href="https://notepad96.tistory.com/entry/C-%EC%86%8C%EC%88%98-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">C++ 소수 판별하기</a></li>
+  <li>예전에 참고했던 글인데 언어 상관없이 개념적으로 참고하기 좋은 글이다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 132 ms</li>
+  <li>메모리 : 14152 KB</li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/afc35a36d6fd638ec39bc1c5be251d8f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1978" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1978 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry></feed>
