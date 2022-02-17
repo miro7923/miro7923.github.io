@@ -1,0 +1,37 @@
+I"�	<h1 id="-제어-장치란">👀 제어 장치란?</h1>
+<ul>
+  <li>프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분</li>
+  <li>컴퓨터의 중추선이라 할 수 있다.</li>
+  <li>컴퓨터의 자료 처리 속도를 <code class="language-plaintext highlighter-rouge">MIPS(Million Instructions Per Second)</code>로 나타내는데 <code class="language-plaintext highlighter-rouge">1MIPS</code>는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="제어-장치의-구성">제어 장치의 구성</h1>
+<ul>
+  <li>제어 장치(control unit)는 주기억 장치에 연결되어 있는 명령어를 순서대로 호출하고 해독하여 그 결과에 따라 연산 장치, 기억 장치, 입,출력 장치에 제어 신호를 보내 원하고자 하는 동작을 유도한다.<br /><br /></li>
+</ul>
+
+<p><img src="../../assets/images/controlUnit.png" alt="controlUnit" /></p>
+
+<h2 id="1-프로그램-계수기pc--program-counter">1. 프로그램 계수기(PC : Program Counter)</h2>
+<ul>
+  <li>명령의 실행 순서를 정하기 위하여 다음에 실행될 명령이 들어 있는 번지를 기억해 두는 레지스터</li>
+  <li>명령어 계수기(IC : Instruction Counter) 혹은 위치 계수기(LC : Location Counter)라고도 한다.<br /><br /></li>
+</ul>
+
+<h2 id="2-명령-레지스터">2. 명령 레지스터</h2>
+<ul>
+  <li>프로그램 계수기(<code class="language-plaintext highlighter-rouge">PC</code>)가 지정한 번지에 기억되어 있는 명령을 꺼내어 이 명령을 해석하기 위하여 임시로 보관하여 두는 레지스터</li>
+  <li>명령부와 번지부로 구성되어 있다.
+    <ul>
+      <li>명령부 : 실행 명령 코드(operation code)가 들어 있다.</li>
+      <li>번지부 : 데이터가 기억되어 있는 번지(operand)가 들어 있다.</li>
+    </ul>
+  </li>
+  <li>명령부의 명령 코드가 해독기에 옮겨져 해독되며 번지부의 번지가 번지 해독기에 이송되어 해독된다.<br /><br /></li>
+</ul>
+
+<h2 id="3-명령어-해독기와-기계-사이클-부호기">3. 명령어 해독기와 기계 사이클 부호기</h2>
+<ul>
+  <li>명령어 해독기 :</li>
+</ul>
+:ET

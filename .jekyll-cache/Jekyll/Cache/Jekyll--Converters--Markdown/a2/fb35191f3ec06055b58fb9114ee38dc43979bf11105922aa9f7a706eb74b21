@@ -1,0 +1,81 @@
+I"g<h1 id="-제어-장치란">👀 제어 장치란?</h1>
+<ul>
+  <li>프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분</li>
+  <li>컴퓨터의 중추선이라 할 수 있다.</li>
+  <li>컴퓨터의 자료 처리 속도를 <code class="language-plaintext highlighter-rouge">MIPS(Million Instructions Per Second)</code>로 나타내는데 <code class="language-plaintext highlighter-rouge">1MIPS</code>는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="제어-장치의-구성">제어 장치의 구성</h1>
+<ul>
+  <li>제어 장치(control unit)는 주기억 장치에 연결되어 있는 명령어를 순서대로 호출하고 해독하여 그 결과에 따라 연산 장치, 기억 장치, 입,출력 장치에 제어 신호를 보내 원하고자 하는 동작을 유도한다.<br /><br /></li>
+</ul>
+
+<p><img src="../../assets/images/controlUnit.png" alt="controlUnit" /></p>
+
+<h2 id="1-프로그램-계수기pc--program-counter">1. 프로그램 계수기(PC : Program Counter)</h2>
+<ul>
+  <li>명령의 실행 순서를 정하기 위하여 다음에 실행될 명령이 들어 있는 번지를 기억해 두는 레지스터</li>
+  <li>명령어 계수기(IC : Instruction Counter) 혹은 위치 계수기(LC : Location Counter)라고도 한다.<br /><br /></li>
+</ul>
+
+<h2 id="2-명령-레지스터ir--instruction-register">2. 명령 레지스터(IR : Instruction Register)</h2>
+<ul>
+  <li>프로그램 계수기(<code class="language-plaintext highlighter-rouge">PC</code>)가 지정한 번지에 기억되어 있는 명령을 꺼내어 이 명령을 해석하기 위하여 임시로 보관하여 두는 레지스터</li>
+  <li>명령부와 번지부로 구성되어 있다.
+    <ul>
+      <li>명령부 : 실행 명령 코드(operation code)가 들어 있다.</li>
+      <li>번지부 : 데이터가 기억되어 있는 번지(operand)가 들어 있다.</li>
+    </ul>
+  </li>
+  <li>명령부의 명령 코드가 해독기에 옮겨져 해독되며 번지부의 번지가 번지 해독기에 이송되어 해독된다.<br /><br /></li>
+</ul>
+
+<h2 id="3-명령어-해독기instruction-decoder와-기계-사이클-부호기">3. 명령어 해독기(Instruction Decoder)와 기계 사이클 부호기</h2>
+<ul>
+  <li>명령어 해독기 : 명령 레지스터의 명령부에 있는 명령 코드를 해독하여 기계 사이클 부호기에 그 신호를 보내는 장치</li>
+  <li>기계 사이클 부호기 : 명령어 해독기로부터 보내져 온 명령을 실행하는 데 필요한 신호를 만들어 시간 통제 및 제어 장치에 보낸다.<br /><br /></li>
+</ul>
+
+<h2 id="4-시간-통제-및-제어-장치timming-and-control-unit">4. 시간 통제 및 제어 장치(Timming and Control Unit)</h2>
+<ul>
+  <li>기계 사이클 부호기에서 수신된 신호를 기계 사이클의 클럭에 따라 동기시켜 필요한 최종 신호를 만들어 순서대로 각 장치들로 송출<br /><br /></li>
+</ul>
+
+<h2 id="5-범용-레지스터general-register">5. 범용 레지스터(General Register)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code> 내에서 자료를 처리하는 과정에 자료를 일시적으로 보관하는 장치<br /><br /></li>
+</ul>
+
+<h2 id="6-작업-레지스터working-register">6. 작업 레지스터(Working Register)</h2>
+<ul>
+  <li>산술 논리를 수행하는 레지스터로 처리 결과를 보관하는 장치<br /><br /></li>
+</ul>
+
+<h2 id="7-플래그-레지스터flag-register">7. 플래그 레지스터(Flag Register)</h2>
+<ul>
+  <li>상태 레지스터(Status register)라고도 하며 <code class="language-plaintext highlighter-rouge">CPU</code>의 연산 결과 상태를 저장</li>
+  <li>처리 결과 0(zero), 부호(sign), 오버플로우(overflow), 자리올림(carry), 인터럽트(interrupt) 등의 발생 여부를 나타내는 특수 목적 레지스터<br /><br /><br /></li>
+</ul>
+
+<h1 id="제어-장치의-동작">제어 장치의 동작</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">기억 장치</code>에 있는 명령을 꺼낸다(인출 사이클(fecth cycle))</li>
+  <li><code class="language-plaintext highlighter-rouge">PC</code>(프로그램 계수기)에 초기 번지를 저장하면 주기억 장치의 명령이 그림의 <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>, <code class="language-plaintext highlighter-rouge">c</code> 순서로 명령 레지스터(<code class="language-plaintext highlighter-rouge">IR</code>)에 옮겨온다.</li>
+  <li>레지스터에는 1개의 명령 내용인 명령 코드와 번지부가 기억된다. 명령 해독기와 기계 사이클 부호기를 통해 해독된다.</li>
+  <li>각 장치에 신호를 보내고, 시간 통제 및 제어 장치를 통해 외부 장치들에게 제어 신호를 송출한다.</li>
+  <li>이 과정에서 <code class="language-plaintext highlighter-rouge">PC</code>의 주기억 장치의 번지는 자동으로 증가된다.<br /><br /></li>
+</ol>
+
+<h2 id="1-인출-사이클fetch-cycle">1. 인출 사이클(Fetch cycle)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">기억 장치</code>의 번지를 확인하여 명령을 읽어낼 때까지의 단계로 이 기간 동안에 명령이 <code class="language-plaintext highlighter-rouge">주기억 장치</code>에서 제어 장치 내의 <code class="language-plaintext highlighter-rouge">레지스터</code>로 옮겨진다.</li>
+</ul>
+
+<h3 id="-인출-사이클-진행-과정">🔸 인출 사이클 진행 과정</h3>
+<ol>
+  <li>현 <code class="language-plaintext highlighter-rouge">PC</code>(프로그램 계수기)의 내용을 <code class="language-plaintext highlighter-rouge">CPU</code> 내부 버스를 통하여 <code class="language-plaintext highlighter-rouge">MAR</code>(메모리 주소 레지스터)로 전송한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">MAR</code>의 값에 의해 주어진 메모리 주소의 내용(명령어)을 데이터 버스를 통하여 <code class="language-plaintext highlighter-rouge">MBR</code>(메모리 버퍼 레지스터)에 저장한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">PC</code>의 값이 증가한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">MBR</code>의 내용(명령어 코드)을 <code class="language-plaintext highlighter-rouge">IR</code>(명령 레지스터)로 이동한다.</li>
+</ol>
+:ET

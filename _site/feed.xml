@@ -1,4 +1,137 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-15T23:49:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1002. 터렛</title><link href="http://localhost:4000/boj/boj1002-java/" rel="alternate" type="text/html" title="Java) BOJ 1002. 터렛" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1002-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1002-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-17T13:10:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">컴퓨터 하드웨어) 제어 장치</title><link href="http://localhost:4000/computer%20science/CS-14/" rel="alternate" type="text/html" title="컴퓨터 하드웨어) 제어 장치" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS-14</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS-14/"><![CDATA[<h1 id="-제어-장치란">👀 제어 장치란?</h1>
+<ul>
+  <li>프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분</li>
+  <li>컴퓨터의 중추선이라 할 수 있다.</li>
+  <li>컴퓨터의 자료 처리 속도를 <code class="language-plaintext highlighter-rouge">MIPS(Million Instructions Per Second)</code>로 나타내는데 <code class="language-plaintext highlighter-rouge">1MIPS</code>는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="제어-장치의-구성">제어 장치의 구성</h1>
+<ul>
+  <li>제어 장치(control unit)는 주기억 장치에 연결되어 있는 명령어를 순서대로 호출하고 해독하여 그 결과에 따라 연산 장치, 기억 장치, 입,출력 장치에 제어 신호를 보내 원하고자 하는 동작을 유도한다.<br /><br /></li>
+</ul>
+
+<p><img src="../../assets/images/controlUnit.jpg" alt="controlUnit" /></p>
+
+<h2 id="1-프로그램-계수기pc--program-counter">1. 프로그램 계수기(PC : Program Counter)</h2>
+<ul>
+  <li>명령의 실행 순서를 정하기 위하여 다음에 실행될 명령이 들어 있는 번지를 기억해 두는 레지스터</li>
+  <li>명령어 계수기(IC : Instruction Counter) 혹은 위치 계수기(LC : Location Counter)라고도 한다.<br /><br /></li>
+</ul>
+
+<h2 id="2-명령-레지스터ir--instruction-register">2. 명령 레지스터(IR : Instruction Register)</h2>
+<ul>
+  <li>프로그램 계수기(<code class="language-plaintext highlighter-rouge">PC</code>)가 지정한 번지에 기억되어 있는 명령을 꺼내어 이 명령을 해석하기 위하여 임시로 보관하여 두는 레지스터</li>
+  <li>명령부와 번지부로 구성되어 있다.
+    <ul>
+      <li>명령부 : 실행 명령 코드(operation code)가 들어 있다.</li>
+      <li>번지부 : 데이터가 기억되어 있는 번지(operand)가 들어 있다.</li>
+    </ul>
+  </li>
+  <li>명령부의 명령 코드가 해독기에 옮겨져 해독되며 번지부의 번지가 번지 해독기에 이송되어 해독된다.<br /><br /></li>
+</ul>
+
+<h2 id="3-명령어-해독기instruction-decoder와-기계-사이클-부호기">3. 명령어 해독기(Instruction Decoder)와 기계 사이클 부호기</h2>
+<ul>
+  <li>명령어 해독기 : 명령 레지스터의 명령부에 있는 명령 코드를 해독하여 기계 사이클 부호기에 그 신호를 보내는 장치</li>
+  <li>기계 사이클 부호기 : 명령어 해독기로부터 보내져 온 명령을 실행하는 데 필요한 신호를 만들어 시간 통제 및 제어 장치에 보낸다.<br /><br /></li>
+</ul>
+
+<h2 id="4-시간-통제-및-제어-장치timming-and-control-unit">4. 시간 통제 및 제어 장치(Timming and Control Unit)</h2>
+<ul>
+  <li>기계 사이클 부호기에서 수신된 신호를 기계 사이클의 클럭에 따라 동기시켜 필요한 최종 신호를 만들어 순서대로 각 장치들로 송출<br /><br /></li>
+</ul>
+
+<h2 id="5-범용-레지스터general-register">5. 범용 레지스터(General Register)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code> 내에서 자료를 처리하는 과정에 자료를 일시적으로 보관하는 장치<br /><br /></li>
+</ul>
+
+<h2 id="6-작업-레지스터working-register">6. 작업 레지스터(Working Register)</h2>
+<ul>
+  <li>산술 논리를 수행하는 레지스터로 처리 결과를 보관하는 장치<br /><br /></li>
+</ul>
+
+<h2 id="7-플래그-레지스터flag-register">7. 플래그 레지스터(Flag Register)</h2>
+<ul>
+  <li>상태 레지스터(Status register)라고도 하며 <code class="language-plaintext highlighter-rouge">CPU</code>의 연산 결과 상태를 저장</li>
+  <li>처리 결과 0(zero), 부호(sign), 오버플로우(overflow), 자리올림(carry), 인터럽트(interrupt) 등의 발생 여부를 나타내는 특수 목적 레지스터<br /><br /><br /></li>
+</ul>
+
+<h1 id="제어-장치의-동작">제어 장치의 동작</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">기억 장치</code>에 있는 명령을 꺼낸다(인출 사이클(fecth cycle))</li>
+  <li><code class="language-plaintext highlighter-rouge">PC</code>(프로그램 계수기)에 초기 번지를 저장하면 주기억 장치의 명령이 그림의 <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>, <code class="language-plaintext highlighter-rouge">c</code> 순서로 명령 레지스터(<code class="language-plaintext highlighter-rouge">IR</code>)에 옮겨온다.</li>
+  <li>레지스터에는 1개의 명령 내용인 명령 코드와 번지부가 기억된다. 명령 해독기와 기계 사이클 부호기를 통해 해독된다.</li>
+  <li>각 장치에 신호를 보내고, 시간 통제 및 제어 장치를 통해 외부 장치들에게 제어 신호를 송출한다.</li>
+  <li>이 과정에서 <code class="language-plaintext highlighter-rouge">PC</code>의 주기억 장치의 번지는 자동으로 증가된다.<br /><br /></li>
+</ol>
+
+<h2 id="1-인출-사이클fetch-cycle">1. 인출 사이클(Fetch cycle)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">기억 장치</code>의 번지를 확인하여 명령을 읽어낼 때까지의 단계로 이 기간 동안에 명령이 <code class="language-plaintext highlighter-rouge">주기억 장치</code>에서 제어 장치 내의 <code class="language-plaintext highlighter-rouge">레지스터</code>로 옮겨진다.</li>
+</ul>
+
+<h3 id="-인출-사이클-진행-과정">🔸 인출 사이클 진행 과정</h3>
+<ol>
+  <li>현 <code class="language-plaintext highlighter-rouge">PC</code>(프로그램 계수기)의 내용을 <code class="language-plaintext highlighter-rouge">CPU</code> 내부 버스를 통하여 <code class="language-plaintext highlighter-rouge">MAR</code>(메모리 주소 레지스터)로 전송한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">MAR</code>의 값에 의해 주어진 메모리 주소의 내용(명령어)을 데이터 버스를 통하여 <code class="language-plaintext highlighter-rouge">MBR</code>(메모리 버퍼 레지스터)에 저장한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">PC</code>의 값이 증가한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">MBR</code>의 내용(명령어 코드)을 <code class="language-plaintext highlighter-rouge">IR</code>(명령 레지스터)로 이동한다.<br /><br /></li>
+</ol>
+
+<h2 id="2-실행-사이클execution-cycle">2. 실행 사이클(Execution cycle)</h2>
+<ul>
+  <li>읽어진 명령에 의해 필요한 신호를 만들어 결과를 얻을 때까지의 단계</li>
+  <li><code class="language-plaintext highlighter-rouge">명령 레지스터</code>의 <code class="language-plaintext highlighter-rouge">명령 코드</code> 내용이 명령 해독기에 의해 <code class="language-plaintext highlighter-rouge">해독</code>되고, 해독된 내용은 부호기에 의해 각 장치로 신호를 보내게 된다.</li>
+  <li>해독된 내용이 가산 명령이면 부호기의 신호에 의해 누산기(accumulator)의 내용이 소거되고, 명령 레지스터의 번지부가 주기억 장치의 번지 지정에서 산출되어 기억 레지스터로 옮긴 후 누산기와 가산기의 연산에 의해 계산된 결과는 누산기에 임시 저장된다.</li>
+  <li>여기까지 끝나면 실행 사이클이 끝나고 다시 인출 사이클이 시작된다. 이러한 과정을 기계 사이클(machine cycle)이라 한다.<br /><br /></li>
+</ul>
+
+<h2 id="3-인터럽트interrupt">3. 인터럽트(Interrupt)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>의 플래그 레지스터는 인터럽트에 관한 정보를 포함한다.</li>
+  <li>인터럽트가 <code class="language-plaintext highlighter-rouge">CPU</code>에 가해지면 현재 처리 프로그램을 일단 중지시키고, 인터럽트 프로그램을 수행시킨다.</li>
+  <li>인터럽트는 <code class="language-plaintext highlighter-rouge">CPU</code>의 제어 버스에 속하며, 인터럽트용 전기 신호 단자에 의해 <code class="language-plaintext highlighter-rouge">CPU</code>가 인지하게 된다.</li>
+  <li>어떤 처리 프로그램의 실행중에 제어 프로그램의 서비스를 요구하는 예기치 못한 일이 발생했을 때에 이걸 하드웨어로 포착해서 감시 프로그램(Supervisor)에게 제어권을 인도하기 위한 기능</li>
+  <li>인터럽트가 발생하여 제어권이 제어 프로그램(Control program)에 주어지면 제어 프로그램이 중에 준비된 인터럽트 처리 루틴(Interrupt handling routine)이 실행된다. 이 루틴의 처리가 끝나면 시스템은 인터럽트가 발생하기 전 상태로 되돌아가서 먼저 실행되던 프로그램의 실행을 다시 시작한다.<br /><br /></li>
+</ul>
+
+<h3 id="-인터럽트-종류">🔸 인터럽트 종류</h3>
+<h4 id="1-기계-체크-인터럽트machine-check-interrupt">1. 기계 체크 인터럽트(Machine check interrupt)</h4>
+<ul>
+  <li>어떤 프로그램 실행중에 장치 착오로 인하여 발생하는 인터럽트</li>
+  <li>기계에 착오가 발생했을 경우에 인터럽트가 일어나 제어 프로그램으로 제어권이 넘어간다.</li>
+  <li>제어 프로그램 내의 인터럽트 처리 루틴이 <code class="language-plaintext highlighter-rouge">CPU</code>의 제어권을 인도받아서 필요한 진단이나 착오 정정의 처리를 수행한 후 제어권을 다시 처리 프로그램에 되돌려 준다.<br /><br /></li>
+</ul>
+
+<h4 id="2-외부-인터럽트external-interrupt">2. 외부 인터럽트(External interrupt)</h4>
+<ul>
+  <li>오퍼레이터가 필요에 의해서 콘솔에 있는 인터럽트 키를 누를 때 발생하는 인터럽트</li>
+  <li>오퍼레이터가 시스템에 어떤 요구나 응답을 할 때 필요하다.</li>
+  <li>인터럽트 키를 누름으로써 인터럽트가 발생하여 오퍼레이터가 필요한 내용의 명령을 손으로 조작할 수 있다.<br /><br /></li>
+</ul>
+
+<h4 id="3-프로그램-인터럽트program-interrupt">3. 프로그램 인터럽트(Program interrupt)</h4>
+<ul>
+  <li>프로그램 실행중에 프로그램 상의 착오나 예외 상태가 발생했을 경우 일어나는 인터럽트<br /><br /></li>
+</ul>
+
+<h4 id="4-입출력-인터럽트io-interrupt">4. 입,출력 인터럽트(I/O interrupt)</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>는 입,출력 조작의 계시를 명령하는 것 뿐이지 실제로 입,출력 조작을 지시하는 것은 채널에서 이루어진다. 그래서 채널이 입,출력 조작을 함과 동시에 <code class="language-plaintext highlighter-rouge">CPU</code>는 다른 처리를 한다.</li>
+  <li>입,출력 조작이 끝나거나 입,출력 착오가 발생되면 <code class="language-plaintext highlighter-rouge">CPU</code>의 서비스가 필요해지므로 채널이 인터럽트 신호를 발생시킨다.</li>
+  <li>이 때 <code class="language-plaintext highlighter-rouge">CPU</code>는 제어 프로그램 중의 인터럽트 처리 루틴(I/O Interrupt handling routine)이 실행된다.<br /><br /></li>
+</ul>
+
+<h4 id="5-제어감시-프로그램-호출-인터럽트supervisor-call-interrupt">5. 제어(감시) 프로그램 호출 인터럽트(Supervisor call interrupt)</h4>
+<ul>
+  <li>시스템에 의하여 자동적으로 발생하는 인터럽트가 아닌 프로그램 내에서 특정한 서비스를 요구하는 명령으로 인터럽트를 일으키는 경우<br /><br /><br /></li>
+</ul>
+
+<h2 id="출처">출처</h2>
+<ul>
+  <li>컴퓨터 사이언스(김철 저)</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Computer Hardware" /><category term="Control Unit" /><summary type="html"><![CDATA[👀 제어 장치란? 프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분 컴퓨터의 중추선이라 할 수 있다. 컴퓨터의 자료 처리 속도를 MIPS(Million Instructions Per Second)로 나타내는데 1MIPS는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.]]></summary></entry><entry><title type="html">Java) BOJ 1002. 터렛</title><link href="http://localhost:4000/boj/boj1002-java/" rel="alternate" type="text/html" title="Java) BOJ 1002. 터렛" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1002-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1002-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -241,7 +374,67 @@
 <ul>
   <li><a href="https://yonguri.tistory.com/119">[Mac] OpenJDK 버전별로 여러개 설치하기 ( using Homebrew )</a></li>
   <li><a href="https://velog.io/@jsoh/%EC%98%A4%EB%9D%BC%ED%81%B4-JDK%EB%A5%BC-%EC%82%AD%EC%A0%9C%ED%95%98%EA%B3%A0-OpenJDK-11-%EC%84%A4%EC%B9%98">MacOS에서 오라클 JDK를 삭제하고 OpenJDK 11 설치</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Java" /><category term="Java" /><category term="OpenJDK" /><category term="Homebrew" /><summary type="html"><![CDATA[👀 터미널에서 단어 하나만 입력하면 OpenJDK 8 버전과 OpenJDK 11 버전을 그 때 그 때 기본으로 세팅할 수 있다.]]></summary></entry><entry><title type="html">Java) BOJ 3009. 네 번째 점</title><link href="http://localhost:4000/boj/boj3009-java/" rel="alternate" type="text/html" title="Java) BOJ 3009. 네 번째 점" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj3009-java</id><content type="html" xml:base="http://localhost:4000/boj/boj3009-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Java" /><category term="Java" /><category term="OpenJDK" /><category term="Homebrew" /><summary type="html"><![CDATA[👀 터미널에서 단어 하나만 입력하면 OpenJDK 8 버전과 OpenJDK 11 버전을 그 때 그 때 기본으로 세팅할 수 있다.]]></summary></entry><entry><title type="html">Java) BOJ 1085. 직사각형에서 탈출</title><link href="http://localhost:4000/boj/boj9020-java/" rel="alternate" type="text/html" title="Java) BOJ 1085. 직사각형에서 탈출" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9020-java</id><content type="html" xml:base="http://localhost:4000/boj/boj9020-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1085">https://www.acmicpc.net/problem/1085</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>한수는 지금 (x, y)에 있다. 직사각형은 각 변이 좌표축에 평행하고, 왼쪽 아래 꼭짓점은 (0, 0), 오른쪽 위 꼭짓점은 (w, h)에 있다.</li>
+  <li>직사각형의 경계선까지 가는 거리의 최솟값을 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 x, y, w, h가 주어진다.</li>
+  <li>1 ≤ w, h ≤ 1,000</li>
+  <li>1 ≤ x ≤ w-1</li>
+  <li>1 ≤ y ≤ h-1</li>
+  <li>x, y, w, h는 정수<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 문제의 정답을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>예제를 보니까 (x, y)에서 가로와 세로 직선 방향으로 직사각형의 변으로 가면 되는 것이라</li>
+  <li>x는 x와 w - x 값 중 더 작은 값을, y는 y와 h - y 중 더 작은 값을 찾은 다음에 저 둘 중 더 작은 값을 최종 출력하면 정답인 거 같아서 그대로 썼는데 통과되었다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 140 ms</li>
+  <li>메모리 : 14216 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/842a7990b2c0aeee814beb998cd21d67.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1085" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1085 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 3009. 네 번째 점</title><link href="http://localhost:4000/boj/boj3009-java/" rel="alternate" type="text/html" title="Java) BOJ 3009. 네 번째 점" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj3009-java</id><content type="html" xml:base="http://localhost:4000/boj/boj3009-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -428,16 +621,14 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/196d69b177d3d418eaaa0638d14ae211.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4153" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4153 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 1085. 직사각형에서 탈출</title><link href="http://localhost:4000/boj/boj9020-java/" rel="alternate" type="text/html" title="Java) BOJ 1085. 직사각형에서 탈출" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9020-java</id><content type="html" xml:base="http://localhost:4000/boj/boj9020-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/196d69b177d3d418eaaa0638d14ae211.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4153" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4153 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 1978. 소수 찾기</title><link href="http://localhost:4000/boj/boj1978-java/" rel="alternate" type="text/html" title="Java) BOJ 1978. 소수 찾기" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1978-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1978-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/1085">https://www.acmicpc.net/problem/1085</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/1978">https://www.acmicpc.net/problem/1978</a><br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
-<hr />
-
 <ul>
   <li>시간 제한 : 2 초</li>
   <li>메모리 제한 : 128 MB<br /><br /></li>
@@ -447,274 +638,28 @@
 <hr />
 
 <ul>
-  <li>한수는 지금 (x, y)에 있다. 직사각형은 각 변이 좌표축에 평행하고, 왼쪽 아래 꼭짓점은 (0, 0), 오른쪽 위 꼭짓점은 (w, h)에 있다.</li>
-  <li>직사각형의 경계선까지 가는 거리의 최솟값을 구하는 프로그램을 작성하시오.<br /><br /></li>
+  <li>주어진 수 N개 중에서 소수가 몇 개인지 찾아서 출력하는 프로그램을 작성하시오.<br /><br /></li>
 </ul>
 
 <h1 id="입력">입력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄에 x, y, w, h가 주어진다.</li>
-  <li>1 ≤ w, h ≤ 1,000</li>
-  <li>1 ≤ x ≤ w-1</li>
-  <li>1 ≤ y ≤ h-1</li>
-  <li>x, y, w, h는 정수<br /><br /></li>
+  <li>첫 줄에 수의 개수 N이 주어진다. N은 100이하이다. 다음으로 N개의 수가 주어지는데 수는 1,000 이하의 자연수이다.  <br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄에 문제의 정답을 출력한다.<br /><br /><br /></li>
+  <li>주어진 수들 중 소수의 개수를 출력한다.  <br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>예제를 보니까 (x, y)에서 가로와 세로 직선 방향으로 직사각형의 변으로 가면 되는 것이라</li>
-  <li>x는 x와 w - x 값 중 더 작은 값을, y는 y와 h - y 중 더 작은 값을 찾은 다음에 저 둘 중 더 작은 값을 최종 출력하면 정답인 거 같아서 그대로 썼는데 통과되었다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 140 ms</li>
-  <li>메모리 : 14216 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/842a7990b2c0aeee814beb998cd21d67.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1085" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1085 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 11653. 소인수분해</title><link href="http://localhost:4000/boj/boj11653-java/" rel="alternate" type="text/html" title="Java) BOJ 11653. 소인수분해" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11653-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11653-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/11653">https://www.acmicpc.net/problem/11653</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>정수 N이 주어졌을 때, 소인수분해하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 정수 N (1 ≤ N ≤ 10,000,000)이 주어진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>N의 소인수분해 결과를 한 줄에 하나씩 오름차순으로 출력한다. N이 1인 경우 아무것도 출력하지 않는다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>소인수분해 하는 방법 그대로 코드로 구현했다.</li>
-  <li>2부터 시작해서 N이 2로 나눠 떨어지면 N을 2로 나누고 2를 출력하고 나눠 떨어지지 않으면 1 증가시켜서 다음 수로 같은 과정을 반복하도록 했다.</li>
-  <li>최대입력인 10,000,000을 가장 작은 수인 2로 나눠도 최대 5,000,000번의 연산을 하기 때문에 시간복잡도는 충분할 것이라 생각하고 제출해 봤는데 통과되었다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 172 ms</li>
-  <li>메모리 : 14280 KB</li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/8e358173fb3a2fe43ebbfc4fe642f2e2.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11653" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11653 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 1011. Fly me to the Alpha Centauri</title><link href="http://localhost:4000/boj/boj1011-java/" rel="alternate" type="text/html" title="Java) BOJ 1011. Fly me to the Alpha Centauri" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1011-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1011-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1011">https://www.acmicpc.net/problem/1011</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>우현이는 어린 시절, 지구 외의 다른 행성에서도 인류들이 살아갈 수 있는 미래가 오리라 믿었다.</li>
-  <li>그리고 그가 지구라는 세상에 발을 내려 놓은 지 23년이 지난 지금, 세계 최연소 ASNA 우주 비행사가 되어 새로운 세계에 발을 내려 놓는 영광의 순간을 기다리고 있다.</li>
-  <li>그가 탑승하게 될 우주선은 Alpha Centauri라는 새로운 인류의 보금자리를 개척하기 위한 대규모 생활 유지 시스템을 탑재하고 있기 때문에,</li>
-  <li>그 크기와 질량이 엄청난 이유로 최신기술력을 총 동원하여 개발한 공간이동 장치를 탑재하였다.</li>
-  <li>하지만 이 공간이동 장치는 이동 거리를 급격하게 늘릴 경우 기계에 심각한 결함이 발생하는 단점이 있어서,</li>
-  <li>이전 작동시기에 k광년을 이동하였을 때는 k-1 , k 혹은 k+1 광년만을 다시 이동할 수 있다.</li>
-  <li>예를 들어, 이 장치를 처음 작동시킬 경우 -1 , 0 , 1 광년을 이론상 이동할 수 있으나</li>
-  <li>사실상 음수 혹은 0 거리만큼의 이동은 의미가 없으므로 1 광년을 이동할 수 있으며,</li>
-  <li>
-    <p>그 다음에는 0 , 1 , 2 광년을 이동할 수 있는 것이다. ( 여기서 다시 2광년을 이동한다면 다음 시기엔 1, 2, 3 광년을 이동할 수 있다. ) <br /><br />
-<img src="https://www.acmicpc.net/upload/201003/rlaehdgur.JPG" alt="img" /></p>
-  </li>
-  <li>김우현은 공간이동 장치 작동시의 에너지 소모가 크다는 점을 잘 알고 있기 때문에 x지점에서 y지점을 향해 최소한의 작동 횟수로 이동하려 한다.</li>
-  <li>하지만 y지점에 도착해서도 공간 이동장치의 안전성을 위하여 y지점에 도착하기 바로 직전의 이동거리는 반드시 1광년으로 하려 한다.</li>
-  <li>김우현을 위해 x지점부터 정확히 y지점으로 이동하는데 필요한 공간 이동 장치 작동 횟수의 최솟값을 구하는 프로그램을 작성하라.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>입력의 첫 줄에는 테스트케이스의 개수 T가 주어진다.</li>
-  <li>각각의 테스트 케이스에 대해 현재 위치 x 와 목표 위치 y 가 정수로 주어지며, x는 항상 y보다 작은 값을 갖는다. (0 ≤ x &lt; y &lt; 231)<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>각 테스트 케이스에 대해 x지점으로부터 y지점까지 정확히 도달하는데 필요한 최소한의 공간이동 장치 작동 횟수를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/board/view/75491">https://www.acmicpc.net/board/view/75491</a></li>
-  <li>
-    <p>참고 해설<br /><br /></p>
-  </li>
-  <li>30분 고민해 봤으나 <code class="language-plaintext highlighter-rouge">k1 = 1, kn = 1</code>이어야 한다까지만 알겠고 나머지 풀이는 영 감이 안 와서 질문게시판을 검색했다.</li>
-  <li>내가 처음에 했던 생각에서 아주 구체화 된 풀이를 찾을 수 있었는데</li>
-  <li><code class="language-plaintext highlighter-rouge">121</code> <code class="language-plaintext highlighter-rouge">12321</code> <code class="language-plaintext highlighter-rouge">123421</code> <code class="language-plaintext highlighter-rouge">123454321</code> … 이런식으로 이동해야 한다. (각 자리수마다 장치를 작동하는 것임)</li>
-  <li>저 수들에서 찾을 수 있는 규칙은 각 자리수의 합은 <code class="language-plaintext highlighter-rouge">2의 제곱</code>, <code class="language-plaintext highlighter-rouge">3의 제곱</code>, <code class="language-plaintext highlighter-rouge">4의 제곱</code>, … 과 같다.</li>
-  <li>
-    <p>그리고 수의 길이는 <code class="language-plaintext highlighter-rouge">2의 제곱-1</code>, <code class="language-plaintext highlighter-rouge">3의 제곱-1</code>, <code class="language-plaintext highlighter-rouge">4의 제곱-1</code>, … 과 같다. =&gt; 이건 장치의 작동 회수가 된다.<br /><br /></p>
-  </li>
-  <li>이제 도착지 <code class="language-plaintext highlighter-rouge">y</code>와 출발지 <code class="language-plaintext highlighter-rouge">x</code> 사이의 거리를 구한다.</li>
-  <li>그리고 거리보다 작거나 같으면서 가장 가까운 <code class="language-plaintext highlighter-rouge">제곱수</code>의 <code class="language-plaintext highlighter-rouge">제곱근</code>을 구한다. (제곱근 구해주는 함수는 <code class="language-plaintext highlighter-rouge">Math.sqrt()</code> 쓰면 됨)</li>
-  <li>그 다음 <code class="language-plaintext highlighter-rouge">거리</code>에서 <code class="language-plaintext highlighter-rouge">제곱수</code>를 뺀다.</li>
-  <li>
-    <p>이 때 뺀 수가 <code class="language-plaintext highlighter-rouge">0</code>이면 아까 구했던 수의 길이를 그대로 출력하면 되고<br /><br /></p>
-  </li>
-  <li>예) 이동해야 하는 거리가 25일 때</li>
-  <li>25</li>
-  <li>
-    <p>123454321 &lt;- 5*2-1 = 9 번만에 이동할 수 있다.<br /><br /></p>
-  </li>
-  <li>0보다 크면서 제곱근보다 작거나 같으면 위에서 구했던 수의 길이에다 1을 더해주면 된다.</li>
-  <li>26</li>
-  <li>
-    <p>1234543211 &lt;- 9번 이동한 다음 1번 더 이동해야 각 자리수를 더한 합이 26이 된다.<br /><br /></p>
-  </li>
-  <li>27</li>
-  <li>
-    <p>1234543221 &lt;- 마찬가지로 9번 이동하고 1번 더 이동해야 한다.<br /><br /></p>
-  </li>
-  <li>28</li>
-  <li>
-    <p>1234543321<br /><br /></p>
-  </li>
-  <li>29</li>
-  <li>
-    <p>1234544321<br /><br /></p>
-  </li>
-  <li>30</li>
-  <li>
-    <p>1234554321<br /><br /></p>
-  </li>
-  <li>
-    <p>왜냐면 위의 예시와 같이 중간에 이동할 수 있기 때문이다. <br /><br /></p>
-  </li>
-  <li>하지만 뺀 수가 0보다 크면서 제곱근보다 크면 수의 길이에다 2를 더해줘야 한다.</li>
-  <li>31 (여기서 한자리 숫자가 더 늘어나죠?)</li>
-  <li>12345543211 &lt;- 31보다 작으면서 가장 가까운 제곱수는 5<em>5=25이기 때문에 (6</em>6=36은 초과해서 안됨) 31-25를 해야 한다.</li>
-  <li>…</li>
-  <li>35</li>
-  <li>
-    <p>12345554321 &lt;- 여기까지는 (5*2-1) + 2 = 11 <br /><br /></p>
-  </li>
-  <li>36(여기는 6의 제곱)</li>
-  <li>
-    <p>12345654321 &lt;- 6*2-1 = 11<br /><br /></p>
-  </li>
-  <li>이 과정을 코드로 구현하면 통과할 수 있다.</li>
-  <li>수학 문제는 규칙을 찾는 것이 중요하다는 것을 알 수 있었다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 128 ms</li>
-  <li>메모리 : 14084 KB</li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/37d48b05cb8e98f33ac7988203013727.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1011" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1011 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 4948. 베르트랑 공준</title><link href="http://localhost:4000/boj/boj4948-java/" rel="alternate" type="text/html" title="Java) BOJ 4948. 베르트랑 공준" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4948-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4948-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/4948">https://www.acmicpc.net/problem/4948</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>베르트랑 공준은 임의의 자연수 n에 대하여, n보다 크고, 2n보다 작거나 같은 소수는 적어도 하나 존재한다는 내용을 담고 있다.</li>
-  <li>이 명제는 조제프 베르트랑이 1845년에 추측했고, 파프누티 체비쇼프가 1850년에 증명했다.</li>
-  <li>예를 들어, 10보다 크고, 20보다 작거나 같은 소수는 4개가 있다. (11, 13, 17, 19) 또, 14보다 크고, 28보다 작거나 같은 소수는 3개가 있다. (17,19, 23)</li>
-  <li>자연수 n이 주어졌을 때, n보다 크고, 2n보다 작거나 같은 소수의 개수를 구하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>입력은 여러 개의 테스트 케이스로 이루어져 있다. 각 케이스는 n을 포함하는 한 줄로 이루어져 있다.</li>
-  <li>입력의 마지막에는 0이 주어진다. 1 ≤ n ≤ 123,456<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>각 테스트 케이스에 대해서, n보다 크고, 2n보다 작거나 같은 소수의 개수를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>n초과 2n이하의 수들을 소수를 판별하는 연산을 해서 소수면 카운트해서 2n까지 판별이 끝나면 총 개수를 출력했다.</li>
+  <li>소수 구하기는 프로그래밍을 처음 배울 때 풀어봤던 문제이기도 하고 예전에 몇 번 풀어봐서 풀이를 떠올리는 것은 어렵지 않았다.</li>
   <li>하지만 정직하게 2부터 i까지의 수의 나머지를 구하면서 소수를 판별하면 시간이 오래 걸리기 때문에 i의 제곱근 만큼만 반복하는 알고리즘을 썼다.</li>
   <li>i의 제곱근만큼만 반복해도 소수인지 판별이 되는 이유는 제곱근을 넘어가는 수 부터는 앞전에 구했던 곱해서 i가 되는 수들이 순서만 바뀌어서 똑같이 나오기 때문이다.</li>
   <li>예를 들어 i=16라면</li>
@@ -727,7 +672,7 @@
   <li>
     <p>그래서 제곱근을 초과하는 수에 대해 소수를 판별하는 연산을 하는 것은 생략해도 결과에 영향이 없다.<br /><br /></p>
   </li>
-  <li><a href="https://notepad96.tistory.com/entry/C-%EC%86%8C%EC%88%98-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">소수 구하기</a></li>
+  <li><a href="https://notepad96.tistory.com/entry/C-%EC%86%8C%EC%88%98-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">C++ 소수 판별하기</a></li>
   <li>예전에 참고했던 글인데 언어 상관없이 개념적으로 참고하기 좋은 글이다.<br /><br /></li>
 </ul>
 
@@ -735,14 +680,14 @@
 <hr />
 
 <ul>
-  <li>시간 : 696 ms</li>
-  <li>메모리 : 14660 KB</li>
+  <li>시간 : 132 ms</li>
+  <li>메모리 : 14152 KB</li>
 </ul>
 
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/aefd8a5c816d3e500f28493fdae88fbe.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4948" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4948 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 2581. 소수</title><link href="http://localhost:4000/boj/boj2581-java/" rel="alternate" type="text/html" title="Java) BOJ 2581. 소수" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2581-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2581-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/afc35a36d6fd638ec39bc1c5be251d8f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1978" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1978 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2581. 소수</title><link href="http://localhost:4000/boj/boj2581-java/" rel="alternate" type="text/html" title="Java) BOJ 2581. 소수" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2581-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2581-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -818,4 +763,76 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/62010af0c3c1d5f4ee8a0b165d29a66b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2581" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2581 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/62010af0c3c1d5f4ee8a0b165d29a66b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2581" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2581 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 4948. 베르트랑 공준</title><link href="http://localhost:4000/boj/boj4948-java/" rel="alternate" type="text/html" title="Java) BOJ 4948. 베르트랑 공준" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj4948-java</id><content type="html" xml:base="http://localhost:4000/boj/boj4948-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/4948">https://www.acmicpc.net/problem/4948</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>베르트랑 공준은 임의의 자연수 n에 대하여, n보다 크고, 2n보다 작거나 같은 소수는 적어도 하나 존재한다는 내용을 담고 있다.</li>
+  <li>이 명제는 조제프 베르트랑이 1845년에 추측했고, 파프누티 체비쇼프가 1850년에 증명했다.</li>
+  <li>예를 들어, 10보다 크고, 20보다 작거나 같은 소수는 4개가 있다. (11, 13, 17, 19) 또, 14보다 크고, 28보다 작거나 같은 소수는 3개가 있다. (17,19, 23)</li>
+  <li>자연수 n이 주어졌을 때, n보다 크고, 2n보다 작거나 같은 소수의 개수를 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>입력은 여러 개의 테스트 케이스로 이루어져 있다. 각 케이스는 n을 포함하는 한 줄로 이루어져 있다.</li>
+  <li>입력의 마지막에는 0이 주어진다. 1 ≤ n ≤ 123,456<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>각 테스트 케이스에 대해서, n보다 크고, 2n보다 작거나 같은 소수의 개수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>n초과 2n이하의 수들을 소수를 판별하는 연산을 해서 소수면 카운트해서 2n까지 판별이 끝나면 총 개수를 출력했다.</li>
+  <li>하지만 정직하게 2부터 i까지의 수의 나머지를 구하면서 소수를 판별하면 시간이 오래 걸리기 때문에 i의 제곱근 만큼만 반복하는 알고리즘을 썼다.</li>
+  <li>i의 제곱근만큼만 반복해도 소수인지 판별이 되는 이유는 제곱근을 넘어가는 수 부터는 앞전에 구했던 곱해서 i가 되는 수들이 순서만 바뀌어서 똑같이 나오기 때문이다.</li>
+  <li>예를 들어 i=16라면</li>
+  <li>1*16</li>
+  <li>2*8</li>
+  <li>4*4</li>
+  <li>8*2</li>
+  <li>16*1</li>
+  <li>위와 같이 16의 제곱근인 4를 기점으로 앞전에 나왔던 수들이 순서만 바뀌어서 나온다.</li>
+  <li>
+    <p>그래서 제곱근을 초과하는 수에 대해 소수를 판별하는 연산을 하는 것은 생략해도 결과에 영향이 없다.<br /><br /></p>
+  </li>
+  <li><a href="https://notepad96.tistory.com/entry/C-%EC%86%8C%EC%88%98-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">소수 구하기</a></li>
+  <li>예전에 참고했던 글인데 언어 상관없이 개념적으로 참고하기 좋은 글이다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 696 ms</li>
+  <li>메모리 : 14660 KB</li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/aefd8a5c816d3e500f28493fdae88fbe.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No4948" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/4948 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry></feed>
