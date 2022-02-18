@@ -1,0 +1,961 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>컴퓨터 구조) 컴퓨터 구조 Preview | Yujin Dev Log</title>
+<meta name="description" content="컴퓨터의 발전    무어의 법칙 덕분에 숱한 기술의 발전이 가능했다.   중요하니까 외우자.">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="컴퓨터 구조) 컴퓨터 구조 Preview">
+<meta property="og:url" content="http://localhost:4000/computer%20science/computer-architecture-01/">
+
+
+  <meta property="og:description" content="컴퓨터의 발전    무어의 법칙 덕분에 숱한 기술의 발전이 가능했다.   중요하니까 외우자.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-18T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/computer%20science/computer-architecture-01/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#computer-science" itemprop="item"><span itemprop="name">Computer science</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">컴퓨터 구조) 컴퓨터 구조 Preview</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="컴퓨터 구조) 컴퓨터 구조 Preview">
+    <meta itemprop="description" content="컴퓨터의 발전  무어의 법칙 덕분에 숱한 기술의 발전이 가능했다.  중요하니까 외우자.">
+    <meta itemprop="datePublished" content="2022-02-18T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/computer%20science/computer-architecture-01/" class="u-url" itemprop="url">컴퓨터 구조) 컴퓨터 구조 Preview
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#컴퓨터의-발전">컴퓨터의 발전</a><ul><li><a href="#-무어의-법칙">👀 무어의 법칙</a></li></ul></li><li><a href="#컴퓨터의-종류">컴퓨터의 종류</a><ul><li><a href="#개인-컴퓨터">개인 컴퓨터</a></li><li><a href="#서버-컴퓨터">서버 컴퓨터</a></li><li><a href="#수퍼-컴퓨터">수퍼 컴퓨터</a></li><li><a href="#임베디드-컴퓨터">임베디드 컴퓨터</a></li></ul></li><li><a href="#데이터의-단위">데이터의 단위</a></li><li><a href="#미래의-컴퓨터">미래의 컴퓨터</a><ul><li><a href="#personal-mobile-device-pmd">Personal Mobile Device (PMD)</a></li><li><a href="#cloud-computing">Cloud computing</a></li></ul></li><li><a href="#컴퓨터의-성능">컴퓨터의 성능</a><ul><li><a href="#알고리즘-측면">알고리즘 측면</a></li><li><a href="#프로그래밍-언어-컴파일러-구조">프로그래밍 언어, 컴파일러, 구조</a></li><li><a href="#프로세서와-메모리">프로세서와 메모리</a></li><li><a href="#입출력-시스템">입출력 시스템</a></li></ul></li><li><a href="#컴퓨터-구조">컴퓨터 구조</a><ul><li><a href="#application-software">Application software</a></li><li><a href="#system-software">System software</a></li><li><a href="#hardware">Hardware</a></li></ul></li><li><a href="#levels-of-program-code">Levels of Program Code</a><ul><li><a href="#high-level-language">High-level language</a></li><li><a href="#assembly-language">Assembly language</a></li><li><a href="#hardware-representation">Hardware representation</a></li></ul></li><li><a href="#컴퓨터의-구성요소">컴퓨터의 구성요소</a></li><li><a href="#cpu-구성요소">CPU 구성요소</a></li><li><a href="#추상화abstractions">추상화(Abstractions)</a></li><li><a href="#메모리-종류">메모리 종류</a><ul><li><a href="#휘발성-메모리-volatile-main-memory">휘발성 메모리 (Volatile main memory)</a></li><li><a href="#비휘발성-메모리-non-volatile-secondary-memory">비휘발성 메모리 (Non-volatile secondary memory)</a></li></ul></li><li><a href="#반도체-기술">반도체 기술</a></li><li><a href="#컴퓨터의-성능-1">컴퓨터의 성능</a><ul><li><a href="#response-time">Response time</a></li><li><a href="#throughput">Throughput</a></li><li><a href="#execution-time">Execution time</a></li><li><a href="#elapsed-time">Elapsed time</a></li><li><a href="#cpu-time">CPU time</a></li></ul></li><li><a href="#cpu-clocking">CPU Clocking</a><ul><li><a href="#-시간-단위">👀 시간 단위</a></li></ul></li><li><a href="#출처">출처</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="컴퓨터의-발전">컴퓨터의 발전</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">무어의 법칙</code> 덕분에 숱한 기술의 발전이 가능했다.</li>
+  <li>중요하니까 외우자.<br /><br /></li>
+</ul>
+
+<h2 id="-무어의-법칙">👀 무어의 법칙</h2>
+<ul>
+  <li>싱글 칩의 트랜지스터 수가 2년마다 2배로 증가한다는 법칙(실제로는 2배보다 더 많이 증가)</li>
+  <li>성능의 급격한 발전으로 인해 과거에 비해 더 싼 가격에 더 좋은 성능을 발휘할 수 있게 되었다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="컴퓨터의-종류">컴퓨터의 종류</h1>
+<h2 id="개인-컴퓨터">개인 컴퓨터</h2>
+<ul>
+  <li>일반적으로 사용하는 컴퓨터</li>
+  <li>비교적 저렴하고 저성능<br /><br /></li>
+</ul>
+
+<h2 id="서버-컴퓨터">서버 컴퓨터</h2>
+<ul>
+  <li>네트워크 통신이 주 목적</li>
+  <li>고가, 대용량, 고성능<br /><br /></li>
+</ul>
+
+<h2 id="수퍼-컴퓨터">수퍼 컴퓨터</h2>
+<ul>
+  <li>군사용, 기상청 날씨 예측용 등 특수 목적으로 사용되는 컴퓨터<br /><br /></li>
+</ul>
+
+<h2 id="임베디드-컴퓨터">임베디드 컴퓨터</h2>
+<ul>
+  <li>큰 시스템에 컴퓨터가 하나의 컴포넌트로 구성된 것</li>
+  <li>적은 전력소모, 저성능, 저가</li>
+  <li>ex) 스마트폰, 태블릿 PC<br /><br /><br /></li>
+</ul>
+
+<h1 id="데이터의-단위">데이터의 단위</h1>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">bit</code> - <code class="language-plaintext highlighter-rouge">byte</code> - <code class="language-plaintext highlighter-rouge">Kilobyte</code> - <code class="language-plaintext highlighter-rouge">Megabyte</code> - <code class="language-plaintext highlighter-rouge">Gigabyte</code> - <code class="language-plaintext highlighter-rouge">Terabyte</code> - <code class="language-plaintext highlighter-rouge">Petabyte</code> - <code class="language-plaintext highlighter-rouge">Exabyte</code><br /><br /></p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Byte</code> : 8<code class="language-plaintext highlighter-rouge">bit</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Kilobyte</code> : 2^10 or 1,024 <code class="language-plaintext highlighter-rouge">bytes</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Megabyte</code> : 2^20 or 1,048,576 <code class="language-plaintext highlighter-rouge">bytes</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Gigabyte</code> : 2^30 or 1,073,741,824 <code class="language-plaintext highlighter-rouge">bytes</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Terabyte</code> : 2^40 or 1,099,511,627,776 <code class="language-plaintext highlighter-rouge">bytes</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Petabyte</code> : 2^50 or 1024 <code class="language-plaintext highlighter-rouge">terabytes</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Exabyte</code> : 2^60 ir 1024 <code class="language-plaintext highlighter-rouge">petabytes</code><br /><br /><br /></li>
+</ul>
+
+<h1 id="미래의-컴퓨터">미래의 컴퓨터</h1>
+<h2 id="personal-mobile-device-pmd">Personal Mobile Device (PMD)</h2>
+<ul>
+  <li>스마트폰, 태블릿 PC, 전자안경 등</li>
+  <li>배터리로 작동되며 인터넷에 연결해서 사용<br /><br /></li>
+</ul>
+
+<h2 id="cloud-computing">Cloud computing</h2>
+<ul>
+  <li>Warehouse Scale Computers (WSC) : 특정한 데이터를 서버에서 처리하고 필요할 때 서버에서 다운받아서 사용</li>
+  <li>Software as a Service (SaaS) : 필요한 소프트웨어를 서비스 형태로 제공받는다.</li>
+  <li>복잡한 연산은 <code class="language-plaintext highlighter-rouge">Cloud</code>에서 처리하고 <code class="language-plaintext highlighter-rouge">PMD</code>에서는 간단한 <code class="language-plaintext highlighter-rouge">UI</code> 같은 것만 보여주는 것</li>
+  <li>아마존과 구글의 클라우드 서비스<br /><br /><br /></li>
+</ul>
+
+<h1 id="컴퓨터의-성능">컴퓨터의 성능</h1>
+<h2 id="알고리즘-측면">알고리즘 측면</h2>
+<ul>
+  <li>실행되는 <code class="language-plaintext highlighter-rouge">operation</code>의 수가 적을수록 성능이 높다.<br /><br /></li>
+</ul>
+
+<h2 id="프로그래밍-언어-컴파일러-구조">프로그래밍 언어, 컴파일러, 구조</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">operation</code>당 실행되는 <code class="language-plaintext highlighter-rouge">instruction</code>의 수가 많을수록 성능이 높다.<br /><br /></li>
+</ul>
+
+<h2 id="프로세서와-메모리">프로세서와 메모리</h2>
+<ul>
+  <li>단위시간당 <code class="language-plaintext highlighter-rouge">instruction</code>을 얼마나 빨리 실행하는지<br /><br /></li>
+</ul>
+
+<h2 id="입출력-시스템">입출력 시스템</h2>
+<ul>
+  <li>단위시간당 <code class="language-plaintext highlighter-rouge">I/O operation</code>을 얼마나 많이 실행하는지에 따라 결정된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="컴퓨터-구조">컴퓨터 구조</h1>
+<h2 id="application-software">Application software</h2>
+<ul>
+  <li>일반적으로 사용자가 사용하는 프로그램</li>
+  <li>고급언어로 작성된 프로그램<br /><br /></li>
+</ul>
+
+<h2 id="system-software">System software</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Compiler</code> : 고급언어를 기계어로 번역하는 것</li>
+  <li><code class="language-plaintext highlighter-rouge">Operating System</code> : 운영체제. 입출력, 메모리 관리, 자원 스케줄링 등을 한다.<br /><br /></li>
+</ul>
+
+<h2 id="hardware">Hardware</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Processor</code>, <code class="language-plaintext highlighter-rouge">memory</code>, <code class="language-plaintext highlighter-rouge">I/O controllers</code><br /><br /><br /></li>
+</ul>
+
+<h1 id="levels-of-program-code">Levels of Program Code</h1>
+<h2 id="high-level-language">High-level language</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C</code>언어 같이 우리가 알아보기 쉬운 언어로 작성한 코드</li>
+  <li>컴파일러를 거쳐 어셈블리어로 번역된다.<br /><br /></li>
+</ul>
+
+<h2 id="assembly-language">Assembly language</h2>
+<ul>
+  <li>고급언어보다는 알아보기 어렵지만 그래도 사람이 알아볼 수는 있는 정도의 단어들로 작성된 코드</li>
+  <li>어셈블러(Assembler)를 거쳐 기계어로 번역된다.<br /><br /></li>
+</ul>
+
+<h2 id="hardware-representation">Hardware representation</h2>
+<ul>
+  <li>0과 1로 이루어진 코드(Binary digits, bits)</li>
+  <li>비주얼 스튜디오 같은 <code class="language-plaintext highlighter-rouge">IDE</code>엔 컴파일러와 어셈블러가 함께 들어있어서 일반적으로는 함께 실행되지만 단계를 나눠서 실행도 가능하다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="컴퓨터의-구성요소">컴퓨터의 구성요소</h1>
+<ul>
+  <li>컴퓨터의 종류는 여러개여도 구성요소는 다 비슷하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">User-interface divices</code> : display, keyboard, mouse</li>
+  <li><code class="language-plaintext highlighter-rouge">Storage devices</code> : hard disk, CD/DVD, flash</li>
+  <li><code class="language-plaintext highlighter-rouge">Network adapters</code> : 다른 컴퓨터와 소통하기 위한 수단<br /><br /><br /></li>
+</ul>
+
+<h1 id="cpu-구성요소">CPU 구성요소</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Datapath</code> : 데이터가 어떻게 연산되어 흘러가는지</li>
+  <li><code class="language-plaintext highlighter-rouge">Control</code> : 프로세서의 컴포넌트 컨트롤</li>
+  <li><code class="language-plaintext highlighter-rouge">Cache memory</code> : 작고 빠른 <code class="language-plaintext highlighter-rouge">SRAM</code>이 있어서 <code class="language-plaintext highlighter-rouge">SRAM</code>에 자주 사용하는 데이터를 저장해 놓는다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="추상화abstractions">추상화(Abstractions)</h1>
+<ul>
+  <li>복잡한 문제를 단순화해서 쉽게 풀 수 있도록 하는 것<br /><br /><br /></li>
+</ul>
+
+<h1 id="메모리-종류">메모리 종류</h1>
+<h2 id="휘발성-메모리-volatile-main-memory">휘발성 메모리 (Volatile main memory)</h2>
+<ul>
+  <li>전원을 끄면 데이터가 날아가는 메모리<br /><br /></li>
+</ul>
+
+<h2 id="비휘발성-메모리-non-volatile-secondary-memory">비휘발성 메모리 (Non-volatile secondary memory)</h2>
+<ul>
+  <li>전원을 꺼도 데이터가 날아가지 않는 메모리</li>
+  <li>마그네틱 디스크, 플래시 메모리, CD/DVD 등<br /><br /><br /></li>
+</ul>
+
+<h1 id="반도체-기술">반도체 기술</h1>
+<ul>
+  <li>실리콘에 기판을 새겨넣는 것이 반도체 칩을 만드는 과정</li>
+  <li><code class="language-plaintext highlighter-rouge">conductors</code>(도체), <code class="language-plaintext highlighter-rouge">insulators</code>(부도체), <code class="language-plaintext highlighter-rouge">switch</code>들이 잘 동작되게 하는 것<br /><br /><br /></li>
+</ul>
+
+<h1 id="컴퓨터의-성능-1">컴퓨터의 성능</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">throughput</code>과 <code class="language-plaintext highlighter-rouge">response time</code>로 정의된다.<br /></li>
+</ul>
+
+<h2 id="response-time">Response time</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">operation</code> 하나를 처리하는 데 걸리는 시간</li>
+  <li>짧을수록 성능이 좋다.<br /></li>
+</ul>
+
+<h2 id="throughput">Throughput</h2>
+<ul>
+  <li>단위시간 당 얼마나 많은 일을 할 수 있는지 나타낸 것</li>
+  <li>
+    <p>높을수록 성능이 좋다.<br /></p>
+  </li>
+  <li>❗️ <code class="language-plaintext highlighter-rouge">response time</code>은 <code class="language-plaintext highlighter-rouge">throughput</code>에 영향을 주지만 <code class="language-plaintext highlighter-rouge">throughput</code>은 <code class="language-plaintext highlighter-rouge">response time</code>에 영향을 주지 않는다. 그래서 성능은 <code class="language-plaintext highlighter-rouge">response time</code>으로 표현할 수 있다.<br /></li>
+</ul>
+
+<h2 id="execution-time">Execution time</h2>
+<ul>
+  <li>짧을수록 성능이 좋다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Performance X / Performance Y = Execution time Y / Execution time X = n
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Performance</code>와 <code class="language-plaintext highlighter-rouge">Execution time</code>은 반비례 관계이다.(기억하기❗️)<br /></li>
+</ul>
+
+<h2 id="elapsed-time">Elapsed time</h2>
+<ul>
+  <li>총 걸린 시간</li>
+  <li>프로세싱, 입출력, <code class="language-plaintext highlighter-rouge">OS</code> 오버헤드, 대기시간 등 컴퓨터가 실행되는 동안 모든 것을 처리하는 데 걸린 시간</li>
+  <li>그 시스템 전체의 성능을 정의하게 된다.<br /></li>
+</ul>
+
+<h2 id="cpu-time">CPU time</h2>
+<ul>
+  <li>어떤 일을 처리할 때 <code class="language-plaintext highlighter-rouge">CPU</code>에서 걸리는 시간</li>
+  <li>그래서 입출력, 다른 작업을 처리하는 데 드는 시간 등은 제외하고 계산된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">user CPU time</code>과 <code class="language-plaintext highlighter-rouge">system CPU time</code>으로 나눌 수 있으며 프로그램마다 <code class="language-plaintext highlighter-rouge">CPU</code>와 시스템 성능에 다르게 영향 받는다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="cpu-clocking">CPU Clocking</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>의 처리 속도</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>의 각 부품들은 일정한 시간마다 동작한다. <code class="language-plaintext highlighter-rouge">Clock cycle</code>이라 함</li>
+  <li><code class="language-plaintext highlighter-rouge">Clock period</code> : <code class="language-plaintext highlighter-rouge">Clock cycle</code>의 길이</li>
+  <li><code class="language-plaintext highlighter-rouge">Clock frequency (rate)</code> : 초당 존재하는 <code class="language-plaintext highlighter-rouge">Clock cycle</code>의 개수</li>
+</ul>
+
+<h2 id="-시간-단위">👀 시간 단위</h2>
+<p><code class="language-plaintext highlighter-rouge">second, s</code> &gt; <code class="language-plaintext highlighter-rouge">millisecond, ms</code> 10^-3 &gt; <code class="language-plaintext highlighter-rouge">microsecond, μs</code> 10^-6 &gt; <code class="language-plaintext highlighter-rouge">nanosecond, ns</code> 10^-9 &gt; <code class="language-plaintext highlighter-rouge">picosecond, ps</code> 10^-12<br /></p>
+
+<ul>
+  <li>❗️ <code class="language-plaintext highlighter-rouge">Clock cycle time</code>과 <code class="language-plaintext highlighter-rouge">Clock rate</code>는 반비례 관계이다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/cview.do?cid=184062fa9a833237">KOCW 영남대학교 최규상 교수님 공개강의</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cs" class="page__taxonomy-item p-category" rel="tag">CS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#computer-science" class="page__taxonomy-item p-category" rel="tag">Computer Science</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-18T00:00:00+09:00">February 18, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%BB%B4%ED%93%A8%ED%84%B0+%EA%B5%AC%EC%A1%B0%29+%EC%BB%B4%ED%93%A8%ED%84%B0+%EA%B5%AC%EC%A1%B0+Preview%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2Fcomputer-architecture-01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2Fcomputer-architecture-01%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2Fcomputer-architecture-01%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/boj/boj10872-java/" class="pagination--pager" title="Java) BOJ 10872. 팩토리얼
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj10872-java/" rel="permalink">Java) BOJ 10872. 팩토리얼
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://www.acmicpc.net/problem/10872
+
+
+제한
+
+
+
+  시간 제한 : 1 초
+  메모리 제한 : 256 MB
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/CS-14/" rel="permalink">컴퓨터 하드웨어) 제어 장치
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 제어 장치란?
+
+  프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분
+  컴퓨터의 중추선이라 할 수 있다.
+  컴퓨터의 자료 처리 속도를 ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/java/set-java-version/" rel="permalink">Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 터미널에서 단어 하나만 입력하면 OpenJDK 8 버전과 OpenJDK 11 버전을 그 때 그 때 기본으로 세팅할 수 있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj1002-java/" rel="permalink">Java) BOJ 1002. 터렛
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://www.acmicpc.net/problem/1002
+
+
+제한
+
+
+
+  시간 제한 : 2 초
+  메모리 제한 : 128 MB
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>
