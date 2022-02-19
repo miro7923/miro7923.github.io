@@ -1,0 +1,226 @@
+I"�S<h1 id="-daodata-access-object란">👀 DAO(Data Access Object)란?</h1>
+<ul>
+  <li>데이터 처리 객체</li>
+  <li><code class="language-plaintext highlighter-rouge">DB</code>에 관련된 모든 동작을 수행하는 클래스</li>
+  <li>지금까지 <code class="language-plaintext highlighter-rouge">JDBC</code>로 <code class="language-plaintext highlighter-rouge">DB</code>와 연결할 때 사용하려는 페이지마다 일일이 연결 코드를 적어줘야 했는데 이제는 <code class="language-plaintext highlighter-rouge">DAO</code>를 만들어서 연결 동작을 여기서 수행하도록 하고 <code class="language-plaintext highlighter-rouge">DB</code>연결이 필요한 페이지에서는 <code class="language-plaintext highlighter-rouge">DAO</code>만 호출하면 된다!</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberDAO</span> <span class="o">{</span> 
+	
+	<span class="c1">// DAO (Data Access Object) : 데이터 처리 객체</span>
+	<span class="c1">// =&gt; DB에 관련된 모든 동작을 수행하는 클래스</span>
+	
+	<span class="c1">// 연결에 필요한 정보 저장</span>
+	<span class="kd">private</span> <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+	
+	<span class="c1">// 디비연결 동작</span>
+	<span class="kd">private</span> <span class="nc">Connection</span> <span class="nf">getConnect</span><span class="o">()</span>
+	<span class="o">{</span>
+	    <span class="kd">final</span> <span class="nc">String</span> <span class="no">DRIVER</span> <span class="o">=</span> <span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">;</span>
+	    <span class="kd">final</span> <span class="nc">String</span> <span class="no">URL</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/jspdb"</span><span class="o">;</span>
+	    <span class="kd">final</span> <span class="nc">String</span> <span class="no">ID</span> <span class="o">=</span> <span class="s">"root"</span><span class="o">;</span>
+	    <span class="kd">final</span> <span class="nc">String</span> <span class="no">PASS</span> <span class="o">=</span> <span class="s">"1234"</span><span class="o">;</span>
+	    
+	    <span class="k">try</span> <span class="c1">// 예외가 발생할지도 모르는 코드 작성 </span>
+	    <span class="o">{</span> 
+			<span class="c1">// 1. 드라이버 로드</span>
+			<span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="no">DRIVER</span><span class="o">);</span>
+
+			<span class="c1">// 2. 디비연결</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="no">URL</span><span class="o">,</span> <span class="no">ID</span><span class="o">,</span> <span class="no">PASS</span><span class="o">);</span>
+			
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 디비연결 성공!"</span> <span class="o">+</span> <span class="n">con</span><span class="o">);</span>
+		<span class="o">}</span> 
+	    <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> 
+	    <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span> 
+	    <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> 
+	    <span class="o">{</span>
+			<span class="c1">// TODO Auto-generated catch block</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span> <span class="c1">// 연결 정보가 계속 유지되어야 하기 때문에 finally 구문은 안쓴다.</span>
+	    
+		
+		<span class="k">return</span> <span class="n">con</span><span class="o">;</span>
+	<span class="o">}</span> <span class="c1">// 디비연결</span>
+	
+	<span class="c1">// 자원해제</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">CloseDB</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="k">try</span> <span class="o">{</span>
+			
+			<span class="c1">// 리소스 해제는 생성의 역순으로 한다.</span>
+			<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">rs</span><span class="o">)</span> <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> <span class="c1">// 연결해제</span>
+			<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">pstmt</span><span class="o">)</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">con</span><span class="o">)</span> <span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> 
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 자원해제 완료"</span><span class="o">);</span>
+			
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// TODO Auto-generated catch block</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span> 
+	<span class="o">}</span> <span class="c1">// 자원해제</span>
+	
+	<span class="c1">// 회원가입 - insertMember()</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertMember</span><span class="o">(</span><span class="nc">MemberBean</span> <span class="n">mb</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : insertMember() 호출"</span><span class="o">);</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="c1">// 1. 드라이버 로드</span>
+			<span class="c1">// 2. 디비연결</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">getConnect</span><span class="o">();</span>
+			
+			<span class="c1">// 3. sql 작성 &amp; pstmt 객체 생성</span>
+			<span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into itwill_member(id, pass, name, age, gender, email, regdate) "</span>
+					<span class="o">+</span> <span class="s">"values(?, ?, ?, ?, ?, ?, ?)"</span><span class="o">;</span>
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+			<span class="c1">// ???</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getPass</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getGender</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">());</span>
+			
+			<span class="c1">// 4. sql 실행</span>
+			<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 회원가입 성공!"</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+			
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// TODO Auto-generated catch block</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">finally</span> <span class="o">{</span>
+			
+			<span class="nc">CloseDB</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span> <span class="c1">// 회원가입 - insertMember()</span>
+	
+	<span class="c1">// 로그인 - loginCheck(mb)</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">loginCheck</span><span class="o">(</span><span class="nc">MemberBean</span> <span class="n">mb</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 로그인 - loginCheck(mb)"</span><span class="o">);</span>
+		
+		<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="c1">// 1, 2. 디비연결</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">getConnect</span><span class="o">();</span>
+			
+			<span class="c1">// 3. sql 작성(select) &amp; pstmt 객체 생성</span>
+			<span class="n">sql</span> <span class="o">=</span> <span class="s">"select pass from itwill_member where id=?"</span><span class="o">;</span>
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+			<span class="c1">// ??</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+			
+			<span class="c1">// 4. sql 실행</span>
+			<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+			<span class="c1">// 5. 데이터처리</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+			<span class="o">{</span>
+				<span class="c1">// 회원</span>
+				<span class="k">if</span> <span class="o">(</span><span class="n">mb</span><span class="o">.</span><span class="na">getPass</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"pass"</span><span class="o">)))</span>
+				<span class="o">{</span>
+					<span class="c1">// 본인</span>
+					<span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+				<span class="o">}</span>
+				<span class="k">else</span> 
+				<span class="o">{</span>
+					<span class="c1">// 비밀번호 오류</span>
+					<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="k">else</span> 
+			<span class="o">{</span>
+				<span class="c1">// 비회원</span>
+				<span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+			<span class="o">}</span>
+			
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 로그인체크 완료 ("</span> <span class="o">+</span> <span class="n">result</span> <span class="o">+</span> <span class="s">")"</span><span class="o">);</span>
+			
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+			
+			<span class="nc">CloseDB</span><span class="o">();</span>
+		<span class="o">}</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 로그인 - loginCheck(mb)"</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+	<span class="o">}</span> <span class="c1">// 로그인 - loginCheck(mb)</span>
+
+<span class="o">}</span> <span class="c1">// MemberDAO</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이렇게 <code class="language-plaintext highlighter-rouge">DAO</code> 클래스를 만든 다음에<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="c1">// 한글처리</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+    
+    <span class="c1">// 전달되는 정보 저장 - 액션태그</span>
+  <span class="nt">%&gt;</span>
+    <span class="nt">&lt;jsp:useBean </span><span class="na">id=</span><span class="s">"mb"</span><span class="na"> class=</span><span class="s">"com.itwillbs.member.MemberBean"</span><span class="nt">&gt;&lt;/jsp:useBean&gt;</span>
+    <span class="nt">&lt;jsp:setProperty </span><span class="na">property=</span><span class="s">"*"</span><span class="na"> name=</span><span class="s">"mb"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;%</span>
+    <span class="c1">// DB정보를 사용해서 로그인 체크</span>
+    <span class="c1">// DAO 객체 생성</span>
+    <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">loginCheck</span><span class="o">(</span><span class="n">mb</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"pro : 로그인체크 완료 ("</span> <span class="o">+</span> <span class="n">result</span> <span class="o">+</span> <span class="s">")"</span><span class="o">);</span>
+    
+    <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">==</span> <span class="n">result</span><span class="o">)</span>
+    <span class="o">{</span>
+    	<span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="n">mb</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+    	<span class="nt">%&gt;</span>
+    	  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    	    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">로그인 성공!</span><span class="dl">"</span><span class="p">)</span>
+    	    <span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="dl">'</span><span class="s1">main.jsp</span><span class="dl">'</span><span class="p">;</span>
+    	  <span class="nt">&lt;/script&gt;</span>
+    	<span class="nt">&lt;%</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">result</span><span class="o">)</span>
+    <span class="o">{</span>
+    	<span class="nt">%&gt;</span>
+    	  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    	    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">비밀번호 오류!</span><span class="dl">"</span><span class="p">);</span>
+    	    <span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
+    	  <span class="nt">&lt;/script&gt;</span>
+    	<span class="nt">&lt;%</span>
+    <span class="o">}</span>
+    <span class="k">else</span>
+    <span class="o">{</span>
+    	<span class="nt">%&gt;</span>
+    	  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    	    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">비회원 입니다!</span><span class="dl">"</span><span class="p">);</span>
+    	    <span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
+    	  <span class="nt">&lt;/script&gt;</span>
+    	<span class="nt">&lt;%</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 체크 결과에 따른 페이지 이동</span>
+  <span class="nt">%&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 페이지에서는 아까 만든 객체를 호출하기만 하면 된다!</li>
+</ul>
+:ET
