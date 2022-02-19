@@ -1,0 +1,69 @@
+I"|<ul>
+  <li>그룹함수와 함께 사용하며 조건에 맞는 그룹으로 묶어서 보여준다.</li>
+</ul>
+
+<h1 id="️-문법">☑️ 문법</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>    <span class="k">column</span><span class="p">,</span> <span class="n">group_function</span>
+<span class="k">FROM</span>      <span class="k">table</span>
+<span class="p">[</span><span class="k">WHERE</span>    <span class="n">contition</span><span class="p">]</span>
+<span class="p">[</span><span class="k">GROUP</span> <span class="k">BY</span> <span class="n">group_by_expression</span><span class="p">]</span>
+<span class="p">[</span><span class="k">HAVING</span>   <span class="n">group_condition</span><span class="p">]</span>
+<span class="p">[</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="k">column</span><span class="p">];</span>
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h1 id="그룹함수">그룹함수</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">AVG</code> : 평균을 구해주는 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">COUNT</code> : 개수를 세어주는 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">MAX</code> : 최대값을 구해주는 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">MIN</code> : 최소값을 구해주는 함수
+    <ul>
+      <li>날짜와 문자의 최대값과 최소값도 구할 수 있는데</li>
+      <li>날짜에서의 최대값은 가장 최근 날짜, 최소값은 가장 과거 날짜</li>
+      <li>문자에서는 알파벳/가나다 오름차순으로 보여준다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">STDDEV</code> : 표준편차를 구해주는 함수(쓸 일이 많지는 않다)</li>
+  <li><code class="language-plaintext highlighter-rouge">SUM</code> : 합계를 구해주는 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">VARIANCE</code> : 분산을 구해주는 함수(쓸 일이 많지는 않다)</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span>
+       <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">job_id</span> <span class="k">LIKE</span> <span class="s1">'%REP%'</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">commission_pct</span><span class="p">)</span>
+<span class="k">FROM</span>   <span class="n">employess</span>
+<span class="k">WHERE</span>  <span class="n">department_id</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h1 id="group-by절">GROUP BY절</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span>     <span class="n">employees</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span>     <span class="n">employees</span>
+<span class="k">WHERE</span>    <span class="n">department_id</span> <span class="o">&gt;</span> <span class="mi">40</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">job_id</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">select</code>절에 있는 컬럼 리스트 중에서 그룹함수에 포함되어 있지 않은 컬럼은 반드시 <code class="language-plaintext highlighter-rouge">group by</code>절에 포함되어 있어야 문법 오류가 안 난다.<br /><br /></li>
+</ul>
+
+<h1 id="having절">HAVING절</h1>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">job_id</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">PAYROLL</span>
+<span class="k">FROM</span>     <span class="n">employees</span>
+<span class="k">WHERE</span>    <span class="n">job_id</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">'%REP%'</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">job_id</span>
+<span class="k">HAVING</span>   <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">13000</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">);</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">GROUP BY</code>절과 <code class="language-plaintext highlighter-rouge">HAVING</code>절 사이에 순서는 없으나 <code class="language-plaintext highlighter-rouge">ORDER BY</code>절은 맨 마지막에 쓰는 것이 좋다.</li>
+  <li>왜냐면 최종 결과를 가지고 정렬하는 것이 가장 정확하니까.</li>
+</ul>
+:ET

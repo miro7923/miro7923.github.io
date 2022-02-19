@@ -1,0 +1,67 @@
+I"�<h1 id="️-문법">☑️ 문법</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">GROUP BY</code>절을 제외하고 다 사용가능하며 <code class="language-plaintext highlighter-rouge">WHERE</code>, <code class="language-plaintext highlighter-rouge">HAVING</code>절에서 제일 많이 활용된다.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span>   <span class="k">table</span>
+<span class="k">WHERE</span>  <span class="n">expr</span> <span class="k">operator</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">select_list</span>
+                      <span class="k">FROM</span>   <span class="k">table</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>테이블에서 어떤 정보를 조회할 때 특정 범위 안에 있는 정보만 조회하고 싶은데 그 특정 범위도 알 수가 없어서 쿼리문으로 물어봐야 할 때 사용한다.<br />&lt;</li>
+</ul>
+
+<h2 id="예제">예제</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">salary</span>
+                 <span class="k">FROM</span>   <span class="n">employees</span>
+                 <span class="k">WHERE</span>  <span class="n">last_name</span> <span class="o">=</span> <span class="s1">'Abel'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Able</code>이라는 사람보다 높은 연봉을 가진 사람들을 조회하고 싶을 때<br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+                 <span class="k">FROM</span>   <span class="n">employees</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>연봉이 가장 적은 사람의 이름, 부서, 연봉정보를 출력하고 싶을 때<br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span>     <span class="n">employees</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span>
+<span class="k">HAVING</span>   <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+                        <span class="k">FROM</span>   <span class="n">employees</span>
+                        <span class="k">WHERE</span>  <span class="n">department_id</span> <span class="o">=</span> <span class="mi">50</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>부서번호 50번의 가장 적은 연봉보다는 큰 부서별 가장 적은 연봉을 보고 싶을 때<br /><br /></li>
+</ul>
+
+<h2 id="inline-view">Inline View</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">From</code>절에 <code class="language-plaintext highlighter-rouge">Subquery</code>가 작성된 경우</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">salary</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">salavg</span>
+<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">a</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">salavg</span>
+                         <span class="k">FROM</span>     <span class="n">employees</span>
+                         <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">)</span> <span class="n">b</span> <span class="c1">-- 이 쿼리구문 안에서만 유효한 inline view</span>
+<span class="k">ON</span>     <span class="n">a</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">department_id</span>
+<span class="k">AND</span>    <span class="n">a</span><span class="p">.</span><span class="n">salary</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">salavg</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">employees</code> 테이블에서 자기가 소속된 부서의</li>
+</ul>
+:ET

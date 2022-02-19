@@ -351,7 +351,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#️-문법">☑️ 문법</a><ul><li><a href="#1-on절을-사용한-join">1. ON절을 사용한 JOIN</a></li><li><a href="#2-on절을-사용한-self-join">2. ON절을 사용한 Self-Join</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#️-문법">☑️ 문법</a><ul><li><a href="#1-on절을-사용한-join">1. ON절을 사용한 JOIN</a></li><li><a href="#2-on절을-사용한-self-join">2. ON절을 사용한 Self-Join</a><ul><li><a href="#️-쿼리문-작성-팁">❗️ 쿼리문 작성 팁</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -381,8 +381,16 @@
 </code></pre></div></div>
 
 <ul>
-  <li>같은 테이블 안에서 <code class="language-plaintext highlighter-rouge">JOIN</code> 하는 것도 가능하다.</li>
+  <li>같은 테이블 안에서 <code class="language-plaintext highlighter-rouge">JOIN</code> 하는 것도 가능하다.<br /></li>
 </ul>
+
+<h3 id="️-쿼리문-작성-팁">❗️ 쿼리문 작성 팁</h3>
+<ul>
+  <li>컬럼명을 입력할 때 해당 컬럼이 속해있는 테이블명을 입력하면 해당 범위에서만 검색을 시행하기 때문에 실행속도가 훨씬 빨라진다. (테이블명을 적지 않아도 실행되지만 그만큼 모든 테이블을 대상으로 검색해서 결과를 가져오기 때문에 실행속도가 훨씬 느리다.)</li>
+  <li>그래서 실행속도가 빠른 쿼리문을 작성하는 것이 중요하다.</li>
+  <li>그런데 테이블 풀네임을 일일이 적어주면 너무 길어서 가독성이 떨어지니까 약자로 적을 수 있는데 대신 약자로 적었다면 <code class="language-plaintext highlighter-rouge">FROM</code>절에서 어떤 테이블명의 약자인지 꼭 명시해줘야 <code class="language-plaintext highlighter-rouge">SQL</code>이 헷갈리지 않고 잘 찾아올 수 있다.</li>
+</ul>
+
 
         
       </section>
@@ -450,7 +458,8 @@
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/database/SQL-subquery/" class="pagination--pager" title="SQL) Subquery
+">다음</a>
     
   </nav>
 
@@ -464,6 +473,49 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/SQL-subquery/" rel="permalink">SQL) Subquery
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">☑️ 문법
+
+  GROUP BY절을 제외하고 다 사용가능하며 WHERE, HAVING절에서 제일 많이 활용된다.
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -601,46 +653,6 @@
   프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분
   컴퓨터의 중추선이라 할 수 있다.
   컴퓨터의 자료 처리 속도를 ...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/java/set-java-version/" rel="permalink">Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">👀 터미널에서 단어 하나만 입력하면 OpenJDK 8 버전과 OpenJDK 11 버전을 그 때 그 때 기본으로 세팅할 수 있다.
-</p>
   </article>
 </div>
 
