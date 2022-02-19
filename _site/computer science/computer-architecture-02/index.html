@@ -1,0 +1,802 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>컴퓨터구조) Performance | Yujin Dev Log</title>
+<meta name="description" content="CPU Time    한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양   컴퓨터의 성능을 측정하기 위해 사용된다.   CPU Time = Instruction Count x CPI x Clock Cycle Time   CPU Time이 적을수록 성능이 좋다고 할 수 있다.   clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="컴퓨터구조) Performance">
+<meta property="og:url" content="http://localhost:4000/computer%20science/computer-architecture-02/">
+
+
+  <meta property="og:description" content="CPU Time    한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양   컴퓨터의 성능을 측정하기 위해 사용된다.   CPU Time = Instruction Count x CPI x Clock Cycle Time   CPU Time이 적을수록 성능이 좋다고 할 수 있다.   clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-20T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/computer%20science/computer-architecture-02/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#computer-science" itemprop="item"><span itemprop="name">Computer science</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">컴퓨터구조) Performance</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="컴퓨터구조) Performance">
+    <meta itemprop="description" content="CPU Time  한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양  컴퓨터의 성능을 측정하기 위해 사용된다.  CPU Time = Instruction Count x CPI x Clock Cycle Time  CPU Time이 적을수록 성능이 좋다고 할 수 있다.  clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.">
+    <meta itemprop="datePublished" content="2022-02-20T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/computer%20science/computer-architecture-02/" class="u-url" itemprop="url">컴퓨터구조) Performance
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#cpu-time">CPU Time</a></li><li><a href="#instruction-count--cpi">Instruction Count &amp; CPI</a><ul><li><a href="#instruction-count">Instruction Count</a></li><li><a href="#cpi">CPI</a></li></ul></li><li><a href="#성능에-영향을-미치는-요소">성능에 영향을 미치는 요소</a></li><li><a href="#clock-period">Clock period</a></li><li><a href="#power-wall">Power wall</a></li><li><a href="#multiprocessors">Multiprocessors</a></li><li><a href="#cpu-성능-측정">CPU 성능 측정</a></li><li><a href="#amdahls-law">Amdahl’s Law</a></li><li><a href="#대기-중-전력소모">대기 중 전력소모</a></li><li><a href="#출처">출처</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="cpu-time">CPU Time</h1>
+<ul>
+  <li>한 컴퓨터 프로그램이 <code class="language-plaintext highlighter-rouge">CPU</code>를 차지하여 일을 한 시간의 양</li>
+  <li>컴퓨터의 성능을 측정하기 위해 사용된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU Time = Instruction Count x CPI x Clock Cycle Time</code></li>
+  <li><code class="language-plaintext highlighter-rouge">CPU Time</code>이 적을수록 성능이 좋다고 할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">clock cycle</code>을 줄이거나 <code class="language-plaintext highlighter-rouge">clock rate</code>가 올라가면 성능이 향상된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="instruction-count--cpi">Instruction Count &amp; CPI</h1>
+<h2 id="instruction-count">Instruction Count</h2>
+<ul>
+  <li>명령어의 수</li>
+</ul>
+
+<h2 id="cpi">CPI</h2>
+<ul>
+  <li>Cycles per Instructions</li>
+  <li><code class="language-plaintext highlighter-rouge">Instruction</code>의 실행주기</li>
+  <li>짧은 <code class="language-plaintext highlighter-rouge">CPI</code>를 가진 <code class="language-plaintext highlighter-rouge">IC</code>가 많을수록 성능이 좋다고 할 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="성능에-영향을-미치는-요소">성능에 영향을 미치는 요소</h1>
+<ul>
+  <li>알고리즘 : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code></li>
+  <li>프로그래밍 언어 : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code></li>
+  <li>컴파일러 : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code></li>
+  <li>ISA(명령어셋) : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code>, <code class="language-plaintext highlighter-rouge">T</code><br /><br /><br /></li>
+</ul>
+
+<h1 id="clock-period">Clock period</h1>
+<ul>
+  <li>Duration of a clock cycle</li>
+  <li>하나의 <code class="language-plaintext highlighter-rouge">clock cycle</code>이 걸리는 시간</li>
+  <li><code class="language-plaintext highlighter-rouge">1/clock rate</code>로 나타낼 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="power-wall">Power wall</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">clock rate</code>는 매년 꾸준히 늘다가 2004년을 기점으로 늘지 않고 있다.</li>
+  <li>왜냐면 전력소모가 많이 줄었기 때문</li>
+  <li>전력소모량은 <code class="language-plaintext highlighter-rouge">Capacitive load</code>x<code class="language-plaintext highlighter-rouge">Voltage^2</code>x<code class="language-plaintext highlighter-rouge">Frequency</code>로 구할 수 있는데 <code class="language-plaintext highlighter-rouge">Voltage</code>가 많이 줄었기 때문에 <code class="language-plaintext highlighter-rouge">Frequency</code>가 많이 늘어났음에도 전력소모량은 크게 늘지 않았다.</li>
+  <li>그런데 <code class="language-plaintext highlighter-rouge">Voltage</code>가 높을수록 전력소모와 열 발생이 많은데 <code class="language-plaintext highlighter-rouge">Voltage</code>를 더이상 줄일 수가 없게 되었기 때문에 기존에 <code class="language-plaintext highlighter-rouge">clock rate</code>을 증가시키는 방법으로는 성능 향상을 꾀하기가 어려워졌다.</li>
+  <li>2004년 이후로 <code class="language-plaintext highlighter-rouge">clock rate</code>을 증가시키지 못한 이유가 <code class="language-plaintext highlighter-rouge">CPU</code>에서 발생하는 열을 해결하지 못해서였다.</li>
+  <li>그래서 <code class="language-plaintext highlighter-rouge">clock rate</code>을 올리지 않고 성능을 향상시키기 위한 방법으로 <code class="language-plaintext highlighter-rouge">Multi-core</code>가 등장하게 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="multiprocessors">Multiprocessors</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Multicore microprocessors</code> : 하나의 칩 안에 프로세서가 여러 개 있는 것</li>
+  <li><code class="language-plaintext highlighter-rouge">Parallel programming</code>이 필요하다.
+    <ul>
+      <li>하드웨어가 여러 명령을 동시에 실행할 수 있지만 그만큼 프로그래밍이 어렵다.<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="cpu-성능-측정">CPU 성능 측정</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">SPEC CPU Benchmark</code>로 측정하거나 <code class="language-plaintext highlighter-rouge">MIPS</code>(Millions of Instructions per Second : 시간당 몇백만개의 명령을 실행하는가)를 이용해 측정할 수 있는데 <code class="language-plaintext highlighter-rouge">SPEC CPU Benchmark</code>가 더 정확하다고 할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">SPEC CPU Benchmark</code>는 여러 파트에서 측정한 시간값을 바탕으로 총점을 매기는데 <code class="language-plaintext highlighter-rouge">MIPS</code>는 <code class="language-plaintext highlighter-rouge">IC</code>와 <code class="language-plaintext highlighter-rouge">Exectution time</code>을 이용해 계산하기 때문에 컴퓨터마다 <code class="language-plaintext highlighter-rouge">ISA</code>(명령어셋)가 다르고 또 명령어마다 필요한 <code class="language-plaintext highlighter-rouge">CPI</code>값이 다를 수 있기 때문에 객관적이라 하기 어렵다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="amdahls-law">Amdahl’s Law</h1>
+<ul>
+  <li>컴퓨터의 어느 한 부분의 성능을 향상시키면 전체 성능의 향상은 그 부분이 컴퓨터에서 차지하는 비율만큼 향상된다는 법칙</li>
+  <li><code class="language-plaintext highlighter-rouge">Corollary : make the common case fast</code></li>
+  <li>따라서 전체 시스템에서 차지하는 비율이 높은 부분의 성능을 향상시키는 것이 전체 성능 향상에 도움이 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="대기-중-전력소모">대기 중 전력소모</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 거의 사용하지 않는 상황에서도 생각보다 전력소모가 크다.
+    <ul>
+      <li>예를 들어 <code class="language-plaintext highlighter-rouge">CPU</code>가 10%만 사용중인데 전력은 전체의 47%를 사용한다는 등</li>
+    </ul>
+  </li>
+  <li>그래서 프로세서를 만들 때 전력소모의 비율이 <code class="language-plaintext highlighter-rouge">CPU</code> 사용량에 비례되게 설계할 필요가 있는데 쉽지 않다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1388791&amp;ar=relateCourse">KOCW 영남대학교 최규상 교수님 공개강의</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cs" class="page__taxonomy-item p-category" rel="tag">CS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#computer-science" class="page__taxonomy-item p-category" rel="tag">Computer Science</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-20T00:00:00+09:00">February 20, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0%29+Performance%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2Fcomputer-architecture-02%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2Fcomputer-architecture-02%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520science%2Fcomputer-architecture-02%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/jsp/jdbc-dao/" class="pagination--pager" title="JSP) DAO
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/jsp/jdbc-dao/" rel="permalink">JSP) DAO
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 DAO(Data Access Object)란?
+
+  데이터 처리 객체
+  DB에 관련된 모든 동작을 수행하는 클래스
+  지금까지 JDBC로 DB와 연결할 때 사용하려는 페이지마다 일일이 연결 코드를 적어줘야 했는데 이제는 DAO를 만들어서 연결 동작을 여기서 수행하도록 하고 D...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/SQL-subquery/" rel="permalink">SQL) Subquery
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">☑️ 문법
+
+  GROUP BY절을 제외하고 다 사용가능하며 WHERE, HAVING절에서 제일 많이 활용된다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/SQL-join/" rel="permalink">SQL) JOIN
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">☑️ 문법
+
+  같은 컬럼을 가지고 있는 여러 테이블을 묶어서 데이터를 볼 때 사용한다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/computer-architecture-01/" rel="permalink">컴퓨터 구조) 컴퓨터 구조 Preview
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">컴퓨터의 발전
+
+  무어의 법칙 덕분에 숱한 기술의 발전이 가능했다.
+  중요하니까 외우자.
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

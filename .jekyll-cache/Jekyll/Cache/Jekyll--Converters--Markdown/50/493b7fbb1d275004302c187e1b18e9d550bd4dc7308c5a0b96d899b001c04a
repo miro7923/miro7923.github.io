@@ -1,0 +1,57 @@
+I"V<h1 id="cpu-time">CPU Time</h1>
+<ul>
+  <li>한 컴퓨터 프로그램이 <code class="language-plaintext highlighter-rouge">CPU</code>를 차지하여 일을 한 시간의 양</li>
+  <li>컴퓨터의 성능을 측정하기 위해 사용된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU Time</code>이 적을수록 성능이 좋다고 할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">clock cycle</code>을 줄이거나 <code class="language-plaintext highlighter-rouge">clock rate</code>가 올라가면 성능이 향상된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="instruction-count--cpi">Instruction Count &amp; CPI</h1>
+<h2 id="instruction-count">Instruction Count</h2>
+<ul>
+  <li>명령어의 수</li>
+</ul>
+
+<h2 id="cpi">CPI</h2>
+<ul>
+  <li>Cycles per Instructions</li>
+  <li><code class="language-plaintext highlighter-rouge">Instruction</code>의 실행주기</li>
+  <li>짧은 <code class="language-plaintext highlighter-rouge">CPI</code>를 가진 <code class="language-plaintext highlighter-rouge">IC</code>가 많을수록 성능이 좋다고 할 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="성능에-영향을-미치는-요소">성능에 영향을 미치는 요소</h1>
+<ul>
+  <li>알고리즘 : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code></li>
+  <li>프로그래밍 언어 : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code></li>
+  <li>컴파일러 : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code></li>
+  <li>ISA(명령어셋) : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code>, <code class="language-plaintext highlighter-rouge">T</code><br /><br /><br /></li>
+</ul>
+
+<h1 id="clock-period">Clock period</h1>
+<ul>
+  <li>Duration of a clock cycle</li>
+  <li>하나의 <code class="language-plaintext highlighter-rouge">clock cycle</code>이 걸리는 시간</li>
+  <li><code class="language-plaintext highlighter-rouge">1/clock rate</code>로 나타낼 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="power-wall">Power wall</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">clock rate</code>는 매년 꾸준히 늘다가 2004년을 기점으로 늘지 않고 있다.</li>
+  <li>왜냐면 전력소모가 많이 줄었기 때문</li>
+  <li>전력소모량은 <code class="language-plaintext highlighter-rouge">Capacitive load</code>x<code class="language-plaintext highlighter-rouge">Voltage^2</code>x<code class="language-plaintext highlighter-rouge">Frequency</code>로 구할 수 있는데 <code class="language-plaintext highlighter-rouge">Voltage</code>가 많이 줄었기 때문에 <code class="language-plaintext highlighter-rouge">Frequency</code>가 많이 늘어났음에도 전력소모량은 크게 늘지 않았다.</li>
+  <li>그런데 <code class="language-plaintext highlighter-rouge">Voltage</code>가 높을수록 전력소모와 열 발생이 많은데 <code class="language-plaintext highlighter-rouge">Voltage</code>를 더이상 줄일 수가 없게 되었기 때문에 기존에 <code class="language-plaintext highlighter-rouge">clock rate</code>을 증가시키는 방법으로는 성능 향상을 꾀하기가 어려워졌다.</li>
+  <li>2004년 이후로 <code class="language-plaintext highlighter-rouge">clock rate</code>을 증가시키지 못한 이유가 <code class="language-plaintext highlighter-rouge">CPU</code>에서 발생하는 열을 해결하지 못해서였다.</li>
+  <li>그래서 <code class="language-plaintext highlighter-rouge">clock rate</code>을 올리지 않고 성능을 향상시키기 위한 방법으로 <code class="language-plaintext highlighter-rouge">Multi-core</code>가 등장하게 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="multiprocessors">Multiprocessors</h1>
+<ul>
+  <li>Multicore microprocessors : 하나의 칩 안에 프로세서가 여러 개 있는 것</li>
+  <li><code class="language-plaintext highlighter-rouge">Parallel programming</code>이 필요하다.</li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1388791&amp;ar=relateCourse">KOCW 영남대학교 최규상 교수님 공개강의</a></li>
+</ul>
+:ET
