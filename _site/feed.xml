@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-20T00:26:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">컴퓨터구조) Performance</title><link href="http://localhost:4000/computer%20science/computer-architecture-02/" rel="alternate" type="text/html" title="컴퓨터구조) Performance" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-02</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-02/"><![CDATA[<h1 id="cpu-time">CPU Time</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-20T16:18:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">컴퓨터구조) Performance</title><link href="http://localhost:4000/computer%20science/computer-architecture-02/" rel="alternate" type="text/html" title="컴퓨터구조) Performance" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-02</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-02/"><![CDATA[<h1 id="cpu-time">CPU Time</h1>
 <ul>
   <li>한 컴퓨터 프로그램이 <code class="language-plaintext highlighter-rouge">CPU</code>를 차지하여 일을 한 시간의 양</li>
   <li>컴퓨터의 성능을 측정하기 위해 사용된다.</li>
@@ -81,40 +81,72 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1388791&amp;ar=relateCourse">KOCW 영남대학교 최규상 교수님 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[CPU Time 한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양 컴퓨터의 성능을 측정하기 위해 사용된다. CPU Time = Instruction Count x CPI x Clock Cycle Time CPU Time이 적을수록 성능이 좋다고 할 수 있다. clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.]]></summary></entry><entry><title type="html">SQL) JOIN</title><link href="http://localhost:4000/database/SQL-join/" rel="alternate" type="text/html" title="SQL) JOIN" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-join</id><content type="html" xml:base="http://localhost:4000/database/SQL-join/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[CPU Time 한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양 컴퓨터의 성능을 측정하기 위해 사용된다. CPU Time = Instruction Count x CPI x Clock Cycle Time CPU Time이 적을수록 성능이 좋다고 할 수 있다. clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.]]></summary></entry><entry><title type="html">Java) BOJ 2798. 블랙잭</title><link href="http://localhost:4000/boj/boj2798-java/" rel="alternate" type="text/html" title="Java) BOJ 2798. 블랙잭" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2798-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2798-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
 <ul>
-  <li>같은 컬럼을 가지고 있는 여러 테이블을 묶어서 데이터를 볼 때 사용한다.</li>
+  <li><a href="https://www.acmicpc.net/problem/2798">https://www.acmicpc.net/problem/2798</a><br /><br /></li>
 </ul>
 
-<h2 id="1-on절을-사용한-join">1. ON절을 사용한 JOIN</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">location_id</span>
-<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">s</span> <span class="k">JOIN</span> <span class="n">departments</span> <span class="n">d</span>
-<span class="k">ON</span>     <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">)</span> <span class="c1">-- 여기에 입력할 컬럼은 조인시킬 테이블 모두에 있어야 함</span>
-<span class="k">WHERE</span>  <span class="n">e</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="mi">149</span><span class="p">;</span>
-</code></pre></div></div>
+<h1 id="제한">제한</h1>
+<hr />
 
 <ul>
-  <li>테이블 두 개만 가능한 것은 아니고 세 개, 네 개, … 작성하는 만큼 가능하다.</li>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
 </ul>
 
-<h2 id="2-on절을-사용한-self-join">2. ON절을 사용한 Self-Join</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>  <span class="n">worker</span><span class="p">.</span><span class="n">last_name</span> <span class="n">emp</span><span class="p">,</span> <span class="n">manager</span><span class="p">.</span><span class="n">last_name</span> <span class="n">mgr</span>
-<span class="k">FROM</span>    <span class="n">employees</span> <span class="n">worker</span> <span class="k">JOIN</span> <span class="n">employees</span> <span class="n">manager</span>
-<span class="k">ON</span>      <span class="p">(</span><span class="n">worker</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="n">manager</span><span class="p">.</span><span class="n">employee_id</span><span class="p">);</span>
-</code></pre></div></div>
+<h1 id="문제">문제</h1>
+<hr />
 
 <ul>
-  <li>같은 테이블 안에서 <code class="language-plaintext highlighter-rouge">JOIN</code> 하는 것도 가능하다.<br /></li>
+  <li>카지노에서 제일 인기 있는 게임 블랙잭의 규칙은 상당히 쉽다. 카드의 합이 21을 넘지 않는 한도 내에서, 카드의 합을 최대한 크게 만드는 게임이다. 블랙잭은 카지노마다 다양한 규정이 있다.</li>
+  <li>한국 최고의 블랙잭 고수 김정인은 새로운 블랙잭 규칙을 만들어 상근, 창영이와 게임하려고 한다.</li>
+  <li>김정인 버전의 블랙잭에서 각 카드에는 양의 정수가 쓰여 있다. 그 다음, 딜러는 N장의 카드를 모두 숫자가 보이도록 바닥에 놓는다. 그런 후에 딜러는 숫자 M을 크게 외친다.</li>
+  <li>이제 플레이어는 제한된 시간 안에 N장의 카드 중에서 3장의 카드를 골라야 한다. 블랙잭 변형 게임이기 때문에, 플레이어가 고른 카드의 합은 M을 넘지 않으면서 M과 최대한 가깝게 만들어야 한다.</li>
+  <li>N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.<br /><br /></li>
 </ul>
 
-<h3 id="️-쿼리문-작성-팁">❗️ 쿼리문 작성 팁</h3>
+<h1 id="입력">입력</h1>
+<hr />
+
 <ul>
-  <li>컬럼명을 입력할 때 해당 컬럼이 속해있는 테이블명을 입력하면 해당 범위에서만 검색을 시행하기 때문에 실행속도가 훨씬 빨라진다. (테이블명을 적지 않아도 실행되지만 그만큼 모든 테이블을 대상으로 검색해서 결과를 가져오기 때문에 실행속도가 훨씬 느리다.)</li>
-  <li>그래서 실행속도가 빠른 쿼리문을 작성하는 것이 중요하다.</li>
-  <li>그런데 테이블 풀네임을 일일이 적어주면 너무 길어서 가독성이 떨어지니까 약자로 적을 수 있는데 대신 약자로 적었다면 <code class="language-plaintext highlighter-rouge">FROM</code>절에서 어떤 테이블명의 약자인지 꼭 명시해줘야 <code class="language-plaintext highlighter-rouge">SQL</code>이 헷갈리지 않고 잘 찾아올 수 있다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[☑️ 문법 같은 컬럼을 가지고 있는 여러 테이블을 묶어서 데이터를 볼 때 사용한다.]]></summary></entry><entry><title type="html">JSP) DAO</title><link href="http://localhost:4000/jsp/jdbc-dao/" rel="alternate" type="text/html" title="JSP) DAO" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc-dao</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc-dao/"><![CDATA[<h1 id="-daodata-access-object란">👀 DAO(Data Access Object)란?</h1>
+  <li>첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다. 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는 양의 정수이다.</li>
+  <li>합이 M을 넘지 않는 카드 3장을 찾을 수 있는 경우만 입력으로 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>참고 블로그 : <a href="https://minhamina.tistory.com/38">https://minhamina.tistory.com/38</a></li>
+  <li>조합을 구하는 문제같아서 조합 알고리즘을 공부한 뒤 풀었다.</li>
+  <li>
+    <p>조합인 이유는 수를 뽑는 모든 경우의 수를 탐색해 봐야 하는데 뽑는 순서가 결과에 미치는 영향이 없기 때문이다.<br /></p>
+  </li>
+  <li>주어지는 N개의 숫자 중 3개를 뽑아서 M보다 작거나 같은 수 중 가장 큰 수를 만들면 되는데 이걸 알기 위해서는 조합이 가능한 모든 경우의 수를 탐색해 봐야 한다.</li>
+  <li>그래서 재귀로 n개 중에 3개를 뽑는 경우, n-1개 중에 2개를 뽑는 경우, n-2개 중에 1개를 뽑는 경우,… 로 탐색하다가 n-r개 중에 0개를 뽑는 경우가 되면 그동안 뽑은 수들의 합 중 M보다 작거나 같으면서 가장 큰 수를 찾으면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 132 ms</li>
+  <li>메모리 : 14140 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/2c5b96d4e986e37ac3c5c0cd823ac3d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2798" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2798 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">JSP) DAO</title><link href="http://localhost:4000/jsp/jdbc-dao/" rel="alternate" type="text/html" title="JSP) DAO" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc-dao</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc-dao/"><![CDATA[<h1 id="-daodata-access-object란">👀 DAO(Data Access Object)란?</h1>
 <ul>
   <li>데이터 처리 객체</li>
   <li><code class="language-plaintext highlighter-rouge">DB</code>에 관련된 모든 동작을 수행하는 클래스</li>
@@ -338,7 +370,40 @@
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">JSP</code> 페이지에서는 아까 만든 객체를 호출하기만 하면 된다!</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="Database" /><category term="JSP" /><category term="DAO" /><summary type="html"><![CDATA[👀 DAO(Data Access Object)란? 데이터 처리 객체 DB에 관련된 모든 동작을 수행하는 클래스 지금까지 JDBC로 DB와 연결할 때 사용하려는 페이지마다 일일이 연결 코드를 적어줘야 했는데 이제는 DAO를 만들어서 연결 동작을 여기서 수행하도록 하고 DB연결이 필요한 페이지에서는 DAO만 호출하면 된다!]]></summary></entry><entry><title type="html">SQL) Subquery</title><link href="http://localhost:4000/database/SQL-subquery/" rel="alternate" type="text/html" title="SQL) Subquery" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-subquery</id><content type="html" xml:base="http://localhost:4000/database/SQL-subquery/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="Database" /><category term="JSP" /><category term="DAO" /><summary type="html"><![CDATA[👀 DAO(Data Access Object)란? 데이터 처리 객체 DB에 관련된 모든 동작을 수행하는 클래스 지금까지 JDBC로 DB와 연결할 때 사용하려는 페이지마다 일일이 연결 코드를 적어줘야 했는데 이제는 DAO를 만들어서 연결 동작을 여기서 수행하도록 하고 DB연결이 필요한 페이지에서는 DAO만 호출하면 된다!]]></summary></entry><entry><title type="html">SQL) JOIN</title><link href="http://localhost:4000/database/SQL-join/" rel="alternate" type="text/html" title="SQL) JOIN" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-join</id><content type="html" xml:base="http://localhost:4000/database/SQL-join/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
+<ul>
+  <li>같은 컬럼을 가지고 있는 여러 테이블을 묶어서 데이터를 볼 때 사용한다.</li>
+</ul>
+
+<h2 id="1-on절을-사용한-join">1. ON절을 사용한 JOIN</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">location_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">s</span> <span class="k">JOIN</span> <span class="n">departments</span> <span class="n">d</span>
+<span class="k">ON</span>     <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">)</span> <span class="c1">-- 여기에 입력할 컬럼은 조인시킬 테이블 모두에 있어야 함</span>
+<span class="k">WHERE</span>  <span class="n">e</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="mi">149</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>테이블 두 개만 가능한 것은 아니고 세 개, 네 개, … 작성하는 만큼 가능하다.</li>
+</ul>
+
+<h2 id="2-on절을-사용한-self-join">2. ON절을 사용한 Self-Join</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>  <span class="n">worker</span><span class="p">.</span><span class="n">last_name</span> <span class="n">emp</span><span class="p">,</span> <span class="n">manager</span><span class="p">.</span><span class="n">last_name</span> <span class="n">mgr</span>
+<span class="k">FROM</span>    <span class="n">employees</span> <span class="n">worker</span> <span class="k">JOIN</span> <span class="n">employees</span> <span class="n">manager</span>
+<span class="k">ON</span>      <span class="p">(</span><span class="n">worker</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="n">manager</span><span class="p">.</span><span class="n">employee_id</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>같은 테이블 안에서 <code class="language-plaintext highlighter-rouge">JOIN</code> 하는 것도 가능하다.<br /></li>
+</ul>
+
+<h3 id="️-쿼리문-작성-팁">❗️ 쿼리문 작성 팁</h3>
+<ul>
+  <li>컬럼명을 입력할 때 해당 컬럼이 속해있는 테이블명을 입력하면 해당 범위에서만 검색을 시행하기 때문에 실행속도가 훨씬 빨라진다. (테이블명을 적지 않아도 실행되지만 그만큼 모든 테이블을 대상으로 검색해서 결과를 가져오기 때문에 실행속도가 훨씬 느리다.)</li>
+  <li>그래서 실행속도가 빠른 쿼리문을 작성하는 것이 중요하다.</li>
+  <li>그런데 테이블 풀네임을 일일이 적어주면 너무 길어서 가독성이 떨어지니까 약자로 적을 수 있는데 대신 약자로 적었다면 <code class="language-plaintext highlighter-rouge">FROM</code>절에서 어떤 테이블명의 약자인지 꼭 명시해줘야 <code class="language-plaintext highlighter-rouge">SQL</code>이 헷갈리지 않고 잘 찾아올 수 있다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[☑️ 문법 같은 컬럼을 가지고 있는 여러 테이블을 묶어서 데이터를 볼 때 사용한다.]]></summary></entry><entry><title type="html">SQL) Subquery</title><link href="http://localhost:4000/database/SQL-subquery/" rel="alternate" type="text/html" title="SQL) Subquery" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-subquery</id><content type="html" xml:base="http://localhost:4000/database/SQL-subquery/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">GROUP BY</code>절을 제외하고 다 사용가능하며 <code class="language-plaintext highlighter-rouge">WHERE</code>, <code class="language-plaintext highlighter-rouge">HAVING</code>절에서 제일 많이 활용된다.</li>
 </ul>
@@ -630,62 +695,7 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/cview.do?cid=184062fa9a833237">KOCW 영남대학교 최규상 교수님 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[컴퓨터의 발전 무어의 법칙 덕분에 숱한 기술의 발전이 가능했다. 중요하니까 외우자.]]></summary></entry><entry><title type="html">Java) BOJ 10872. 팩토리얼</title><link href="http://localhost:4000/boj/boj10872-java/" rel="alternate" type="text/html" title="Java) BOJ 10872. 팩토리얼" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10872-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10872-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/10872">https://www.acmicpc.net/problem/10872</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 정수 N(0 ≤ N ≤ 12)이 주어진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 N!을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>N팩토리얼이 1부터 N까지의 누적곱이기 때문에 누적합을 구하는 코드에서 곱하기로만 바꿨다.
-단 구한 팩토리얼을 저장할 변수가 0부터 시작하면 무슨 수를 곱해도 0이 되어버리기 때문에 1부터 시작해야 하는 것만 주의하면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 128 ms</li>
-  <li>메모리 : 14220 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/da7ed92be7ff49728b3582171ca25fe8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10872" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10872 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">컴퓨터 하드웨어) 제어 장치</title><link href="http://localhost:4000/computer%20science/CS-14/" rel="alternate" type="text/html" title="컴퓨터 하드웨어) 제어 장치" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS-14</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS-14/"><![CDATA[<h1 id="-제어-장치란">👀 제어 장치란?</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[컴퓨터의 발전 무어의 법칙 덕분에 숱한 기술의 발전이 가능했다. 중요하니까 외우자.]]></summary></entry><entry><title type="html">컴퓨터 하드웨어) 제어 장치</title><link href="http://localhost:4000/computer%20science/CS-14/" rel="alternate" type="text/html" title="컴퓨터 하드웨어) 제어 장치" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS-14</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS-14/"><![CDATA[<h1 id="-제어-장치란">👀 제어 장치란?</h1>
 <ul>
   <li>프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분</li>
   <li>컴퓨터의 중추선이라 할 수 있다.</li>
@@ -818,7 +828,62 @@
 <h2 id="출처">출처</h2>
 <ul>
   <li>컴퓨터 사이언스(김철 저)</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Computer Hardware" /><category term="Control Unit" /><summary type="html"><![CDATA[👀 제어 장치란? 프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분 컴퓨터의 중추선이라 할 수 있다. 컴퓨터의 자료 처리 속도를 MIPS(Million Instructions Per Second)로 나타내는데 1MIPS는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.]]></summary></entry><entry><title type="html">Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기</title><link href="http://localhost:4000/java/set-java-version/" rel="alternate" type="text/html" title="Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/java/set-java-version</id><content type="html" xml:base="http://localhost:4000/java/set-java-version/"><![CDATA[<p>👀 터미널에서 단어 하나만 입력하면 <code class="language-plaintext highlighter-rouge">OpenJDK 8</code> 버전과 <code class="language-plaintext highlighter-rouge">OpenJDK 11</code> 버전을 그 때 그 때 기본으로 세팅할 수 있다.</p>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Computer Hardware" /><category term="Control Unit" /><summary type="html"><![CDATA[👀 제어 장치란? 프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분 컴퓨터의 중추선이라 할 수 있다. 컴퓨터의 자료 처리 속도를 MIPS(Million Instructions Per Second)로 나타내는데 1MIPS는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.]]></summary></entry><entry><title type="html">Java) BOJ 10872. 팩토리얼</title><link href="http://localhost:4000/boj/boj10872-java/" rel="alternate" type="text/html" title="Java) BOJ 10872. 팩토리얼" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10872-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10872-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/10872">https://www.acmicpc.net/problem/10872</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 정수 N(0 ≤ N ≤ 12)이 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 N!을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>N팩토리얼이 1부터 N까지의 누적곱이기 때문에 누적합을 구하는 코드에서 곱하기로만 바꿨다.
+단 구한 팩토리얼을 저장할 변수가 0부터 시작하면 무슨 수를 곱해도 0이 되어버리기 때문에 1부터 시작해야 하는 것만 주의하면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 128 ms</li>
+  <li>메모리 : 14220 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/da7ed92be7ff49728b3582171ca25fe8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10872" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10872 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기</title><link href="http://localhost:4000/java/set-java-version/" rel="alternate" type="text/html" title="Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/java/set-java-version</id><content type="html" xml:base="http://localhost:4000/java/set-java-version/"><![CDATA[<p>👀 터미널에서 단어 하나만 입력하면 <code class="language-plaintext highlighter-rouge">OpenJDK 8</code> 버전과 <code class="language-plaintext highlighter-rouge">OpenJDK 11</code> 버전을 그 때 그 때 기본으로 세팅할 수 있다.</p>
 
 <h1 id="homebrew로-openjdk-설치">Homebrew로 OpenJDK 설치</h1>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span>
@@ -1061,64 +1126,4 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/8d5e174a8b0e3b6d4b77580e1424b9c7.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1002" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1002 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 1085. 직사각형에서 탈출</title><link href="http://localhost:4000/boj/boj9020-java/" rel="alternate" type="text/html" title="Java) BOJ 1085. 직사각형에서 탈출" /><published>2022-02-14T00:00:00+09:00</published><updated>2022-02-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj9020-java</id><content type="html" xml:base="http://localhost:4000/boj/boj9020-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1085">https://www.acmicpc.net/problem/1085</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>한수는 지금 (x, y)에 있다. 직사각형은 각 변이 좌표축에 평행하고, 왼쪽 아래 꼭짓점은 (0, 0), 오른쪽 위 꼭짓점은 (w, h)에 있다.</li>
-  <li>직사각형의 경계선까지 가는 거리의 최솟값을 구하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 x, y, w, h가 주어진다.</li>
-  <li>1 ≤ w, h ≤ 1,000</li>
-  <li>1 ≤ x ≤ w-1</li>
-  <li>1 ≤ y ≤ h-1</li>
-  <li>x, y, w, h는 정수<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 문제의 정답을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>예제를 보니까 (x, y)에서 가로와 세로 직선 방향으로 직사각형의 변으로 가면 되는 것이라</li>
-  <li>x는 x와 w - x 값 중 더 작은 값을, y는 y와 h - y 중 더 작은 값을 찾은 다음에 저 둘 중 더 작은 값을 최종 출력하면 정답인 거 같아서 그대로 썼는데 통과되었다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 140 ms</li>
-  <li>메모리 : 14216 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/842a7990b2c0aeee814beb998cd21d67.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1085" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1085 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/8d5e174a8b0e3b6d4b77580e1424b9c7.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1002" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1002 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry></feed>
