@@ -1,4 +1,263 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-20T16:18:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">컴퓨터구조) Performance</title><link href="http://localhost:4000/computer%20science/computer-architecture-02/" rel="alternate" type="text/html" title="컴퓨터구조) Performance" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-02</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-02/"><![CDATA[<h1 id="cpu-time">CPU Time</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-20T21:55:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">컴퓨터 네트워크) 네트워크 기초</title><link href="http://localhost:4000/computer%20network/computer-network-01/" rel="alternate" type="text/html" title="컴퓨터 네트워크) 네트워크 기초" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20network/computer-network-01</id><content type="html" xml:base="http://localhost:4000/computer%20network/computer-network-01/"><![CDATA[<h1 id="컴퓨터-네트워크">컴퓨터 네트워크</h1>
+<ul>
+  <li>전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음</li>
+  <li>예) 인터넷</li>
+  <li>네트워크는 크게 나누면 유선, 무선 두 종류로 나눌 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="프로토콜protocol">프로토콜(Protocol)</h1>
+<ul>
+  <li>정보교환을 위해 필요한 통신 규약</li>
+  <li>사람들끼리 말을 할 때 맥락없이 얘기하지 않고 서로 합의된 맥락 안에서 얘기하듯 컴퓨터 간 통신을 할 때에도 맥락이 필요하다.</li>
+  <li>예) <code class="language-plaintext highlighter-rouge">HTTP</code>, <code class="language-plaintext highlighter-rouge">TCP</code>, <code class="language-plaintext highlighter-rouge">IP</code><br /><br /><br /></li>
+</ul>
+
+<h1 id="컴퓨터-네트워킹이-필요한-이유">컴퓨터 네트워킹이 필요한 이유</h1>
+<h2 id="연결과-통신">연결과 통신</h2>
+<ul>
+  <li>멀리 떨어져 있는 사용자와도 효율적으로 정보를 교환하기 위해서</li>
+</ul>
+
+<h2 id="데이터-공유">데이터 공유</h2>
+<ul>
+  <li>컴퓨터 네트워크를 통해 쉽고 빠르게 데이터 공유</li>
+  <li>컴퓨터 네트워크를 사용하는 ❗️ 가장 중요한 이유 중의 하나라고 할 수 있다.</li>
+</ul>
+
+<h2 id="하드웨어-공유">하드웨어 공유</h2>
+<ul>
+  <li>사무실에 프린터는 한 대만 두고 사무실내의 컴퓨터들이 네트워크를 통해 프린터를 공유하는 것처럼 하드웨어 공유를 통해 경비를 절감할 수 있다.</li>
+</ul>
+
+<h2 id="데이터-보안과-관리">데이터 보안과 관리</h2>
+<ul>
+  <li>네트워크에 연결된 서버에 저장, 데이터 읽기/수정 관리</li>
+</ul>
+
+<h2 id="성능-개선">성능 개선</h2>
+<ul>
+  <li>업무를 여러 컴퓨터에 분산시켜 동시에 처리<br /><br /><br /></li>
+</ul>
+
+<h1 id="기초-용어">기초 용어</h1>
+<ul>
+  <li>노드(Node) : 컴퓨터 네트워크에 연결된 컴퓨터 또는 네트워크 장비를 일반화한 용어</li>
+  <li>호스트(Host) : 사용자의 요청을 처리하는 컴퓨터를 일반화한 용어</li>
+  <li>클라이언트(Client) : 서비스를 요청하는 호스트</li>
+  <li>서버(Server) : 서비스 요청을 받아 서비스를 제공하는 호스트</li>
+  <li>네트워크 인터페이스(Interface) : 호스트와 컴퓨터 네트워크의 연결 지점으로 네트워크 인터페이스 카드(NIC)라고 한다.</li>
+  <li>전송 매체(Transmission Medium)
+    <ul>
+      <li>송신측 호스트와 수신측 호스트 사이를 상호 연결하는 물리적인 선로</li>
+      <li>유선(Wired) 전송 매체와 무선(Wireless) 전송 매체로 구분</li>
+      <li>링크(Link)라고도 한다.</li>
+    </ul>
+  </li>
+  <li>채널(Channel)
+    <ul>
+      <li>송신측에서 수신측으로 데이터를 전송하기 위해서 사용</li>
+      <li>유선과 같은 전송매체 또는 무선(Radio) 채널과 같이 다중화(Multiplexing 여러 호스트가 하나의 채널을 공유하는 것) 된 매체에서 하나의 논리적 연결(Logical Connection)을 말함</li>
+      <li>채널의 전송 용량은 <code class="language-plaintext highlighter-rouge">bps</code>(bit per second 초당 보내는 bit의 양) 단위의 전송률 또는 <code class="language-plaintext highlighter-rouge">Hz</code> 단위의 대역폭(Bandwidth)으로 표시<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="컴퓨터-통신구조">컴퓨터 통신구조</h1>
+<ul>
+  <li>서로 다른 시스템간의 통신을 하나의 모듈로 처리하기는 너무 복잡하기 때문에 기능별로 모듈을 세분화해서 구현할 필요가 있다.</li>
+  <li>세분화된 모듈을 계층화 한 구조가 컴퓨터 통신 구조</li>
+</ul>
+
+<h2 id="계층화-하는-이유">계층화 하는 이유</h2>
+<ul>
+  <li>복잡한 시스템의 각 부분을 식별하고 연계하는데 좋다.</li>
+  <li>모듈화는 시스템의 유지 및 개선을 용이하게 한다.</li>
+  <li>특정 모듈을 변경하더라도 다른 모듈에 영향을 주지 않는다.<br /><br /></li>
+</ul>
+
+<p align="center"><img src="../../assets/images/networkHierarchy.png" width="500px" height="550px" /></p>
+<p><br /></p>
+
+<ul>
+  <li>대표적으로 ISO OSI 7계층 통신구조와 인터넷 프로토콜 구조(5계층)이 있다.</li>
+</ul>
+
+<h2 id="인터넷-통신구조">인터넷 통신구조</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">응용(application)</code> : 응용 서비스 지원
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">HTTP</code>, <code class="language-plaintext highlighter-rouge">FTP</code>, <code class="language-plaintext highlighter-rouge">SMTP</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">트랜스포트(transport)</code> : 호스트간의 데이터 전송
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">TCP</code>, <code class="language-plaintext highlighter-rouge">UDP</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">네트워크(network)</code> : 라우팅
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">IP</code>, <code class="language-plaintext highlighter-rouge">RIP</code>등</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">데이터링크(datalink)</code> : 네트워크 노드간의 데이터 전송
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Ethernet</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">물리(physical)</code> : 물리적인 케이블<br /></li>
+  <li>각 계층은 하위계층을 반드시 이용해야 한다.</li>
+  <li>응용계층쪽으로 갈수록 사용자와 가깝고 물리계층으로 갈수록 하드웨어와 가깝다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="표준화">표준화</h1>
+<ul>
+  <li>정보통신 시스템 간의 프로토콜을 정립하는 활동</li>
+  <li>정보통신 표준 : 정보통신 시스템간의 미리 합의된 규약의 집합</li>
+  <li>정보통신 분야에 있어서 공통성, 통일성, 호환성, 등을 확보하기 위한 일반적 요구 사항</li>
+</ul>
+
+<h2 id="표준화-기구">표준화 기구</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ISO</code>(International Organization for Standards)</li>
+  <li><code class="language-plaintext highlighter-rouge">ITU-T</code>(International Telecommunication Union-Telecommunication)</li>
+  <li><code class="language-plaintext highlighter-rouge">ANSI</code>(American National Standards Institute)</li>
+  <li><code class="language-plaintext highlighter-rouge">EIA</code>(Electronic Industries Association)</li>
+  <li><code class="language-plaintext highlighter-rouge">TIA</code>(Telecommunications Industries Association)</li>
+  <li><code class="language-plaintext highlighter-rouge">IEEE</code>(Institute of Electrical and Electronics Engineers)</li>
+  <li><code class="language-plaintext highlighter-rouge">ETSI</code>(European Telecommunications Standards Institute)</li>
+  <li><code class="language-plaintext highlighter-rouge">IETF</code>(Internet Engineering Task Force) : 인터넷 표준규격 제정(<code class="language-plaintext highlighter-rouge">HTTP</code>, <code class="language-plaintext highlighter-rouge">FTP</code>), <code class="language-plaintext highlighter-rouge">IETF</code>에서 만든 표준은 <code class="language-plaintext highlighter-rouge">RFC</code>(Request For Comments)로 시작<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1357811&amp;ar=relateCourse">KOCW 동서대학교 임효택 교수님 공개강의</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[컴퓨터 네트워크 전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음 예) 인터넷 네트워크는 크게 나누면 유선, 무선 두 종류로 나눌 수 있다.]]></summary></entry><entry><title type="html">Java) BOJ 2798. 블랙잭</title><link href="http://localhost:4000/boj/boj2798-java/" rel="alternate" type="text/html" title="Java) BOJ 2798. 블랙잭" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2798-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2798-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2798">https://www.acmicpc.net/problem/2798</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>카지노에서 제일 인기 있는 게임 블랙잭의 규칙은 상당히 쉽다. 카드의 합이 21을 넘지 않는 한도 내에서, 카드의 합을 최대한 크게 만드는 게임이다. 블랙잭은 카지노마다 다양한 규정이 있다.</li>
+  <li>한국 최고의 블랙잭 고수 김정인은 새로운 블랙잭 규칙을 만들어 상근, 창영이와 게임하려고 한다.</li>
+  <li>김정인 버전의 블랙잭에서 각 카드에는 양의 정수가 쓰여 있다. 그 다음, 딜러는 N장의 카드를 모두 숫자가 보이도록 바닥에 놓는다. 그런 후에 딜러는 숫자 M을 크게 외친다.</li>
+  <li>이제 플레이어는 제한된 시간 안에 N장의 카드 중에서 3장의 카드를 골라야 한다. 블랙잭 변형 게임이기 때문에, 플레이어가 고른 카드의 합은 M을 넘지 않으면서 M과 최대한 가깝게 만들어야 한다.</li>
+  <li>N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다. 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는 양의 정수이다.</li>
+  <li>합이 M을 넘지 않는 카드 3장을 찾을 수 있는 경우만 입력으로 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>참고 블로그 : <a href="https://minhamina.tistory.com/38">https://minhamina.tistory.com/38</a></li>
+  <li>조합을 구하는 문제같아서 조합 알고리즘을 공부한 뒤 풀었다.</li>
+  <li>
+    <p>조합인 이유는 수를 뽑는 모든 경우의 수를 탐색해 봐야 하는데 뽑는 순서가 결과에 미치는 영향이 없기 때문이다.<br /></p>
+  </li>
+  <li>주어지는 N개의 숫자 중 3개를 뽑아서 M보다 작거나 같은 수 중 가장 큰 수를 만들면 되는데 이걸 알기 위해서는 조합이 가능한 모든 경우의 수를 탐색해 봐야 한다.</li>
+  <li>그래서 재귀로 n개 중에 3개를 뽑는 경우, n-1개 중에 2개를 뽑는 경우, n-2개 중에 1개를 뽑는 경우,… 로 탐색하다가 n-r개 중에 0개를 뽑는 경우가 되면 그동안 뽑은 수들의 합 중 M보다 작거나 같으면서 가장 큰 수를 찾으면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 132 ms</li>
+  <li>메모리 : 14140 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/2c5b96d4e986e37ac3c5c0cd823ac3d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2798" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2798 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2231. 분해합</title><link href="http://localhost:4000/boj/boj2231-java/" rel="alternate" type="text/html" title="Java) BOJ 2231. 분해합" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2231-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2231-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2231">https://www.acmicpc.net/problem/2231</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 192 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>어떤 자연수 N이 있을 때, 그 자연수 N의 분해합은 N과 N을 이루는 각 자리수의 합을 의미한다. 어떤 자연수 M의 분해합이 N인 경우, M을 N의 생성자라 한다.</li>
+  <li>예를 들어, 245의 분해합은 256(=245+2+4+5)이 된다. 따라서 245는 256의 생성자가 된다. 물론, 어떤 자연수의 경우에는 생성자가 없을 수도 있다.</li>
+  <li>반대로, 생성자가 여러 개인 자연수도 있을 수 있다.</li>
+  <li>자연수 N이 주어졌을 때, N의 가장 작은 생성자를 구해내는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 자연수 N(1 ≤ N ≤ 1,000,000)이 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 답을 출력한다. 생성자가 없는 경우에는 0을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>참고 블로그 : <a href="https://st-lab.tistory.com/98">https://st-lab.tistory.com/98</a><br /></p>
+  </li>
+  <li>N의 생성자 중 가장 작은 수를 구하면 되니까 꼭 모든 수를 탐색할 필요는 없고 1부터 수를 만들어 보면서 N과 같은 수가 나오면 반복을 중단하고 해당 수를 출력하면 된다.</li>
+  <li>만약 N을 넘어가는데도 생성자가 없다면 0을 출력한다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 152 ms</li>
+  <li>메모리 : 14828 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/8f317b052aa2f68ecba29663847f959a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2231" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2231 제한 시간 제한 : 2 초 메모리 제한 : 192 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Performance</title><link href="http://localhost:4000/computer%20science/computer-architecture-02/" rel="alternate" type="text/html" title="컴퓨터구조) Performance" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-02</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-02/"><![CDATA[<h1 id="cpu-time">CPU Time</h1>
 <ul>
   <li>한 컴퓨터 프로그램이 <code class="language-plaintext highlighter-rouge">CPU</code>를 차지하여 일을 한 시간의 양</li>
   <li>컴퓨터의 성능을 측정하기 위해 사용된다.</li>
@@ -81,72 +340,7 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1388791&amp;ar=relateCourse">KOCW 영남대학교 최규상 교수님 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[CPU Time 한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양 컴퓨터의 성능을 측정하기 위해 사용된다. CPU Time = Instruction Count x CPI x Clock Cycle Time CPU Time이 적을수록 성능이 좋다고 할 수 있다. clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.]]></summary></entry><entry><title type="html">Java) BOJ 2798. 블랙잭</title><link href="http://localhost:4000/boj/boj2798-java/" rel="alternate" type="text/html" title="Java) BOJ 2798. 블랙잭" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2798-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2798-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2798">https://www.acmicpc.net/problem/2798</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>카지노에서 제일 인기 있는 게임 블랙잭의 규칙은 상당히 쉽다. 카드의 합이 21을 넘지 않는 한도 내에서, 카드의 합을 최대한 크게 만드는 게임이다. 블랙잭은 카지노마다 다양한 규정이 있다.</li>
-  <li>한국 최고의 블랙잭 고수 김정인은 새로운 블랙잭 규칙을 만들어 상근, 창영이와 게임하려고 한다.</li>
-  <li>김정인 버전의 블랙잭에서 각 카드에는 양의 정수가 쓰여 있다. 그 다음, 딜러는 N장의 카드를 모두 숫자가 보이도록 바닥에 놓는다. 그런 후에 딜러는 숫자 M을 크게 외친다.</li>
-  <li>이제 플레이어는 제한된 시간 안에 N장의 카드 중에서 3장의 카드를 골라야 한다. 블랙잭 변형 게임이기 때문에, 플레이어가 고른 카드의 합은 M을 넘지 않으면서 M과 최대한 가깝게 만들어야 한다.</li>
-  <li>N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다. 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는 양의 정수이다.</li>
-  <li>합이 M을 넘지 않는 카드 3장을 찾을 수 있는 경우만 입력으로 주어진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>참고 블로그 : <a href="https://minhamina.tistory.com/38">https://minhamina.tistory.com/38</a></li>
-  <li>조합을 구하는 문제같아서 조합 알고리즘을 공부한 뒤 풀었다.</li>
-  <li>
-    <p>조합인 이유는 수를 뽑는 모든 경우의 수를 탐색해 봐야 하는데 뽑는 순서가 결과에 미치는 영향이 없기 때문이다.<br /></p>
-  </li>
-  <li>주어지는 N개의 숫자 중 3개를 뽑아서 M보다 작거나 같은 수 중 가장 큰 수를 만들면 되는데 이걸 알기 위해서는 조합이 가능한 모든 경우의 수를 탐색해 봐야 한다.</li>
-  <li>그래서 재귀로 n개 중에 3개를 뽑는 경우, n-1개 중에 2개를 뽑는 경우, n-2개 중에 1개를 뽑는 경우,… 로 탐색하다가 n-r개 중에 0개를 뽑는 경우가 되면 그동안 뽑은 수들의 합 중 M보다 작거나 같으면서 가장 큰 수를 찾으면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 132 ms</li>
-  <li>메모리 : 14140 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/2c5b96d4e986e37ac3c5c0cd823ac3d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2798" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2798 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">JSP) DAO</title><link href="http://localhost:4000/jsp/jdbc-dao/" rel="alternate" type="text/html" title="JSP) DAO" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc-dao</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc-dao/"><![CDATA[<h1 id="-daodata-access-object란">👀 DAO(Data Access Object)란?</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[CPU Time 한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양 컴퓨터의 성능을 측정하기 위해 사용된다. CPU Time = Instruction Count x CPI x Clock Cycle Time CPU Time이 적을수록 성능이 좋다고 할 수 있다. clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.]]></summary></entry><entry><title type="html">JSP) DAO</title><link href="http://localhost:4000/jsp/jdbc-dao/" rel="alternate" type="text/html" title="JSP) DAO" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc-dao</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc-dao/"><![CDATA[<h1 id="-daodata-access-object란">👀 DAO(Data Access Object)란?</h1>
 <ul>
   <li>데이터 처리 객체</li>
   <li><code class="language-plaintext highlighter-rouge">DB</code>에 관련된 모든 동작을 수행하는 클래스</li>
@@ -883,247 +1077,4 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/da7ed92be7ff49728b3582171ca25fe8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10872" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10872 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기</title><link href="http://localhost:4000/java/set-java-version/" rel="alternate" type="text/html" title="Mac) Java OpenJDK 버전 여러개 설치해 놓고 돌려가며 쓰기" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/java/set-java-version</id><content type="html" xml:base="http://localhost:4000/java/set-java-version/"><![CDATA[<p>👀 터미널에서 단어 하나만 입력하면 <code class="language-plaintext highlighter-rouge">OpenJDK 8</code> 버전과 <code class="language-plaintext highlighter-rouge">OpenJDK 11</code> 버전을 그 때 그 때 기본으로 세팅할 수 있다.</p>
-
-<h1 id="homebrew로-openjdk-설치">Homebrew로 OpenJDK 설치</h1>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span>
-</code></pre></div></div>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Homebrew</code>가 설치되어 있지 않다면 위 명령어를 터미널에 입력해서 설치한다.</li>
-  <li>처음엔 그림도 없고 <code class="language-plaintext highlighter-rouge">CLI</code> 환경이라 겁 먹었는데 적응되니까 세상에서 젤 편한 브루~ 😄
-<br /><br /></li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">brew</span> <span class="n">install</span> <span class="o">--</span><span class="n">cask</span> <span class="n">adoptopenjdk</span>
-</code></pre></div></div>
-<ul>
-  <li>브루용 터미널을 켠 다음에 위 명령어를 입력하면 현재 <code class="language-plaintext highlighter-rouge">OpenJDK</code>의 최신버전을 설치할 수 있다.</li>
-  <li>현재 17, 18 버전까지 나와있는데 많이 사용하는 버전은 8과 11 버전인 거 같다.</li>
-  <li>그래서 나도 8과 11 버전만 설치할 것이다.</li>
-</ul>
-
-<h2 id="버전별-명령어-리스트">버전별 명령어 리스트</h2>
-<p><img src="../../assets/images/openjdkVersions.png" alt="openjdkVersions" /></p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">brew</span> <span class="n">tap</span> <span class="nc">AdoptOpenJDK</span><span class="o">/</span><span class="n">openjdk</span>
-<span class="n">brew</span> <span class="n">install</span> <span class="o">--</span><span class="n">cask</span> <span class="n">adoptopenjdk11</span>
-</code></pre></div></div>
-<ul>
-  <li>현재 8버전은 깔려 있어서 11버전만 추가로 설치했다.</li>
-  <li>위 목록에서 설치하고 싶은 버전을 <code class="language-plaintext highlighter-rouge">--cask</code> 뒤에 입력하면 된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Homebrew</code>를 통해 설치하는 것은 정식 루트를 통하는 것은 아니고 커뮤니티에 배포되어 있는 것을 사용하는 것이라고 하는데 오라클 JDK가 유료화 된 이후로 다 이렇게 써서 문제 되는 것은 없다고 한다. 
-<br /><br /></li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">🍺</span>  <span class="n">adoptopenjdk11</span> <span class="n">was</span> <span class="n">successfully</span> <span class="n">installed</span><span class="o">!</span>
-</code></pre></div></div>
-<ul>
-  <li>정상적으로 설치가 되면 마지막에 성공적으로 설치되었다는 메세지를 볼 수 있다. 
-<br /><br /></li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
-<span class="n">openjdk</span> <span class="n">version</span> <span class="s">"1.8.0_302"</span>
-<span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nf">Environment</span> <span class="o">(</span><span class="nc">Temurin</span><span class="o">)(</span><span class="n">build</span> <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_302</span><span class="o">-</span><span class="n">b08</span><span class="o">)</span>
-<span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="nf">VM</span> <span class="o">(</span><span class="nc">Temurin</span><span class="o">)(</span><span class="n">build</span> <span class="mf">25.302</span><span class="o">-</span><span class="n">b08</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
-</code></pre></div></div>
-<ul>
-  <li>현재 사용중인 자바의 버전을 확인해보면 기존에 사용하던 것이 있어서 8버전이 나온다.
-<br /><br /></li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="no">V</span>
-<span class="nc">Matching</span> <span class="nc">Java</span> <span class="nc">Virtual</span> <span class="nf">Machines</span> <span class="o">(</span><span class="mi">3</span><span class="o">):</span>
-    <span class="mf">11.0</span><span class="o">.</span><span class="mi">11</span> <span class="o">(</span><span class="n">x86_64</span><span class="o">)</span> <span class="s">"AdoptOpenJDK"</span> <span class="o">-</span> <span class="s">"AdoptOpenJDK 11"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">adoptopenjdk</span><span class="o">-</span><span class="mi">11</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
-    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span> <span class="o">(</span><span class="n">arm64</span><span class="o">)</span> <span class="s">"Azul Systems, Inc."</span> <span class="o">-</span> <span class="s">"Zulu 8.58.0.13"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
-    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_302</span> <span class="o">(</span><span class="n">x86_64</span><span class="o">)</span> <span class="s">"Eclipse Temurin"</span> <span class="o">-</span> <span class="s">"Eclipse Temurin 8"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
-</code></pre></div></div>
-<ul>
-  <li>설치된 모든 자바 버전을 보고 싶으면 <code class="language-plaintext highlighter-rouge">/usr/libexec/java_home -V</code> 명령어를 입력하면 된다.</li>
-  <li>사용중이던 8버전 외에 11버전도 추가로 잘 설치된 것을 볼 수 있다. <br /><br /></li>
-</ul>
-
-<h1 id="그런데-실리콘-맥용이-아니라서-다시-설치">그런데… 실리콘 맥용이 아니라서 다시 설치</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">M1</code> 맥북을 사용중인데 설치하고 보니까 인텔맥 버전(x86_64)이라 왠지 최적화가 좀 덜 될 거 같아서 지우고 실리콘 맥용으로 다시 설치했다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">cd</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span>
-<span class="nc">JavaVirtualMachines</span> <span class="o">%</span> <span class="n">ls</span>  
-<span class="n">adoptopenjdk</span><span class="o">-</span><span class="mi">11</span><span class="o">.</span><span class="na">jdk</span>	<span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span>		<span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span>
-</code></pre></div></div>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">JVM</code> 폴더로 이동해서 <code class="language-plaintext highlighter-rouge">ls</code> 명령어로 설치된 <code class="language-plaintext highlighter-rouge">JDK</code>들을 확인해 보면 목록들이 나온다.
-<br /><br /></li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">sudo</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">adoptopenjdk</span><span class="o">-</span><span class="mi">11</span><span class="o">.</span><span class="na">jdk</span>
-</code></pre></div></div>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">rm</code> 명령어를 사용해 삭제하고 싶은 버전을 입력하면 삭제할 수 있다.
-<br /><br /></li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">ls</span>
-<span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span>	<span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span>
-</code></pre></div></div>
-<ul>
-  <li>다시 확인해보면 없다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="no">V</span>
-<span class="nc">Matching</span> <span class="nc">Java</span> <span class="nc">Virtual</span> <span class="nf">Machines</span> <span class="o">(</span><span class="mi">2</span><span class="o">):</span>
-    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span> <span class="o">(</span><span class="n">arm64</span><span class="o">)</span> <span class="s">"Azul Systems, Inc."</span> <span class="o">-</span> <span class="s">"Zulu 8.58.0.13"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
-    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_302</span> <span class="o">(</span><span class="n">x86_64</span><span class="o">)</span> <span class="s">"Eclipse Temurin"</span> <span class="o">-</span> <span class="s">"Eclipse Temurin 8"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
-</code></pre></div></div>
-<p><br /><br /></p>
-
-<h2 id="zulu-jdk-다운로드">Zulu JDK 다운로드</h2>
-<ul>
-  <li><a href="https://www.azul.com/downloads/?version=java-11-lts&amp;os=macos&amp;architecture=arm-64-bit&amp;package=jdk">Azul JDK</a></li>
-  <li><code class="language-plaintext highlighter-rouge">Azul Systems</code> 홈페이지에 가면 <code class="language-plaintext highlighter-rouge">Arm Architecture</code>용으로 나온 <code class="language-plaintext highlighter-rouge">JDK</code>를 다운받을 수 있다.</li>
-  <li>11버전을 선택해서 다운로드한다. (<code class="language-plaintext highlighter-rouge">.dmg</code> 파일이 편해서 사용)</li>
-  <li>더블클릭 후 다음만 누르면 설치가 완료된다.</li>
-</ul>
-
-<h2 id="zulu-jdk-설치-확인">Zulu JDK 설치 확인</h2>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="no">V</span>
-<span class="nc">Matching</span> <span class="nc">Java</span> <span class="nc">Virtual</span> <span class="nf">Machines</span> <span class="o">(</span><span class="mi">3</span><span class="o">):</span>
-    <span class="mf">11.0</span><span class="o">.</span><span class="mi">14</span> <span class="o">(</span><span class="n">arm64</span><span class="o">)</span> <span class="s">"Azul Systems, Inc."</span> <span class="o">-</span> <span class="s">"Zulu 11.54.23"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">zulu</span><span class="o">-</span><span class="mi">11</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
-    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span> <span class="o">(</span><span class="n">arm64</span><span class="o">)</span> <span class="s">"Azul Systems, Inc."</span> <span class="o">-</span> <span class="s">"Zulu 8.58.0.13"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">zulu</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
-    <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_302</span> <span class="o">(</span><span class="n">x86_64</span><span class="o">)</span> <span class="s">"Eclipse Temurin"</span> <span class="o">-</span> <span class="s">"Eclipse Temurin 8"</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">temurin</span><span class="o">-</span><span class="mi">8</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span>
-</code></pre></div></div>
-<ul>
-  <li>11 버전도 <code class="language-plaintext highlighter-rouge">arm64</code>로 잘 설치되었다.<br /><br /></li>
-</ul>
-
-<h1 id="단어-하나로-기본으로-사용할-openjdk-버전-바꾸기">단어 하나로 기본으로 사용할 OpenJDK 버전 바꾸기</h1>
-<ul>
-  <li>컴퓨터에 설치된 자바가 하나뿐이라면 그게 자동으로 기본값으로 설정이 되지만 나는 사정상 11로 완전 갈아타면 안 되고 8버전도 써야 하기 때문에 두 개를 바꿔가며 써야 하는데 매번 환경설정을 해주려면 참 귀찮을거 같아서 좀 미뤄왔었다.</li>
-  <li>그런데 구글링 해 보니까 완전 편한 방법이 있었다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mf">1.8</span><span class="o">)</span>
-<span class="n">export</span> <span class="no">PATH</span><span class="o">=</span><span class="s">"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$JAVA_HOME"</span>
-<span class="n">alias</span> <span class="n">setJava8</span><span class="o">=</span><span class="err">'</span><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mf">1.8</span><span class="o">)</span><span class="err">'</span>
-<span class="n">alias</span> <span class="n">setJava11</span><span class="o">=</span><span class="err">'</span><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mi">11</span><span class="o">)</span><span class="err">'</span>
-</code></pre></div></div>
-<ul>
-  <li>위 명령어를 한 줄씩 복붙해서 실행하면 자바 버전별로 <code class="language-plaintext highlighter-rouge">앨리어스</code>를 지정해 사용할 수 있다.
-<br /><br /></li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">setJava11</span>
-<span class="o">%</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
-<span class="n">openjdk</span> <span class="n">version</span> <span class="s">"11.0.14"</span> <span class="mi">2022</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">18</span> <span class="no">LTS</span>
-<span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nc">Environment</span> <span class="nc">Zulu11</span><span class="o">.</span><span class="mi">54</span><span class="o">+</span><span class="mi">23</span><span class="o">-</span><span class="no">CA</span> <span class="o">(</span><span class="n">build</span> <span class="mf">11.0</span><span class="o">.</span><span class="mi">14</span><span class="o">+</span><span class="mi">9</span><span class="o">-</span><span class="no">LTS</span><span class="o">)</span>
-<span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="no">VM</span> <span class="nc">Zulu11</span><span class="o">.</span><span class="mi">54</span><span class="o">+</span><span class="mi">23</span><span class="o">-</span><span class="no">CA</span> <span class="o">(</span><span class="n">build</span> <span class="mf">11.0</span><span class="o">.</span><span class="mi">14</span><span class="o">+</span><span class="mi">9</span><span class="o">-</span><span class="no">LTS</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
-
-<span class="o">%</span> <span class="n">setJava8</span>
-<span class="o">%</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
-<span class="n">openjdk</span> <span class="n">version</span> <span class="s">"1.8.0_312"</span>
-<span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nf">Environment</span> <span class="o">(</span><span class="nc">Zulu</span> <span class="mf">8.58</span><span class="o">.</span><span class="mf">0.13</span><span class="o">-</span><span class="no">CA</span><span class="o">-</span><span class="n">macos</span><span class="o">-</span><span class="n">aarch64</span><span class="o">)</span> <span class="o">(</span><span class="n">build</span> <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span><span class="o">-</span><span class="n">b07</span><span class="o">)</span>
-<span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="nf">VM</span> <span class="o">(</span><span class="nc">Zulu</span> <span class="mf">8.58</span><span class="o">.</span><span class="mf">0.13</span><span class="o">-</span><span class="no">CA</span><span class="o">-</span><span class="n">macos</span><span class="o">-</span><span class="n">aarch64</span><span class="o">)</span> <span class="o">(</span><span class="n">build</span> <span class="mf">25.312</span><span class="o">-</span><span class="n">b07</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
-</code></pre></div></div>
-<ul>
-  <li>이제 터미널에서 <code class="language-plaintext highlighter-rouge">setJava11</code>만 입력하면 11버전으로 바꿀 수 있다! 8로 돌아가는 것도 마찬가지
-<br /><br /></li>
-</ul>
-
-<h2 id="출처">출처</h2>
-<ul>
-  <li><a href="https://yonguri.tistory.com/119">[Mac] OpenJDK 버전별로 여러개 설치하기 ( using Homebrew )</a></li>
-  <li><a href="https://velog.io/@jsoh/%EC%98%A4%EB%9D%BC%ED%81%B4-JDK%EB%A5%BC-%EC%82%AD%EC%A0%9C%ED%95%98%EA%B3%A0-OpenJDK-11-%EC%84%A4%EC%B9%98">MacOS에서 오라클 JDK를 삭제하고 OpenJDK 11 설치</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Java" /><category term="Java" /><category term="OpenJDK" /><category term="Homebrew" /><summary type="html"><![CDATA[👀 터미널에서 단어 하나만 입력하면 OpenJDK 8 버전과 OpenJDK 11 버전을 그 때 그 때 기본으로 세팅할 수 있다.]]></summary></entry><entry><title type="html">Java) BOJ 1002. 터렛</title><link href="http://localhost:4000/boj/boj1002-java/" rel="alternate" type="text/html" title="Java) BOJ 1002. 터렛" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1002-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1002-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1002">https://www.acmicpc.net/problem/1002</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>조규현과 백승환은 터렛에 근무하는 직원이다. 하지만 워낙 존재감이 없어서 인구수는 차지하지 않는다. 다음은 조규현과 백승환의 사진이다.</li>
-  <li>이석원은 조규현과 백승환에게 상대편 마린(류재명)의 위치를 계산하라는 명령을 내렸다.</li>
-  <li>조규현과 백승환은 각각 자신의 터렛 위치에서 현재 적까지의 거리를 계산했다.</li>
-  <li>조규현의 좌표 (x1, y1)와 백승환의 좌표 (x2, y2)가 주어지고, 조규현이 계산한 류재명과의 거리 r1과 백승환이 계산한 류재명과의 거리 r2가 주어졌을 때,</li>
-  <li>류재명이 있을 수 있는 좌표의 수를 출력하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 다음과 같이 이루어져 있다.</li>
-  <li>한 줄에 x1, y1, r1, x2, y2, r2가 주어진다. x1, y1, x2, y2는 -10,000보다 크거나 같고, 10,000보다 작거나 같은 정수이고,</li>
-  <li>r1, r2는 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>각 테스트 케이스마다 류재명이 있을 수 있는 위치의 수를 출력한다. 만약 류재명이 있을 수 있는 위치의 개수가 무한대일 경우에는 -1을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>처음엔 무슨 문제인가 싶어서 질문게시판을 보니까 두 원 사이의 접점을 구하는 문제였다.</li>
-  <li>두 원의 관계는 내접하는 경우, 외접하는 경우, 만나지 않는 경우, 겹쳐지는 경우가 있는데</li>
-  <li>내접과 외접하는 경우에는 접점이 1개이다. (원 그려보면 됨)</li>
-  <li>만나지 않는 경우에는 접점이 0이다. 이 땐 서로 멀리 떨어져 있거나 큰 원 안에 작은 원이 있는데 두 원 사이의 접점이 없는 경우이다.</li>
-  <li>겹쳐지는 경우에는 완전히 똑같이 겹쳐지느냐 조금 겹쳐지느냐에 따라 달라지는데</li>
-  <li>원점의 위치가 똑같고 반지름도 똑같으면 완전히 겹쳐진다. 이럴 때엔 원의 테두리 어디에든 존재할 수 있으니 무한대이다.</li>
-  <li>
-    <p>조금 겹쳐지는 경우엔 접점이 항상 2개이다. (이것도 원 그려보면 됨)<br /><br /></p>
-  </li>
-  <li>원이 서로 내접하는지 아닌지 보려면 두 원점 사이의 거리를 구해야 하는데 이것은 피타고라스의 정리로 구했다.</li>
-  <li>그런데 피타고라스의 정리를 사용하면 거리는 원래 거리의 제곱값이 나오기 때문에 이것의 제곱근을 구하기 위해 sqrt 함수를 사용했는데 여기서 오차가 생겨서 틀렸다.</li>
-  <li>4의 제곱근을 구하는 경우라면 문제 없지만 5의 제곱근을 구하는 경우에는 정수로 나눠 떨어지지 않으니까… 여기서 오차가 생긴다.</li>
-  <li>
-    <p>그래서 두 원점 사이의 거리는 제곱한 상태로 사용해야 한다.<br /><br /></p>
-  </li>
-  <li>그래서 위의 케이스들을 잘 나눠서 분기처리를 해주면 되는데 처음에는 내접하는 경우와 큰 원 안에 작은 원이 있는데 접점이 없는 경우를 생각하지 못해서 틀렸다.</li>
-  <li>처음에는 두 원점 사이의 거리와 두 반지름의 합만을 이용해서 연산을 했기 때문에 내접하거나 큰 원 안에 작은 원이 있는제 접점이 없는 경우를 처리할 수 없었다.</li>
-  <li>(다 귀찮아서 원을 안 그려봐서 생긴 일…)</li>
-  <li>그래서 또 질문게시판을 참고해서 원을 그려보니까 두 반지름의 차도 이용을 해야 완벽하게 답을 구할 수 있다는 것을 알게 되었다.</li>
-  <li>두 원점 사이의 거리와 두 반지름의 차가 같으면 내접하고 (거리와 합이 같으면 외접)</li>
-  <li>두 원점 사이의 거리가 두 반지름의 차보다 작으면 큰 원 안의 작은 원이 접점이 없는 경우였다. (합보다 작으면 서로 겹침)</li>
-  <li>
-    <p>=&gt; 이거 해결하고 통과했다.<br /><br /></p>
-  </li>
-  <li>그래서 최종적인 분기처리는
-    <ol>
-      <li>두 원의 원점이 같고 반지름도 같으면 -1</li>
-      <li>원점이 같지만 반지름이 다르면 -1</li>
-      <li>거리의 제곱이 반지름 합의 제곱과 같거나 반지름 차의 제곱과 같으면 1</li>
-      <li>거리의 제곱이 반지름 합의 제곱보다 크거나 반지름 차의 제곱보다 작으면 0</li>
-      <li>나머지 경우는 2<br /><br /></li>
-    </ol>
-  </li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 136 ms</li>
-  <li>메모리 : 14292 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/8d5e174a8b0e3b6d4b77580e1424b9c7.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1002" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1002 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/da7ed92be7ff49728b3582171ca25fe8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10872" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10872 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry></feed>

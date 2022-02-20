@@ -1,0 +1,84 @@
+I"{<h1 id="컴퓨터-네트워크">컴퓨터 네트워크</h1>
+<ul>
+  <li>전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음</li>
+  <li>예) 인터넷</li>
+  <li>네트워크는 크게 나누면 유선, 무선 두 종류로 나눌 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="프로토콜protocol">프로토콜(Protocol)</h1>
+<ul>
+  <li>정보교환을 위해 필요한 통신 규약</li>
+  <li>사람들끼리 말을 할 때 맥락없이 얘기하지 않고 서로 합의된 맥락 안에서 얘기하듯 컴퓨터 간 통신을 할 때에도 맥락이 필요하다.</li>
+  <li>예) <code class="language-plaintext highlighter-rouge">HTTP</code>, <code class="language-plaintext highlighter-rouge">TCP</code>, <code class="language-plaintext highlighter-rouge">IP</code><br /><br /><br /></li>
+</ul>
+
+<h1 id="컴퓨터-네트워킹이-필요한-이유">컴퓨터 네트워킹이 필요한 이유</h1>
+<h2 id="연결과-통신">연결과 통신</h2>
+<ul>
+  <li>멀리 떨어져 있는 사용자와도 효율적으로 정보를 교환하기 위해서</li>
+</ul>
+
+<h2 id="데이터-공유">데이터 공유</h2>
+<ul>
+  <li>컴퓨터 네트워크를 통해 쉽고 빠르게 데이터 공유</li>
+  <li>컴퓨터 네트워크를 사용하는 ❗️ 가장 중요한 이유 중의 하나라고 할 수 있다.</li>
+</ul>
+
+<h2 id="하드웨어-공유">하드웨어 공유</h2>
+<ul>
+  <li>사무실에 프린터는 한 대만 두고 사무실내의 컴퓨터들이 네트워크를 통해 프린터를 공유하는 것처럼 하드웨어 공유를 통해 경비를 절감할 수 있다.</li>
+</ul>
+
+<h2 id="데이터-보안과-관리">데이터 보안과 관리</h2>
+<ul>
+  <li>네트워크에 연결된 서버에 저장, 데이터 읽기/수정 관리</li>
+</ul>
+
+<h2 id="성능-개선">성능 개선</h2>
+<ul>
+  <li>업무를 여러 컴퓨터에 분산시켜 동시에 처리<br /><br /><br /></li>
+</ul>
+
+<h1 id="기초-용어">기초 용어</h1>
+<ul>
+  <li>노드(Node) : 컴퓨터 네트워크에 연결된 컴퓨터 또는 네트워크 장비를 일반화한 용어</li>
+  <li>호스트(Host) : 사용자의 요청을 처리하는 컴퓨터를 일반화한 용어</li>
+  <li>클라이언트(Client) : 서비스를 요청하는 호스트</li>
+  <li>서버(Server) : 서비스 요청을 받아 서비스를 제공하는 호스트</li>
+  <li>네트워크 인터페이스(Interface) : 호스트와 컴퓨터 네트워크의 연결 지점으로 네트워크 인터페이스 카드(NIC)라고 한다.</li>
+  <li>전송 매체(Transmission Medium)
+    <ul>
+      <li>송신측 호스트와 수신측 호스트 사이를 상호 연결하는 물리적인 선로</li>
+      <li>유선(Wired) 전송 매체와 무선(Wireless) 전송 매체로 구분</li>
+      <li>링크(Link)라고도 한다.</li>
+    </ul>
+  </li>
+  <li>채널(Channel)
+    <ul>
+      <li>송신측에서 수신측으로 데이터를 전송하기 위해서 사용</li>
+      <li>유선과 같은 전송매체 또는 무선(Radio) 채널과 같이 다중화(Multiplexing 여러 호스트가 하나의 채널을 공유하는 것) 된 매체에서 하나의 논리적 연결(Logical Connection)을 말함</li>
+      <li>채널의 전송 용량은 <code class="language-plaintext highlighter-rouge">bps</code>(bit per second 초당 보내는 bit의 양) 단위의 전송률 또는 <code class="language-plaintext highlighter-rouge">Hz</code> 단위의 대역폭(Bandwidth)으로 표시<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="컴퓨터-통신구조">컴퓨터 통신구조</h1>
+<ul>
+  <li>서로 다른 시스템간의 통신을 하나의 모듈로 처리하기는 너무 복잡하기 때문에 기능별로 모듈을 세분화해서 구현할 필요가 있다.</li>
+  <li>세분화된 모듈을 계층화 한 구조가 컴퓨터 통신 구조</li>
+</ul>
+
+<h2 id="계층화-하는-이유">계층화 하는 이유</h2>
+<ul>
+  <li>복잡한 시스템의 각 부분을 식별하고 연계하는데 좋다.</li>
+  <li>모듈화는 시스템의 유지 및 개선을 용이하게 한다.</li>
+  <li>특정 모듈을 변경하더라도 다른 모듈에 영향을 주지 않는다.<br /><br /></li>
+</ul>
+
+<p><img src="../../assets/images/networkHierarchy.png" /></p>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1357811&amp;ar=relateCourse">KOCW 동서대학교 임효택 교수님 공개강의</a></li>
+</ul>
+:ET
