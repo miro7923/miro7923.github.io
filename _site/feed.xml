@@ -1,4 +1,289 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-20T21:55:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">컴퓨터 네트워크) 네트워크 기초</title><link href="http://localhost:4000/computer%20network/computer-network-01/" rel="alternate" type="text/html" title="컴퓨터 네트워크) 네트워크 기초" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20network/computer-network-01</id><content type="html" xml:base="http://localhost:4000/computer%20network/computer-network-01/"><![CDATA[<h1 id="컴퓨터-네트워크">컴퓨터 네트워크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-23T18:52:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">SQL) 데이터조작어(DML)</title><link href="http://localhost:4000/database/SQL-DML/" rel="alternate" type="text/html" title="SQL) 데이터조작어(DML)" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-DML</id><content type="html" xml:base="http://localhost:4000/database/SQL-DML/"><![CDATA[<ul>
+  <li>테이블에 저장되어 있는 데이터를 다루는 명령어<br /><br /><br /></li>
+</ul>
+
+<h1 id="1-insert-구문">1. INSERT 구문</h1>
+<ul>
+  <li>테이블에 새로운 행 추가</li>
+</ul>
+
+<h2 id="️-문법">☑️ 문법</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">[(</span><span class="k">column</span> <span class="p">[,</span> <span class="k">column</span><span class="p">...])]</span>
+<span class="k">VALUES</span>      <span class="p">(</span><span class="n">value</span> <span class="p">[,</span> <span class="n">value</span><span class="p">...]);</span>
+</code></pre></div></div>
+
+<h2 id="예제">예제</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">departments</span><span class="p">(</span><span class="n">department_name</span><span class="p">,</span> <span class="n">namager_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">location_id</span><span class="p">)</span>
+<span class="k">VALUES</span>      <span class="p">(</span><span class="s1">'Java'</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">290</span><span class="p">,</span> <span class="mi">1700</span><span class="p">);</span>
+</code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">departments</span><span class="p">(</span><span class="n">department_id</span><span class="p">,</span> <span class="n">department_name</span><span class="p">)</span>
+<span class="k">VALUES</span>      <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="s1">'Jsp'</span><span class="p">);</span>
+</code></pre></div></div>
+<ul>
+  <li>테이블명 다음에 설정한 컬럼수만큼 <code class="language-plaintext highlighter-rouge">values</code>에 값을 채워준다. 나머지는 자동으로 <code class="language-plaintext highlighter-rouge">null</code>값이 들어간다.<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">departments</span>
+<span class="k">VALUES</span>      <span class="p">(</span><span class="mi">310</span><span class="p">,</span> <span class="s1">'Web'</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</code></pre></div></div>
+<ul>
+  <li>아니면 <code class="language-plaintext highlighter-rouge">null</code>을 넣고 싶은 필드를 직접 지정해 줄 수도 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="2-update-구문">2. UPDATE 구문</h1>
+<ul>
+  <li>테이블이 기존 행 수정</li>
+</ul>
+
+<h2 id="️-문법-1">☑️ 문법</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="k">table</span>
+<span class="k">SET</span>    <span class="k">column</span> <span class="o">=</span> <span class="n">value</span> <span class="p">[,</span> <span class="k">column</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="p">...]</span>
+<span class="p">[</span><span class="k">WHERE</span> <span class="n">condition</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="예제-1">예제</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="n">employees</span>
+<span class="k">SET</span>    <span class="n">department_id</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="k">WHERE</span>  <span class="n">employee_id</span> <span class="o">=</span> <span class="mi">113</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>이렇게 쓰면 특정 <code class="language-plaintext highlighter-rouge">row</code>만 데이터 변경<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="n">employees</span>
+<span class="k">SET</span>    <span class="n">department_id</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>이렇게 쓰면 해당 테이블 내의 모든 <code class="language-plaintext highlighter-rouge">row</code>의 데이터가 바뀐다. 이렇게 쓸 일은 거의 없으니까 <code class="language-plaintext highlighter-rouge">UPDATE</code> 사용시에는 <code class="language-plaintext highlighter-rouge">WHERE</code> 조건을 잘 확인하자.<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="n">copy_emp</span>
+<span class="k">SET</span>    <span class="n">job_id</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">job_id</span>
+                 <span class="k">FROM</span>   <span class="n">copy_emp</span>
+                 <span class="k">WHERE</span>  <span class="n">employee_id</span> <span class="o">=</span> <span class="mi">205</span><span class="p">),</span>
+       <span class="n">salary</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">salary</span>
+                 <span class="k">FROM</span>   <span class="n">copy_emp</span>
+                 <span class="k">WHERE</span>  <span class="n">employee_id</span> <span class="o">=</span> <span class="mi">205</span><span class="p">)</span>
+<span class="k">WHERE</span>  <span class="n">employee_id</span> <span class="o">=</span> <span class="mi">113</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>수정할 데이터 구문에서 서브쿼리도 사용 가능<br /><br /><br /></li>
+</ul>
+
+<h2 id="3-delete-구문">3. DELETE 구문</h2>
+<ul>
+  <li>테이블의 기존 행 삭제</li>
+</ul>
+
+<h2 id="️-문법-2">☑️ 문법</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span> <span class="p">[</span><span class="k">FROM</span><span class="p">]</span> <span class="k">table</span>
+<span class="p">[</span><span class="k">WHERE</span>        <span class="n">condition</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="예제-2">예제</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">departments</span>
+<span class="k">WHERE</span>       <span class="n">department_id</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">copy_emp</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>이렇게 쓰면 전체 삭제<br /><br /><br /></li>
+</ul>
+
+<h2 id="4-트랜잭션transaction">4. 트랜잭션(Transaction)</h2>
+<ul>
+  <li>논리적인 작업 단위</li>
+  <li>여러 <code class="language-plaintext highlighter-rouge">DML</code>이 모여서 하나의 트랜잭션이 구성된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">DML</code> 작업을 통해 변경한 내용들은 모두 <code class="language-plaintext highlighter-rouge">임시저장</code> 되어 있는 상태이다.</li>
+  <li>그래서 <code class="language-plaintext highlighter-rouge">DML</code> 작업 후 <code class="language-plaintext highlighter-rouge">commit</code>(<code class="language-plaintext highlighter-rouge">DB</code>에 작업내용 최종 저장), <code class="language-plaintext highlighter-rouge">rollback</code>(<code class="language-plaintext highlighter-rouge">DB</code> 최종 저장 전에 작업내용 되돌리기)으로 트랜잭션을 종료해야 한다.<br /><br /></li>
+</ul>
+
+<h3 id="4-1-트랜잭션-구성">4-1) 트랜잭션 구성</h3>
+<ul>
+  <li>여러 <code class="language-plaintext highlighter-rouge">DML</code> 구문이 하나의 트랜잭션 (<code class="language-plaintext highlighter-rouge">select</code>, <code class="language-plaintext highlighter-rouge">insert</code>, <code class="language-plaintext highlighter-rouge">update</code>, <code class="language-plaintext highlighter-rouge">delete</code>)</li>
+  <li>하나의 <code class="language-plaintext highlighter-rouge">DDL</code> 구문이 하나의 트랜잭션 (<code class="language-plaintext highlighter-rouge">create</code>, <code class="language-plaintext highlighter-rouge">alter</code>, <code class="language-plaintext highlighter-rouge">drop</code>, <code class="language-plaintext highlighter-rouge">truncate</code>)</li>
+  <li>하나의 <code class="language-plaintext highlighter-rouge">DCL</code> 구문이 하나의 트랜잭션 (<code class="language-plaintext highlighter-rouge">grant</code>, <code class="language-plaintext highlighter-rouge">revoke</code>)<br /><br /></li>
+</ul>
+
+<h3 id="4-2-트랜잭션-시작-및-종료">4-2) 트랜잭션 시작 및 종료</h3>
+<h4 id="-시작">🔸 시작</h4>
+<ul>
+  <li>첫 번째 <code class="language-plaintext highlighter-rouge">DML</code> 구문 실행 시</li>
+</ul>
+
+<h4 id="-종료">🔸 종료</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">COMMIT</code> 또는 <code class="language-plaintext highlighter-rouge">ROLLBACK</code> 실행 시
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">DML</code> 쓰다가 <code class="language-plaintext highlighter-rouge">DDL/DCL</code> 작성하면 <code class="language-plaintext highlighter-rouge">autocommit</code> 되면서 위에 썼던 <code class="language-plaintext highlighter-rouge">DML</code>도 같이 커밋된다.(트랜잭션 끝)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">DDL</code> 또는 <code class="language-plaintext highlighter-rouge">DCL</code> 구문 실행 시(<code class="language-plaintext highlighter-rouge">autocommit</code>)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">DDL</code>과 <code class="language-plaintext highlighter-rouge">DCL</code>은 <code class="language-plaintext highlighter-rouge">autocommit</code>을 내포하고 있기 때문에 실행하는 순간 <code class="language-plaintext highlighter-rouge">commit</code>되고 트랜잭션이 끝난다.</li>
+      <li>그래서 <code class="language-plaintext highlighter-rouge">rollback</code>이 불가하기 때문에 신중하게 작업하는 것이 좋다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">SQL *PLUS</code> 정상 종료 시(<code class="language-plaintext highlighter-rouge">autocommit</code>)
+    <ul>
+      <li>그래픽창의 <code class="language-plaintext highlighter-rouge">X</code>를 눌러 끄는 것은 비정상 종료다.</li>
+      <li>터미널에서 <code class="language-plaintext highlighter-rouge">exit</code> 명령어 입력이나 그래픽 툴의 <code class="language-plaintext highlighter-rouge">exit</code> 버튼을 눌러서 끄는 것이 정상 종료이다.</li>
+      <li>비정상 종료 시 <code class="language-plaintext highlighter-rouge">autorollback</code> 처리된다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="-savepoint와-rollback-to">🔸 SAVEPOINT와 ROLLBACK TO</h4>
+<ul>
+  <li>최종 <code class="language-plaintext highlighter-rouge">commit</code> 전에 작업하던 중간 중간으로 되돌아 갈 수 있도록 <code class="language-plaintext highlighter-rouge">SAVEPOINT</code>를 만들 수 있다.</li>
+  <li>하지만 만든 세이브포인트를 확인할 수 있는 명령어는 없기 때문에 만든 사람이 기억하고 있어야 한다.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span><span class="p">...</span>
+<span class="n">SAVEPOINT</span> <span class="n">update_done</span> <span class="c1">-- 세이브 포인트 생성</span>
+
+<span class="p">...</span>
+
+<span class="k">INSERT</span><span class="p">...</span>
+<span class="k">ROLLBACK</span> <span class="k">TO</span> <span class="n">update_done</span><span class="p">;</span> <span class="c1">-- 세이브 포인트로 되돌리기</span>
+</code></pre></div></div>
+
+<ul>
+  <li>세이브 포인트를 만들었다고 그 전까지 했던 작업들이 <code class="language-plaintext highlighter-rouge">COMMIT</code> 되는 것은 아니다.</li>
+  <li>그렇기 때문에 모든 <code class="language-plaintext highlighter-rouge">DML</code> 작업이 끝났다면 최종 확인 후 꼭 <code class="language-plaintext highlighter-rouge">COMMIT</code>을 해 주어야 한다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><category term="DML" /><summary type="html"><![CDATA[테이블에 저장되어 있는 데이터를 다루는 명령어]]></summary></entry><entry><title type="html">Java) BOJ 2798. 블랙잭</title><link href="http://localhost:4000/boj/boj2798-java/" rel="alternate" type="text/html" title="Java) BOJ 2798. 블랙잭" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2798-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2798-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2798">https://www.acmicpc.net/problem/2798</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>카지노에서 제일 인기 있는 게임 블랙잭의 규칙은 상당히 쉽다. 카드의 합이 21을 넘지 않는 한도 내에서, 카드의 합을 최대한 크게 만드는 게임이다. 블랙잭은 카지노마다 다양한 규정이 있다.</li>
+  <li>한국 최고의 블랙잭 고수 김정인은 새로운 블랙잭 규칙을 만들어 상근, 창영이와 게임하려고 한다.</li>
+  <li>김정인 버전의 블랙잭에서 각 카드에는 양의 정수가 쓰여 있다. 그 다음, 딜러는 N장의 카드를 모두 숫자가 보이도록 바닥에 놓는다. 그런 후에 딜러는 숫자 M을 크게 외친다.</li>
+  <li>이제 플레이어는 제한된 시간 안에 N장의 카드 중에서 3장의 카드를 골라야 한다. 블랙잭 변형 게임이기 때문에, 플레이어가 고른 카드의 합은 M을 넘지 않으면서 M과 최대한 가깝게 만들어야 한다.</li>
+  <li>N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다. 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는 양의 정수이다.</li>
+  <li>합이 M을 넘지 않는 카드 3장을 찾을 수 있는 경우만 입력으로 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>참고 블로그 : <a href="https://minhamina.tistory.com/38">https://minhamina.tistory.com/38</a></li>
+  <li>조합을 구하는 문제같아서 조합 알고리즘을 공부한 뒤 풀었다.</li>
+  <li>
+    <p>조합인 이유는 수를 뽑는 모든 경우의 수를 탐색해 봐야 하는데 뽑는 순서가 결과에 미치는 영향이 없기 때문이다.<br /></p>
+  </li>
+  <li>주어지는 N개의 숫자 중 3개를 뽑아서 M보다 작거나 같은 수 중 가장 큰 수를 만들면 되는데 이걸 알기 위해서는 조합이 가능한 모든 경우의 수를 탐색해 봐야 한다.</li>
+  <li>그래서 재귀로 n개 중에 3개를 뽑는 경우, n-1개 중에 2개를 뽑는 경우, n-2개 중에 1개를 뽑는 경우,… 로 탐색하다가 n-r개 중에 0개를 뽑는 경우가 되면 그동안 뽑은 수들의 합 중 M보다 작거나 같으면서 가장 큰 수를 찾으면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 132 ms</li>
+  <li>메모리 : 14140 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/2c5b96d4e986e37ac3c5c0cd823ac3d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2798" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2798 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2231. 분해합</title><link href="http://localhost:4000/boj/boj2231-java/" rel="alternate" type="text/html" title="Java) BOJ 2231. 분해합" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2231-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2231-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2231">https://www.acmicpc.net/problem/2231</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 192 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>어떤 자연수 N이 있을 때, 그 자연수 N의 분해합은 N과 N을 이루는 각 자리수의 합을 의미한다. 어떤 자연수 M의 분해합이 N인 경우, M을 N의 생성자라 한다.</li>
+  <li>예를 들어, 245의 분해합은 256(=245+2+4+5)이 된다. 따라서 245는 256의 생성자가 된다. 물론, 어떤 자연수의 경우에는 생성자가 없을 수도 있다.</li>
+  <li>반대로, 생성자가 여러 개인 자연수도 있을 수 있다.</li>
+  <li>자연수 N이 주어졌을 때, N의 가장 작은 생성자를 구해내는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 자연수 N(1 ≤ N ≤ 1,000,000)이 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 답을 출력한다. 생성자가 없는 경우에는 0을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>참고 블로그 : <a href="https://st-lab.tistory.com/98">https://st-lab.tistory.com/98</a><br /></p>
+  </li>
+  <li>N의 생성자 중 가장 작은 수를 구하면 되니까 꼭 모든 수를 탐색할 필요는 없고 1부터 수를 만들어 보면서 N과 같은 수가 나오면 반복을 중단하고 해당 수를 출력하면 된다.</li>
+  <li>만약 N을 넘어가는데도 생성자가 없다면 0을 출력한다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 152 ms</li>
+  <li>메모리 : 14828 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/8f317b052aa2f68ecba29663847f959a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2231" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2231 제한 시간 제한 : 2 초 메모리 제한 : 192 MB]]></summary></entry><entry><title type="html">컴퓨터 네트워크) 네트워크 기초</title><link href="http://localhost:4000/computer%20network/computer-network-01/" rel="alternate" type="text/html" title="컴퓨터 네트워크) 네트워크 기초" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20network/computer-network-01</id><content type="html" xml:base="http://localhost:4000/computer%20network/computer-network-01/"><![CDATA[<h1 id="컴퓨터-네트워크">컴퓨터 네트워크</h1>
 <ul>
   <li>전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음</li>
   <li>예) 인터넷</li>
@@ -131,133 +416,7 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1357811&amp;ar=relateCourse">KOCW 동서대학교 임효택 교수님 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[컴퓨터 네트워크 전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음 예) 인터넷 네트워크는 크게 나누면 유선, 무선 두 종류로 나눌 수 있다.]]></summary></entry><entry><title type="html">Java) BOJ 2798. 블랙잭</title><link href="http://localhost:4000/boj/boj2798-java/" rel="alternate" type="text/html" title="Java) BOJ 2798. 블랙잭" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2798-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2798-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2798">https://www.acmicpc.net/problem/2798</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>카지노에서 제일 인기 있는 게임 블랙잭의 규칙은 상당히 쉽다. 카드의 합이 21을 넘지 않는 한도 내에서, 카드의 합을 최대한 크게 만드는 게임이다. 블랙잭은 카지노마다 다양한 규정이 있다.</li>
-  <li>한국 최고의 블랙잭 고수 김정인은 새로운 블랙잭 규칙을 만들어 상근, 창영이와 게임하려고 한다.</li>
-  <li>김정인 버전의 블랙잭에서 각 카드에는 양의 정수가 쓰여 있다. 그 다음, 딜러는 N장의 카드를 모두 숫자가 보이도록 바닥에 놓는다. 그런 후에 딜러는 숫자 M을 크게 외친다.</li>
-  <li>이제 플레이어는 제한된 시간 안에 N장의 카드 중에서 3장의 카드를 골라야 한다. 블랙잭 변형 게임이기 때문에, 플레이어가 고른 카드의 합은 M을 넘지 않으면서 M과 최대한 가깝게 만들어야 한다.</li>
-  <li>N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다. 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는 양의 정수이다.</li>
-  <li>합이 M을 넘지 않는 카드 3장을 찾을 수 있는 경우만 입력으로 주어진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>참고 블로그 : <a href="https://minhamina.tistory.com/38">https://minhamina.tistory.com/38</a></li>
-  <li>조합을 구하는 문제같아서 조합 알고리즘을 공부한 뒤 풀었다.</li>
-  <li>
-    <p>조합인 이유는 수를 뽑는 모든 경우의 수를 탐색해 봐야 하는데 뽑는 순서가 결과에 미치는 영향이 없기 때문이다.<br /></p>
-  </li>
-  <li>주어지는 N개의 숫자 중 3개를 뽑아서 M보다 작거나 같은 수 중 가장 큰 수를 만들면 되는데 이걸 알기 위해서는 조합이 가능한 모든 경우의 수를 탐색해 봐야 한다.</li>
-  <li>그래서 재귀로 n개 중에 3개를 뽑는 경우, n-1개 중에 2개를 뽑는 경우, n-2개 중에 1개를 뽑는 경우,… 로 탐색하다가 n-r개 중에 0개를 뽑는 경우가 되면 그동안 뽑은 수들의 합 중 M보다 작거나 같으면서 가장 큰 수를 찾으면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 132 ms</li>
-  <li>메모리 : 14140 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/2c5b96d4e986e37ac3c5c0cd823ac3d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2798" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2798 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2231. 분해합</title><link href="http://localhost:4000/boj/boj2231-java/" rel="alternate" type="text/html" title="Java) BOJ 2231. 분해합" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2231-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2231-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2231">https://www.acmicpc.net/problem/2231</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 192 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>어떤 자연수 N이 있을 때, 그 자연수 N의 분해합은 N과 N을 이루는 각 자리수의 합을 의미한다. 어떤 자연수 M의 분해합이 N인 경우, M을 N의 생성자라 한다.</li>
-  <li>예를 들어, 245의 분해합은 256(=245+2+4+5)이 된다. 따라서 245는 256의 생성자가 된다. 물론, 어떤 자연수의 경우에는 생성자가 없을 수도 있다.</li>
-  <li>반대로, 생성자가 여러 개인 자연수도 있을 수 있다.</li>
-  <li>자연수 N이 주어졌을 때, N의 가장 작은 생성자를 구해내는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 자연수 N(1 ≤ N ≤ 1,000,000)이 주어진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 답을 출력한다. 생성자가 없는 경우에는 0을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>참고 블로그 : <a href="https://st-lab.tistory.com/98">https://st-lab.tistory.com/98</a><br /></p>
-  </li>
-  <li>N의 생성자 중 가장 작은 수를 구하면 되니까 꼭 모든 수를 탐색할 필요는 없고 1부터 수를 만들어 보면서 N과 같은 수가 나오면 반복을 중단하고 해당 수를 출력하면 된다.</li>
-  <li>만약 N을 넘어가는데도 생성자가 없다면 0을 출력한다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 152 ms</li>
-  <li>메모리 : 14828 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/8f317b052aa2f68ecba29663847f959a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2231" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2231 제한 시간 제한 : 2 초 메모리 제한 : 192 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Performance</title><link href="http://localhost:4000/computer%20science/computer-architecture-02/" rel="alternate" type="text/html" title="컴퓨터구조) Performance" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-02</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-02/"><![CDATA[<h1 id="cpu-time">CPU Time</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[컴퓨터 네트워크 전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음 예) 인터넷 네트워크는 크게 나누면 유선, 무선 두 종류로 나눌 수 있다.]]></summary></entry><entry><title type="html">컴퓨터구조) Performance</title><link href="http://localhost:4000/computer%20science/computer-architecture-02/" rel="alternate" type="text/html" title="컴퓨터구조) Performance" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-02</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-02/"><![CDATA[<h1 id="cpu-time">CPU Time</h1>
 <ul>
   <li>한 컴퓨터 프로그램이 <code class="language-plaintext highlighter-rouge">CPU</code>를 차지하여 일을 한 시간의 양</li>
   <li>컴퓨터의 성능을 측정하기 위해 사용된다.</li>
@@ -1022,59 +1181,4 @@
 <h2 id="출처">출처</h2>
 <ul>
   <li>컴퓨터 사이언스(김철 저)</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Computer Hardware" /><category term="Control Unit" /><summary type="html"><![CDATA[👀 제어 장치란? 프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분 컴퓨터의 중추선이라 할 수 있다. 컴퓨터의 자료 처리 속도를 MIPS(Million Instructions Per Second)로 나타내는데 1MIPS는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.]]></summary></entry><entry><title type="html">Java) BOJ 10872. 팩토리얼</title><link href="http://localhost:4000/boj/boj10872-java/" rel="alternate" type="text/html" title="Java) BOJ 10872. 팩토리얼" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10872-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10872-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/10872">https://www.acmicpc.net/problem/10872</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 정수 N(0 ≤ N ≤ 12)이 주어진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 N!을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>N팩토리얼이 1부터 N까지의 누적곱이기 때문에 누적합을 구하는 코드에서 곱하기로만 바꿨다.
-단 구한 팩토리얼을 저장할 변수가 0부터 시작하면 무슨 수를 곱해도 0이 되어버리기 때문에 1부터 시작해야 하는 것만 주의하면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 128 ms</li>
-  <li>메모리 : 14220 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/da7ed92be7ff49728b3582171ca25fe8.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10872" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10872 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Computer Hardware" /><category term="Control Unit" /><summary type="html"><![CDATA[👀 제어 장치란? 프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분 컴퓨터의 중추선이라 할 수 있다. 컴퓨터의 자료 처리 속도를 MIPS(Million Instructions Per Second)로 나타내는데 1MIPS는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.]]></summary></entry></feed>
