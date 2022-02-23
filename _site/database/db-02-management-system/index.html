@@ -1,0 +1,826 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DB) 데이터베이스 관리 시스템 | Yujin Dev Log</title>
+<meta name="description" content="데이터베이스 관리 시스템의 등장 배경 파일 시스템(file system)    과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어   응용 프로그램마다 필요한 데이터를 별도의 파일로 관리함">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="DB) 데이터베이스 관리 시스템">
+<meta property="og:url" content="http://localhost:4000/database/db-02-management-system/">
+
+
+  <meta property="og:description" content="데이터베이스 관리 시스템의 등장 배경 파일 시스템(file system)    과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어   응용 프로그램마다 필요한 데이터를 별도의 파일로 관리함">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-23T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/database/db-02-management-system/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#database" itemprop="item"><span itemprop="name">Database</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DB) 데이터베이스 관리 시스템</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="DB) 데이터베이스 관리 시스템">
+    <meta itemprop="description" content="데이터베이스 관리 시스템의 등장 배경파일 시스템(file system)  과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어  응용 프로그램마다 필요한 데이터를 별도의 파일로 관리함">
+    <meta itemprop="datePublished" content="2022-02-23T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/database/db-02-management-system/" class="u-url" itemprop="url">DB) 데이터베이스 관리 시스템
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#데이터베이스-관리-시스템의-등장-배경">데이터베이스 관리 시스템의 등장 배경</a><ul><li><a href="#파일-시스템file-system">파일 시스템(file system)</a><ul><li><a href="#파일-시스템의-문제점">파일 시스템의 문제점</a></li></ul></li></ul></li><li><a href="#데이터베이스-관리-시스템의-정의-및-특성">데이터베이스 관리 시스템의 정의 및 특성</a><ul><li><a href="#데이터베이스-관리-시스템dbms-database-management-system">데이터베이스 관리 시스템(DBMS, DataBase Management System)</a></li><li><a href="#데이터베이스-관리-시스템의-주요-기능">데이터베이스 관리 시스템의 주요 기능</a><ul><li><a href="#장점">장점</a></li><li><a href="#단점">단점</a></li></ul></li></ul></li><li><a href="#데이터베이스-관리-시스템의-발전-과정">데이터베이스 관리 시스템의 발전 과정</a><ul><li><a href="#1세대--네트워크-dbms-계층-dbms-1960--1970">1세대 : 네트워크 DBMS, 계층 DBMS (1960 ~ 1970)</a></li><li><a href="#2세대--관계-dbms-1980-">2세대 : 관계 DBMS (1980 ~)</a></li><li><a href="#3세대--객체지향-dbms-1980-후반--객체관계-dbms-1990-후반-">3세대 : 객체지향 DBMS (1980 후반 ~), 객체관계 DBMS (1990 후반 ~)</a></li></ul></li><li><a href="#출처">출처</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="데이터베이스-관리-시스템의-등장-배경">데이터베이스 관리 시스템의 등장 배경</h1>
+<h2 id="파일-시스템file-system">파일 시스템(file system)</h2>
+<ul>
+  <li>과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어</li>
+  <li>응용 프로그램마다 필요한 데이터를 별도의 파일로 관리함</li>
+</ul>
+
+<h3 id="파일-시스템의-문제점">파일 시스템의 문제점</h3>
+<ul>
+  <li>같은 내용의 데이터가 여러 파일에 중복 저장된다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">데이터 중복성</code></li>
+      <li>저장 공간의 낭비는 물론 <code class="language-plaintext highlighter-rouge">데이터 일관성</code>과 <code class="language-plaintext highlighter-rouge">데이터 무결성</code> 유지가 어렵다.<br /><br /></li>
+    </ul>
+  </li>
+  <li>응용 프로그램이 데이터 파일에 종속적이다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">데이터 종속성</code></li>
+      <li>사용하는 파일의 구조를 변경하면 응용 프로그램도 함께 변경해야 한다.<br /><br /></li>
+    </ul>
+  </li>
+  <li>데이터 파일에 대한 동시 공유, 보안, 회복 기능이 부족하다.</li>
+  <li>응용 프로그램 개발이 쉽지 않다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="데이터베이스-관리-시스템의-정의-및-특성">데이터베이스 관리 시스템의 정의 및 특성</h1>
+<h2 id="데이터베이스-관리-시스템dbms-database-management-system">데이터베이스 관리 시스템(DBMS, DataBase Management System)</h2>
+<ul>
+  <li>파일 시스템의 문제를 해결하기 위해 제시된 소프트웨어</li>
+  <li>조직에 필요한 데이터를 데이터베이스에 통합하여 저장하고 관리한다.</li>
+</ul>
+
+<h2 id="데이터베이스-관리-시스템의-주요-기능">데이터베이스 관리 시스템의 주요 기능</h2>
+<ul>
+  <li>정의 기능 : 데이터베이스 구조를 정의하거나 수정할 수 있다.</li>
+  <li>조작 기능 : 데이터를 삽입, 삭제, 수정, 검색하는 연산을 할 수 있다.</li>
+  <li>제어 기능 : 데이터를 항상 정확하고 안전하게 유지할 수 있다.</li>
+</ul>
+
+<h3 id="장점">장점</h3>
+<ul>
+  <li>데이터 중복을 통제할 수 있다.</li>
+  <li>데이터 독립성이 확보된다.</li>
+  <li>데이터를 동시 공유할 수 있다.</li>
+  <li>데이터 보안이 향상된다.</li>
+  <li>데이터 무결성을 유지할 수 있다.</li>
+  <li>표준화할 수 있다.</li>
+  <li>장애 발생 시 회복이 가능하다.</li>
+  <li>응용 프로그램 개발 비용이 줄어든다.</li>
+</ul>
+
+<h3 id="단점">단점</h3>
+<ul>
+  <li>(경제적, 컴퓨터 자원 포함)비용이 많이 든다.</li>
+  <li>백업과 회복 방법이 복잡하다.</li>
+  <li>중앙 집중 관리로 인한 취약점이 존재한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="데이터베이스-관리-시스템의-발전-과정">데이터베이스 관리 시스템의 발전 과정</h1>
+<h2 id="1세대--네트워크-dbms-계층-dbms-1960--1970">1세대 : 네트워크 DBMS, 계층 DBMS (1960 ~ 1970)</h2>
+<ul>
+  <li>네트워크 DBMS : 데이터베이스를 계층 형태로 구성
+    <ul>
+      <li>변경이 어렵다.</li>
+      <li>예) IDS(Integrated Data Store)<br /><br /></li>
+    </ul>
+  </li>
+  <li>계층 DBMS : 데이터베이스를 트리 형태로 구성
+    <ul>
+      <li>구조변경 및 복잡한 현실세계 반영이 어렵다.</li>
+      <li>예) IMS(Information Management System)<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2세대--관계-dbms-1980-">2세대 : 관계 DBMS (1980 ~)</h2>
+<ul>
+  <li>관계 DBMS : 데이터베이스를 테이블 형태로 구성
+    <ul>
+      <li>이해하기 쉽다.</li>
+      <li>예) 오라클(Oracle), MS SQL 서버, 액세스(Access), 인포믹스(Informix), MySQL<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="3세대--객체지향-dbms-1980-후반--객체관계-dbms-1990-후반-">3세대 : 객체지향 DBMS (1980 후반 ~), 객체관계 DBMS (1990 후반 ~)</h2>
+<ul>
+  <li>객체지향 DBMS : 객체를 이용해 데이터베이스 구성
+    <ul>
+      <li>예) 오투(O2), 온투스(ONTOS), 젬스톤(GemStone)<br /><br /></li>
+    </ul>
+  </li>
+  <li>
+    <p>객체관계 DBMS : 객체 DBMS + 관계 DBMS<br /><br /></p>
+  </li>
+  <li>현대에는 이해하기 쉬운 2세대 RDBMS를 주로 사용하지만 객체지향 DBMS의 점유율도 점차 높아지고 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#db" class="page__taxonomy-item p-category" rel="tag">DB</a><span class="sep">, </span>
+    
+      <a href="/tags/#dbms" class="page__taxonomy-item p-category" rel="tag">DBMS</a><span class="sep">, </span>
+    
+      <a href="/tags/#rdbms" class="page__taxonomy-item p-category" rel="tag">RDBMS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#database" class="page__taxonomy-item p-category" rel="tag">Database</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-23T00:00:00+09:00">February 23, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=DB%29+%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4+%EA%B4%80%EB%A6%AC+%EC%8B%9C%EC%8A%A4%ED%85%9C%20http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fdb-02-management-system%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fdb-02-management-system%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fdb-02-management-system%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/database/db-01/" class="pagination--pager" title="DB) 데이터베이스 기본개념
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/db-01/" rel="permalink">DB) 데이터베이스 기본개념
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">데이터베이스의 필요성
+
+  데이터(data) : 의미가 부여되지는 않았지만 현실 세계에서 단순히 관찰하거나 측정해 수집한 사실이나 값
+  정보(information) : 의사 결정에 유용하게 활용할 수 있도록 데이터를 처리한 결과물
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/SQL-DML/" rel="permalink">SQL) 데이터조작어(DML)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  테이블에 저장되어 있는 데이터를 다루는 명령어
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20network/computer-network-01/" rel="permalink">컴퓨터 네트워크) 네트워크 기초
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">컴퓨터 네트워크
+
+  전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음
+  예) 인터넷
+  네트워크는 크게 나누면 유선, 무선 두 종류로 나눌 수 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/computer-architecture-02/" rel="permalink">컴퓨터구조) Performance
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CPU Time
+
+  한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양
+  컴퓨터의 성능을 측정하기 위해 사용된다.
+  CPU Time = Instruction Count x CPI x Clock Cycle Time
+  CPU Time이 적을수록 성능이 좋다고 할 수 있다...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

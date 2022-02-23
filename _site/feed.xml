@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-23T18:52:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">SQL) 데이터조작어(DML)</title><link href="http://localhost:4000/database/SQL-DML/" rel="alternate" type="text/html" title="SQL) 데이터조작어(DML)" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-DML</id><content type="html" xml:base="http://localhost:4000/database/SQL-DML/"><![CDATA[<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-23T21:47:28+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">SQL) 데이터조작어(DML)</title><link href="http://localhost:4000/database/SQL-DML/" rel="alternate" type="text/html" title="SQL) 데이터조작어(DML)" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-DML</id><content type="html" xml:base="http://localhost:4000/database/SQL-DML/"><![CDATA[<ul>
   <li>테이블에 저장되어 있는 데이터를 다루는 명령어<br /><br /><br /></li>
 </ul>
 
@@ -157,133 +157,172 @@
 <ul>
   <li>세이브 포인트를 만들었다고 그 전까지 했던 작업들이 <code class="language-plaintext highlighter-rouge">COMMIT</code> 되는 것은 아니다.</li>
   <li>그렇기 때문에 모든 <code class="language-plaintext highlighter-rouge">DML</code> 작업이 끝났다면 최종 확인 후 꼭 <code class="language-plaintext highlighter-rouge">COMMIT</code>을 해 주어야 한다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><category term="DML" /><summary type="html"><![CDATA[테이블에 저장되어 있는 데이터를 다루는 명령어]]></summary></entry><entry><title type="html">Java) BOJ 2798. 블랙잭</title><link href="http://localhost:4000/boj/boj2798-java/" rel="alternate" type="text/html" title="Java) BOJ 2798. 블랙잭" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2798-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2798-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><category term="DML" /><summary type="html"><![CDATA[테이블에 저장되어 있는 데이터를 다루는 명령어]]></summary></entry><entry><title type="html">DB) 데이터베이스 관리 시스템</title><link href="http://localhost:4000/database/db-02-management-system/" rel="alternate" type="text/html" title="DB) 데이터베이스 관리 시스템" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/database/db-02-management-system</id><content type="html" xml:base="http://localhost:4000/database/db-02-management-system/"><![CDATA[<h1 id="데이터베이스-관리-시스템의-등장-배경">데이터베이스 관리 시스템의 등장 배경</h1>
+<h2 id="파일-시스템file-system">파일 시스템(file system)</h2>
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/2798">https://www.acmicpc.net/problem/2798</a><br /><br /></li>
+  <li>과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어</li>
+  <li>응용 프로그램마다 필요한 데이터를 별도의 파일로 관리함</li>
 </ul>
 
-<h1 id="제한">제한</h1>
-<hr />
-
+<h3 id="파일-시스템의-문제점">파일 시스템의 문제점</h3>
 <ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>카지노에서 제일 인기 있는 게임 블랙잭의 규칙은 상당히 쉽다. 카드의 합이 21을 넘지 않는 한도 내에서, 카드의 합을 최대한 크게 만드는 게임이다. 블랙잭은 카지노마다 다양한 규정이 있다.</li>
-  <li>한국 최고의 블랙잭 고수 김정인은 새로운 블랙잭 규칙을 만들어 상근, 창영이와 게임하려고 한다.</li>
-  <li>김정인 버전의 블랙잭에서 각 카드에는 양의 정수가 쓰여 있다. 그 다음, 딜러는 N장의 카드를 모두 숫자가 보이도록 바닥에 놓는다. 그런 후에 딜러는 숫자 M을 크게 외친다.</li>
-  <li>이제 플레이어는 제한된 시간 안에 N장의 카드 중에서 3장의 카드를 골라야 한다. 블랙잭 변형 게임이기 때문에, 플레이어가 고른 카드의 합은 M을 넘지 않으면서 M과 최대한 가깝게 만들어야 한다.</li>
-  <li>N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다. 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는 양의 정수이다.</li>
-  <li>합이 M을 넘지 않는 카드 3장을 찾을 수 있는 경우만 입력으로 주어진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>참고 블로그 : <a href="https://minhamina.tistory.com/38">https://minhamina.tistory.com/38</a></li>
-  <li>조합을 구하는 문제같아서 조합 알고리즘을 공부한 뒤 풀었다.</li>
-  <li>
-    <p>조합인 이유는 수를 뽑는 모든 경우의 수를 탐색해 봐야 하는데 뽑는 순서가 결과에 미치는 영향이 없기 때문이다.<br /></p>
+  <li>같은 내용의 데이터가 여러 파일에 중복 저장된다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">데이터 중복성</code></li>
+      <li>저장 공간의 낭비는 물론 <code class="language-plaintext highlighter-rouge">데이터 일관성</code>과 <code class="language-plaintext highlighter-rouge">데이터 무결성</code> 유지가 어렵다.<br /><br /></li>
+    </ul>
   </li>
-  <li>주어지는 N개의 숫자 중 3개를 뽑아서 M보다 작거나 같은 수 중 가장 큰 수를 만들면 되는데 이걸 알기 위해서는 조합이 가능한 모든 경우의 수를 탐색해 봐야 한다.</li>
-  <li>그래서 재귀로 n개 중에 3개를 뽑는 경우, n-1개 중에 2개를 뽑는 경우, n-2개 중에 1개를 뽑는 경우,… 로 탐색하다가 n-r개 중에 0개를 뽑는 경우가 되면 그동안 뽑은 수들의 합 중 M보다 작거나 같으면서 가장 큰 수를 찾으면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 132 ms</li>
-  <li>메모리 : 14140 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/2c5b96d4e986e37ac3c5c0cd823ac3d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2798" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2798 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2231. 분해합</title><link href="http://localhost:4000/boj/boj2231-java/" rel="alternate" type="text/html" title="Java) BOJ 2231. 분해합" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2231-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2231-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2231">https://www.acmicpc.net/problem/2231</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 192 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>어떤 자연수 N이 있을 때, 그 자연수 N의 분해합은 N과 N을 이루는 각 자리수의 합을 의미한다. 어떤 자연수 M의 분해합이 N인 경우, M을 N의 생성자라 한다.</li>
-  <li>예를 들어, 245의 분해합은 256(=245+2+4+5)이 된다. 따라서 245는 256의 생성자가 된다. 물론, 어떤 자연수의 경우에는 생성자가 없을 수도 있다.</li>
-  <li>반대로, 생성자가 여러 개인 자연수도 있을 수 있다.</li>
-  <li>자연수 N이 주어졌을 때, N의 가장 작은 생성자를 구해내는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 자연수 N(1 ≤ N ≤ 1,000,000)이 주어진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 답을 출력한다. 생성자가 없는 경우에는 0을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>참고 블로그 : <a href="https://st-lab.tistory.com/98">https://st-lab.tistory.com/98</a><br /></p>
+  <li>응용 프로그램이 데이터 파일에 종속적이다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">데이터 종속성</code></li>
+      <li>사용하는 파일의 구조를 변경하면 응용 프로그램도 함께 변경해야 한다.<br /><br /></li>
+    </ul>
   </li>
-  <li>N의 생성자 중 가장 작은 수를 구하면 되니까 꼭 모든 수를 탐색할 필요는 없고 1부터 수를 만들어 보면서 N과 같은 수가 나오면 반복을 중단하고 해당 수를 출력하면 된다.</li>
-  <li>만약 N을 넘어가는데도 생성자가 없다면 0을 출력한다.<br /><br /></li>
+  <li>데이터 파일에 대한 동시 공유, 보안, 회복 기능이 부족하다.</li>
+  <li>응용 프로그램 개발이 쉽지 않다.<br /><br /><br /></li>
 </ul>
 
-<h1 id="결과">결과</h1>
-<hr />
-
+<h1 id="데이터베이스-관리-시스템의-정의-및-특성">데이터베이스 관리 시스템의 정의 및 특성</h1>
+<h2 id="데이터베이스-관리-시스템dbms-database-management-system">데이터베이스 관리 시스템(DBMS, DataBase Management System)</h2>
 <ul>
-  <li>시간 : 152 ms</li>
-  <li>메모리 : 14828 KB<br /><br /></li>
+  <li>파일 시스템의 문제를 해결하기 위해 제시된 소프트웨어</li>
+  <li>조직에 필요한 데이터를 데이터베이스에 통합하여 저장하고 관리한다.</li>
 </ul>
 
-<h1 id="코드">코드</h1>
-<hr />
+<h2 id="데이터베이스-관리-시스템의-주요-기능">데이터베이스 관리 시스템의 주요 기능</h2>
+<ul>
+  <li>정의 기능 : 데이터베이스 구조를 정의하거나 수정할 수 있다.</li>
+  <li>조작 기능 : 데이터를 삽입, 삭제, 수정, 검색하는 연산을 할 수 있다.</li>
+  <li>제어 기능 : 데이터를 항상 정확하고 안전하게 유지할 수 있다.</li>
+</ul>
 
-<script src="https://gist.github.com/miro7923/8f317b052aa2f68ecba29663847f959a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2231" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2231 제한 시간 제한 : 2 초 메모리 제한 : 192 MB]]></summary></entry><entry><title type="html">컴퓨터 네트워크) 네트워크 기초</title><link href="http://localhost:4000/computer%20network/computer-network-01/" rel="alternate" type="text/html" title="컴퓨터 네트워크) 네트워크 기초" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20network/computer-network-01</id><content type="html" xml:base="http://localhost:4000/computer%20network/computer-network-01/"><![CDATA[<h1 id="컴퓨터-네트워크">컴퓨터 네트워크</h1>
+<h3 id="장점">장점</h3>
+<ul>
+  <li>데이터 중복을 통제할 수 있다.</li>
+  <li>데이터 독립성이 확보된다.</li>
+  <li>데이터를 동시 공유할 수 있다.</li>
+  <li>데이터 보안이 향상된다.</li>
+  <li>데이터 무결성을 유지할 수 있다.</li>
+  <li>표준화할 수 있다.</li>
+  <li>장애 발생 시 회복이 가능하다.</li>
+  <li>응용 프로그램 개발 비용이 줄어든다.</li>
+</ul>
+
+<h3 id="단점">단점</h3>
+<ul>
+  <li>(경제적, 컴퓨터 자원 포함)비용이 많이 든다.</li>
+  <li>백업과 회복 방법이 복잡하다.</li>
+  <li>중앙 집중 관리로 인한 취약점이 존재한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="데이터베이스-관리-시스템의-발전-과정">데이터베이스 관리 시스템의 발전 과정</h1>
+<h2 id="1세대--네트워크-dbms-계층-dbms-1960--1970">1세대 : 네트워크 DBMS, 계층 DBMS (1960 ~ 1970)</h2>
+<ul>
+  <li>네트워크 DBMS : 데이터베이스를 계층 형태로 구성
+    <ul>
+      <li>변경이 어렵다.</li>
+      <li>예) IDS(Integrated Data Store)<br /><br /></li>
+    </ul>
+  </li>
+  <li>계층 DBMS : 데이터베이스를 트리 형태로 구성
+    <ul>
+      <li>구조변경 및 복잡한 현실세계 반영이 어렵다.</li>
+      <li>예) IMS(Information Management System)<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2세대--관계-dbms-1980-">2세대 : 관계 DBMS (1980 ~)</h2>
+<ul>
+  <li>관계 DBMS : 데이터베이스를 테이블 형태로 구성
+    <ul>
+      <li>이해하기 쉽다.</li>
+      <li>예) 오라클(Oracle), MS SQL 서버, 액세스(Access), 인포믹스(Informix), MySQL<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="3세대--객체지향-dbms-1980-후반--객체관계-dbms-1990-후반-">3세대 : 객체지향 DBMS (1980 후반 ~), 객체관계 DBMS (1990 후반 ~)</h2>
+<ul>
+  <li>객체지향 DBMS : 객체를 이용해 데이터베이스 구성
+    <ul>
+      <li>예) 오투(O2), 온투스(ONTOS), 젬스톤(GemStone)<br /><br /></li>
+    </ul>
+  </li>
+  <li>
+    <p>객체관계 DBMS : 객체 DBMS + 관계 DBMS<br /><br /></p>
+  </li>
+  <li>현대에는 이해하기 쉬운 2세대 RDBMS를 주로 사용하지만 객체지향 DBMS의 점유율도 점차 높아지고 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="DBMS" /><category term="RDBMS" /><summary type="html"><![CDATA[데이터베이스 관리 시스템의 등장 배경 파일 시스템(file system) 과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어 응용 프로그램마다 필요한 데이터를 별도의 파일로 관리함]]></summary></entry><entry><title type="html">DB) 데이터베이스 기본개념</title><link href="http://localhost:4000/database/db-01/" rel="alternate" type="text/html" title="DB) 데이터베이스 기본개념" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/database/db-01</id><content type="html" xml:base="http://localhost:4000/database/db-01/"><![CDATA[<h1 id="데이터베이스의-필요성">데이터베이스의 필요성</h1>
+<ul>
+  <li>데이터(data) : 의미가 부여되지는 않았지만 현실 세계에서 단순히 관찰하거나 측정해 수집한 사실이나 값</li>
+  <li>정보(information) : 의사 결정에 유용하게 활용할 수 있도록 데이터를 처리한 결과물</li>
+</ul>
+
+<h2 id="데이터-분류">데이터 분류</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Wisdom</code> : 지식을 활용할 수 있는 지혜로운 아이디어</li>
+  <li><code class="language-plaintext highlighter-rouge">Knowledge</code> : 정보를 의미있게 처리, 활용한 것</li>
+  <li><code class="language-plaintext highlighter-rouge">Information</code> : 가공된 의미있는 2차 데이터</li>
+  <li><code class="language-plaintext highlighter-rouge">Data</code> : 가공 전의 순수한 데이터</li>
+</ul>
+
+<h2 id="빅데이터-시대">빅데이터 시대</h2>
+<ul>
+  <li>현대는 빅데이터 시대라 할 수 있는데 데이터를 이용해 정보화시킬 수 있는 범위와 능력이 증대되었기 때문이다.</li>
+  <li>그만큼 데이터를 가공하는 역량이 중요한 시대가 되었다.<br /><br /></li>
+</ul>
+
+<h2 id="정보처리">정보처리</h2>
+<ul>
+  <li>데이터에서 정보를 추출하는 과정 또는 방법<br /><br /></li>
+</ul>
+
+<h2 id="정보-시스템과-데이터베이스">정보 시스템과 데이터베이스</h2>
+<h3 id="정보-시스템information-system">정보 시스템(information system)</h3>
+<ul>
+  <li>조직 운영에 필요한 데이터를 수집하여 저장해두었다가 필요할 때 유용한 정보를 만들어 주는 수단</li>
+</ul>
+
+<h3 id="데이터베이스">데이터베이스</h3>
+<ul>
+  <li>정보 시스템 안에서 저장하고 있다가 필요할 때 제공하는 역할을 담당</li>
+  <li>여러 가지 업무에 <code class="language-plaintext highlighter-rouge">공동</code>으로 필요한 데이터를 유기적으로 결합하여 저장한 집합체. 데이터를 <code class="language-plaintext highlighter-rouge">효율</code>적으로 처리하기 위하여 개발된 것으로, 같은 데이터가 <code class="language-plaintext highlighter-rouge">중복</code>되는 문제를 없앨 수 있으며 업무가 확대되어도 새로 파일을 준비할 필요가 없다는 장점이 있다.<br /><br /><br /></li>
+</ul>
+
+<h2 id="데이터베이스db-database">데이터베이스(DB, Database)</h2>
+<ul>
+  <li>특정 조직의 여러 사용자가 <code class="language-plaintext highlighter-rouge">공유</code>하여 사용할 수 있도록 <code class="language-plaintext highlighter-rouge">통합</code>해서 <code class="language-plaintext highlighter-rouge">저장</code>한 <code class="language-plaintext highlighter-rouge">운영</code> 데이터의 집합</li>
+</ul>
+
+<h3 id="데이터베이스의-정의">데이터베이스의 정의</h3>
+<ul>
+  <li>통합 데이터(integrated data) : 최소의 중복과 통제가능한 중복만 허용하는 데이터</li>
+  <li>저장 데이터(stored data) : 컴퓨터가 접근할 수 있는 매체에 저장된 데이터</li>
+  <li>공유 데이터(shared data) : 특정 조직의 여러 사용자가 함께 소유하고 이용할 수 있는 공용 데이터</li>
+  <li>운영 데이터(operational data) : 조직의 주요 기능을 수행하기 위해 지속적으로(조직이 문 닫을 때까지) 유지해야 하는 데이터</li>
+</ul>
+
+<h3 id="데이터베이스의-특성">데이터베이스의 특성</h3>
+<ul>
+  <li>실시간 접근(real-time accessibility) : 사용자의 데이터 요구에 실시간으로 응답</li>
+  <li>계속 변화(continuous evolution) : 데이터의 계속적인 삽입, 삭제, 수정을 통해 현재의 정확한 데이터를 유지
+    <ul>
+      <li>예) 사원의 입사, 퇴사에 따른 변화를 반영</li>
+    </ul>
+  </li>
+  <li>내용 기반 참조(contents reference) : 데이터가 저장된 주소나 위치가 아닌 내용으로 참조
+    <ul>
+      <li>예) 연봉이 5000만원 이상이며 과장급 이상인 사원을 검색하시오.</li>
+    </ul>
+  </li>
+  <li>동시 공유(concurrent sharing) : 서로 다른 데이터의 동시 사용뿐만 아니라 같은 데이터의 동시 사용도 지원</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[데이터베이스의 필요성 데이터(data) : 의미가 부여되지는 않았지만 현실 세계에서 단순히 관찰하거나 측정해 수집한 사실이나 값 정보(information) : 의사 결정에 유용하게 활용할 수 있도록 데이터를 처리한 결과물]]></summary></entry><entry><title type="html">컴퓨터 네트워크) 네트워크 기초</title><link href="http://localhost:4000/computer%20network/computer-network-01/" rel="alternate" type="text/html" title="컴퓨터 네트워크) 네트워크 기초" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20network/computer-network-01</id><content type="html" xml:base="http://localhost:4000/computer%20network/computer-network-01/"><![CDATA[<h1 id="컴퓨터-네트워크">컴퓨터 네트워크</h1>
 <ul>
   <li>전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음</li>
   <li>예) 인터넷</li>
@@ -416,7 +455,133 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1357811&amp;ar=relateCourse">KOCW 동서대학교 임효택 교수님 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[컴퓨터 네트워크 전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음 예) 인터넷 네트워크는 크게 나누면 유선, 무선 두 종류로 나눌 수 있다.]]></summary></entry><entry><title type="html">컴퓨터구조) Performance</title><link href="http://localhost:4000/computer%20science/computer-architecture-02/" rel="alternate" type="text/html" title="컴퓨터구조) Performance" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-02</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-02/"><![CDATA[<h1 id="cpu-time">CPU Time</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[컴퓨터 네트워크 전송 매체를 통해 서로 연결되어 데이터를 공유, 교환하는 컴퓨터의 모음 예) 인터넷 네트워크는 크게 나누면 유선, 무선 두 종류로 나눌 수 있다.]]></summary></entry><entry><title type="html">Java) BOJ 2798. 블랙잭</title><link href="http://localhost:4000/boj/boj2798-java/" rel="alternate" type="text/html" title="Java) BOJ 2798. 블랙잭" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2798-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2798-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2798">https://www.acmicpc.net/problem/2798</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>카지노에서 제일 인기 있는 게임 블랙잭의 규칙은 상당히 쉽다. 카드의 합이 21을 넘지 않는 한도 내에서, 카드의 합을 최대한 크게 만드는 게임이다. 블랙잭은 카지노마다 다양한 규정이 있다.</li>
+  <li>한국 최고의 블랙잭 고수 김정인은 새로운 블랙잭 규칙을 만들어 상근, 창영이와 게임하려고 한다.</li>
+  <li>김정인 버전의 블랙잭에서 각 카드에는 양의 정수가 쓰여 있다. 그 다음, 딜러는 N장의 카드를 모두 숫자가 보이도록 바닥에 놓는다. 그런 후에 딜러는 숫자 M을 크게 외친다.</li>
+  <li>이제 플레이어는 제한된 시간 안에 N장의 카드 중에서 3장의 카드를 골라야 한다. 블랙잭 변형 게임이기 때문에, 플레이어가 고른 카드의 합은 M을 넘지 않으면서 M과 최대한 가깝게 만들어야 한다.</li>
+  <li>N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다. 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는 양의 정수이다.</li>
+  <li>합이 M을 넘지 않는 카드 3장을 찾을 수 있는 경우만 입력으로 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>참고 블로그 : <a href="https://minhamina.tistory.com/38">https://minhamina.tistory.com/38</a></li>
+  <li>조합을 구하는 문제같아서 조합 알고리즘을 공부한 뒤 풀었다.</li>
+  <li>
+    <p>조합인 이유는 수를 뽑는 모든 경우의 수를 탐색해 봐야 하는데 뽑는 순서가 결과에 미치는 영향이 없기 때문이다.<br /></p>
+  </li>
+  <li>주어지는 N개의 숫자 중 3개를 뽑아서 M보다 작거나 같은 수 중 가장 큰 수를 만들면 되는데 이걸 알기 위해서는 조합이 가능한 모든 경우의 수를 탐색해 봐야 한다.</li>
+  <li>그래서 재귀로 n개 중에 3개를 뽑는 경우, n-1개 중에 2개를 뽑는 경우, n-2개 중에 1개를 뽑는 경우,… 로 탐색하다가 n-r개 중에 0개를 뽑는 경우가 되면 그동안 뽑은 수들의 합 중 M보다 작거나 같으면서 가장 큰 수를 찾으면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 132 ms</li>
+  <li>메모리 : 14140 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/2c5b96d4e986e37ac3c5c0cd823ac3d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2798" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2798 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2231. 분해합</title><link href="http://localhost:4000/boj/boj2231-java/" rel="alternate" type="text/html" title="Java) BOJ 2231. 분해합" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2231-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2231-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2231">https://www.acmicpc.net/problem/2231</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 192 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>어떤 자연수 N이 있을 때, 그 자연수 N의 분해합은 N과 N을 이루는 각 자리수의 합을 의미한다. 어떤 자연수 M의 분해합이 N인 경우, M을 N의 생성자라 한다.</li>
+  <li>예를 들어, 245의 분해합은 256(=245+2+4+5)이 된다. 따라서 245는 256의 생성자가 된다. 물론, 어떤 자연수의 경우에는 생성자가 없을 수도 있다.</li>
+  <li>반대로, 생성자가 여러 개인 자연수도 있을 수 있다.</li>
+  <li>자연수 N이 주어졌을 때, N의 가장 작은 생성자를 구해내는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 자연수 N(1 ≤ N ≤ 1,000,000)이 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 답을 출력한다. 생성자가 없는 경우에는 0을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>참고 블로그 : <a href="https://st-lab.tistory.com/98">https://st-lab.tistory.com/98</a><br /></p>
+  </li>
+  <li>N의 생성자 중 가장 작은 수를 구하면 되니까 꼭 모든 수를 탐색할 필요는 없고 1부터 수를 만들어 보면서 N과 같은 수가 나오면 반복을 중단하고 해당 수를 출력하면 된다.</li>
+  <li>만약 N을 넘어가는데도 생성자가 없다면 0을 출력한다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 152 ms</li>
+  <li>메모리 : 14828 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/8f317b052aa2f68ecba29663847f959a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2231" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2231 제한 시간 제한 : 2 초 메모리 제한 : 192 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Performance</title><link href="http://localhost:4000/computer%20science/computer-architecture-02/" rel="alternate" type="text/html" title="컴퓨터구조) Performance" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-02</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-02/"><![CDATA[<h1 id="cpu-time">CPU Time</h1>
 <ul>
   <li>한 컴퓨터 프로그램이 <code class="language-plaintext highlighter-rouge">CPU</code>를 차지하여 일을 한 시간의 양</li>
   <li>컴퓨터의 성능을 측정하기 위해 사용된다.</li>
@@ -499,7 +664,106 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1388791&amp;ar=relateCourse">KOCW 영남대학교 최규상 교수님 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[CPU Time 한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양 컴퓨터의 성능을 측정하기 위해 사용된다. CPU Time = Instruction Count x CPI x Clock Cycle Time CPU Time이 적을수록 성능이 좋다고 할 수 있다. clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.]]></summary></entry><entry><title type="html">JSP) DAO</title><link href="http://localhost:4000/jsp/jdbc-dao/" rel="alternate" type="text/html" title="JSP) DAO" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc-dao</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc-dao/"><![CDATA[<h1 id="-daodata-access-object란">👀 DAO(Data Access Object)란?</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[CPU Time 한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양 컴퓨터의 성능을 측정하기 위해 사용된다. CPU Time = Instruction Count x CPI x Clock Cycle Time CPU Time이 적을수록 성능이 좋다고 할 수 있다. clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.]]></summary></entry><entry><title type="html">SQL) Subquery</title><link href="http://localhost:4000/database/SQL-subquery/" rel="alternate" type="text/html" title="SQL) Subquery" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-subquery</id><content type="html" xml:base="http://localhost:4000/database/SQL-subquery/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">GROUP BY</code>절을 제외하고 다 사용가능하며 <code class="language-plaintext highlighter-rouge">WHERE</code>, <code class="language-plaintext highlighter-rouge">HAVING</code>절에서 제일 많이 활용된다.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span>   <span class="k">table</span>
+<span class="k">WHERE</span>  <span class="n">expr</span> <span class="k">operator</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">select_list</span>
+                      <span class="k">FROM</span>   <span class="k">table</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>테이블에서 어떤 정보를 조회할 때 특정 범위 안에 있는 정보만 조회하고 싶은데 그 특정 범위도 알 수가 없어서 쿼리문으로 물어봐야 할 때 사용한다.<br /></li>
+</ul>
+
+<h2 id="예제">예제</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">salary</span>
+                 <span class="k">FROM</span>   <span class="n">employees</span>
+                 <span class="k">WHERE</span>  <span class="n">last_name</span> <span class="o">=</span> <span class="s1">'Abel'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Able</code>이라는 사람보다 높은 연봉을 가진 사람들을 조회하고 싶을 때<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">salary</span>
+<span class="k">FROM</span>   <span class="n">employees</span>
+<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+                 <span class="k">FROM</span>   <span class="n">employees</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>연봉이 가장 적은 사람의 이름, 부서, 연봉정보를 출력하고 싶을 때<br /><br /></li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span>     <span class="n">employees</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span>
+<span class="k">HAVING</span>   <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+                        <span class="k">FROM</span>   <span class="n">employees</span>
+                        <span class="k">WHERE</span>  <span class="n">department_id</span> <span class="o">=</span> <span class="mi">50</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>부서번호 50번의 가장 적은 연봉보다는 큰 부서별 가장 적은 연봉을 보고 싶을 때<br /><br /></li>
+</ul>
+
+<h2 id="inline-view">Inline View</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">From</code>절에 <code class="language-plaintext highlighter-rouge">Subquery</code>가 작성된 경우</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">salary</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">salavg</span>
+<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">a</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">salavg</span>
+                         <span class="k">FROM</span>     <span class="n">employees</span>
+                         <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">)</span> <span class="n">b</span> <span class="c1">-- 이 쿼리구문 안에서만 유효한 inline view</span>
+<span class="k">ON</span>     <span class="n">a</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">department_id</span>
+<span class="k">WHERE</span>  <span class="n">a</span><span class="p">.</span><span class="n">salary</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">salavg</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">employees</code> 테이블에서 자기가 소속된 부서의 평균 급여보다 본인의 급여가 더 큰 사원만 출력할 때</li>
+  <li><code class="language-plaintext highlighter-rouge">Inline view</code>는 실제로 존재하는 테이블은 아닌 이 쿼리문을 위한 가상 테이블로, 실제 존재하는 테이블은 아니기 때문에 마지막에 한 칸 띄우고 앨리어스를 꼭 작성해야 한다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[☑️ 문법 GROUP BY절을 제외하고 다 사용가능하며 WHERE, HAVING절에서 제일 많이 활용된다.]]></summary></entry><entry><title type="html">SQL) JOIN</title><link href="http://localhost:4000/database/SQL-join/" rel="alternate" type="text/html" title="SQL) JOIN" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-join</id><content type="html" xml:base="http://localhost:4000/database/SQL-join/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
+<ul>
+  <li>같은 컬럼을 가지고 있는 여러 테이블을 묶어서 데이터를 볼 때 사용한다.</li>
+</ul>
+
+<h2 id="1-on절을-사용한-join">1. ON절을 사용한 JOIN</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">location_id</span>
+<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">s</span> <span class="k">JOIN</span> <span class="n">departments</span> <span class="n">d</span>
+<span class="k">ON</span>     <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">)</span> <span class="c1">-- 여기에 입력할 컬럼은 조인시킬 테이블 모두에 있어야 함</span>
+<span class="k">WHERE</span>  <span class="n">e</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="mi">149</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>테이블 두 개만 가능한 것은 아니고 세 개, 네 개, … 작성하는 만큼 가능하다.</li>
+</ul>
+
+<h2 id="2-on절을-사용한-self-join">2. ON절을 사용한 Self-Join</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>  <span class="n">worker</span><span class="p">.</span><span class="n">last_name</span> <span class="n">emp</span><span class="p">,</span> <span class="n">manager</span><span class="p">.</span><span class="n">last_name</span> <span class="n">mgr</span>
+<span class="k">FROM</span>    <span class="n">employees</span> <span class="n">worker</span> <span class="k">JOIN</span> <span class="n">employees</span> <span class="n">manager</span>
+<span class="k">ON</span>      <span class="p">(</span><span class="n">worker</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="n">manager</span><span class="p">.</span><span class="n">employee_id</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>같은 테이블 안에서 <code class="language-plaintext highlighter-rouge">JOIN</code> 하는 것도 가능하다.<br /></li>
+</ul>
+
+<h3 id="️-쿼리문-작성-팁">❗️ 쿼리문 작성 팁</h3>
+<ul>
+  <li>컬럼명을 입력할 때 해당 컬럼이 속해있는 테이블명을 입력하면 해당 범위에서만 검색을 시행하기 때문에 실행속도가 훨씬 빨라진다. (테이블명을 적지 않아도 실행되지만 그만큼 모든 테이블을 대상으로 검색해서 결과를 가져오기 때문에 실행속도가 훨씬 느리다.)</li>
+  <li>그래서 실행속도가 빠른 쿼리문을 작성하는 것이 중요하다.</li>
+  <li>그런데 테이블 풀네임을 일일이 적어주면 너무 길어서 가독성이 떨어지니까 약자로 적을 수 있는데 대신 약자로 적었다면 <code class="language-plaintext highlighter-rouge">FROM</code>절에서 어떤 테이블명의 약자인지 꼭 명시해줘야 <code class="language-plaintext highlighter-rouge">SQL</code>이 헷갈리지 않고 잘 찾아올 수 있다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[☑️ 문법 같은 컬럼을 가지고 있는 여러 테이블을 묶어서 데이터를 볼 때 사용한다.]]></summary></entry><entry><title type="html">JSP) DAO</title><link href="http://localhost:4000/jsp/jdbc-dao/" rel="alternate" type="text/html" title="JSP) DAO" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/jsp/jdbc-dao</id><content type="html" xml:base="http://localhost:4000/jsp/jdbc-dao/"><![CDATA[<h1 id="-daodata-access-object란">👀 DAO(Data Access Object)란?</h1>
 <ul>
   <li>데이터 처리 객체</li>
   <li><code class="language-plaintext highlighter-rouge">DB</code>에 관련된 모든 동작을 수행하는 클래스</li>
@@ -723,462 +987,4 @@
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">JSP</code> 페이지에서는 아까 만든 객체를 호출하기만 하면 된다!</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="Database" /><category term="JSP" /><category term="DAO" /><summary type="html"><![CDATA[👀 DAO(Data Access Object)란? 데이터 처리 객체 DB에 관련된 모든 동작을 수행하는 클래스 지금까지 JDBC로 DB와 연결할 때 사용하려는 페이지마다 일일이 연결 코드를 적어줘야 했는데 이제는 DAO를 만들어서 연결 동작을 여기서 수행하도록 하고 DB연결이 필요한 페이지에서는 DAO만 호출하면 된다!]]></summary></entry><entry><title type="html">SQL) JOIN</title><link href="http://localhost:4000/database/SQL-join/" rel="alternate" type="text/html" title="SQL) JOIN" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-join</id><content type="html" xml:base="http://localhost:4000/database/SQL-join/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
-<ul>
-  <li>같은 컬럼을 가지고 있는 여러 테이블을 묶어서 데이터를 볼 때 사용한다.</li>
-</ul>
-
-<h2 id="1-on절을-사용한-join">1. ON절을 사용한 JOIN</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">location_id</span>
-<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">s</span> <span class="k">JOIN</span> <span class="n">departments</span> <span class="n">d</span>
-<span class="k">ON</span>     <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">department_id</span><span class="p">)</span> <span class="c1">-- 여기에 입력할 컬럼은 조인시킬 테이블 모두에 있어야 함</span>
-<span class="k">WHERE</span>  <span class="n">e</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="mi">149</span><span class="p">;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>테이블 두 개만 가능한 것은 아니고 세 개, 네 개, … 작성하는 만큼 가능하다.</li>
-</ul>
-
-<h2 id="2-on절을-사용한-self-join">2. ON절을 사용한 Self-Join</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>  <span class="n">worker</span><span class="p">.</span><span class="n">last_name</span> <span class="n">emp</span><span class="p">,</span> <span class="n">manager</span><span class="p">.</span><span class="n">last_name</span> <span class="n">mgr</span>
-<span class="k">FROM</span>    <span class="n">employees</span> <span class="n">worker</span> <span class="k">JOIN</span> <span class="n">employees</span> <span class="n">manager</span>
-<span class="k">ON</span>      <span class="p">(</span><span class="n">worker</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="n">manager</span><span class="p">.</span><span class="n">employee_id</span><span class="p">);</span>
-</code></pre></div></div>
-
-<ul>
-  <li>같은 테이블 안에서 <code class="language-plaintext highlighter-rouge">JOIN</code> 하는 것도 가능하다.<br /></li>
-</ul>
-
-<h3 id="️-쿼리문-작성-팁">❗️ 쿼리문 작성 팁</h3>
-<ul>
-  <li>컬럼명을 입력할 때 해당 컬럼이 속해있는 테이블명을 입력하면 해당 범위에서만 검색을 시행하기 때문에 실행속도가 훨씬 빨라진다. (테이블명을 적지 않아도 실행되지만 그만큼 모든 테이블을 대상으로 검색해서 결과를 가져오기 때문에 실행속도가 훨씬 느리다.)</li>
-  <li>그래서 실행속도가 빠른 쿼리문을 작성하는 것이 중요하다.</li>
-  <li>그런데 테이블 풀네임을 일일이 적어주면 너무 길어서 가독성이 떨어지니까 약자로 적을 수 있는데 대신 약자로 적었다면 <code class="language-plaintext highlighter-rouge">FROM</code>절에서 어떤 테이블명의 약자인지 꼭 명시해줘야 <code class="language-plaintext highlighter-rouge">SQL</code>이 헷갈리지 않고 잘 찾아올 수 있다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[☑️ 문법 같은 컬럼을 가지고 있는 여러 테이블을 묶어서 데이터를 볼 때 사용한다.]]></summary></entry><entry><title type="html">SQL) Subquery</title><link href="http://localhost:4000/database/SQL-subquery/" rel="alternate" type="text/html" title="SQL) Subquery" /><published>2022-02-19T00:00:00+09:00</published><updated>2022-02-19T00:00:00+09:00</updated><id>http://localhost:4000/database/SQL-subquery</id><content type="html" xml:base="http://localhost:4000/database/SQL-subquery/"><![CDATA[<h1 id="️-문법">☑️ 문법</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">GROUP BY</code>절을 제외하고 다 사용가능하며 <code class="language-plaintext highlighter-rouge">WHERE</code>, <code class="language-plaintext highlighter-rouge">HAVING</code>절에서 제일 많이 활용된다.</li>
-</ul>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">select_list</span>
-<span class="k">FROM</span>   <span class="k">table</span>
-<span class="k">WHERE</span>  <span class="n">expr</span> <span class="k">operator</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">select_list</span>
-                      <span class="k">FROM</span>   <span class="k">table</span><span class="p">);</span>
-</code></pre></div></div>
-
-<ul>
-  <li>테이블에서 어떤 정보를 조회할 때 특정 범위 안에 있는 정보만 조회하고 싶은데 그 특정 범위도 알 수가 없어서 쿼리문으로 물어봐야 할 때 사용한다.<br /></li>
-</ul>
-
-<h2 id="예제">예제</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">salary</span>
-<span class="k">FROM</span>   <span class="n">employees</span>
-<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">salary</span>
-                 <span class="k">FROM</span>   <span class="n">employees</span>
-                 <span class="k">WHERE</span>  <span class="n">last_name</span> <span class="o">=</span> <span class="s1">'Abel'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Able</code>이라는 사람보다 높은 연봉을 가진 사람들을 조회하고 싶을 때<br /><br /></li>
-</ul>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">salary</span>
-<span class="k">FROM</span>   <span class="n">employees</span>
-<span class="k">WHERE</span>  <span class="n">salary</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
-                 <span class="k">FROM</span>   <span class="n">employees</span><span class="p">);</span>
-</code></pre></div></div>
-
-<ul>
-  <li>연봉이 가장 적은 사람의 이름, 부서, 연봉정보를 출력하고 싶을 때<br /><br /></li>
-</ul>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
-<span class="k">FROM</span>     <span class="n">employees</span>
-<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span>
-<span class="k">HAVING</span>   <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
-                        <span class="k">FROM</span>   <span class="n">employees</span>
-                        <span class="k">WHERE</span>  <span class="n">department_id</span> <span class="o">=</span> <span class="mi">50</span><span class="p">);</span>
-</code></pre></div></div>
-
-<ul>
-  <li>부서번호 50번의 가장 적은 연봉보다는 큰 부서별 가장 적은 연봉을 보고 싶을 때<br /><br /></li>
-</ul>
-
-<h2 id="inline-view">Inline View</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">From</code>절에 <code class="language-plaintext highlighter-rouge">Subquery</code>가 작성된 경우</li>
-</ul>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">salary</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">salavg</span>
-<span class="k">FROM</span>   <span class="n">employees</span> <span class="n">a</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span>   <span class="n">department_id</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">salavg</span>
-                         <span class="k">FROM</span>     <span class="n">employees</span>
-                         <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department_id</span><span class="p">)</span> <span class="n">b</span> <span class="c1">-- 이 쿼리구문 안에서만 유효한 inline view</span>
-<span class="k">ON</span>     <span class="n">a</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">department_id</span>
-<span class="k">WHERE</span>  <span class="n">a</span><span class="p">.</span><span class="n">salary</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">salavg</span><span class="p">;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">employees</code> 테이블에서 자기가 소속된 부서의 평균 급여보다 본인의 급여가 더 큰 사원만 출력할 때</li>
-  <li><code class="language-plaintext highlighter-rouge">Inline view</code>는 실제로 존재하는 테이블은 아닌 이 쿼리문을 위한 가상 테이블로, 실제 존재하는 테이블은 아니기 때문에 마지막에 한 칸 띄우고 앨리어스를 꼭 작성해야 한다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[☑️ 문법 GROUP BY절을 제외하고 다 사용가능하며 WHERE, HAVING절에서 제일 많이 활용된다.]]></summary></entry><entry><title type="html">컴퓨터 구조) 컴퓨터 구조 Preview</title><link href="http://localhost:4000/computer%20science/computer-architecture-01/" rel="alternate" type="text/html" title="컴퓨터 구조) 컴퓨터 구조 Preview" /><published>2022-02-18T00:00:00+09:00</published><updated>2022-02-18T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-01</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-01/"><![CDATA[<h1 id="컴퓨터의-발전">컴퓨터의 발전</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">무어의 법칙</code> 덕분에 숱한 기술의 발전이 가능했다.</li>
-  <li>중요하니까 외우자.<br /><br /></li>
-</ul>
-
-<h2 id="-무어의-법칙">👀 무어의 법칙</h2>
-<ul>
-  <li>싱글 칩의 트랜지스터 수가 2년마다 2배로 증가한다는 법칙(실제로는 2배보다 더 많이 증가)</li>
-  <li>성능의 급격한 발전으로 인해 과거에 비해 더 싼 가격에 더 좋은 성능을 발휘할 수 있게 되었다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="컴퓨터의-종류">컴퓨터의 종류</h1>
-<h2 id="개인-컴퓨터">개인 컴퓨터</h2>
-<ul>
-  <li>일반적으로 사용하는 컴퓨터</li>
-  <li>비교적 저렴하고 저성능<br /><br /></li>
-</ul>
-
-<h2 id="서버-컴퓨터">서버 컴퓨터</h2>
-<ul>
-  <li>네트워크 통신이 주 목적</li>
-  <li>고가, 대용량, 고성능<br /><br /></li>
-</ul>
-
-<h2 id="수퍼-컴퓨터">수퍼 컴퓨터</h2>
-<ul>
-  <li>군사용, 기상청 날씨 예측용 등 특수 목적으로 사용되는 컴퓨터<br /><br /></li>
-</ul>
-
-<h2 id="임베디드-컴퓨터">임베디드 컴퓨터</h2>
-<ul>
-  <li>큰 시스템에 컴퓨터가 하나의 컴포넌트로 구성된 것</li>
-  <li>적은 전력소모, 저성능, 저가</li>
-  <li>ex) 스마트폰, 태블릿 PC<br /><br /><br /></li>
-</ul>
-
-<h1 id="데이터의-단위">데이터의 단위</h1>
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">bit</code> - <code class="language-plaintext highlighter-rouge">byte</code> - <code class="language-plaintext highlighter-rouge">Kilobyte</code> - <code class="language-plaintext highlighter-rouge">Megabyte</code> - <code class="language-plaintext highlighter-rouge">Gigabyte</code> - <code class="language-plaintext highlighter-rouge">Terabyte</code> - <code class="language-plaintext highlighter-rouge">Petabyte</code> - <code class="language-plaintext highlighter-rouge">Exabyte</code><br /><br /></p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Byte</code> : 8<code class="language-plaintext highlighter-rouge">bit</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Kilobyte</code> : 2^10 or 1,024 <code class="language-plaintext highlighter-rouge">bytes</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Megabyte</code> : 2^20 or 1,048,576 <code class="language-plaintext highlighter-rouge">bytes</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Gigabyte</code> : 2^30 or 1,073,741,824 <code class="language-plaintext highlighter-rouge">bytes</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Terabyte</code> : 2^40 or 1,099,511,627,776 <code class="language-plaintext highlighter-rouge">bytes</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Petabyte</code> : 2^50 or 1024 <code class="language-plaintext highlighter-rouge">terabytes</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Exabyte</code> : 2^60 ir 1024 <code class="language-plaintext highlighter-rouge">petabytes</code><br /><br /><br /></li>
-</ul>
-
-<h1 id="미래의-컴퓨터">미래의 컴퓨터</h1>
-<h2 id="personal-mobile-device-pmd">Personal Mobile Device (PMD)</h2>
-<ul>
-  <li>스마트폰, 태블릿 PC, 전자안경 등</li>
-  <li>배터리로 작동되며 인터넷에 연결해서 사용<br /><br /></li>
-</ul>
-
-<h2 id="cloud-computing">Cloud computing</h2>
-<ul>
-  <li>Warehouse Scale Computers (WSC) : 특정한 데이터를 서버에서 처리하고 필요할 때 서버에서 다운받아서 사용</li>
-  <li>Software as a Service (SaaS) : 필요한 소프트웨어를 서비스 형태로 제공받는다.</li>
-  <li>복잡한 연산은 <code class="language-plaintext highlighter-rouge">Cloud</code>에서 처리하고 <code class="language-plaintext highlighter-rouge">PMD</code>에서는 간단한 <code class="language-plaintext highlighter-rouge">UI</code> 같은 것만 보여주는 것</li>
-  <li>아마존과 구글의 클라우드 서비스<br /><br /><br /></li>
-</ul>
-
-<h1 id="컴퓨터의-성능">컴퓨터의 성능</h1>
-<h2 id="알고리즘-측면">알고리즘 측면</h2>
-<ul>
-  <li>실행되는 <code class="language-plaintext highlighter-rouge">operation</code>의 수가 적을수록 성능이 높다.<br /><br /></li>
-</ul>
-
-<h2 id="프로그래밍-언어-컴파일러-구조">프로그래밍 언어, 컴파일러, 구조</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">operation</code>당 실행되는 <code class="language-plaintext highlighter-rouge">instruction</code>의 수가 많을수록 성능이 높다.<br /><br /></li>
-</ul>
-
-<h2 id="프로세서와-메모리">프로세서와 메모리</h2>
-<ul>
-  <li>단위시간당 <code class="language-plaintext highlighter-rouge">instruction</code>을 얼마나 빨리 실행하는지<br /><br /></li>
-</ul>
-
-<h2 id="입출력-시스템">입출력 시스템</h2>
-<ul>
-  <li>단위시간당 <code class="language-plaintext highlighter-rouge">I/O operation</code>을 얼마나 많이 실행하는지에 따라 결정된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="컴퓨터-구조">컴퓨터 구조</h1>
-<h2 id="application-software">Application software</h2>
-<ul>
-  <li>일반적으로 사용자가 사용하는 프로그램</li>
-  <li>고급언어로 작성된 프로그램<br /><br /></li>
-</ul>
-
-<h2 id="system-software">System software</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Compiler</code> : 고급언어를 기계어로 번역하는 것</li>
-  <li><code class="language-plaintext highlighter-rouge">Operating System</code> : 운영체제. 입출력, 메모리 관리, 자원 스케줄링 등을 한다.<br /><br /></li>
-</ul>
-
-<h2 id="hardware">Hardware</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Processor</code>, <code class="language-plaintext highlighter-rouge">memory</code>, <code class="language-plaintext highlighter-rouge">I/O controllers</code><br /><br /><br /></li>
-</ul>
-
-<h1 id="levels-of-program-code">Levels of Program Code</h1>
-<h2 id="high-level-language">High-level language</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">C</code>언어 같이 우리가 알아보기 쉬운 언어로 작성한 코드</li>
-  <li>컴파일러를 거쳐 어셈블리어로 번역된다.<br /><br /></li>
-</ul>
-
-<h2 id="assembly-language">Assembly language</h2>
-<ul>
-  <li>고급언어보다는 알아보기 어렵지만 그래도 사람이 알아볼 수는 있는 정도의 단어들로 작성된 코드</li>
-  <li>어셈블러(Assembler)를 거쳐 기계어로 번역된다.<br /><br /></li>
-</ul>
-
-<h2 id="hardware-representation">Hardware representation</h2>
-<ul>
-  <li>0과 1로 이루어진 코드(Binary digits, bits)</li>
-  <li>비주얼 스튜디오 같은 <code class="language-plaintext highlighter-rouge">IDE</code>엔 컴파일러와 어셈블러가 함께 들어있어서 일반적으로는 함께 실행되지만 단계를 나눠서 실행도 가능하다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="컴퓨터의-구성요소">컴퓨터의 구성요소</h1>
-<ul>
-  <li>컴퓨터의 종류는 여러개여도 구성요소는 다 비슷하다.</li>
-  <li><code class="language-plaintext highlighter-rouge">User-interface divices</code> : display, keyboard, mouse</li>
-  <li><code class="language-plaintext highlighter-rouge">Storage devices</code> : hard disk, CD/DVD, flash</li>
-  <li><code class="language-plaintext highlighter-rouge">Network adapters</code> : 다른 컴퓨터와 소통하기 위한 수단<br /><br /><br /></li>
-</ul>
-
-<h1 id="cpu-구성요소">CPU 구성요소</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Datapath</code> : 데이터가 어떻게 연산되어 흘러가는지</li>
-  <li><code class="language-plaintext highlighter-rouge">Control</code> : 프로세서의 컴포넌트 컨트롤</li>
-  <li><code class="language-plaintext highlighter-rouge">Cache memory</code> : 작고 빠른 <code class="language-plaintext highlighter-rouge">SRAM</code>이 있어서 <code class="language-plaintext highlighter-rouge">SRAM</code>에 자주 사용하는 데이터를 저장해 놓는다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="추상화abstractions">추상화(Abstractions)</h1>
-<ul>
-  <li>복잡한 문제를 단순화해서 쉽게 풀 수 있도록 하는 것<br /><br /><br /></li>
-</ul>
-
-<h1 id="메모리-종류">메모리 종류</h1>
-<h2 id="휘발성-메모리-volatile-main-memory">휘발성 메모리 (Volatile main memory)</h2>
-<ul>
-  <li>전원을 끄면 데이터가 날아가는 메모리<br /><br /></li>
-</ul>
-
-<h2 id="비휘발성-메모리-non-volatile-secondary-memory">비휘발성 메모리 (Non-volatile secondary memory)</h2>
-<ul>
-  <li>전원을 꺼도 데이터가 날아가지 않는 메모리</li>
-  <li>마그네틱 디스크, 플래시 메모리, CD/DVD 등<br /><br /><br /></li>
-</ul>
-
-<h1 id="반도체-기술">반도체 기술</h1>
-<ul>
-  <li>실리콘에 기판을 새겨넣는 것이 반도체 칩을 만드는 과정</li>
-  <li><code class="language-plaintext highlighter-rouge">conductors</code>(도체), <code class="language-plaintext highlighter-rouge">insulators</code>(부도체), <code class="language-plaintext highlighter-rouge">switch</code>들이 잘 동작되게 하는 것<br /><br /><br /></li>
-</ul>
-
-<h1 id="컴퓨터의-성능-1">컴퓨터의 성능</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">throughput</code>과 <code class="language-plaintext highlighter-rouge">response time</code>로 정의된다.<br /></li>
-</ul>
-
-<h2 id="response-time">Response time</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">operation</code> 하나를 처리하는 데 걸리는 시간</li>
-  <li>짧을수록 성능이 좋다.<br /></li>
-</ul>
-
-<h2 id="throughput">Throughput</h2>
-<ul>
-  <li>단위시간 당 얼마나 많은 일을 할 수 있는지 나타낸 것</li>
-  <li>
-    <p>높을수록 성능이 좋다.<br /></p>
-  </li>
-  <li>❗️ <code class="language-plaintext highlighter-rouge">response time</code>은 <code class="language-plaintext highlighter-rouge">throughput</code>에 영향을 주지만 <code class="language-plaintext highlighter-rouge">throughput</code>은 <code class="language-plaintext highlighter-rouge">response time</code>에 영향을 주지 않는다. 그래서 성능은 <code class="language-plaintext highlighter-rouge">response time</code>으로 표현할 수 있다.<br /></li>
-</ul>
-
-<h2 id="execution-time">Execution time</h2>
-<ul>
-  <li>짧을수록 성능이 좋다.</li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Performance X / Performance Y = Execution time Y / Execution time X = n
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Performance</code>와 <code class="language-plaintext highlighter-rouge">Execution time</code>은 반비례 관계이다.(기억하기❗️)<br /></li>
-</ul>
-
-<h2 id="elapsed-time">Elapsed time</h2>
-<ul>
-  <li>총 걸린 시간</li>
-  <li>프로세싱, 입출력, <code class="language-plaintext highlighter-rouge">OS</code> 오버헤드, 대기시간 등 컴퓨터가 실행되는 동안 모든 것을 처리하는 데 걸린 시간</li>
-  <li>그 시스템 전체의 성능을 정의하게 된다.<br /></li>
-</ul>
-
-<h2 id="cpu-time">CPU time</h2>
-<ul>
-  <li>어떤 일을 처리할 때 <code class="language-plaintext highlighter-rouge">CPU</code>에서 걸리는 시간</li>
-  <li>그래서 입출력, 다른 작업을 처리하는 데 드는 시간 등은 제외하고 계산된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">user CPU time</code>과 <code class="language-plaintext highlighter-rouge">system CPU time</code>으로 나눌 수 있으며 프로그램마다 <code class="language-plaintext highlighter-rouge">CPU</code>와 시스템 성능에 다르게 영향 받는다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="cpu-clocking">CPU Clocking</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>의 처리 속도</li>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>의 각 부품들은 일정한 시간마다 동작한다. <code class="language-plaintext highlighter-rouge">Clock cycle</code>이라 함</li>
-  <li><code class="language-plaintext highlighter-rouge">Clock period</code> : <code class="language-plaintext highlighter-rouge">Clock cycle</code>의 길이</li>
-  <li><code class="language-plaintext highlighter-rouge">Clock frequency (rate)</code> : 초당 존재하는 <code class="language-plaintext highlighter-rouge">Clock cycle</code>의 개수</li>
-</ul>
-
-<h2 id="-시간-단위">👀 시간 단위</h2>
-<p><code class="language-plaintext highlighter-rouge">second, s</code> &gt; <code class="language-plaintext highlighter-rouge">millisecond, ms</code> 10^-3 &gt; <code class="language-plaintext highlighter-rouge">microsecond, μs</code> 10^-6 &gt; <code class="language-plaintext highlighter-rouge">nanosecond, ns</code> 10^-9 &gt; <code class="language-plaintext highlighter-rouge">picosecond, ps</code> 10^-12<br /></p>
-
-<ul>
-  <li>❗️ <code class="language-plaintext highlighter-rouge">Clock cycle time</code>과 <code class="language-plaintext highlighter-rouge">Clock rate</code>는 반비례 관계이다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="출처">출처</h1>
-<ul>
-  <li><a href="http://www.kocw.net/home/cview.do?cid=184062fa9a833237">KOCW 영남대학교 최규상 교수님 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[컴퓨터의 발전 무어의 법칙 덕분에 숱한 기술의 발전이 가능했다. 중요하니까 외우자.]]></summary></entry><entry><title type="html">컴퓨터 하드웨어) 제어 장치</title><link href="http://localhost:4000/computer%20science/CS-14/" rel="alternate" type="text/html" title="컴퓨터 하드웨어) 제어 장치" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/CS-14</id><content type="html" xml:base="http://localhost:4000/computer%20science/CS-14/"><![CDATA[<h1 id="-제어-장치란">👀 제어 장치란?</h1>
-<ul>
-  <li>프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분</li>
-  <li>컴퓨터의 중추선이라 할 수 있다.</li>
-  <li>컴퓨터의 자료 처리 속도를 <code class="language-plaintext highlighter-rouge">MIPS(Million Instructions Per Second)</code>로 나타내는데 <code class="language-plaintext highlighter-rouge">1MIPS</code>는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="제어-장치의-구성">제어 장치의 구성</h1>
-<ul>
-  <li>제어 장치(control unit)는 주기억 장치에 연결되어 있는 명령어를 순서대로 호출하고 해독하여 그 결과에 따라 연산 장치, 기억 장치, 입,출력 장치에 제어 신호를 보내 원하고자 하는 동작을 유도한다.<br /><br /></li>
-</ul>
-
-<p><img src="../../assets/images/controlUnit.jpg" alt="controlUnit" /></p>
-
-<h2 id="1-프로그램-계수기pc--program-counter">1. 프로그램 계수기(PC : Program Counter)</h2>
-<ul>
-  <li>명령의 실행 순서를 정하기 위하여 다음에 실행될 명령이 들어 있는 번지를 기억해 두는 레지스터</li>
-  <li>명령어 계수기(IC : Instruction Counter) 혹은 위치 계수기(LC : Location Counter)라고도 한다.<br /><br /></li>
-</ul>
-
-<h2 id="2-명령-레지스터ir--instruction-register">2. 명령 레지스터(IR : Instruction Register)</h2>
-<ul>
-  <li>프로그램 계수기(<code class="language-plaintext highlighter-rouge">PC</code>)가 지정한 번지에 기억되어 있는 명령을 꺼내어 이 명령을 해석하기 위하여 임시로 보관하여 두는 레지스터</li>
-  <li>명령부와 번지부로 구성되어 있다.
-    <ul>
-      <li>명령부 : 실행 명령 코드(operation code)가 들어 있다.</li>
-      <li>번지부 : 데이터가 기억되어 있는 번지(operand)가 들어 있다.</li>
-    </ul>
-  </li>
-  <li>명령부의 명령 코드가 해독기에 옮겨져 해독되며 번지부의 번지가 번지 해독기에 이송되어 해독된다.<br /><br /></li>
-</ul>
-
-<h2 id="3-명령어-해독기instruction-decoder와-기계-사이클-부호기">3. 명령어 해독기(Instruction Decoder)와 기계 사이클 부호기</h2>
-<ul>
-  <li>명령어 해독기 : 명령 레지스터의 명령부에 있는 명령 코드를 해독하여 기계 사이클 부호기에 그 신호를 보내는 장치</li>
-  <li>기계 사이클 부호기 : 명령어 해독기로부터 보내져 온 명령을 실행하는 데 필요한 신호를 만들어 시간 통제 및 제어 장치에 보낸다.<br /><br /></li>
-</ul>
-
-<h2 id="4-시간-통제-및-제어-장치timming-and-control-unit">4. 시간 통제 및 제어 장치(Timming and Control Unit)</h2>
-<ul>
-  <li>기계 사이클 부호기에서 수신된 신호를 기계 사이클의 클럭에 따라 동기시켜 필요한 최종 신호를 만들어 순서대로 각 장치들로 송출<br /><br /></li>
-</ul>
-
-<h2 id="5-범용-레지스터general-register">5. 범용 레지스터(General Register)</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code> 내에서 자료를 처리하는 과정에 자료를 일시적으로 보관하는 장치<br /><br /></li>
-</ul>
-
-<h2 id="6-작업-레지스터working-register">6. 작업 레지스터(Working Register)</h2>
-<ul>
-  <li>산술 논리를 수행하는 레지스터로 처리 결과를 보관하는 장치<br /><br /></li>
-</ul>
-
-<h2 id="7-플래그-레지스터flag-register">7. 플래그 레지스터(Flag Register)</h2>
-<ul>
-  <li>상태 레지스터(Status register)라고도 하며 <code class="language-plaintext highlighter-rouge">CPU</code>의 연산 결과 상태를 저장</li>
-  <li>처리 결과 0(zero), 부호(sign), 오버플로우(overflow), 자리올림(carry), 인터럽트(interrupt) 등의 발생 여부를 나타내는 특수 목적 레지스터<br /><br /><br /></li>
-</ul>
-
-<h1 id="제어-장치의-동작">제어 장치의 동작</h1>
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">기억 장치</code>에 있는 명령을 꺼낸다(인출 사이클(fecth cycle))</li>
-  <li><code class="language-plaintext highlighter-rouge">PC</code>(프로그램 계수기)에 초기 번지를 저장하면 주기억 장치의 명령이 그림의 <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>, <code class="language-plaintext highlighter-rouge">c</code> 순서로 명령 레지스터(<code class="language-plaintext highlighter-rouge">IR</code>)에 옮겨온다.</li>
-  <li>레지스터에는 1개의 명령 내용인 명령 코드와 번지부가 기억된다. 명령 해독기와 기계 사이클 부호기를 통해 해독된다.</li>
-  <li>각 장치에 신호를 보내고, 시간 통제 및 제어 장치를 통해 외부 장치들에게 제어 신호를 송출한다.</li>
-  <li>이 과정에서 <code class="language-plaintext highlighter-rouge">PC</code>의 주기억 장치의 번지는 자동으로 증가된다.<br /><br /></li>
-</ol>
-
-<h2 id="1-인출-사이클fetch-cycle">1. 인출 사이클(Fetch cycle)</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">기억 장치</code>의 번지를 확인하여 명령을 읽어낼 때까지의 단계로 이 기간 동안에 명령이 <code class="language-plaintext highlighter-rouge">주기억 장치</code>에서 제어 장치 내의 <code class="language-plaintext highlighter-rouge">레지스터</code>로 옮겨진다.</li>
-</ul>
-
-<h3 id="-인출-사이클-진행-과정">🔸 인출 사이클 진행 과정</h3>
-<ol>
-  <li>현 <code class="language-plaintext highlighter-rouge">PC</code>(프로그램 계수기)의 내용을 <code class="language-plaintext highlighter-rouge">CPU</code> 내부 버스를 통하여 <code class="language-plaintext highlighter-rouge">MAR</code>(메모리 주소 레지스터)로 전송한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">MAR</code>의 값에 의해 주어진 메모리 주소의 내용(명령어)을 데이터 버스를 통하여 <code class="language-plaintext highlighter-rouge">MBR</code>(메모리 버퍼 레지스터)에 저장한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">PC</code>의 값이 증가한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">MBR</code>의 내용(명령어 코드)을 <code class="language-plaintext highlighter-rouge">IR</code>(명령 레지스터)로 이동한다.<br /><br /></li>
-</ol>
-
-<h2 id="2-실행-사이클execution-cycle">2. 실행 사이클(Execution cycle)</h2>
-<ul>
-  <li>읽어진 명령에 의해 필요한 신호를 만들어 결과를 얻을 때까지의 단계</li>
-  <li><code class="language-plaintext highlighter-rouge">명령 레지스터</code>의 <code class="language-plaintext highlighter-rouge">명령 코드</code> 내용이 명령 해독기에 의해 <code class="language-plaintext highlighter-rouge">해독</code>되고, 해독된 내용은 부호기에 의해 각 장치로 신호를 보내게 된다.</li>
-  <li>해독된 내용이 가산 명령이면 부호기의 신호에 의해 누산기(accumulator)의 내용이 소거되고, 명령 레지스터의 번지부가 주기억 장치의 번지 지정에서 산출되어 기억 레지스터로 옮긴 후 누산기와 가산기의 연산에 의해 계산된 결과는 누산기에 임시 저장된다.</li>
-  <li>여기까지 끝나면 실행 사이클이 끝나고 다시 인출 사이클이 시작된다. 이러한 과정을 기계 사이클(machine cycle)이라 한다.<br /><br /></li>
-</ul>
-
-<h2 id="3-인터럽트interrupt">3. 인터럽트(Interrupt)</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>의 플래그 레지스터는 인터럽트에 관한 정보를 포함한다.</li>
-  <li>인터럽트가 <code class="language-plaintext highlighter-rouge">CPU</code>에 가해지면 현재 처리 프로그램을 일단 중지시키고, 인터럽트 프로그램을 수행시킨다.</li>
-  <li>인터럽트는 <code class="language-plaintext highlighter-rouge">CPU</code>의 제어 버스에 속하며, 인터럽트용 전기 신호 단자에 의해 <code class="language-plaintext highlighter-rouge">CPU</code>가 인지하게 된다.</li>
-  <li>어떤 처리 프로그램의 실행중에 제어 프로그램의 서비스를 요구하는 예기치 못한 일이 발생했을 때에 이걸 하드웨어로 포착해서 감시 프로그램(Supervisor)에게 제어권을 인도하기 위한 기능</li>
-  <li>인터럽트가 발생하여 제어권이 제어 프로그램(Control program)에 주어지면 제어 프로그램이 중에 준비된 인터럽트 처리 루틴(Interrupt handling routine)이 실행된다. 이 루틴의 처리가 끝나면 시스템은 인터럽트가 발생하기 전 상태로 되돌아가서 먼저 실행되던 프로그램의 실행을 다시 시작한다.<br /><br /></li>
-</ul>
-
-<h3 id="-인터럽트-종류">🔸 인터럽트 종류</h3>
-<h4 id="1-기계-체크-인터럽트machine-check-interrupt">1. 기계 체크 인터럽트(Machine check interrupt)</h4>
-<ul>
-  <li>어떤 프로그램 실행중에 장치 착오로 인하여 발생하는 인터럽트</li>
-  <li>기계에 착오가 발생했을 경우에 인터럽트가 일어나 제어 프로그램으로 제어권이 넘어간다.</li>
-  <li>제어 프로그램 내의 인터럽트 처리 루틴이 <code class="language-plaintext highlighter-rouge">CPU</code>의 제어권을 인도받아서 필요한 진단이나 착오 정정의 처리를 수행한 후 제어권을 다시 처리 프로그램에 되돌려 준다.<br /><br /></li>
-</ul>
-
-<h4 id="2-외부-인터럽트external-interrupt">2. 외부 인터럽트(External interrupt)</h4>
-<ul>
-  <li>오퍼레이터가 필요에 의해서 콘솔에 있는 인터럽트 키를 누를 때 발생하는 인터럽트</li>
-  <li>오퍼레이터가 시스템에 어떤 요구나 응답을 할 때 필요하다.</li>
-  <li>인터럽트 키를 누름으로써 인터럽트가 발생하여 오퍼레이터가 필요한 내용의 명령을 손으로 조작할 수 있다.<br /><br /></li>
-</ul>
-
-<h4 id="3-프로그램-인터럽트program-interrupt">3. 프로그램 인터럽트(Program interrupt)</h4>
-<ul>
-  <li>프로그램 실행중에 프로그램 상의 착오나 예외 상태가 발생했을 경우 일어나는 인터럽트<br /><br /></li>
-</ul>
-
-<h4 id="4-입출력-인터럽트io-interrupt">4. 입,출력 인터럽트(I/O interrupt)</h4>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>는 입,출력 조작의 계시를 명령하는 것 뿐이지 실제로 입,출력 조작을 지시하는 것은 채널에서 이루어진다. 그래서 채널이 입,출력 조작을 함과 동시에 <code class="language-plaintext highlighter-rouge">CPU</code>는 다른 처리를 한다.</li>
-  <li>입,출력 조작이 끝나거나 입,출력 착오가 발생되면 <code class="language-plaintext highlighter-rouge">CPU</code>의 서비스가 필요해지므로 채널이 인터럽트 신호를 발생시킨다.</li>
-  <li>이 때 <code class="language-plaintext highlighter-rouge">CPU</code>는 제어 프로그램 중의 인터럽트 처리 루틴(I/O Interrupt handling routine)이 실행된다.<br /><br /></li>
-</ul>
-
-<h4 id="5-제어감시-프로그램-호출-인터럽트supervisor-call-interrupt">5. 제어(감시) 프로그램 호출 인터럽트(Supervisor call interrupt)</h4>
-<ul>
-  <li>시스템에 의하여 자동적으로 발생하는 인터럽트가 아닌 프로그램 내에서 특정한 서비스를 요구하는 명령으로 인터럽트를 일으키는 경우<br /><br /><br /></li>
-</ul>
-
-<h2 id="출처">출처</h2>
-<ul>
-  <li>컴퓨터 사이언스(김철 저)</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Computer Hardware" /><category term="Control Unit" /><summary type="html"><![CDATA[👀 제어 장치란? 프로그램에 의해 주어진 연산의 순서를 실행해 나가기 위하여 기억 장치, 연산 장치, 입,출력 장치에 신호를 보내고, 또 이들 장치로부터 신호를 받아 다음에 수행해야 할 조작을 결정하는 부분 컴퓨터의 중추선이라 할 수 있다. 컴퓨터의 자료 처리 속도를 MIPS(Million Instructions Per Second)로 나타내는데 1MIPS는 1초에 백만 개의 명령어가 처리될 수 있다는 것을 의미한다.]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="Database" /><category term="JSP" /><category term="DAO" /><summary type="html"><![CDATA[👀 DAO(Data Access Object)란? 데이터 처리 객체 DB에 관련된 모든 동작을 수행하는 클래스 지금까지 JDBC로 DB와 연결할 때 사용하려는 페이지마다 일일이 연결 코드를 적어줘야 했는데 이제는 DAO를 만들어서 연결 동작을 여기서 수행하도록 하고 DB연결이 필요한 페이지에서는 DAO만 호출하면 된다!]]></summary></entry></feed>
