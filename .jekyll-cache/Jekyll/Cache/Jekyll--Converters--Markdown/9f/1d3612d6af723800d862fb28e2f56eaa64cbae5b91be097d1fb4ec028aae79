@@ -1,0 +1,191 @@
+I"�3<h1 id="-프로세스-생성-process-creation">👀 프로세스 생성 (Process Creation)</h1>
+<ul>
+  <li>부모 프로세스(Parent process)가 자식 프로세스(Child process) 생성. 복제 생성 하는 것으로 부모 프로세스의 문맥(코드, 데이터, 스택 등)을 모두 복사한다.</li>
+  <li>복제된 자식 프로세스가 부모 프로세스의 하위 노드로 위치하고 그 자식이 또 자식을 복제하면 또 하위 노드로 위치하고… 를 반복하면서 프로세스의 트리(계층 구조)를 형성한다.</li>
+  <li>프로세스 혼자서 자식을 생성할 수는 없고 시스템 콜을 통해 운영체제의 서비스를 받아야만 자식 생성이 가능하다.</li>
+  <li>프로세스는 자원을 필요로 하기 때문에 운영체제로부터 받거나 부모와 공유한다. 기본적으로는 자식이 복제되는 순간 별도의 프로세스가 되기 때문에 그 순간부터 부모와 자원을 얻기 위해 경쟁하는 관계가 된다.</li>
+</ul>
+
+<h2 id="자원의-공유">자원의 공유</h2>
+<ul>
+  <li>부모와 자식이 모든 자원을 공유하는 모델</li>
+  <li>일부를 공유하는 모델</li>
+  <li>전혀 공유하지 않는 모델 (일반적)</li>
+</ul>
+
+<h2 id="수행-execution">수행 (Execution)</h2>
+<ul>
+  <li>부모와 자식은 공존하며 수행되는 모델</li>
+  <li>자식이 종료(terminate)될 때까지 부모가 기다리는(wait) 모델</li>
+</ul>
+
+<h2 id="주소-공간-address-space">주소 공간 (Address space)</h2>
+<ul>
+  <li>자식은 부모의 공간을 복사함 (binary and OS data)</li>
+  <li>자식은 그 공간에 새로운 프로그램을 올린다.(덮어씌움)</li>
+</ul>
+
+<h3 id="유닉스의-예">유닉스의 예</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">fork()</code> 시스템 콜이 새로운 프로세스를 생성
+    <ul>
+      <li>부모를 그대로 복사 후 주소 공간 할당</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">fork</code> 다음에 이어지는 <code class="language-plaintext highlighter-rouge">exec()</code> 시스템 콜을 통해 새로운 프로그램을 메모리에 올림 (덮어씌우는 단계)</li>
+  <li><code class="language-plaintext highlighter-rouge">fork</code>와 <code class="language-plaintext highlighter-rouge">exec</code>은 독립적으로 이루어지기 때문에 둘 중 하나만 실행될 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="프로세스-종료-process-termination">프로세스 종료 (Process Termination)</h1>
+<ul>
+  <li>운영체제는 부모 프로세스가 종료하는 경우 자식이 더 이상 수행되도록 두지 않는다.</li>
+  <li>그래서 단계적인 종료를 통해 모든 자식 프로세스가 먼저 종료된 후 부모가 종료되어야 한다.</li>
+</ul>
+
+<h2 id="system-call을-통해-자발적으로-종료되는-경우">System call을 통해 자발적으로 종료되는 경우</h2>
+<ul>
+  <li>프로세스가 마지막 명령을 수행한 후 이를 운영체제에게 알려준다.(<code class="language-plaintext highlighter-rouge">exit</code>)</li>
+  <li>자식이 부모에게 output data를 보냄 (via <code class="language-plaintext highlighter-rouge">wait</code>)</li>
+  <li>프로세스의 각종 자원들이 운영체제에게 반납됨</li>
+</ul>
+
+<h2 id="비자발적으로-종료되는-경우">비자발적으로 종료되는 경우</h2>
+<ul>
+  <li>부모 프로세스가 자식 프로세스의 수행을 강제로 종료시킨다.(<code class="language-plaintext highlighter-rouge">abort</code>)</li>
+  <li>자식이 할당 자원의 한계치를 넘어선 경우</li>
+  <li>자식에게 할당된 태스크가 더 이상 필요하지 않은 경우</li>
+  <li>부모가 종료(exit)하는 경우<br /><br /><br /></li>
+</ul>
+
+<h1 id="fork-시스템-콜">fork() 시스템 콜</h1>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">pid</span><span class="p">;</span> <span class="c1">// 부모와 자식을 구분하기 위한 값</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span> <span class="c1">// 새로운 자식 프로세스가 생성되면 여기 다음 줄부터 실행한다.(부모의 문맥을 복사하기 때문)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">pid</span><span class="p">)</span>   <span class="c1">// this is a child</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Hello, I am a child!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">pid</span><span class="p">)</span>   <span class="c1">// this is a parent</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Hello, I am a parent!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>자식 프로세스를 생성하기 위한 시스템 콜로 부모와 자식을 구분하기 위해 부모의 <code class="language-plaintext highlighter-rouge">pid</code>는 0보다 큰 값을 가지고 자식의 <code class="language-plaintext highlighter-rouge">pid</code>는 0을 가진다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="exec-시스템-콜">exec() 시스템 콜</h1>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">pid</span><span class="p">;</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">pid</span><span class="p">)</span>   <span class="c1">// this is a child</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Hello, I am a child! Now I'll run date </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">execlp</span><span class="p">(</span><span class="s">"/bin/date"</span><span class="p">,</span> <span class="s">"/bin/date"</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">pid</span><span class="p">)</span>   <span class="c1">// this is a parent</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Hello, I am a parent!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>어떤 프로그램을 새로운 프로세스로 바꿔주기 때문에 <code class="language-plaintext highlighter-rouge">execlp()</code>가 호출되는 순간 이후의 코드들은 실행되지 않는다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="wait-시스템-콜">wait() 시스템 콜</h1>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">childPID</span><span class="p">;</span>
+    <span class="n">S1</span><span class="p">;</span>
+    
+    <span class="n">childPID</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">childPID</span><span class="p">)</span>
+        <span class="c1">// child 프로세스 코드 실행</span>
+    <span class="k">else</span> 
+        <span class="n">wait</span><span class="p">();</span>
+        
+    <span class="n">S2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>프로세스 A가 <code class="language-plaintext highlighter-rouge">wait()</code> 시스템 콜을 호출하면 커널은 <code class="language-plaintext highlighter-rouge">child</code>가 종료될 때까지 프로세스 A를 <code class="language-plaintext highlighter-rouge">sleep</code>시킨다.(block 상태)</li>
+  <li>자식 프로세스가 종료되면 커널은 프로세스 A를 깨운다.(ready 상태)<br /><br /><br /></li>
+</ul>
+
+<h1 id="exit-시스템-콜">exit() 시스템 콜</h1>
+<h2 id="프로세스의-자발적-종료">프로세스의 자발적 종료</h2>
+<ul>
+  <li>마지막 statement 수행 후 <code class="language-plaintext highlighter-rouge">exit()</code> 시스템 콜을 통해 종료</li>
+  <li>프로그램에 명시적으로 적어주지 않아도 main 함수가 리턴되는 위치에 컴파일러가 넣어줌</li>
+</ul>
+
+<h2 id="프로세스의-비자발적-종료">프로세스의 비자발적 종료</h2>
+<ul>
+  <li>부모 프로세스가 자식 프로세스를 강제 종료시킴
+    <ul>
+      <li>자식 프로세스가 한계치를 넘어서는 자원 요청시</li>
+      <li>자식에게 할당된 태스크가 더 이상 필요하지 않을 때</li>
+    </ul>
+  </li>
+  <li>키보드로 <code class="language-plaintext highlighter-rouge">kill</code>, <code class="language-plaintext highlighter-rouge">break</code>등을 친 경우</li>
+  <li>부모가 종료하는 경우 부모 프로세스가 종료되기 전 자식 프로세스들이 먼저 종료된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="프로세스-간-협력">프로세스 간 협력</h1>
+<h2 id="독립적-프로세스-independent-process">독립적 프로세스 (Independent process)</h2>
+<ul>
+  <li>프로세스는 각자의 주소 공간을 가지고 수행되므로 원칙적으로 하나의 프로세스는 다른 프로세스의 수행에 영향을 미치지 못한다.</li>
+</ul>
+
+<h2 id="협력-프로세스-cooperating-process">협력 프로세스 (Cooperating process)</h2>
+<ul>
+  <li>프로세스 협력 메커니즘을 통해 하나의 프로세스가 다른 프로세스의 수행에 영향을 미칠 수 있다.</li>
+</ul>
+
+<h2 id="프로세스-간-협력-메커니즘-ipc-interprocess-communication">프로세스 간 협력 메커니즘 (<code class="language-plaintext highlighter-rouge">IPC</code>: Interprocess Communication)</h2>
+<h3 id="-메시지를-전달하는-방법">🔸 메시지를 전달하는 방법</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">message passing</code> : 커널을 통해 메시지 전달</li>
+</ul>
+
+<h4 id="-주소-공간을-공유하는-방법">🔸 주소 공간을 공유하는 방법</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">shared memory</code> : 서로 다른 프로세스 간에도 일부 주소 공간을 공유하게 하는 shared memory 메커니즘이 있음</li>
+  <li>물리적 메모리에 매핑할 때 일부 주소공간을 공유하도록 매핑한다.(사전에 시스템 콜을 통해 운영체제에게 보고되어야 한다)</li>
+</ul>
+
+<h4 id="-thread">🔸 thread</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">thread</code>는 사실상 하나의 프로세스이므로 프로세스 간 협력으로 보기는 어렵지만 동일한 프로세스를 구성하는 스레드들 간에는 주소 공간을 공유하기 때문에 협력이 가능하다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="message-passing">Message Passing</h1>
+<ul>
+  <li>사용자 프로그램끼리는 메시지를 주고받는 것이 불가능하기 때문에 운영체제 커널을 통해서 메시지를 주고받는다.</li>
+</ul>
+
+<h2 id="message-system">Message system</h2>
+<ul>
+  <li>프로세스 사이에 공유 변수(shared variable)를 일체 사용하지 않고 통신하는 시스템</li>
+</ul>
+
+<h2 id="direct-communication">Direct Communication</h2>
+<ul>
+  <li>통신하려는 프로세스의 이름을 명시적으로 표시해서 메시지를 주고받는 것</li>
+</ul>
+
+<h2 id="indirect-communication">Indirect Communication</h2>
+<ul>
+  <li>mailbox(또는 port)를 통해 메시지를 간접 전달하는 방식<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 반효경 KOCW 공개강의</a></li>
+</ul>
+:ET
