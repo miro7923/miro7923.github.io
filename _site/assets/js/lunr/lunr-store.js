@@ -550,4 +550,10 @@ var store = [{
         "tags": ["Algorithm","BOJ","No1436","BruteForce","Java"],
         "url": "/boj/boj1436-java/",
         "teaser": null
+      },{
+        "title": "Java) BOJ 2750. 수 정렬하기",
+        "excerpt":"문제 링크       https://www.acmicpc.net/problem/2750     제한       시간 제한 : 1 초   메모리 제한 : 128 MB     문제       N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.     입력       첫째 줄에 수의 개수 N(1 ≤ N ≤ 1,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수 주어진다. 이 수는 절댓값이 1,000보다 작거나 같은 정수이다. 수는 중복되지 않는다.     출력       첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.      👀 풀이       제한시간 1초에 N 최대값이 1,000이라 N^2 정렬 알고리즘으로 풀었다.(삽입정렬 사용)     결과       시간 : 188 ms   메모리 : 16936 KB     코드      ","categories": ["BOJ"],
+        "tags": ["Algorithm","BOJ","No2750","BruteForce","Java"],
+        "url": "/boj/boj2750-java/",
+        "teaser": null
       }]
