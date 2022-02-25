@@ -1,4 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-25T00:51:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">OS) Process Management</title><link href="http://localhost:4000/operating%20system/OS-04-Process-Management/" rel="alternate" type="text/html" title="OS) Process Management" /><published>2022-02-25T00:00:00+09:00</published><updated>2022-02-25T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-04-Process-Management</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-04-Process-Management/"><![CDATA[<h1 id="-프로세스-생성-process-creation">👀 프로세스 생성 (Process Creation)</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-26T00:53:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1436. 영화감독 숌</title><link href="http://localhost:4000/boj/boj1436-java/" rel="alternate" type="text/html" title="Java) BOJ 1436. 영화감독 숌" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1436-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1436-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1436">https://www.acmicpc.net/problem/1436</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다.</li>
+  <li>조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고,</li>
+  <li>
+    <p>피터 잭슨은 반지의 제왕을 만들 때, 반지의 제왕 1, 반지의 제왕 2, 반지의 제왕 3과 같이 영화 제목을 지었다.</p>
+  </li>
+  <li>
+    <p>하지만 숌은 자신이 조지 루카스와 피터 잭슨을 뛰어넘는다는 것을 보여주기 위해서 영화 제목을 좀 다르게 만들기로 했다.</p>
+  </li>
+  <li>
+    <p>종말의 숫자란 어떤 수에 6이 적어도 3개이상 연속으로 들어가는 수를 말한다. 제일 작은 종말의 숫자는 666이고, 그 다음으로 큰 수는 1666, 2666, 3666, …. 과 같다.</p>
+  </li>
+  <li>따라서, 숌은 첫 번째 영화의 제목은 세상의 종말 666, 두 번째 영화의 제목은 세상의 종말 1666 이렇게 이름을 지을 것이다.</li>
+  <li>
+    <p>일반화해서 생각하면, N번째 영화의 제목은 세상의 종말 (N번째로 작은 종말의 숫자) 와 같다.</p>
+  </li>
+  <li>숌이 만든 N번째 영화의 제목에 들어간 숫자를 출력하는 프로그램을 작성하시오. 숌은 이 시리즈를 항상 차례대로 만들고, 다른 영화는 만들지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 숫자 N이 주어진다. N은 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>브루트포스로 666부터 하나씩 증가시켜가면서 N번째 수를 구하려 했으나 처음에 생각을 잘못 하는 바람에… 틀려서 구글링 참고해서 풀었다.</li>
+  <li>현재 수에 666이 포함되어 있으면 cnt를 증가시키고 cnt가 N과 같다면 현재 수를 리턴하고 그렇지 않다면 현재 수를 증가시키면서 또 666이 포함되어 있는지 확인한다.</li>
+  <li>이 때 수를 문자열로 바꿔서 666이 연속되어 있는지 확인해도 되서 처음엔 그렇게 확인하는 함수를 구현했는데 구글링 하니까 자바에는 contains 함수가 있어서 편하게 그걸 썼다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 320 ms</li>
+  <li>메모리 : 86524 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/cd9086d9b051383331645a51c0164abb.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1436" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1436 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">OS) Process Management</title><link href="http://localhost:4000/operating%20system/OS-04-Process-Management/" rel="alternate" type="text/html" title="OS) Process Management" /><published>2022-02-25T00:00:00+09:00</published><updated>2022-02-25T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-04-Process-Management</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-04-Process-Management/"><![CDATA[<h1 id="-프로세스-생성-process-creation">👀 프로세스 생성 (Process Creation)</h1>
 <ul>
   <li>부모 프로세스(Parent process)가 자식 프로세스(Child process) 생성. 복제 생성 하는 것으로 부모 프로세스의 문맥(코드, 데이터, 스택 등)을 모두 복사한다.</li>
   <li>복제된 자식 프로세스가 부모 프로세스의 하위 노드로 위치하고 그 자식이 또 자식을 복제하면 또 하위 노드로 위치하고… 를 반복하면서 프로세스의 트리(계층 구조)를 형성한다.</li>
@@ -187,7 +258,78 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="Process" /><summary type="html"><![CDATA[👀 프로세스 생성 (Process Creation) 부모 프로세스(Parent process)가 자식 프로세스(Child process) 생성. 복제 생성 하는 것으로 부모 프로세스의 문맥(코드, 데이터, 스택 등)을 모두 복사한다. 복제된 자식 프로세스가 부모 프로세스의 하위 노드로 위치하고 그 자식이 또 자식을 복제하면 또 하위 노드로 위치하고… 를 반복하면서 프로세스의 트리(계층 구조)를 형성한다. 프로세스 혼자서 자식을 생성할 수는 없고 시스템 콜을 통해 운영체제의 서비스를 받아야만 자식 생성이 가능하다. 프로세스는 자원을 필요로 하기 때문에 운영체제로부터 받거나 부모와 공유한다. 기본적으로는 자식이 복제되는 순간 별도의 프로세스가 되기 때문에 그 순간부터 부모와 자원을 얻기 위해 경쟁하는 관계가 된다.]]></summary></entry><entry><title type="html">Java) BOJ 7568. 덩치</title><link href="http://localhost:4000/boj/boj7568-java/" rel="alternate" type="text/html" title="Java) BOJ 7568. 덩치" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj7568-java</id><content type="html" xml:base="http://localhost:4000/boj/boj7568-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="Process" /><summary type="html"><![CDATA[👀 프로세스 생성 (Process Creation) 부모 프로세스(Parent process)가 자식 프로세스(Child process) 생성. 복제 생성 하는 것으로 부모 프로세스의 문맥(코드, 데이터, 스택 등)을 모두 복사한다. 복제된 자식 프로세스가 부모 프로세스의 하위 노드로 위치하고 그 자식이 또 자식을 복제하면 또 하위 노드로 위치하고… 를 반복하면서 프로세스의 트리(계층 구조)를 형성한다. 프로세스 혼자서 자식을 생성할 수는 없고 시스템 콜을 통해 운영체제의 서비스를 받아야만 자식 생성이 가능하다. 프로세스는 자원을 필요로 하기 때문에 운영체제로부터 받거나 부모와 공유한다. 기본적으로는 자식이 복제되는 순간 별도의 프로세스가 되기 때문에 그 순간부터 부모와 자원을 얻기 위해 경쟁하는 관계가 된다.]]></summary></entry><entry><title type="html">Java) BOJ 1018. 체스판 다시 칠하기</title><link href="http://localhost:4000/boj/boj1018-java/" rel="alternate" type="text/html" title="Java) BOJ 1018. 체스판 다시 칠하기" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1018-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1018-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1018">https://www.acmicpc.net/problem/1018</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>지민이는 자신의 저택에서 MN개의 단위 정사각형으로 나누어져 있는 M×N 크기의 보드를 찾았다. 어떤 정사각형은 검은색으로 칠해져 있고, 나머지는 흰색으로 칠해져 있다.</li>
+  <li>
+    <p>지민이는 이 보드를 잘라서 8×8 크기의 체스판으로 만들려고 한다.</p>
+  </li>
+  <li>체스판은 검은색과 흰색이 번갈아서 칠해져 있어야 한다. 구체적으로, 각 칸이 검은색과 흰색 중 하나로 색칠되어 있고, 변을 공유하는 두 개의 사각형은 다른 색으로 칠해져 있어야 한다.</li>
+  <li>
+    <p>따라서 이 정의를 따르면 체스판을 색칠하는 경우는 두 가지뿐이다. 하나는 맨 왼쪽 위 칸이 흰색인 경우, 하나는 검은색인 경우이다.</p>
+  </li>
+  <li>보드가 체스판처럼 칠해져 있다는 보장이 없어서, 지민이는 8×8 크기의 체스판으로 잘라낸 후에 몇 개의 정사각형을 다시 칠해야겠다고 생각했다.</li>
+  <li>당연히 8*8 크기는 아무데서나 골라도 된다. 지민이가 다시 칠해야 하는 정사각형의 최소 개수를 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 N과 M이 주어진다. N과 M은 8보다 크거나 같고, 50보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에는 보드의 각 행의 상태가 주어진다. B는 검은색이며, W는 흰색이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 지민이가 다시 칠해야 하는 정사각형 개수의 최솟값을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음엔 좀 어렵게 생각해서 체스판을 앞에서부터도 확인하고 뒤에서부터도 확인하고 첫번째줄부터, 맨 아랫줄부터 거꾸로 올라가면서 확인하기 등 불필요한 탐색을 하는 코드를 작성했다.</li>
+  <li>
+    <p>그러다 답이 안 나와서 구글링 참고함</p>
+  </li>
+  <li>
+    <p><a href="https://st-lab.tistory.com/101">https://st-lab.tistory.com/101</a></p>
+  </li>
+  <li>8<em>8 체스판을 순회하면서 현재 위치부터 +8칸까지가 체스판 색깔을 만족하는지 검사하는 함수 search()를 작성한 후
+메인함수에서 입력 크기만큼 8</em>8씩 이동하면서 search()를 수행하도록 반복문을 작성한다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 132 ms</li>
+  <li>메모리 : 14312 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/76e4ade331283b450828b10a5fa4c69b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1018" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1018 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 7568. 덩치</title><link href="http://localhost:4000/boj/boj7568-java/" rel="alternate" type="text/html" title="Java) BOJ 7568. 덩치" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj7568-java</id><content type="html" xml:base="http://localhost:4000/boj/boj7568-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -269,78 +411,7 @@ E	(46, 155)	5<br /></p>
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/709f749418093dd0e36f58f3c87f37e3.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No7568" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/7568 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 1018. 체스판 다시 칠하기</title><link href="http://localhost:4000/boj/boj1018-java/" rel="alternate" type="text/html" title="Java) BOJ 1018. 체스판 다시 칠하기" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1018-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1018-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1018">https://www.acmicpc.net/problem/1018</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>지민이는 자신의 저택에서 MN개의 단위 정사각형으로 나누어져 있는 M×N 크기의 보드를 찾았다. 어떤 정사각형은 검은색으로 칠해져 있고, 나머지는 흰색으로 칠해져 있다.</li>
-  <li>
-    <p>지민이는 이 보드를 잘라서 8×8 크기의 체스판으로 만들려고 한다.</p>
-  </li>
-  <li>체스판은 검은색과 흰색이 번갈아서 칠해져 있어야 한다. 구체적으로, 각 칸이 검은색과 흰색 중 하나로 색칠되어 있고, 변을 공유하는 두 개의 사각형은 다른 색으로 칠해져 있어야 한다.</li>
-  <li>
-    <p>따라서 이 정의를 따르면 체스판을 색칠하는 경우는 두 가지뿐이다. 하나는 맨 왼쪽 위 칸이 흰색인 경우, 하나는 검은색인 경우이다.</p>
-  </li>
-  <li>보드가 체스판처럼 칠해져 있다는 보장이 없어서, 지민이는 8×8 크기의 체스판으로 잘라낸 후에 몇 개의 정사각형을 다시 칠해야겠다고 생각했다.</li>
-  <li>당연히 8*8 크기는 아무데서나 골라도 된다. 지민이가 다시 칠해야 하는 정사각형의 최소 개수를 구하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 N과 M이 주어진다. N과 M은 8보다 크거나 같고, 50보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에는 보드의 각 행의 상태가 주어진다. B는 검은색이며, W는 흰색이다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 지민이가 다시 칠해야 하는 정사각형 개수의 최솟값을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>처음엔 좀 어렵게 생각해서 체스판을 앞에서부터도 확인하고 뒤에서부터도 확인하고 첫번째줄부터, 맨 아랫줄부터 거꾸로 올라가면서 확인하기 등 불필요한 탐색을 하는 코드를 작성했다.</li>
-  <li>
-    <p>그러다 답이 안 나와서 구글링 참고함</p>
-  </li>
-  <li>
-    <p><a href="https://st-lab.tistory.com/101">https://st-lab.tistory.com/101</a></p>
-  </li>
-  <li>8<em>8 체스판을 순회하면서 현재 위치부터 +8칸까지가 체스판 색깔을 만족하는지 검사하는 함수 search()를 작성한 후
-메인함수에서 입력 크기만큼 8</em>8씩 이동하면서 search()를 수행하도록 반복문을 작성한다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 132 ms</li>
-  <li>메모리 : 14312 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/76e4ade331283b450828b10a5fa4c69b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1018" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1018 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">DB) 데이터베이스 관리 시스템</title><link href="http://localhost:4000/database/db-02-management-system/" rel="alternate" type="text/html" title="DB) 데이터베이스 관리 시스템" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/database/db-02-management-system</id><content type="html" xml:base="http://localhost:4000/database/db-02-management-system/"><![CDATA[<h1 id="데이터베이스-관리-시스템의-등장-배경">데이터베이스 관리 시스템의 등장 배경</h1>
+<script src="https://gist.github.com/miro7923/709f749418093dd0e36f58f3c87f37e3.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No7568" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/7568 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">DB) 데이터베이스 관리 시스템</title><link href="http://localhost:4000/database/db-02-management-system/" rel="alternate" type="text/html" title="DB) 데이터베이스 관리 시스템" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/database/db-02-management-system</id><content type="html" xml:base="http://localhost:4000/database/db-02-management-system/"><![CDATA[<h1 id="데이터베이스-관리-시스템의-등장-배경">데이터베이스 관리 시스템의 등장 배경</h1>
 <h2 id="파일-시스템file-system">파일 시스템(file system)</h2>
 <ul>
   <li>과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어</li>
@@ -923,87 +994,4 @@ E	(46, 155)	5<br /></p>
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/8f317b052aa2f68ecba29663847f959a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2231" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2231 제한 시간 제한 : 2 초 메모리 제한 : 192 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Performance</title><link href="http://localhost:4000/computer%20science/computer-architecture-02/" rel="alternate" type="text/html" title="컴퓨터구조) Performance" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-02</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-02/"><![CDATA[<h1 id="cpu-time">CPU Time</h1>
-<ul>
-  <li>한 컴퓨터 프로그램이 <code class="language-plaintext highlighter-rouge">CPU</code>를 차지하여 일을 한 시간의 양</li>
-  <li>컴퓨터의 성능을 측정하기 위해 사용된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">CPU Time = Instruction Count x CPI x Clock Cycle Time</code></li>
-  <li><code class="language-plaintext highlighter-rouge">CPU Time</code>이 적을수록 성능이 좋다고 할 수 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">clock cycle</code>을 줄이거나 <code class="language-plaintext highlighter-rouge">clock rate</code>가 올라가면 성능이 향상된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="instruction-count--cpi">Instruction Count &amp; CPI</h1>
-<h2 id="instruction-count">Instruction Count</h2>
-<ul>
-  <li>명령어의 수</li>
-</ul>
-
-<h2 id="cpi">CPI</h2>
-<ul>
-  <li>Cycles per Instructions</li>
-  <li><code class="language-plaintext highlighter-rouge">Instruction</code>의 실행주기</li>
-  <li>짧은 <code class="language-plaintext highlighter-rouge">CPI</code>를 가진 <code class="language-plaintext highlighter-rouge">IC</code>가 많을수록 성능이 좋다고 할 수 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="성능에-영향을-미치는-요소">성능에 영향을 미치는 요소</h1>
-<ul>
-  <li>알고리즘 : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code></li>
-  <li>프로그래밍 언어 : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code></li>
-  <li>컴파일러 : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code></li>
-  <li>ISA(명령어셋) : <code class="language-plaintext highlighter-rouge">IC</code>, <code class="language-plaintext highlighter-rouge">CPI</code>, <code class="language-plaintext highlighter-rouge">T</code><br /><br /><br /></li>
-</ul>
-
-<h1 id="clock-period">Clock period</h1>
-<ul>
-  <li>Duration of a clock cycle</li>
-  <li>하나의 <code class="language-plaintext highlighter-rouge">clock cycle</code>이 걸리는 시간</li>
-  <li><code class="language-plaintext highlighter-rouge">1/clock rate</code>로 나타낼 수 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="power-wall">Power wall</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">clock rate</code>는 매년 꾸준히 늘다가 2004년을 기점으로 늘지 않고 있다.</li>
-  <li>왜냐면 전력소모가 많이 줄었기 때문</li>
-  <li>전력소모량은 <code class="language-plaintext highlighter-rouge">Capacitive load</code>x<code class="language-plaintext highlighter-rouge">Voltage^2</code>x<code class="language-plaintext highlighter-rouge">Frequency</code>로 구할 수 있는데 <code class="language-plaintext highlighter-rouge">Voltage</code>가 많이 줄었기 때문에 <code class="language-plaintext highlighter-rouge">Frequency</code>가 많이 늘어났음에도 전력소모량은 크게 늘지 않았다.</li>
-  <li>그런데 <code class="language-plaintext highlighter-rouge">Voltage</code>가 높을수록 전력소모와 열 발생이 많은데 <code class="language-plaintext highlighter-rouge">Voltage</code>를 더이상 줄일 수가 없게 되었기 때문에 기존에 <code class="language-plaintext highlighter-rouge">clock rate</code>을 증가시키는 방법으로는 성능 향상을 꾀하기가 어려워졌다.</li>
-  <li>2004년 이후로 <code class="language-plaintext highlighter-rouge">clock rate</code>을 증가시키지 못한 이유가 <code class="language-plaintext highlighter-rouge">CPU</code>에서 발생하는 열을 해결하지 못해서였다.</li>
-  <li>그래서 <code class="language-plaintext highlighter-rouge">clock rate</code>을 올리지 않고 성능을 향상시키기 위한 방법으로 <code class="language-plaintext highlighter-rouge">Multi-core</code>가 등장하게 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="multiprocessors">Multiprocessors</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Multicore microprocessors</code> : 하나의 칩 안에 프로세서가 여러 개 있는 것</li>
-  <li><code class="language-plaintext highlighter-rouge">Parallel programming</code>이 필요하다.
-    <ul>
-      <li>하드웨어가 여러 명령을 동시에 실행할 수 있지만 그만큼 프로그래밍이 어렵다.<br /><br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="cpu-성능-측정">CPU 성능 측정</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">SPEC CPU Benchmark</code>로 측정하거나 <code class="language-plaintext highlighter-rouge">MIPS</code>(Millions of Instructions per Second : 시간당 몇백만개의 명령을 실행하는가)를 이용해 측정할 수 있는데 <code class="language-plaintext highlighter-rouge">SPEC CPU Benchmark</code>가 더 정확하다고 할 수 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">SPEC CPU Benchmark</code>는 여러 파트에서 측정한 시간값을 바탕으로 총점을 매기는데 <code class="language-plaintext highlighter-rouge">MIPS</code>는 <code class="language-plaintext highlighter-rouge">IC</code>와 <code class="language-plaintext highlighter-rouge">Exectution time</code>을 이용해 계산하기 때문에 컴퓨터마다 <code class="language-plaintext highlighter-rouge">ISA</code>(명령어셋)가 다르고 또 명령어마다 필요한 <code class="language-plaintext highlighter-rouge">CPI</code>값이 다를 수 있기 때문에 객관적이라 하기 어렵다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="amdahls-law">Amdahl’s Law</h1>
-<ul>
-  <li>컴퓨터의 어느 한 부분의 성능을 향상시키면 전체 성능의 향상은 그 부분이 컴퓨터에서 차지하는 비율만큼 향상된다는 법칙</li>
-  <li><code class="language-plaintext highlighter-rouge">Corollary : make the common case fast</code></li>
-  <li>따라서 전체 시스템에서 차지하는 비율이 높은 부분의 성능을 향상시키는 것이 전체 성능 향상에 도움이 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="대기-중-전력소모">대기 중 전력소모</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 거의 사용하지 않는 상황에서도 생각보다 전력소모가 크다.
-    <ul>
-      <li>예를 들어 <code class="language-plaintext highlighter-rouge">CPU</code>가 10%만 사용중인데 전력은 전체의 47%를 사용한다는 등</li>
-    </ul>
-  </li>
-  <li>그래서 프로세서를 만들 때 전력소모의 비율이 <code class="language-plaintext highlighter-rouge">CPU</code> 사용량에 비례되게 설계할 필요가 있는데 쉽지 않다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="출처">출처</h1>
-<ul>
-  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1388791&amp;ar=relateCourse">KOCW 영남대학교 최규상 교수님 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><summary type="html"><![CDATA[CPU Time 한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간의 양 컴퓨터의 성능을 측정하기 위해 사용된다. CPU Time = Instruction Count x CPI x Clock Cycle Time CPU Time이 적을수록 성능이 좋다고 할 수 있다. clock cycle을 줄이거나 clock rate가 올라가면 성능이 향상된다.]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/8f317b052aa2f68ecba29663847f959a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2231" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2231 제한 시간 제한 : 2 초 메모리 제한 : 192 MB]]></summary></entry></feed>

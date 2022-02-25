@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>웹페이지 기초 | Yujin Dev Log</title>
-<meta name="description" content="🔸 웹페이지에는 정적데이터와 동적데이터가 있다.">
+<!-- begin _includes/seo.html --><title>Java) BOJ 1436. 영화감독 숌 | Yujin Dev Log</title>
+<meta name="description" content="문제 링크      https://www.acmicpc.net/problem/1436   제한      시간 제한 : 2 초   메모리 제한 : 128 MB">
 
 
   <meta name="author" content="Yujin Hwang">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="웹페이지 기초">
-<meta property="og:url" content="http://localhost:4000/jsp/JSP-web-beginning/">
+<meta property="og:title" content="Java) BOJ 1436. 영화감독 숌">
+<meta property="og:url" content="http://localhost:4000/boj/boj1436-java/">
 
 
-  <meta property="og:description" content="🔸 웹페이지에는 정적데이터와 동적데이터가 있다.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-01-31T00:00:00+09:00">
+  <meta property="og:description" content="문제 링크      https://www.acmicpc.net/problem/1436   제한      시간 제한 : 2 초   메모리 제한 : 128 MB">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-02-26T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/jsp/JSP-web-beginning/">
+
+<link rel="canonical" href="http://localhost:4000/boj/boj1436-java/">
 
 
 
@@ -167,7 +167,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#jsp" itemprop="item"><span itemprop="name">Jsp</span></a>
+          <a href="/categories/#boj" itemprop="item"><span itemprop="name">Boj</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">웹페이지 기초</li>
+        <li class="current">Java) BOJ 1436. 영화감독 숌</li>
       
     
   </ol>
@@ -310,186 +310,19 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="웹페이지 기초">
-    <meta itemprop="description" content="🔸 웹페이지에는 정적데이터와 동적데이터가 있다.">
-    <meta itemprop="datePublished" content="2022-01-31T00:00:00+09:00">
+    <meta itemprop="headline" content="Java) BOJ 1436. 영화감독 숌">
+    <meta itemprop="description" content="문제 링크  https://www.acmicpc.net/problem/1436제한  시간 제한 : 2 초  메모리 제한 : 128 MB">
+    <meta itemprop="datePublished" content="2022-02-26T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/jsp/JSP-web-beginning/" class="u-url" itemprop="url">웹페이지 기초
+            <a href="http://localhost:4000/boj/boj1436-java/" class="u-url" itemprop="url">Java) BOJ 1436. 영화감독 숌
 </a>
           </h1>
           
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        </header>
-      
-
-      <section class="page__content e-content" itemprop="text">
-        
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#-웹페이지에는-정적데이터와-동적데이터가-있다">🔸 웹페이지에는 정적데이터와 동적데이터가 있다.</a></li><li><a href="#-웹페이지-동작">🔸 웹페이지 동작</a></li><li><a href="#-dns">🔸 DNS</a></li></ul>
-
-            </nav>
-          </aside>
-        
-        <h1 id="-웹페이지에는-정적데이터와-동적데이터가-있다">🔸 웹페이지에는 정적데이터와 동적데이터가 있다.</h1>
-
-<ul>
-  <li>네이버 홈페이지에 접속하면 보이는 이미지 데이터들은 <code class="language-plaintext highlighter-rouge">정적데이터</code></li>
-  <li>
-    <p>HTML, CSS, JavaScript, … =&gt; WEB 서버에서 처리<br /><br /></p>
-  </li>
-  <li>신문 기사, 날씨, 코스피 지수 등 변하는 값들은 <code class="language-plaintext highlighter-rouge">동적데이터</code></li>
-  <li>DB에 저장되어 있는 데이터 =&gt; <code class="language-plaintext highlighter-rouge">WAS(Web Application Server - web에 application이 추가된 것)</code>서버에서 처리
-    <ul>
-      <li>예) 톰캣이라는 <code class="language-plaintext highlighter-rouge">서버</code>에서 <code class="language-plaintext highlighter-rouge">자바 애플리케이션</code>이 실행되고 있는 것<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="-웹페이지-동작">🔸 웹페이지 동작</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">[클라이언트/사용자]</code>가 naver에 요청 ➡️ <code class="language-plaintext highlighter-rouge">[naver - WEB서버]</code>가 판단해서 요청한 데이터가 <code class="language-plaintext highlighter-rouge">정적데이터</code>만 있다면 바로 실행하게 만듦 ➡️ <code class="language-plaintext highlighter-rouge">[클라이언트/사용자]</code>에게 naver가 응답(<code class="language-plaintext highlighter-rouge">정적데이터</code>)</li>
-  <li>
-    <p>👉 이 결과로 사용자는 naver 페이지를 볼 수 있게 된다.<br /><br /></p>
-  </li>
-  <li>하지만 <code class="language-plaintext highlighter-rouge">동적데이터</code>도 있다면…</li>
-  <li>naver가 <code class="language-plaintext highlighter-rouge">[naver서버 - WAS서버]</code>에 <code class="language-plaintext highlighter-rouge">동적데이터</code>를 요청한다.</li>
-  <li>
-    <p>그러면 <code class="language-plaintext highlighter-rouge">[Database서버]</code>에 데이터를 요청해서 사용자에게 보여준다.<br /><br />
-<img src="../../assets/images/webProcess.png" alt="webProcess" /><br /><br /></p>
-  </li>
-  <li>+) .com, .co.kr 과 같은 도메인은 비싸다.</li>
-  <li>.ar 같은 도메인들은 무료</li>
-</ul>
-
-<h1 id="-dns">🔸 DNS</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">도메인 네임서버</code></li>
-  <li>IP주소를 도메인 주소로 바꾼 것</li>
-  <li>숫자로 된 IP주소는 외우기 힘드니까 좀 더 읽기 쉬운 문자형 주소로 바꾸는 것</li>
-</ul>
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a><span class="sep">, </span>
-    
-      <a href="/tags/#web" class="page__taxonomy-item p-category" rel="tag">WEB</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/categories/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a>
-    
-    </span>
-  </p>
-
-
-        
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-31T00:00:00+09:00">January 31, 2022</time></p>
-
-      </footer>
-
-      <section class="page__share">
-  
-    <h4 class="page__share-title">공유하기</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80+%EA%B8%B0%EC%B4%88%20http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-web-beginning%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-web-beginning%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-web-beginning%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/jsp/JSP-servlet-process/" class="pagination--pager" title="서블릿의 동작 원리
-">이전</a>
-    
-    
-      <a href="/jsp/JSP-web-container/" class="pagination--pager" title="웹 컨테이너
-">다음</a>
-    
-  </nav>
-
-    </div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h2 class="page__related-title">참고</h2>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/boj/boj1436-java/" rel="permalink">Java) BOJ 1436. 영화감독 숌
-</a>
-      
-    </h2>
-    
 
   <p class="page__meta">
     
@@ -510,24 +343,179 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">문제 링크
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#문제-링크">문제 링크</a></li><li><a href="#제한">제한</a></li><li><a href="#문제">문제</a></li><li><a href="#입력">입력</a></li><li><a href="#출력">출력</a></li><li><a href="#-풀이">👀 풀이</a></li><li><a href="#결과">결과</a></li><li><a href="#코드">코드</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1436">https://www.acmicpc.net/problem/1436</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다.</li>
+  <li>조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고,</li>
+  <li>
+    <p>피터 잭슨은 반지의 제왕을 만들 때, 반지의 제왕 1, 반지의 제왕 2, 반지의 제왕 3과 같이 영화 제목을 지었다.</p>
+  </li>
+  <li>
+    <p>하지만 숌은 자신이 조지 루카스와 피터 잭슨을 뛰어넘는다는 것을 보여주기 위해서 영화 제목을 좀 다르게 만들기로 했다.</p>
+  </li>
+  <li>
+    <p>종말의 숫자란 어떤 수에 6이 적어도 3개이상 연속으로 들어가는 수를 말한다. 제일 작은 종말의 숫자는 666이고, 그 다음으로 큰 수는 1666, 2666, 3666, …. 과 같다.</p>
+  </li>
+  <li>따라서, 숌은 첫 번째 영화의 제목은 세상의 종말 666, 두 번째 영화의 제목은 세상의 종말 1666 이렇게 이름을 지을 것이다.</li>
+  <li>
+    <p>일반화해서 생각하면, N번째 영화의 제목은 세상의 종말 (N번째로 작은 종말의 숫자) 와 같다.</p>
+  </li>
+  <li>숌이 만든 N번째 영화의 제목에 들어간 숫자를 출력하는 프로그램을 작성하시오. 숌은 이 시리즈를 항상 차례대로 만들고, 다른 영화는 만들지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 숫자 N이 주어진다. N은 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>브루트포스로 666부터 하나씩 증가시켜가면서 N번째 수를 구하려 했으나 처음에 생각을 잘못 하는 바람에… 틀려서 구글링 참고해서 풀었다.</li>
+  <li>현재 수에 666이 포함되어 있으면 cnt를 증가시키고 cnt가 N과 같다면 현재 수를 리턴하고 그렇지 않다면 현재 수를 증가시키면서 또 666이 포함되어 있는지 확인한다.</li>
+  <li>이 때 수를 문자열로 바꿔서 666이 연속되어 있는지 확인해도 되서 처음엔 그렇게 확인하는 함수를 구현했는데 구글링 하니까 자바에는 contains 함수가 있어서 편하게 그걸 썼다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 320 ms</li>
+  <li>메모리 : 86524 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/cd9086d9b051383331645a51c0164abb.js"></script>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a><span class="sep">, </span>
+    
+      <a href="/tags/#boj" class="page__taxonomy-item p-category" rel="tag">BOJ</a><span class="sep">, </span>
+    
+      <a href="/tags/#bruteforce" class="page__taxonomy-item p-category" rel="tag">BruteForce</a><span class="sep">, </span>
+    
+      <a href="/tags/#java" class="page__taxonomy-item p-category" rel="tag">Java</a><span class="sep">, </span>
+    
+      <a href="/tags/#no1436" class="page__taxonomy-item p-category" rel="tag">No1436</a>
+    
+    </span>
+  </p>
 
 
 
-  https://www.acmicpc.net/problem/1436
+
+  
 
 
-제한
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#boj" class="page__taxonomy-item p-category" rel="tag">BOJ</a>
+    
+    </span>
+  </p>
 
 
+        
 
-  시간 제한 : 2 초
-  메모리 제한 : 128 MB
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-26T00:00:00+09:00">February 26, 2022</time></p>
 
-</p>
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Java%29+BOJ+1436.+%EC%98%81%ED%99%94%EA%B0%90%EB%8F%85+%EC%88%8C%20http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj1436-java%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj1436-java%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj1436-java%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/operating%20system/OS-04-Process-Management/" class="pagination--pager" title="OS) Process Management
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
-</div>
 
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
         
           
 
@@ -671,6 +659,51 @@
 
   시간 제한 : 2 초
   메모리 제한 : 128 MB
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/database/db-02-management-system/" rel="permalink">DB) 데이터베이스 관리 시스템
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">데이터베이스 관리 시스템의 등장 배경
+파일 시스템(file system)
+
+  과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어
+  응용 프로그램마다 필요한 데이터를 별도의 파일로 관리함
 
 </p>
   </article>
