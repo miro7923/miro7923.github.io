@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-27T00:08:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 11650. 좌표 정렬하기</title><link href="http://localhost:4000/boj/boj11650-java/" rel="alternate" type="text/html" title="Java) BOJ 11650. 좌표 정렬하기" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11650-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11650-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-27T00:16:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 11651. 좌표 정렬하기2</title><link href="http://localhost:4000/boj/boj11651-java/" rel="alternate" type="text/html" title="Java) BOJ 11651. 좌표 정렬하기2" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11651-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11651-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/11651">https://www.acmicpc.net/problem/11651</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>2차원 평면 위의 점 N개가 주어진다. 좌표를 y좌표가 증가하는 순으로, y좌표가 같으면 x좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>11650번에서 썼던 Comparator 함수에서 기준값을 x에서 y로만 바꿔주었다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 860 ms</li>
+  <li>메모리 : 49896 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/bafcfe58127991148c9f70bab678805d.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11651" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11651 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 11650. 좌표 정렬하기</title><link href="http://localhost:4000/boj/boj11650-java/" rel="alternate" type="text/html" title="Java) BOJ 11650. 좌표 정렬하기" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11650-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11650-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -53,201 +107,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/49b9efbb416fe3905a7e48e17b4d3990.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11650" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11650 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 2108. 통계학</title><link href="http://localhost:4000/boj/boj2108-java/" rel="alternate" type="text/html" title="Java) BOJ 2108. 통계학" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2108-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2108-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2108">https://www.acmicpc.net/problem/2108</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>수를 처리하는 것은 통계학에서 상당히 중요한 일이다. 통계학에서 N개의 수를 대표하는 기본 통계값에는 다음과 같은 것들이 있다. 단, N은 홀수라고 가정하자.</p>
-  </li>
-  <li>산술평균 : N개의 수들의 합을 N으로 나눈 값</li>
-  <li>중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값</li>
-  <li>최빈값 : N개의 수들 중 가장 많이 나타나는 값</li>
-  <li>범위 : N개의 수들 중 최댓값과 최솟값의 차이</li>
-  <li>N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 500,000)이 주어진다. 단, N은 홀수이다. 그 다음 N개의 줄에는 정수들이 주어진다. 입력되는 정수의 절댓값은 4,000을 넘지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>첫째 줄에는 산술평균을 출력한다. 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.</p>
-  </li>
-  <li>
-    <p>둘째 줄에는 중앙값을 출력한다.</p>
-  </li>
-  <li>
-    <p>셋째 줄에는 최빈값을 출력한다. 여러 개 있을 때에는 최빈값 중 두 번째로 작은 값을 출력한다.</p>
-  </li>
-  <li>
-    <p>넷째 줄에는 범위를 출력한다.<br /><br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>각 알고리즘 자체는 어렵지 않았는데 종류가 많아서 그런가 구현에 시간이 걸렸다.</li>
-  <li>중앙값 구하는 알고리즘을 더 손에 익히면 좋겠다.</li>
-  <li>중앙값은 최대힙과 최소힙을 사용해서 중앙값보다 더 큰 수는 최소힙에 저장하고 작은 수는 최대힙에 저장한 후</li>
-  <li>
-    <p>최대힙과 최소힙의 길이가 같은 경우 top 평균을 구하고 최대힙이 더 크면 최대힙의 top을 반환하고 최소힙이 더 크면 최소힙의 top을 반환하도록 했다.<br /></p>
-  </li>
-  <li>최빈값은 배열 인덱스에 1:1로 매핑시켜서 빈도를 구하는 방식은 입력값의 범위가 커서 비효율적일 거 같아서 map을 사용했다.</li>
-  <li>입력값을 &lt; 입력값, 빈도 &gt; 로 map에 저장한 후 입력이 끝나면 map을 순회하면서 가장 높은 빈도수를 구한 다음</li>
-  <li>
-    <p>가장 높은 빈도수와 일치하는 키값이 하나라면 그걸 바로 리턴하고 여러 개라면 그 수를 모두 배열에 저장한 뒤 오름차순으로 정렬해서 두번째로 작은 수를 구해서 리턴했다.<br /></p>
-  </li>
-  <li>범위는 입력 받으면서 최댓값과 최솟값을 구해서 두 값의 차를 출력하면 되는데 입력값이 음수도 들어오기 때문에 최댓값을 저장하는 변수의 초기값은 0이 아닌 Integer의 가장 작은 value로 설정하면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 1028 ms</li>
-  <li>메모리 : 105020 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/a66774c083b6bb3d29c76517e5342bbc.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2108" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2108 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 2750. 수 정렬하기</title><link href="http://localhost:4000/boj/boj2750-java/" rel="alternate" type="text/html" title="Java) BOJ 2750. 수 정렬하기" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2750-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2750-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2750">https://www.acmicpc.net/problem/2750</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 1,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수 주어진다. 이 수는 절댓값이 1,000보다 작거나 같은 정수이다. 수는 중복되지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>제한시간 1초에 N 최대값이 1,000이라 N^2 정렬 알고리즘으로 풀었다.(삽입정렬 사용)<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 188 ms</li>
-  <li>메모리 : 16936 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/8845c43c6d3be9195cad397c8c3e2984.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2750" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2750 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2751. 수 정렬하기2</title><link href="http://localhost:4000/boj/boj2751-java/" rel="alternate" type="text/html" title="Java) BOJ 2751. 수 정렬하기2" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2751-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2751-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2751">https://www.acmicpc.net/problem/2751</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 1,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 절댓값이 1,000,000보다 작거나 같은 정수이다. 수는 중복되지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>제한시간 2초에 N 최대값이 백만이라 n log n 정렬 알고리즘을 써야 했는데 합병정렬을 쓰면 좋겠지만 구현하기 귀찮기도 하고… 자바에 구현되어 있는 sort 함수 사용법도 익힐겸 저걸 썼다.</li>
-  <li>처음에는 Arrays.sort를 썼는데 1700ms 가 나와서 시간복잡도를 알아보니까 평균 n log n이지만 최악의 경우에는 n^2이었다.</li>
-  <li>그래서 최악의 경우에도 n log n을 보장한다는 Collections.sort를 써 봤는데 1600ms 정도가 나와서 크게 시간 차이가 나지는 않았다.</li>
-  <li>합병정렬 기억을 되살릴 겸 한 번 구현해 보는 것이 좋을 거 같다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 1636 ms</li>
-  <li>메모리 : 171216 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/944a523911f3218c3088e59d5a8d6048.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2751" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2751 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Instructions</title><link href="http://localhost:4000/computer%20science/computer-architecture-03/" rel="alternate" type="text/html" title="컴퓨터구조) Instructions" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-03</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-03/"><![CDATA[<h1 id="instruction-set">Instruction Set</h1>
+<script src="https://gist.github.com/miro7923/49b9efbb416fe3905a7e48e17b4d3990.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11650" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11650 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Instructions</title><link href="http://localhost:4000/computer%20science/computer-architecture-03/" rel="alternate" type="text/html" title="컴퓨터구조) Instructions" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-03</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-03/"><![CDATA[<h1 id="instruction-set">Instruction Set</h1>
 <ul>
   <li>프로세서에서 지원하는 명령어들의 집합</li>
   <li>다른 컴퓨터는 다른 명령어셋을 가지고 있지만 기본적으로는 비슷하다.</li>
@@ -461,7 +321,189 @@ j L1 // 무조건 L1으로 Jump하는 것
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/cview.do?cid=16bd07027739ad22">컴퓨터구조 - 영남대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Instruction" /><summary type="html"><![CDATA[Instruction Set 프로세서에서 지원하는 명령어들의 집합 다른 컴퓨터는 다른 명령어셋을 가지고 있지만 기본적으로는 비슷하다. 현대 컴퓨터는 대부분 간단한 명령어셋(MIPS - RISK 방식)을 가지고 있다.]]></summary></entry><entry><title type="html">Java) BOJ 1427. 소트인사이드</title><link href="http://localhost:4000/boj/boj1427-java/" rel="alternate" type="text/html" title="Java) BOJ 1427. 소트인사이드" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1427-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1427-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Instruction" /><summary type="html"><![CDATA[Instruction Set 프로세서에서 지원하는 명령어들의 집합 다른 컴퓨터는 다른 명령어셋을 가지고 있지만 기본적으로는 비슷하다. 현대 컴퓨터는 대부분 간단한 명령어셋(MIPS - RISK 방식)을 가지고 있다.]]></summary></entry><entry><title type="html">Java) BOJ 2750. 수 정렬하기</title><link href="http://localhost:4000/boj/boj2750-java/" rel="alternate" type="text/html" title="Java) BOJ 2750. 수 정렬하기" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2750-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2750-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2750">https://www.acmicpc.net/problem/2750</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 1,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수 주어진다. 이 수는 절댓값이 1,000보다 작거나 같은 정수이다. 수는 중복되지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>제한시간 1초에 N 최대값이 1,000이라 N^2 정렬 알고리즘으로 풀었다.(삽입정렬 사용)<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 188 ms</li>
+  <li>메모리 : 16936 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/8845c43c6d3be9195cad397c8c3e2984.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2750" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2750 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2751. 수 정렬하기2</title><link href="http://localhost:4000/boj/boj2751-java/" rel="alternate" type="text/html" title="Java) BOJ 2751. 수 정렬하기2" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2751-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2751-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2751">https://www.acmicpc.net/problem/2751</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 1,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 절댓값이 1,000,000보다 작거나 같은 정수이다. 수는 중복되지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>제한시간 2초에 N 최대값이 백만이라 n log n 정렬 알고리즘을 써야 했는데 합병정렬을 쓰면 좋겠지만 구현하기 귀찮기도 하고… 자바에 구현되어 있는 sort 함수 사용법도 익힐겸 저걸 썼다.</li>
+  <li>처음에는 Arrays.sort를 썼는데 1700ms 가 나와서 시간복잡도를 알아보니까 평균 n log n이지만 최악의 경우에는 n^2이었다.</li>
+  <li>그래서 최악의 경우에도 n log n을 보장한다는 Collections.sort를 써 봤는데 1600ms 정도가 나와서 크게 시간 차이가 나지는 않았다.</li>
+  <li>합병정렬 기억을 되살릴 겸 한 번 구현해 보는 것이 좋을 거 같다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 1636 ms</li>
+  <li>메모리 : 171216 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/944a523911f3218c3088e59d5a8d6048.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2751" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2751 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 1436. 영화감독 숌</title><link href="http://localhost:4000/boj/boj1436-java/" rel="alternate" type="text/html" title="Java) BOJ 1436. 영화감독 숌" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1436-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1436-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1436">https://www.acmicpc.net/problem/1436</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다.</li>
+  <li>조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고,</li>
+  <li>
+    <p>피터 잭슨은 반지의 제왕을 만들 때, 반지의 제왕 1, 반지의 제왕 2, 반지의 제왕 3과 같이 영화 제목을 지었다.</p>
+  </li>
+  <li>
+    <p>하지만 숌은 자신이 조지 루카스와 피터 잭슨을 뛰어넘는다는 것을 보여주기 위해서 영화 제목을 좀 다르게 만들기로 했다.</p>
+  </li>
+  <li>
+    <p>종말의 숫자란 어떤 수에 6이 적어도 3개이상 연속으로 들어가는 수를 말한다. 제일 작은 종말의 숫자는 666이고, 그 다음으로 큰 수는 1666, 2666, 3666, …. 과 같다.</p>
+  </li>
+  <li>따라서, 숌은 첫 번째 영화의 제목은 세상의 종말 666, 두 번째 영화의 제목은 세상의 종말 1666 이렇게 이름을 지을 것이다.</li>
+  <li>
+    <p>일반화해서 생각하면, N번째 영화의 제목은 세상의 종말 (N번째로 작은 종말의 숫자) 와 같다.</p>
+  </li>
+  <li>숌이 만든 N번째 영화의 제목에 들어간 숫자를 출력하는 프로그램을 작성하시오. 숌은 이 시리즈를 항상 차례대로 만들고, 다른 영화는 만들지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 숫자 N이 주어진다. N은 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>브루트포스로 666부터 하나씩 증가시켜가면서 N번째 수를 구하려 했으나 처음에 생각을 잘못 하는 바람에… 틀려서 구글링 참고해서 풀었다.</li>
+  <li>현재 수에 666이 포함되어 있으면 cnt를 증가시키고 cnt가 N과 같다면 현재 수를 리턴하고 그렇지 않다면 현재 수를 증가시키면서 또 666이 포함되어 있는지 확인한다.</li>
+  <li>이 때 수를 문자열로 바꿔서 666이 연속되어 있는지 확인해도 되서 처음엔 그렇게 확인하는 함수를 구현했는데 구글링 하니까 자바에는 contains 함수가 있어서 편하게 그걸 썼다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 320 ms</li>
+  <li>메모리 : 86524 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/cd9086d9b051383331645a51c0164abb.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1436" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1436 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 1427. 소트인사이드</title><link href="http://localhost:4000/boj/boj1427-java/" rel="alternate" type="text/html" title="Java) BOJ 1427. 소트인사이드" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1427-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1427-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -573,11 +615,11 @@ j L1 // 무조건 L1으로 Jump하는 것
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/f9f2c1a27acf0a5bba1e0a65de41e81a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10989" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10989 제한 시간 제한 : 3 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 1436. 영화감독 숌</title><link href="http://localhost:4000/boj/boj1436-java/" rel="alternate" type="text/html" title="Java) BOJ 1436. 영화감독 숌" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1436-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1436-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/f9f2c1a27acf0a5bba1e0a65de41e81a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10989" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10989 제한 시간 제한 : 3 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 2108. 통계학</title><link href="http://localhost:4000/boj/boj2108-java/" rel="alternate" type="text/html" title="Java) BOJ 2108. 통계학" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2108-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2108-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/1436">https://www.acmicpc.net/problem/1436</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/2108">https://www.acmicpc.net/problem/2108</a><br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
@@ -585,66 +627,78 @@ j L1 // 무조건 L1으로 Jump하는 것
 
 <ul>
   <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <hr />
 
 <ul>
-  <li>666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다.</li>
-  <li>조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고,</li>
   <li>
-    <p>피터 잭슨은 반지의 제왕을 만들 때, 반지의 제왕 1, 반지의 제왕 2, 반지의 제왕 3과 같이 영화 제목을 지었다.</p>
+    <p>수를 처리하는 것은 통계학에서 상당히 중요한 일이다. 통계학에서 N개의 수를 대표하는 기본 통계값에는 다음과 같은 것들이 있다. 단, N은 홀수라고 가정하자.</p>
   </li>
-  <li>
-    <p>하지만 숌은 자신이 조지 루카스와 피터 잭슨을 뛰어넘는다는 것을 보여주기 위해서 영화 제목을 좀 다르게 만들기로 했다.</p>
-  </li>
-  <li>
-    <p>종말의 숫자란 어떤 수에 6이 적어도 3개이상 연속으로 들어가는 수를 말한다. 제일 작은 종말의 숫자는 666이고, 그 다음으로 큰 수는 1666, 2666, 3666, …. 과 같다.</p>
-  </li>
-  <li>따라서, 숌은 첫 번째 영화의 제목은 세상의 종말 666, 두 번째 영화의 제목은 세상의 종말 1666 이렇게 이름을 지을 것이다.</li>
-  <li>
-    <p>일반화해서 생각하면, N번째 영화의 제목은 세상의 종말 (N번째로 작은 종말의 숫자) 와 같다.</p>
-  </li>
-  <li>숌이 만든 N번째 영화의 제목에 들어간 숫자를 출력하는 프로그램을 작성하시오. 숌은 이 시리즈를 항상 차례대로 만들고, 다른 영화는 만들지 않는다.<br /><br /></li>
+  <li>산술평균 : N개의 수들의 합을 N으로 나눈 값</li>
+  <li>중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값</li>
+  <li>최빈값 : N개의 수들 중 가장 많이 나타나는 값</li>
+  <li>범위 : N개의 수들 중 최댓값과 최솟값의 차이</li>
+  <li>N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오.<br /><br /></li>
 </ul>
 
 <h1 id="입력">입력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄에 숫자 N이 주어진다. N은 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
+  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 500,000)이 주어진다. 단, N은 홀수이다. 그 다음 N개의 줄에는 정수들이 주어진다. 입력되는 정수의 절댓값은 4,000을 넘지 않는다.<br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.<br /><br /><br /></li>
+  <li>
+    <p>첫째 줄에는 산술평균을 출력한다. 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.</p>
+  </li>
+  <li>
+    <p>둘째 줄에는 중앙값을 출력한다.</p>
+  </li>
+  <li>
+    <p>셋째 줄에는 최빈값을 출력한다. 여러 개 있을 때에는 최빈값 중 두 번째로 작은 값을 출력한다.</p>
+  </li>
+  <li>
+    <p>넷째 줄에는 범위를 출력한다.<br /><br /><br /></p>
+  </li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>브루트포스로 666부터 하나씩 증가시켜가면서 N번째 수를 구하려 했으나 처음에 생각을 잘못 하는 바람에… 틀려서 구글링 참고해서 풀었다.</li>
-  <li>현재 수에 666이 포함되어 있으면 cnt를 증가시키고 cnt가 N과 같다면 현재 수를 리턴하고 그렇지 않다면 현재 수를 증가시키면서 또 666이 포함되어 있는지 확인한다.</li>
-  <li>이 때 수를 문자열로 바꿔서 666이 연속되어 있는지 확인해도 되서 처음엔 그렇게 확인하는 함수를 구현했는데 구글링 하니까 자바에는 contains 함수가 있어서 편하게 그걸 썼다.<br /><br /></li>
+  <li>각 알고리즘 자체는 어렵지 않았는데 종류가 많아서 그런가 구현에 시간이 걸렸다.</li>
+  <li>중앙값 구하는 알고리즘을 더 손에 익히면 좋겠다.</li>
+  <li>중앙값은 최대힙과 최소힙을 사용해서 중앙값보다 더 큰 수는 최소힙에 저장하고 작은 수는 최대힙에 저장한 후</li>
+  <li>
+    <p>최대힙과 최소힙의 길이가 같은 경우 top 평균을 구하고 최대힙이 더 크면 최대힙의 top을 반환하고 최소힙이 더 크면 최소힙의 top을 반환하도록 했다.<br /></p>
+  </li>
+  <li>최빈값은 배열 인덱스에 1:1로 매핑시켜서 빈도를 구하는 방식은 입력값의 범위가 커서 비효율적일 거 같아서 map을 사용했다.</li>
+  <li>입력값을 &lt; 입력값, 빈도 &gt; 로 map에 저장한 후 입력이 끝나면 map을 순회하면서 가장 높은 빈도수를 구한 다음</li>
+  <li>
+    <p>가장 높은 빈도수와 일치하는 키값이 하나라면 그걸 바로 리턴하고 여러 개라면 그 수를 모두 배열에 저장한 뒤 오름차순으로 정렬해서 두번째로 작은 수를 구해서 리턴했다.<br /></p>
+  </li>
+  <li>범위는 입력 받으면서 최댓값과 최솟값을 구해서 두 값의 차를 출력하면 되는데 입력값이 음수도 들어오기 때문에 최댓값을 저장하는 변수의 초기값은 0이 아닌 Integer의 가장 작은 value로 설정하면 된다.<br /><br /></li>
 </ul>
 
 <h1 id="결과">결과</h1>
 <hr />
 
 <ul>
-  <li>시간 : 320 ms</li>
-  <li>메모리 : 86524 KB<br /><br /></li>
+  <li>시간 : 1028 ms</li>
+  <li>메모리 : 105020 KB<br /><br /></li>
 </ul>
 
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/cd9086d9b051383331645a51c0164abb.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1436" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1436 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">OS) Process Management</title><link href="http://localhost:4000/operating%20system/OS-04-Process-Management/" rel="alternate" type="text/html" title="OS) Process Management" /><published>2022-02-25T00:00:00+09:00</published><updated>2022-02-25T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-04-Process-Management</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-04-Process-Management/"><![CDATA[<h1 id="-프로세스-생성-process-creation">👀 프로세스 생성 (Process Creation)</h1>
+<script src="https://gist.github.com/miro7923/a66774c083b6bb3d29c76517e5342bbc.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2108" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2108 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">OS) Process Management</title><link href="http://localhost:4000/operating%20system/OS-04-Process-Management/" rel="alternate" type="text/html" title="OS) Process Management" /><published>2022-02-25T00:00:00+09:00</published><updated>2022-02-25T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-04-Process-Management</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-04-Process-Management/"><![CDATA[<h1 id="-프로세스-생성-process-creation">👀 프로세스 생성 (Process Creation)</h1>
 <ul>
   <li>부모 프로세스(Parent process)가 자식 프로세스(Child process) 생성. 복제 생성 하는 것으로 부모 프로세스의 문맥(코드, 데이터, 스택 등)을 모두 복사한다.</li>
   <li>복제된 자식 프로세스가 부모 프로세스의 하위 노드로 위치하고 그 자식이 또 자식을 복제하면 또 하위 노드로 위치하고… 를 반복하면서 프로세스의 트리(계층 구조)를 형성한다.</li>
@@ -833,75 +887,4 @@ j L1 // 무조건 L1으로 Jump하는 것
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="Process" /><summary type="html"><![CDATA[👀 프로세스 생성 (Process Creation) 부모 프로세스(Parent process)가 자식 프로세스(Child process) 생성. 복제 생성 하는 것으로 부모 프로세스의 문맥(코드, 데이터, 스택 등)을 모두 복사한다. 복제된 자식 프로세스가 부모 프로세스의 하위 노드로 위치하고 그 자식이 또 자식을 복제하면 또 하위 노드로 위치하고… 를 반복하면서 프로세스의 트리(계층 구조)를 형성한다. 프로세스 혼자서 자식을 생성할 수는 없고 시스템 콜을 통해 운영체제의 서비스를 받아야만 자식 생성이 가능하다. 프로세스는 자원을 필요로 하기 때문에 운영체제로부터 받거나 부모와 공유한다. 기본적으로는 자식이 복제되는 순간 별도의 프로세스가 되기 때문에 그 순간부터 부모와 자원을 얻기 위해 경쟁하는 관계가 된다.]]></summary></entry><entry><title type="html">Java) BOJ 1018. 체스판 다시 칠하기</title><link href="http://localhost:4000/boj/boj1018-java/" rel="alternate" type="text/html" title="Java) BOJ 1018. 체스판 다시 칠하기" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1018-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1018-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1018">https://www.acmicpc.net/problem/1018</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>지민이는 자신의 저택에서 MN개의 단위 정사각형으로 나누어져 있는 M×N 크기의 보드를 찾았다. 어떤 정사각형은 검은색으로 칠해져 있고, 나머지는 흰색으로 칠해져 있다.</li>
-  <li>
-    <p>지민이는 이 보드를 잘라서 8×8 크기의 체스판으로 만들려고 한다.</p>
-  </li>
-  <li>체스판은 검은색과 흰색이 번갈아서 칠해져 있어야 한다. 구체적으로, 각 칸이 검은색과 흰색 중 하나로 색칠되어 있고, 변을 공유하는 두 개의 사각형은 다른 색으로 칠해져 있어야 한다.</li>
-  <li>
-    <p>따라서 이 정의를 따르면 체스판을 색칠하는 경우는 두 가지뿐이다. 하나는 맨 왼쪽 위 칸이 흰색인 경우, 하나는 검은색인 경우이다.</p>
-  </li>
-  <li>보드가 체스판처럼 칠해져 있다는 보장이 없어서, 지민이는 8×8 크기의 체스판으로 잘라낸 후에 몇 개의 정사각형을 다시 칠해야겠다고 생각했다.</li>
-  <li>당연히 8*8 크기는 아무데서나 골라도 된다. 지민이가 다시 칠해야 하는 정사각형의 최소 개수를 구하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 N과 M이 주어진다. N과 M은 8보다 크거나 같고, 50보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에는 보드의 각 행의 상태가 주어진다. B는 검은색이며, W는 흰색이다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 지민이가 다시 칠해야 하는 정사각형 개수의 최솟값을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>처음엔 좀 어렵게 생각해서 체스판을 앞에서부터도 확인하고 뒤에서부터도 확인하고 첫번째줄부터, 맨 아랫줄부터 거꾸로 올라가면서 확인하기 등 불필요한 탐색을 하는 코드를 작성했다.</li>
-  <li>
-    <p>그러다 답이 안 나와서 구글링 참고함</p>
-  </li>
-  <li>
-    <p><a href="https://st-lab.tistory.com/101">https://st-lab.tistory.com/101</a></p>
-  </li>
-  <li>8<em>8 체스판을 순회하면서 현재 위치부터 +8칸까지가 체스판 색깔을 만족하는지 검사하는 함수 search()를 작성한 후
-메인함수에서 입력 크기만큼 8</em>8씩 이동하면서 search()를 수행하도록 반복문을 작성한다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 132 ms</li>
-  <li>메모리 : 14312 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/76e4ade331283b450828b10a5fa4c69b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1018" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1018 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="Process" /><summary type="html"><![CDATA[👀 프로세스 생성 (Process Creation) 부모 프로세스(Parent process)가 자식 프로세스(Child process) 생성. 복제 생성 하는 것으로 부모 프로세스의 문맥(코드, 데이터, 스택 등)을 모두 복사한다. 복제된 자식 프로세스가 부모 프로세스의 하위 노드로 위치하고 그 자식이 또 자식을 복제하면 또 하위 노드로 위치하고… 를 반복하면서 프로세스의 트리(계층 구조)를 형성한다. 프로세스 혼자서 자식을 생성할 수는 없고 시스템 콜을 통해 운영체제의 서비스를 받아야만 자식 생성이 가능하다. 프로세스는 자원을 필요로 하기 때문에 운영체제로부터 받거나 부모와 공유한다. 기본적으로는 자식이 복제되는 순간 별도의 프로세스가 되기 때문에 그 순간부터 부모와 자원을 얻기 위해 경쟁하는 관계가 된다.]]></summary></entry></feed>

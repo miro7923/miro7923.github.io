@@ -592,4 +592,10 @@ var store = [{
         "tags": ["Algorithm","BOJ","No11650","Sorting","Java"],
         "url": "/boj/boj11650-java/",
         "teaser": null
+      },{
+        "title": "Java) BOJ 11651. 좌표 정렬하기2",
+        "excerpt":"문제 링크       https://www.acmicpc.net/problem/11651     제한       시간 제한 : 1 초   메모리 제한 : 256 MB     문제       2차원 평면 위의 점 N개가 주어진다. 좌표를 y좌표가 증가하는 순으로, y좌표가 같으면 x좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.     입력       첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.     출력       첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.      👀 풀이       11650번에서 썼던 Comparator 함수에서 기준값을 x에서 y로만 바꿔주었다.     결과       시간 : 860 ms   메모리 : 49896 KB     코드      ","categories": ["BOJ"],
+        "tags": ["Algorithm","BOJ","No11651","Sorting","Java"],
+        "url": "/boj/boj11651-java/",
+        "teaser": null
       }]
