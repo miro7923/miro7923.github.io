@@ -1,0 +1,63 @@
+I"�<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/10814">https://www.acmicpc.net/problem/10814</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오.</li>
+</ul>
+
+<ol>
+  <li>길이가 짧은 것부터</li>
+  <li>길이가 같으면 사전 순으로<br /><br /></li>
+</ol>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 단어의 개수 N이 주어진다. (1 ≤ N ≤ 20,000) 둘째 줄부터 N개의 줄에 걸쳐 알파벳 소문자로 이루어진 단어가 한 줄에 하나씩 주어진다. 주어지는 문자열의 길이는 50을 넘지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러 번 입력된 경우에는 한 번씩만 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>Collections.sort와 Comparator 람다식을 이용해 구현했다.</li>
+  <li>마지막에 정렬한 값을 출력할 때엔 equals를 통한 value 비교를 해서 중복값은 걸러지도록 했다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 392 ms</li>
+  <li>메모리 : 23208 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/978be8ad9674667c38e12894cd1c7144.js"></script>
+
+:ET
