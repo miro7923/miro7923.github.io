@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Java) BOJ 10989. 수 정렬하기3 | Yujin Dev Log</title>
-<meta name="description" content="문제 링크      https://www.acmicpc.net/problem/10989   제한      시간 제한 : 3 초   메모리 제한 : 512 MB">
+<!-- begin _includes/seo.html --><title>Java) BOJ 1427. 소트인사이드 | Yujin Dev Log</title>
+<meta name="description" content="문제 링크      https://www.acmicpc.net/problem/1427   제한      시간 제한 : 2 초   메모리 제한 : 128 MB">
 
 
   <meta name="author" content="Yujin Hwang">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="Java) BOJ 10989. 수 정렬하기3">
-<meta property="og:url" content="http://localhost:4000/boj/boj10989-java/">
+<meta property="og:title" content="Java) BOJ 1427. 소트인사이드">
+<meta property="og:url" content="http://localhost:4000/boj/boj1427-java/">
 
 
-  <meta property="og:description" content="문제 링크      https://www.acmicpc.net/problem/10989   제한      시간 제한 : 3 초   메모리 제한 : 512 MB">
+  <meta property="og:description" content="문제 링크      https://www.acmicpc.net/problem/1427   제한      시간 제한 : 2 초   메모리 제한 : 128 MB">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/boj/boj10989-java/">
+<link rel="canonical" href="http://localhost:4000/boj/boj1427-java/">
 
 
 
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">Java) BOJ 10989. 수 정렬하기3</li>
+        <li class="current">Java) BOJ 1427. 소트인사이드</li>
       
     
   </ol>
@@ -310,8 +310,8 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Java) BOJ 10989. 수 정렬하기3">
-    <meta itemprop="description" content="문제 링크  https://www.acmicpc.net/problem/10989제한  시간 제한 : 3 초  메모리 제한 : 512 MB">
+    <meta itemprop="headline" content="Java) BOJ 1427. 소트인사이드">
+    <meta itemprop="description" content="문제 링크  https://www.acmicpc.net/problem/1427제한  시간 제한 : 2 초  메모리 제한 : 128 MB">
     <meta itemprop="datePublished" content="2022-02-26T00:00:00+09:00">
     
 
@@ -319,7 +319,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/boj/boj10989-java/" class="u-url" itemprop="url">Java) BOJ 10989. 수 정렬하기3
+            <a href="http://localhost:4000/boj/boj1427-java/" class="u-url" itemprop="url">Java) BOJ 1427. 소트인사이드
 </a>
           </h1>
           
@@ -360,61 +360,57 @@
 <hr />
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/10989">https://www.acmicpc.net/problem/10989</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/1427">https://www.acmicpc.net/problem/1427</a><br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
 <hr />
 
 <ul>
-  <li>시간 제한 : 3 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <hr />
 
 <ul>
-  <li>N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.<br /><br /></li>
+  <li>배열을 정렬하는 것은 쉽다. 수가 주어지면, 그 수의 각 자리수를 내림차순으로 정렬해보자.<br /><br /></li>
 </ul>
 
 <h1 id="입력">입력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
+  <li>첫째 줄에 정렬하려고 하는 수 N이 주어진다. N은 1,000,000,000보다 작거나 같은 자연수이다.<br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.<br /><br /><br /></li>
+  <li>첫째 줄에 자리수를 내림차순으로 정렬한 수를 출력한다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>자바는 제한시간 3초에 메모리 제한은 512라 컬렉션을 쓸 수 없었다.(처음에 컬렉션 sort 써 봤는데 메모리 초과됨 ㅠ)</li>
-  <li>int 배열 메모리 계산해 보니까 합병정렬을 할 수 있을 정도가 되어서 합병정렬을 구현했다.</li>
-  <li>N의 최대값 10,000,000 * 4byte(int) = 40,000,000byte = 39,062kb = 약 38mb</li>
-  <li>합병정렬은 정렬할 배열과 같은 크기의 배열이 하나 더 필요하기 때문에 38 * 2 = 약 76mb</li>
-  <li>그래서 자바에서 기본적으로 잡아먹는 메모리를 더해도 통과할 수 있을거 같아서 합병정렬로 풀었는데 시간이 좀 아슬아슬했다.<br /><br /></li>
+  <li>입력값을 모듈러와 나누기 연산을 하면서 한 자릿수씩 배열에 저장한 다음 Collections의 sort를 사용해 내림차순 정렬했다.<br /><br /></li>
 </ul>
 
 <h1 id="결과">결과</h1>
 <hr />
 
 <ul>
-  <li>시간 : 2948 ms</li>
-  <li>메모리 : 383572 KB<br /><br /></li>
+  <li>시간 : 124 ms</li>
+  <li>메모리 : 14260 KB<br /><br /></li>
 </ul>
 
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/f9f2c1a27acf0a5bba1e0a65de41e81a.js"></script>
+<script src="https://gist.github.com/miro7923/729070db4256846df492f9c70ff2476b.js"></script>
 
 
         
@@ -436,11 +432,11 @@
     
       <a href="/tags/#boj" class="page__taxonomy-item p-category" rel="tag">BOJ</a><span class="sep">, </span>
     
-      <a href="/tags/#bruteforce" class="page__taxonomy-item p-category" rel="tag">BruteForce</a><span class="sep">, </span>
-    
       <a href="/tags/#java" class="page__taxonomy-item p-category" rel="tag">Java</a><span class="sep">, </span>
     
-      <a href="/tags/#no10989" class="page__taxonomy-item p-category" rel="tag">No10989</a>
+      <a href="/tags/#no1427" class="page__taxonomy-item p-category" rel="tag">No1427</a><span class="sep">, </span>
+    
+      <a href="/tags/#sorting" class="page__taxonomy-item p-category" rel="tag">Sorting</a>
     
     </span>
   </p>
@@ -474,22 +470,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Java%29+BOJ+10989.+%EC%88%98+%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B03%20http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj10989-java%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Java%29+BOJ+1427.+%EC%86%8C%ED%8A%B8%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C%20http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj1427-java%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj10989-java%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj1427-java%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj10989-java%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj1427-java%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/operating%20system/OS-04-Process-Management/" class="pagination--pager" title="OS) Process Management
+      <a href="/boj/boj10989-java/" class="pagination--pager" title="Java) BOJ 10989. 수 정렬하기3
 ">이전</a>
     
     
-      <a href="/boj/boj1427-java/" class="pagination--pager" title="Java) BOJ 1427. 소트인사이드
+      <a href="/boj/boj1436-java/" class="pagination--pager" title="Java) BOJ 1436. 영화감독 숌
 ">다음</a>
     
   </nav>

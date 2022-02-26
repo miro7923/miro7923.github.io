@@ -1,87 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-26T23:11:01+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 2108. 통계학</title><link href="http://localhost:4000/boj/boj2108-java/" rel="alternate" type="text/html" title="Java) BOJ 2108. 통계학" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2108-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2108-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2108">https://www.acmicpc.net/problem/2108</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>수를 처리하는 것은 통계학에서 상당히 중요한 일이다. 통계학에서 N개의 수를 대표하는 기본 통계값에는 다음과 같은 것들이 있다. 단, N은 홀수라고 가정하자.</p>
-  </li>
-  <li>산술평균 : N개의 수들의 합을 N으로 나눈 값</li>
-  <li>중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값</li>
-  <li>최빈값 : N개의 수들 중 가장 많이 나타나는 값</li>
-  <li>범위 : N개의 수들 중 최댓값과 최솟값의 차이</li>
-  <li>N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 500,000)이 주어진다. 단, N은 홀수이다. 그 다음 N개의 줄에는 정수들이 주어진다. 입력되는 정수의 절댓값은 4,000을 넘지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>첫째 줄에는 산술평균을 출력한다. 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.</p>
-  </li>
-  <li>
-    <p>둘째 줄에는 중앙값을 출력한다.</p>
-  </li>
-  <li>
-    <p>셋째 줄에는 최빈값을 출력한다. 여러 개 있을 때에는 최빈값 중 두 번째로 작은 값을 출력한다.</p>
-  </li>
-  <li>
-    <p>넷째 줄에는 범위를 출력한다.<br /><br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>각 알고리즘 자체는 어렵지 않았는데 종류가 많아서 그런가 구현에 시간이 걸렸다.</li>
-  <li>중앙값 구하는 알고리즘을 더 손에 익히면 좋겠다.</li>
-  <li>중앙값은 최대힙과 최소힙을 사용해서 중앙값보다 더 큰 수는 최소힙에 저장하고 작은 수는 최대힙에 저장한 후</li>
-  <li>
-    <p>최대힙과 최소힙의 길이가 같은 경우 top 평균을 구하고 최대힙이 더 크면 최대힙의 top을 반환하고 최소힙이 더 크면 최소힙의 top을 반환하도록 했다.<br /></p>
-  </li>
-  <li>최빈값은 배열 인덱스에 1:1로 매핑시켜서 빈도를 구하는 방식은 입력값의 범위가 커서 비효율적일 거 같아서 map을 사용했다.</li>
-  <li>입력값을 &lt; 입력값, 빈도 &gt; 로 map에 저장한 후 입력이 끝나면 map을 순회하면서 가장 높은 빈도수를 구한 다음</li>
-  <li>
-    <p>가장 높은 빈도수와 일치하는 키값이 하나라면 그걸 바로 리턴하고 여러 개라면 그 수를 모두 배열에 저장한 뒤 오름차순으로 정렬해서 두번째로 작은 수를 구해서 리턴했다.<br /></p>
-  </li>
-  <li>범위는 입력 받으면서 최댓값과 최솟값을 구해서 두 값의 차를 출력하면 되는데 입력값이 음수도 들어오기 때문에 최댓값을 저장하는 변수의 초기값은 0이 아닌 Integer의 가장 작은 value로 설정하면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 1028 ms</li>
-  <li>메모리 : 105020 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/a66774c083b6bb3d29c76517e5342bbc.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2108" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2108 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Instructions</title><link href="http://localhost:4000/computer%20science/computer-architecture-03/" rel="alternate" type="text/html" title="컴퓨터구조) Instructions" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-03</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-03/"><![CDATA[<h1 id="instruction-set">Instruction Set</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-26T23:27:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">컴퓨터구조) Instructions</title><link href="http://localhost:4000/computer%20science/computer-architecture-03/" rel="alternate" type="text/html" title="컴퓨터구조) Instructions" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-03</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-03/"><![CDATA[<h1 id="instruction-set">Instruction Set</h1>
 <ul>
   <li>프로세서에서 지원하는 명령어들의 집합</li>
   <li>다른 컴퓨터는 다른 명령어셋을 가지고 있지만 기본적으로는 비슷하다.</li>
@@ -295,65 +212,144 @@ j L1 // 무조건 L1으로 Jump하는 것
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/cview.do?cid=16bd07027739ad22">컴퓨터구조 - 영남대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Instruction" /><summary type="html"><![CDATA[Instruction Set 프로세서에서 지원하는 명령어들의 집합 다른 컴퓨터는 다른 명령어셋을 가지고 있지만 기본적으로는 비슷하다. 현대 컴퓨터는 대부분 간단한 명령어셋(MIPS - RISK 방식)을 가지고 있다.]]></summary></entry><entry><title type="html">Java) BOJ 10989. 수 정렬하기3</title><link href="http://localhost:4000/boj/boj10989-java/" rel="alternate" type="text/html" title="Java) BOJ 10989. 수 정렬하기3" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10989-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10989-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="Instruction" /><summary type="html"><![CDATA[Instruction Set 프로세서에서 지원하는 명령어들의 집합 다른 컴퓨터는 다른 명령어셋을 가지고 있지만 기본적으로는 비슷하다. 현대 컴퓨터는 대부분 간단한 명령어셋(MIPS - RISK 방식)을 가지고 있다.]]></summary></entry><entry><title type="html">Java) BOJ 1427. 소트인사이드</title><link href="http://localhost:4000/boj/boj1427-java/" rel="alternate" type="text/html" title="Java) BOJ 1427. 소트인사이드" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1427-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1427-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/10989">https://www.acmicpc.net/problem/10989</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/1427">https://www.acmicpc.net/problem/1427</a><br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
 <hr />
 
 <ul>
-  <li>시간 제한 : 3 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <hr />
 
 <ul>
-  <li>N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.<br /><br /></li>
+  <li>배열을 정렬하는 것은 쉽다. 수가 주어지면, 그 수의 각 자리수를 내림차순으로 정렬해보자.<br /><br /></li>
 </ul>
 
 <h1 id="입력">입력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
+  <li>첫째 줄에 정렬하려고 하는 수 N이 주어진다. N은 1,000,000,000보다 작거나 같은 자연수이다.<br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.<br /><br /><br /></li>
+  <li>첫째 줄에 자리수를 내림차순으로 정렬한 수를 출력한다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>자바는 제한시간 3초에 메모리 제한은 512라 컬렉션을 쓸 수 없었다.(처음에 컬렉션 sort 써 봤는데 메모리 초과됨 ㅠ)</li>
-  <li>int 배열 메모리 계산해 보니까 합병정렬을 할 수 있을 정도가 되어서 합병정렬을 구현했다.</li>
-  <li>N의 최대값 10,000,000 * 4byte(int) = 40,000,000byte = 39,062kb = 약 38mb</li>
-  <li>합병정렬은 정렬할 배열과 같은 크기의 배열이 하나 더 필요하기 때문에 38 * 2 = 약 76mb</li>
-  <li>그래서 자바에서 기본적으로 잡아먹는 메모리를 더해도 통과할 수 있을거 같아서 합병정렬로 풀었는데 시간이 좀 아슬아슬했다.<br /><br /></li>
+  <li>입력값을 모듈러와 나누기 연산을 하면서 한 자릿수씩 배열에 저장한 다음 Collections의 sort를 사용해 내림차순 정렬했다.<br /><br /></li>
 </ul>
 
 <h1 id="결과">결과</h1>
 <hr />
 
 <ul>
-  <li>시간 : 2948 ms</li>
-  <li>메모리 : 383572 KB<br /><br /></li>
+  <li>시간 : 124 ms</li>
+  <li>메모리 : 14260 KB<br /><br /></li>
 </ul>
 
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/f9f2c1a27acf0a5bba1e0a65de41e81a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10989" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10989 제한 시간 제한 : 3 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 2750. 수 정렬하기</title><link href="http://localhost:4000/boj/boj2750-java/" rel="alternate" type="text/html" title="Java) BOJ 2750. 수 정렬하기" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2750-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2750-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/729070db4256846df492f9c70ff2476b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1427" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1427 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2108. 통계학</title><link href="http://localhost:4000/boj/boj2108-java/" rel="alternate" type="text/html" title="Java) BOJ 2108. 통계학" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2108-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2108-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2108">https://www.acmicpc.net/problem/2108</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>수를 처리하는 것은 통계학에서 상당히 중요한 일이다. 통계학에서 N개의 수를 대표하는 기본 통계값에는 다음과 같은 것들이 있다. 단, N은 홀수라고 가정하자.</p>
+  </li>
+  <li>산술평균 : N개의 수들의 합을 N으로 나눈 값</li>
+  <li>중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값</li>
+  <li>최빈값 : N개의 수들 중 가장 많이 나타나는 값</li>
+  <li>범위 : N개의 수들 중 최댓값과 최솟값의 차이</li>
+  <li>N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 500,000)이 주어진다. 단, N은 홀수이다. 그 다음 N개의 줄에는 정수들이 주어진다. 입력되는 정수의 절댓값은 4,000을 넘지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>첫째 줄에는 산술평균을 출력한다. 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.</p>
+  </li>
+  <li>
+    <p>둘째 줄에는 중앙값을 출력한다.</p>
+  </li>
+  <li>
+    <p>셋째 줄에는 최빈값을 출력한다. 여러 개 있을 때에는 최빈값 중 두 번째로 작은 값을 출력한다.</p>
+  </li>
+  <li>
+    <p>넷째 줄에는 범위를 출력한다.<br /><br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>각 알고리즘 자체는 어렵지 않았는데 종류가 많아서 그런가 구현에 시간이 걸렸다.</li>
+  <li>중앙값 구하는 알고리즘을 더 손에 익히면 좋겠다.</li>
+  <li>중앙값은 최대힙과 최소힙을 사용해서 중앙값보다 더 큰 수는 최소힙에 저장하고 작은 수는 최대힙에 저장한 후</li>
+  <li>
+    <p>최대힙과 최소힙의 길이가 같은 경우 top 평균을 구하고 최대힙이 더 크면 최대힙의 top을 반환하고 최소힙이 더 크면 최소힙의 top을 반환하도록 했다.<br /></p>
+  </li>
+  <li>최빈값은 배열 인덱스에 1:1로 매핑시켜서 빈도를 구하는 방식은 입력값의 범위가 커서 비효율적일 거 같아서 map을 사용했다.</li>
+  <li>입력값을 &lt; 입력값, 빈도 &gt; 로 map에 저장한 후 입력이 끝나면 map을 순회하면서 가장 높은 빈도수를 구한 다음</li>
+  <li>
+    <p>가장 높은 빈도수와 일치하는 키값이 하나라면 그걸 바로 리턴하고 여러 개라면 그 수를 모두 배열에 저장한 뒤 오름차순으로 정렬해서 두번째로 작은 수를 구해서 리턴했다.<br /></p>
+  </li>
+  <li>범위는 입력 받으면서 최댓값과 최솟값을 구해서 두 값의 차를 출력하면 되는데 입력값이 음수도 들어오기 때문에 최댓값을 저장하는 변수의 초기값은 0이 아닌 Integer의 가장 작은 value로 설정하면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 1028 ms</li>
+  <li>메모리 : 105020 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/a66774c083b6bb3d29c76517e5342bbc.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2108" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2108 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 2750. 수 정렬하기</title><link href="http://localhost:4000/boj/boj2750-java/" rel="alternate" type="text/html" title="Java) BOJ 2750. 수 정렬하기" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2750-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2750-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -464,7 +460,65 @@ j L1 // 무조건 L1으로 Jump하는 것
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/944a523911f3218c3088e59d5a8d6048.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2751" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2751 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 1436. 영화감독 숌</title><link href="http://localhost:4000/boj/boj1436-java/" rel="alternate" type="text/html" title="Java) BOJ 1436. 영화감독 숌" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1436-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1436-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/944a523911f3218c3088e59d5a8d6048.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2751" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2751 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 10989. 수 정렬하기3</title><link href="http://localhost:4000/boj/boj10989-java/" rel="alternate" type="text/html" title="Java) BOJ 10989. 수 정렬하기3" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10989-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10989-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/10989">https://www.acmicpc.net/problem/10989</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 3 초</li>
+  <li>메모리 제한 : 512 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>자바는 제한시간 3초에 메모리 제한은 512라 컬렉션을 쓸 수 없었다.(처음에 컬렉션 sort 써 봤는데 메모리 초과됨 ㅠ)</li>
+  <li>int 배열 메모리 계산해 보니까 합병정렬을 할 수 있을 정도가 되어서 합병정렬을 구현했다.</li>
+  <li>N의 최대값 10,000,000 * 4byte(int) = 40,000,000byte = 39,062kb = 약 38mb</li>
+  <li>합병정렬은 정렬할 배열과 같은 크기의 배열이 하나 더 필요하기 때문에 38 * 2 = 약 76mb</li>
+  <li>그래서 자바에서 기본적으로 잡아먹는 메모리를 더해도 통과할 수 있을거 같아서 합병정렬로 풀었는데 시간이 좀 아슬아슬했다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 2948 ms</li>
+  <li>메모리 : 383572 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/f9f2c1a27acf0a5bba1e0a65de41e81a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10989" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10989 제한 시간 제한 : 3 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 1436. 영화감독 숌</title><link href="http://localhost:4000/boj/boj1436-java/" rel="alternate" type="text/html" title="Java) BOJ 1436. 영화감독 숌" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1436-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1436-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -877,105 +931,4 @@ E	(46, 155)	5<br /></p>
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/709f749418093dd0e36f58f3c87f37e3.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No7568" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/7568 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">DB) 데이터베이스 관리 시스템</title><link href="http://localhost:4000/database/db-02-management-system/" rel="alternate" type="text/html" title="DB) 데이터베이스 관리 시스템" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/database/db-02-management-system</id><content type="html" xml:base="http://localhost:4000/database/db-02-management-system/"><![CDATA[<h1 id="데이터베이스-관리-시스템의-등장-배경">데이터베이스 관리 시스템의 등장 배경</h1>
-<h2 id="파일-시스템file-system">파일 시스템(file system)</h2>
-<ul>
-  <li>과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어</li>
-  <li>응용 프로그램마다 필요한 데이터를 별도의 파일로 관리함</li>
-</ul>
-
-<h3 id="파일-시스템의-문제점">파일 시스템의 문제점</h3>
-<ul>
-  <li>같은 내용의 데이터가 여러 파일에 중복 저장된다.
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">데이터 중복성</code></li>
-      <li>저장 공간의 낭비는 물론 <code class="language-plaintext highlighter-rouge">데이터 일관성</code>과 <code class="language-plaintext highlighter-rouge">데이터 무결성</code> 유지가 어렵다.<br /><br /></li>
-    </ul>
-  </li>
-  <li>응용 프로그램이 데이터 파일에 종속적이다.
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">데이터 종속성</code></li>
-      <li>사용하는 파일의 구조를 변경하면 응용 프로그램도 함께 변경해야 한다.<br /><br /></li>
-    </ul>
-  </li>
-  <li>데이터 파일에 대한 동시 공유, 보안, 회복 기능이 부족하다.</li>
-  <li>응용 프로그램 개발이 쉽지 않다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="데이터베이스-관리-시스템의-정의-및-특성">데이터베이스 관리 시스템의 정의 및 특성</h1>
-<h2 id="데이터베이스-관리-시스템dbms-database-management-system">데이터베이스 관리 시스템(DBMS, DataBase Management System)</h2>
-<ul>
-  <li>파일 시스템의 문제를 해결하기 위해 제시된 소프트웨어</li>
-  <li>조직에 필요한 데이터를 데이터베이스에 통합하여 저장하고 관리한다.</li>
-</ul>
-
-<h2 id="데이터베이스-관리-시스템의-주요-기능">데이터베이스 관리 시스템의 주요 기능</h2>
-<ul>
-  <li>정의 기능 : 데이터베이스 구조를 정의하거나 수정할 수 있다.</li>
-  <li>조작 기능 : 데이터를 삽입, 삭제, 수정, 검색하는 연산을 할 수 있다.</li>
-  <li>제어 기능 : 데이터를 항상 정확하고 안전하게 유지할 수 있다.</li>
-</ul>
-
-<h3 id="장점">장점</h3>
-<ul>
-  <li>데이터 중복을 통제할 수 있다.</li>
-  <li>데이터 독립성이 확보된다.</li>
-  <li>데이터를 동시 공유할 수 있다.</li>
-  <li>데이터 보안이 향상된다.</li>
-  <li>데이터 무결성을 유지할 수 있다.</li>
-  <li>표준화할 수 있다.</li>
-  <li>장애 발생 시 회복이 가능하다.</li>
-  <li>응용 프로그램 개발 비용이 줄어든다.</li>
-</ul>
-
-<h3 id="단점">단점</h3>
-<ul>
-  <li>(경제적, 컴퓨터 자원 포함)비용이 많이 든다.</li>
-  <li>백업과 회복 방법이 복잡하다.</li>
-  <li>중앙 집중 관리로 인한 취약점이 존재한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="데이터베이스-관리-시스템의-발전-과정">데이터베이스 관리 시스템의 발전 과정</h1>
-<h2 id="1세대--네트워크-dbms-계층-dbms-1960--1970">1세대 : 네트워크 DBMS, 계층 DBMS (1960 ~ 1970)</h2>
-<ul>
-  <li>네트워크 DBMS : 데이터베이스를 계층 형태로 구성
-    <ul>
-      <li>변경이 어렵다.</li>
-      <li>예) IDS(Integrated Data Store)<br /><br /></li>
-    </ul>
-  </li>
-  <li>계층 DBMS : 데이터베이스를 트리 형태로 구성
-    <ul>
-      <li>구조변경 및 복잡한 현실세계 반영이 어렵다.</li>
-      <li>예) IMS(Information Management System)<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="2세대--관계-dbms-1980-">2세대 : 관계 DBMS (1980 ~)</h2>
-<ul>
-  <li>관계 DBMS : 데이터베이스를 테이블 형태로 구성
-    <ul>
-      <li>이해하기 쉽다.</li>
-      <li>예) 오라클(Oracle), MS SQL 서버, 액세스(Access), 인포믹스(Informix), MySQL<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="3세대--객체지향-dbms-1980-후반--객체관계-dbms-1990-후반-">3세대 : 객체지향 DBMS (1980 후반 ~), 객체관계 DBMS (1990 후반 ~)</h2>
-<ul>
-  <li>객체지향 DBMS : 객체를 이용해 데이터베이스 구성
-    <ul>
-      <li>예) 오투(O2), 온투스(ONTOS), 젬스톤(GemStone)<br /><br /></li>
-    </ul>
-  </li>
-  <li>
-    <p>객체관계 DBMS : 객체 DBMS + 관계 DBMS<br /><br /></p>
-  </li>
-  <li>현대에는 이해하기 쉬운 2세대 RDBMS를 주로 사용하지만 객체지향 DBMS의 점유율도 점차 높아지고 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="출처">출처</h1>
-<ul>
-  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><category term="DBMS" /><category term="RDBMS" /><summary type="html"><![CDATA[데이터베이스 관리 시스템의 등장 배경 파일 시스템(file system) 과거에 이용하던 시스템으로 데이터를 파일로 관리하기 위하여 파일을 생성, 삭제, 수정, 검색하는 기능을 제공하는 소프트웨어 응용 프로그램마다 필요한 데이터를 별도의 파일로 관리함]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/709f749418093dd0e36f58f3c87f37e3.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No7568" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/7568 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry></feed>
