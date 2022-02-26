@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-27T01:08:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1181. 단어 정렬</title><link href="http://localhost:4000/boj/boj1181-java/" rel="alternate" type="text/html" title="Java) BOJ 1181. 단어 정렬" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1181-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1181-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-27T02:04:39+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1181. 단어 정렬</title><link href="http://localhost:4000/boj/boj1181-java/" rel="alternate" type="text/html" title="Java) BOJ 1181. 단어 정렬" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1181-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1181-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -58,7 +58,61 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/55e1fca4233f64a9249c59ee80aeb16f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1181" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1181 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 11650. 좌표 정렬하기</title><link href="http://localhost:4000/boj/boj11650-java/" rel="alternate" type="text/html" title="Java) BOJ 11650. 좌표 정렬하기" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11650-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11650-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/55e1fca4233f64a9249c59ee80aeb16f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1181" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1181 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 11651. 좌표 정렬하기2</title><link href="http://localhost:4000/boj/boj11651-java/" rel="alternate" type="text/html" title="Java) BOJ 11651. 좌표 정렬하기2" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11651-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11651-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/11651">https://www.acmicpc.net/problem/11651</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>2차원 평면 위의 점 N개가 주어진다. 좌표를 y좌표가 증가하는 순으로, y좌표가 같으면 x좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>11650번에서 썼던 Comparator 함수에서 기준값을 x에서 y로만 바꿔주었다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 860 ms</li>
+  <li>메모리 : 49896 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/bafcfe58127991148c9f70bab678805d.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11651" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11651 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 11650. 좌표 정렬하기</title><link href="http://localhost:4000/boj/boj11650-java/" rel="alternate" type="text/html" title="Java) BOJ 11650. 좌표 정렬하기" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11650-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11650-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -173,61 +227,87 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/978be8ad9674667c38e12894cd1c7144.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10814" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10814 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 11651. 좌표 정렬하기2</title><link href="http://localhost:4000/boj/boj11651-java/" rel="alternate" type="text/html" title="Java) BOJ 11651. 좌표 정렬하기2" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11651-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11651-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/978be8ad9674667c38e12894cd1c7144.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10814" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10814 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 18870. 좌표 압축</title><link href="http://localhost:4000/boj/boj18870-java/" rel="alternate" type="text/html" title="Java) BOJ 18870. 좌표 압축" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18870-java</id><content type="html" xml:base="http://localhost:4000/boj/boj18870-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/11651">https://www.acmicpc.net/problem/11651</a><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/18870">https://www.acmicpc.net/problem/18870</a><br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
 <hr />
 
 <ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 512 MB<br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <hr />
 
 <ul>
-  <li>2차원 평면 위의 점 N개가 주어진다. 좌표를 y좌표가 증가하는 순으로, y좌표가 같으면 x좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.<br /><br /></li>
+  <li>
+    <p>수직선 위에 N개의 좌표 X1, X2, …, XN이 있다. 이 좌표에 좌표 압축을 적용하려고 한다.</p>
+  </li>
+  <li>
+    <p>Xi를 좌표 압축한 결과 X’i의 값은 Xi &gt; Xj를 만족하는 서로 다른 좌표의 개수와 같아야 한다.</p>
+  </li>
+  <li>
+    <p>X1, X2, …, XN에 좌표 압축을 적용한 결과 X’1, X’2, …, X’N를 출력해보자.<br /><br /></p>
+  </li>
 </ul>
 
 <h1 id="입력">입력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.<br /><br /></li>
+  <li>첫째 줄에 N이 주어진다.</li>
+  <li>둘째 줄에는 공백 한 칸으로 구분된 X1, X2, …, XN이 주어진다.</li>
+  <li>1 ≤ N ≤ 1,000,000</li>
+  <li>-109 ≤ Xi ≤ 109<br /><br /></li>
 </ul>
 
 <h1 id="출력">출력</h1>
 <hr />
 
 <ul>
-  <li>첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.<br /><br /><br /></li>
+  <li>첫째 줄에 X’1, X’2, …, X’N을 공백 한 칸으로 구분해서 출력한다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>11650번에서 썼던 Comparator 함수에서 기준값을 x에서 y로만 바꿔주었다.<br /><br /></li>
+  <li>입력받은 수 배열에서 i번째 수보다 작은 수의 갯수를 세어서 i번째에 출력하면 되는데 i번째 수보다 작은 수가 몇 개인지 알려면 오름차순으로 정렬을 해 봐야 한다.</li>
+  <li>오름차순으로 정렬을 해 보면 i번째 수의 앞에 있는 수들은 다 작은 수들이니까 배열을 순회하면서 그 수가 몇 개인지 세면 i번째 수를 압축한 수가 된다.</li>
+  <li>
+    <p>정답 출력 형식을 보면 입력된 숫자의 순서대로 압축한 수를 출력해야 하는데 입력 배열을 정렬해 버리면 순서가 흐트러져서 정답 형식으로 출력할 수 없다. 그래서 입력 배열과 같은 임시 배열을 만들어 정렬한다.<br /></p>
+  </li>
+  <li>그런데 최대 백만개가 입력으로 주어지는데 2중 for문을 통해 하나씩 비교하는 <code class="language-plaintext highlighter-rouge">O(n^2)</code> 알고리즘을 사용하면 시간초과를 받을 것이기 때문에 정렬 알고리즘은 <code class="language-plaintext highlighter-rouge">O(n log n)</code> 시간복잡도를 가지는 것을 쓰는 것이 좋다.</li>
+  <li>그리고 입력으로 중복된 수가 들어오는데 예제의 답을 보면 중복된 수는 카운트하지 않는다.</li>
+  <li>즉 1, 1, 2 일 때 2보다 작은 수인 1이 2개 있는데 이럴 경우 답은 0, 0, 1이 되어야 한다. 2보다 작은 수는 1개가 되어야 한다.</li>
+  <li>
+    <p>그래서 오름차순으로 정렬하고 난 후 중복되는 숫자들은 제거해 주어야 한다. 중복 숫자를 제거하지 않으면 i번째 수보다 작은 수를 셀 때 오차가 생길 것이다.<br /></p>
+  </li>
+  <li>중복된 숫자들을 제거하고 나면 &lt;i번째 숫자, i번째 숫자보다 작은 숫자의 갯수&gt; pair를 저장하는 map을 만들어서 각 원소를 삽입해준다.</li>
+  <li>
+    <p>그 다음 마지막으로 입력 원본 배열을 순회하면서 map에서 i번째 원소를 key로 가지는 value를 찾아 출력하면 된다.<br /></p>
+  </li>
+  <li>시간제한이 2초인데 2788ms로 통과된 거 보면 자바는 느려서 시간을 좀 더 주는 것 같다.<br /><br /></li>
 </ul>
 
 <h1 id="결과">결과</h1>
 <hr />
 
 <ul>
-  <li>시간 : 860 ms</li>
-  <li>메모리 : 49896 KB<br /><br /></li>
+  <li>시간 : 2788 ms</li>
+  <li>메모리 : 254876 KB<br /><br /></li>
 </ul>
 
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/bafcfe58127991148c9f70bab678805d.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11651" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11651 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Instructions</title><link href="http://localhost:4000/computer%20science/computer-architecture-03/" rel="alternate" type="text/html" title="컴퓨터구조) Instructions" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-03</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-03/"><![CDATA[<h1 id="instruction-set">Instruction Set</h1>
+<script src="https://gist.github.com/miro7923/1cd7a372bd0ad6186aadcb222ca3afc6.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No18870" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/18870 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Instructions</title><link href="http://localhost:4000/computer%20science/computer-architecture-03/" rel="alternate" type="text/html" title="컴퓨터구조) Instructions" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-03</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-03/"><![CDATA[<h1 id="instruction-set">Instruction Set</h1>
 <ul>
   <li>프로세서에서 지원하는 명령어들의 집합</li>
   <li>다른 컴퓨터는 다른 명령어셋을 가지고 있지만 기본적으로는 비슷하다.</li>
@@ -703,62 +783,4 @@ j L1 // 무조건 L1으로 Jump하는 것
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/729070db4256846df492f9c70ff2476b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1427" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1427 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 10989. 수 정렬하기3</title><link href="http://localhost:4000/boj/boj10989-java/" rel="alternate" type="text/html" title="Java) BOJ 10989. 수 정렬하기3" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10989-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10989-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/10989">https://www.acmicpc.net/problem/10989</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 3 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>자바는 제한시간 3초에 메모리 제한은 512라 컬렉션을 쓸 수 없었다.(처음에 컬렉션 sort 써 봤는데 메모리 초과됨 ㅠ)</li>
-  <li>int 배열 메모리 계산해 보니까 합병정렬을 할 수 있을 정도가 되어서 합병정렬을 구현했다.</li>
-  <li>N의 최대값 10,000,000 * 4byte(int) = 40,000,000byte = 39,062kb = 약 38mb</li>
-  <li>합병정렬은 정렬할 배열과 같은 크기의 배열이 하나 더 필요하기 때문에 38 * 2 = 약 76mb</li>
-  <li>그래서 자바에서 기본적으로 잡아먹는 메모리를 더해도 통과할 수 있을거 같아서 합병정렬로 풀었는데 시간이 좀 아슬아슬했다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 2948 ms</li>
-  <li>메모리 : 383572 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/f9f2c1a27acf0a5bba1e0a65de41e81a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10989" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10989 제한 시간 제한 : 3 초 메모리 제한 : 512 MB]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/729070db4256846df492f9c70ff2476b.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1427" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1427 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry></feed>
