@@ -598,4 +598,10 @@ var store = [{
         "tags": ["Algorithm","BOJ","No11651","Sorting","Java"],
         "url": "/boj/boj11651-java/",
         "teaser": null
+      },{
+        "title": "Java) BOJ 1181. 단어 정렬",
+        "excerpt":"문제 링크       https://www.acmicpc.net/problem/1181     제한       시간 제한 : 2 초   메모리 제한 : 256 MB     문제       알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오.      길이가 짧은 것부터   길이가 같으면 사전 순으로     입력       첫째 줄에 단어의 개수 N이 주어진다. (1 ≤ N ≤ 20,000) 둘째 줄부터 N개의 줄에 걸쳐 알파벳 소문자로 이루어진 단어가 한 줄에 하나씩 주어진다. 주어지는 문자열의 길이는 50을 넘지 않는다.     출력       조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러 번 입력된 경우에는 한 번씩만 출력한다.      👀 풀이       Collections.sort와 Comparator 람다식을 이용해 구현했다.   마지막에 정렬한 값을 출력할 때엔 equals를 통한 value 비교를 해서 중복값은 걸러지도록 했다.     결과       시간 : 392 ms   메모리 : 23208 KB     코드      ","categories": ["BOJ"],
+        "tags": ["Algorithm","BOJ","No1181","Sorting","Java"],
+        "url": "/boj/boj1181-java/",
+        "teaser": null
       }]
