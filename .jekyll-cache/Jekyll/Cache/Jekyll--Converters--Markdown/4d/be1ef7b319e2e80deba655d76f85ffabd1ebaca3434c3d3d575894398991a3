@@ -1,0 +1,8 @@
+I"]<h1 id="-커넥션-풀-connection-pool이란">👀 커넥션 풀 (Connection Pool)이란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JDBC</code>를 연동하기 위해서는 드라이버를 로드하고 <code class="language-plaintext highlighter-rouge">JDBC URL</code>로 접속하여 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 얻어오는 단계를 거쳐야 한다.</li>
+  <li>커넥션 풀은 데이터베이스와 연결된 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 미리 생성하여 풀(Pool)에 저장해 두고 필요할 때마다 풀에 접근하여 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 사용하고 사용이 끝나면 다시 반환하는 것을 말한다.</li>
+  <li>사용자가 웹 사이트에 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 생성하게 되면 메모리 소모가 많고 시간도 오래 걸린다.</li>
+  <li>하지만 풀에 저장해서 사용한다면 미리 생성된 객체를 쓰기 때문에 생성에 시간이 걸리지도 않고 또 쓰지 않는 객체는 다시 풀 속에 넣어뒀다가 필요할 때 꺼내 쓰면 되기 때문에 불필요한 메모리 낭비가 없어 프로그램 효율과 성능이 전체적으로 증가하게 된다.</li>
+</ul>
+:ET
