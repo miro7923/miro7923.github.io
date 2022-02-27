@@ -121,7 +121,7 @@ tags:
 * `Implementation (구현) & Measurement (성능 측정)`
     * `실제 시스템`에 알고리즘을 `구현`하여 실제 작업(`workload`)에 대해서 성능을 `측정` 비교하는 방식으로 많이 쓰는 방식
 * `Simulation (모의 실험)`
-    * 알고리즘을 `모의 프로그램`으로 작성 후 `trace`를 입력으로 하여 결고 비교<br><br><br>
+    * 알고리즘을 `모의 프로그램`으로 작성 후 `trace`를 입력으로 하여 결과 비교<br><br><br>
 
 # 출처
 * [운영체제 - 이화여자대학교 KOCW 공개강의](http://www.kocw.net/home/search/kemView.do?kemId=1046323)
