@@ -1,0 +1,53 @@
+I"P<h1 id="-cpu-burst-time">👀 CPU-Burst time</h1>
+<ul>
+  <li>프로세스의 실행은 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻어서 작업을 수행하는 것과 <code class="language-plaintext highlighter-rouge">I/O</code> 작업을 수행하는 것으로 나눌 수 있다.</li>
+  <li>이 때 <code class="language-plaintext highlighter-rouge">CPU</code>만 쓰면서 <code class="language-plaintext highlighter-rouge">Instruction</code>을 실행하는 단계는 <code class="language-plaintext highlighter-rouge">CPU burst</code>라 하고 <code class="language-plaintext highlighter-rouge">I/O</code>만 실행하는 단계는 <code class="language-plaintext highlighter-rouge">I/O burst</code>라 한다.</li>
+  <li>현재 프로세스가 <code class="language-plaintext highlighter-rouge">CPU</code>를 사용중이라면 다른 프로세스는 사용이 끝날 때까지 기다려야 하겠지만 <code class="language-plaintext highlighter-rouge">I/O</code> 작업중이라면 다른 프로세스가 <code class="language-plaintext highlighter-rouge">CPU</code>를 쓸 수 있다.</li>
+  <li>프로세스의 종류는 여러 가지가 있기 때문에 시스템 자원을 효율적으로 쓸 수 있도록 <code class="language-plaintext highlighter-rouge">CPU 스케줄링</code>이 필요하다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="프로세스의-특성-분류">프로세스의 특성 분류</h1>
+<h2 id="io-bound-process">I/O-bound process</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 잡고 계산하는 시간보다 <code class="language-plaintext highlighter-rouge">I/O</code>에 많은 시간이 필요한 job (CPU burst가 아주 짧다)</li>
+  <li>주로 사람과 Interactive하는 job</li>
+</ul>
+
+<h2 id="cpu-bound-process">CPU-bound process</h2>
+<ul>
+  <li>계산 위주의 job (CPU burst가 아주 길다)<br /><br /><br /></li>
+</ul>
+
+<h1 id="cpu-scheduler">CPU Scheduler</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Ready</code> 상태의 프로세스 중에서 이번에 CPU를 줄 프로세스를 고른다.</li>
+</ul>
+
+<h2 id="dispatcher">Dispatcher</h2>
+<ul>
+  <li>CPU의 제어권을 CPU Scheduler에 의해 선택된 프로세스에게 넘긴다.</li>
+  <li>이 과정을 context switch(문맥 교환)라 한다.</li>
+</ul>
+
+<h2 id="cpu-스케줄링이-필요한-경우">CPU 스케줄링이 필요한 경우</h2>
+<ul>
+  <li>Running -&gt; Blocked (예: I/O 요청하는 시스템 콜)</li>
+  <li>Running -&gt; Ready (예: 할당시간 만료로 timer interrupt)</li>
+  <li>Blocked -&gt; Ready (얘: I/O 완료 후 인터럽트)</li>
+  <li>
+    <p>Terminate<br /><br /></p>
+  </li>
+  <li>스케줄링에는 강제로 빼앗지 않고 자진 반납하는 <code class="language-plaintext highlighter-rouge">non-preemptive</code>와 강제로 빼앗는 <code class="language-plaintext highlighter-rouge">preemptive</code>가 있다.</li>
+  <li>현대 대부분의 프로세서는 <code class="language-plaintext highlighter-rouge">preemptive</code>를 사용한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="스케줄링-성능-척도">스케줄링 성능 척도</h1>
+<ul>
+  <li>CPU utilization(이용률) :</li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
+</ul>
+:ET

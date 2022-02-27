@@ -1,0 +1,98 @@
+I""<h1 id="-cpu-burst-time">👀 CPU-Burst time</h1>
+<ul>
+  <li>프로세스의 실행은 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻어서 작업을 수행하는 것과 <code class="language-plaintext highlighter-rouge">I/O</code> 작업을 수행하는 것으로 나눌 수 있다.</li>
+  <li>이 때 <code class="language-plaintext highlighter-rouge">CPU</code>만 쓰면서 <code class="language-plaintext highlighter-rouge">Instruction</code>을 실행하는 단계는 <code class="language-plaintext highlighter-rouge">CPU burst</code>라 하고 <code class="language-plaintext highlighter-rouge">I/O</code>만 실행하는 단계는 <code class="language-plaintext highlighter-rouge">I/O burst</code>라 한다.</li>
+  <li>현재 프로세스가 <code class="language-plaintext highlighter-rouge">CPU</code>를 사용중이라면 다른 프로세스는 사용이 끝날 때까지 기다려야 하겠지만 <code class="language-plaintext highlighter-rouge">I/O</code> 작업중이라면 다른 프로세스가 <code class="language-plaintext highlighter-rouge">CPU</code>를 쓸 수 있다.</li>
+  <li>프로세스의 종류는 여러 가지가 있기 때문에 시스템 자원을 효율적으로 쓸 수 있도록 <code class="language-plaintext highlighter-rouge">CPU 스케줄링</code>이 필요하다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="프로세스의-특성-분류">프로세스의 특성 분류</h1>
+<h2 id="io-bound-process">I/O-bound process</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>를 잡고 계산하는 시간보다 <code class="language-plaintext highlighter-rouge">I/O</code>에 많은 시간이 필요한 job (CPU burst가 아주 짧다)</li>
+  <li>주로 사람과 Interactive하는 job</li>
+</ul>
+
+<h2 id="cpu-bound-process">CPU-bound process</h2>
+<ul>
+  <li>계산 위주의 job (CPU burst가 아주 길다)<br /><br /><br /></li>
+</ul>
+
+<h1 id="cpu-scheduler">CPU Scheduler</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Ready</code> 상태의 프로세스 중에서 이번에 CPU를 줄 프로세스를 고른다.</li>
+</ul>
+
+<h2 id="dispatcher">Dispatcher</h2>
+<ul>
+  <li>CPU의 제어권을 CPU Scheduler에 의해 선택된 프로세스에게 넘긴다.</li>
+  <li>이 과정을 context switch(문맥 교환)라 한다.</li>
+</ul>
+
+<h2 id="cpu-스케줄링이-필요한-경우">CPU 스케줄링이 필요한 경우</h2>
+<ul>
+  <li>Running -&gt; Blocked (예: I/O 요청하는 시스템 콜)</li>
+  <li>Running -&gt; Ready (예: 할당시간 만료로 timer interrupt)</li>
+  <li>Blocked -&gt; Ready (얘: I/O 완료 후 인터럽트)</li>
+  <li>
+    <p>Terminate<br /><br /></p>
+  </li>
+  <li>스케줄링에는 강제로 빼앗지 않고 자진 반납하는 <code class="language-plaintext highlighter-rouge">non-preemptive</code>와 강제로 빼앗는 <code class="language-plaintext highlighter-rouge">preemptive</code>가 있다.</li>
+  <li>현대 대부분의 프로세서는 <code class="language-plaintext highlighter-rouge">preemptive</code>를 사용한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="스케줄링-성능-척도">스케줄링 성능 척도</h1>
+<ul>
+  <li>CPU utilization(이용률) : <code class="language-plaintext highlighter-rouge">CPU</code>가 얼마나 쉼 없이 일하는지</li>
+  <li>Throughput(처리량) : 단위 시간동안 처리하는 작업의 양이 얼마나 많은지</li>
+  <li>Turnaround time(소요시간, 반환시간) : 프로세스가 CPU를 얻어서 작업을 시작하고 끝날 때까지 걸린 총 시간(대기시간 포함)</li>
+  <li>Waiting time(대기 시간) : Ready queue에서 CPU를 얻을 때까지 기다린 시간. 작업 시간은 제외하고 순수하게 기다린 시간만 본다.</li>
+  <li>Response tiem(응답 시간) : (time-sharing 시스템에서) 처음으로 CPU를 얻어서 작업을 시작하기까지 걸린 시간<br /><br /><br /></li>
+</ul>
+
+<h1 id="스케줄링-알고리즘">스케줄링 알고리즘</h1>
+<h2 id="fcfs-first-come-first-serve">FCFS (First-Come First-Serve)</h2>
+<ul>
+  <li>선착순 방식으로 먼저 온 순서대로 CPU를 얻어서 작업을 시작하고 나중에 온 프로세스들은 이전 작업이 끝날 때까지 기다린다.</li>
+  <li>오래 걸리는 작업이 먼저 와서 계속 수행되고 시간이 짧은 작업들이 뒤에서 기다리고 있는 경우에는 효율적이지 않다. 이런 경우엔 평균 대기 시간이 길어짐</li>
+  <li>짧은 작업이 먼저 와서 처리된 후 오래 걸리는 작업을 처리하게 되면 평균 대기 시간이 짧아지지만 늘 이렇게 프로세스가 도착하지는 않을 것이니까 일반적으로는 효율적이지 않은 방식이라고 할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Convoy effect</code> : 수행 시간이 긴 작업이 먼저 와서 처리되는 동안 짧은 작업들은 수행되지 못하고 기다리고 있는 현상</li>
+</ul>
+
+<h2 id="sjf-shortest-job-first">SJF (Shortest-Job-First)</h2>
+<ul>
+  <li>도착하는 프로세스마다 CPU burst time을 예측해서 CPU burst time이 가장 짧은 프로세스를 제일 먼저 스케줄한다. 그래서 평균 대기시간이 가장 짧다.</li>
+  <li>두 가지 방식이 있다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Non-preemptive</code> : 일단 CPU를 잡으면 다음 작업이 지금 수행 중인 작업보다 실행 시간이 더 짧아도 지금 작업이 완료되기 전 까지는 CPU를 넘겨주지 않는다.</li>
+      <li><code class="language-plaintext highlighter-rouge">Preemptive</code> : 현재 수행 중인 프로세스 다음에 온 프로세스의 수행 시간이 더 짧으면 CPU를 뺏어서 시간이 더 짧은 프로세스에게 넘긴다. 근데 이러다보면 수행 시간이 긴 프로세스는 평생 CPU를 얻지 못 할 수도 있어서(<code class="language-plaintext highlighter-rouge">starvation</code> 기아 현상) 아주 좋은 방법은 아니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="다음-cpu-burst-time-예측-방법">다음 CPU Burst time 예측 방법</h3>
+<ul>
+  <li>완벽하게 계산하기 보다는 과거 데이터로부터 추정(estimate)하는 방식을 사용한다.</li>
+  <li>n번째 프로세스의 실제 CPU 사용 시간과 n번째 프로세스의 CPU 사용 시간을 예측했던 값들을 일정 비율씩 곱해서 더해주는 방식으로 n + 1번째 프로세스의 CPU burst time을 예측한다.</li>
+</ul>
+
+<h2 id="priority-scheduling">Priority Scheduling</h2>
+<ul>
+  <li>우선순위 스케줄링이라 하며 프로세스에게 부여된 우선순위가 높은 순서대로 CPU를 할당한다.</li>
+  <li>이것 또한 나중에 도착했지만 우선순위가 더 높은 프로세스에 대해 <code class="language-plaintext highlighter-rouge">Preemptive</code>와 <code class="language-plaintext highlighter-rouge">Non-preemptive</code> 방식으로 나뉜다.</li>
+  <li>우선순위 스케줄링의 문제점 또한 우선순위가 낮은 프로세스는 평생 CPU를 얻지 못하는 <code class="language-plaintext highlighter-rouge">Starvation</code> 현상이 생길 수 있다는 것이다.</li>
+  <li>그래서 <code class="language-plaintext highlighter-rouge">Aging</code> 기법을 통해 우선순위가 낮아도 오래 기다렸으면 우선순위를 높여주는 방식을 쓴다.</li>
+</ul>
+
+<h2 id="round-robin-rr">Round Robin (RR)</h2>
+<ul>
+  <li>대부분의 운영체제에서 사용하는 방식으로 각 프로세스는 동일한 크기의 <code class="language-plaintext highlighter-rouge">CPU 할당 시간(time quantum)</code>을 가지고 할당된 시간이 끝나면 <code class="language-plaintext highlighter-rouge">CPU</code>를 다음 프로세스에게 넘겨주고 <code class="language-plaintext highlighter-rouge">Ready queue</code>의 맨 뒤에 가서 다시 줄을 서는 방식이다.</li>
+  <li>그래서 모든 프로세스는 <code class="language-plaintext highlighter-rouge">Ready queue</code>의 크기만큼 기다리게 되는데 수행 시간이 짧은 프로세스는 그만큼 빨리 <code class="language-plaintext highlighter-rouge">CPU</code>를 쓰고 <code class="language-plaintext highlighter-rouge">Ready queue</code>에서 빠져나가기 때문에 각 프로세스의 대기 시간은 본인의 <code class="language-plaintext highlighter-rouge">CPU</code> 사용 시간에 비례하게 된다.</li>
+  <li>할당 시간이 너무 커도</li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
+</ul>
+:ET

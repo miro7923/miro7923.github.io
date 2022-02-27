@@ -1,0 +1,8 @@
+I"V<h1 id="-cpu-burst-time">👀 CPU-Burst time</h1>
+<ul>
+  <li>프로세스의 실행은 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻어서 작업을 수행하는 것과 <code class="language-plaintext highlighter-rouge">I/O</code> 작업을 수행하는 것으로 나눌 수 있다.</li>
+  <li>이 때 <code class="language-plaintext highlighter-rouge">CPU</code>만 쓰면서 <code class="language-plaintext highlighter-rouge">Instruction</code>을 실행하는 단계는 <code class="language-plaintext highlighter-rouge">CPU burst</code>라 하고 <code class="language-plaintext highlighter-rouge">I/O</code>만 실행하는 단계는 <code class="language-plaintext highlighter-rouge">I/O burst</code>라 한다.</li>
+  <li>현재 프로세스가 <code class="language-plaintext highlighter-rouge">CPU</code>를 사용중이라면 다른 프로세스는 사용이 끝날 때까지 기다려야 하겠지만 <code class="language-plaintext highlighter-rouge">I/O</code> 작업중이라면 다른 프로세스가 <code class="language-plaintext highlighter-rouge">CPU</code>를 쓸 수 있다.</li>
+  <li>프로세스의 종류는 여러 가지가 있기 때문에 시스템 자원을 효율적으로 쓸 수 있도록 <code class="language-plaintext highlighter-rouge">CPU 스케줄링</code>이 필요하다.<br /><br /><br /></li>
+</ul>
+:ET
