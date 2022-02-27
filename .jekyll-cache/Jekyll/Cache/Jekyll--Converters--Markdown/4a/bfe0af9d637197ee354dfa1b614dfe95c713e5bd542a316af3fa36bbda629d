@@ -1,0 +1,84 @@
+I"<h1 id="-jstljsp-standard-tag-library이란">👀 JSTL(JSP Standard Tag Library)이란?</h1>
+<ul>
+  <li>자카르타(아파치)에서 제공하는 자주 사용되는 태그를 모아놓은 형태</li>
+  <li>
+    <p>태그를 이용해서 프로그래밍 언어로 코드를 쓰는 것과 같은 동작을 할 수 있다.</p>
+  </li>
+  <li>CORE 라이브러리 : 기본적인 동작 제공
+    <ul>
+      <li>변수 선언, 조건문, 반복문 코드를 처리하는 태그</li>
+      <li>페이지 이동처리 태그 (태그만 사용해서 반복문 처리를 할 수 있음)</li>
+    </ul>
+  </li>
+  <li>Formatting 라이브러리
+    <ul>
+      <li>데이터 국제화 처리 (다국어) 태그</li>
+      <li>형식화 (날짜, 숫자, 시간) 태그</li>
+    </ul>
+  </li>
+  <li>DB 라이브러리 : sql구문처리 동작
+    <ul>
+      <li>CRUD 동작 수행 태그</li>
+    </ul>
+  </li>
+  <li>XML 라이브러리
+    <ul>
+      <li>XML 문서 읽고 처리하는 태그</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="다운로드-및-설치">다운로드 및 설치</h2>
+<ul>
+  <li>톰캣 홈페이지에서 taglibs 메뉴에 들어가서 하단에</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>taglibs-standard-jstlel-1.2.5.jar
+taglibs-standard-spec-1.2.5.jar
+taglibs-standard-impl-1.2.5.jar
+</code></pre></div></div>
+
+<ul>
+  <li>세 파일을 다운받는다.</li>
+  <li>다운받은 파일들을 <code class="language-plaintext highlighter-rouge">WEB-INF/lib</code>에 복붙하면 설치 완료<br /><br /><br /></li>
+</ul>
+
+<h1 id="jstl-사용">JSTL 사용</h1>
+<h2 id="변수-선언-및-사용">변수 선언 및 사용</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>먼저 페이지 상단에 라이브러리 인클루드 해 주어야 한다.<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- &lt;c:set var="변수명" value="값"/&gt; --%&gt;</span>
+  <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"num3"</span><span class="na"> value=</span><span class="s">"300"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"num4"</span><span class="na"> value=</span><span class="s">"400"</span><span class="nt">/&gt;</span>
+  
+  <span class="c">&lt;!-- 변수값 출력할 때엔 el 표현식 사용 --&gt;</span>
+  <span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">num3</span> <span class="si">}</span><span class="s">"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">num4</span> <span class="si">}</span><span class="s">"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;hr&gt;</span>
+  
+  ${num3 } + ${num4 } = ${num3 + num4 }
+</code></pre></div></div>
+
+<ul>
+  <li>태그 속에서 변수를 선언하고 값을 넣어줄 수 있다.<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"name"</span><span class="na"> value=</span><span class="s">"S22"</span><span class="na"> scope=</span><span class="s">"request"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>스크립틀릿을 이용해서 자바 코드로 변수를 선언하면 지역변수로 인식되어서 선언한 페이지에서만 쓸 수 있는데 <code class="language-plaintext highlighter-rouge">JSTL</code> 태그를 사용하면 변수의 영역도 지정해 줄 수 있어서 자바 코드를 사용하는 것에 비해 훨씬 활용도를 높일 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">scope : page, request, session, application</code> 네 영역 모두 설정해 줄 수 있다. <code class="language-plaintext highlighter-rouge">scope</code>를 설정하지 않으면 기본값은 <code class="language-plaintext highlighter-rouge">page</code>라서 선언한 페이지에서만 쓸 수 있다.</li>
+</ul>
+
+<h2 id="출력">출력</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"안녕하세요 JSTL입니다."</span><span class="nt">&gt;&lt;/c:out&gt;</span>
+</code></pre></div></div>
+:ET

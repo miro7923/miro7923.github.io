@@ -1,4 +1,554 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-27T13:08:33+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JSP) 커넥션 풀</title><link href="http://localhost:4000/jsp/connection-pool/" rel="alternate" type="text/html" title="JSP) 커넥션 풀" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/jsp/connection-pool</id><content type="html" xml:base="http://localhost:4000/jsp/connection-pool/"><![CDATA[<h1 id="-커넥션-풀-connection-pool이란">👀 커넥션 풀 (Connection Pool)이란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-27T14:32:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1181. 단어 정렬</title><link href="http://localhost:4000/boj/boj1181-java/" rel="alternate" type="text/html" title="Java) BOJ 1181. 단어 정렬" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1181-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1181-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1181">https://www.acmicpc.net/problem/1181</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오.</li>
+</ul>
+
+<ol>
+  <li>길이가 짧은 것부터</li>
+  <li>길이가 같으면 사전 순으로<br /><br /></li>
+</ol>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 단어의 개수 N이 주어진다. (1 ≤ N ≤ 20,000) 둘째 줄부터 N개의 줄에 걸쳐 알파벳 소문자로 이루어진 단어가 한 줄에 하나씩 주어진다. 주어지는 문자열의 길이는 50을 넘지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러 번 입력된 경우에는 한 번씩만 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>Collections.sort와 Comparator 람다식을 이용해 구현했다.</li>
+  <li>마지막에 정렬한 값을 출력할 때엔 equals를 통한 value 비교를 해서 중복값은 걸러지도록 했다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 392 ms</li>
+  <li>메모리 : 23208 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/55e1fca4233f64a9249c59ee80aeb16f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1181" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1181 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 18870. 좌표 압축</title><link href="http://localhost:4000/boj/boj18870-java/" rel="alternate" type="text/html" title="Java) BOJ 18870. 좌표 압축" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18870-java</id><content type="html" xml:base="http://localhost:4000/boj/boj18870-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/18870">https://www.acmicpc.net/problem/18870</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 512 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>수직선 위에 N개의 좌표 X1, X2, …, XN이 있다. 이 좌표에 좌표 압축을 적용하려고 한다.</p>
+  </li>
+  <li>
+    <p>Xi를 좌표 압축한 결과 X’i의 값은 Xi &gt; Xj를 만족하는 서로 다른 좌표의 개수와 같아야 한다.</p>
+  </li>
+  <li>
+    <p>X1, X2, …, XN에 좌표 압축을 적용한 결과 X’1, X’2, …, X’N를 출력해보자.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 N이 주어진다.</li>
+  <li>둘째 줄에는 공백 한 칸으로 구분된 X1, X2, …, XN이 주어진다.</li>
+  <li>1 ≤ N ≤ 1,000,000</li>
+  <li>-109 ≤ Xi ≤ 109<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 X’1, X’2, …, X’N을 공백 한 칸으로 구분해서 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>입력받은 수 배열에서 i번째 수보다 작은 수의 갯수를 세어서 i번째에 출력하면 되는데 i번째 수보다 작은 수가 몇 개인지 알려면 오름차순으로 정렬을 해 봐야 한다.</li>
+  <li>오름차순으로 정렬을 해 보면 i번째 수의 앞에 있는 수들은 다 작은 수들이니까 배열을 순회하면서 그 수가 몇 개인지 세면 i번째 수를 압축한 수가 된다.</li>
+  <li>
+    <p>정답 출력 형식을 보면 입력된 숫자의 순서대로 압축한 수를 출력해야 하는데 입력 배열을 정렬해 버리면 순서가 흐트러져서 정답 형식으로 출력할 수 없다. 그래서 입력 배열과 같은 임시 배열을 만들어 정렬한다.<br /></p>
+  </li>
+  <li>그런데 최대 백만개가 입력으로 주어지는데 2중 for문을 통해 하나씩 비교하는 <code class="language-plaintext highlighter-rouge">O(n^2)</code> 알고리즘을 사용하면 시간초과를 받을 것이기 때문에 정렬 알고리즘은 <code class="language-plaintext highlighter-rouge">O(n log n)</code> 시간복잡도를 가지는 것을 쓰는 것이 좋다.</li>
+  <li>그리고 입력으로 중복된 수가 들어오는데 예제의 답을 보면 중복된 수는 카운트하지 않는다.</li>
+  <li>즉 1, 1, 2 일 때 2보다 작은 수인 1이 2개 있는데 이럴 경우 답은 0, 0, 1이 되어야 한다. 2보다 작은 수는 1개가 되어야 한다.</li>
+  <li>
+    <p>그래서 오름차순으로 정렬하고 난 후 중복되는 숫자들은 제거해 주어야 한다. 중복 숫자를 제거하지 않으면 i번째 수보다 작은 수를 셀 때 오차가 생길 것이다.<br /></p>
+  </li>
+  <li>중복된 숫자들을 제거하고 나면 &lt;i번째 숫자, i번째 숫자보다 작은 숫자의 갯수&gt; pair를 저장하는 map을 만들어서 각 원소를 삽입해준다.</li>
+  <li>
+    <p>그 다음 마지막으로 입력 원본 배열을 순회하면서 map에서 i번째 원소를 key로 가지는 value를 찾아 출력하면 된다.<br /></p>
+  </li>
+  <li>시간제한이 2초인데 2788ms로 통과된 거 보면 자바는 느려서 시간을 좀 더 주는 것 같다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 2788 ms</li>
+  <li>메모리 : 254876 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/1cd7a372bd0ad6186aadcb222ca3afc6.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No18870" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/18870 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 11650. 좌표 정렬하기</title><link href="http://localhost:4000/boj/boj11650-java/" rel="alternate" type="text/html" title="Java) BOJ 11650. 좌표 정렬하기" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11650-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11650-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/11650">https://www.acmicpc.net/problem/11650</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>2차원 평면 위의 점 N개가 주어진다. 좌표를 x좌표가 증가하는 순으로, x좌표가 같으면 y좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음엔 <code class="language-plaintext highlighter-rouge">Pair</code> 클래스에서 <code class="language-plaintext highlighter-rouge">Comparable</code>을 구현해서 썼는데 리턴값을 잘못 설정했는지 계속 7%에서 틀렸다 ㅠ.ㅠ</li>
+  <li>그래서 구글링해서 Comparator 람다식으로 바꾸고 통과함<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 800 ms</li>
+  <li>메모리 : 51232 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/49b9efbb416fe3905a7e48e17b4d3990.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11650" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11650 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 10814. 나이순 정렬</title><link href="http://localhost:4000/boj/boj10814-java/" rel="alternate" type="text/html" title="Java) BOJ 10814. 나이순 정렬" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10814-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10814-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/10814">https://www.acmicpc.net/problem/10814</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오.</li>
+</ul>
+
+<ol>
+  <li>길이가 짧은 것부터</li>
+  <li>길이가 같으면 사전 순으로<br /><br /></li>
+</ol>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 단어의 개수 N이 주어진다. (1 ≤ N ≤ 20,000) 둘째 줄부터 N개의 줄에 걸쳐 알파벳 소문자로 이루어진 단어가 한 줄에 하나씩 주어진다. 주어지는 문자열의 길이는 50을 넘지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러 번 입력된 경우에는 한 번씩만 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>Collections.sort와 Comparator 람다식을 이용해 구현했다.</li>
+  <li>마지막에 정렬한 값을 출력할 때엔 equals를 통한 value 비교를 해서 중복값은 걸러지도록 했다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 392 ms</li>
+  <li>메모리 : 23208 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/978be8ad9674667c38e12894cd1c7144.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10814" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10814 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">JSP) 서블릿</title><link href="http://localhost:4000/jsp/JSP-servlet/" rel="alternate" type="text/html" title="JSP) 서블릿" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-servlet</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-servlet/"><![CDATA[<h1 id="-서블릿servlet이란">👀 서블릿(Servlet)이란?</h1>
+<ul>
+  <li>자바를 이용해서 웹 개발을 하기 위한 기술로 동적인 데이터를 처리하는 페이지인 <code class="language-plaintext highlighter-rouge">JSP</code> 파일을 최종적으로 사용하려면 자바 클래스 파일로 만들어야 하는데 서블릿은 그 중간 과정이라 할 수 있다.</li>
+  <li>즉 <code class="language-plaintext highlighter-rouge">JSP(.jsp) -&gt; Servlet(.java) -&gt; 클래스파일(.class)</code> 이런 과정을 거치게 된다.</li>
+</ul>
+
+<h2 id="서블릿-작성-규칙">서블릿 작성 규칙</h2>
+<p>1) javax.servlet.Servlet 인터페이스 구현<br />
+2) 1)의 구현이 어려운 경우 javax.servlet.http.HttpServlet 클래스 상속(일반적으로 사용)<br />
+3) doGet()/ doPost() 생성(오버라이딩), HttpServletRequest/ HttpServletResponse 객체 구현<br />
+4) IOException/ ServletException을 처리해야 함<br />
+5) web.xml 파일을 통해서 주소 매핑 (어노테이션 처리)<br /></p>
+
+<h2 id="서블릿-실행-구조">서블릿 실행 구조</h2>
+
+<p><img src="../../assets/images/servletProcess.png" /><br /><br /><br /></p>
+
+<h1 id="서블릿-클래스-만들기">서블릿 클래스 만들기</h1>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="Servlet" /><summary type="html"><![CDATA[👀 서블릿(Servlet)이란? 자바를 이용해서 웹 개발을 하기 위한 기술로 동적인 데이터를 처리하는 페이지인 JSP 파일을 최종적으로 사용하려면 자바 클래스 파일로 만들어야 하는데 서블릿은 그 중간 과정이라 할 수 있다. 즉 JSP(.jsp) -&gt; Servlet(.java) -&gt; 클래스파일(.class) 이런 과정을 거치게 된다.]]></summary></entry><entry><title type="html">JSP) JSTL</title><link href="http://localhost:4000/jsp/JSP-jstl/" rel="alternate" type="text/html" title="JSP) JSTL" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-jstl</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-jstl/"><![CDATA[<h1 id="-jstljsp-standard-tag-library이란">👀 JSTL(JSP Standard Tag Library)이란?</h1>
+<ul>
+  <li>자카르타(아파치)에서 제공하는 자주 사용되는 태그를 모아놓은 형태</li>
+  <li>
+    <p>태그를 이용해서 프로그래밍 언어로 코드를 쓰는 것과 같은 동작을 할 수 있다.</p>
+  </li>
+  <li>CORE 라이브러리 : 기본적인 동작 제공
+    <ul>
+      <li>변수 선언, 조건문, 반복문 코드를 처리하는 태그</li>
+      <li>페이지 이동처리 태그 (태그만 사용해서 반복문 처리를 할 수 있음)</li>
+    </ul>
+  </li>
+  <li>Formatting 라이브러리
+    <ul>
+      <li>데이터 국제화 처리 (다국어) 태그</li>
+      <li>형식화 (날짜, 숫자, 시간) 태그</li>
+    </ul>
+  </li>
+  <li>DB 라이브러리 : sql구문처리 동작
+    <ul>
+      <li>CRUD 동작 수행 태그</li>
+    </ul>
+  </li>
+  <li>XML 라이브러리
+    <ul>
+      <li>XML 문서 읽고 처리하는 태그</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="다운로드-및-설치">다운로드 및 설치</h2>
+<ul>
+  <li>톰캣 홈페이지에서 taglibs 메뉴에 들어가서 하단에</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>taglibs-standard-jstlel-1.2.5.jar
+taglibs-standard-spec-1.2.5.jar
+taglibs-standard-impl-1.2.5.jar
+</code></pre></div></div>
+
+<ul>
+  <li>세 파일을 다운받는다.</li>
+  <li>다운받은 파일들을 <code class="language-plaintext highlighter-rouge">WEB-INF/lib</code>에 복붙하면 설치 완료<br /><br /><br /></li>
+</ul>
+
+<h1 id="core-라이브러리">CORE 라이브러리</h1>
+<h2 id="변수-선언-및-사용">변수 선언 및 사용</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>먼저 페이지 상단에 라이브러리 인클루드 해 주어야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">prefix</code>는 태그의 접두사를 지정해 주는 것으로 <code class="language-plaintext highlighter-rouge">prefix</code>에 지정한 문자를 쓰고 <code class="language-plaintext highlighter-rouge">:</code>을 쓰면 태그 예약어들을 사용할 수 있다.<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- &lt;c:set var="변수명" value="값"/&gt; --%&gt;</span>
+  <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"num3"</span><span class="na"> value=</span><span class="s">"300"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"num4"</span><span class="na"> value=</span><span class="s">"400"</span><span class="nt">/&gt;</span>
+  
+  <span class="c">&lt;!-- 변수값 출력할 때엔 el 표현식 사용 --&gt;</span>
+  <span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">num3</span> <span class="si">}</span><span class="s">"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">num4</span> <span class="si">}</span><span class="s">"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;hr&gt;</span>
+  
+  ${num3 } + ${num4 } = ${num3 + num4 }
+</code></pre></div></div>
+
+<ul>
+  <li>태그 속에서 변수를 선언하고 값을 넣어줄 수 있다.<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"name"</span><span class="na"> value=</span><span class="s">"S22"</span><span class="na"> scope=</span><span class="s">"request"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>스크립틀릿을 이용해서 자바 코드로 변수를 선언하면 지역변수로 인식되어서 선언한 페이지에서만 쓸 수 있는데 <code class="language-plaintext highlighter-rouge">JSTL</code> 태그를 사용하면 변수의 영역도 지정해 줄 수 있어서 자바 코드를 사용하는 것에 비해 훨씬 활용도를 높일 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">scope : page, request, session, application</code> 네 영역 모두 설정해 줄 수 있다. <code class="language-plaintext highlighter-rouge">scope</code>를 설정하지 않으면 기본값은 <code class="language-plaintext highlighter-rouge">page</code>라서 선언한 페이지에서만 쓸 수 있다.</li>
+</ul>
+
+<h2 id="출력">출력</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"안녕하세요 JSTL입니다."</span><span class="nt">&gt;&lt;/c:out&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>만약 <code class="language-plaintext highlighter-rouge">null</code>값을 출력하는 경우 빈공백으로 처리된다. (JSP 표현식은 컴파일 에러남)</li>
+  <li>컴파일 에러난 페이지를 보여주는 것 보다는 <code class="language-plaintext highlighter-rouge">null</code>값을 출력하는게 사용자 신뢰도에는 더 좋다.<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span> <span class="nt">abc&gt;</span>태그는 abc입니다.<span class="nt">&lt;hr&gt;</span>
+
+<span class="ni">&amp;lt;</span>abc&gt;태그는 abc입니다.<span class="nt">&lt;hr&gt;</span>
+
+<span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"&lt;abc&gt;태그는 abc입니다."</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>만약 태그 자체를 출력하고 싶다면 위 세 가지 방법으로 출력이 가능하다.</li>
+</ul>
+
+<h2 id="조건문">조건문</h2>
+<h3 id="if">if</h3>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- jstl 변수 2개 생성(속성) --&gt;</span>
+<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"name"</span><span class="na"> value=</span><span class="s">"itwill"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"tel"</span><span class="na"> value=</span><span class="s">"010-1234-5678"</span><span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- 사용자의 이름이 "itwill"인지 체크 --&gt;</span>
+<span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">name</span> <span class="o">==</span> <span class="l">'itwill'</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span><span class="c">&lt;!-- 표현식 안에서는 작은 따옴표를 써야 함(큰 따옴표 쓰면 밖에 따옴표랑 반응함) --&gt;</span>
+  사용자 이름 : ${name }<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;/c:if&gt;</span>
+
+<span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="mi">100</span> <span class="n">lt</span> <span class="mi">200</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span><span class="c">&lt;!-- lt : 비교연산자(&lt;)와 같은 역할을 하는 예약어 --&gt;</span>
+  200이 더 크다.<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;/c:if&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HTML</code> 태그처럼 태그 사이에 출력하고 싶은 문구를 작성할 수 있다.<br /><br /></li>
+</ul>
+
+<h3 id="switch-case">switch ~case</h3>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:choose&gt;</span>
+  <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">param</span><span class="o">.</span><span class="na">num1</span> <span class="n">le</span> <span class="n">param</span><span class="o">.</span><span class="na">num2</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+    num1! <span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;/c:when&gt;</span>
+  <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">param</span><span class="o">.</span><span class="na">num1</span> <span class="n">lt</span> <span class="n">param</span><span class="o">.</span><span class="na">num2</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+    num2! <span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;/c:when&gt;</span>
+  <span class="nt">&lt;c:otherwise&gt;</span>
+    그 외 나머지<span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;/c:otherwise&gt;</span>
+<span class="nt">&lt;/c:choose&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">choose</code> 태그를 사용해서 <code class="language-plaintext highlighter-rouge">switch ~case</code>문을 작성할 수 있다.<br /><br /></li>
+</ul>
+
+<h2 id="반복문">반복문</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"i"</span><span class="na"> begin=</span><span class="s">"1"</span><span class="na"> end=</span><span class="s">"10"</span><span class="na"> step=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  ${i }
+<span class="nt">&lt;/c:forEach&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위와 같이 <code class="language-plaintext highlighter-rouge">for</code>문에서 변수를 선언하고 조건식, 증감식을 설정해 줄 수 있는데 저렇게는 잘 안 쓴다.(단순 순회할 때 <code class="language-plaintext highlighter-rouge">for</code>문에서 귀찮은 것들을 덜어내고 쓰는 것이 <code class="language-plaintext highlighter-rouge">foreach</code>니까…)<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span>
+  <span class="kt">int</span> <span class="n">arr</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+  <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+  <span class="o">{</span>
+    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="nt">%&gt;</span>
+<span class="c">&lt;!-- 이 형태를 많이 쓴다.(items 자리엔 jsp 표현식보다는 el 표현식을 쓴다.) --&gt;</span>
+<span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"test"</span><span class="na"> items=</span><span class="s">"&lt;%=arr %&gt;"</span><span class="nt">&gt;</span>
+  ${test } 
+<span class="nt">&lt;/c:forEach&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위와 같은 형태로 배열을 순회할 때 많이 사용한다.<br /><br /></li>
+</ul>
+
+<h2 id="문자열-parsing">문자열 Parsing</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:forTokens </span><span class="na">var=</span><span class="s">"abc"</span><span class="na"> items=</span><span class="s">"a,b,c,d,e,f,g,h"</span><span class="na"> delims=</span><span class="s">","</span><span class="nt">&gt;</span>
+  ${abc } 
+<span class="nt">&lt;/c:forTokens&gt;</span>
+
+<span class="nt">&lt;hr&gt;</span>
+<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"data"</span><span class="na"> value=</span><span class="s">"자바 디비 웹 JSP"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;c:forTokens </span><span class="na">var=</span><span class="s">"name"</span><span class="na"> items=</span><span class="s">"</span><span class="si">${</span><span class="n">data</span> <span class="si">}</span><span class="s">"</span><span class="na"> delims=</span><span class="s">" "</span><span class="nt">&gt;</span>
+  ${name }<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;/c:forTokens&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">delims</code>에 넣은 인자값을 기준으로 문자열을 자를 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="formatting-라이브러리">Formatting 라이브러리</h1>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"fmt"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/fmt"</span><span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Formatting</code> 라이브러리는 일반적으로 <code class="language-plaintext highlighter-rouge">fmt</code> 접두사를 쓴다.</li>
+</ul>
+
+<h2 id="날짜-출력하기">날짜 출력하기</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"today"</span><span class="na"> value=</span><span class="s">"&lt;%=new Date() %&gt;"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="nt">/&gt;&lt;br&gt;</span>
+
+<span class="c">&lt;!-- time: 시간정보 --&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="nt">/&gt;&lt;br&gt;</span>
+
+<span class="c">&lt;!-- both: 날짜 &amp; 시간정보 --&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"both"</span><span class="nt">/&gt;&lt;br&gt;</span>
+
+<span class="nt">&lt;hr&gt;</span>
+
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"long"</span><span class="nt">/&gt;&lt;br&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"medium"</span><span class="nt">/&gt;&lt;br&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"short"</span><span class="nt">/&gt;&lt;br&gt;</span>
+
+<span class="nt">&lt;hr&gt;</span>
+
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"both"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="na"> timeStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> timeStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> timeStyle=</span><span class="s">"long"</span><span class="nt">/&gt;&lt;br&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> timeStyle=</span><span class="s">"medium"</span><span class="nt">/&gt;&lt;br&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> timeStyle=</span><span class="s">"short"</span><span class="nt">/&gt;&lt;br&gt;</span>
+
+<span class="nt">&lt;hr&gt;</span>
+<span class="nt">&lt;h3&gt;</span>2022/2/25(금) (오전) 11:50:00 형식으로 표현하기<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> pattern=</span><span class="s">"yyyy/MM/dd(E)"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> pattern=</span><span class="s">"(a)hh:mm:ss"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">dateStyle</code>에 넣은 값만큼 출력되는 날짜 정보의 갯수를 조절할 수 있다.</li>
+</ul>
+
+<h2 id="통화-출력하기">통화 출력하기</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"today"</span><span class="na"> value=</span><span class="s">"&lt;%=new Date() %&gt;"</span><span class="nt">/&gt;</span>
+${today }
+<span class="nt">&lt;hr&gt;</span>
+<span class="nt">&lt;fmt:setLocale </span><span class="na">value=</span><span class="s">"ko_kr"</span><span class="nt">/&gt;</span><span class="c">&lt;!-- 한국으로 기본 세팅되어 있어서 생략 가능 --&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 년 월 일 요일 표시 --&gt;</span>
+<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"1000000000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 숫자 자동으로 ,콤마 넣어서 표시/ currency는 통화도 넣어줌 --&gt;</span>
+
+<span class="nt">&lt;hr&gt;</span>
+
+<span class="nt">&lt;fmt:setLocale </span><span class="na">value=</span><span class="s">"en_us"</span><span class="nt">/&gt;</span><span class="c">&lt;!-- 한국으로 기본 세팅되어 있어서 생략 가능 --&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 년 월 일 요일 표시 --&gt;</span>
+<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"1000000000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 숫자 자동으로 ,콤마 넣어서 표시/ currency는 통화도 넣어줌 --&gt;</span>
+
+<span class="nt">&lt;hr&gt;</span>
+<span class="nt">&lt;fmt:setLocale </span><span class="na">value=</span><span class="s">"zh_cn"</span><span class="nt">/&gt;</span><span class="c">&lt;!-- 한국으로 기본 세팅되어 있어서 생략 가능 --&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 년 월 일 요일 표시 --&gt;</span>
+<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"1000000000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 숫자 자동으로 ,콤마 넣어서 표시/ currency는 통화도 넣어줌 --&gt;</span>
+
+<span class="nt">&lt;hr&gt;</span>
+<span class="nt">&lt;fmt:setLocale </span><span class="na">value=</span><span class="s">"ja_jp"</span><span class="nt">/&gt;</span><span class="c">&lt;!-- 한국으로 기본 세팅되어 있어서 생략 가능 --&gt;</span>
+<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 년 월 일 요일 표시 --&gt;</span>
+<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"1000000000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 숫자 자동으로 ,콤마 넣어서 표시/ currency는 통화도 넣어줌 --&gt;</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="숫자-출력">숫자 출력</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"100000000"</span><span class="na"> groupingUsed=</span><span class="s">"false"</span><span class="nt">/&gt;&lt;br&gt;</span>
+<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"100000000"</span><span class="na"> groupingUsed=</span><span class="s">"true"</span><span class="nt">/&gt;&lt;br&gt;</span>
+
+<span class="nt">&lt;hr&gt;</span>
+
+<span class="nt">&lt;h2&gt;</span>소수점 자리 표현<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="mf">2.12345676</span> <span class="si">}</span><span class="s">"</span><span class="na"> pattern=</span><span class="s">"#.####"</span><span class="nt">/&gt;&lt;br&gt;</span>
+
+<span class="c">&lt;!-- 0은 .뒤에 0을 채워줌 --&gt;</span>
+<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"20.0"</span><span class="na"> pattern=</span><span class="s">"##.00"</span><span class="nt">/&gt;&lt;br&gt;</span>
+
+<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"0.5"</span><span class="na"> type=</span><span class="s">"percent"</span><span class="nt">/&gt;&lt;br&gt;</span>
+
+<span class="c">&lt;!-- 통화 심볼도 바꿀 수 있다 --&gt;</span>
+<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"10000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="na"> currencySymbol=</span><span class="s">"@"</span><span class="nt">/&gt;&lt;br&gt;</span>
+</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="JSTL" /><summary type="html"><![CDATA[👀 JSTL(JSP Standard Tag Library)이란? 자카르타(아파치)에서 제공하는 자주 사용되는 태그를 모아놓은 형태 태그를 이용해서 프로그래밍 언어로 코드를 쓰는 것과 같은 동작을 할 수 있다.]]></summary></entry><entry><title type="html">JSP) 커넥션 풀</title><link href="http://localhost:4000/jsp/JSP-connection-pool/" rel="alternate" type="text/html" title="JSP) 커넥션 풀" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-connection-pool</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-connection-pool/"><![CDATA[<h1 id="-커넥션-풀-connection-pool이란">👀 커넥션 풀 (Connection Pool)이란?</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">JDBC</code>를 연동하기 위해서는 드라이버를 로드하고 <code class="language-plaintext highlighter-rouge">JDBC URL</code>로 접속하여 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 얻어오는 단계를 거쳐야 한다.</li>
   <li>커넥션 풀은 데이터베이스와 연결된 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 미리 생성하여 풀(Pool)에 저장해 두고 필요할 때마다 풀에 접근하여 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 사용하고 사용이 끝나면 다시 반환하는 것을 말한다.</li>
@@ -125,67 +675,7 @@
 
 <ul>
   <li>이후 사용하는 것은 기존과 같이 사용하면 된다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="ConnectionPool" /><summary type="html"><![CDATA[👀 커넥션 풀 (Connection Pool)이란? JDBC를 연동하기 위해서는 드라이버를 로드하고 JDBC URL로 접속하여 Connection 객체를 얻어오는 단계를 거쳐야 한다. 커넥션 풀은 데이터베이스와 연결된 Connection 객체를 미리 생성하여 풀(Pool)에 저장해 두고 필요할 때마다 풀에 접근하여 Connection 객체를 사용하고 사용이 끝나면 다시 반환하는 것을 말한다. 사용자가 웹 사이트에 Connection 객체를 생성하게 되면 메모리 소모가 많고 시간도 오래 걸린다. 하지만 풀에 저장해서 사용한다면 미리 생성된 객체를 쓰기 때문에 생성에 시간이 걸리지도 않고 또 쓰지 않는 객체는 다시 풀 속에 넣어뒀다가 필요할 때 꺼내 쓰면 되기 때문에 불필요한 메모리 낭비가 없어 프로그램 효율과 성능이 전체적으로 증가하게 된다.]]></summary></entry><entry><title type="html">Java) BOJ 1181. 단어 정렬</title><link href="http://localhost:4000/boj/boj1181-java/" rel="alternate" type="text/html" title="Java) BOJ 1181. 단어 정렬" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1181-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1181-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1181">https://www.acmicpc.net/problem/1181</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오.</li>
-</ul>
-
-<ol>
-  <li>길이가 짧은 것부터</li>
-  <li>길이가 같으면 사전 순으로<br /><br /></li>
-</ol>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 단어의 개수 N이 주어진다. (1 ≤ N ≤ 20,000) 둘째 줄부터 N개의 줄에 걸쳐 알파벳 소문자로 이루어진 단어가 한 줄에 하나씩 주어진다. 주어지는 문자열의 길이는 50을 넘지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러 번 입력된 경우에는 한 번씩만 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>Collections.sort와 Comparator 람다식을 이용해 구현했다.</li>
-  <li>마지막에 정렬한 값을 출력할 때엔 equals를 통한 value 비교를 해서 중복값은 걸러지도록 했다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 392 ms</li>
-  <li>메모리 : 23208 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/55e1fca4233f64a9249c59ee80aeb16f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1181" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1181 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 11651. 좌표 정렬하기2</title><link href="http://localhost:4000/boj/boj11651-java/" rel="alternate" type="text/html" title="Java) BOJ 11651. 좌표 정렬하기2" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11651-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11651-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="ConnectionPool" /><summary type="html"><![CDATA[👀 커넥션 풀 (Connection Pool)이란? JDBC를 연동하기 위해서는 드라이버를 로드하고 JDBC URL로 접속하여 Connection 객체를 얻어오는 단계를 거쳐야 한다. 커넥션 풀은 데이터베이스와 연결된 Connection 객체를 미리 생성하여 풀(Pool)에 저장해 두고 필요할 때마다 풀에 접근하여 Connection 객체를 사용하고 사용이 끝나면 다시 반환하는 것을 말한다. 사용자가 웹 사이트에 Connection 객체를 생성하게 되면 메모리 소모가 많고 시간도 오래 걸린다. 하지만 풀에 저장해서 사용한다면 미리 생성된 객체를 쓰기 때문에 생성에 시간이 걸리지도 않고 또 쓰지 않는 객체는 다시 풀 속에 넣어뒀다가 필요할 때 꺼내 쓰면 되기 때문에 불필요한 메모리 낭비가 없어 프로그램 효율과 성능이 전체적으로 증가하게 된다.]]></summary></entry><entry><title type="html">Java) BOJ 11651. 좌표 정렬하기2</title><link href="http://localhost:4000/boj/boj11651-java/" rel="alternate" type="text/html" title="Java) BOJ 11651. 좌표 정렬하기2" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11651-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11651-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -239,202 +729,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/bafcfe58127991148c9f70bab678805d.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11651" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11651 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 11650. 좌표 정렬하기</title><link href="http://localhost:4000/boj/boj11650-java/" rel="alternate" type="text/html" title="Java) BOJ 11650. 좌표 정렬하기" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11650-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11650-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/11650">https://www.acmicpc.net/problem/11650</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>2차원 평면 위의 점 N개가 주어진다. 좌표를 x좌표가 증가하는 순으로, x좌표가 같으면 y좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>처음엔 <code class="language-plaintext highlighter-rouge">Pair</code> 클래스에서 <code class="language-plaintext highlighter-rouge">Comparable</code>을 구현해서 썼는데 리턴값을 잘못 설정했는지 계속 7%에서 틀렸다 ㅠ.ㅠ</li>
-  <li>그래서 구글링해서 Comparator 람다식으로 바꾸고 통과함<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 800 ms</li>
-  <li>메모리 : 51232 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/49b9efbb416fe3905a7e48e17b4d3990.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11650" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11650 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 10814. 나이순 정렬</title><link href="http://localhost:4000/boj/boj10814-java/" rel="alternate" type="text/html" title="Java) BOJ 10814. 나이순 정렬" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10814-java</id><content type="html" xml:base="http://localhost:4000/boj/boj10814-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/10814">https://www.acmicpc.net/problem/10814</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오.</li>
-</ul>
-
-<ol>
-  <li>길이가 짧은 것부터</li>
-  <li>길이가 같으면 사전 순으로<br /><br /></li>
-</ol>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 단어의 개수 N이 주어진다. (1 ≤ N ≤ 20,000) 둘째 줄부터 N개의 줄에 걸쳐 알파벳 소문자로 이루어진 단어가 한 줄에 하나씩 주어진다. 주어지는 문자열의 길이는 50을 넘지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러 번 입력된 경우에는 한 번씩만 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>Collections.sort와 Comparator 람다식을 이용해 구현했다.</li>
-  <li>마지막에 정렬한 값을 출력할 때엔 equals를 통한 value 비교를 해서 중복값은 걸러지도록 했다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 392 ms</li>
-  <li>메모리 : 23208 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/978be8ad9674667c38e12894cd1c7144.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10814" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10814 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 18870. 좌표 압축</title><link href="http://localhost:4000/boj/boj18870-java/" rel="alternate" type="text/html" title="Java) BOJ 18870. 좌표 압축" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18870-java</id><content type="html" xml:base="http://localhost:4000/boj/boj18870-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/18870">https://www.acmicpc.net/problem/18870</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>수직선 위에 N개의 좌표 X1, X2, …, XN이 있다. 이 좌표에 좌표 압축을 적용하려고 한다.</p>
-  </li>
-  <li>
-    <p>Xi를 좌표 압축한 결과 X’i의 값은 Xi &gt; Xj를 만족하는 서로 다른 좌표의 개수와 같아야 한다.</p>
-  </li>
-  <li>
-    <p>X1, X2, …, XN에 좌표 압축을 적용한 결과 X’1, X’2, …, X’N를 출력해보자.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 N이 주어진다.</li>
-  <li>둘째 줄에는 공백 한 칸으로 구분된 X1, X2, …, XN이 주어진다.</li>
-  <li>1 ≤ N ≤ 1,000,000</li>
-  <li>-109 ≤ Xi ≤ 109<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 X’1, X’2, …, X’N을 공백 한 칸으로 구분해서 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>입력받은 수 배열에서 i번째 수보다 작은 수의 갯수를 세어서 i번째에 출력하면 되는데 i번째 수보다 작은 수가 몇 개인지 알려면 오름차순으로 정렬을 해 봐야 한다.</li>
-  <li>오름차순으로 정렬을 해 보면 i번째 수의 앞에 있는 수들은 다 작은 수들이니까 배열을 순회하면서 그 수가 몇 개인지 세면 i번째 수를 압축한 수가 된다.</li>
-  <li>
-    <p>정답 출력 형식을 보면 입력된 숫자의 순서대로 압축한 수를 출력해야 하는데 입력 배열을 정렬해 버리면 순서가 흐트러져서 정답 형식으로 출력할 수 없다. 그래서 입력 배열과 같은 임시 배열을 만들어 정렬한다.<br /></p>
-  </li>
-  <li>그런데 최대 백만개가 입력으로 주어지는데 2중 for문을 통해 하나씩 비교하는 <code class="language-plaintext highlighter-rouge">O(n^2)</code> 알고리즘을 사용하면 시간초과를 받을 것이기 때문에 정렬 알고리즘은 <code class="language-plaintext highlighter-rouge">O(n log n)</code> 시간복잡도를 가지는 것을 쓰는 것이 좋다.</li>
-  <li>그리고 입력으로 중복된 수가 들어오는데 예제의 답을 보면 중복된 수는 카운트하지 않는다.</li>
-  <li>즉 1, 1, 2 일 때 2보다 작은 수인 1이 2개 있는데 이럴 경우 답은 0, 0, 1이 되어야 한다. 2보다 작은 수는 1개가 되어야 한다.</li>
-  <li>
-    <p>그래서 오름차순으로 정렬하고 난 후 중복되는 숫자들은 제거해 주어야 한다. 중복 숫자를 제거하지 않으면 i번째 수보다 작은 수를 셀 때 오차가 생길 것이다.<br /></p>
-  </li>
-  <li>중복된 숫자들을 제거하고 나면 &lt;i번째 숫자, i번째 숫자보다 작은 숫자의 갯수&gt; pair를 저장하는 map을 만들어서 각 원소를 삽입해준다.</li>
-  <li>
-    <p>그 다음 마지막으로 입력 원본 배열을 순회하면서 map에서 i번째 원소를 key로 가지는 value를 찾아 출력하면 된다.<br /></p>
-  </li>
-  <li>시간제한이 2초인데 2788ms로 통과된 거 보면 자바는 느려서 시간을 좀 더 주는 것 같다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 2788 ms</li>
-  <li>메모리 : 254876 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/1cd7a372bd0ad6186aadcb222ca3afc6.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No18870" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/18870 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Instructions</title><link href="http://localhost:4000/computer%20science/computer-architecture-03/" rel="alternate" type="text/html" title="컴퓨터구조) Instructions" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-03</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-03/"><![CDATA[<h1 id="instruction-set">Instruction Set</h1>
+<script src="https://gist.github.com/miro7923/bafcfe58127991148c9f70bab678805d.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11651" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11651 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">컴퓨터구조) Instructions</title><link href="http://localhost:4000/computer%20science/computer-architecture-03/" rel="alternate" type="text/html" title="컴퓨터구조) Instructions" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/computer-architecture-03</id><content type="html" xml:base="http://localhost:4000/computer%20science/computer-architecture-03/"><![CDATA[<h1 id="instruction-set">Instruction Set</h1>
 <ul>
   <li>프로세서에서 지원하는 명령어들의 집합</li>
   <li>다른 컴퓨터는 다른 명령어셋을 가지고 있지만 기본적으로는 비슷하다.</li>
@@ -702,158 +997,4 @@ j L1 // 무조건 L1으로 Jump하는 것
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/8845c43c6d3be9195cad397c8c3e2984.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2750" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2750 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2108. 통계학</title><link href="http://localhost:4000/boj/boj2108-java/" rel="alternate" type="text/html" title="Java) BOJ 2108. 통계학" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2108-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2108-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/2108">https://www.acmicpc.net/problem/2108</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>수를 처리하는 것은 통계학에서 상당히 중요한 일이다. 통계학에서 N개의 수를 대표하는 기본 통계값에는 다음과 같은 것들이 있다. 단, N은 홀수라고 가정하자.</p>
-  </li>
-  <li>산술평균 : N개의 수들의 합을 N으로 나눈 값</li>
-  <li>중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값</li>
-  <li>최빈값 : N개의 수들 중 가장 많이 나타나는 값</li>
-  <li>범위 : N개의 수들 중 최댓값과 최솟값의 차이</li>
-  <li>N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 수의 개수 N(1 ≤ N ≤ 500,000)이 주어진다. 단, N은 홀수이다. 그 다음 N개의 줄에는 정수들이 주어진다. 입력되는 정수의 절댓값은 4,000을 넘지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>첫째 줄에는 산술평균을 출력한다. 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.</p>
-  </li>
-  <li>
-    <p>둘째 줄에는 중앙값을 출력한다.</p>
-  </li>
-  <li>
-    <p>셋째 줄에는 최빈값을 출력한다. 여러 개 있을 때에는 최빈값 중 두 번째로 작은 값을 출력한다.</p>
-  </li>
-  <li>
-    <p>넷째 줄에는 범위를 출력한다.<br /><br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>각 알고리즘 자체는 어렵지 않았는데 종류가 많아서 그런가 구현에 시간이 걸렸다.</li>
-  <li>중앙값 구하는 알고리즘을 더 손에 익히면 좋겠다.</li>
-  <li>중앙값은 최대힙과 최소힙을 사용해서 중앙값보다 더 큰 수는 최소힙에 저장하고 작은 수는 최대힙에 저장한 후</li>
-  <li>
-    <p>최대힙과 최소힙의 길이가 같은 경우 top 평균을 구하고 최대힙이 더 크면 최대힙의 top을 반환하고 최소힙이 더 크면 최소힙의 top을 반환하도록 했다.<br /></p>
-  </li>
-  <li>최빈값은 배열 인덱스에 1:1로 매핑시켜서 빈도를 구하는 방식은 입력값의 범위가 커서 비효율적일 거 같아서 map을 사용했다.</li>
-  <li>입력값을 &lt; 입력값, 빈도 &gt; 로 map에 저장한 후 입력이 끝나면 map을 순회하면서 가장 높은 빈도수를 구한 다음</li>
-  <li>
-    <p>가장 높은 빈도수와 일치하는 키값이 하나라면 그걸 바로 리턴하고 여러 개라면 그 수를 모두 배열에 저장한 뒤 오름차순으로 정렬해서 두번째로 작은 수를 구해서 리턴했다.<br /></p>
-  </li>
-  <li>범위는 입력 받으면서 최댓값과 최솟값을 구해서 두 값의 차를 출력하면 되는데 입력값이 음수도 들어오기 때문에 최댓값을 저장하는 변수의 초기값은 0이 아닌 Integer의 가장 작은 value로 설정하면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 1028 ms</li>
-  <li>메모리 : 105020 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/a66774c083b6bb3d29c76517e5342bbc.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2108" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2108 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 1436. 영화감독 숌</title><link href="http://localhost:4000/boj/boj1436-java/" rel="alternate" type="text/html" title="Java) BOJ 1436. 영화감독 숌" /><published>2022-02-26T00:00:00+09:00</published><updated>2022-02-26T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1436-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1436-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1436">https://www.acmicpc.net/problem/1436</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다.</li>
-  <li>조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고,</li>
-  <li>
-    <p>피터 잭슨은 반지의 제왕을 만들 때, 반지의 제왕 1, 반지의 제왕 2, 반지의 제왕 3과 같이 영화 제목을 지었다.</p>
-  </li>
-  <li>
-    <p>하지만 숌은 자신이 조지 루카스와 피터 잭슨을 뛰어넘는다는 것을 보여주기 위해서 영화 제목을 좀 다르게 만들기로 했다.</p>
-  </li>
-  <li>
-    <p>종말의 숫자란 어떤 수에 6이 적어도 3개이상 연속으로 들어가는 수를 말한다. 제일 작은 종말의 숫자는 666이고, 그 다음으로 큰 수는 1666, 2666, 3666, …. 과 같다.</p>
-  </li>
-  <li>따라서, 숌은 첫 번째 영화의 제목은 세상의 종말 666, 두 번째 영화의 제목은 세상의 종말 1666 이렇게 이름을 지을 것이다.</li>
-  <li>
-    <p>일반화해서 생각하면, N번째 영화의 제목은 세상의 종말 (N번째로 작은 종말의 숫자) 와 같다.</p>
-  </li>
-  <li>숌이 만든 N번째 영화의 제목에 들어간 숫자를 출력하는 프로그램을 작성하시오. 숌은 이 시리즈를 항상 차례대로 만들고, 다른 영화는 만들지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 숫자 N이 주어진다. N은 10,000보다 작거나 같은 자연수이다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>브루트포스로 666부터 하나씩 증가시켜가면서 N번째 수를 구하려 했으나 처음에 생각을 잘못 하는 바람에… 틀려서 구글링 참고해서 풀었다.</li>
-  <li>현재 수에 666이 포함되어 있으면 cnt를 증가시키고 cnt가 N과 같다면 현재 수를 리턴하고 그렇지 않다면 현재 수를 증가시키면서 또 666이 포함되어 있는지 확인한다.</li>
-  <li>이 때 수를 문자열로 바꿔서 666이 연속되어 있는지 확인해도 되서 처음엔 그렇게 확인하는 함수를 구현했는데 구글링 하니까 자바에는 contains 함수가 있어서 편하게 그걸 썼다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 320 ms</li>
-  <li>메모리 : 86524 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/cd9086d9b051383331645a51c0164abb.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1436" /><category term="BruteForce" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1436 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/8845c43c6d3be9195cad397c8c3e2984.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No2750" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/2750 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry></feed>
