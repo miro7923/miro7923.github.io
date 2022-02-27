@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-27T14:32:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1181. 단어 정렬</title><link href="http://localhost:4000/boj/boj1181-java/" rel="alternate" type="text/html" title="Java) BOJ 1181. 단어 정렬" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1181-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1181-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-27T15:09:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) BOJ 1181. 단어 정렬</title><link href="http://localhost:4000/boj/boj1181-java/" rel="alternate" type="text/html" title="Java) BOJ 1181. 단어 정렬" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1181-java</id><content type="html" xml:base="http://localhost:4000/boj/boj1181-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -270,7 +270,132 @@
 
 <p><img src="../../assets/images/servletProcess.png" /><br /><br /><br /></p>
 
-<h1 id="서블릿-클래스-만들기">서블릿 클래스 만들기</h1>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="Servlet" /><summary type="html"><![CDATA[👀 서블릿(Servlet)이란? 자바를 이용해서 웹 개발을 하기 위한 기술로 동적인 데이터를 처리하는 페이지인 JSP 파일을 최종적으로 사용하려면 자바 클래스 파일로 만들어야 하는데 서블릿은 그 중간 과정이라 할 수 있다. 즉 JSP(.jsp) -&gt; Servlet(.java) -&gt; 클래스파일(.class) 이런 과정을 거치게 된다.]]></summary></entry><entry><title type="html">JSP) JSTL</title><link href="http://localhost:4000/jsp/JSP-jstl/" rel="alternate" type="text/html" title="JSP) JSTL" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-jstl</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-jstl/"><![CDATA[<h1 id="-jstljsp-standard-tag-library이란">👀 JSTL(JSP Standard Tag Library)이란?</h1>
+<h1 id="서블릿-클래스-만들기">서블릿 클래스 만들기</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.itwillbs.test.Student</span><span class="o">;</span>
+
+<span class="c1">// 서블릿 - jsp코드 + java코드를 함께 수행할 수 있는 파일</span>
+<span class="c1">// 서블릿 클래스 상속받으면 서블릿이 됨</span>
+
+<span class="c1">// http://localhost:8090/JSP6/ex1</span>
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/ex1"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> 
+<span class="o">{</span>
+    <span class="c1">// 폼태그에서 get method를 썼을 때 호출되는 함수</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"doGet() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 응답정보의 내용의 형태는 html문서로 표현하겠다.</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=UTF-8"</span><span class="o">);</span>
+
+        <span class="c1">// response를 통해서 출력가능한 통로를 생성하겠다.</span>
+<span class="c1">//	    PrintWriter out = response.getWriter();</span>
+<span class="c1">//</span>
+<span class="c1">//	    // 서블릿을 이용한 JSP 페이지 표현 - 사용하진 않을 것임</span>
+<span class="c1">//	    out.print("&lt;html&gt;");</span>
+<span class="c1">//	    out.print("&lt;head&gt;");</span>
+<span class="c1">//	    out.print("&lt;/head&gt;");</span>
+<span class="c1">//	    out.print("&lt;body&gt;");</span>
+<span class="c1">//	    out.print("&lt;h1&gt; 서블릿을 활용한 JSP페이지 만들기&lt;/h1&gt;");</span>
+<span class="c1">//	    out.print("&lt;/body&gt;");</span>
+<span class="c1">//	    out.print("&lt;/html&gt;");</span>
+<span class="c1">//	    out.close();</span>
+
+        <span class="c1">// 포워딩 전 request 영역에 정보를 저장</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"itwill"</span><span class="o">,</span> <span class="s">"busan"</span><span class="o">);</span>
+
+        <span class="c1">// 객체정보를 전달</span>
+        <span class="nc">Student</span> <span class="n">kim</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+        <span class="n">kim</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"김학생"</span><span class="o">);</span>
+        <span class="n">kim</span><span class="o">.</span><span class="na">setKor</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+        <span class="n">kim</span><span class="o">.</span><span class="na">setEng</span><span class="o">(</span><span class="mi">90</span><span class="o">);</span>
+        <span class="n">kim</span><span class="o">.</span><span class="na">setMath</span><span class="o">(</span><span class="mi">76</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"Student"</span><span class="o">,</span> <span class="n">kim</span><span class="o">);</span>
+
+        <span class="nc">Student</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"사용자"</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setKor</span><span class="o">(</span><span class="mi">45</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setEng</span><span class="o">(</span><span class="mi">70</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setMath</span><span class="o">(</span><span class="mi">98</span><span class="o">);</span>
+
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">memberList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;();</span>
+        <span class="n">memberList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">kim</span><span class="o">);</span>
+        <span class="n">memberList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"memberList"</span><span class="o">,</span> <span class="n">memberList</span><span class="o">);</span>
+
+        <span class="c1">// 서블릿 코드를 사용한 화면 출력 X</span>
+        <span class="c1">// =&gt; 포워딩을 사용한 화면 출력 O</span>
+
+        <span class="c1">// 자바 코드를 이용한 포워딩 방식 - 외우기</span>
+<span class="c1">//	    &lt;jsp:forward/&gt; 사용불가 - JSP 페이지가 아닌 자바파일이라서 못 씀</span>
+        <span class="c1">// 이동할 경로 설정</span>
+        <span class="nc">RequestDispatcher</span> <span class="n">dis</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="s">"/jstl/coreSet2.jsp"</span><span class="o">);</span>
+
+        <span class="n">dis</span><span class="o">.</span><span class="na">forward</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+	<span class="o">}</span> <span class="c1">// doGet()</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이렇게 만들면 되는데 사용할 함수들을 다 오버라이딩 하기 때문에 일일이 작성하지 않아도 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">HttpServlet</code>을 상속받고 나면 이클립스가 구현해야 하는 함수들을 다 만들어 준다.</li>
+  <li>우리는 형태가 만들어진 함수의 내부만 채우면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="jsp-페이지에서-서블릿을-활용한-정보-전달">JSP 페이지에서 서블릿을 활용한 정보 전달</h1>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 서블릿에서 저장된 정보(request.setAttribute("itwill", "busan");) 출력 --&gt;</span>
+  itwill : <span class="nt">&lt;%=</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"itwill"</span><span class="o">)</span> <span class="nt">%&gt;&lt;br&gt;</span>
+  itwill : ${itwill }<span class="nt">&lt;br&gt;</span>
+  itwill : ${requestScope.itwill }<span class="nt">&lt;br&gt;</span>
+  
+<span class="c">&lt;!-- 앞으로는 보안을 위해 주소에 정보가 처리되는 jsp 페이지를 나타내지 않을 것임
+  		자바 서블릿 코드를 이용해 jsp 페이지 작성(가상주소 생성) --&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>자바 서블릿 코드를 이용해 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지를 작성할 것이기 때문에 서블릿 클래스를 실행하면 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지로 연결되어 액션을 수행하지만 주소창에는 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지가 나타나지 않고 어노테이션 <code class="language-plaintext highlighter-rouge">@WebServlet("/ex1")</code>에 쓴 <code class="language-plaintext highlighter-rouge">/ex1</code>가 맨 뒤에 붙어 주소창에는 <code class="language-plaintext highlighter-rouge">http://localhost:8090/JSP6/ex1</code> 와 같은 형태로 나타나게 된다.<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>${Student}<span class="nt">&lt;br&gt;</span>
+학생 이름 : ${Student.getName() }<span class="nt">&lt;br&gt;</span>
+국어 : ${Student.getKor() }<span class="nt">&lt;br&gt;</span>
+영어 : ${Student.getEng() }<span class="nt">&lt;br&gt;</span>
+수학 : ${Student.getMath() }<span class="nt">&lt;br&gt;</span>
+  
+<span class="nt">&lt;%</span>
+  <span class="nc">Student</span> <span class="n">kim</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Student</span><span class="o">)</span> <span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"Student"</span><span class="o">);</span>
+<span class="nt">%&gt;</span>
+<span class="nt">&lt;%=</span><span class="n">kim</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="nt">%&gt;&lt;br&gt;</span>
+${Student.name }<span class="nt">&lt;br&gt;</span><span class="c">&lt;!-- el 표현식에서는 내부적으로 get/set 메서드를 자동으로 구현해 사용함. 그래서 변수명으로도 접근가능 --&gt;</span>
+  
+<span class="c">&lt;!-- 좀 더 간단하게 쓰기 --&gt;</span>
+<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"kim"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="nc">Student</span> <span class="si">}</span><span class="s">"</span><span class="nt">/&gt;</span>
+  
+${kim.name }
+  
+<span class="nt">&lt;hr&gt;</span>
+  
+${requestScope.memberList }<span class="nt">&lt;br&gt;</span>
+${requestScope.memberList[0].name }
+</code></pre></div></div>
+
+<ul>
+  <li>그리고 아까 서블릿에서 함께 저장했던 클래스 객체도 위와 같이 <code class="language-plaintext highlighter-rouge">el 표현식</code>을 사용해서 출력할 수 있다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="Servlet" /><summary type="html"><![CDATA[👀 서블릿(Servlet)이란? 자바를 이용해서 웹 개발을 하기 위한 기술로 동적인 데이터를 처리하는 페이지인 JSP 파일을 최종적으로 사용하려면 자바 클래스 파일로 만들어야 하는데 서블릿은 그 중간 과정이라 할 수 있다. 즉 JSP(.jsp) -&gt; Servlet(.java) -&gt; 클래스파일(.class) 이런 과정을 거치게 된다.]]></summary></entry><entry><title type="html">JSP) JSTL</title><link href="http://localhost:4000/jsp/JSP-jstl/" rel="alternate" type="text/html" title="JSP) JSTL" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-jstl</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-jstl/"><![CDATA[<h1 id="-jstljsp-standard-tag-library이란">👀 JSTL(JSP Standard Tag Library)이란?</h1>
 <ul>
   <li>자카르타(아파치)에서 제공하는 자주 사용되는 태그를 모아놓은 형태</li>
   <li>

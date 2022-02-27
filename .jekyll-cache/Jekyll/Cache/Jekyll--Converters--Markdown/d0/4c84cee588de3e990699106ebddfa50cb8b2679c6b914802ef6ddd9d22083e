@@ -1,0 +1,74 @@
+I"<h1 id="-서블릿servlet이란">👀 서블릿(Servlet)이란?</h1>
+<ul>
+  <li>자바를 이용해서 웹 개발을 하기 위한 기술로 동적인 데이터를 처리하는 페이지인 <code class="language-plaintext highlighter-rouge">JSP</code> 파일을 최종적으로 사용하려면 자바 클래스 파일로 만들어야 하는데 서블릿은 그 중간 과정이라 할 수 있다.</li>
+  <li>즉 <code class="language-plaintext highlighter-rouge">JSP(.jsp) -&gt; Servlet(.java) -&gt; 클래스파일(.class)</code> 이런 과정을 거치게 된다.</li>
+</ul>
+
+<h2 id="서블릿-작성-규칙">서블릿 작성 규칙</h2>
+<p>1) javax.servlet.Servlet 인터페이스 구현<br />
+2) 1)의 구현이 어려운 경우 javax.servlet.http.HttpServlet 클래스 상속(일반적으로 사용)<br />
+3) doGet()/ doPost() 생성(오버라이딩), HttpServletRequest/ HttpServletResponse 객체 구현<br />
+4) IOException/ ServletException을 처리해야 함<br />
+5) web.xml 파일을 통해서 주소 매핑 (어노테이션 처리)<br /></p>
+
+<h2 id="서블릿-실행-구조">서블릿 실행 구조</h2>
+
+<p><img src="../../assets/images/servletProcess.png" /><br /><br /><br /></p>
+
+<h1 id="서블릿-클래스-만들기">서블릿 클래스 만들기</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="c1">// @WebServlet() // 어노테이션을 통한 주소 매핑 - 서블릿 3.0 이후 지원</span>
+
+<span class="c1">// http://localhost:8090/JSP6/myServlet web.xml에서 매핑한 가상주소 생성</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">ServletException</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"서블릿 객체 초기화 완료!"</span><span class="o">);</span>
+    <span class="o">}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="c1">// 서블릿이 Get 방식으로 실행될 때 실행되는 메서드</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"doGet"</span><span class="o">);</span>
+		
+		<span class="c1">// 서블릿 실행</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="c1">// 서블릿이 Post 방식으로 실행될 때 실행되는 메서드</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"doPost"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">destroy</span><span class="o">()</span> 
+	<span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"서블릿 소멸!"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"서블릿 소멸 직전"</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이렇게 만들면 되는데 사용할 함수들을 다 오버라이딩 하기 때문에 일일이 작성하지 않아도 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">HttpServlet</code>을 상속받고 나면 이클립스가 구현해야 하는 함수들을 다 만들어 준다.</li>
+  <li>우리는 형태가 만들어진 함수의 내부만 채우면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="jsp-페이지에서-서블릿을-활용한-정보-전달">JSP 페이지에서 서블릿을 활용한 정보 전달</h1>
+
+<p>```jsp</p>
+
+:ET
