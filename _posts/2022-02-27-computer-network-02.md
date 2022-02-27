@@ -89,4 +89,4 @@ tags:
 * 수신측은 `XOR` 연산을 통해 syndrome을 계산해서 syndrome을 10진수로 바꾼 값이 오류발생 위치(syndrome의 모든 비트가 0이면 오류가 없음)<br><br><br>
 
 # 출처
-* [데이터 통신과 컴퓨터 네트워크 - 동서대학교 KOCW 공개강의](http://www.kocw.net/home/search/kemView.do?kemId=1357811&ar=relateCourse)
+* [데이터 통신과 컴퓨터 네트워크 - 동서대학교 KOCW 공개강의](http://www.kocw.net/home/cview.do?cid=5959f58996c6bd25)

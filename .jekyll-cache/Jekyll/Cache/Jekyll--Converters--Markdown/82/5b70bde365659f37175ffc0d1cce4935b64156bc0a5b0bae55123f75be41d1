@@ -1,0 +1,35 @@
+I"	<h1 id="-osi-참조모델">👀 OSI 참조모델</h1>
+<ul>
+  <li>예전엔 제조사별로 각자 통신 모델을 만들어 썼기 때문에 서로 호환이 되지 않아 통신이 되지 않는 경우가 많았다.</li>
+  <li>그래서 1970년대 후반에 국제 표준화 기구 ISO(Open System Interconnection)가 네트워크 설계의 호환성을 증진시키기 위해 개방시스템 상호접속 참조모델(OSI) 구조를 제안함</li>
+  <li><code class="language-plaintext highlighter-rouge">OSI</code>란 말은 타사의 시스템 간이라도 데이터를 교환하기 위한 표준을 가질 수 있다는 것을 의미함</li>
+  <li><code class="language-plaintext highlighter-rouge">OSI</code>는 <code class="language-plaintext highlighter-rouge">7계층</code>으로 이루어져 있다.</li>
+</ul>
+
+<h2 id="계층-구조의-장점">계층 구조의 장점</h2>
+<ul>
+  <li>크고 복잡한 시스템을 기능별로 나누어 개발 과정을 단순화 하는데 매우 유용하게 사용(모듈화)</li>
+  <li>각 계층이 제공하는 서비스를 변경하기 쉬움(한 계층을 변경해도 나머지 계층에 영향을 주지 않아 유지 보수가 쉽다)</li>
+</ul>
+
+<h2 id="osi-참조모델의-계층">OSI 참조모델의 계층</h2>
+<ul>
+  <li>N 계층의 프로토콜 모듈은 상대방의 동일 계층 프로토콜 모듈과 통신을 하며 동일 계층에 있는 N 계층 끼리의 통신 규약을 N 계층 프로토콜이라 함</li>
+  <li>N 계층 프로토콜이 상대방의 동일 계층에 데이터를 직접 전달하는 것이 아니라 하위 계층(N - 1)으로 전달해서 맨 아래 계층인 물리 계층까지 도달하면 케이블을 통해 상대 호스트의 물리 계층으로 데이터를 전달한다.</li>
+  <li>상대 호스트는 물리 계층에서 받은 데이터를 하나씩 확인하며 상위 계층(N + 1)으로 올려 보낸다.</li>
+  <li>결과적으로, OSI 7계층 모델에서 상위 계층은 하위 계층의 서비스 사용자(Service User)가 되며, 하위 계층은 상위 계층의 서비스 제공자(Service Provider)가 된다.</li>
+</ul>
+
+<h2 id="서비스-프리미티브service-primitive">서비스 프리미티브(Service Primitive)</h2>
+<ul>
+  <li>동일 호스트상의 서비스 사용자(N + 1계층)와 서비스 제공자(N계층)간에 주고 받는 데이터</li>
+  <li>N 계층의 서비스는 N 서비스 프리미티브와 이 프리미티브에 관련된 파라미터로 규정</li>
+  <li>N 서비스 프리미티브는 요청(Request), 통지(Indicator), 응답(Response), 확인(Confirm)으로 구분</li>
+  <li>송신측에서 수신측으로 <code class="language-plaintext highlighter-rouge">Request</code>를 보내면 수신측의 하위 계층에서 <code class="language-plaintext highlighter-rouge">Indicator</code>를 발생시킨 뒤 송신측으로 <code class="language-plaintext highlighter-rouge">Response</code>를 보낸다. 송신측은 받은 데이터를 확인(<code class="language-plaintext highlighter-rouge">Confirm</code>)하며 하위계층에서 상위계층으로 올려보낸다.</li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/cview.do?cid=5959f58996c6bd25">데이터 통신과 컴퓨터 네트워크 - 동서대학교 KOCW 공개강의</a></li>
+</ul>
+:ET
