@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-01T00:43:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">DB) 데이터베이스 시스템</title><link href="http://localhost:4000/database/db-03-database-system/" rel="alternate" type="text/html" title="DB) 데이터베이스 시스템" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/database/db-03-database-system</id><content type="html" xml:base="http://localhost:4000/database/db-03-database-system/"><![CDATA[<h1 id="-데이터베이스-시스템dbs--database-system이란">👀 데이터베이스 시스템(DBS : Database System)이란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-01T01:45:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">DB) 데이터베이스 시스템</title><link href="http://localhost:4000/database/db-03-database-system/" rel="alternate" type="text/html" title="DB) 데이터베이스 시스템" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/database/db-03-database-system</id><content type="html" xml:base="http://localhost:4000/database/db-03-database-system/"><![CDATA[<h1 id="-데이터베이스-시스템dbs--database-system이란">👀 데이터베이스 시스템(DBS : Database System)이란?</h1>
 <ul>
   <li>데이터베이스에 데이터를 저장하고 이를 관리하여 조직에 필요한 정보를 생성해주는 시스템</li>
   <li>즉 데이터베이스 관리 시스템 전체를 아우르는 용어이다.<br /><br /><br /></li>
@@ -231,7 +231,279 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 데이터베이스 시스템(DBS : Database System)이란? 데이터베이스에 데이터를 저장하고 이를 관리하여 조직에 필요한 정보를 생성해주는 시스템 즉 데이터베이스 관리 시스템 전체를 아우르는 용어이다.]]></summary></entry><entry><title type="html">OS) CPU Scheduling</title><link href="http://localhost:4000/operating%20system/OS-05-Cpu-scheduling/" rel="alternate" type="text/html" title="OS) CPU Scheduling" /><published>2022-02-28T00:00:00+09:00</published><updated>2022-02-28T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-05-Cpu-scheduling</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-05-Cpu-scheduling/"><![CDATA[<h1 id="-cpu-burst-time">👀 CPU-Burst time</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 데이터베이스 시스템(DBS : Database System)이란? 데이터베이스에 데이터를 저장하고 이를 관리하여 조직에 필요한 정보를 생성해주는 시스템 즉 데이터베이스 관리 시스템 전체를 아우르는 용어이다.]]></summary></entry><entry><title type="html">DB) 데이터 모델링</title><link href="http://localhost:4000/database/db-04-data-modeling/" rel="alternate" type="text/html" title="DB) 데이터 모델링" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/database/db-04-data-modeling</id><content type="html" xml:base="http://localhost:4000/database/db-04-data-modeling/"><![CDATA[<h1 id="-데이터베이스-설계">👀 데이터베이스 설계</h1>
+<ul>
+  <li>사용자의 다양한 요구 사항을 고려하여 데이터베이스를 생성하는 과정</li>
+  <li>E-R 모델과 릴레이션 변환 규칙을 이용한 설계 과정은 5단계로 이루어져 있다.</li>
+</ul>
+
+<h2 id="1단계--요구-사항-분석">1단계 : 요구 사항 분석</h2>
+<ul>
+  <li>데이터베이스의 용도 파악</li>
+  <li>관련된 현실 세계가 어떻게 구성되어 있는지 파악한다.</li>
+  <li>결과물 : 요구 사항 명세서</li>
+</ul>
+
+<h2 id="2단계--개념적-설계">2단계 : 개념적 설계</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DBMS</code>에 독립적인 개념적 구조 설계</li>
+  <li>현실세계에 있는 정보를 알아보기 쉽게 표시한다.</li>
+  <li>결과물 : 개념적 스키마(E-R 다이어그램)</li>
+</ul>
+
+<h2 id="3단계--논리적-설계">3단계 : 논리적 설계</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DBMS</code>에 적합한 논리적 구조 설계</li>
+  <li>결과물 : 논리적 스키마(릴레이션 스키마)</li>
+</ul>
+
+<h2 id="4단계--물리적-설계">4단계 : 물리적 설계</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DBMS</code>로 구현 가능한 물리적 구조 설계</li>
+  <li>결과물 : 물리적 스키마</li>
+</ul>
+
+<h2 id="5단계--구현">5단계 : 구현</h2>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">SQL</code> 문을 작성한 후 이를 <code class="language-plaintext highlighter-rouge">DBMS</code>에서 실행하여 데이터베이스 생성<br /><br /></p>
+  </li>
+  <li>
+    <p>1 ~ 3단계가 가장 핵심이 되는 단계들이며 각 단계의 설계 과정 중에 오류가 발견되어 변경이 필요하면 이전 단계로 되돌아가 설계 내용을 변경할 수 있다.<br /><br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="데이터-모델링data-modeling">데이터 모델링(data modeling)</h1>
+<ul>
+  <li>현실 세계에 존재하는 데이터를 컴퓨터 세계의 데이터베이스로 옮기는 변환 과정</li>
+  <li>데이터베이스 설계의 핵심 과정</li>
+  <li>모든 데이터는 특징을 추출하는 <code class="language-plaintext highlighter-rouge">추상화(abstraction)</code> 과정을 거쳐서 데이터베이스로 옮겨진다.</li>
+</ul>
+
+<h2 id="개념적-데이터-모델링conceptual-modeling">개념적 데이터 모델링(conceptual modeling)</h2>
+<ul>
+  <li>현실 세계의 중요 데이터를 추출하여 개념 세계로 옮기는 작업</li>
+</ul>
+
+<h2 id="논리적-데이터-모델링logical-modeling">논리적 데이터 모델링(logical modeling)</h2>
+<ul>
+  <li>개념 세계의 데이터를 데이터베이스에 저장하는 구조로 표현하는 작업</li>
+</ul>
+
+<h2 id="데이터-모델data-model">데이터 모델(data model)</h2>
+<ul>
+  <li>데이터 모델링의 결과물을 표현하는 도구</li>
+</ul>
+
+<h3 id="개념적-데이터-모델">개념적 데이터 모델</h3>
+<ul>
+  <li>사람의 머리로 이해할 수 있도록 현실 세계를 개념적 모델링하여 데이터베이스의 개념적 구조로 표현하는 도구</li>
+  <li>예) 개체-관계 모델</li>
+</ul>
+
+<h3 id="논리적-데이터-모델">논리적 데이터 모델</h3>
+<ul>
+  <li>개념적 구조를 논리적 모델링하여 데이터베이스의 논리적 구조로 표현하는 도구</li>
+  <li>예) 관계 데이터 모델<br /><br /><br /></li>
+</ul>
+
+<h1 id="개체-관계-모델e-r-model-entity-relationship-model">개체-관계 모델(E-R model: Entity-Relationship model)</h1>
+<ul>
+  <li>피터 첸(Peter Chen)이 제안한 개념적 데이터 모델</li>
+  <li>개체와 개체 간의 관계를 이용해 현실 세계를 개념적 구조로 표현</li>
+  <li>핵심 요소 : 개체, 속성, 관계</li>
+</ul>
+
+<h2 id="개체-관계-다이어그램e-r-diagram">개체-관계 다이어그램(E-R diagram)</h2>
+<ul>
+  <li>E-R 다이어그램이라고도 하며 개체 - 관계 모델을 이용해 현실 세계를 개념적으로 모델링한 결과물을 그림으로 표현한 것</li>
+</ul>
+
+<h2 id="개체entity">개체(entity)</h2>
+<ul>
+  <li>현실 세계에서 조직을 운영하는 데 꼭 필요한 사람이나 사물과 같이 구별되는 모든 것</li>
+  <li>저장할 가치가 있는 중요 데이터를 가지고 있는 사람이나 사물, 개념, 사건 등</li>
+  <li>다른 개체와 구별되는 이름을 가지고 있고, 각 개체만의 고유한 특성이나 상태, 즉 속성을 하나 이상 가지고 있음</li>
+  <li>예) 서점에 필요한 개체 : 고객, 책</li>
+  <li>예) 학교에 필요한 개체 : 학과, 과목</li>
+  <li>파일 구조의 레코드(record)와 대응됨</li>
+  <li>E-R 다이어그램에서 <code class="language-plaintext highlighter-rouge">사각형</code>으로 표현하고 사각형 안에 이름을 표기한다.</li>
+</ul>
+
+<h2 id="속성attribute">속성(attribute)</h2>
+<ul>
+  <li>개체나 관계가 가지고 있는 고유의 특성</li>
+  <li>의미 있는 데이터의 가장 작은 논리적 단위</li>
+  <li>파일 구조의 필드(field)와 대응됨</li>
+  <li>E-R 다이어그램에서 타원으로 표현하고 타원 안에 이름을 표기</li>
+</ul>
+
+<h2 id="개체-타입entity-type">개체 타입(entity type)</h2>
+<ul>
+  <li>개체를 고유의 이름과 속성들로 정의한 것</li>
+  <li>파일 구조의 레코드 타입(record type)에 대응됨</li>
+</ul>
+
+<h2 id="개체-인스턴스entity-instance">개체 인스턴스(entity instance)</h2>
+<ul>
+  <li>개체를 구성하고 있는 속성이 실제 값을 가짐으로써 실체화된 개체</li>
+  <li>개체 어커런스(entity occurrence)라고도 함</li>
+  <li>파일 구조의 레코드 인스턴스(record instance)에 대응됨</li>
+</ul>
+
+<h2 id="개체-집합entity-set">개체 집합(entity set)</h2>
+<ul>
+  <li>특정 개체 타입에 대한 기체 인스턴스들을 모아놓은 것</li>
+</ul>
+
+<h2 id="속성의-분류">속성의 분류</h2>
+<h3 id="속성-값의-개수에-따른-분류">속성 값의 개수에 따른 분류</h3>
+<h4 id="-단일-값-속성single-valued-attribute">🔸 단일 값 속성(single-valued attribute)</h4>
+<ul>
+  <li>값을 하나만 가질 수 있는 속성</li>
+  <li>예) 고객 개체의 이름, 적립금 속성</li>
+</ul>
+
+<h4 id="-다중-값-속성multi-valued-attribute">🔸 다중 값 속성(multi-valued attribute)</h4>
+<ul>
+  <li>값을 여러 개 가질 수 있는 속성</li>
+  <li>예) 고객 개체의 연락처 속성</li>
+  <li>예) 책 개체의 저자 속성</li>
+  <li>E-R 다이어그램에서 이중 타원으로 표현</li>
+</ul>
+
+<h3 id="의미의-분해-가능성에-따른-분류">의미의 분해 가능성에 따른 분류</h3>
+<h4 id="-단순-속성simple-attribute">🔸 단순 속성(simple attribute)</h4>
+<ul>
+  <li>의미를 더는 분해할 수 없는 속성</li>
+  <li>예) 고객 개체의 적립금 속성</li>
+  <li>예) 책 개체의 이름, ISBN, 가격 속성</li>
+</ul>
+
+<h4 id="-복합-속성composite-attribute">🔸 복합 속성(composite attribute)</h4>
+<ul>
+  <li>의미를 분해할 수 있는 속성</li>
+  <li>예) 고객 개체의 주소 속성
+    <ul>
+      <li>시, 도, 구, 동, 우편번호 등으로 의미를 세분화해서 쪼갤 수 있다.</li>
+    </ul>
+  </li>
+  <li>예) 고객 개체의 생년월일 속성
+    <ul>
+      <li>연, 월, 일로 의미를 세분화할 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="유도-속성derived-attribute">유도 속성(derived attribute)</h3>
+<ul>
+  <li>기존의 다른 속성의 값에서 유도되어 결정되는 속성</li>
+  <li>값이 별도로 저장되지 않음</li>
+  <li>예) 책 개체의 가격과 할인율 속성으로 계산되는 판매가격 속성
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">가격 - 할인율 = 책 가격</code>이 되기 때문에 책 개체의 가격은 유도 속성이라 할 수 있다.</li>
+    </ul>
+  </li>
+  <li>예) 고객 개체의 출생연도 속성으로 계산되는 나이 속성
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">출생연도를 이용해서 고객의 나이를 계산</code>할 수 있기 때문에 고객 개체의 나이 속성은 유도 속성이라 할 수 있다.</li>
+    </ul>
+  </li>
+  <li>E-R 다이어그램에서 점선 타원으로 표현된다.</li>
+</ul>
+
+<h3 id="널-속성null-attribute">널 속성(null attribute)</h3>
+<ul>
+  <li>널 값이 허용되는 속성</li>
+</ul>
+
+<h3 id="널null-값">널(null) 값</h3>
+<ul>
+  <li>아직 결정되지 않았거나 모르는 값 또는 존재하지 않는 값</li>
+  <li>공백이나 0과는 의미가 다른데, 공백이나 0도 공백과 0이라는 값이 있는 것이다. 그래서 <code class="language-plaintext highlighter-rouge">공백, 0 != null</code></li>
+  <li>예) 등급 속성이 널 값이라는 의미는 등급이 아직 결정되지 않았음을 의미</li>
+</ul>
+
+<h3 id="키-속성key-attribute">키 속성(key attribute)</h3>
+<ul>
+  <li>각 개체 인스턴스를 식별하는 데 사용되는 속성</li>
+  <li>모든 개체 인스턴스의 키 속성 값이 다름</li>
+  <li>둘 이상의 속성들로 구성되기도 함</li>
+  <li>예) 고객 개체의 고객아이디 속성</li>
+  <li>E-R 다이어그램에서 밑줄로 표현한다.</li>
+</ul>
+
+<h2 id="관계relationship">관계(relationship)</h2>
+<ul>
+  <li>개체와 개체가 맺고 있는 의미 있는 연관성</li>
+  <li>개체 집합들 사이의 대응 관계, 즉 매핑(mapping)을 의미</li>
+  <li>예) 고객 개체와 책 개체 간의 구매 관계 (“고객은 책을 구매한다”)</li>
+  <li>E-R 다이어그램에서 마름모로 표현한다.</li>
+</ul>
+
+<h3 id="관계의-유형--관계에-참여하는-개체-타입의-수에-따라">관계의 유형 : 관계에 참여하는 개체 타입의 수에 따라</h3>
+<ul>
+  <li>이항 관계 : 개체 타입 두 개가 맺는 관계</li>
+  <li>삼항 관계 : 개체 타입 세 개가 맺는 관계</li>
+  <li>순환 관계 : 개체 타입 하나가 자기 자신과 맺는 관계</li>
+</ul>
+
+<h3 id="관계의-유형--매핑-카디널리티-기준">관계의 유형 : 매핑 카디널리티 기준</h3>
+<h4 id="일대일1--1-관계">일대일(1 : 1) 관계</h4>
+<ul>
+  <li>개체 A의 각 개체 인스턴스가 개체 B의 개체 인스턴스 <code class="language-plaintext highlighter-rouge">하나</code>와 관계를 맺을 수 있고, 개체 B의 각 개체 인스턴스도 개체 A의 개체 인스턴스 <code class="language-plaintext highlighter-rouge">하나</code>와 관계를 맺을 수 있음</li>
+  <li>예) 일처일부제에서의 혼인관계</li>
+</ul>
+
+<h4 id="일대다1--n-관계">일대다(1 : n) 관계</h4>
+<ul>
+  <li>개체 A의 각 개체 인스턴스가 개체 B의 개체 인스턴스 <code class="language-plaintext highlighter-rouge">여러 개</code>와 관계를 맺을 수 있지만, 개체 B의 각 개체 인스턴스는 개체 A의 개체 인스턴스 <code class="language-plaintext highlighter-rouge">하나</code>와 관계를 맺을 수 있음</li>
+  <li>예) 하나의 부서에 여러 사원이 소속되어 있는 관계</li>
+</ul>
+
+<h4 id="다대다n--m-관계">다대다(n : m) 관계</h4>
+<ul>
+  <li>개체 A의 각 개체 인스턴스가 개체 B의 개체 인스턴스 <code class="language-plaintext highlighter-rouge">여러 개</code>와 관계를 맺을 수 있고, 개체 B의 각 개체 인스턴스도 개체 A의 개체 인스턴스 <code class="language-plaintext highlighter-rouge">여러 개</code>와 관계를 맺을 수 있음</li>
+  <li>고객은 책을 여러 권 살 수 있고 책 또한 여러 고객들에 의해서 구매될 수 있는 관계</li>
+</ul>
+
+<h4 id="매핑-카디널리티mapping-cardinality">매핑 카디널리티(mapping cardinality)</h4>
+<ul>
+  <li>관계를 맺는 두 개체 집합에서, 각 개체 인스턴스가 연관성을 맺고 있는 상대 개체 집합의 인스턴스 개수</li>
+</ul>
+
+<h3 id="관계의-참여-특성">관계의 참여 특성</h3>
+<h4 id="필수적-참여전체-참여">필수적 참여(전체 참여)</h4>
+<ul>
+  <li>모든 개체 인스턴스가 관계에 반드시 참여해야 하는 것을 의미</li>
+  <li>예) 모든 고객은 책을 반드시 구매해야 한다면 고객 개체가 책 개체와의 구매 관계에 필수적으로 참여하는 것</li>
+  <li>E-R 다이어그램에서 이중선으로 표현</li>
+</ul>
+
+<h4 id="선택적-참여부분-참여">선택적 참여(부분 참여)</h4>
+<ul>
+  <li>개체 인스턴스 중 일부만 관계에 참여해도 되는 것을 의미</li>
+  <li>예) 고객이 서점에 있는 모든 책을 사야 하는 것은 아니기 때문에 이런 경우엔 책 개체가 고객 개체와의 구매 관계에 선택적으로 참여한다고 할 수 있다.</li>
+</ul>
+
+<h3 id="관계의-종속성">관계의 종속성</h3>
+<ul>
+  <li>약한 개체(weak entity) : 다른 개체의 존재 여부에 의존적인 개체</li>
+  <li>오너 개체(owner entity) : 다른 개체의 존재 여부를 결정하는 개체</li>
+  <li><code class="language-plaintext highlighter-rouge">오너 개체</code>와 <code class="language-plaintext highlighter-rouge">약한 개체</code>는 일반적으로 <code class="language-plaintext highlighter-rouge">일대다</code>의 관계를 가지고, <code class="language-plaintext highlighter-rouge">약한 개체</code>는 <code class="language-plaintext highlighter-rouge">오너 개체</code>와의 관계에 <code class="language-plaintext highlighter-rouge">필수적으로 참여</code>하는 특징이 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">약한 개체</code>는 <code class="language-plaintext highlighter-rouge">오너 개체</code>의 <code class="language-plaintext highlighter-rouge">키를 포함</code>하여 키를 구성하는 특징이 있다.</li>
+  <li>예) 직원 개체와 부양가족 개체 사이의 부양 관계
+    <ul>
+      <li>직원 개체는 부양가족을 꼭 가지지 않아도 되지만 부양가족은 직원 개체가 꼭 있어야 한다. 그래서 직원 개체는 오너 개체, 부양가족 개체는 약한 개체라 할 수 있다.</li>
+    </ul>
+  </li>
+  <li>E-R 다이어그램에서 약한 개체는 이중 사각형으로 표한하고 약한 개체가 오너 개체와 맺는 관계는 이중 마름모로 표현<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 데이터베이스 설계 사용자의 다양한 요구 사항을 고려하여 데이터베이스를 생성하는 과정 E-R 모델과 릴레이션 변환 규칙을 이용한 설계 과정은 5단계로 이루어져 있다.]]></summary></entry><entry><title type="html">OS) CPU Scheduling</title><link href="http://localhost:4000/operating%20system/OS-05-Cpu-scheduling/" rel="alternate" type="text/html" title="OS) CPU Scheduling" /><published>2022-02-28T00:00:00+09:00</published><updated>2022-02-28T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-05-Cpu-scheduling</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-05-Cpu-scheduling/"><![CDATA[<h1 id="-cpu-burst-time">👀 CPU-Burst time</h1>
 <ul>
   <li>프로세스의 실행은 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻어서 작업을 수행하는 것과 <code class="language-plaintext highlighter-rouge">I/O</code> 작업을 수행하는 것으로 나눌 수 있다.</li>
   <li>이 때 <code class="language-plaintext highlighter-rouge">CPU</code>만 쓰면서 <code class="language-plaintext highlighter-rouge">Instruction</code>을 실행하는 단계는 <code class="language-plaintext highlighter-rouge">CPU burst</code>라 하고 <code class="language-plaintext highlighter-rouge">I/O</code>만 실행하는 단계는 <code class="language-plaintext highlighter-rouge">I/O burst</code>라 한다.</li>
@@ -413,119 +685,139 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="CpuScheduling" /><summary type="html"><![CDATA[👀 CPU-Burst time 프로세스의 실행은 CPU를 얻어서 작업을 수행하는 것과 I/O 작업을 수행하는 것으로 나눌 수 있다. 이 때 CPU만 쓰면서 Instruction을 실행하는 단계는 CPU burst라 하고 I/O만 실행하는 단계는 I/O burst라 한다. 현재 프로세스가 CPU를 사용중이라면 다른 프로세스는 사용이 끝날 때까지 기다려야 하겠지만 I/O 작업중이라면 다른 프로세스가 CPU를 쓸 수 있다. 프로세스의 종류는 여러 가지가 있기 때문에 시스템 자원을 효율적으로 쓸 수 있도록 CPU 스케줄링이 필요하다.]]></summary></entry><entry><title type="html">컴퓨터 네트워크) 데이터 통신</title><link href="http://localhost:4000/computer%20network/computer-network-02/" rel="alternate" type="text/html" title="컴퓨터 네트워크) 데이터 통신" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/computer%20network/computer-network-02</id><content type="html" xml:base="http://localhost:4000/computer%20network/computer-network-02/"><![CDATA[<h1 id="전송-모드">전송 모드</h1>
-<h2 id="병렬-전송parallel-transfer">병렬 전송(Parallel Transfer)</h2>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="CpuScheduling" /><summary type="html"><![CDATA[👀 CPU-Burst time 프로세스의 실행은 CPU를 얻어서 작업을 수행하는 것과 I/O 작업을 수행하는 것으로 나눌 수 있다. 이 때 CPU만 쓰면서 Instruction을 실행하는 단계는 CPU burst라 하고 I/O만 실행하는 단계는 I/O burst라 한다. 현재 프로세스가 CPU를 사용중이라면 다른 프로세스는 사용이 끝날 때까지 기다려야 하겠지만 I/O 작업중이라면 다른 프로세스가 CPU를 쓸 수 있다. 프로세스의 종류는 여러 가지가 있기 때문에 시스템 자원을 효율적으로 쓸 수 있도록 CPU 스케줄링이 필요하다.]]></summary></entry><entry><title type="html">컴퓨터 네트워크) OSI 참조모델</title><link href="http://localhost:4000/computer%20network/computer-network-03-OSI/" rel="alternate" type="text/html" title="컴퓨터 네트워크) OSI 참조모델" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/computer%20network/computer-network-03-OSI</id><content type="html" xml:base="http://localhost:4000/computer%20network/computer-network-03-OSI/"><![CDATA[<h1 id="-osi-참조모델">👀 OSI 참조모델</h1>
 <ul>
-  <li>여러 전송라인을 통해 여러 비트들을 동시에 전송</li>
-  <li>두 장치들간의 거리가 짧은 경우에 일반적으로 사용
+  <li>예전엔 제조사별로 각자 통신 모델을 만들어 썼기 때문에 서로 호환이 되지 않아 통신이 되지 않는 경우가 많았다.</li>
+  <li>그래서 1970년대 후반에 국제 표준화 기구 ISO(Open System Interconnection)가 네트워크 설계의 호환성을 증진시키기 위해 개방시스템 상호접속 참조모델(OSI) 구조를 제안함</li>
+  <li><code class="language-plaintext highlighter-rouge">OSI</code>란 말은 타사의 시스템 간이라도 데이터를 교환하기 위한 표준을 가질 수 있다는 것을 의미함</li>
+  <li><code class="language-plaintext highlighter-rouge">OSI</code>는 <code class="language-plaintext highlighter-rouge">7계층</code>으로 이루어져 있다.</li>
+</ul>
+
+<h2 id="계층-구조의-장점">계층 구조의 장점</h2>
+<ul>
+  <li>크고 복잡한 시스템을 기능별로 나누어 개발 과정을 단순화 하는데 매우 유용하게 사용(모듈화)</li>
+  <li>각 계층이 제공하는 서비스를 변경하기 쉬움(한 계층을 변경해도 나머지 계층에 영향을 주지 않아 유지 보수가 쉽다)</li>
+</ul>
+
+<h2 id="osi-참조모델의-계층">OSI 참조모델의 계층</h2>
+<ul>
+  <li>N 계층의 프로토콜 모듈은 상대방의 동일 계층 프로토콜 모듈과 통신을 하며 동일 계층에 있는 N 계층 끼리의 통신 규약을 N 계층 프로토콜이라 함</li>
+  <li>N 계층 프로토콜이 상대방의 동일 계층에 데이터를 직접 전달하는 것이 아니라 하위 계층(N - 1)으로 전달해서 맨 아래 계층인 물리 계층까지 도달하면 케이블을 통해 상대 호스트의 물리 계층으로 데이터를 전달한다.</li>
+  <li>상대 호스트는 물리 계층에서 받은 데이터를 하나씩 확인하며 상위 계층(N + 1)으로 올려 보낸다.</li>
+  <li>결과적으로, OSI 7계층 모델에서 상위 계층은 하위 계층의 서비스 사용자(Service User)가 되며, 하위 계층은 상위 계층의 서비스 제공자(Service Provider)가 된다.</li>
+</ul>
+
+<h2 id="서비스-프리미티브service-primitive">서비스 프리미티브(Service Primitive)</h2>
+<ul>
+  <li>동일 호스트상의 서비스 사용자(N + 1계층)와 서비스 제공자(N계층)간에 주고 받는 데이터</li>
+  <li>N 계층의 서비스는 N 서비스 프리미티브와 이 프리미티브에 관련된 파라미터로 규정</li>
+  <li>N 서비스 프리미티브는 요청(Request), 통지(Indicator), 응답(Response), 확인(Confirm)으로 구분</li>
+  <li>송신측에서 수신측으로 <code class="language-plaintext highlighter-rouge">Request</code>를 보내면 수신측의 하위 계층에서 <code class="language-plaintext highlighter-rouge">Indicator</code>를 발생시킨 뒤 송신측으로 <code class="language-plaintext highlighter-rouge">Response</code>를 보낸다. 송신측은 받은 데이터를 확인(<code class="language-plaintext highlighter-rouge">Confirm</code>)하며 하위계층에서 상위계층으로 올려보낸다.</li>
+  <li>송신측에서 데이터를 전송할 때 서비스 프리미티브를 사용하여 N + 1 계층의 송신 데이터(PDU : Protocol Data Unit)는 N 계층의 서비스 데이터 단위(SDU : Service Data Unit)로 N 계층에 넘겨진다.</li>
+  <li>N 계층에서는 <code class="language-plaintext highlighter-rouge">PDU</code>에 프로토콜 제어 정보(PCI : Protocol Control Information)를 헤더로 붙여 N 계층 <code class="language-plaintext highlighter-rouge">PDU</code>로 만든 뒤 하위 계층으로 내려보내고 하위 계층에서도 이걸 반복한다.</li>
+  <li>이러한 계층간 데이터의 전달 과정을 캡슐화(Encapsulation)라고 한다.</li>
+</ul>
+
+<h2 id="osi-참조모델의-7계층">OSI 참조모델의 7계층</h2>
+<h3 id="물리-계층physical-layer">물리 계층(Physical Layer)</h3>
+<ul>
+  <li>계층 1에 해당하며 전송매체에 대한 전기적, 기계적인 인터페이스를 다룸</li>
+  <li>전송하고자 하는 데이터를 전송매체에 적합한 전기적 신호로 바꾸는 기능</li>
+  <li>하드웨어로 구현되며 계층 2 이상은 대부분 소프트웨어로 구현된다.</li>
+  <li>물리 계층 관련 장치들
     <ul>
-      <li>예) PC에서 프린터로 전송하는 것</li>
-      <li>예) 컴퓨터와 주변 장치들간의 연결</li>
+      <li>리피터(Repeater), 허브(Hub), 케이블, 이더넷(Ethernet) 등과 같은 하드웨어 장치</li>
+      <li>LAN에서 사용하는 UTP(Unshieled Twisted Pair), STP(Shieled Twisted Pair)와 같은 케이블</li>
+      <li>LAN의 UTP 케이블에 연결하는 RJ-45 커넥터(흔히 사용하는 인터넷 랜선 커넥터)</li>
     </ul>
   </li>
-  <li>긴 거리를 병렬 전송으로 전송하면 비용이 많이 들어서 효율적이지 않다.</li>
 </ul>
 
-<h2 id="직렬-전송serial-transfer">직렬 전송(Serial Transfer)</h2>
+<h3 id="데이터링크-계층datalink-layer">데이터링크 계층(Datalink Layer)</h3>
 <ul>
-  <li>하나의 전송라인을 사용하여 하나씩 모든 비트를 보낸다.</li>
-  <li>긴 거리를 전송할 때 병렬 전송에 비해 적은 비용이 들고 신뢰성 증가</li>
-  <li>하지만 비트를 하나씩 보내는 만큼 병렬 전송에 비해 느리다.</li>
+  <li>물리 계층을 통해 전송되는 데이터의 오류 문제를 해결하여 신뢰성 있는 데이터 전송 기능을 제공하는데 <code class="language-plaintext highlighter-rouge">호스트 - 라우터 간 오류 문제만</code> 제어한다.</li>
+  <li>이를 통해 상위 계층인 네트워크 계층에게 오류 문제에 대한 부담을 줄임</li>
+  <li>데이터링크 계층에서 전송하는 데이터 단위를 <code class="language-plaintext highlighter-rouge">프레임(Frame)</code>이라 한다.</li>
+  <li>데이터링크 계층의 주요 기능
+    <ul>
+      <li>순서 제어 : 데이터의 순차적 전송을 위해 프레임 번호 부여</li>
+      <li>오류 제어 : 오류 검출과 교정 (가장 중요한 기능)</li>
+      <li>흐름 제어 : 연속적인 프레임을 전송할 때 수신측이 수신이 가능한지 여부를 제어. 호스트 간 <code class="language-plaintext highlighter-rouge">CPU</code> 성능이 다를 때 느린 쪽이 빠른 쪽의 속도에 어느정도 맞춰 받을 수 있는지 서로 확인한 후 전송하는 등의 제어를 한다.</li>
+      <li>프레임 동기화 : 데이터 전송시 프레임 단위로 전송</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="비동기식-전송">비동기식 전송</h2>
+<h3 id="네트워크-계층network-layer">네트워크 계층(Network Layer)</h3>
 <ul>
-  <li>한 번에 한 문자씩 보내거나 받는 방식</li>
-  <li>문자는 7~8 비트로 구성되며, 문자의 앞에 시작비트(Start bit)를, 끝에는 정지비트(Stop bit)를 첨가해서 보냄</li>
-  <li>송신측과 수신측 사이에 동기를 맞추기 위한 클럭 신호를 사용하지 않음</li>
-  <li>시작비트는 수신측에 문자에 해당하는 비트가 따라올 것이라는 것을 알려주는 역할</li>
-  <li>문자 비트들을 모두 수신하면 정지비트가 뒤따른다.</li>
-  <li>키보드와 프린터 같이 느린 장치들을 위해 사용되며 높은 오버헤드를 가진다.</li>
+  <li>네트워크 상에 존재하는 라우터와 같은 노드(Node)를 거칠 때마다 목적지로의 경로를 찾아주는 라우팅(Routing) 역할을 하는 계층</li>
+  <li>네트워크 계층의 데이터 전송 단위를 패킷(Packet)이라 부르며 패킷 내에는 송신 호스트의 주소와 목적지 호스트의 주소를 포함</li>
+  <li>라우터에 패킷이 도착하면 패킷의 목적지 주소에 따라 적합한 라우터로 중개하며 이러한 과정을 통해 목적지에 도착</li>
+  <li>라우터가 패킷을 중개할 때 자신이 관리하고 있는 라우팅 테이블(Routing Table)을 사용해서 패킷을 어디로 보낼지 결정한다.</li>
+  <li>네트워크 계층의 예
+    <ul>
+      <li>인터넷의 <code class="language-plaintext highlighter-rouge">IP</code>(IP 주소가 이 계층에서 사용하는 주소)</li>
+      <li><code class="language-plaintext highlighter-rouge">OSI</code>의 X.25</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="동기식-전송">동기식 전송</h2>
+<h3 id="트랜스포트-계층transport-layer">트랜스포트 계층(Transport Layer)</h3>
 <ul>
-  <li>정해진 수 만큼의 문자들을 하나의 그룹(프레임)으로 만들어서 일시에 전송하는 방법</li>
-  <li>일반적으로 비동기식 전송에 비해서 더 빠르다.</li>
-  <li>송신측과 수신측이 하나의 기준 클럭으로 동기신호를 맞추어 동작</li>
-  <li>동기화를 위한 클럭라인이 필요하다.</li>
-  <li>일반적으로 많이 사용하는 방식</li>
+  <li>라우터와 같은 노드와는 상관없이 단대단(End-to-end) 신뢰성 있는 데이터 전송 기능을 제공</li>
+  <li>이를 위해 단대단 오류 복구, 흐름 제어 기능 등을 포함하는데 트랜스포트 계층에서의 제어 기능들은 <code class="language-plaintext highlighter-rouge">A 호스트에서 B 호스트까지 가는 모든 경로의 오류 및 흐름</code>을 제어한다.</li>
+  <li>트랜스포트 계층은 호스트 내에서 동작하는 <code class="language-plaintext highlighter-rouge">프로세스(Process)에서 프로세스</code>로 데이터를 전송한다.
+    <ul>
+      <li>네트워크 계층은 <code class="language-plaintext highlighter-rouge">호스트에서 호스트</code>로의 데이터 전송에 관계함</li>
+      <li>네트워크 계층에서 보내는 IP 주소 만으로는 상대 호스트의 어떤 프로세스에서 이 데이터를 보냈는지 알 수 없다. 그래서 각 프로세스별로 포트(Port) 번호를 사용해서 어떤 프로세스에서 보낸 데이터인지 구분한다.</li>
+      <li>그래서 단대단 전송이라는 용어는 프로세스와 프로세스 간의 전송을 의미한다.</li>
+    </ul>
+  </li>
+  <li>트랜스포트 계층의 데이터 전송 단위(PDU : Protocol Data Unit)에는 송신측 포트 번호와 수신측 포트 번호를 포함한다.</li>
+  <li>포트 번호는 특정 프로세스를 나타내기 위해 트랜스포트 계층에서 사용하는 주소라 할 수 있다.</li>
+  <li>인터넷 통신구조에서 <code class="language-plaintext highlighter-rouge">TCP</code>와 <code class="language-plaintext highlighter-rouge">UDP</code>가 트랜스포트 계층에 해당한다.</li>
 </ul>
 
-<h3 id="바이트기반-전송byte-oriented-transmission">바이트기반 전송(Byte-Oriented Transmission)</h3>
+<h3 id="세션-계층session-layer">세션 계층(Session Layer)</h3>
 <ul>
-  <li>각 프레임을 바이트(문자)의 연속으로 간주하는 방식</li>
-  <li>STX(Start of Text), ETX(End of Text), DLE(Data-Link Escape)로 프레임의 시작과 끝을 구분</li>
-  <li>예) BISYNC, PPP, DDCMP 등</li>
+  <li>양끝단에 있는 응용 프로세스간의 통신을 제어하는 기능 제공</li>
+  <li>응용 프로세스간 대화를 위해 세션을 설정하여 사용하는 기능 제공</li>
+  <li>제공 기능
+    <ul>
+      <li>대화(Dialogue) 형태 : 단방향, 반이중, 전이중</li>
+      <li>복구(Recovery) 기능 : 체크포인트(Checkpoint) 기능을 제공하여 체크포인트 사이에 오류가 있을 때 마지막 체크포인트 이후의 모든 데이터를 세션 계층이 재전송하는 기능</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="비트기반-전송bit-oriented-transmission">비트기반 전송(Bit-Oriented Transmission)</h3>
+<h3 id="표현-계층presentation-layer">표현 계층(Presentation Layer)</h3>
 <ul>
-  <li>일반적으로 많이 사용하는 방식</li>
-  <li>각 프레임을 비트의 연속으로 간주하는 방식</li>
-  <li>프레임의 시작과 끝을 알리기 위해 플래그(Flag)라고 하는 특수한 비트 패턴, “01111110”을 사용</li>
-  <li>예) 인터넷에서의 이더넷(Ethernet)과 HDLC(High-level Data Link Control) 등<br /><br /></li>
+  <li>호스트간에 교환되는 데이터의 표현방법(Syntax)과 의미(Semantic)를 다루는 계층</li>
+  <li>즉 양쪽 호스트의 데이터 표현 방식이 다를 때 송신 호스트는 양쪽 호스트가 이해할 수 있는 표준화 된 형식으로 인코딩(Encoding)하고, 수신 호스트는 표준화 된 형식을 수신측에 적합한 형식으로 디코딩(Decoding)하는 기능</li>
+  <li>이외에도 데이터의 안전하고 효율적인 전송을 위해 암호화(Encryption)하거나 압축(Compression)하는 기능 제공</li>
 </ul>
 
-<h2 id="비트-스터핑bit-stuffing">비트 스터핑(Bit Stuffing)</h2>
+<h3 id="응용-계층application-layer">응용 계층(Application Layer)</h3>
 <ul>
-  <li>비트기반 전송에서 프레임의 시작과 끝이 아닌 데이터 필드에 프레임의 시작과 끝을 알리는 플래그가 포함될 수 있다. 그러면 전송이 아직 끝나지 않았는데 수신측에서는 전송이 끝난 것으로 간주하고 데이터 받기를 중단할 것이다.</li>
-  <li>그래서 이걸 해결하기 위해 사용하는 기법이 비트 스터핑 기법이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">OSI 7계층</code> 중에서 최상위 계층에 있으며 사용자에게 필요한 응용 서비스를 제공하는 계층</li>
+  <li>응용 계층에 해당하는 프로토콜
+    <ul>
+      <li>FTAM(File Transfer Access and Management) : 파일 전송 프로토콜이며 인터넷의 FTP와 유사한 서비스</li>
+      <li>VT(Virtual Terminal) : 가상 단말 서비스 프로토콜이며 인터넷의 Telnet과 유사<br /><br /></li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="비트-스터핑-방법">비트 스터핑 방법</h3>
+<h2 id="sdu와-pdu의-차이">SDU와 PDU의 차이</h2>
 <ul>
-  <li>송신측 : 보낼 프레임의 데이터 필드에서 연속된 5개의 1을 발견하면 다섯 번째 1 뒤에 0을 추가함. 이렇게 하면 시작과 끝 부분 외에는 1이 연속해서 6개 위치하는 경우가 없어진다.</li>
-  <li>수신측 : 연속되는 5개의 1이 수신되고 나서 0이 수신되면 이 0은 비트 스터핑 된 것이라 간주하고 제거함<br /><br /><br /></li>
-</ul>
-
-<h2 id="단방향-반이중-전이중">단방향, 반이중, 전이중</h2>
-<h3 id="단방향simplex">단방향(Simplex)</h3>
-<ul>
-  <li>한 방향으로만 신호 전송이 가능한 형태</li>
-  <li>예) 공항 모니터, 프린터, TV 방송</li>
-</ul>
-
-<h3 id="반이중half-duplex">반이중(Half duplex)</h3>
-<ul>
-  <li>양쪽 방향에서 보내고 받을 수 있지만 교대로 전송만 가능</li>
-  <li>예) 무전기</li>
-</ul>
-
-<h3 id="전이중full-duplex">전이중(Full duplex)</h3>
-<ul>
-  <li>양쪽 호스트가 동시에 데이터전송 가능</li>
-  <li>예) 인터넷<br /><br /><br /></li>
-</ul>
-
-<h1 id="교환-기술">교환 기술</h1>
-<ul>
-  <li>N개의 통신 장비를 각각 직접 연결하면 필요한 연결선의 갯수가 너무 많아진다.</li>
-  <li>이것에 대한 해결방안으로 각각의 장비들은 통신망에 연결한 뒤 통신망을 이용해 서로 데이터를 주고 받는데 이걸 좀 더 효과적으로 운영하기 위해 교환 기술(Switching Technology)을 사용한다.</li>
-</ul>
-
-<h2 id="회선-교환circuit-switching">회선 교환(Circuit Switching)</h2>
-<ul>
-  <li>공중 전화 망에서 사용</li>
-  <li>데이터 전송 과정 : 회선 설정 - 데이터 전송 - 회선 해제</li>
-  <li>단점 : 회선을 설정하고 해제할 때까지 채널의 대역폭을 독점하기 때문에 다른 회선을 동시에 사용할 수 없다.</li>
-  <li>장점 : 단점의 이유로 신뢰성 있는 데이터 전송이 가능하며 일정한 데이터 전송률로 데이터를 전송한다.</li>
-  <li>회선 설정(call setup) 시간이 필요하며 링크 및 스위칭 장비가 성능에 영향을 미친다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="오류-검출과-교정기법">오류 검출과 교정기법</h1>
-<h2 id="해밍코드오류-교정-코드">해밍코드(오류 교정 코드)</h2>
-<ul>
-  <li>N 비트의 데이터에 k개의 패리티 비트를 더하여 (n+k)비트의 코드워드(Codeword)를 생성</li>
-  <li>일종의 비트마스킹 기법으로 오류를 검출할 수 있다.</li>
-  <li>N개의 비트를 사용해서 오류가 생긴 비트를 검출할 것이기 때문에 N 비트 데이터와 k개의 패리티 비트를 사용한다고 할 때 <code class="language-plaintext highlighter-rouge">2^k &gt;= n + k + 1</code> 라는 수식이 성립해야 한다.(1을 더해주는 이유는 오류가 생기지 않는 경우도 표현하기 위해서)</li>
-  <li>수신측은 <code class="language-plaintext highlighter-rouge">XOR</code> 연산을 통해 syndrome을 계산해서 syndrome을 10진수로 바꾼 값이 오류발생 위치(syndrome의 모든 비트가 0이면 오류가 없음)<br /><br /><br /></li>
+  <li>SDU(Service Data Unit) : 상하위 계층간 데이터 전송을 위해 사용하는 데이터 단위</li>
+  <li>PDU(Protocol Data Unit) : 상대방과의 통신을 위해 사용되는 데이터 단위<br /><br /><br /></li>
 </ul>
 
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/cview.do?cid=5959f58996c6bd25">데이터 통신과 컴퓨터 네트워크 - 동서대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[전송 모드 병렬 전송(Parallel Transfer) 여러 전송라인을 통해 여러 비트들을 동시에 전송 두 장치들간의 거리가 짧은 경우에 일반적으로 사용 예) PC에서 프린터로 전송하는 것 예) 컴퓨터와 주변 장치들간의 연결 긴 거리를 병렬 전송으로 전송하면 비용이 많이 들어서 효율적이지 않다.]]></summary></entry><entry><title type="html">Java) BOJ 18870. 좌표 압축</title><link href="http://localhost:4000/boj/boj18870-java/" rel="alternate" type="text/html" title="Java) BOJ 18870. 좌표 압축" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18870-java</id><content type="html" xml:base="http://localhost:4000/boj/boj18870-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><category term="OSI" /><summary type="html"><![CDATA[👀 OSI 참조모델 예전엔 제조사별로 각자 통신 모델을 만들어 썼기 때문에 서로 호환이 되지 않아 통신이 되지 않는 경우가 많았다. 그래서 1970년대 후반에 국제 표준화 기구 ISO(Open System Interconnection)가 네트워크 설계의 호환성을 증진시키기 위해 개방시스템 상호접속 참조모델(OSI) 구조를 제안함 OSI란 말은 타사의 시스템 간이라도 데이터를 교환하기 위한 표준을 가질 수 있다는 것을 의미함 OSI는 7계층으로 이루어져 있다.]]></summary></entry><entry><title type="html">Java) BOJ 18870. 좌표 압축</title><link href="http://localhost:4000/boj/boj18870-java/" rel="alternate" type="text/html" title="Java) BOJ 18870. 좌표 압축" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18870-java</id><content type="html" xml:base="http://localhost:4000/boj/boj18870-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -976,282 +1268,4 @@ ${requestScope.memberList[0].name }
 
 <ul>
   <li>그리고 아까 서블릿에서 함께 저장했던 클래스 객체도 위와 같이 <code class="language-plaintext highlighter-rouge">el 표현식</code>을 사용해서 출력할 수 있다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="Servlet" /><summary type="html"><![CDATA[👀 서블릿(Servlet)이란? 자바를 이용해서 웹 개발을 하기 위한 기술로 동적인 데이터를 처리하는 페이지인 JSP 파일을 최종적으로 사용하려면 자바 클래스 파일로 만들어야 하는데 서블릿은 그 중간 과정이라 할 수 있다. 즉 JSP(.jsp) -&gt; Servlet(.java) -&gt; 클래스파일(.class) 이런 과정을 거치게 된다.]]></summary></entry><entry><title type="html">JSP) JSTL</title><link href="http://localhost:4000/jsp/JSP-jstl/" rel="alternate" type="text/html" title="JSP) JSTL" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-jstl</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-jstl/"><![CDATA[<h1 id="-jstljsp-standard-tag-library이란">👀 JSTL(JSP Standard Tag Library)이란?</h1>
-<ul>
-  <li>자카르타(아파치)에서 제공하는 자주 사용되는 태그를 모아놓은 형태</li>
-  <li>
-    <p>태그를 이용해서 프로그래밍 언어로 코드를 쓰는 것과 같은 동작을 할 수 있다.</p>
-  </li>
-  <li>CORE 라이브러리 : 기본적인 동작 제공
-    <ul>
-      <li>변수 선언, 조건문, 반복문 코드를 처리하는 태그</li>
-      <li>페이지 이동처리 태그 (태그만 사용해서 반복문 처리를 할 수 있음)</li>
-    </ul>
-  </li>
-  <li>Formatting 라이브러리
-    <ul>
-      <li>데이터 국제화 처리 (다국어) 태그</li>
-      <li>형식화 (날짜, 숫자, 시간) 태그</li>
-    </ul>
-  </li>
-  <li>DB 라이브러리 : sql구문처리 동작
-    <ul>
-      <li>CRUD 동작 수행 태그</li>
-    </ul>
-  </li>
-  <li>XML 라이브러리
-    <ul>
-      <li>XML 문서 읽고 처리하는 태그</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="다운로드-및-설치">다운로드 및 설치</h2>
-<ul>
-  <li>톰캣 홈페이지에서 taglibs 메뉴에 들어가서 하단에</li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>taglibs-standard-jstlel-1.2.5.jar
-taglibs-standard-spec-1.2.5.jar
-taglibs-standard-impl-1.2.5.jar
-</code></pre></div></div>
-
-<ul>
-  <li>세 파일을 다운받는다.</li>
-  <li>다운받은 파일들을 <code class="language-plaintext highlighter-rouge">WEB-INF/lib</code>에 복붙하면 설치 완료<br /><br /><br /></li>
-</ul>
-
-<h1 id="core-라이브러리">CORE 라이브러리</h1>
-<h2 id="변수-선언-및-사용">변수 선언 및 사용</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>먼저 페이지 상단에 라이브러리 인클루드 해 주어야 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">prefix</code>는 태그의 접두사를 지정해 주는 것으로 <code class="language-plaintext highlighter-rouge">prefix</code>에 지정한 문자를 쓰고 <code class="language-plaintext highlighter-rouge">:</code>을 쓰면 태그 예약어들을 사용할 수 있다.<br /><br /></li>
-</ul>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- &lt;c:set var="변수명" value="값"/&gt; --%&gt;</span>
-  <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"num3"</span><span class="na"> value=</span><span class="s">"300"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"num4"</span><span class="na"> value=</span><span class="s">"400"</span><span class="nt">/&gt;</span>
-  
-  <span class="c">&lt;!-- 변수값 출력할 때엔 el 표현식 사용 --&gt;</span>
-  <span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">num3</span> <span class="si">}</span><span class="s">"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">num4</span> <span class="si">}</span><span class="s">"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;hr&gt;</span>
-  
-  ${num3 } + ${num4 } = ${num3 + num4 }
-</code></pre></div></div>
-
-<ul>
-  <li>태그 속에서 변수를 선언하고 값을 넣어줄 수 있다.<br /><br /></li>
-</ul>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"name"</span><span class="na"> value=</span><span class="s">"S22"</span><span class="na"> scope=</span><span class="s">"request"</span><span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>스크립틀릿을 이용해서 자바 코드로 변수를 선언하면 지역변수로 인식되어서 선언한 페이지에서만 쓸 수 있는데 <code class="language-plaintext highlighter-rouge">JSTL</code> 태그를 사용하면 변수의 영역도 지정해 줄 수 있어서 자바 코드를 사용하는 것에 비해 훨씬 활용도를 높일 수 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">scope : page, request, session, application</code> 네 영역 모두 설정해 줄 수 있다. <code class="language-plaintext highlighter-rouge">scope</code>를 설정하지 않으면 기본값은 <code class="language-plaintext highlighter-rouge">page</code>라서 선언한 페이지에서만 쓸 수 있다.</li>
-</ul>
-
-<h2 id="출력">출력</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"안녕하세요 JSTL입니다."</span><span class="nt">&gt;&lt;/c:out&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>만약 <code class="language-plaintext highlighter-rouge">null</code>값을 출력하는 경우 빈공백으로 처리된다. (JSP 표현식은 컴파일 에러남)</li>
-  <li>컴파일 에러난 페이지를 보여주는 것 보다는 <code class="language-plaintext highlighter-rouge">null</code>값을 출력하는게 사용자 신뢰도에는 더 좋다.<br /><br /></li>
-</ul>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span> <span class="nt">abc&gt;</span>태그는 abc입니다.<span class="nt">&lt;hr&gt;</span>
-
-<span class="ni">&amp;lt;</span>abc&gt;태그는 abc입니다.<span class="nt">&lt;hr&gt;</span>
-
-<span class="nt">&lt;c:out </span><span class="na">value=</span><span class="s">"&lt;abc&gt;태그는 abc입니다."</span><span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>만약 태그 자체를 출력하고 싶다면 위 세 가지 방법으로 출력이 가능하다.</li>
-</ul>
-
-<h2 id="조건문">조건문</h2>
-<h3 id="if">if</h3>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- jstl 변수 2개 생성(속성) --&gt;</span>
-<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"name"</span><span class="na"> value=</span><span class="s">"itwill"</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"tel"</span><span class="na"> value=</span><span class="s">"010-1234-5678"</span><span class="nt">/&gt;</span>
-
-<span class="c">&lt;!-- 사용자의 이름이 "itwill"인지 체크 --&gt;</span>
-<span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">name</span> <span class="o">==</span> <span class="l">'itwill'</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span><span class="c">&lt;!-- 표현식 안에서는 작은 따옴표를 써야 함(큰 따옴표 쓰면 밖에 따옴표랑 반응함) --&gt;</span>
-  사용자 이름 : ${name }<span class="nt">&lt;br&gt;</span>
-<span class="nt">&lt;/c:if&gt;</span>
-
-<span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="mi">100</span> <span class="n">lt</span> <span class="mi">200</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span><span class="c">&lt;!-- lt : 비교연산자(&lt;)와 같은 역할을 하는 예약어 --&gt;</span>
-  200이 더 크다.<span class="nt">&lt;br&gt;</span>
-<span class="nt">&lt;/c:if&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">HTML</code> 태그처럼 태그 사이에 출력하고 싶은 문구를 작성할 수 있다.<br /><br /></li>
-</ul>
-
-<h3 id="switch-case">switch ~case</h3>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:choose&gt;</span>
-  <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">param</span><span class="o">.</span><span class="na">num1</span> <span class="n">le</span> <span class="n">param</span><span class="o">.</span><span class="na">num2</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
-    num1! <span class="nt">&lt;br&gt;</span>
-  <span class="nt">&lt;/c:when&gt;</span>
-  <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">param</span><span class="o">.</span><span class="na">num1</span> <span class="n">lt</span> <span class="n">param</span><span class="o">.</span><span class="na">num2</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
-    num2! <span class="nt">&lt;br&gt;</span>
-  <span class="nt">&lt;/c:when&gt;</span>
-  <span class="nt">&lt;c:otherwise&gt;</span>
-    그 외 나머지<span class="nt">&lt;br&gt;</span>
-  <span class="nt">&lt;/c:otherwise&gt;</span>
-<span class="nt">&lt;/c:choose&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">choose</code> 태그를 사용해서 <code class="language-plaintext highlighter-rouge">switch ~case</code>문을 작성할 수 있다.<br /><br /></li>
-</ul>
-
-<h2 id="반복문">반복문</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"i"</span><span class="na"> begin=</span><span class="s">"1"</span><span class="na"> end=</span><span class="s">"10"</span><span class="na"> step=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  ${i }
-<span class="nt">&lt;/c:forEach&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>위와 같이 <code class="language-plaintext highlighter-rouge">for</code>문에서 변수를 선언하고 조건식, 증감식을 설정해 줄 수 있는데 저렇게는 잘 안 쓴다.(단순 순회할 때 <code class="language-plaintext highlighter-rouge">for</code>문에서 귀찮은 것들을 덜어내고 쓰는 것이 <code class="language-plaintext highlighter-rouge">foreach</code>니까…)<br /><br /></li>
-</ul>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span>
-  <span class="kt">int</span> <span class="n">arr</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
-  <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
-  <span class="o">{</span>
-    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
-  <span class="o">}</span>
-<span class="nt">%&gt;</span>
-<span class="c">&lt;!-- 이 형태를 많이 쓴다.(items 자리엔 jsp 표현식보다는 el 표현식을 쓴다.) --&gt;</span>
-<span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"test"</span><span class="na"> items=</span><span class="s">"&lt;%=arr %&gt;"</span><span class="nt">&gt;</span>
-  ${test } 
-<span class="nt">&lt;/c:forEach&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>위와 같은 형태로 배열을 순회할 때 많이 사용한다.<br /><br /></li>
-</ul>
-
-<h2 id="문자열-parsing">문자열 Parsing</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:forTokens </span><span class="na">var=</span><span class="s">"abc"</span><span class="na"> items=</span><span class="s">"a,b,c,d,e,f,g,h"</span><span class="na"> delims=</span><span class="s">","</span><span class="nt">&gt;</span>
-  ${abc } 
-<span class="nt">&lt;/c:forTokens&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span>
-<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"data"</span><span class="na"> value=</span><span class="s">"자바 디비 웹 JSP"</span><span class="nt">/&gt;</span>
-
-<span class="nt">&lt;c:forTokens </span><span class="na">var=</span><span class="s">"name"</span><span class="na"> items=</span><span class="s">"</span><span class="si">${</span><span class="n">data</span> <span class="si">}</span><span class="s">"</span><span class="na"> delims=</span><span class="s">" "</span><span class="nt">&gt;</span>
-  ${name }<span class="nt">&lt;br&gt;</span>
-<span class="nt">&lt;/c:forTokens&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">delims</code>에 넣은 인자값을 기준으로 문자열을 자를 수 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="formatting-라이브러리">Formatting 라이브러리</h1>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span><span class="nt">%&gt;</span>
-<span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"fmt"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/fmt"</span><span class="nt">%&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Formatting</code> 라이브러리는 일반적으로 <code class="language-plaintext highlighter-rouge">fmt</code> 접두사를 쓴다.</li>
-</ul>
-
-<h2 id="날짜-출력하기">날짜 출력하기</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"today"</span><span class="na"> value=</span><span class="s">"&lt;%=new Date() %&gt;"</span><span class="nt">/&gt;</span>
-
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="nt">/&gt;&lt;br&gt;</span>
-
-<span class="c">&lt;!-- time: 시간정보 --&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="nt">/&gt;&lt;br&gt;</span>
-
-<span class="c">&lt;!-- both: 날짜 &amp; 시간정보 --&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"both"</span><span class="nt">/&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span>
-
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"long"</span><span class="nt">/&gt;&lt;br&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"medium"</span><span class="nt">/&gt;&lt;br&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"short"</span><span class="nt">/&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span>
-
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"both"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="na"> timeStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> timeStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> timeStyle=</span><span class="s">"long"</span><span class="nt">/&gt;&lt;br&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> timeStyle=</span><span class="s">"medium"</span><span class="nt">/&gt;&lt;br&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> timeStyle=</span><span class="s">"short"</span><span class="nt">/&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span>
-<span class="nt">&lt;h3&gt;</span>2022/2/25(금) (오전) 11:50:00 형식으로 표현하기<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> pattern=</span><span class="s">"yyyy/MM/dd(E)"</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"time"</span><span class="na"> pattern=</span><span class="s">"(a)hh:mm:ss"</span><span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">dateStyle</code>에 넣은 값만큼 출력되는 날짜 정보의 갯수를 조절할 수 있다.</li>
-</ul>
-
-<h2 id="통화-출력하기">통화 출력하기</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"today"</span><span class="na"> value=</span><span class="s">"&lt;%=new Date() %&gt;"</span><span class="nt">/&gt;</span>
-${today }
-<span class="nt">&lt;hr&gt;</span>
-<span class="nt">&lt;fmt:setLocale </span><span class="na">value=</span><span class="s">"ko_kr"</span><span class="nt">/&gt;</span><span class="c">&lt;!-- 한국으로 기본 세팅되어 있어서 생략 가능 --&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 년 월 일 요일 표시 --&gt;</span>
-<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"1000000000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 숫자 자동으로 ,콤마 넣어서 표시/ currency는 통화도 넣어줌 --&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span>
-
-<span class="nt">&lt;fmt:setLocale </span><span class="na">value=</span><span class="s">"en_us"</span><span class="nt">/&gt;</span><span class="c">&lt;!-- 한국으로 기본 세팅되어 있어서 생략 가능 --&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 년 월 일 요일 표시 --&gt;</span>
-<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"1000000000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 숫자 자동으로 ,콤마 넣어서 표시/ currency는 통화도 넣어줌 --&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span>
-<span class="nt">&lt;fmt:setLocale </span><span class="na">value=</span><span class="s">"zh_cn"</span><span class="nt">/&gt;</span><span class="c">&lt;!-- 한국으로 기본 세팅되어 있어서 생략 가능 --&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 년 월 일 요일 표시 --&gt;</span>
-<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"1000000000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 숫자 자동으로 ,콤마 넣어서 표시/ currency는 통화도 넣어줌 --&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span>
-<span class="nt">&lt;fmt:setLocale </span><span class="na">value=</span><span class="s">"ja_jp"</span><span class="nt">/&gt;</span><span class="c">&lt;!-- 한국으로 기본 세팅되어 있어서 생략 가능 --&gt;</span>
-<span class="nt">&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">today</span> <span class="si">}</span><span class="s">"</span><span class="na"> dateStyle=</span><span class="s">"full"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 년 월 일 요일 표시 --&gt;</span>
-<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"1000000000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="nt">/&gt;&lt;br&gt;</span><span class="c">&lt;!-- 숫자 자동으로 ,콤마 넣어서 표시/ currency는 통화도 넣어줌 --&gt;</span>
-</code></pre></div></div>
-<p><br /></p>
-
-<h2 id="숫자-출력">숫자 출력</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"100000000"</span><span class="na"> groupingUsed=</span><span class="s">"false"</span><span class="nt">/&gt;&lt;br&gt;</span>
-<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"100000000"</span><span class="na"> groupingUsed=</span><span class="s">"true"</span><span class="nt">/&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;hr&gt;</span>
-
-<span class="nt">&lt;h2&gt;</span>소수점 자리 표현<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="mf">2.12345676</span> <span class="si">}</span><span class="s">"</span><span class="na"> pattern=</span><span class="s">"#.####"</span><span class="nt">/&gt;&lt;br&gt;</span>
-
-<span class="c">&lt;!-- 0은 .뒤에 0을 채워줌 --&gt;</span>
-<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"20.0"</span><span class="na"> pattern=</span><span class="s">"##.00"</span><span class="nt">/&gt;&lt;br&gt;</span>
-
-<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"0.5"</span><span class="na"> type=</span><span class="s">"percent"</span><span class="nt">/&gt;&lt;br&gt;</span>
-
-<span class="c">&lt;!-- 통화 심볼도 바꿀 수 있다 --&gt;</span>
-<span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"10000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="na"> currencySymbol=</span><span class="s">"@"</span><span class="nt">/&gt;&lt;br&gt;</span>
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="JSTL" /><summary type="html"><![CDATA[👀 JSTL(JSP Standard Tag Library)이란? 자카르타(아파치)에서 제공하는 자주 사용되는 태그를 모아놓은 형태 태그를 이용해서 프로그래밍 언어로 코드를 쓰는 것과 같은 동작을 할 수 있다.]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="Servlet" /><summary type="html"><![CDATA[👀 서블릿(Servlet)이란? 자바를 이용해서 웹 개발을 하기 위한 기술로 동적인 데이터를 처리하는 페이지인 JSP 파일을 최종적으로 사용하려면 자바 클래스 파일로 만들어야 하는데 서블릿은 그 중간 과정이라 할 수 있다. 즉 JSP(.jsp) -&gt; Servlet(.java) -&gt; 클래스파일(.class) 이런 과정을 거치게 된다.]]></summary></entry></feed>
