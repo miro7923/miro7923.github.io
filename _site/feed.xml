@@ -1,4 +1,237 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-28T02:19:33+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">OS) CPU Scheduling</title><link href="http://localhost:4000/operating%20system/OS-05-Cpu-scheduling/" rel="alternate" type="text/html" title="OS) CPU Scheduling" /><published>2022-02-28T00:00:00+09:00</published><updated>2022-02-28T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-05-Cpu-scheduling</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-05-Cpu-scheduling/"><![CDATA[<h1 id="-cpu-burst-time">👀 CPU-Burst time</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-01T00:43:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">DB) 데이터베이스 시스템</title><link href="http://localhost:4000/database/db-03-database-system/" rel="alternate" type="text/html" title="DB) 데이터베이스 시스템" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/database/db-03-database-system</id><content type="html" xml:base="http://localhost:4000/database/db-03-database-system/"><![CDATA[<h1 id="-데이터베이스-시스템dbs--database-system이란">👀 데이터베이스 시스템(DBS : Database System)이란?</h1>
+<ul>
+  <li>데이터베이스에 데이터를 저장하고 이를 관리하여 조직에 필요한 정보를 생성해주는 시스템</li>
+  <li>즉 데이터베이스 관리 시스템 전체를 아우르는 용어이다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="데이터베이스의-구조">데이터베이스의 구조</h1>
+<h2 id="스키마schema">스키마(schema)</h2>
+<ul>
+  <li>데이터베이스에 저장되는 데이터 구조와 제약조건, 데이터 타입 등을 정의한 것</li>
+  <li>전체적인 뼈대라 할 수 있다.</li>
+</ul>
+
+<h2 id="인스턴스instance">인스턴스(instance)</h2>
+<ul>
+  <li>스키마에 따라 데이터베이스에 실제로 저장된 값</li>
+  <li>그래서 스키마는 변하지 않지만 인스턴스는 시간이 흐름에 따라 바뀔 수 있다.</li>
+</ul>
+
+<h2 id="3단계-데이터베이스-구조">3단계 데이터베이스 구조</h2>
+<ul>
+  <li>미국 표준화 기관인 ANSI/SPARC에서 제안</li>
+  <li>데이터베이스를 쉽게 이해하고 이용할 수 있도록 하나의 데이터베이스를 관점에 따라 세 단계로 나눈 것</li>
+  <li>각 단계별로 다른 추상화(abstraction)를 제공한다.
+    <ul>
+      <li>내부 단계에서 외부 단계로 갈수록 추상화 레벨이 높아진다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3단계-데이터베이스-구조--외부-단계">3단계 데이터베이스 구조 : 외부 단계</h3>
+<ul>
+  <li>데이터베이스를 개별 사용자 관점에서 이해하고 표현하는 단계</li>
+  <li>데이터베이스 하나에 외부 스키마가 여러 개 존재할 수 있다.</li>
+  <li>아파트로 치자면 201호에 사는 사람처럼 각 세대에 사는 사람이라 할 수 있다. 아파트의 개별 세대원들은 본인이 사는 호수에만 관심이 있을 것이다.</li>
+</ul>
+
+<h4 id="-외부-스키마external-schema">🔸 외부 스키마(external schema)</h4>
+<ul>
+  <li>외부 단계에서 사용자에게 필요한 데이터베이스를 정의한 것</li>
+  <li>각 사용자가 생각하는 데이터베이스의 모습. 즉 논리적 구조로 사용자마다 다름</li>
+  <li>서브 스키마(sub schema)라고도 한다.</li>
+</ul>
+
+<h3 id="3단계-데이터베이스-구조--개념-단계">3단계 데이터베이스 구조 : 개념 단계</h3>
+<ul>
+  <li>데이터베이스를 조직 전체의 관점에서 이해하고 표현하는 단계</li>
+  <li>데이터데이스 하나에 개념 스키마가 하나만 존재함</li>
+  <li>아파트의 관리자라고 할 수 있다. 여러 세대가 사는 아파트에서 관리하는 사무소는 하나이고 관리 사무소는 아파트라는 조직 전체를 관리한다.</li>
+</ul>
+
+<h4 id="-개념-스키마conceptual-schema">🔸 개념 스키마(conceptual schema)</h4>
+<ul>
+  <li>개념 단계에서 데이터베이스 전체의 논리적 구조를 정의한 것</li>
+  <li>조직 전체의 관점에서 생각하는 데이터베이스의 모습</li>
+  <li>전체 데이터베이스에 어떤 데이터가 저장되는지, 데이터들 간에는 어떤 관계가 존재하고 어떤 제약조건이 존재하는지에 대한 정의뿐만 아니라, 데이터에 대한 보안 정책이나 접근 권한에 대한 정의도 포함</li>
+</ul>
+
+<h3 id="3단계-데이터베이스-구조--내부-단계">3단계 데이터베이스 구조 : 내부 단계</h3>
+<ul>
+  <li>데이터베이스를 저장 장치의 관점에서 이해하고 표현하는 단계</li>
+  <li>데이터베이스 하나에 내부 스키마가 하나만 존재함</li>
+  <li>아파트의 건설사 관점이라고 할 수 있다. 아파트의 구조를 설계하고 그에 맞춰 짓는 동안 하나의 건설사에서 관리한다.</li>
+</ul>
+
+<h4 id="-내부-스키마internal-schema">🔸 내부 스키마(internal schema)</h4>
+<ul>
+  <li>전체 데이터베이스가 저장 장치에 실제로 저장되는 방법을 정의한 것</li>
+  <li>레코드 구조, 필드 크기, 레코드 접근 경로 등 물리적 저장 구조를 정의</li>
+</ul>
+
+<h2 id="3단계-데이터베이스-구조의-사상-또는-매핑">3단계 데이터베이스 구조의 사상 또는 매핑</h2>
+<h3 id="스키마-사이의-대응-관계">스키마 사이의 대응 관계</h3>
+<ul>
+  <li>외부/개념 사상 : 외부 스키마와 개념 스키마의 대응 관계
+    <ul>
+      <li>응용 인터페이스(application interface)라고도 함</li>
+    </ul>
+  </li>
+  <li>개념/내부 사상 : 개념 스키마와 내부 스키마의 대응 관계
+    <ul>
+      <li>저장 인터페이스(storage interface)라고도 함</li>
+    </ul>
+  </li>
+  <li>미리 정의된 사상 정보를 이용하여 사용자가 원하는 데이터에 접근한다.</li>
+  <li>데이터베이스를 3단계 구조로 나누고 단계별로 스키마를 유지하며 스키마 사이의 대응 관계를 정의하는 궁극적인 목적은 <code class="language-plaintext highlighter-rouge">데이터 독립성의 실현</code>이다.</li>
+</ul>
+
+<h2 id="데이터-독립성data-independency">데이터 독립성(data independency)</h2>
+<ul>
+  <li>하위 스키마를 변경하더라도 상위 스키마가 영향을 받지 않는 특성</li>
+</ul>
+
+<h3 id="-논리적-데이터-독립성">🔸 논리적 데이터 독립성</h3>
+<ul>
+  <li>개념 스키마가 변경되어도 외부 스키마는 영향을 받지 않음</li>
+  <li>개념 스키마가 변경되면 관련된 외부/개념 사상만 정확하게 수정해주면 됨</li>
+</ul>
+
+<h3 id="-물리적-데이터-독립성">🔸 물리적 데이터 독립성</h3>
+<ul>
+  <li>내부 스키마가 변경되어도 개념 스키마는 영향을 받지 않음</li>
+  <li>내부 스키마가 변경되면 관련된 개념/내부 사상만 정확하게 수정해주면 됨</li>
+</ul>
+
+<h2 id="데이터-사전data-dictionary">데이터 사전(data dictionary)</h2>
+<ul>
+  <li>시스템 카탈로그(system catalog)라고도 한다.</li>
+  <li>데이터베이스에 저장되는 데이터에 관한 정보, 즉 메타 데이터를 유지하는 시스템 데이터베이스
+    <ul>
+      <li>메타 데이터(meta data) : 데이터에 대한 데이터</li>
+    </ul>
+  </li>
+  <li>스키마, 사상 정보, 다양한 제약조건 등을 저장</li>
+  <li>데이터베이스 관리 시스템이 스스로 생성하고 유지함</li>
+  <li>일반 사용자도 접근이 가능하지만 저장된 내용을 검색만 할 수 있음</li>
+</ul>
+
+<h2 id="데이터-디렉토리data-directory">데이터 디렉토리(data directory)</h2>
+<ul>
+  <li>데이터 사전에 있는 데이터에 실제로 접근하는 데 필요한 위치 정보를 저장하는 시스템 데이터베이스</li>
+  <li>일반 사용자의 접근은 허용되지 않음</li>
+</ul>
+
+<h2 id="사용자-데이터베이스user-database">사용자 데이터베이스(user database)</h2>
+<ul>
+  <li>사용자가 실제로 이용하는 데이터가 저장되어 있는 일반 데이터베이스<br /><br /><br /></li>
+</ul>
+
+<h1 id="데이터베이스-사용자">데이터베이스 사용자</h1>
+<ul>
+  <li>데이터를 이용하기 위해 접근하는 모든 사람</li>
+  <li>이용 목적에 따라 데이터베이스 관리자, 최종 사용자, 응용 프로그래머로 나눌 수 있다.</li>
+</ul>
+
+<h2 id="데이터베이스-관리자dba--database-administrator">데이터베이스 관리자(DBA : Database Administrator)</h2>
+<ul>
+  <li>데이터베이스 시스템을 운영, 관리하는 사람</li>
+  <li>주로 데이터 정의어와 데이터 제어어를 사용</li>
+  <li>주요 업무
+    <ul>
+      <li>데이터베이스 구성 요소 선정</li>
+      <li>데이터베이스 스키마 정의</li>
+      <li>물리적 저장 구조와 접근 방법 결정</li>
+      <li>무결성 유지를 위한 제약조건 정의</li>
+      <li>보안 및 접근 권한 정책 결정</li>
+      <li>백업 및 회복 기법 정의</li>
+      <li>시스템 데이터베이스 관리</li>
+      <li>시스템 성능 감시 및 성능 분석</li>
+      <li>데이터베이스 재구성</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="최종-사용자end-user">최종 사용자(end user)</h2>
+<ul>
+  <li>데이터베이스에 접근하여 데이터를 조작(삽입, 삭제, 수정, 검색)하는 사람</li>
+  <li>주로 데이터 조작어 사용</li>
+  <li>캐주얼 사용자와 초보 사용자로 구분</li>
+</ul>
+
+<h2 id="응용-프로그래머application-programmer">응용 프로그래머(application programmer)</h2>
+<ul>
+  <li>데이터 언어를 삽입하여 응용 프로그램을 작성하는 사람</li>
+  <li>주로 데이터 조작어 사용<br /><br /><br /></li>
+</ul>
+
+<h1 id="데이터-언어">데이터 언어</h1>
+<ul>
+  <li>사용자와 데이터베이스 관리 시스템 간의 통신 수단</li>
+  <li>사용 목적에 따라 데이터 정의어(DDL), 데이터 조작어(DML), 데이터 제어어(DCL)로 구분</li>
+</ul>
+
+<h2 id="데이터-정의어ddl--data-definition-language">데이터 정의어(DDL : Data Definition Language)</h2>
+<ul>
+  <li>스키마를 정의하거나 수정 또는 삭제하기 위해 사용</li>
+</ul>
+
+<h2 id="데이터-조작어dml--data-manipulation-language">데이터 조작어(DML : Data Manipulation Language)</h2>
+<ul>
+  <li>데이터의 삽입, 삭제, 수정, 검색 등의 처리를 요구하기 위해 사용</li>
+  <li>절차적 데이터 조작어와 비절차적 데이터 조작어로 구분됨</li>
+  <li>절차적 데이터 조작어(procedural DML)
+    <ul>
+      <li>사용자가 어떤(what) 데이터를 원하고 그 데이터를 얻기 위해 어떻게(how) 처리해야 하는지 설명</li>
+      <li>즉 데이터의 처리 절차를 설명해야 한다.</li>
+    </ul>
+  </li>
+  <li>비절차적 데이터 조작어(nonprocedural DML)
+    <ul>
+      <li>사용자가 결과적으로 어떤(what) 데이터를 원하는지만 설명</li>
+      <li>데이터를 얻기 위한 절차를 설명할 필요가 없다.</li>
+      <li>선언적 언어(declarative language)라고도 한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="데이터-제어어dcl--data-control-language">데이터 제어어(DCL : Data Control Language)</h2>
+<ul>
+  <li>내부적으로 필요한 규칙이나 기법을 정의하기 위해서 사용</li>
+  <li>사용 목적
+    <ul>
+      <li>무결성 : 정확하고 유효한 데이터만 유지</li>
+      <li>보안 : 허가받지 않은 사용자의 데이터 접근 차단, 허가된 사용자에 권한 부여</li>
+      <li>회복 : 장애가 발생해도 데이터 일관성 유지</li>
+      <li>동시성 제어 : 동시 공유 지원<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="데이터베이스-관리-시스템의-구성">데이터베이스 관리 시스템의 구성</h1>
+<ul>
+  <li>데이터베이스 관리와 사용자의 데이터 처리 요구를 수행한다.</li>
+</ul>
+
+<h2 id="주요-구성-요소">주요 구성 요소</h2>
+<ul>
+  <li>질의 처리기(query processor)
+    <ul>
+      <li>사용자의 데이터 처리 요구를 해석하여 처리</li>
+      <li>DDL 컴파일러, DML 프리 컴파일러, DML 컴파일러, 런타임 데이터베이스 처리기, 트랜잭션 관리자 등을 포함</li>
+    </ul>
+  </li>
+  <li>저장 데이터 관리자(stored data manager)
+    <ul>
+      <li>디스크에 저장된 사용자 데이터베이스와 데이터 사전을 관리하고, 여기에 실제로 접근하는 역할 담당<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 데이터베이스 시스템(DBS : Database System)이란? 데이터베이스에 데이터를 저장하고 이를 관리하여 조직에 필요한 정보를 생성해주는 시스템 즉 데이터베이스 관리 시스템 전체를 아우르는 용어이다.]]></summary></entry><entry><title type="html">OS) CPU Scheduling</title><link href="http://localhost:4000/operating%20system/OS-05-Cpu-scheduling/" rel="alternate" type="text/html" title="OS) CPU Scheduling" /><published>2022-02-28T00:00:00+09:00</published><updated>2022-02-28T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-05-Cpu-scheduling</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-05-Cpu-scheduling/"><![CDATA[<h1 id="-cpu-burst-time">👀 CPU-Burst time</h1>
 <ul>
   <li>프로세스의 실행은 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻어서 작업을 수행하는 것과 <code class="language-plaintext highlighter-rouge">I/O</code> 작업을 수행하는 것으로 나눌 수 있다.</li>
   <li>이 때 <code class="language-plaintext highlighter-rouge">CPU</code>만 쓰면서 <code class="language-plaintext highlighter-rouge">Instruction</code>을 실행하는 단계는 <code class="language-plaintext highlighter-rouge">CPU burst</code>라 하고 <code class="language-plaintext highlighter-rouge">I/O</code>만 실행하는 단계는 <code class="language-plaintext highlighter-rouge">I/O burst</code>라 한다.</li>
@@ -172,7 +405,7 @@
   </li>
   <li><code class="language-plaintext highlighter-rouge">Simulation (모의 실험)</code>
     <ul>
-      <li>알고리즘을 <code class="language-plaintext highlighter-rouge">모의 프로그램</code>으로 작성 후 <code class="language-plaintext highlighter-rouge">trace</code>를 입력으로 하여 결고 비교<br /><br /><br /></li>
+      <li>알고리즘을 <code class="language-plaintext highlighter-rouge">모의 프로그램</code>으로 작성 후 <code class="language-plaintext highlighter-rouge">trace</code>를 입력으로 하여 결과 비교<br /><br /><br /></li>
     </ul>
   </li>
 </ul>
@@ -1021,131 +1254,4 @@ ${today }
 
 <span class="c">&lt;!-- 통화 심볼도 바꿀 수 있다 --&gt;</span>
 <span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"10000000"</span><span class="na"> type=</span><span class="s">"currency"</span><span class="na"> currencySymbol=</span><span class="s">"@"</span><span class="nt">/&gt;&lt;br&gt;</span>
-</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="JSTL" /><summary type="html"><![CDATA[👀 JSTL(JSP Standard Tag Library)이란? 자카르타(아파치)에서 제공하는 자주 사용되는 태그를 모아놓은 형태 태그를 이용해서 프로그래밍 언어로 코드를 쓰는 것과 같은 동작을 할 수 있다.]]></summary></entry><entry><title type="html">JSP) 커넥션 풀</title><link href="http://localhost:4000/jsp/JSP-connection-pool/" rel="alternate" type="text/html" title="JSP) 커넥션 풀" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-connection-pool</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-connection-pool/"><![CDATA[<h1 id="-커넥션-풀-connection-pool이란">👀 커넥션 풀 (Connection Pool)이란?</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">JDBC</code>를 연동하기 위해서는 드라이버를 로드하고 <code class="language-plaintext highlighter-rouge">JDBC URL</code>로 접속하여 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 얻어오는 단계를 거쳐야 한다.</li>
-  <li>커넥션 풀은 데이터베이스와 연결된 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 미리 생성하여 풀(Pool)에 저장해 두고 필요할 때마다 풀에 접근하여 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 사용하고 사용이 끝나면 다시 반환하는 것을 말한다.</li>
-  <li>사용자가 웹 사이트에 <code class="language-plaintext highlighter-rouge">Connection</code> 객체를 생성하게 되면 메모리 소모가 많고 시간도 오래 걸린다.</li>
-  <li>하지만 풀에 저장해서 사용한다면 미리 생성된 객체를 쓰기 때문에 생성에 시간이 걸리지도 않고 또 쓰지 않는 객체는 다시 풀 속에 넣어뒀다가 필요할 때 꺼내 쓰면 되기 때문에 불필요한 메모리 낭비가 없어 프로그램 효율과 성능이 전체적으로 증가하게 된다.</li>
-</ul>
-
-<h2 id="커넥션풀의-연결전략">커넥션풀의 연결전략</h2>
-<p>1) DB연결이 필요한 JSP 페이지 (service()) 실행시 DB연결 요청당 1개씩 할당<br />
-2) 커넥션의 개수를 제한<br />
-3) 커넥션의 사용을 다 한 경우 (객체관리자가 자원을 모두 다 쓰면) 자원 회수<br /></p>
-
-<h2 id="실제-동작-구현">실제 동작 구현</h2>
-<ol>
-  <li>웹브라우저 요청<br /></li>
-  <li>할당될 커넥션 객체가 있는지 없는지 체크<br /><br /></li>
-</ol>
-
-<p>2-1. 있을 때<br />
-    3. 커넥션 객체 할당 (pool에 저장된 정보 전달)<br />
-    4. 객체 사용<br />
-    5. 객체 사용 반환 (자원해제 X, pool에 저장)<br /></p>
-
-<p>2-2. 없을 때<br />
-    1. 커넥션 객체를 기다림 (커넥션이 반환될 때 까지)<br />
-    2. 임시 커넥션 객체 생성 -&gt; 사용 -&gt; 반환 (사라짐)<br /><br /><br /></p>
-
-<h1 id="jndi-java-namming-and-directory-interface">JNDI (Java Namming and Directory Interface)</h1>
-<ul>
-  <li>명명 서비스 및 디렉토리 서비스에 접근하기 위한 API. 즉 특정 자원에 접근하기 위한 이름으로 사용된다.</li>
-  <li><a href="https://commons.apache.org/">아파치 홈페이지</a>에 가서 <code class="language-plaintext highlighter-rouge">collections</code>, <code class="language-plaintext highlighter-rouge">DBCP</code>, <code class="language-plaintext highlighter-rouge">Pool</code> 다운받기
-    <ul>
-      <li>압축 풀어서 <code class="language-plaintext highlighter-rouge">commons-collections4-4.4.jar</code> 처럼 옆에 잡다한 이름 안 붙은걸로 복사해서 <code class="language-plaintext highlighter-rouge">WEB-INF/lib</code>에 붙여넣기</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">API</code>를 설치했으면 <code class="language-plaintext highlighter-rouge">xml</code> 파일을 만들어야 한다.</li>
-</ul>
-
-<h2 id="xml">XML</h2>
-<ul>
-  <li>태그 형태로 데이터를 저장하는 페이지로 <code class="language-plaintext highlighter-rouge">HTML</code> 태그 형태는 아니지만 지정된 태그를 통해서 데이터를 저장하고 사용한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">src/main/webapp/META-INF</code>에 <code class="language-plaintext highlighter-rouge">content.xml</code> 파일을 생성하고 서버에 공유할 리소스를 정의한다.</li>
-</ul>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-
-<span class="nt">&lt;Context&gt;</span>
-  <span class="nt">&lt;Resource</span> 
-    <span class="na">name=</span><span class="s">"jdbc/mysql"</span> 
-    <span class="na">auth=</span><span class="s">"Container"</span> 
-    <span class="na">type=</span><span class="s">"javax.sql.DataSource"</span> 
-    <span class="na">username=</span><span class="s">"root"</span> 
-    <span class="na">password=</span><span class="s">"1234"</span> 
-    <span class="na">driverClassName=</span><span class="s">"com.mysql.cj.jdbc.Driver"</span> 
-    <span class="na">url=</span><span class="s">"jdbc:mysql://localhost:3306/jspdb"</span> 
-    <span class="na">maxActive=</span><span class="s">"500"</span>
-  <span class="nt">/&gt;</span>
-<span class="nt">&lt;/Context&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>이렇게 작성하면 되는데 각 코드 라인의 의미는 다음과 같다.</li>
-</ul>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Context&gt;</span>
-  <span class="c">&lt;!-- Context : 프로젝트 --&gt;</span>
-  <span class="nt">&lt;Resource</span> 
-    <span class="na">name=</span><span class="s">"디비에 접근하기 위한 이름"</span> 
-    <span class="na">auth=</span><span class="s">"컨테이너 자원 관리자 설정 - Application or Container"</span> 
-    <span class="na">type=</span><span class="s">"리소스를 사용할 때 실제로 사용되는 클래스 타입"</span> 
-    <span class="na">username=</span><span class="s">"디비 아이디"</span> 
-    <span class="na">password=</span><span class="s">"디비 비밀번호"</span> 
-    <span class="na">driverClassName=</span><span class="s">"드라이버 주소"</span> 
-    <span class="na">url=</span><span class="s">"디비 연결 주소"</span> 
-    <span class="na">maxActive=</span><span class="s">"커넥션 회수 대기시간"</span>
-  <span class="nt">/&gt;</span>
-<span class="nt">&lt;/Context&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">xml</code> 파일에서도 주석문 사용이 가능하지만 사용하지 않는 것이 좋다.</li>
-  <li>왜냐면 주석 처리한 코드가 실행되는 경우가 있는데 이 때 에러가 나도 컴파일 에러가 표시되지 않고 단순 서버 에러라고만 나오기 때문에 원인 찾기가 매우매우 힘들다.</li>
-  <li><code class="language-plaintext highlighter-rouge">xml</code> 파일까지 만들었다면 <code class="language-plaintext highlighter-rouge">MemberDAO</code> 클래스를 커넥션 풀을 사용하도록 수정해야 한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="memberdao-클래스를-커넥션-풀을-쓰도록-수정하기">MemberDAO 클래스를 커넥션 풀을 쓰도록 수정하기</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">getConnect()</code> 함수를 아래와 같이 수정한다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="nc">Connection</span> <span class="nf">getConnect</span><span class="o">()</span>
-<span class="o">{</span>
-    <span class="k">try</span> 
-    <span class="o">{</span>
-        <span class="c1">// 커넥션풀을 사용한 디비연결</span>
-        
-        <span class="c1">// 업캐스팅이라 인터페이스인데 객체 생성 가능</span>
-        <span class="c1">// 프로젝트(CTX)정보 초기화</span>
-        <span class="nc">Context</span> <span class="n">initCTX</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">InitialContext</span><span class="o">();</span>
-        
-<span class="c1">//	Context envCTX = (Context) initCTX.lookup("java:comp/env");</span>
-<span class="c1">//				envCTX.lookup("jdbc/mysql"); // 이거랑 아래 한 문장이랑 같은 의미</span>
-        <span class="c1">// java:comp/env/ 여기까지는 항상 고정 &amp; 뒤에 xml 파일의 name에 쓴 내용 넣기</span>
-        <span class="c1">// type="javax.sql.DataSource" 에서 정해준 데이터타입으로 다운캐스팅 해줘야 함</span>
-        <span class="nc">DataSource</span> <span class="n">ds</span> <span class="o">=</span> <span class="o">(</span><span class="nc">DataSource</span><span class="o">)</span> <span class="n">initCTX</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="s">"java:comp/env/jdbc/mysql"</span><span class="o">);</span>
-        
-        <span class="c1">// ds에 연결정보가 다 들어있으니까 getConnection만 실행</span>
-        <span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 커넥션풀을 사용한 디비연결 성공"</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">);</span>
-    <span class="o">}</span> 
-    <span class="k">catch</span> <span class="o">(</span><span class="nc">NamingException</span> <span class="n">e</span><span class="o">)</span> 
-    <span class="o">{</span>
-        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-    <span class="o">}</span> 
-    <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> 
-    <span class="o">{</span>
-        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-    <span class="o">}</span>
-    
-    <span class="k">return</span> <span class="n">con</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>이후 사용하는 것은 기존과 같이 사용하면 된다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="ConnectionPool" /><summary type="html"><![CDATA[👀 커넥션 풀 (Connection Pool)이란? JDBC를 연동하기 위해서는 드라이버를 로드하고 JDBC URL로 접속하여 Connection 객체를 얻어오는 단계를 거쳐야 한다. 커넥션 풀은 데이터베이스와 연결된 Connection 객체를 미리 생성하여 풀(Pool)에 저장해 두고 필요할 때마다 풀에 접근하여 Connection 객체를 사용하고 사용이 끝나면 다시 반환하는 것을 말한다. 사용자가 웹 사이트에 Connection 객체를 생성하게 되면 메모리 소모가 많고 시간도 오래 걸린다. 하지만 풀에 저장해서 사용한다면 미리 생성된 객체를 쓰기 때문에 생성에 시간이 걸리지도 않고 또 쓰지 않는 객체는 다시 풀 속에 넣어뒀다가 필요할 때 꺼내 쓰면 되기 때문에 불필요한 메모리 낭비가 없어 프로그램 효율과 성능이 전체적으로 증가하게 된다.]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="JSTL" /><summary type="html"><![CDATA[👀 JSTL(JSP Standard Tag Library)이란? 자카르타(아파치)에서 제공하는 자주 사용되는 태그를 모아놓은 형태 태그를 이용해서 프로그래밍 언어로 코드를 쓰는 것과 같은 동작을 할 수 있다.]]></summary></entry></feed>
