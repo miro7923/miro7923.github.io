@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-01T18:33:55+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">DB) 데이터 모델링</title><link href="http://localhost:4000/database/db-04-data-modeling/" rel="alternate" type="text/html" title="DB) 데이터 모델링" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/database/db-04-data-modeling</id><content type="html" xml:base="http://localhost:4000/database/db-04-data-modeling/"><![CDATA[<h1 id="-데이터베이스-설계">👀 데이터베이스 설계</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-01T18:43:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">DB) 데이터 모델링</title><link href="http://localhost:4000/database/db-04-data-modeling/" rel="alternate" type="text/html" title="DB) 데이터 모델링" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/database/db-04-data-modeling</id><content type="html" xml:base="http://localhost:4000/database/db-04-data-modeling/"><![CDATA[<h1 id="-데이터베이스-설계">👀 데이터베이스 설계</h1>
 <ul>
   <li>사용자의 다양한 요구 사항을 고려하여 데이터베이스를 생성하는 과정</li>
   <li>E-R 모델과 릴레이션 변환 규칙을 이용한 설계 과정은 5단계로 이루어져 있다.</li>
@@ -270,7 +270,72 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 데이터베이스 설계 사용자의 다양한 요구 사항을 고려하여 데이터베이스를 생성하는 과정 E-R 모델과 릴레이션 변환 규칙을 이용한 설계 과정은 5단계로 이루어져 있다.]]></summary></entry><entry><title type="html">Java) BOJ 15651. N과 M (3)</title><link href="http://localhost:4000/boj/boj15651-java/" rel="alternate" type="text/html" title="Java) BOJ 15651. N과 M (3)" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj15651-java</id><content type="html" xml:base="http://localhost:4000/boj/boj15651-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 데이터베이스 설계 사용자의 다양한 요구 사항을 고려하여 데이터베이스를 생성하는 과정 E-R 모델과 릴레이션 변환 규칙을 이용한 설계 과정은 5단계로 이루어져 있다.]]></summary></entry><entry><title type="html">Java) BOJ 15652. N과 M (4)</title><link href="http://localhost:4000/boj/boj15652-java/" rel="alternate" type="text/html" title="Java) BOJ 15652. N과 M (4)" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj15652-java</id><content type="html" xml:base="http://localhost:4000/boj/boj15652-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/15652">https://www.acmicpc.net/problem/15652</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 512 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.</p>
+  </li>
+  <li>1부터 N까지 자연수 중에서 M개를 고른 수열</li>
+  <li>같은 수를 여러 번 골라도 된다.</li>
+  <li>고른 수열은 비내림차순이어야 한다.</li>
+  <li>길이가 K인 수열 A가 A1 ≤ A2 ≤ … ≤ AK-1 ≤ AK를 만족하면, 비내림차순이라고 한다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>한 줄에 하나씩 문제의 조건을 만족하는 수열을 출력한다. 중복되는 수열을 여러 번 출력하면 안되며, 각 수열은 공백으로 구분해서 출력해야 한다.</li>
+  <li>수열은 사전 순으로 증가하는 순서로 출력해야 한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>순열을 구하는 문제같아서 순열을 구하는 알고리즘으로 풀었다.</li>
+  <li>
+    <p>참고 블로그 : <a href="https://bcp0109.tistory.com/14">https://bcp0109.tistory.com/14</a><br /></p>
+  </li>
+  <li>이번 문제는 중복 순열을 구하는데 오름차순인 순열만 구해야 하기 때문에 마지막으로 뽑은 수보다 큰 수만 뽑도록 했다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 228 ms</li>
+  <li>메모리 : 19616 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/5498e944ba114f34016007348c347ec1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No15652" /><category term="BackTracking" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/15652 제한 시간 제한 : 1 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 15651. N과 M (3)</title><link href="http://localhost:4000/boj/boj15651-java/" rel="alternate" type="text/html" title="Java) BOJ 15651. N과 M (3)" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj15651-java</id><content type="html" xml:base="http://localhost:4000/boj/boj15651-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1124,58 +1189,4 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/55e1fca4233f64a9249c59ee80aeb16f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1181" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1181 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Java) BOJ 11651. 좌표 정렬하기2</title><link href="http://localhost:4000/boj/boj11651-java/" rel="alternate" type="text/html" title="Java) BOJ 11651. 좌표 정렬하기2" /><published>2022-02-27T00:00:00+09:00</published><updated>2022-02-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj11651-java</id><content type="html" xml:base="http://localhost:4000/boj/boj11651-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/11651">https://www.acmicpc.net/problem/11651</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>2차원 평면 위의 점 N개가 주어진다. 좌표를 y좌표가 증가하는 순으로, y좌표가 같으면 x좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>11650번에서 썼던 Comparator 함수에서 기준값을 x에서 y로만 바꿔주었다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 860 ms</li>
-  <li>메모리 : 49896 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/bafcfe58127991148c9f70bab678805d.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No11651" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/11651 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/55e1fca4233f64a9249c59ee80aeb16f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1181" /><category term="Sorting" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1181 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry></feed>
