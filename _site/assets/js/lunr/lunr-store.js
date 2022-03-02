@@ -695,6 +695,12 @@ var store = [{
         "url": "/database/db-04-data-modeling/",
         "teaser": null
       },{
+        "title": "Java) BOJ 9663. N-Queen",
+        "excerpt":"문제 링크       https://www.acmicpc.net/problem/9663     제한       시간 제한 : 10 초   메모리 제한 : 128 MB     문제            N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다.            N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.         입력       첫째 줄에 N이 주어진다. (1 ≤ N &lt; 15)      출력       첫째 줄에 퀸 N개를 서로 공격할 수 없게 놓는 경우의 수를 출력한다.      👀 풀이       어디서 들어본 거 같은데 모르겠어서 구글링했다.        참고 블로그 : https://st-lab.tistory.com/118        체스판 위에 퀸을 놓은 뒤 그 위치의 다음 위치부터 검사해서 어떤 위치가 퀸이 있는 위치에서 상하좌우 대각선 방향에 있는 곳이라면 그냥 넘어가고 아니라면 퀸을 놓기 위한 함수를 재귀호출하는 것이다.   탐색 위치가 체스판의 끝에 도달하면 재귀 호출을 종료한다. (자세한 건 주석에..)     결과       시간 : 5320 ms   메모리 : 14532 KB     코드      ","categories": ["BOJ"],
+        "tags": ["Algorithm","BOJ","No9663","BackTracking","Java"],
+        "url": "/boj/boj9663-java/",
+        "teaser": null
+      },{
         "title": "에러해결 Log) cvc-id.3 A field of identity constraint 'web-app-filter-name-uniqueness' matched element 'web-app', but this element does not have a simple type.",
         "excerpt":"사용환경     MacBook Air (M1, 2020) 16GB   JDK 8   Eclipse 2021-12   tomcat 8      에러의 발생         JSP수업 중 서블릿 실습을 따라하고 있었는데 분명 방금 전 까지는 실행이 잘 됐는데 새 서블릿 클래스를 만들고 나서 서버를 재시작 하니까 갑자기 무한루프가 돌기 시작했다… 그래서 급히 구글 검색했지만 딱히 만족할만한 결과를 얻지 못해서 .xml 파일을 뒤져봤다.            사진에서 17번째 줄에 에러 메시지가 표시되고 있지만 저건 처음부터 저랬는데도 실행하는데 아무 문제가 없었어서 그냥 이클립스 버그인가 보다 하고 넘겼었다.   심지어 오늘 수업에서 직전까지 하던 실습을 할 때 까지도 잘 됐었음! 그런데 다른 파일들은 에러가 날 만한 부분이 없었고 계속 저기만 문제라고 하고 있어서 에러 메시지를 눌러보았다.            눌러보니까 굉장히 긴 메시지가 나오길래 혹시나 싶어서 그대로 복붙해서 구글에 검색해 보니까 역시 이걸 해결하신 분이 계셨다.   해결방법은 아주 간단했는데 .xml 파일 상단의 &lt;wep-app xmlns:xsi=\"~\"로 시작하는 부분에서 저 뒤에 있는 xsi:schemaLocation=\"~\"에 있는 주소 중 http://java.sun.com 부분을 http://JAVA.sun.com으로 고치거나 http://Java.sun.com으로 고치면 되는.. 아주 간단한 것이었다.            바꾸니까 17번째 줄의 에러 메시지도 사라지고 더 이상 무한루프를 돌지 않고 서블릿 실행도 잘 되었다.   이럴거면 처음에 자동으로 만들어 줄 때 부터 자바를 대문자로 써서 만들어 주면 되지 않았을까… 사람 번거롭게 하네 😔      참고     [에러해결] web.xml에서 cvc-id.3: A field of identity constraint ‘web-app-filter-name-uniqueness’ matched element ‘web-app’, but this element does not have a simple type.  ","categories": ["ErrorLog"],
         "tags": ["Error","Solve","Log"],

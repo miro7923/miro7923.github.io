@@ -1,0 +1,67 @@
+I"6<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/9663">https://www.acmicpc.net/problem/9663</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 10 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다.</p>
+  </li>
+  <li>
+    <p>N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 N이 주어진다. (1 ≤ N &lt; 15) <br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 퀸 N개를 서로 공격할 수 없게 놓는 경우의 수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>어디서 들어본 거 같은데 모르겠어서 구글링했다.</li>
+  <li>
+    <p>참고 블로그 : <a href="https://st-lab.tistory.com/118">https://st-lab.tistory.com/118</a><br /></p>
+  </li>
+  <li>체스판 위에 퀸을 놓은 뒤 그 위치의 다음 위치부터 검사해서 어떤 위치가 퀸이 있는 위치에서 상하좌우 대각선 방향에 있는 곳이라면 그냥 넘어가고 아니라면 퀸을 놓기 위한 함수를 재귀호출하는 것이다.</li>
+  <li>탐색 위치가 체스판의 끝에 도달하면 재귀 호출을 종료한다. (자세한 건 주석에..)<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 5320 ms</li>
+  <li>메모리 : 14532 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/db381c63586f1f3e1d73c9dee48ccc2c.js"></script>
+
+:ET
