@@ -1,4 +1,216 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-04T17:46:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">C++) BOJ 1049. 기타줄</title><link href="http://localhost:4000/boj/boj1049-cpp/" rel="alternate" type="text/html" title="C++) BOJ 1049. 기타줄" /><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1049-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj1049-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-05T00:16:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 1</title><link href="http://localhost:4000/project%20log/cafe-project-01/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 1" /><published>2022-03-05T00:00:00+09:00</published><updated>2022-03-05T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-01</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-01/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>국비 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<p align="center"><img src="../../assets/images/cafeProj01.png" /></p>
+<p><br /></p>
+
+<ul>
+  <li>그래서 오늘 진행한 것은 무료 템플릿 사이트에서 다운받은 템플릿을 이용해 기본적인 사이트 틀을 만들었다.</li>
+  <li>메인 페이지를 만들고 로그인 페이지와 회원가입 페이지 폼을 만들어서 연결시키는 것 까지 했다.<br /><br /></li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>CafeFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>com.project.cafe.CafeFrontController<span class="nt">&lt;/servlet-class&gt;</span>
+  <span class="nt">&lt;/servlet&gt;</span>
+  
+  <span class="nt">&lt;servlet-mapping&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>CafeFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.me<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/servlet-mapping&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>물론 <code class="language-plaintext highlighter-rouge">HTML</code>을 이용해 그냥 연결시키지 않았고 서블릿을 이용해 <code class="language-plaintext highlighter-rouge">Model2 MVC</code> 패턴을 적용시킬 계획이기 때문에 <code class="language-plaintext highlighter-rouge">.xml</code> 페이지에서 서블릿 클래스 매핑을 통해 페이지 경로를 주소창에 노출시키면서 연결하는 것이 아닌, 주소창에는 가상 주소를 보여주도록 하기 위한 틀을 만들었다.</li>
+  <li>매핑될 가상주소는 하나로 고정시키는 것이 아닌, 페이지별 용도에 따라 다른 주소를 출력할 수 있도록 <code class="language-plaintext highlighter-rouge">*</code>을 사용해 맨 뒤에 <code class="language-plaintext highlighter-rouge">.me</code>만 붙으면 그 주소를 올바른 것으로 인식하고 대응시킬 수 있도록 했다.<br /><br /></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CafeFrontController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="o">{</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="c1">// 1. 전달되는 가상주소 계산</span>
+		<span class="c1">// 매핑된(.me로 끝나는) 주소를 받아옴</span>
+		<span class="nc">String</span> <span class="n">requestURI</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getRequestURI</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"requestURI : "</span> <span class="o">+</span> <span class="n">requestURI</span><span class="o">);</span>
+		
+		<span class="c1">// 매핑된 해당 프로젝트 주소를 구함</span>
+		<span class="nc">String</span> <span class="n">ctxPath</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ctxPath : "</span> <span class="o">+</span> <span class="n">ctxPath</span><span class="o">);</span>
+		
+		<span class="c1">// 매핑된 주소 - 프로젝트 주소 = 계속 바뀔 뒷자리 주소 구함</span>
+		<span class="nc">String</span> <span class="n">command</span> <span class="o">=</span> <span class="n">requestURI</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">ctxPath</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"command : "</span> <span class="o">+</span> <span class="n">command</span><span class="o">);</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 가상주소 계산 완료\n"</span><span class="o">);</span>
+		<span class="c1">// 1. 전달되는 가상주소 계산</span>
+		
+		
+		<span class="c1">// 2. 가상주소 매핑</span>
+		<span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+		<span class="k">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/main.me"</span><span class="o">))</span>
+		<span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 메인페이지 호출"</span><span class="o">);</span>
+			
+			<span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+			<span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./main/main.jsp"</span><span class="o">);</span>
+			<span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+		<span class="o">}</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 가상주소 매핑 완료\n"</span><span class="o">);</span>
+		<span class="c1">// 2. 가상주소 매핑</span>
+		
+		
+		<span class="c1">// 3. 페이지 이동</span>
+		<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">forward</span><span class="o">)</span> <span class="c1">// 페이지 이동정보가 있을 때</span>
+		<span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">isRedirect</span><span class="o">())</span>
+			<span class="o">{</span>
+				<span class="n">resp</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+			<span class="o">}</span>
+			<span class="k">else</span> 
+			<span class="o">{</span>
+				<span class="nc">RequestDispatcher</span> <span class="n">dis</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+				<span class="n">dis</span><span class="o">.</span><span class="na">forward</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+			<span class="o">}</span>
+			
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 페이지 이동 완료"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="c1">// 3. 페이지 이동</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이런 식으로 서블릿 클래스를 만든 다음<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+
+<span class="nt">&lt;%</span>
+  <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./main.me"</span><span class="o">);</span>
+<span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>실제 실행시킬 페이지인 <code class="language-plaintext highlighter-rouge">index.jsp</code>에서는 매핑된 서블릿으로 연결시켜서 실행되도록 했다.<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- Start Head --&gt;</span>
+  <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/top.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+<span class="c">&lt;!-- End Head --&gt;</span>
+
+<span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"modern"</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!--
+START MODULE AREA 2: Menu 1
+--&gt;</span>
+  <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/subTop.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+<span class="c">&lt;!--
+END MODULE AREA 2: Menu 1
+--&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>그리고 이런 식으로 헤더와 푸터 부분은 다른 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지로 분리해서 새로운 페이지가 추가되어도 헤더와 푸터 페이지를 액션 태그를 써서 인클루드만 해 주고 헤더와 푸터 부분에서 수정 사항이 생기면 <code class="language-plaintext highlighter-rouge">top.jsp</code>, <code class="language-plaintext highlighter-rouge">bottom.jsp</code> 페이지만 수정하면 되도록 만들었다.</li>
+  <li>이렇게 만들어놓고 나니까 헤더 부분에서 수정할 점이 생겨도 페이지 하나만 수정하면 되니까 정말 편하다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-30</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) 16GB JDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">에러해결 Log) JSP 절대경로 지정하기</title><link href="http://localhost:4000/errorlog/warning-log-02/" rel="alternate" type="text/html" title="에러해결 Log) JSP 절대경로 지정하기" /><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-02</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-02/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+<p align="center"><img src="../../assets/images/pathError.png" width="400" /></p>
+<p><br /></p>
+
+<ul>
+  <li>역시 여느 때와 같은 <code class="language-plaintext highlighter-rouge">JSP</code> 수업 시간… <code class="language-plaintext highlighter-rouge">Model2 MVC</code> 패턴으로 웹 페이지를 만드는 것을 실습하고 있었는데 서블릿을 통해 가상주소로 페이지를 열다 보니까 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지 자체는 잘 열리는데 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지와 연결된 외부 <code class="language-plaintext highlighter-rouge">css</code>파일의 경로를 제대로 찾질 못해서 기본으로 적용되어 있던 <code class="language-plaintext highlighter-rouge">css</code>가 제대로 적용되질 않았다.</li>
+  <li>이걸 해결하고 수업이 끝났다면 좋았겠지만 여기까지 했을 때 마침 수업 시간이 끝나버려서… 다음 수업까지 기다릴 수도 있었겠지만 간단해 보이는 걸 해결 못하니까 너무 신경쓰여서 경로를 온갖 방법으로 지정을 해 줬는데 계속 상대 경로를 지정하는 것이었어서 그런지 페이지로 이동하는 경로에 따라 어떤 경우엔 잘 되고 어떤 경우엔 잘 나오지 않는 등 여러가지로 <code class="language-plaintext highlighter-rouge">css</code> 파일이 완벽하게 로드되지 않았다.</li>
+  <li>물론 절대경로도 나름 시도를 해 보았으나 잘못 알고 있었는지 절대경로도 먹히질 않았다…<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<ul>
+  <li>구글에 <code class="language-plaintext highlighter-rouge">jsp 절대경로</code>를 검색하니까 자료가 많았다.</li>
+  <li>절대경로를 설정하는 간단한 방법은 루트를 뜻하는 <code class="language-plaintext highlighter-rouge">/</code>를 입력하고 하위 폴더명을 타고타고 입력하는 것이지만 저게 먹히지 않았기 때문에 다른 방법을 찾았다.</li>
+  <li>바로<br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>${pageContext.request.contextPath}
+</code></pre></div></div>
+<p><br />
+를 이용해 어느 경우라도 절대경로가 적용될 수 있게 해주는 것이다.</p>
+<ul>
+  <li>한 시간동안 헤메면서도 생각했지만 jsp 페이지에 직접 접근했을 때와 서블릿을 통해 접근했을 때 상대경로의 기준이 달라져서 그러는 것 같았는데 찾아보니까 진짜였다.<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"${pageContext.request.contextPath}/css/default.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이런 식으로 찾아가고자 하는 폴더와 파일의 경로를 <code class="language-plaintext highlighter-rouge">el 표현식</code>을 사용한 <code class="language-plaintext highlighter-rouge">contextPath</code> 뒤에 입력해주면 절대경로로 세팅되면서 정상적으로 <code class="language-plaintext highlighter-rouge">css</code> 파일을 찾아가게 된다.</li>
+  <li>그런데 방금 적용시켜 보니까 jsp 액션태그의 경로에는 절대경로를 넣으니까 <code class="language-plaintext highlighter-rouge">500 에러</code>가 나서 액션태그는 피하고 <code class="language-plaintext highlighter-rouge">HTML</code> 태그에만 적용시켜 주면 될 거 같다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/pathSolve.png" width="400" /></p>
+
+<ul>
+  <li>짠👏 적용 끝!</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">C++) BOJ 1049. 기타줄</title><link href="http://localhost:4000/boj/boj1049-cpp/" rel="alternate" type="text/html" title="C++) BOJ 1049. 기타줄" /><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1049-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj1049-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -58,53 +270,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/9c5b8c3b800227349339656b3d141e8e.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1049" /><category term="BackTracking" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1049 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">에러해결 Log) JSP 절대경로 지정하기</title><link href="http://localhost:4000/errorlog/warning-log-02/" rel="alternate" type="text/html" title="에러해결 Log) JSP 절대경로 지정하기" /><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-02</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-02/"><![CDATA[<h1 id="사용환경">사용환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020) 16GB</li>
-  <li>JDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="에러의-발생">에러의 발생</h1>
-<p align="center"><img src="../../assets/images/pathError.png" width="400" /></p>
-<p><br /></p>
-
-<ul>
-  <li>역시 여느 때와 같은 <code class="language-plaintext highlighter-rouge">JSP</code> 수업 시간… <code class="language-plaintext highlighter-rouge">Model2 MVC</code> 패턴으로 웹 페이지를 만드는 것을 실습하고 있었는데 서블릿을 통해 가상주소로 페이지를 열다 보니까 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지 자체는 잘 열리는데 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지와 연결된 외부 <code class="language-plaintext highlighter-rouge">css</code>파일의 경로를 제대로 찾질 못해서 기본으로 적용되어 있던 <code class="language-plaintext highlighter-rouge">css</code>가 제대로 적용되질 않았다.</li>
-  <li>이걸 해결하고 수업이 끝났다면 좋았겠지만 여기까지 했을 때 마침 수업 시간이 끝나버려서… 다음 수업까지 기다릴 수도 있었겠지만 간단해 보이는 걸 해결 못하니까 너무 신경쓰여서 경로를 온갖 방법으로 지정을 해 줬는데 계속 상대 경로를 지정하는 것이었어서 그런지 페이지로 이동하는 경로에 따라 어떤 경우엔 잘 되고 어떤 경우엔 잘 나오지 않는 등 여러가지로 <code class="language-plaintext highlighter-rouge">css</code> 파일이 완벽하게 로드되지 않았다.</li>
-  <li>물론 절대경로도 나름 시도를 해 보았으나 잘못 알고 있었는지 절대경로도 먹히질 않았다…<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결">문제 해결</h1>
-
-<ul>
-  <li>구글에 <code class="language-plaintext highlighter-rouge">jsp 절대경로</code>를 검색하니까 자료가 많았다.</li>
-  <li>절대경로를 설정하는 간단한 방법은 루트를 뜻하는 <code class="language-plaintext highlighter-rouge">/</code>를 입력하고 하위 폴더명을 타고타고 입력하는 것이지만 저게 먹히지 않았기 때문에 다른 방법을 찾았다.</li>
-  <li>바로<br /></li>
-</ul>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>${pageContext.request.contextPath}
-</code></pre></div></div>
-<p><br />
-를 이용해 어느 경우라도 절대경로가 적용될 수 있게 해주는 것이다.</p>
-<ul>
-  <li>한 시간동안 헤메면서도 생각했지만 jsp 페이지에 직접 접근했을 때와 서블릿을 통해 접근했을 때 상대경로의 기준이 달라져서 그러는 것 같았는데 찾아보니까 진짜였다.<br /><br /></li>
-</ul>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"${pageContext.request.contextPath}/css/default.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>이런 식으로 찾아가고자 하는 폴더와 파일의 경로를 <code class="language-plaintext highlighter-rouge">el 표현식</code>을 사용한 <code class="language-plaintext highlighter-rouge">contextPath</code> 뒤에 입력해주면 절대경로로 세팅되면서 정상적으로 <code class="language-plaintext highlighter-rouge">css</code> 파일을 찾아가게 된다.</li>
-  <li>그런데 방금 적용시켜 보니까 jsp 액션태그의 경로에는 절대경로를 넣으니까 <code class="language-plaintext highlighter-rouge">500 에러</code>가 나서 액션태그는 피하고 <code class="language-plaintext highlighter-rouge">HTML</code> 태그에만 적용시켜 주면 될 거 같다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/pathSolve.png" width="400" /></p>
-
-<ul>
-  <li>짠👏 적용 끝!</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">Java) BOJ 2580. 스도쿠</title><link href="http://localhost:4000/boj/boj2508-java/" rel="alternate" type="text/html" title="Java) BOJ 2580. 스도쿠" /><published>2022-03-03T00:00:00+09:00</published><updated>2022-03-03T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2508-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2508-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/9c5b8c3b800227349339656b3d141e8e.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1049" /><category term="BackTracking" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1049 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Java) BOJ 2580. 스도쿠</title><link href="http://localhost:4000/boj/boj2508-java/" rel="alternate" type="text/html" title="Java) BOJ 2580. 스도쿠" /><published>2022-03-03T00:00:00+09:00</published><updated>2022-03-03T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj2508-java</id><content type="html" xml:base="http://localhost:4000/boj/boj2508-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -793,67 +959,4 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/a5ef1d7f8e7f5ccb2476b969baf79bfa.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No15651" /><category term="BackTracking" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/15651 제한 시간 제한 : 1 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Java) BOJ 15650. N과 M (2)</title><link href="http://localhost:4000/boj/boj15650-java/" rel="alternate" type="text/html" title="Java) BOJ 15650. N과 M (2)" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-01T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj15650-java</id><content type="html" xml:base="http://localhost:4000/boj/boj15650-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/15650">https://www.acmicpc.net/problem/15650</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.</p>
-  </li>
-  <li>1부터 N까지 자연수 중에서 중복 없이 M개를 고른 수열</li>
-  <li>고른 수열은 오름차순이어야 한다.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>한 줄에 하나씩 문제의 조건을 만족하는 수열을 출력한다. 중복되는 수열을 여러 번 출력하면 안되며, 각 수열은 공백으로 구분해서 출력해야 한다.</li>
-  <li>수열은 사전 순으로 증가하는 순서로 출력해야 한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>순열을 구하는 문제같아서 순열을 구하는 알고리즘으로 풀었다.</li>
-  <li>
-    <p>참고 블로그 : <a href="https://bcp0109.tistory.com/14">https://bcp0109.tistory.com/14</a><br /></p>
-  </li>
-  <li>이번 문제는 모든 순열을 출력하는 것이 아니고 오름차순으로 정렬된 순열만 출력해야 하기 때문에 다음 순열을 확인하러 갈 때 직전에 뽑은 수보다 큰 숫자만 뽑도록 했다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 152 ms</li>
-  <li>메모리 : 15908 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/ccf625f6ff2a1fc57390f68f6c73c5d5.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No15650" /><category term="BackTracking" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/15650 제한 시간 제한 : 1 초 메모리 제한 : 512 MB]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/a5ef1d7f8e7f5ccb2476b969baf79bfa.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No15651" /><category term="BackTracking" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/15651 제한 시간 제한 : 1 초 메모리 제한 : 512 MB]]></summary></entry></feed>
