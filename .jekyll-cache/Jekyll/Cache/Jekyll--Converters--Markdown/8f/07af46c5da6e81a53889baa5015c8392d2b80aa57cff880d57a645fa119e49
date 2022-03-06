@@ -1,0 +1,214 @@
+I"�M<h1 id="-process-synchronization-문제">👀 Process Synchronization 문제</h1>
+<ul>
+  <li>컴퓨터에 저장되어 있는 어떤 데이터를 변경하려면 그 데이터에 접근해서 변경하는 연산을 한 뒤 연산 결과를 다시 그 데이터가 있는 자리에 갱신시켜줘야 한다.</li>
+  <li>그런데 이 때 하나의 프로세스만 접근해서 작업을 하면 문제가 없지만 컴퓨터에는 수많은 프로세스가 있고 하나의 데이터에 여러 프로세스가 접근하는 상황이 생길 수 있다.</li>
+  <li>이 때 아무런 제어 없이 여러 프로세스가 접근해서 하나의 데이터를 변경시키면 서로 다른 시점에 데이터를 변경하게 될 수 있고 그러다보면 데이터가 사용자의 의도와 다르게 변경될 수 있다(데이터 불일치 문제). 그래서 이걸 막고 데이터의 일관성 유지를 위해서 공유 데이터에 접근할 때 협력 프로세스 간의 실행 순서를 정해주어야 한다.</li>
+</ul>
+
+<h2 id="-race-condition">🔸 Race condition</h2>
+<ul>
+  <li>여러 프로세스들이 동시에 공유 데이터에 접근하는 상황</li>
+  <li>데이터의 최종 연산 결과는 마지막에 그 데이터를 다룬 프로세스에 따라 달라짐</li>
+  <li><code class="language-plaintext highlighter-rouge">Race condition</code>을 막기 위해 <code class="language-plaintext highlighter-rouge">concurrent process(동시 접근)</code>는 <code class="language-plaintext highlighter-rouge">동기화(synchronize)</code>되어야 한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="race-condition이-발생하는-상황">Race Condition이 발생하는 상황</h1>
+<h2 id="1-커널-수행-중-인터럽트-발생-시">1. 커널 수행 중 인터럽트 발생 시</h2>
+<ul>
+  <li>커널 데이터를 처리하는 도중에 <code class="language-plaintext highlighter-rouge">인터럽트</code>가 생긴 경우</li>
+  <li>해결책 : 먼저 작업 중이던 커널 코드의 작업이 끝나기 전 까지는 <code class="language-plaintext highlighter-rouge">인터럽트</code>를 받지 않는다.</li>
+</ul>
+
+<h2 id="2-프로세스가-시스템-콜을-하여-커널-모드로-수행-중인데-context-switch가-일어나는-경우">2. 프로세스가 시스템 콜을 하여 커널 모드로 수행 중인데 context switch가 일어나는 경우</h2>
+<ul>
+  <li>A 프로세스가 <code class="language-plaintext highlighter-rouge">PC</code>를 증가시키는 도중에 다른 커널 코드 B에게 <code class="language-plaintext highlighter-rouge">CPU</code>를 뺏겼다가 뺏어간 쪽의 작업이 끝난 후 다시 돌려 받으면 A는 B가 증가시키기 전의 <code class="language-plaintext highlighter-rouge">PC</code> 정보를 가지고 있기 때문에 A가 증가시키는 <code class="language-plaintext highlighter-rouge">PC</code>는 정확한 값으로 증가되지 않는다.</li>
+  <li>해결책 : 커널 모드에서 수행 중일 때는 <code class="language-plaintext highlighter-rouge">CPU</code>를 <code class="language-plaintext highlighter-rouge">preempt</code>하지 않고 커널 모드에서 사용자 모드로 돌아갈 때 <code class="language-plaintext highlighter-rouge">preempt</code>한다.</li>
+</ul>
+
+<h2 id="3-multiprocessor에서-shared-memory-내의-커널-데이터">3. Multiprocessor에서 shared memory 내의 커널 데이터</h2>
+<ul>
+  <li>위 경우들은 같은 <code class="language-plaintext highlighter-rouge">CPU</code> 내에서만 할 수 있는 동작들이기 때문에 멀티 프로세서 환경에서는 적용이 어렵다.</li>
+  <li>여러 프로세스들이 하나의 공유 메모리에 접근해야 할 때 각각의 <code class="language-plaintext highlighter-rouge">CPU</code>에서 동시에 접근해서 데이터를 변경할 수 있다.</li>
+  <li>해결책 1 : 한 번에 하나의 <code class="language-plaintext highlighter-rouge">CPU</code>만이 커널에 들어갈 수 있게 하는 방법</li>
+  <li>해결책 2 : 커널 내부에 있는 각 공유 데이터에 접근할 때마다 그 데이터에 대한 <code class="language-plaintext highlighter-rouge">lock/unlock</code>을 하는 방법<br /><br /><br /></li>
+</ul>
+
+<h1 id="the-critical-section-problem">The Critical-Section Problem</h1>
+<ul>
+  <li>n개의 프로세스가 공유 데이터를 동시에 사용하기를 원하는 경우</li>
+  <li>각 프로세스의 <code class="language-plaintext highlighter-rouge">code segment</code>에는 공유 데이터를 접근하는 코드인 <code class="language-plaintext highlighter-rouge">critical section</code>이 존재</li>
+  <li>하나의 프로세스가 <code class="language-plaintext highlighter-rouge">critical section</code>에 있을 때 다른 모든 프로세스는 <code class="language-plaintext highlighter-rouge">critical section</code>에 들어갈 수 없어야 한다.</li>
+</ul>
+
+<h2 id="프로그램적-해결법의-충족-조건">프로그램적 해결법의 충족 조건</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Mutual Exclusion(상호 배제/배타적 접근)</code>
+    <ul>
+      <li>프로세스 Pirk <code class="language-plaintext highlighter-rouge">critical section</code> 부분을 수행 중이면 다른 모든 프로세스들은 그들의 <code class="language-plaintext highlighter-rouge">critical section</code>에 들어가면 안 된다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Progress(진행)</code>
+    <ul>
+      <li>아무도 <code class="language-plaintext highlighter-rouge">critical section</code>에 있지 않은 상태에서 <code class="language-plaintext highlighter-rouge">critical section</code>에 들어가고자 하는 프로세스가 있으면 <code class="language-plaintext highlighter-rouge">critical section</code>에 들어가게 해 주어야 한다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Bounded Waiting(유한 대기)</code>
+    <ul>
+      <li>프로세스가 <code class="language-plaintext highlighter-rouge">critical section</code>에 들어가려고 요청한 후부터 그 요청이 허용될 때까지 다른 프로세스들이 <code class="language-plaintext highlighter-rouge">critical section</code>에 들어가는 횟수에 한계가 있어야 한다.</li>
+      <li>무한대로 기다리지 않게 해서 <code class="language-plaintext highlighter-rouge">starvation</code>을 방지<br /></li>
+    </ul>
+  </li>
+  <li>가정
+    <ul>
+      <li>모든 프로세스의 수행 속도는 0보다 크다.</li>
+      <li>프로세스들 간의 상대적인 수행 속도는 가정하지 않는다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="기본적인-해결-방법">기본적인 해결 방법</h2>
+<ul>
+  <li>두 개의 프로세스 <code class="language-plaintext highlighter-rouge">P0</code>, <code class="language-plaintext highlighter-rouge">P1</code>이 있다고 가정했을 때</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="n">entry</span> <span class="n">section</span>   <span class="cm">/* lock */</span>
+    <span class="n">critical</span> <span class="n">section</span>
+    <span class="n">exti</span> <span class="n">section</span>    <span class="cm">/* unlock */</span>
+    <span class="n">remainder</span> <span class="n">section</span>
+<span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>프로세스들은 수행의 동기화를 위해 몇몇 변수를 공유할 수 있다. - <code class="language-plaintext highlighter-rouge">Synchronization variable</code></li>
+</ul>
+
+<h3 id="algorithm-1">Algorithm 1</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">turn</span><span class="p">;</span>   <span class="cm">/* 누구 차례인지 표시할 변수.  Synchronization variable */</span>
+<span class="n">initially</span> <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>  <span class="cm">/* 내 턴이 아닌 동안 대기 */</span>
+    <span class="n">critical</span> <span class="n">section</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>   <span class="cm">/* 상대편으로 턴 넘김 */</span>
+    <span class="n">remainder</span> <span class="n">section</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위 코드대로만 진행되면 문제가 없어 보이지만 반드시 상대 프로세스가 들어와서 <code class="language-plaintext highlighter-rouge">turn</code>을 바꿔 주어야만 다른 프로세스가 <code class="language-plaintext highlighter-rouge">critical section</code>에 들어갈 수 있기 때문에 만약 A 프로세스가 더 빈번하게 <code class="language-plaintext highlighter-rouge">critical section</code>에 들어가야 하는 경우 B 프로세스는 상대적으로 덜 들어가기 때문에 <code class="language-plaintext highlighter-rouge">turn</code>이 바뀌지 않아 A 프로세스가 들어갈 수 없는 상황이 생긴다.</li>
+</ul>
+
+<h3 id="algorithm-2">Algorithm 2</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boolean</span> <span class="n">flag</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>    <span class="cm">/* critical section에 들어가고자 하는 의중을 표시하는 flag */</span>
+<span class="n">initially</span> <span class="n">flag</span><span class="p">[</span><span class="err">모두</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="cm">/* 처음엔 critical section에 아무도 없음 */</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>     <span class="cm">/* 진입 표시 */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>    <span class="cm">/* 상대 프로세스도 진입해 있으면 대기 */</span>
+    <span class="n">critical</span> <span class="n">section</span>
+    <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>    <span class="cm">/* 나왔다고 표시 */</span>
+    <span class="n">remainder</span> <span class="n">section</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위 코드에서는 만약 A 프로세스가 첫번째 줄만 실행하고 <code class="language-plaintext highlighter-rouge">CPU</code>를 뺏긴 경우 상대 프로세스도 첫번째 줄을 실행하고 두번째 줄에서 대기하게 될 것이다. 즉 둘 다 무한히 대기하게 된다.</li>
+</ul>
+
+<h3 id="algorithm-3-petersons-algorithm">Algorithm 3 (Peterson’s Algorithm)</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>     <span class="cm">/* 진입 표시 */</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>           <span class="cm">/* 상대편으로 턴 변경 */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">turn</span> <span class="o">==</span> <span class="n">j</span><span class="p">);</span>   <span class="cm">/* 들어가고자 하는 프로세스와 턴 모두 확인 */</span>
+    <span class="n">critical</span> <span class="n">section</span>
+    <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">remainder</span> <span class="n">section</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>알고리즘 1과 2를 합친 방법으로 앞선 두 가지 방법에서 있었던 문제들을 모두 해결할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Busy Waiting(= spin lock)</code>
+    <ul>
+      <li>하지만 <code class="language-plaintext highlighter-rouge">critical section</code>에 프로세스가 이미 있어서 못 들어가는 것이 확실한 상황에서도 계속 <code class="language-plaintext highlighter-rouge">CPU</code>를 얻어서 <code class="language-plaintext highlighter-rouge">while</code>문 조건을 확인해야 하기 때문에 지속적으로 <code class="language-plaintext highlighter-rouge">CPU</code>와 <code class="language-plaintext highlighter-rouge">memory</code>를 소모하게 된다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="하드웨어적으로-해결하기">하드웨어적으로 해결하기</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Instruction</code> 하나로 <code class="language-plaintext highlighter-rouge">Synchronization variable</code> 읽기와 쓰기를 동시에 실행하면 위의 알고리즘으로 해결하고자 했던 문제들을 간단히 해결할 수 있다.</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boolean</span> <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">Test_and_set</span><span class="p">(</span><span class="n">lock</span><span class="p">);</span> <span class="cm">/* lock이 걸려있다면 lock을 걸고 기다릴 것이고 걸려있지 않다면 lock을 걸고 들어갈 것임 */</span>
+    <span class="n">critical</span> <span class="n">section</span>
+    <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">remainder</span> <span class="n">section</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h2 id="semaphores">Semaphores</h2>
+<ul>
+  <li>프로그래머가 매번 앞의 작업들을 하려면 귀찮으니까 그 작업들을 추상화시킨 것</li>
+  <li><code class="language-plaintext highlighter-rouge">integer variable</code> 형태로 자원의 갯수를 가지고 있다.</li>
+  <li>아래의 두 가지 <code class="language-plaintext highlighter-rouge">atomic</code> 연산에 의해서만 접근할 수 있다.</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* P(S) : 공유 데이터를 획득하는 연산 */</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">S</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">do</span> <span class="n">wait</span><span class="p">;</span> <span class="cm">/* 사용할 수 있는 자원이 없으면 대기 */</span>
+<span class="n">S</span><span class="o">--</span><span class="p">;</span>
+
+<span class="cm">/* V(S) : 공유 데이터를 사용 후 반납 */</span>
+<span class="n">S</span><span class="o">++</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="세마포어를-이용한-코드---busy-wait">세마포어를 이용한 코드 - Busy-wait</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">semaphore</span> <span class="n">mutex</span><span class="p">;</span>    <span class="cm">/* initially 1 : 1개가 critical section에 들어갈 수 있다 */</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">P</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>   <span class="cm">/* 자원이 남아 있으면 하나 감소시키고 입장 */</span>
+    <span class="n">critical</span> <span class="n">section</span>
+    <span class="n">V</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>   <span class="cm">/* 자원 반납 및 증가 */</span>
+    <span class="n">remainder</span> <span class="n">section</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>대기하는 프로세스가 있으면 자원이 생겼는지 계속 확인해야 하기 때문에 <code class="language-plaintext highlighter-rouge">busy-wait</code>하게 된다.</li>
+</ul>
+
+<h3 id="세마포어를-이용한-코드---block--wekeup">세마포어를 이용한 코드 - Block &amp; wekeup</h3>
+<ul>
+  <li>세마포어를 다음과 같이 정의한다.</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>          <span class="cm">/* semaphore */</span>
+    <span class="k">struct</span> <span class="n">process</span> <span class="o">*</span><span class="n">L</span><span class="p">;</span>  <span class="cm">/* 프로세스 대기열 */</span>
+<span class="p">}</span> <span class="n">semaphore</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">block</code>과 <code class="language-plaintext highlighter-rouge">wakeup</code>을 다음과 같이 가정한다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">block</code> : 커널은 <code class="language-plaintext highlighter-rouge">block</code>을 호출한 프로세스를 <code class="language-plaintext highlighter-rouge">suspend</code> 시킨 후 이 프로세스의 <code class="language-plaintext highlighter-rouge">PCB</code>를 세마포어에 대한 대기열에 넣음</li>
+      <li><code class="language-plaintext highlighter-rouge">wakeup</code> : <code class="language-plaintext highlighter-rouge">block</code>된 프로세스를 <code class="language-plaintext highlighter-rouge">wakeup</code> 시킨 후 이 프로세스의 <code class="language-plaintext highlighter-rouge">PCB</code>를 <code class="language-plaintext highlighter-rouge">ready queue</code>로 옮김</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
+</ul>
+:ET
