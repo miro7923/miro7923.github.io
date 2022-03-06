@@ -1,0 +1,116 @@
+I"�"<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>국비 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<p align="center"><img src="../../assets/images/e-r-Diagram.png" /></p>
+<p><br /></p>
+
+<ul>
+  <li>오늘은 좀 더 진행하기 전에 <code class="language-plaintext highlighter-rouge">E-R 다이어그램</code>을 만들면서 <code class="language-plaintext highlighter-rouge">DB 테이블</code>을 정리하고 가는 것이 좋을 거 같아서 내 프로젝트에 필요한 <code class="language-plaintext highlighter-rouge">E-R 다이어그램</code>을 만들었다.</li>
+  <li>회원은 게시판에 글과 댓글을 쓰지 않을 수도 있지만 쓴다면 여러 개 쓸 수 있고 게시글과 댓글은 회원이 쓸 때에만 생성될 수 있다. 그리고 댓글 또한 게시글이 없으면 생성될 수 없고 한 게시글에 댓글이 달리지 않을 수도, 여러 개의 댓글이 달릴 수도 있다.</li>
+  <li>일단 이 정도로 틀을 잡아놓고 테이블들을 생성했다.</li>
+</ul>
+
+<h2 id="1-회원-테이블cafe_members">1. 회원 테이블(cafe_members)</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="n">cafe_members</span> <span class="p">(</span>
+    <span class="n">member_num</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
+    <span class="n">id</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">unique</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">pass</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">birth</span> <span class="nb">date</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">age</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">gender</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">address</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">phone</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">email</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+    <span class="n">regdate</span> <span class="nb">timestamp</span> <span class="k">not</span> <span class="k">null</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p align="center"><img src="../../assets/images/memberTable.png" /></p>
+<p><br /></p>
+
+<ul>
+  <li>member_num : 회원 번호. 1부터 차례대로 증가하며 회원의 고유 식별자로 사용</li>
+  <li>id : 회원 아이디. 중복되지 않도록 <code class="language-plaintext highlighter-rouge">unique</code> 조건을 걸어주었다.</li>
+  <li>pass : 회원 비밀번호</li>
+  <li>name : 회원 이름</li>
+  <li>birth : 회원의 생년월일</li>
+  <li>age : 회원 나이</li>
+  <li>gender : 회원 성별</li>
+  <li>address : 회원의 거주지 주소</li>
+  <li>phone : 회원 휴대폰 번호</li>
+  <li>email : 회원 이메일 주소</li>
+  <li>regdate : 회원이 가입한 날짜. <code class="language-plaintext highlighter-rouge">timestamp</code>로 가입하는 당시의 날짜와 시간으로 자동 저장</li>
+</ul>
+
+<h2 id="2-게시글post">2. 게시글(post)</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="n">post</span> <span class="p">(</span>
+    <span class="n">num</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
+    <span class="n">writer</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">title</span> <span class="nb">longtext</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">content</span> <span class="nb">longtext</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">posted_date</span> <span class="nb">datetime</span> <span class="k">not</span> <span class="k">null</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p align="center"><img src="../../assets/images/postTable.png" /></p>
+<p><br /></p>
+
+<ul>
+  <li>num : 게시글 번호. 1부터 차례대로 증가하며 고유 식별자로 사용</li>
+  <li>writer : 작성자 아이디</li>
+  <li>title : 게시글 제목</li>
+  <li>content : 게시글 내용</li>
+  <li>posted_date : 최초로 작성된 날짜. YYYY-MM-DD 형식</li>
+</ul>
+
+<h2 id="3-댓글comment">3. 댓글(comment)</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="k">comment</span> <span class="p">(</span>
+	<span class="n">num</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
+    <span class="n">post_num</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+	<span class="n">writer</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">content</span> <span class="nb">longtext</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">commented_date</span> <span class="nb">datetime</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">parent</span> <span class="nb">int</span> <span class="k">default</span> <span class="mi">0</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p align="center"><img src="../../assets/images/commentTable.png" /></p>
+<p><br /></p>
+
+<ul>
+  <li>num : 댓글 번호. 1부터 차례대로 증가하며 고유 식별자로 사용</li>
+  <li>post_num : 댓글이 등록된 글 번호</li>
+  <li>writer : 댓글 작성자 아이디</li>
+  <li>content : 댓글 내용</li>
+  <li>commented_date : 댓글이 작성된 날짜</li>
+  <li>parent : 만약 이 댓글이 대댓글이라면 대댓글을 단 원래 댓글의 댓글 번호. 모든 댓글이 대댓글이 되는 것은 아니기 때문에 디폴트값은 0으로 둔다.</li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-29</code></li>
+</ul>
+:ET
