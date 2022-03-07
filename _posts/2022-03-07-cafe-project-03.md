@@ -226,17 +226,7 @@ public class MemberJoinAction implements Action
 		dto.setName(request.getParameter("name"));
 		dto.setAddress(request.getParameter("address"));
 		dto.setAge(Integer.parseInt(request.getParameter("age")));
-		
-		// 생년월일 정보 파싱
-		String origin = request.getParameter("birth");
-		String[] parseOrigin = origin.split("-");
-		String tmp = "";
-		for (int i = 0; i < parseOrigin.length; i++)
-			tmp += parseOrigin[i];
-		
-		dto.setBirth(new Date(Long.parseLong(tmp)));
-		
-		// 나미저 정보 저장
+		dto.setBirth(Date.valueOf(request.getParameter("birth")));
 		dto.setEmail(request.getParameter("email"));
 		dto.setGender(request.getParameter("gender"));
 		dto.setPhone(request.getParameter("phone"));
