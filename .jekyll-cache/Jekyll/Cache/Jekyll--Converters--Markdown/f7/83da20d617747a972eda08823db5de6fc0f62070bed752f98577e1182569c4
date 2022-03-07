@@ -1,0 +1,349 @@
+I"8�<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>오늘은 저번 시간에 만든 <code class="language-plaintext highlighter-rouge">DB 테이블</code>과 내가 만든 사이트를 연동해서 회원가입 기능을 구현했다.</li>
+</ul>
+
+<h2 id="1-xml-파일-만들기">1. xml 파일 만들기</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DB</code> 연결이 필요한 페이지마다 DB 연결을 위한 코드를 작성하면 비효율적이니까 먼저 <code class="language-plaintext highlighter-rouge">xml</code> 파일에 연결에 필요한 정보를 저장한 후 불러온다.</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Context&gt;</span>
+  <span class="c">&lt;!-- Context : 프로젝트 --&gt;</span>
+  <span class="nt">&lt;Resource</span> 
+    <span class="na">name=</span><span class="s">"디비에 접근하기 위한 이름"</span> 
+    <span class="na">auth=</span><span class="s">"컨테이너 자원 관리자 설정 - Application or Container"</span> 
+    <span class="na">type=</span><span class="s">"리소스를 사용할 때 실제로 사용되는 클래스 타입"</span> 
+    <span class="na">username=</span><span class="s">"디비 아이디"</span> 
+    <span class="na">password=</span><span class="s">"디비 비밀번호"</span> 
+    <span class="na">driverClassName=</span><span class="s">"드라이버 주소"</span> 
+    <span class="na">url=</span><span class="s">"디비 연결 주소"</span> 
+    <span class="na">maxActive=</span><span class="s">"커넥션 회수 대기시간"</span>
+  <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Context&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>기본 형식과 각 라인의 의미는 위와 같으며</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Context&gt;</span>
+  <span class="nt">&lt;Resource</span>
+    <span class="na">name =</span> <span class="s">"jdbc/cafe"</span> 
+    <span class="na">auth =</span> <span class="s">"container"</span> 
+    <span class="na">type =</span> <span class="s">"javax.sql.DataSource"</span> 
+    <span class="na">driverClassName =</span> <span class="s">"com.mysql.cj.jdbc.Driver"</span> 
+    <span class="na">url =</span> <span class="s">"jdbc:mysql://localhost:3306/jspdb"</span> 
+    <span class="na">username =</span> <span class="s">"root"</span>
+    <span class="na">password =</span> <span class="s">"1234"</span>
+  <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Context&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>나는 이렇게 작성했다.</li>
+</ul>
+
+<h2 id="2-dto-dao-클래스-만들기">2. DTO, DAO 클래스 만들기</h2>
+<ul>
+  <li>회원 가입에 필요한 정보를 모아서 한꺼번에 전달할 수 있는 객체를 만들기 위해 <code class="language-plaintext highlighter-rouge">MemberDTO</code> 클래스를 만들었다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.Date</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Timestamp</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberDTO</span> 
+<span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">num</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">pass</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">birth</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">phone</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">Timestamp</span> <span class="n">regdate</span><span class="o">;</span>
+	
+    <span class="c1">// getter/setter 작성</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>그리고 <code class="language-plaintext highlighter-rouge">DB</code> 연결을 처리할 서블릿 클래스를 만들었다. 커넥션 풀을 사용하도록 구현했다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.naming.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.naming.InitialContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.sql.DataSource</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberDAO</span> 
+<span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+	
+	<span class="c1">// DB 연결정보 준비</span>
+	<span class="kd">private</span> <span class="nc">Connection</span> <span class="nf">getCon</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span>
+	<span class="o">{</span>
+		<span class="c1">// Context 객체 생성</span>
+		<span class="nc">Context</span> <span class="n">initCTX</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">InitialContext</span><span class="o">();</span>
+		<span class="nc">DataSource</span> <span class="n">ds</span> <span class="o">=</span> <span class="o">(</span><span class="nc">DataSource</span><span class="o">)</span> <span class="n">initCTX</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="s">"java:comp/env/jdbc/cafe"</span><span class="o">);</span>
+		<span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 1.2. DB 연결 성공"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">);</span>
+		
+		<span class="k">return</span> <span class="n">con</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// DB 자원해제</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">CloseDB</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="k">try</span> 
+		<span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">rs</span><span class="o">)</span> <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">pstmt</span><span class="o">)</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">con</span><span class="o">)</span> <span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		<span class="o">}</span> 
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> 
+		<span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+ 
+    <span class="c1">// insertMember(dto)</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertMember</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">dto</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"insertMember(dto) 호출"</span><span class="o">);</span>
+		
+		<span class="c1">// 1.2. DB 연결</span>
+		<span class="k">try</span> 
+		<span class="o">{</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+			<span class="c1">// 3. sql 작성 &amp; pstmt 연결</span>
+			<span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into cafe_members(id, pass, name, birth, age, gender, address, phone, email, regdate) "</span>
+					<span class="o">+</span> <span class="s">"values(?,?,?,?,?,?,?,?,?,?)"</span><span class="o">;</span>
+			
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getPass</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getBirth</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getAddress</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">8</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="mi">9</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">());</span>
+			
+			<span class="c1">// 4. sql 실행</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+			
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 회원가입 완료"</span><span class="o">);</span>
+		<span class="o">}</span> 
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> 
+		<span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">finally</span> 
+		<span class="o">{</span>
+			<span class="nc">CloseDB</span><span class="o">();</span>
+		<span class="o">}</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : insertMember(dto) 끝!"</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="c1">// insertMember(dto)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="3-회원가입-처리-동작을-수행할-action-클래스-만들기">3. 회원가입 처리 동작을 수행할 Action 클래스 만들기</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">jsp</code> 페이지에서 회원가입 처리를 수행하지 않고 자바 클래스에서 처리할 것이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Action</code> 페이지에서 구현해야 하는 기능을 빼먹지 않고 강제하기 위해서 인터페이스를 <code class="language-plaintext highlighter-rouge">implements</code> 한 뒤 오버라이딩하여 구현했다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+	<span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kn">import</span> <span class="nn">java.sql.Date</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Timestamp</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
+
+<span class="c1">// 회원가입 처리동작 수행</span>
+<span class="c1">// model 객체로 pro 페이지 역할을 한다.</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberJoinAction</span> <span class="kd">implements</span> <span class="nc">Action</span>
+<span class="o">{</span>
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+	<span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : MemberJoinAction - execute() 호출"</span><span class="o">);</span>
+		
+		<span class="c1">// 한글처리</span>
+		<span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+		
+		<span class="c1">// 전달받은 파라미터 저장 (JSP 페이지가 아니므로 액션태그는 쓸 수 없고 setter를 이용해 저장한다)</span>
+		<span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDTO</span><span class="o">();</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setPass</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"address"</span><span class="o">));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"age"</span><span class="o">)));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setBirth</span><span class="o">(</span><span class="k">new</span> <span class="nc">Date</span><span class="o">(</span><span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"birth"</span><span class="o">))));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"email"</span><span class="o">));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setGender</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"gender"</span><span class="o">));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setPhone</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone"</span><span class="o">));</span>
+		
+		<span class="c1">// 날짜 정보 추가 저장</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setRegdate</span><span class="o">(</span><span class="k">new</span> <span class="nc">Timestamp</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()));</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : 전달된 회원 정보 저장"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : "</span> <span class="o">+</span> <span class="n">dto</span><span class="o">);</span>
+		
+		<span class="c1">// DAO 객체 생성</span>
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		
+		<span class="c1">// 회원가입 메서드 호출</span>
+		<span class="n">dao</span><span class="o">.</span><span class="na">insertMember</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : 회원가입 완료"</span><span class="o">);</span>
+		
+		<span class="c1">// 페이지 이동 (로그인 페이지로 - ./login.me)</span>
+		<span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+		<span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+		<span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// Action 페이지를 노출하지 않고 가상 주소를 보여줘야 하니까 true로 설정해서 주소줄에 표시되는 주소를 바꾼다.</span>
+		
+		<span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="4-회원가입-페이지에서-memberjoinaction-클래스-연결">4. 회원가입 페이지에서 MemberJoinAction 클래스 연결</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">join.jsp</code> 페이지에서 폼태그의 <code class="language-plaintext highlighter-rouge">action</code> 부분을 수정한다.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3&gt;</span>회원가입<span class="nt">&lt;/h3&gt;</span>
+   <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"join"</span> <span class="na">action=</span><span class="s">"./MemberJoinAction.me"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+   ...
+</code></pre></div></div>
+
+<h2 id="5-controller에서-action-클래스-연결하기">5. Controller에서 Action 클래스 연결하기</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MemberFrontController</code> 클래스의 <code class="language-plaintext highlighter-rouge">doProcess()</code> 함수의 가상주소 매핑 부분을 수정한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+<span class="o">{</span>
+	<span class="c1">// 1. 전달되는 가상주소 계산</span>
+	<span class="o">...</span>
+        
+	<span class="c1">// 2. 가상주소 매핑</span>
+	<span class="nc">Action</span> <span class="n">action</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+	<span class="k">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/main.me"</span><span class="o">)</span> <span class="o">||</span> <span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/join.me"</span><span class="o">)</span> <span class="o">||</span> <span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/login.me"</span><span class="o">))</span>
+	<span class="o">{</span>
+		<span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+
+		<span class="k">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/main.me"</span><span class="o">))</span>
+		<span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 메인페이지 호출"</span><span class="o">);</span>
+			<span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./main/main.jsp"</span><span class="o">);</span>				
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/join.me"</span><span class="o">))</span>
+		<span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 회원가입 페이지 호출"</span><span class="o">);</span>
+			<span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./member/join.jsp"</span><span class="o">);</span>				
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/login.me"</span><span class="o">))</span>
+		<span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 로그인 페이지 호출"</span><span class="o">);</span>
+			<span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./member/login.jsp"</span><span class="o">);</span>				
+		<span class="o">}</span>
+			
+		<span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/MemberJoinAction.me"</span><span class="o">))</span>
+	<span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /MemberJoinAction.me 호출"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 이전 페이지 정보를 가져와서 DB 테이블에 저장 후 페이지 이동"</span><span class="o">);</span>
+			
+		<span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberJoinAction</span><span class="o">();</span> <span class="c1">// 인터페이스를 통해 객체를 생성함으로써 약한결합이 되도록 한다.</span>
+			
+		<span class="k">try</span> 
+		<span class="o">{</span>
+			<span class="n">forward</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+		<span class="o">}</span> 
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> 
+		<span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+		
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 가상주소 매핑 완료\n"</span><span class="o">);</span>
+	<span class="c1">// 2. 가상주소 매핑</span>
+        
+    <span class="c1">// 3. 페이지 이동</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="6-동작-테스트-결과">6. 동작 테스트 결과!</h2>
+<p align="center"><img src="../../assets/images/cafeMemTable.png" /></p>
+<p><br /></p>
+
+<ul>
+  <li>잘 들어간다!</li>
+  <li>그리고 회원가입이 완료되면 로그인 페이지로 이동하는 것까지 잘 구현되었다.</li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-28</code></li>
+</ul>
+:ET
