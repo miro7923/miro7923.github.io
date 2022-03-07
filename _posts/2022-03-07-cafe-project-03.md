@@ -255,6 +255,10 @@ public class MemberJoinAction implements Action
 }
 ```
 
+* `DB 테이블`에서 회원의 생년월일 정보를 `DATE` 타입으로 설정했기 때문에 이 단계에서 생년월일은 어떻게 세팅해서 넣어줘야 하는지 몰라서 좀 헤멨다. 그 동안 `Timestamp`만 쓰고 `Date`를 쓰는 것이 처음이었기 때문에...😅
+* 처음엔 `YYYY-DD-MM` 형태로 입력되는 데이터에서 '-'을 빼고 숫자만 있는 형태로 `new Date` 객체를 생성해서 넣어보기도 하는 등 헤메다가 구글링 후 `Date.valueOf("YYYY-DD-MM")` 형태로 넣어주면 된다는 것을 알게 되어서 `request` 객체의 `getParameter()`를 그대로 넣었다. 
+* `jsp` 페이지의 `<input>` 태그의 `date` 타입으로 입력받기 때문에 전달되는 데이터의 형태가 `YYYY-DD-MM`였다.
+
 ## 4. 회원가입 페이지에서 MemberJoinAction 클래스 연결
 * `join.jsp` 페이지에서 폼태그의 `action` 부분을 수정한다.
 
