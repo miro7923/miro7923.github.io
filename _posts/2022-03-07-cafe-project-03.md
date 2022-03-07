@@ -158,11 +158,12 @@ public class MemberDAO
 			pstmt.setString(2, dto.getPass());
 			pstmt.setString(3, dto.getName());
 			pstmt.setDate(4, dto.getBirth());
-			pstmt.setString(5, dto.getGender());
-			pstmt.setString(6, dto.getAddress());
-			pstmt.setString(7, dto.getPhone());
-			pstmt.setString(8, dto.getEmail());
-			pstmt.setTimestamp(9, dto.getRegdate());
+			pstmt.setInt(5, dto.getAge());
+			pstmt.setString(6, dto.getGender());
+			pstmt.setString(7, dto.getAddress());
+			pstmt.setString(8, dto.getPhone());
+			pstmt.setString(9, dto.getEmail());
+			pstmt.setTimestamp(10, dto.getRegdate());
 			
 			// 4. sql 실행
 			pstmt.executeUpdate();
@@ -225,7 +226,17 @@ public class MemberJoinAction implements Action
 		dto.setName(request.getParameter("name"));
 		dto.setAddress(request.getParameter("address"));
 		dto.setAge(Integer.parseInt(request.getParameter("age")));
-		dto.setBirth(new Date(Long.parseLong(request.getParameter("birth"))));
+		
+		// 생년월일 정보 파싱
+		String origin = request.getParameter("birth");
+		String[] parseOrigin = origin.split("-");
+		String tmp = "";
+		for (int i = 0; i < parseOrigin.length; i++)
+			tmp += parseOrigin[i];
+		
+		dto.setBirth(new Date(Long.parseLong(tmp)));
+		
+		// 나미저 정보 저장
 		dto.setEmail(request.getParameter("email"));
 		dto.setGender(request.getParameter("gender"));
 		dto.setPhone(request.getParameter("phone"));
@@ -261,10 +272,10 @@ public class MemberJoinAction implements Action
 <h3>회원가입</h3>
    <form id="join" action="./MemberJoinAction.me" method="post">
    <div class="formRow">
-   <label for="MOD_TEXTFORM_NameField">아이디 </label><input id="MOD_TEXTFORM_NameField" type="text">
+   <label for="MOD_TEXTFORM_NameField">아이디 </label><input id="MOD_TEXTFORM_NameField" type="text" name="id">
    </div>
    <div class="formRow">
-   <label for="MOD_TEXTFORM_NameField">비밀번호 </label><input id="MOD_TEXTFORM_NameField" type="text">
+   <label for="MOD_TEXTFORM_NameField">비밀번호 </label><input id="MOD_TEXTFORM_NameField" type="password" name="pass">
    </div>
    ...
 ```
