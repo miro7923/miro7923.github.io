@@ -229,7 +229,13 @@ public class MemberJoinAction implements Action
 		dto.setBirth(Date.valueOf(request.getParameter("birth")));
 		dto.setEmail(request.getParameter("email"));
 		dto.setGender(request.getParameter("gender"));
-		dto.setPhone(request.getParameter("phone"));
+		
+		// 폰번호 3개 필드 합친 후 저장
+		StringBuilder sb = new StringBuilder();
+		sb.append(request.getParameter("phone1"));
+		sb.append(request.getParameter("phone2"));
+		sb.append(request.getParameter("phone3"));
+		dto.setPhone(sb.toString());
 		
 		// 날짜 정보 추가 저장
 		dto.setRegdate(new Timestamp(System.currentTimeMillis()));
