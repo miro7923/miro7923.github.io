@@ -517,11 +517,12 @@
 			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getPass</span><span class="o">());</span>
 			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
 			<span class="n">pstmt</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getBirth</span><span class="o">());</span>
-			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">());</span>
-			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getAddress</span><span class="o">());</span>
-			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">());</span>
-			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">8</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
-			<span class="n">pstmt</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="mi">9</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getAddress</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">8</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">9</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">());</span>
 			
 			<span class="c1">// 4. sql 실행</span>
 			<span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
@@ -585,7 +586,7 @@
 		<span class="n">dto</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
 		<span class="n">dto</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"address"</span><span class="o">));</span>
 		<span class="n">dto</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"age"</span><span class="o">)));</span>
-		<span class="n">dto</span><span class="o">.</span><span class="na">setBirth</span><span class="o">(</span><span class="k">new</span> <span class="nc">Date</span><span class="o">(</span><span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"birth"</span><span class="o">))));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setBirth</span><span class="o">(</span><span class="nc">Date</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"birth"</span><span class="o">)));</span>
 		<span class="n">dto</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"email"</span><span class="o">));</span>
 		<span class="n">dto</span><span class="o">.</span><span class="na">setGender</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"gender"</span><span class="o">));</span>
 		<span class="n">dto</span><span class="o">.</span><span class="na">setPhone</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone"</span><span class="o">));</span>
@@ -614,6 +615,12 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DB 테이블</code>에서 회원의 생년월일 정보를 <code class="language-plaintext highlighter-rouge">DATE</code> 타입으로 설정했기 때문에 이 단계에서 생년월일은 어떻게 세팅해서 넣어줘야 하는지 몰라서 좀 헤멨다. 그 동안 <code class="language-plaintext highlighter-rouge">Timestamp</code>만 쓰고 <code class="language-plaintext highlighter-rouge">Date</code>를 쓰는 것이 처음이었기 때문에…😅</li>
+  <li>처음엔 <code class="language-plaintext highlighter-rouge">YYYY-DD-MM</code> 형태로 입력되는 데이터에서 ‘-‘을 빼고 숫자만 있는 형태로 <code class="language-plaintext highlighter-rouge">new Date</code> 객체를 생성해서 넣어보기도 하는 등 헤메다가 구글링 후 <code class="language-plaintext highlighter-rouge">Date.valueOf("YYYY-DD-MM")</code> 형태로 넣어주면 된다는 것을 알게 되어서 <code class="language-plaintext highlighter-rouge">request</code> 객체의 <code class="language-plaintext highlighter-rouge">getParameter()</code>를 그대로 넣었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">jsp</code> 페이지의 <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 태그의 <code class="language-plaintext highlighter-rouge">date</code> 타입으로 입력받기 때문에 전달되는 데이터의 형태가 <code class="language-plaintext highlighter-rouge">YYYY-DD-MM</code>였다.</li>
+</ul>
+
 <h2 id="4-회원가입-페이지에서-memberjoinaction-클래스-연결">4. 회원가입 페이지에서 MemberJoinAction 클래스 연결</h2>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">join.jsp</code> 페이지에서 폼태그의 <code class="language-plaintext highlighter-rouge">action</code> 부분을 수정한다.</li>
@@ -622,10 +629,10 @@
 <div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3&gt;</span>회원가입<span class="nt">&lt;/h3&gt;</span>
    <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"join"</span> <span class="na">action=</span><span class="s">"./MemberJoinAction.me"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;/div&gt;</span>
    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;/div&gt;</span>
    ...
 </code></pre></div></div>
@@ -773,7 +780,8 @@
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/operating%20system/OS-07-Deadlock/" class="pagination--pager" title="OS) Deadlock
+">다음</a>
     
   </nav>
 
@@ -787,6 +795,49 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/operating%20system/OS-07-Deadlock/" rel="permalink">OS) Deadlock
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">👀 Deadlock(교착상태)란?
+
+  일련의 프로세스들이 서로가 가진 자원을 기다리며 block된 상태
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -866,8 +917,7 @@
 
     <p class="archive__item-excerpt" itemprop="description">개발환경
 
-  MacBook Air (M1, 2020) 16GB
-  JDK 8
+  OpenJDK 8
   Eclipse 2021-12
   tomcat 8.5
 
@@ -923,52 +973,6 @@
 
   시간 제한 : 1 초
   메모리 제한 : 512 MB
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/project%20log/cafe-project-01/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 1
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">개발환경
-
-  MacBook Air (M1, 2020) 16GB
-  JDK 8
-  Eclipse 2021-12
-  tomcat 8.5
 
 </p>
   </article>
