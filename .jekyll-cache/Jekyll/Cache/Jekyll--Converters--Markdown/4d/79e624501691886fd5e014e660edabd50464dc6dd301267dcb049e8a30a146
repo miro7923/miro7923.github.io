@@ -1,0 +1,279 @@
+I"Rl<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1">진행상황 1</h1>
+<ul>
+  <li>오늘은 저번에 구현한 기본적인 회원가입 틀에서 사용자가 입력한 정보의 유효성을 검사하는 코드를 추가했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Ajax</code>를 이용해 비동기방식으로 사용자가 입력한 아이디의 중복체크를 하려 했는데 학원 선생님이 워낙 짧게 알려주고 수업 시간이 다 끝나버린 데다 나도 웹 개발은 처음이라 당초 예상과 다르게 아이디 유효성 체크를 구현하는 데에 오랜 시간이 소요되었다.</li>
+  <li>그래도 숱한 구글링 끝에 아이디 중복체크 부분은 내가 원하는대로 구현이 되었다!</li>
+  <li>내가 모티브로 잡고 구현했던 기능은 <code class="language-plaintext highlighter-rouge">네이버 회원가입 페이지의 아이디 중복검사</code> 기능이다.</li>
+</ul>
+
+<h2 id="1-회원가입-페이지에-아이디-중복여부를-알려주는-문구-추가">1. 회원가입 페이지에 아이디 중복여부를 알려주는 문구 추가</h2>
+
+<ul>
+  <li>join.jsp</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">placeholder=</span><span class="s">"5~10자 이내의 영문+숫자만 입력하세요."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"idMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">jQuery</code>를 이용해서 <code class="language-plaintext highlighter-rouge">&lt;div id="idMsg"&gt;&lt;/div&gt;</code> 태그에 중복인지 아닌지 알려주는 메세지를 삽입할 것이다.</li>
+</ul>
+
+<h2 id="2-memeberdao에서-db에-아이디-존재여부를-확인하는-함수-작성">2. MemeberDAO에서 DB에 아이디 존재여부를 확인하는 함수 작성</h2>
+
+<ul>
+  <li>MemberDAO.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// isExist(id)</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isExist</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span>
+<span class="o">{</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : isExist() 호출"</span><span class="o">);</span>
+		
+	<span class="k">try</span> 
+	<span class="o">{</span>
+		<span class="c1">// 1. 2. DB 연결</span>
+		<span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+		<span class="c1">// 3. sql 작성 &amp; pstmt 연결</span>
+		<span class="n">sql</span> <span class="o">=</span> <span class="s">"select id from cafe_members where id=?"</span><span class="o">;</span>
+		<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+		<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+			
+		<span class="c1">// 4. sql 실행</span>
+		<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 아이디 정보 조회 완료"</span><span class="o">);</span>
+			
+		<span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+		<span class="k">else</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+	<span class="o">}</span> 
+	<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> 
+	<span class="o">{</span>
+		<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+	<span class="o">}</span>
+	<span class="k">finally</span> 
+	<span class="o">{</span>
+		<span class="nc">CloseDB</span><span class="o">();</span>
+	<span class="o">}</span>
+		
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : isExist(id) 끝!!!"</span><span class="o">);</span>
+		
+	<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="c1">// isExist(id)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>매개변수로 받은 아이디를 이용해 DB에서 조회한 후 해당 아이디가 존재한다면 <code class="language-plaintext highlighter-rouge">true</code>를, 존재하지 않으면 <code class="language-plaintext highlighter-rouge">false</code>를 리턴하도록 했다.</li>
+  <li>매개변수로 받은 아이디가 존재하지 않을 때에만(<code class="language-plaintext highlighter-rouge">return false</code>) 모든 정보를 입력했을 때에 회원가입 프로세스가 진행되도록 할 것이기 때문에 기본 리턴값은 <code class="language-plaintext highlighter-rouge">true</code>로 설정했다.</li>
+</ul>
+
+<h2 id="3-서블릿-만들어서-중복체크-확인하는-동작-수행">3. 서블릿 만들어서 중복체크 확인하는 동작 수행</h2>
+<ul>
+  <li>IdCheck.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/idCheck.me"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IdCheck</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="o">{</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">req</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+		<span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+		
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		<span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">isExist</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">result</span><span class="o">)</span>
+		<span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"false"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> 
+		<span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"true"</span><span class="o">);</span>
+		<span class="o">}</span>
+        
+		<span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>처음엔 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지를 만들어서 아주 간단하게 만들었는데 생각보다 잘 안 되서 구글링 후 서블릿으로 만들었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">PrintWriter</code>를 이용해 출력 스트림을 만들어 DB 검색 결과를 보내도록 했다. 검색 결과가 있다면 중복되는 아이디가 있어서 사용할 수 없는 아이디니까 <code class="language-plaintext highlighter-rouge">false</code>, 없다면 중복되는 아이디가 없어서 사용 가능한 아이디니까 <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li>이 부분을 구현하면서 출력 스트림에 대해 다시 공부하게 되어서 좋았다! 역시 그냥 배우는 것 보다는 직접 써 봐야 머리에 잘 들어온다.</li>
+</ul>
+
+<h2 id="4-jquery로-아이디-중복체크-하는-함수-구현">4. jQuery로 아이디 중복체크 하는 함수 구현</h2>
+<ul>
+  <li>join.js</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+	<span class="kd">var</span> <span class="nx">$idCheck</span> <span class="o">=</span> <span class="nx">idCheck</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">idCheck</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">idCheck() 호출</span><span class="dl">"</span><span class="p">);</span>
+	
+	<span class="kd">var</span> <span class="nx">ret</span><span class="p">;</span>
+	
+	<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+		<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+			<span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+			<span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./idCheck.me</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+				<span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+			<span class="p">},</span>
+			<span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">true</span><span class="dl">'</span><span class="p">)</span>
+				<span class="p">{</span>
+					<span class="k">if</span> <span class="p">(</span><span class="mi">4</span> <span class="o">&gt;=</span> <span class="nx">getTextLength</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">())</span> <span class="o">||</span> <span class="mi">11</span> <span class="o">&lt;=</span> <span class="nx">getTextLength</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()))</span>
+					<span class="p">{</span>
+						<span class="nx">ret</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">5자리 이상 10자리 이하로 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
+						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
+					<span class="p">}</span>
+					<span class="k">else</span> 
+					<span class="p">{</span>
+						<span class="nx">ret</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">사용할 수 있는 아이디입니다.</span><span class="dl">'</span><span class="p">);</span>
+						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">);</span>
+					<span class="p">}</span>
+				<span class="p">}</span>
+				<span class="k">else</span> 
+				<span class="p">{</span>
+					<span class="nx">ret</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+					<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">이미 존재하는 아이디입니다.</span><span class="dl">'</span><span class="p">);</span>
+					<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
+				<span class="p">}</span>
+			<span class="p">},</span>
+			<span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">);</span>
+			<span class="p">}</span>
+		<span class="p">});</span>
+	<span class="p">});</span>
+	
+	<span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getTextLength</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="nx">len</span><span class="o">++</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="nx">len</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">IdCheck</code>에서 출력 스트림으로 받은 결과값을 이용해 아이디 입력란 하단에 출력할 메세지를 결정하는데 리턴값이 <code class="language-plaintext highlighter-rouge">false</code>라면 사용불가 메세지를 바로 출력하면 되지만 <code class="language-plaintext highlighter-rouge">true</code>인 경우에 사용가능 메세지를 바로 출력하니까 아이디를 입력하지 않고 입력란 바깥을 클릭했을 때에도 사용가능한 아이디라는 메세지가 출력되었다. 아이디를 입력하지 않았을 때에도 DB에서 검색되지 않을 테니까 최종적으로 사용이 가능하다는 파라미터가 리턴될 것이다.</li>
+  <li>그래서 리턴값이 <code class="language-plaintext highlighter-rouge">true</code>인 경우에는 아이디 입력란에 입력되어 있는 문자열의 길이를 검사한 후 그에 따라 분기를 나누었다.</li>
+  <li>여기까지 해서 <code class="language-plaintext highlighter-rouge">네이버 회원가입 페이지</code>의 아이디 중복검사 기능과 같게 구현했다! 뿌듯뿌듯 ☺️</li>
+</ul>
+<p align="center"><img src="../../assets/images/existId.png" width="400" /></p>
+<p align="center"><img src="../../assets/images/nonExistId.png" width="400" /></p>
+<p align="center"><img src="../../assets/images/tooLong.png" width="400" /></p>
+<p align="center"><img src="../../assets/images/tooShort.png" width="400" /></p>
+<p><br /><br /></p>
+
+<h1 id="진행상황-2">진행상황 2</h1>
+
+<p align="center"><img src="../../assets/images/inputPhone.png" width="400" /></p>
+
+<ul>
+  <li>휴대폰 번호 입력받는 부분을 세 칸으로 나누었기 때문에 각 필드마다 정해진 자리수만큼 입력하면 다음 칸으로 자동으로 커서가 넘어가도록 하는 부분을 구현했다.</li>
+</ul>
+
+<h2 id="1-사용자에게서-휴대폰-번호-입력받는-부분-수정">1. 사용자에게서 휴대폰 번호 입력받는 부분 수정</h2>
+<ul>
+  <li>join.jsp</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_TelField"</span><span class="nt">&gt;</span>휴대폰 번호 <span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone1"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone1"</span> <span class="na">size=</span><span class="s">"1"</span> <span class="na">maxlength=</span><span class="s">"3"</span> <span class="na">oninput=</span><span class="s">"tabCursor(1)"</span><span class="nt">&gt;</span> - 
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone2"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone2"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">oninput=</span><span class="s">"tabCursor(2)"</span><span class="nt">&gt;</span> - 
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone3"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone3"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="2-javascript로-커서-이동하는-함수-구현">2. javascript로 커서 이동하는 함수 구현</h2>
+<ul>
+  <li>join.js</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 휴대폰 번호 필드 1, 2번 칸에서 지정된 숫자만큼 입력하면 다음 칸으로 커서 넘기는 함수</span>
+<span class="kd">function</span> <span class="nx">tabCursor</span><span class="p">(</span><span class="nx">_section</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">ph</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">switch</span> <span class="p">(</span><span class="nx">_section</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="nx">ph</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">join</span><span class="p">.</span><span class="nx">phone1</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+			<span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="o">===</span> <span class="nx">ph</span><span class="p">)</span>
+				<span class="nx">join</span><span class="p">.</span><span class="nx">phone2</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+			<span class="k">break</span><span class="p">;</span>
+		
+		<span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="nx">ph</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">join</span><span class="p">.</span><span class="nx">phone2</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+			<span class="k">if</span> <span class="p">(</span><span class="mi">4</span> <span class="o">===</span> <span class="nx">ph</span><span class="p">)</span>
+				<span class="nx">join</span><span class="p">.</span><span class="nx">phone3</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+			<span class="k">break</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span> 
+</code></pre></div></div>
+
+<ul>
+  <li>처음에 내 뜻대로 구현되지 않을 때에는 머리를 많이 쥐어뜯었지만 구현을 완료하고 나니까 참 뿌듯하다 😄<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-26</code></li>
+</ul>
+:ET
