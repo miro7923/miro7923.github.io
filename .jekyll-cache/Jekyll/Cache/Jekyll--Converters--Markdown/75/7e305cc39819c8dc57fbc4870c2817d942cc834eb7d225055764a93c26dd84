@@ -1,4 +1,4 @@
-I"��<h1 id="개발환경">개발환경</h1>
+I"��<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>OpenJDK 8</li>
   <li>Eclipse 2021-12</li>
@@ -231,7 +231,13 @@
 		<span class="n">dto</span><span class="o">.</span><span class="na">setBirth</span><span class="o">(</span><span class="nc">Date</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"birth"</span><span class="o">)));</span>
 		<span class="n">dto</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"email"</span><span class="o">));</span>
 		<span class="n">dto</span><span class="o">.</span><span class="na">setGender</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"gender"</span><span class="o">));</span>
-		<span class="n">dto</span><span class="o">.</span><span class="na">setPhone</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone"</span><span class="o">));</span>
+		
+		<span class="c1">// 폰번호 3개 필드 합친 후 저장</span>
+		<span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+		<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone1"</span><span class="o">));</span>
+		<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone2"</span><span class="o">));</span>
+		<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone3"</span><span class="o">));</span>
+		<span class="n">dto</span><span class="o">.</span><span class="na">setPhone</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
 		
 		<span class="c1">// 날짜 정보 추가 저장</span>
 		<span class="n">dto</span><span class="o">.</span><span class="na">setRegdate</span><span class="o">(</span><span class="k">new</span> <span class="nc">Timestamp</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()));</span>

@@ -1,0 +1,25 @@
+I"�<h1 id="function">Function</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">function call</code>이 이뤄짐에 따라 중간에 생기는 연산값을 저장하고 불러오는 과정이 필요하며 <code class="language-plaintext highlighter-rouge">return</code>값에 따라 <code class="language-plaintext highlighter-rouge">Jump &amp; Link</code>가 이뤄져야 하고 그에 따라 스택 프레임 포인터도 변경해줘야 하는 등 할 게 많다.</li>
+  <li><code class="language-plaintext highlighter-rouge">function call</code>과 <code class="language-plaintext highlighter-rouge">return</code> 없이 순차적으로 실행하는 코드에 비해 수행해야 할 명령어의 수가 많아지기 때문에 오버헤드가 커지고 성능이 떨어진다.</li>
+</ul>
+
+<h1 id="매크로-함수">매크로 함수</h1>
+<ul>
+  <li>함수를 매크로로 작성하면 실행 될 때 <code class="language-plaintext highlighter-rouge">Text</code> 영역에 위치하게 된다. 즉 형태는 <code class="language-plaintext highlighter-rouge">function call</code>을 하는 것 같지만 프로그램 코드로 인식되어 <code class="language-plaintext highlighter-rouge">Text</code> 영역에 있기 때문에 <code class="language-plaintext highlighter-rouge">Jump &amp; Link</code>가 발생하지 않아 오버헤드가 적고 성능이 올라간다.</li>
+  <li>하지만 그만큼 <code class="language-plaintext highlighter-rouge">Text</code>가 길어져서 그만큼 차지하는 공간이 늘어나게 된다.<br /></li>
+</ul>
+
+<p>👀 두 방식에 각각 장단점이 있기 때문에 상황에 맞게 사용하면 된다.</p>
+
+<h2 id="오버헤드">오버헤드</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">부담</code>이라 할 수 있다.</li>
+  <li>추가적으로 해야 하는 일이기 때문에 컴퓨터가 어떤 작업을 수행할 때 오버헤드가 크다는 것은 그 작업을 수행하기 위해 필요한 명령어의 수가 많아지기 때문이라고 할 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/cview.do?cid=26adea597863b523">컴퓨터구조 - 고려대학교 KOCW 공개강의</a></li>
+</ul>
+:ET
