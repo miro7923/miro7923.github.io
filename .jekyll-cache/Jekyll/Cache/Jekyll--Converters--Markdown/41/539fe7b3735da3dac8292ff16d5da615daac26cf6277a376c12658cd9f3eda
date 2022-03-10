@@ -1,0 +1,93 @@
+I"8<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1">진행상황 1</h1>
+<ul>
+  <li>어제 회원가입 페이지에서 사용자가 입력한 아이디의 유효성을 검증하는 부분까지 구현했다.</li>
+  <li>그리고 오늘 회원가입 시 사용자가 입력한 정보가 유효한지 검증하는 로직을 모두 구현했다!</li>
+</ul>
+
+<h2 id="1-joinjsp">1. join.jsp</h2>
+
+<p>```jsp</p>
+<h3>회원가입</h3>
+<p><br /></p>
+<form name="join" action="./MemberJoinAction.me" method="post" onsubmit="return finalCheck();">
+    <div class="formRow">
+    <label for="MOD_TEXTFORM_NameField">아이디 </label><input type="text" name="id" id="id" placeholder="5~10자 이내의 영문+숫자 조합" />
+    </div>
+    <div id="idMsg"></div>
+    <div class="formRow">
+    <label for="MOD_TEXTFORM_NameField">비밀번호 </label><input type="password" name="pass" id="pass" placeholder="8~20자 영문+숫자+특수문자 조합" />
+    </div>
+    <div id="passMsg"></div>
+    <div class="formRow">
+    <label for="MOD_TEXTFORM_NameField">비밀번호 확인 </label><input type="password" name="confirm" id="confirm" placeholder="비밀번호를 다시 입력하세요." />
+    </div>
+    <div id="confirmMsg"></div>
+    <div class="formRow">
+    <label for="MOD_TEXTFORM_NameField">이름 </label><input id="MOD_TEXTFORM_NameField" type="text" name="name" class="name" placeholder="이름을 입력하세요." />
+    </div>
+    <div id="nameMsg"></div>
+    <div class="formRow">
+    <label for="MOD_TEXTFORM_NameField">생년월일 </label><input id="MOD_TEXTFORM_NameField" type="date" name="birth" class="birth" />
+    </div>
+    <div id="birthMsg"></div>
+    <div class="formRow">
+    <label for="MOD_TEXTFORM_NameField">성별 </label><input class="radio" type="radio" name="gender" id="gender" value="남" /><label class="radioText">남</label> 
+    <input class="radio" id="gender" type="radio" name="gender" value="여" /><label class="radioText">여</label>
+    </div>
+    <div id="genderMsg"></div>
+    <div class="formRow">
+    <label for="MOD_TEXTFORM_NameField">도시 </label>
+        <select name="city">
+        <option selected="" disabled="">도시를 선택하세요.</option>
+        <option>서울</option>
+        <option>부산</option>
+        <option>대전</option>
+        </select>
+        </div>
+        <div id="cityMsg"></div>
+        <div class="formRow">
+          <label for="MOD_TEXTFORM_TelField">휴대폰 번호 </label>
+          <label class="phone">
+          <input id="phone1" type="tel" name="phone1" size="1" maxlength="3" oninput="tabCursor(1)" /> - 
+          <input id="phone2" type="tel" name="phone2" size="3" maxlength="4" oninput="tabCursor(2)" /> - 
+          <input id="phone3" type="tel" name="phone3" size="3" maxlength="4" />
+          </label>
+        </div>
+        <div id="phoneMsg"></div>
+        <div class="formRow">
+          <label for="MOD_TEXTFORM_EmailField">이메일 </label><input type="email" name="email" id="email" placeholder="abc123@gmail.com" />
+        </div>
+        <div id="emailMsg"></div>
+<!--
+        <div class="formRow">
+          <label for="MOD_TEXTFORM_MsgField">Message </label><textarea id="MOD_TEXTFORM_MsgField" placeholder="Enter your message..."></textarea></div>
+-->
+        <button type="submit" class="btn">Send form</button>
+      </form>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-26</code></li>
+</ul>
+:ET

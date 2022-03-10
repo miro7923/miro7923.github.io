@@ -169,9 +169,10 @@ function idCheck()
 			success: function(data) {
 				if (data === 'true')
 				{
-					if (4 >= getTextLength($('#id').val()) || 11 <= getTextLength($('#id').val()))
+					var userId = $('#id').val();
+					if (5 > userId.length || 10 < userId.length)
 					{
-						ret = false;
+						$id = false;
 						$('#idMsg').text('5자리 이상 10자리 이하로 입력해 주세요.');
 						$('#idMsg').css('color', 'red');
 					}
@@ -196,17 +197,6 @@ function idCheck()
 	});
 	
 	return ret;
-}
-
-function getTextLength(str)
-{
-	var len = 0;
-	for (var i = 0; i < str.length; i++)
-	{
-		len++;
-	}
-	
-	return len;
 }
 ```
 

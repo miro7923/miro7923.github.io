@@ -532,9 +532,10 @@
 			<span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
 				<span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">true</span><span class="dl">'</span><span class="p">)</span>
 				<span class="p">{</span>
-					<span class="k">if</span> <span class="p">(</span><span class="mi">4</span> <span class="o">&gt;=</span> <span class="nx">getTextLength</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">())</span> <span class="o">||</span> <span class="mi">11</span> <span class="o">&lt;=</span> <span class="nx">getTextLength</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()))</span>
+					<span class="kd">var</span> <span class="nx">userId</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+					<span class="k">if</span> <span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="nx">userId</span><span class="p">.</span><span class="nx">length</span> <span class="o">||</span> <span class="mi">10</span> <span class="o">&lt;</span> <span class="nx">userId</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
 					<span class="p">{</span>
-						<span class="nx">ret</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+						<span class="nx">$id</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">5자리 이상 10자리 이하로 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
 						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
 					<span class="p">}</span>
@@ -559,17 +560,6 @@
 	<span class="p">});</span>
 	
 	<span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">getTextLength</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="nx">len</span><span class="o">++</span><span class="p">;</span>
-	<span class="p">}</span>
-	
-	<span class="k">return</span> <span class="nx">len</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -710,7 +700,8 @@
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/project%20log/cafe-project-05/" class="pagination--pager" title="프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료
+">다음</a>
     
   </nav>
 
@@ -724,6 +715,52 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-05/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -857,51 +894,6 @@
     <p class="archive__item-excerpt" itemprop="description">👀 Deadlock(교착상태)란?
 
   일련의 프로세스들이 서로가 가진 자원을 기다리며 block된 상태
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/project%20log/cafe-project-03/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 3
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          4 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">개발환경
-
-  OpenJDK 8
-  Eclipse 2021-12
-  tomcat 8.5
 
 </p>
   </article>
