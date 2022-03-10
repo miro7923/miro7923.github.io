@@ -1,0 +1,919 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DB) 관계 데이터 모델링 | Yujin Dev Log</title>
+<meta name="description" content="👀 관계 데이터 모델의 개념    개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델   하나의 개체에 대한 데이터를 하나의 릴레이션에 저장">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="DB) 관계 데이터 모델링">
+<meta property="og:url" content="http://localhost:4000/database/db-05-relation/">
+
+
+  <meta property="og:description" content="👀 관계 데이터 모델의 개념    개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델   하나의 개체에 대한 데이터를 하나의 릴레이션에 저장">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-03-10T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/database/db-05-relation/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#database" itemprop="item"><span itemprop="name">Database</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DB) 관계 데이터 모델링</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="DB) 관계 데이터 모델링">
+    <meta itemprop="description" content="👀 관계 데이터 모델의 개념  개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델  하나의 개체에 대한 데이터를 하나의 릴레이션에 저장">
+    <meta itemprop="datePublished" content="2022-03-10T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/database/db-05-relation/" class="u-url" itemprop="url">DB) 관계 데이터 모델링
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#-관계-데이터-모델의-개념">👀 관계 데이터 모델의 개념</a><ul><li><a href="#기본-용어">기본 용어</a><ul><li><a href="#릴레이션relation">릴레이션(relation)</a></li><li><a href="#속성attribute">속성(attribute)</a></li><li><a href="#투플tuple">투플(tuple)</a></li><li><a href="#도메인domain">도메인(domain)</a></li><li><a href="#널null">널(null)</a></li><li><a href="#차수degree">차수(degree)</a></li><li><a href="#카디널리티cardinality">카디널리티(cardinality)</a></li></ul></li><li><a href="#릴레이션의-구성">릴레이션의 구성</a><ul><li><a href="#릴레이션-스키마relation-schema">릴레이션 스키마(relation schema)</a></li><li><a href="#릴레이션-인스턴스relation-instance">릴레이션 인스턴스(relation instance)</a></li></ul></li><li><a href="#데이터베이스의-구성">데이터베이스의 구성</a><ul><li><a href="#데이터베이스-스키마database-schema">데이터베이스 스키마(database schema)</a></li><li><a href="#데이터베이스-인스턴스database-instance">데이터베이스 인스턴스(database instance)</a></li></ul></li><li><a href="#릴레이션의-특성">릴레이션의 특성</a></li><li><a href="#키key">키(key)</a><ul><li><a href="#키의-특성">키의 특성</a></li><li><a href="#키의-종류">키의 종류</a><ul><li><a href="#슈퍼키super-key">슈퍼키(super key)</a></li><li><a href="#후보키candidate-key">후보키(candidate key)</a></li><li><a href="#기본키primary-key">기본키(primary key)</a></li><li><a href="#대체키alternate-key">대체키(alternate key)</a></li><li><a href="#외래키foreign-key">외래키(foreign key)</a></li></ul></li></ul></li><li><a href="#무결성-제약조건integrity-constraint">무결성 제약조건(integrity constraint)</a><ul><li><a href="#개체-무결성-제약조건entity-integrity-constraint">개체 무결성 제약조건(entity integrity constraint)</a></li><li><a href="#참조-무결성-제약조건referential-integrity-constraint">참조 무결성 제약조건(referential integrity constraint)</a></li></ul></li></ul></li><li><a href="#출처">출처</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="-관계-데이터-모델의-개념">👀 관계 데이터 모델의 개념</h1>
+<ul>
+  <li>개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델</li>
+  <li>하나의 개체에 대한 데이터를 하나의 릴레이션에 저장</li>
+</ul>
+
+<h2 id="기본-용어">기본 용어</h2>
+<h3 id="릴레이션relation">릴레이션(relation)</h3>
+<ul>
+  <li>하나의 개체에 대한 데이터를 2차원 테이블의 구조로 저장한 것</li>
+  <li>파일 관리 시스템 관점에서 파일(file)에 대응</li>
+</ul>
+
+<h3 id="속성attribute">속성(attribute)</h3>
+<ul>
+  <li>릴레이션의 열, 애트리뷰트로 <code class="language-plaintext highlighter-rouge">세로줄!</code></li>
+  <li>파일 관리 시스템 관점에서 필드(field)에 대응</li>
+</ul>
+
+<h3 id="투플tuple">투플(tuple)</h3>
+<ul>
+  <li>릴레이션의 행. <code class="language-plaintext highlighter-rouge">가로줄!</code></li>
+  <li>파일 관리 시스템 관점에서 레코드(record)에 대응</li>
+</ul>
+
+<h3 id="도메인domain">도메인(domain)</h3>
+<ul>
+  <li>하나의 속성이 가질 수 있는 모든 값의 집합</li>
+  <li>속성 값을 입력 및 수정할 때 적합성의 판단 기준이 됨</li>
+  <li>일반적으로 속성의 특성을 고려한 데이터 타입으로 정의</li>
+</ul>
+
+<h3 id="널null">널(null)</h3>
+<ul>
+  <li>속성 값을 아직 모르거나 해당되는 값이 없음을 표현</li>
+</ul>
+
+<h3 id="차수degree">차수(degree)</h3>
+<ul>
+  <li>하나의 릴레이션에서 속성의 전체 개수</li>
+</ul>
+
+<h3 id="카디널리티cardinality">카디널리티(cardinality)</h3>
+<ul>
+  <li>하나의 릴레이션에서 투플의 전체 개수<br /><br /></li>
+</ul>
+
+<h2 id="릴레이션의-구성">릴레이션의 구성</h2>
+<h3 id="릴레이션-스키마relation-schema">릴레이션 스키마(relation schema)</h3>
+<ul>
+  <li>릴레이션의 논리적 구조. 뼈대라 할 수 있다.</li>
+  <li>릴레이션의 이름과 릴레이션이 포함된 모든 속성 이름으로 정의
+    <ul>
+      <li>예) 고객(고객 아이디, 고객 이름, 나이, 등급, 직업, 적립금)</li>
+    </ul>
+  </li>
+  <li>릴레이션 내포(relation intension)라고도 함</li>
+  <li>정적인 특징이 있음</li>
+</ul>
+
+<h3 id="릴레이션-인스턴스relation-instance">릴레이션 인스턴스(relation instance)</h3>
+<ul>
+  <li>어느 한 시점에 릴레이션에 존재하는 투플들의 집합. 릴레이션 안에 실제로 들어있는 값이다.</li>
+  <li>릴레이션 외연(relation extension)이라고도 함</li>
+  <li>시간이 흐름에 따라 투플이 계속 추가되거나 삭제될 수 있기 때문에 동적인 특징이 있다.<br /><br /></li>
+</ul>
+
+<h2 id="데이터베이스의-구성">데이터베이스의 구성</h2>
+<h3 id="데이터베이스-스키마database-schema">데이터베이스 스키마(database schema)</h3>
+<ul>
+  <li>데이터베이스의 전체 구조</li>
+  <li>데이터베이스를 구성하는 릴레이션 스키마의 모음</li>
+</ul>
+
+<h3 id="데이터베이스-인스턴스database-instance">데이터베이스 인스턴스(database instance)</h3>
+<ul>
+  <li>데이터베이스를 구성하는 릴레이션 인스턴스의 모음<br /><br /></li>
+</ul>
+
+<h2 id="릴레이션의-특성">릴레이션의 특성</h2>
+<ul>
+  <li>투플의 유일성
+    <ul>
+      <li>하나의 릴레이션에는 동일한 투플이 존재할 수 없다.</li>
+    </ul>
+  </li>
+  <li>투플의 무순서
+    <ul>
+      <li>하나의 릴레이션에서 투플 사이의 순서는 무의미하다.</li>
+    </ul>
+  </li>
+  <li>속성의 무순서
+    <ul>
+      <li>하나의 릴레이션에서 속성 사이의 순서는 무의미하다.</li>
+    </ul>
+  </li>
+  <li>속성의 원자성
+    <ul>
+      <li>속성 값으로 원자 값만 사용할 수 있다. 즉 한 속성 필드에 값이 2개 이상 들어갈 수 없음!<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="키key">키(key)</h2>
+<ul>
+  <li>릴레이션에서 투플들을 유일하게 구별하는 속성 또는 속성들의 집합</li>
+</ul>
+
+<h3 id="키의-특성">키의 특성</h3>
+<ul>
+  <li>유일성(uniqueness)
+    <ul>
+      <li>하나의 릴레이션에서 모든 투플은 서로 다른 키 값을 가져야 함</li>
+    </ul>
+  </li>
+  <li>최소성(minimality)
+    <ul>
+      <li>꼭 필요한 최소한의 속성들로만 키를 구성</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="키의-종류">키의 종류</h3>
+<h4 id="슈퍼키super-key">슈퍼키(super key)</h4>
+<ul>
+  <li>유일성을 만족하는 속성 또는 속성들의 집합</li>
+  <li>예) 고객 릴레이션의 슈퍼키 : 고객아이디, (고객아이디, 고객이름), (고객이름, 주소) 등</li>
+</ul>
+
+<h4 id="후보키candidate-key">후보키(candidate key)</h4>
+<ul>
+  <li>유일성과 최소성을 만족하는 속성 또는 속성들의 집합</li>
+  <li>예) 고객 릴레이션의 후보키 : 고객아이디, (고객이름, 주소) 등</li>
+</ul>
+
+<h4 id="기본키primary-key">기본키(primary key)</h4>
+<ul>
+  <li>후보키 중에서 기본적으로 사용하기 위해 선택한 키</li>
+  <li>널값을 가질 수 있는 속성이 포함된 후보키는 부적합</li>
+  <li>값이 자주 변경될 수 있는 속성이 포함된 후보키는 부적합</li>
+  <li>단순한 후보키를 선택</li>
+  <li>예) 고객 릴레이션의 기본키 : 고객아이디</li>
+</ul>
+
+<h4 id="대체키alternate-key">대체키(alternate key)</h4>
+<ul>
+  <li>기본키로 선택되지 못한 후보키</li>
+  <li>예) 고객 릴레이션의 대체키 : (고객이름, 주소)</li>
+</ul>
+
+<h4 id="외래키foreign-key">외래키(foreign key)</h4>
+<ul>
+  <li>다른 릴레이션의 기본키를 참조하는 속성 또는 속성들의 집합</li>
+  <li>릴레이션들 간의 관계를 표현</li>
+  <li>참조하는 릴레이션 : 외래키를 가진 릴레이션(주문 릴레이션)</li>
+  <li>참조되는 릴레이션 : 외래키가 참조하는 기본키를 가진 릴레이션(고객 릴레이션)</li>
+  <li>역할
+    <ul>
+      <li>고객 릴레이션과 주문 릴레이션이 관계를 맺어 주문 릴레이션의 투플과 연관성 있는 고객 릴레이션의 투플을 연결할 수 있음</li>
+      <li>외래키 속성과 그것이 참조하는 기본키 속성의 이름은 달라도 되지만 도메인은 같아야 한다.</li>
+    </ul>
+  </li>
+  <li>하나의 릴레이션에는 외래키가 여러 개 존재할 수도 있고 외래키를 기본키로 사용할 수도 있다.</li>
+  <li>같은 릴레이션의 기본키를 참조하는 외래키도 정의할 수 있다.</li>
+  <li>외래키 속성은 널 값을 가질 수도 있다.<br /><br /></li>
+</ul>
+
+<h2 id="무결성-제약조건integrity-constraint">무결성 제약조건(integrity constraint)</h2>
+<ul>
+  <li>데이터의 무결성을 보장하고 일관된 상태로 유지하기 위한 규칙</li>
+  <li>무결성 : 데이터를 결함이 없는 상태, 즉 정확하고 유효하게 유지하는 것</li>
+</ul>
+
+<h3 id="개체-무결성-제약조건entity-integrity-constraint">개체 무결성 제약조건(entity integrity constraint)</h3>
+<ul>
+  <li>기본키를 구성하는 모든 속성은 널 값을 가질 수 없는 규칙</li>
+</ul>
+
+<h3 id="참조-무결성-제약조건referential-integrity-constraint">참조 무결성 제약조건(referential integrity constraint)</h3>
+<ul>
+  <li>외래키는 참조할 수 없는 값을 가질 수 없는 규칙</li>
+  <li>널 값은 가질 수 있지만 널 값이 아닌데 참조하려는 테이블에는 해당 값이 없으면 외래키로 사용할 수 없다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#db" class="page__taxonomy-item p-category" rel="tag">DB</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#database" class="page__taxonomy-item p-category" rel="tag">Database</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-03-10T00:00:00+09:00">March 10, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=DB%29+%EA%B4%80%EA%B3%84+%EB%8D%B0%EC%9D%B4%ED%84%B0+%EB%AA%A8%EB%8D%B8%EB%A7%81%20http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fdb-05-relation%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fdb-05-relation%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fdb-05-relation%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/project%20log/cafe-project-05/" class="pagination--pager" title="프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-05/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-04/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 4
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20science/function/" rel="permalink">컴퓨터구조) Function과 매크로 함수의 차이점
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Function
+
+  function call이 이뤄짐에 따라 중간에 생기는 연산값을 저장하고 불러오는 과정이 필요하며 return값에 따라 Jump &amp; Link가 이뤄져야 하고 그에 따라 스택 프레임 포인터도 변경해줘야 하는 등 할 게 많다.
+  function call과...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj1525-cpp/" rel="permalink">C++) BOJ 2579. 계단 오르기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://www.acmicpc.net/problem/2579
+
+
+제한
+
+
+
+  시간 제한 : 1 초
+  메모리 제한 : 128 MB
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>
