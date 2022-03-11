@@ -1,4 +1,4 @@
-I"�y<h1 id="개발환경">개발환경</h1>
+I"6�<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -73,7 +73,8 @@
   <li>
     <p>이 블로그 글을 참고해서 구현했다. 지금까지 수업에서 <code class="language-plaintext highlighter-rouge">JSON</code>을 배운 적이 없어서 처음 <code class="language-plaintext highlighter-rouge">API</code> 문서를 봤을 때 굉장히 난감했는데 이 글 덕분에 코드를 분석하며 <code class="language-plaintext highlighter-rouge">JSON</code>을 무슨 용도로, 어떻게 사용하는 지 알 수 있었다.<br /></p>
   </li>
-  <li>[[이렇게 사용하세요!] SMS 문자 메시지 발송 앱 사용하기 (SENS API 활용법)](</li>
+  <li><a href="https://blog.naver.com/PostView.naver?blogId=n_cloudplatform&amp;logNo=222475388473&amp;parentCategoryNo=&amp;categoryNo=12&amp;viewDate=&amp;isShowPopularPosts=false&amp;from=postView">[이렇게 사용하세요!] SMS 문자 메시지 발송 앱 사용하기 (SENS API 활용법)</a></li>
+  <li>API의 각 항목에 대한 가이드는 공식 블로그를 참고했다. 여기만 확인해도 서비스 아이디가 뭔지, uri는 또 무슨 용도인지… 등등을 알 수 있다.</li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// SmsService.java</span>
@@ -166,7 +167,6 @@
         <span class="nc">JSONObject</span> <span class="n">toJson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">();</span>
         <span class="nc">JSONArray</span> <span class="n">toArr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONArray</span><span class="o">();</span>
 		
-        <span class="n">toJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"content"</span><span class="o">,</span> <span class="s">"test sms"</span><span class="o">);</span>
         <span class="n">toJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"to"</span><span class="o">,</span> <span class="n">dstPhoneNumber</span><span class="o">);</span>
         <span class="n">toArr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">toJson</span><span class="o">);</span>
 		
@@ -175,12 +175,12 @@
         <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"countryCode"</span><span class="o">,</span> <span class="s">"82"</span><span class="o">);</span>
         <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"from"</span><span class="o">,</span> <span class="s">"01029775074"</span><span class="o">);</span>
         <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"subject"</span><span class="o">,</span> <span class="s">"[Web 발신]"</span><span class="o">);</span>
-		
-		<span class="c1">// 난수 생성</span>
+
+        <span class="c1">// 난수 생성</span>
         <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
         <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">9999</span><span class="o">;</span>
         <span class="kt">int</span> <span class="n">validateNum</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="o">(</span><span class="n">max</span> <span class="o">-</span> <span class="n">min</span> <span class="o">+</span> <span class="mi">1</span><span class="o">))</span> <span class="o">+</span> <span class="n">min</span><span class="o">;</span>
-        <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"content"</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">validateNum</span><span class="o">));</span>
+        <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"content"</span><span class="o">,</span> <span class="s">"인증번호 : "</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">validateNum</span><span class="o">));</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"validateNum : "</span> <span class="o">+</span> <span class="n">validateNum</span><span class="o">);</span>
 		
         <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"messages"</span><span class="o">,</span> <span class="n">toArr</span><span class="o">);</span>
@@ -244,6 +244,210 @@
 
 <ul>
   <li>난수를 발생시켜서 인증번호를 만들었으며 사용자가 입력한 번호와 비교하기 위해서 생성된 난수를 리턴하도록 했다.</li>
+  <li>난수는 4자리 숫자를 만들도록 범위를 지정해 주었다.</li>
+</ul>
+
+<h2 id="4-문자-전송-결과를-받아올-서블릿-생성">4. 문자 전송 결과를 받아올 서블릿 생성</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/validatePhone.me"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValidatePhone</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> 
+<span class="o">{</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+		
+		<span class="nc">SmsService</span> <span class="n">smsService</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SmsService</span><span class="o">();</span>
+		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+		<span class="kt">int</span> <span class="n">validateNum</span> <span class="o">=</span> <span class="n">smsService</span><span class="o">.</span><span class="na">sendSms</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone"</span><span class="o">));</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">validateNum</span><span class="o">);</span>
+		
+		<span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>문자 전송 후 발생된 난수를 받아와 출력 스트림을 이용해 <code class="language-plaintext highlighter-rouge">response</code> 객체로 전달하도록 했다.</li>
+</ul>
+
+<h2 id="5-joinjs에서-joinjsp와-인증-페이지를-연결하는-코드-작성">5. join.js에서 join.jsp와 인증 페이지를 연결하는 코드 작성</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="nx">생략</span>
+
+<span class="kd">var</span> <span class="nx">$validateNum</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">$checkValidate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+ 
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="nx">중략</span>
+    
+    <span class="nx">getToken</span><span class="p">();</span>
+    <span class="nx">checkValidateNum</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">getToken</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#requestBtn</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">phoneCheck</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">$phone</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">phoneNum</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#phone1</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#phone2</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#phone3</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+                <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./validatePhone.me</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="dl">'</span><span class="s1">phone</span><span class="dl">'</span><span class="p">:</span> <span class="nx">phoneNum</span>
+                <span class="p">},</span>
+                <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">인증번호 전송 완료!</span><span class="dl">'</span><span class="p">);</span>
+                    <span class="nx">$validateNum</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">});</span>					
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">checkValidateNum</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#validateBtn</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">userInput</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateNum</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">$validateNum</span> <span class="o">===</span> <span class="nx">userInput</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nx">$checkValidate</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">"</span><span class="s2">인증이 완료되었습니다!</span><span class="dl">"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">green</span><span class="dl">"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">"</span><span class="s2">disabled</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#requestBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">"</span><span class="s2">disabled</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">background</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">gray</span><span class="dl">"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#requestBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">background</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">gray</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> 
+        <span class="p">{</span>
+            <span class="nx">$checkValidate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">"</span><span class="s2">인증번호가 일치하지 않습니다.</span><span class="dl">"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 마지막 제출 전에 유효성 검사하는 함수</span>
+<span class="kd">function</span> <span class="nx">finalCheck</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">join</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">join</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+		
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$pass</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">pass</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$passConfirm</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">confirm</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$birth</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">birth</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="nx">genderCheck</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$gender</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+
+    <span class="nx">cityCheck</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$city</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+	
+    <span class="nx">phoneCheck</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$phone</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">phone1</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$checkValidate</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">validateNum</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$email</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">email</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> 
+
+<span class="p">...</span>
+<span class="nx">생략</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서블릿을 이용해 문자 전송 요청을 보내고 발생된 난수를 받아올 것이기 때문에 <code class="language-plaintext highlighter-rouge">Ajax</code>를 이용했다.</li>
+  <li>인증번호 확인 버튼을 누르면 서블릿에서 받아온 번호와 비교해서 일치하는지 아닌지 확인 후 결과를 알려준다.<br /><br /></li>
+</ul>
+
+<p align="center"><img src="../../assets/images/validatePhone.png" width="400" /></p>
+<p><br /><br /></p>
+
+<h1 id="오늘-얻은-팁">오늘 얻은 팁</h1>
+<ul>
+  <li>만약 css 변경 사항이 적용되지 않을 때에는 css 파일 경로 설정하는 부분의 맨 뒤에 <code class="language-plaintext highlighter-rouge">?</code>를 붙여주면 된다.</li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nt">link</span> <span class="nt">rel</span><span class="o">=</span><span class="s1">"stylesheet"</span> <span class="nt">href</span><span class="o">=</span><span class="s1">"${pageContext.request.contextPath}/css/modules.css?after"</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>이런 식으로 맨 뒤에 <code class="language-plaintext highlighter-rouge">?</code>를 붙이고 다음에는 아무 말이나 입력해도 되고 입력하지 않아도 된다.</p>
+  </li>
+  <li>
+    <p>이제 로그인 기능 만들어야지… <br /><br /><br /></p>
+  </li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>

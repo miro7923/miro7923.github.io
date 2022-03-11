@@ -436,7 +436,9 @@ function finalCheck()
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/modules.css?after">
 ```
 
-* 이런 식으로 맨 뒤에 `?`를 붙이고 다음에는 아무 말이나 입력해도 되고 입력하지 않아도 된다. <br><br><br>
+* 이런 식으로 맨 뒤에 `?`를 붙이고 다음에는 아무 말이나 입력해도 되고 입력하지 않아도 된다.
+
+* 이제 로그인 기능 만들어야지... <br><br><br>
 
 # 마감까지 
 * `D-25`

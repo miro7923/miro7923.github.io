@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-11T22:53:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">DB) 관계 데이터 모델링</title><link href="http://localhost:4000/database/db-05-relation/" rel="alternate" type="text/html" title="DB) 관계 데이터 모델링" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/database/db-05-relation</id><content type="html" xml:base="http://localhost:4000/database/db-05-relation/"><![CDATA[<h1 id="-관계-데이터-모델의-개념">👀 관계 데이터 모델의 개념</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-11T23:44:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">DB) 관계 데이터 모델링</title><link href="http://localhost:4000/database/db-05-relation/" rel="alternate" type="text/html" title="DB) 관계 데이터 모델링" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/database/db-05-relation</id><content type="html" xml:base="http://localhost:4000/database/db-05-relation/"><![CDATA[<h1 id="-관계-데이터-모델의-개념">👀 관계 데이터 모델의 개념</h1>
 <ul>
   <li>개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델</li>
   <li>하나의 개체에 대한 데이터를 하나의 릴레이션에 저장</li>
@@ -185,7 +185,91 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 관계 데이터 모델의 개념 개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델 하나의 개체에 대한 데이터를 하나의 릴레이션에 저장]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-06/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-06</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-06/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 관계 데이터 모델의 개념 개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델 하나의 개체에 대한 데이터를 하나의 릴레이션에 저장]]></summary></entry><entry><title type="html">C++) BOJ 10610. 30</title><link href="http://localhost:4000/boj/boj10610-cpp/" rel="alternate" type="text/html" title="C++) BOJ 10610. 30" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10610-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj10610-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/10610">https://www.acmicpc.net/problem/10610</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>어느 날, 미르코는 우연히 길거리에서 양수 N을 보았다. 미르코는 30이란 수를 존경하기 때문에, 그는 길거리에서 찾은 수에 포함된 숫자들을 섞어 30의 배수가 되는 가장 큰 수를 만들고 싶어한다.</p>
+  </li>
+  <li>
+    <p>미르코를 도와 그가 만들고 싶어하는 수를 계산하는 프로그램을 작성하라.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>N을 입력받는다. N는 최대 105개의 숫자로 구성되어 있으며, 0으로 시작하지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>미르코가 만들고 싶어하는 수가 존재한다면 그 수를 출력하라. 그 수가 존재하지 않는다면, -1을 출력하라.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>참고 풀이 : <a href="https://ongveloper.tistory.com/114">https://ongveloper.tistory.com/114</a></p>
+  </li>
+  <li>
+    <p>문제 이해를 잘못해서.. 자꾸 틀려서 구글링했다.<br /></p>
+  </li>
+  <li>입력으로 주어지는 N이 자릿수를 말하는 것이 아니라 N개의 수이기 때문에 최대 10^5개의 숫자가 입력으로 주어진다.</li>
+  <li>
+    <p>그래서 정수형으로는 절대 받을 수 없는 숫자였던 것이다… 문자열로 입력을 받아야 했음 - 틀린 이유 1<br /></p>
+  </li>
+  <li>입력을 해결하고 나면 이제 이 수들의 배치를 바꿔가며 30의 배수가 되는지 확인해야 하는데 처음에는 문제 이해 자체를 잘못했기 때문에 입력받은 수를 배열로 바꿔서 prev_permutation으로 순열을 구한 다음 30의 배수인지 구하는 코드를 작성했다. 물론 입력 자체가 잘못되었기 때문에 틑림</li>
+  <li>입력의 최대값이 아주 크기 때문에 처음에 작성했던 것처럼 완전 탐색 방식으로는 시간초과를 받을 수 밖에 없고 규칙을 찾아서 적용해야 한다.</li>
+  <li>
+    <p>일단 30의 배수가 되려면 맨 마지막 자릿수가 0이어야 하고 3으로 나누어 떨어지려면 각 자릿수를 더한 값이 3의 배수가 되어야 한다.<br /></p>
+  </li>
+  <li>
+    <ol>
+      <li>입력받은 수를 내림차순으로 정렬한 후 맨 마지막 원소가 0인지 검사 후 0이 아니면 -1 출력</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>1번을 통과했으면 각 자릿수를 더해서 3의 배수가 되는지 확인한 후 결과값 출력<br /></li>
+    </ol>
+  </li>
+  <li>언제쯤.. 무난하게 풀 수 있을까…<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 4 ms</li>
+  <li>메모리 : 2300 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/55212f123cfa1b4e659191c74ac6ef3e.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10610" /><category term="Greedy" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10610 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-06/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-06</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-06/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -629,7 +713,12 @@
 </code></pre></div></div>
 
 <ul>
-  <li>이런 식으로 맨 뒤에 <code class="language-plaintext highlighter-rouge">?</code>를 붙이고 다음에는 아무 말이나 입력해도 되고 입력하지 않아도 된다. <br /><br /><br /></li>
+  <li>
+    <p>이런 식으로 맨 뒤에 <code class="language-plaintext highlighter-rouge">?</code>를 붙이고 다음에는 아무 말이나 입력해도 되고 입력하지 않아도 된다.</p>
+  </li>
+  <li>
+    <p>이제 로그인 기능 만들어야지… <br /><br /><br /></p>
+  </li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -2434,117 +2523,4 @@ P(mutex)
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="Process" /><category term="Synchronization" /><summary type="html"><![CDATA[👀 Process Synchronization 문제 컴퓨터에 저장되어 있는 어떤 데이터를 변경하려면 그 데이터에 접근해서 변경하는 연산을 한 뒤 연산 결과를 다시 그 데이터가 있는 자리에 갱신시켜줘야 한다. 그런데 이 때 하나의 프로세스만 접근해서 작업을 하면 문제가 없지만 컴퓨터에는 수많은 프로세스가 있고 하나의 데이터에 여러 프로세스가 접근하는 상황이 생길 수 있다. 이 때 아무런 제어 없이 여러 프로세스가 접근해서 하나의 데이터를 변경시키면 서로 다른 시점에 데이터를 변경하게 될 수 있고 그러다보면 데이터가 사용자의 의도와 다르게 변경될 수 있다(데이터 불일치 문제). 그래서 이걸 막고 데이터의 일관성 유지를 위해서 공유 데이터에 접근할 때 협력 프로세스 간의 실행 순서를 정해주어야 한다.]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 2</title><link href="http://localhost:4000/project%20log/cafe-project-02/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 2" /><published>2022-03-06T00:00:00+09:00</published><updated>2022-03-06T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-02</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-02/"><![CDATA[<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>OpenJDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="시작">시작</h1>
-<ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백앤드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황">진행상황</h1>
-<p align="center"><img src="../../assets/images/e-r-Diagram.png" /></p>
-<p><br /></p>
-
-<ul>
-  <li>오늘은 좀 더 진행하기 전에 <code class="language-plaintext highlighter-rouge">E-R 다이어그램</code>을 만들면서 <code class="language-plaintext highlighter-rouge">DB 테이블</code>을 정리하고 가는 것이 좋을 거 같아서 내 프로젝트에 필요한 <code class="language-plaintext highlighter-rouge">E-R 다이어그램</code>을 만들었다.</li>
-  <li>회원은 게시판에 글과 댓글을 쓰지 않을 수도 있지만 쓴다면 여러 개 쓸 수 있고 게시글과 댓글은 회원이 쓸 때에만 생성될 수 있다. 그리고 댓글 또한 게시글이 없으면 생성될 수 없고 한 게시글에 댓글이 달리지 않을 수도, 여러 개의 댓글이 달릴 수도 있다.</li>
-  <li>일단 이 정도로 틀을 잡아놓고 테이블들을 생성했다.</li>
-</ul>
-
-<h2 id="1-회원-테이블cafe_members">1. 회원 테이블(cafe_members)</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="n">cafe_members</span> <span class="p">(</span>
-    <span class="n">member_num</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
-    <span class="n">id</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">unique</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">pass</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">birth</span> <span class="nb">date</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">age</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">gender</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">address</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-    <span class="n">phone</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">email</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
-    <span class="n">regdate</span> <span class="nb">timestamp</span> <span class="k">not</span> <span class="k">null</span>
-<span class="p">);</span>
-</code></pre></div></div>
-
-<p align="center"><img src="../../assets/images/memberTable.png" /></p>
-<p><br /></p>
-
-<ul>
-  <li>member_num : 회원 번호. 1부터 차례대로 증가하며 회원의 고유 식별자로 사용</li>
-  <li>id : 회원 아이디. 중복되지 않도록 <code class="language-plaintext highlighter-rouge">unique</code> 조건을 걸어주었다.</li>
-  <li>pass : 회원 비밀번호</li>
-  <li>name : 회원 이름</li>
-  <li>birth : 회원의 생년월일</li>
-  <li>age : 회원 나이</li>
-  <li>gender : 회원 성별</li>
-  <li>address : 회원의 거주지 주소</li>
-  <li>phone : 회원 휴대폰 번호</li>
-  <li>email : 회원 이메일 주소</li>
-  <li>regdate : 회원이 가입한 날짜. <code class="language-plaintext highlighter-rouge">timestamp</code>로 가입하는 당시의 날짜와 시간으로 자동 저장</li>
-</ul>
-
-<h2 id="2-게시글post">2. 게시글(post)</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="n">post</span> <span class="p">(</span>
-    <span class="n">num</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
-    <span class="n">writer</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">title</span> <span class="nb">longtext</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">content</span> <span class="nb">longtext</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">posted_date</span> <span class="nb">datetime</span> <span class="k">not</span> <span class="k">null</span>
-<span class="p">);</span>
-</code></pre></div></div>
-
-<p align="center"><img src="../../assets/images/postTable.png" /></p>
-<p><br /></p>
-
-<ul>
-  <li>num : 게시글 번호. 1부터 차례대로 증가하며 고유 식별자로 사용</li>
-  <li>writer : 작성자 아이디</li>
-  <li>title : 게시글 제목</li>
-  <li>content : 게시글 내용</li>
-  <li>posted_date : 최초로 작성된 날짜. YYYY-MM-DD 형식</li>
-</ul>
-
-<h2 id="3-댓글comment">3. 댓글(comment)</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="k">comment</span> <span class="p">(</span>
-	<span class="n">num</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
-    <span class="n">post_num</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-	<span class="n">writer</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">content</span> <span class="nb">longtext</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">commented_date</span> <span class="nb">datetime</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">parent</span> <span class="nb">int</span> <span class="k">default</span> <span class="mi">0</span>
-<span class="p">);</span>
-</code></pre></div></div>
-
-<p align="center"><img src="../../assets/images/commentTable.png" /></p>
-<p><br /></p>
-
-<ul>
-  <li>num : 댓글 번호. 1부터 차례대로 증가하며 고유 식별자로 사용</li>
-  <li>post_num : 댓글이 등록된 글 번호</li>
-  <li>writer : 댓글 작성자 아이디</li>
-  <li>content : 댓글 내용</li>
-  <li>commented_date : 댓글이 작성된 날짜</li>
-  <li>parent : 만약 이 댓글이 대댓글이라면 대댓글을 단 원래 댓글의 댓글 번호. 모든 댓글이 대댓글이 되는 것은 아니기 때문에 디폴트값은 0으로 둔다. 0이라면 상위 댓글을 의미한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-29</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="Process" /><category term="Synchronization" /><summary type="html"><![CDATA[👀 Process Synchronization 문제 컴퓨터에 저장되어 있는 어떤 데이터를 변경하려면 그 데이터에 접근해서 변경하는 연산을 한 뒤 연산 결과를 다시 그 데이터가 있는 자리에 갱신시켜줘야 한다. 그런데 이 때 하나의 프로세스만 접근해서 작업을 하면 문제가 없지만 컴퓨터에는 수많은 프로세스가 있고 하나의 데이터에 여러 프로세스가 접근하는 상황이 생길 수 있다. 이 때 아무런 제어 없이 여러 프로세스가 접근해서 하나의 데이터를 변경시키면 서로 다른 시점에 데이터를 변경하게 될 수 있고 그러다보면 데이터가 사용자의 의도와 다르게 변경될 수 있다(데이터 불일치 문제). 그래서 이걸 막고 데이터의 일관성 유지를 위해서 공유 데이터에 접근할 때 협력 프로세스 간의 실행 순서를 정해주어야 한다.]]></summary></entry></feed>
