@@ -174,7 +174,7 @@ public class SmsService
         bodyJson.put("type", "SMS");
         bodyJson.put("contentType", "COMM");
         bodyJson.put("countryCode", "82");
-        bodyJson.put("from", "01029775074");
+        bodyJson.put("from", "발신번호로 등록한 폰번호");
         bodyJson.put("subject", "[Web 발신]");
 
         // 난수 생성
@@ -441,4 +441,4 @@ function finalCheck()
 * 이제 로그인 기능 만들어야지... <br><br><br>
 
 # 마감까지 
-* `D-25`
+* `D-24`
