@@ -1,0 +1,233 @@
+I"
+T<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>오늘은 로그인 기능을 만들었다.</li>
+</ul>
+
+<h2 id="1-loginjsp-페이지-준비">1. login.jsp 페이지 준비</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+생략
+
+<span class="nt">&lt;h3&gt;</span>로그인<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">"login"</span> <span class="na">action=</span><span class="s">"./main.me"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"pass"</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+...
+생략
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">submit</code> 버튼을 누르면 메인페이지로 이동하되 <code class="language-plaintext highlighter-rouge">DB</code> 조회 결과 확인 후 이동하도록 <code class="language-plaintext highlighter-rouge">onsubmit</code> 조건을 걸어주었다.</li>
+</ul>
+
+<h2 id="2-loginjs-생성">2. login.js 생성</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">$login</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">loginCheck</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">loginCheck() 호출</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./LoginCheck.me</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+            <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#id</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
+            <span class="dl">'</span><span class="s1">pass</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#pass</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+        <span class="p">},</span>
+        <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> 
+        <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">success data : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="nx">data</span><span class="p">)</span> 
+            <span class="p">{</span>
+                <span class="c1">// 회원</span>
+                <span class="nx">$login</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">로그인 성공!</span><span class="dl">"</span><span class="p">);</span>
+                <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">./main.me</span><span class="dl">"</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="nx">data</span><span class="p">)</span> 
+            <span class="p">{</span>
+                <span class="c1">// 비밀번호 오류</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">아이디 혹은 비밀번호가 일치하지 않습니다!</span><span class="dl">"</span><span class="p">);</span>
+                <span class="nx">$login</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> 
+            <span class="p">{</span>
+                <span class="c1">// 비회원</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">회원이 아닙니다.</span><span class="dl">"</span><span class="p">);</span>
+                <span class="nx">$login</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> 
+        <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">finalCheck</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="nx">loginCheck</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$login</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Ajax</code>로 <code class="language-plaintext highlighter-rouge">DB</code> 조회 결과를 알아오도록 했다.</li>
+</ul>
+
+<h2 id="3-db-조회-결과를-알려줄-서블릿-생성">3. DB 조회 결과를 알려줄 서블릿 생성</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/LoginCheck.me"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginCheck</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : LoginCheck - doProcess() 호출"</span><span class="o">);</span>
+		
+        <span class="n">req</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+        <span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+		
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+        <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		
+        <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDTO</span><span class="o">();</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setPass</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">));</span>
+		
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">loginCheck</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">==</span> <span class="n">result</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
+            <span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+        <span class="o">}</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+	
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>로그인에 성공했을 때에만 세션 값을 설정해 주었다.</li>
+</ul>
+
+<h2 id="4-topjsp에서-로그인-유무에-따라-상단-메뉴-다르게-출력하기">4. top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_HEADER1_Phone"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;</span><span class="err">%</span>
+    <span class="na">String</span> <span class="na">id = </span><span class="s">(String)session.getAttribute("id");</span>
+    <span class="na">System.out.println</span><span class="err">("</span><span class="na">session</span> <span class="na">id</span> <span class="na">:</span> <span class="err">"</span> <span class="err">+</span> <span class="na">id</span><span class="err">);</span>
+		
+    <span class="na">if</span> <span class="na">(null =</span><span class="s">=</span> <span class="na">id</span><span class="err">)</span>
+    <span class="err">{</span>
+        <span class="err">%</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./login.me"</span><span class="nt">&gt;</span>로그인<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./join.me"</span><span class="nt">&gt;</span>회원가입<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;</span><span class="err">%</span>
+    <span class="err">}</span>
+    <span class="na">else</span> 
+    <span class="err">{</span>
+        <span class="err">%</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./main.me"</span><span class="nt">&gt;</span>로그아웃<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./myPage.me"</span><span class="nt">&gt;</span>마이페이지<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;</span><span class="err">%</span>
+    <span class="err">}</span>
+<span class="err">%</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">top.jsp</code>는 상단 메뉴 부분을 출력하는 파일이다. 모든 <code class="language-plaintext highlighter-rouge">html/jsp</code> 페이지마다 상단 메뉴를 출력하는 코드를 써 놓으면 관리하기 힘들고 중복되는 부분도 많이 생기니까 <code class="language-plaintext highlighter-rouge">Header</code>와 <code class="language-plaintext highlighter-rouge">Footer</code> 부분을 따로 분리해서 각 페이지마다 <code class="language-plaintext highlighter-rouge">top.jsp</code>와 <code class="language-plaintext highlighter-rouge">bottom.jsp</code>를 <code class="language-plaintext highlighter-rouge">JSP</code> 액션태그를 이용해 <code class="language-plaintext highlighter-rouge">include</code> 해 주었다.</li>
+  <li>로그인 결과를 받아오면서 저장한 세션 값을 바탕으로 상단 메뉴를 다르게 출력한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/loginMenu.png" width="400" /></p>
+<p><br /><br /></p>
+
+<ul>
+  <li>로그인 성공 시 출력하는 상단 메뉴</li>
+</ul>
+
+<h2 id="5-logoutactionjava-생성">5. LogoutAction.java 생성</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="err">#</span> <span class="n">오늘</span> <span class="n">얻은</span> <span class="n">팁</span>
+<span class="o">*</span> <span class="n">만약</span> <span class="n">css</span> <span class="n">변경</span> <span class="n">사항이</span> <span class="n">적용되지</span> <span class="n">않을</span> <span class="n">때에는</span> <span class="n">css</span> <span class="n">파일</span> <span class="n">경로</span> <span class="n">설정하는</span> <span class="n">부분의</span> <span class="n">맨</span> <span class="n">뒤에</span> <span class="err">`</span><span class="o">?</span><span class="err">`</span><span class="n">를</span> <span class="n">붙여주면</span> <span class="n">된다</span><span class="o">.</span>
+
+<span class="err">```</span><span class="n">css</span>
+<span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="n">href</span><span class="o">=</span><span class="s">"${pageContext.request.contextPath}/css/modules.css?after"</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>이런 식으로 맨 뒤에 <code class="language-plaintext highlighter-rouge">?</code>를 붙이고 다음에는 아무 말이나 입력해도 되고 입력하지 않아도 된다.</p>
+  </li>
+  <li>
+    <p>이제 로그인 기능 만들어야지… <br /><br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-24</code></li>
+</ul>
+:ET
