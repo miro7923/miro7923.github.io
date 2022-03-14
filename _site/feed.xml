@@ -1,4 +1,262 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-13T23:36:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 7 - 로그인 기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-07/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 7 - 로그인 기능 구현" /><published>2022-03-13T00:00:00+09:00</published><updated>2022-03-13T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-07</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-07/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-14T23:25:39+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 7 - 로그인 기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-08/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 7 - 로그인 기능 구현" /><published>2022-03-14T00:00:00+09:00</published><updated>2022-03-14T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-08</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-08/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>오늘은 로그인 기능을 만들었다.</li>
+</ul>
+
+<h2 id="1-loginjsp-페이지-준비">1. login.jsp 페이지 준비</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+생략
+
+<span class="nt">&lt;h3&gt;</span>로그인<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">"login"</span> <span class="na">action=</span><span class="s">"./main.me"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"pass"</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+...
+생략
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">submit</code> 버튼을 누르면 메인페이지로 이동하되 <code class="language-plaintext highlighter-rouge">DB</code> 조회 결과 확인 후 이동하도록 <code class="language-plaintext highlighter-rouge">onsubmit</code> 조건을 걸어주었다.</li>
+</ul>
+
+<h2 id="2-loginjs-생성">2. login.js 생성</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">$login</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">loginCheck</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">loginCheck() 호출</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./LoginCheck.me</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+            <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#id</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
+            <span class="dl">'</span><span class="s1">pass</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#pass</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+        <span class="p">},</span>
+        <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> 
+        <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">success data : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="nx">data</span><span class="p">)</span> 
+            <span class="p">{</span>
+                <span class="c1">// 회원</span>
+                <span class="nx">$login</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">로그인 성공!</span><span class="dl">"</span><span class="p">);</span>
+                <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">./main.me</span><span class="dl">"</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="nx">data</span><span class="p">)</span> 
+            <span class="p">{</span>
+                <span class="c1">// 비밀번호 오류</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">아이디 혹은 비밀번호가 일치하지 않습니다!</span><span class="dl">"</span><span class="p">);</span>
+                <span class="nx">$login</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> 
+            <span class="p">{</span>
+                <span class="c1">// 비회원</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">회원이 아닙니다.</span><span class="dl">"</span><span class="p">);</span>
+                <span class="nx">$login</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> 
+        <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">finalCheck</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="nx">loginCheck</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$login</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Ajax</code>로 <code class="language-plaintext highlighter-rouge">DB</code> 조회 결과를 알아오도록 했다.</li>
+</ul>
+
+<h2 id="3-db-조회-결과를-알려줄-서블릿-생성">3. DB 조회 결과를 알려줄 서블릿 생성</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/LoginCheck.me"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginCheck</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : LoginCheck - doProcess() 호출"</span><span class="o">);</span>
+		
+        <span class="n">req</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+        <span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+		
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+        <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		
+        <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDTO</span><span class="o">();</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setPass</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">));</span>
+		
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">loginCheck</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">==</span> <span class="n">result</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
+            <span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+        <span class="o">}</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+	
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>로그인에 성공했을 때에만 세션 값을 설정해 주었다.</li>
+</ul>
+
+<h2 id="4-topjsp에서-로그인-유무에-따라-상단-메뉴-다르게-출력하기">4. top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_HEADER1_Phone"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;</span><span class="err">%</span>
+    <span class="na">String</span> <span class="na">id = </span><span class="s">(String)session.getAttribute("id");</span>
+    <span class="na">System.out.println</span><span class="err">("</span><span class="na">session</span> <span class="na">id</span> <span class="na">:</span> <span class="err">"</span> <span class="err">+</span> <span class="na">id</span><span class="err">);</span>
+		
+    <span class="na">if</span> <span class="na">(null =</span><span class="s">=</span> <span class="na">id</span><span class="err">)</span>
+    <span class="err">{</span>
+        <span class="err">%</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./login.me"</span><span class="nt">&gt;</span>로그인<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./join.me"</span><span class="nt">&gt;</span>회원가입<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;</span><span class="err">%</span>
+    <span class="err">}</span>
+    <span class="na">else</span> 
+    <span class="err">{</span>
+        <span class="err">%</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./logout.me"</span><span class="nt">&gt;</span>로그아웃<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./myPage.me"</span><span class="nt">&gt;</span>마이페이지<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;</span><span class="err">%</span>
+    <span class="err">}</span>
+<span class="err">%</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">top.jsp</code>는 상단 메뉴 부분을 출력하는 파일이다. 모든 <code class="language-plaintext highlighter-rouge">html/jsp</code> 페이지마다 상단 메뉴를 출력하는 코드를 써 놓으면 관리하기 힘들고 중복되는 부분도 많이 생기니까 <code class="language-plaintext highlighter-rouge">Header</code>와 <code class="language-plaintext highlighter-rouge">Footer</code> 부분을 따로 분리해서 각 페이지마다 <code class="language-plaintext highlighter-rouge">top.jsp</code>와 <code class="language-plaintext highlighter-rouge">bottom.jsp</code>를 <code class="language-plaintext highlighter-rouge">JSP</code> 액션태그를 이용해 <code class="language-plaintext highlighter-rouge">include</code> 해 주었다.</li>
+  <li>로그인 결과를 받아오면서 저장한 세션 값을 바탕으로 상단 메뉴를 다르게 출력한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/loginMenu.png" width="400" /></p>
+
+<ul>
+  <li>로그인 성공 시 출력하는 상단 메뉴</li>
+</ul>
+
+<h2 id="5-logoutactionjava-생성">5. LogoutAction.java 생성</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/logout.me"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogoutAction</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> 
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">session</span><span class="o">)</span>
+            <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+		
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"로그아웃 완료"</span><span class="o">);</span>
+        <span class="n">resp</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./main.me"</span><span class="o">);</span>
+    <span class="o">}</span>
+	
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>로그아웃 동작을 수행할 서블릿도 만들었다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/logoutMenu.png" width="400" /></p>
+
+<ul>
+  <li>로그아웃 완료 시 출력하는 상단 메뉴</li>
+  <li>이제 마이페이지에서 내 정보를 조회하는 기능을 만들어야겠다! ☺️<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-22</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 7 - 로그인 기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-07/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 7 - 로그인 기능 구현" /><published>2022-03-13T00:00:00+09:00</published><updated>2022-03-13T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-07</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-07/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -344,91 +602,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/0e431e2a9e5963c84a699a83ca8af0a4.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1213" /><category term="String" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1213 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">C++) BOJ 10610. 30</title><link href="http://localhost:4000/boj/boj10610-cpp/" rel="alternate" type="text/html" title="C++) BOJ 10610. 30" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10610-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj10610-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/10610">https://www.acmicpc.net/problem/10610</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>어느 날, 미르코는 우연히 길거리에서 양수 N을 보았다. 미르코는 30이란 수를 존경하기 때문에, 그는 길거리에서 찾은 수에 포함된 숫자들을 섞어 30의 배수가 되는 가장 큰 수를 만들고 싶어한다.</p>
-  </li>
-  <li>
-    <p>미르코를 도와 그가 만들고 싶어하는 수를 계산하는 프로그램을 작성하라.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>N을 입력받는다. N는 최대 105개의 숫자로 구성되어 있으며, 0으로 시작하지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>미르코가 만들고 싶어하는 수가 존재한다면 그 수를 출력하라. 그 수가 존재하지 않는다면, -1을 출력하라.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>참고 풀이 : <a href="https://ongveloper.tistory.com/114">https://ongveloper.tistory.com/114</a></p>
-  </li>
-  <li>
-    <p>문제 이해를 잘못해서.. 자꾸 틀려서 구글링했다.<br /></p>
-  </li>
-  <li>입력으로 주어지는 N이 자릿수를 말하는 것이 아니라 N개의 수이기 때문에 최대 10^5개의 숫자가 입력으로 주어진다.</li>
-  <li>
-    <p>그래서 정수형으로는 절대 받을 수 없는 숫자였던 것이다… 문자열로 입력을 받아야 했음 - 틀린 이유 1<br /></p>
-  </li>
-  <li>입력을 해결하고 나면 이제 이 수들의 배치를 바꿔가며 30의 배수가 되는지 확인해야 하는데 처음에는 문제 이해 자체를 잘못했기 때문에 입력받은 수를 배열로 바꿔서 prev_permutation으로 순열을 구한 다음 30의 배수인지 구하는 코드를 작성했다. 물론 입력 자체가 잘못되었기 때문에 틑림</li>
-  <li>입력의 최대값이 아주 크기 때문에 처음에 작성했던 것처럼 완전 탐색 방식으로는 시간초과를 받을 수 밖에 없고 규칙을 찾아서 적용해야 한다.</li>
-  <li>
-    <p>일단 30의 배수가 되려면 맨 마지막 자릿수가 0이어야 하고 3으로 나누어 떨어지려면 각 자릿수를 더한 값이 3의 배수가 되어야 한다.<br /></p>
-  </li>
-  <li>
-    <ol>
-      <li>입력받은 수를 내림차순으로 정렬한 후 맨 마지막 원소가 0인지 검사 후 0이 아니면 -1 출력</li>
-    </ol>
-  </li>
-  <li>
-    <ol>
-      <li>1번을 통과했으면 각 자릿수를 더해서 3의 배수가 되는지 확인한 후 결과값 출력<br /></li>
-    </ol>
-  </li>
-  <li>언제쯤.. 무난하게 풀 수 있을까…<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 4 ms</li>
-  <li>메모리 : 2300 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/55212f123cfa1b4e659191c74ac6ef3e.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10610" /><category term="Greedy" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10610 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-06/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-06</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-06/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<script src="https://gist.github.com/miro7923/0e431e2a9e5963c84a699a83ca8af0a4.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1213" /><category term="String" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1213 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-06/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-06</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-06/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -1070,281 +1244,91 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 관계 데이터 모델의 개념 개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델 하나의 개체에 대한 데이터를 하나의 릴레이션에 저장]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 4</title><link href="http://localhost:4000/project%20log/cafe-project-04/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 4" /><published>2022-03-10T00:00:00+09:00</published><updated>2022-03-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-04</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-04/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 관계 데이터 모델의 개념 개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델 하나의 개체에 대한 데이터를 하나의 릴레이션에 저장]]></summary></entry><entry><title type="html">C++) BOJ 10610. 30</title><link href="http://localhost:4000/boj/boj10610-cpp/" rel="alternate" type="text/html" title="C++) BOJ 10610. 30" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10610-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj10610-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
 <ul>
-  <li>OpenJDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
+  <li><a href="https://www.acmicpc.net/problem/10610">https://www.acmicpc.net/problem/10610</a><br /><br /></li>
 </ul>
 
-<h1 id="시작">시작</h1>
+<h1 id="제한">제한</h1>
+<hr />
+
 <ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
 </ul>
 
-<h1 id="주제">주제</h1>
+<h1 id="문제">문제</h1>
+<hr />
+
 <ul>
-  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+  <li>
+    <p>어느 날, 미르코는 우연히 길거리에서 양수 N을 보았다. 미르코는 30이란 수를 존경하기 때문에, 그는 길거리에서 찾은 수에 포함된 숫자들을 섞어 30의 배수가 되는 가장 큰 수를 만들고 싶어한다.</p>
+  </li>
+  <li>
+    <p>미르코를 도와 그가 만들고 싶어하는 수를 계산하는 프로그램을 작성하라.<br /><br /></p>
+  </li>
 </ul>
 
-<h1 id="진행상황-1">진행상황 1</h1>
+<h1 id="입력">입력</h1>
+<hr />
+
 <ul>
-  <li>오늘은 저번에 구현한 기본적인 회원가입 틀에서 사용자가 입력한 정보의 유효성을 검사하는 코드를 추가했다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Ajax</code>를 이용해 비동기방식으로 사용자가 입력한 아이디의 중복체크를 하려 했는데 학원 선생님이 워낙 짧게 알려주고 수업 시간이 다 끝나버린 데다 나도 웹 개발은 처음이라 당초 예상과 다르게 아이디 유효성 체크를 구현하는 데에 오랜 시간이 소요되었다.</li>
-  <li>그래도 숱한 구글링 끝에 아이디 중복체크 부분은 내가 원하는대로 구현이 되었다!</li>
-  <li>내가 모티브로 잡고 구현했던 기능은 <code class="language-plaintext highlighter-rouge">네이버 회원가입 페이지의 아이디 중복검사</code> 기능이다.</li>
+  <li>N을 입력받는다. N는 최대 105개의 숫자로 구성되어 있으며, 0으로 시작하지 않는다.<br /><br /></li>
 </ul>
 
-<h2 id="1-회원가입-페이지에-아이디-중복여부를-알려주는-문구-추가">1. 회원가입 페이지에 아이디 중복여부를 알려주는 문구 추가</h2>
+<h1 id="출력">출력</h1>
+<hr />
 
 <ul>
-  <li>join.jsp</li>
+  <li>미르코가 만들고 싶어하는 수가 존재한다면 그 수를 출력하라. 그 수가 존재하지 않는다면, -1을 출력하라.<br /><br /><br /></li>
 </ul>
 
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/top.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
-<span class="c">&lt;!-- jQuery 라이브러리 로드 부분은 top.jsp에 있음 --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${pageContext.request.contextPath}/js/join.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-
-...
-중간 생략
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">placeholder=</span><span class="s">"5~10자 이내의 영문+숫자만 입력하세요."</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"idMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">jQuery</code>를 이용해서 <code class="language-plaintext highlighter-rouge">&lt;div id="idMsg"&gt;&lt;/div&gt;</code> 태그에 중복인지 아닌지 알려주는 메세지를 삽입할 것이다.</li>
+  <li>
+    <p>참고 풀이 : <a href="https://ongveloper.tistory.com/114">https://ongveloper.tistory.com/114</a></p>
+  </li>
+  <li>
+    <p>문제 이해를 잘못해서.. 자꾸 틀려서 구글링했다.<br /></p>
+  </li>
+  <li>입력으로 주어지는 N이 자릿수를 말하는 것이 아니라 N개의 수이기 때문에 최대 10^5개의 숫자가 입력으로 주어진다.</li>
+  <li>
+    <p>그래서 정수형으로는 절대 받을 수 없는 숫자였던 것이다… 문자열로 입력을 받아야 했음 - 틀린 이유 1<br /></p>
+  </li>
+  <li>입력을 해결하고 나면 이제 이 수들의 배치를 바꿔가며 30의 배수가 되는지 확인해야 하는데 처음에는 문제 이해 자체를 잘못했기 때문에 입력받은 수를 배열로 바꿔서 prev_permutation으로 순열을 구한 다음 30의 배수인지 구하는 코드를 작성했다. 물론 입력 자체가 잘못되었기 때문에 틑림</li>
+  <li>입력의 최대값이 아주 크기 때문에 처음에 작성했던 것처럼 완전 탐색 방식으로는 시간초과를 받을 수 밖에 없고 규칙을 찾아서 적용해야 한다.</li>
+  <li>
+    <p>일단 30의 배수가 되려면 맨 마지막 자릿수가 0이어야 하고 3으로 나누어 떨어지려면 각 자릿수를 더한 값이 3의 배수가 되어야 한다.<br /></p>
+  </li>
+  <li>
+    <ol>
+      <li>입력받은 수를 내림차순으로 정렬한 후 맨 마지막 원소가 0인지 검사 후 0이 아니면 -1 출력</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>1번을 통과했으면 각 자릿수를 더해서 3의 배수가 되는지 확인한 후 결과값 출력<br /></li>
+    </ol>
+  </li>
+  <li>언제쯤.. 무난하게 풀 수 있을까…<br /><br /></li>
 </ul>
 
-<h2 id="2-memeberdao에서-db에-아이디-존재여부를-확인하는-함수-작성">2. MemeberDAO에서 DB에 아이디 존재여부를 확인하는 함수 작성</h2>
+<h1 id="결과">결과</h1>
+<hr />
 
 <ul>
-  <li>MemberDAO.java</li>
+  <li>시간 : 4 ms</li>
+  <li>메모리 : 2300 KB<br /><br /></li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// isExist(id)</span>
-<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isExist</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span>
-<span class="o">{</span>
-	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : isExist() 호출"</span><span class="o">);</span>
-		
-	<span class="k">try</span> 
-	<span class="o">{</span>
-		<span class="c1">// 1. 2. DB 연결</span>
-		<span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
-			
-		<span class="c1">// 3. sql 작성 &amp; pstmt 연결</span>
-		<span class="n">sql</span> <span class="o">=</span> <span class="s">"select id from cafe_members where id=?"</span><span class="o">;</span>
-		<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-		<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
-			
-		<span class="c1">// 4. sql 실행</span>
-		<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
-			
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 아이디 정보 조회 완료"</span><span class="o">);</span>
-			
-		<span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-		<span class="k">else</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-	<span class="o">}</span> 
-	<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> 
-	<span class="o">{</span>
-		<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-	<span class="o">}</span>
-	<span class="k">finally</span> 
-	<span class="o">{</span>
-		<span class="nc">CloseDB</span><span class="o">();</span>
-	<span class="o">}</span>
-		
-	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : isExist(id) 끝!!!"</span><span class="o">);</span>
-		
-	<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-<span class="o">}</span>
-<span class="c1">// isExist(id)</span>
-</code></pre></div></div>
+<h1 id="코드">코드</h1>
+<hr />
 
-<ul>
-  <li>매개변수로 받은 아이디를 이용해 DB에서 조회한 후 해당 아이디가 존재한다면 <code class="language-plaintext highlighter-rouge">true</code>를, 존재하지 않으면 <code class="language-plaintext highlighter-rouge">false</code>를 리턴하도록 했다.</li>
-  <li>매개변수로 받은 아이디가 존재하지 않을 때에만(<code class="language-plaintext highlighter-rouge">return false</code>) 모든 정보를 입력했을 때에 회원가입 프로세스가 진행되도록 할 것이기 때문에 기본 리턴값은 <code class="language-plaintext highlighter-rouge">true</code>로 설정했다.</li>
-</ul>
-
-<h2 id="3-서블릿-만들어서-중복체크-확인하는-동작-수행">3. 서블릿 만들어서 중복체크 확인하는 동작 수행</h2>
-<ul>
-  <li>IdCheck.java</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/idCheck.me"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IdCheck</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
-<span class="o">{</span>
-	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-	<span class="o">{</span>
-		<span class="n">req</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
-		<span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
-		
-		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
-		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
-		<span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">isExist</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">result</span><span class="o">)</span>
-		<span class="o">{</span>
-			<span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"false"</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">else</span> 
-		<span class="o">{</span>
-			<span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"true"</span><span class="o">);</span>
-		<span class="o">}</span>
-        
-		<span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-	<span class="o">}</span>
-	
-	<span class="nd">@Override</span>
-	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-	<span class="o">{</span>
-		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="nd">@Override</span>
-	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-	<span class="o">{</span>
-		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>처음엔 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지를 만들어서 아주 간단하게 만들었는데 생각보다 잘 안 되서 구글링 후 서블릿으로 만들었다.</li>
-  <li><code class="language-plaintext highlighter-rouge">PrintWriter</code>를 이용해 출력 스트림을 만들어 DB 검색 결과를 보내도록 했다. 검색 결과가 있다면 중복되는 아이디가 있어서 사용할 수 없는 아이디니까 <code class="language-plaintext highlighter-rouge">false</code>, 없다면 중복되는 아이디가 없어서 사용 가능한 아이디니까 <code class="language-plaintext highlighter-rouge">true</code></li>
-  <li>이 부분을 구현하면서 출력 스트림에 대해 다시 공부하게 되어서 좋았다! 역시 그냥 배우는 것 보다는 직접 써 봐야 머리에 잘 들어온다.</li>
-</ul>
-
-<h2 id="4-jquery로-아이디-중복체크-하는-함수-구현">4. jQuery로 아이디 중복체크 하는 함수 구현</h2>
-<ul>
-  <li>join.js</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-	<span class="kd">var</span> <span class="nx">$idCheck</span> <span class="o">=</span> <span class="nx">idCheck</span><span class="p">();</span>
-<span class="p">});</span>
-
-<span class="kd">function</span> <span class="nx">idCheck</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">idCheck() 호출</span><span class="dl">"</span><span class="p">);</span>
-	
-	<span class="kd">var</span> <span class="nx">ret</span><span class="p">;</span>
-	
-	<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-		<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-			<span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-			<span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-			<span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./idCheck.me</span><span class="dl">'</span><span class="p">,</span>
-			<span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-				<span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
-			<span class="p">},</span>
-			<span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span>
-			<span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-				<span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">true</span><span class="dl">'</span><span class="p">)</span>
-				<span class="p">{</span>
-					<span class="kd">var</span> <span class="nx">userId</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-					<span class="k">if</span> <span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="nx">userId</span><span class="p">.</span><span class="nx">length</span> <span class="o">||</span> <span class="mi">10</span> <span class="o">&lt;</span> <span class="nx">userId</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-					<span class="p">{</span>
-						<span class="nx">$id</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">5자리 이상 10자리 이하로 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
-						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-					<span class="p">}</span>
-					<span class="k">else</span> 
-					<span class="p">{</span>
-						<span class="nx">ret</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">사용할 수 있는 아이디입니다.</span><span class="dl">'</span><span class="p">);</span>
-						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">);</span>
-					<span class="p">}</span>
-				<span class="p">}</span>
-				<span class="k">else</span> 
-				<span class="p">{</span>
-					<span class="nx">ret</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-					<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">이미 존재하는 아이디입니다.</span><span class="dl">'</span><span class="p">);</span>
-					<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-				<span class="p">}</span>
-			<span class="p">},</span>
-			<span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">);</span>
-			<span class="p">}</span>
-		<span class="p">});</span>
-	<span class="p">});</span>
-	
-	<span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">IdCheck</code>에서 출력 스트림으로 받은 결과값을 이용해 아이디 입력란 하단에 출력할 메세지를 결정하는데 리턴값이 <code class="language-plaintext highlighter-rouge">false</code>라면 사용불가 메세지를 바로 출력하면 되지만 <code class="language-plaintext highlighter-rouge">true</code>인 경우에 사용가능 메세지를 바로 출력하니까 아이디를 입력하지 않고 입력란 바깥을 클릭했을 때에도 사용가능한 아이디라는 메세지가 출력되었다. 아이디를 입력하지 않았을 때에도 DB에서 검색되지 않을 테니까 최종적으로 사용이 가능하다는 파라미터가 리턴될 것이다.</li>
-  <li>그래서 리턴값이 <code class="language-plaintext highlighter-rouge">true</code>인 경우에는 아이디 입력란에 입력되어 있는 문자열의 길이를 검사한 후 그에 따라 분기를 나누었다.</li>
-  <li>여기까지 해서 <code class="language-plaintext highlighter-rouge">네이버 회원가입 페이지</code>의 아이디 중복검사 기능과 같게 구현했다! 뿌듯뿌듯 ☺️</li>
-</ul>
-<p align="center"><img src="../../assets/images/existId.png" width="400" /></p>
-<p align="center"><img src="../../assets/images/nonExistId.png" width="400" /></p>
-<p align="center"><img src="../../assets/images/tooLong.png" width="400" /></p>
-<p align="center"><img src="../../assets/images/tooShort.png" width="400" /></p>
-<p><br /><br /></p>
-
-<h1 id="진행상황-2">진행상황 2</h1>
-
-<p align="center"><img src="../../assets/images/inputPhone.png" width="400" /></p>
-
-<ul>
-  <li>휴대폰 번호 입력받는 부분을 세 칸으로 나누었기 때문에 각 필드마다 정해진 자리수만큼 입력하면 다음 칸으로 자동으로 커서가 넘어가도록 하는 부분을 구현했다.</li>
-</ul>
-
-<h2 id="1-사용자에게서-휴대폰-번호-입력받는-부분-수정">1. 사용자에게서 휴대폰 번호 입력받는 부분 수정</h2>
-<ul>
-  <li>join.jsp</li>
-</ul>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_TelField"</span><span class="nt">&gt;</span>휴대폰 번호 <span class="nt">&lt;/label&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone1"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone1"</span> <span class="na">size=</span><span class="s">"1"</span> <span class="na">maxlength=</span><span class="s">"3"</span> <span class="na">oninput=</span><span class="s">"tabCursor(1)"</span><span class="nt">&gt;</span> - 
-    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone2"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone2"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">oninput=</span><span class="s">"tabCursor(2)"</span><span class="nt">&gt;</span> - 
-    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone3"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone3"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/label&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h2 id="2-javascript로-커서-이동하는-함수-구현">2. javascript로 커서 이동하는 함수 구현</h2>
-<ul>
-  <li>join.js</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 휴대폰 번호 필드 1, 2번 칸에서 지정된 숫자만큼 입력하면 다음 칸으로 커서 넘기는 함수</span>
-<span class="kd">function</span> <span class="nx">tabCursor</span><span class="p">(</span><span class="nx">_section</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">ph</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="k">switch</span> <span class="p">(</span><span class="nx">_section</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-			<span class="nx">ph</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">join</span><span class="p">.</span><span class="nx">phone1</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-			<span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="o">===</span> <span class="nx">ph</span><span class="p">)</span>
-				<span class="nx">join</span><span class="p">.</span><span class="nx">phone2</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-			<span class="k">break</span><span class="p">;</span>
-		
-		<span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
-			<span class="nx">ph</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">join</span><span class="p">.</span><span class="nx">phone2</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-			<span class="k">if</span> <span class="p">(</span><span class="mi">4</span> <span class="o">===</span> <span class="nx">ph</span><span class="p">)</span>
-				<span class="nx">join</span><span class="p">.</span><span class="nx">phone3</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-			<span class="k">break</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="p">}</span> 
-</code></pre></div></div>
-
-<ul>
-  <li>처음에 내 뜻대로 구현되지 않을 때에는 머리를 많이 쥐어뜯었지만 구현을 완료하고 나니까 참 뿌듯하다 😄<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-26</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료</title><link href="http://localhost:4000/project%20log/cafe-project-05/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료" /><published>2022-03-10T00:00:00+09:00</published><updated>2022-03-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-05</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-05/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<script src="https://gist.github.com/miro7923/55212f123cfa1b4e659191c74ac6ef3e.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10610" /><category term="Greedy" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10610 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료</title><link href="http://localhost:4000/project%20log/cafe-project-05/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료" /><published>2022-03-10T00:00:00+09:00</published><updated>2022-03-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-05</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-05/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -1783,7 +1767,281 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-25</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">컴퓨터구조) Function과 매크로 함수의 차이점</title><link href="http://localhost:4000/computer%20science/function/" rel="alternate" type="text/html" title="컴퓨터구조) Function과 매크로 함수의 차이점" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/function</id><content type="html" xml:base="http://localhost:4000/computer%20science/function/"><![CDATA[<h1 id="function">Function</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 4</title><link href="http://localhost:4000/project%20log/cafe-project-04/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 4" /><published>2022-03-10T00:00:00+09:00</published><updated>2022-03-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-04</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-04/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1">진행상황 1</h1>
+<ul>
+  <li>오늘은 저번에 구현한 기본적인 회원가입 틀에서 사용자가 입력한 정보의 유효성을 검사하는 코드를 추가했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Ajax</code>를 이용해 비동기방식으로 사용자가 입력한 아이디의 중복체크를 하려 했는데 학원 선생님이 워낙 짧게 알려주고 수업 시간이 다 끝나버린 데다 나도 웹 개발은 처음이라 당초 예상과 다르게 아이디 유효성 체크를 구현하는 데에 오랜 시간이 소요되었다.</li>
+  <li>그래도 숱한 구글링 끝에 아이디 중복체크 부분은 내가 원하는대로 구현이 되었다!</li>
+  <li>내가 모티브로 잡고 구현했던 기능은 <code class="language-plaintext highlighter-rouge">네이버 회원가입 페이지의 아이디 중복검사</code> 기능이다.</li>
+</ul>
+
+<h2 id="1-회원가입-페이지에-아이디-중복여부를-알려주는-문구-추가">1. 회원가입 페이지에 아이디 중복여부를 알려주는 문구 추가</h2>
+
+<ul>
+  <li>join.jsp</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/top.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+<span class="c">&lt;!-- jQuery 라이브러리 로드 부분은 top.jsp에 있음 --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${pageContext.request.contextPath}/js/join.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+...
+중간 생략
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">placeholder=</span><span class="s">"5~10자 이내의 영문+숫자만 입력하세요."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"idMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">jQuery</code>를 이용해서 <code class="language-plaintext highlighter-rouge">&lt;div id="idMsg"&gt;&lt;/div&gt;</code> 태그에 중복인지 아닌지 알려주는 메세지를 삽입할 것이다.</li>
+</ul>
+
+<h2 id="2-memeberdao에서-db에-아이디-존재여부를-확인하는-함수-작성">2. MemeberDAO에서 DB에 아이디 존재여부를 확인하는 함수 작성</h2>
+
+<ul>
+  <li>MemberDAO.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// isExist(id)</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isExist</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span>
+<span class="o">{</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : isExist() 호출"</span><span class="o">);</span>
+		
+	<span class="k">try</span> 
+	<span class="o">{</span>
+		<span class="c1">// 1. 2. DB 연결</span>
+		<span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+		<span class="c1">// 3. sql 작성 &amp; pstmt 연결</span>
+		<span class="n">sql</span> <span class="o">=</span> <span class="s">"select id from cafe_members where id=?"</span><span class="o">;</span>
+		<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+		<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+			
+		<span class="c1">// 4. sql 실행</span>
+		<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 아이디 정보 조회 완료"</span><span class="o">);</span>
+			
+		<span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+		<span class="k">else</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+	<span class="o">}</span> 
+	<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> 
+	<span class="o">{</span>
+		<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+	<span class="o">}</span>
+	<span class="k">finally</span> 
+	<span class="o">{</span>
+		<span class="nc">CloseDB</span><span class="o">();</span>
+	<span class="o">}</span>
+		
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : isExist(id) 끝!!!"</span><span class="o">);</span>
+		
+	<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="c1">// isExist(id)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>매개변수로 받은 아이디를 이용해 DB에서 조회한 후 해당 아이디가 존재한다면 <code class="language-plaintext highlighter-rouge">true</code>를, 존재하지 않으면 <code class="language-plaintext highlighter-rouge">false</code>를 리턴하도록 했다.</li>
+  <li>매개변수로 받은 아이디가 존재하지 않을 때에만(<code class="language-plaintext highlighter-rouge">return false</code>) 모든 정보를 입력했을 때에 회원가입 프로세스가 진행되도록 할 것이기 때문에 기본 리턴값은 <code class="language-plaintext highlighter-rouge">true</code>로 설정했다.</li>
+</ul>
+
+<h2 id="3-서블릿-만들어서-중복체크-확인하는-동작-수행">3. 서블릿 만들어서 중복체크 확인하는 동작 수행</h2>
+<ul>
+  <li>IdCheck.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/idCheck.me"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IdCheck</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="o">{</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">req</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+		<span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+		
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		<span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">isExist</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">result</span><span class="o">)</span>
+		<span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"false"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> 
+		<span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"true"</span><span class="o">);</span>
+		<span class="o">}</span>
+        
+		<span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>처음엔 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지를 만들어서 아주 간단하게 만들었는데 생각보다 잘 안 되서 구글링 후 서블릿으로 만들었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">PrintWriter</code>를 이용해 출력 스트림을 만들어 DB 검색 결과를 보내도록 했다. 검색 결과가 있다면 중복되는 아이디가 있어서 사용할 수 없는 아이디니까 <code class="language-plaintext highlighter-rouge">false</code>, 없다면 중복되는 아이디가 없어서 사용 가능한 아이디니까 <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li>이 부분을 구현하면서 출력 스트림에 대해 다시 공부하게 되어서 좋았다! 역시 그냥 배우는 것 보다는 직접 써 봐야 머리에 잘 들어온다.</li>
+</ul>
+
+<h2 id="4-jquery로-아이디-중복체크-하는-함수-구현">4. jQuery로 아이디 중복체크 하는 함수 구현</h2>
+<ul>
+  <li>join.js</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+	<span class="kd">var</span> <span class="nx">$idCheck</span> <span class="o">=</span> <span class="nx">idCheck</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">idCheck</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">idCheck() 호출</span><span class="dl">"</span><span class="p">);</span>
+	
+	<span class="kd">var</span> <span class="nx">ret</span><span class="p">;</span>
+	
+	<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+		<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+			<span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+			<span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./idCheck.me</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+				<span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+			<span class="p">},</span>
+			<span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">true</span><span class="dl">'</span><span class="p">)</span>
+				<span class="p">{</span>
+					<span class="kd">var</span> <span class="nx">userId</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+					<span class="k">if</span> <span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="nx">userId</span><span class="p">.</span><span class="nx">length</span> <span class="o">||</span> <span class="mi">10</span> <span class="o">&lt;</span> <span class="nx">userId</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+					<span class="p">{</span>
+						<span class="nx">$id</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">5자리 이상 10자리 이하로 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
+						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
+					<span class="p">}</span>
+					<span class="k">else</span> 
+					<span class="p">{</span>
+						<span class="nx">ret</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">사용할 수 있는 아이디입니다.</span><span class="dl">'</span><span class="p">);</span>
+						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">);</span>
+					<span class="p">}</span>
+				<span class="p">}</span>
+				<span class="k">else</span> 
+				<span class="p">{</span>
+					<span class="nx">ret</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+					<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">이미 존재하는 아이디입니다.</span><span class="dl">'</span><span class="p">);</span>
+					<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
+				<span class="p">}</span>
+			<span class="p">},</span>
+			<span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">);</span>
+			<span class="p">}</span>
+		<span class="p">});</span>
+	<span class="p">});</span>
+	
+	<span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">IdCheck</code>에서 출력 스트림으로 받은 결과값을 이용해 아이디 입력란 하단에 출력할 메세지를 결정하는데 리턴값이 <code class="language-plaintext highlighter-rouge">false</code>라면 사용불가 메세지를 바로 출력하면 되지만 <code class="language-plaintext highlighter-rouge">true</code>인 경우에 사용가능 메세지를 바로 출력하니까 아이디를 입력하지 않고 입력란 바깥을 클릭했을 때에도 사용가능한 아이디라는 메세지가 출력되었다. 아이디를 입력하지 않았을 때에도 DB에서 검색되지 않을 테니까 최종적으로 사용이 가능하다는 파라미터가 리턴될 것이다.</li>
+  <li>그래서 리턴값이 <code class="language-plaintext highlighter-rouge">true</code>인 경우에는 아이디 입력란에 입력되어 있는 문자열의 길이를 검사한 후 그에 따라 분기를 나누었다.</li>
+  <li>여기까지 해서 <code class="language-plaintext highlighter-rouge">네이버 회원가입 페이지</code>의 아이디 중복검사 기능과 같게 구현했다! 뿌듯뿌듯 ☺️</li>
+</ul>
+<p align="center"><img src="../../assets/images/existId.png" width="400" /></p>
+<p align="center"><img src="../../assets/images/nonExistId.png" width="400" /></p>
+<p align="center"><img src="../../assets/images/tooLong.png" width="400" /></p>
+<p align="center"><img src="../../assets/images/tooShort.png" width="400" /></p>
+<p><br /><br /></p>
+
+<h1 id="진행상황-2">진행상황 2</h1>
+
+<p align="center"><img src="../../assets/images/inputPhone.png" width="400" /></p>
+
+<ul>
+  <li>휴대폰 번호 입력받는 부분을 세 칸으로 나누었기 때문에 각 필드마다 정해진 자리수만큼 입력하면 다음 칸으로 자동으로 커서가 넘어가도록 하는 부분을 구현했다.</li>
+</ul>
+
+<h2 id="1-사용자에게서-휴대폰-번호-입력받는-부분-수정">1. 사용자에게서 휴대폰 번호 입력받는 부분 수정</h2>
+<ul>
+  <li>join.jsp</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_TelField"</span><span class="nt">&gt;</span>휴대폰 번호 <span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone1"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone1"</span> <span class="na">size=</span><span class="s">"1"</span> <span class="na">maxlength=</span><span class="s">"3"</span> <span class="na">oninput=</span><span class="s">"tabCursor(1)"</span><span class="nt">&gt;</span> - 
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone2"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone2"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">oninput=</span><span class="s">"tabCursor(2)"</span><span class="nt">&gt;</span> - 
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone3"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone3"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="2-javascript로-커서-이동하는-함수-구현">2. javascript로 커서 이동하는 함수 구현</h2>
+<ul>
+  <li>join.js</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 휴대폰 번호 필드 1, 2번 칸에서 지정된 숫자만큼 입력하면 다음 칸으로 커서 넘기는 함수</span>
+<span class="kd">function</span> <span class="nx">tabCursor</span><span class="p">(</span><span class="nx">_section</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">ph</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">switch</span> <span class="p">(</span><span class="nx">_section</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="nx">ph</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">join</span><span class="p">.</span><span class="nx">phone1</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+			<span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="o">===</span> <span class="nx">ph</span><span class="p">)</span>
+				<span class="nx">join</span><span class="p">.</span><span class="nx">phone2</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+			<span class="k">break</span><span class="p">;</span>
+		
+		<span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="nx">ph</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">join</span><span class="p">.</span><span class="nx">phone2</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+			<span class="k">if</span> <span class="p">(</span><span class="mi">4</span> <span class="o">===</span> <span class="nx">ph</span><span class="p">)</span>
+				<span class="nx">join</span><span class="p">.</span><span class="nx">phone3</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+			<span class="k">break</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span> 
+</code></pre></div></div>
+
+<ul>
+  <li>처음에 내 뜻대로 구현되지 않을 때에는 머리를 많이 쥐어뜯었지만 구현을 완료하고 나니까 참 뿌듯하다 😄<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-26</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">컴퓨터구조) Function과 매크로 함수의 차이점</title><link href="http://localhost:4000/computer%20science/function/" rel="alternate" type="text/html" title="컴퓨터구조) Function과 매크로 함수의 차이점" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/computer%20science/function</id><content type="html" xml:base="http://localhost:4000/computer%20science/function/"><![CDATA[<h1 id="function">Function</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">function call</code>이 이뤄짐에 따라 중간에 생기는 연산값을 저장하고 불러오는 과정이 필요하며 <code class="language-plaintext highlighter-rouge">return</code>값에 따라 <code class="language-plaintext highlighter-rouge">Jump &amp; Link</code>가 이뤄져야 하고 그에 따라 스택 프레임 포인터도 변경해줘야 하는 등 할 게 많다.</li>
   <li><code class="language-plaintext highlighter-rouge">function call</code>과 <code class="language-plaintext highlighter-rouge">return</code> 없이 순차적으로 실행하는 코드에 비해 수행해야 할 명령어의 수가 많아지기 때문에 오버헤드가 커지고 성능이 떨어진다.</li>
@@ -1806,191 +2064,7 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/cview.do?cid=26adea597863b523">컴퓨터구조 - 고려대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="function" /><summary type="html"><![CDATA[Function function call이 이뤄짐에 따라 중간에 생기는 연산값을 저장하고 불러오는 과정이 필요하며 return값에 따라 Jump &amp; Link가 이뤄져야 하고 그에 따라 스택 프레임 포인터도 변경해줘야 하는 등 할 게 많다. function call과 return 없이 순차적으로 실행하는 코드에 비해 수행해야 할 명령어의 수가 많아지기 때문에 오버헤드가 커지고 성능이 떨어진다.]]></summary></entry><entry><title type="html">OS) Deadlock</title><link href="http://localhost:4000/operating%20system/OS-07-Deadlock/" rel="alternate" type="text/html" title="OS) Deadlock" /><published>2022-03-08T00:00:00+09:00</published><updated>2022-03-08T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-07-Deadlock</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-07-Deadlock/"><![CDATA[<h1 id="-deadlock교착상태란">👀 Deadlock(교착상태)란?</h1>
-<ul>
-  <li>일련의 프로세스들이 서로가 가진 자원을 기다리며 <code class="language-plaintext highlighter-rouge">block</code>된 상태</li>
-</ul>
-
-<h2 id="resource자원">Resource(자원)</h2>
-<ul>
-  <li>하드웨어, 소프트웨어 등을 포함하는 개념</li>
-  <li>예) <code class="language-plaintext highlighter-rouge">I/O device</code>, <code class="language-plaintext highlighter-rouge">CPU cycle</code>, <code class="language-plaintext highlighter-rouge">memory space</code>, <code class="language-plaintext highlighter-rouge">semaphore</code> 등</li>
-  <li>프로세스가 자원을 사용하는 절차
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">Request</code> -&gt; <code class="language-plaintext highlighter-rouge">Allocate</code> -&gt; <code class="language-plaintext highlighter-rouge">Use</code> -&gt; <code class="language-plaintext highlighter-rouge">Release</code></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="데드락이-발생하는-예">데드락이 발생하는 예</h2>
-<ul>
-  <li>시스템에 2개의 <code class="language-plaintext highlighter-rouge">tape drive</code>가 있고 프로세스 <code class="language-plaintext highlighter-rouge">P1</code>, <code class="language-plaintext highlighter-rouge">P2</code> 각각이 하나의 <code class="language-plaintext highlighter-rouge">tape drive</code>를 보유한 채 다른 하나를 기다리고 있는 경우<br /><br /></li>
-</ul>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">P0</span>          <span class="n">P1</span>
-<span class="nf">P</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>       <span class="n">P</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>
-<span class="n">P</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>       <span class="n">P</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
-</code></pre></div></div>
-
-<ul>
-  <li>두 세마포어가 필요한 자원을 서로 자원을 하나씩 가진 상태에서 상대가 내놓기를 기다리는 경우</li>
-</ul>
-
-<h2 id="데드락-발생의-4가지-조건">데드락 발생의 4가지 조건</h2>
-<h3 id="mutual-exclusion-상호-배제">Mutual exclusion (상호 배제)</h3>
-<ul>
-  <li>매 순간 하나의 프로세스만이 자원을 사용할 수 있음</li>
-</ul>
-
-<h3 id="no-preemption-비선점">No preemption (비선점)</h3>
-<ul>
-  <li>프로세스는 자원을 스스로 내어놓을 뿐 강제로 빼앗기지 않음</li>
-</ul>
-
-<h3 id="hold-and-wait-보유-대기">Hold and wait (보유 대기)</h3>
-<ul>
-  <li>자원을 가진 프로세스가 다른 자원을 기다릴 때 보유 자원을 놓지 않고 계속 가지고 있음</li>
-</ul>
-
-<h3 id="circular-wait-순환-대기">Circular wait (순환 대기)</h3>
-<ul>
-  <li>자원을 기다리는 프로세스간에 사이클이 형성되어야 함</li>
-  <li>프로세스 <code class="language-plaintext highlighter-rouge">1, 2, 3, 4</code>가 있을 때
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">1</code>은 <code class="language-plaintext highlighter-rouge">2</code>가 가진 자원을 기다림</li>
-      <li><code class="language-plaintext highlighter-rouge">2</code>는 <code class="language-plaintext highlighter-rouge">3</code>이 가진 자원을 기다림</li>
-      <li><code class="language-plaintext highlighter-rouge">3</code>은 <code class="language-plaintext highlighter-rouge">4</code>가 가진 자원을 기다림</li>
-      <li><code class="language-plaintext highlighter-rouge">4</code>는 <code class="language-plaintext highlighter-rouge">1</code>이 가진 자원을 기다림<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="데드락-처리-방법">데드락 처리 방법</h2>
-<h3 id="deadlock-prevention">Deadlock Prevention</h3>
-<ul>
-  <li>자원 할당 시 <code class="language-plaintext highlighter-rouge">데드락</code>의 4가지 필요 조건 중 어느 하나가 만족되지 않도록 하는 것</li>
-</ul>
-
-<h3 id="deadlock-avoidance">Deadlock Avoidance</h3>
-<ul>
-  <li>자원 요청에 대한 부가적인 정보를 이용해서 <code class="language-plaintext highlighter-rouge">데드락</code>의 가능성이 없는 경우에만 자원 할당</li>
-  <li>시스템 <code class="language-plaintext highlighter-rouge">state</code>가 원래 <code class="language-plaintext highlighter-rouge">state</code>로 돌아올 수 있는 경우에만 자원 할당</li>
-</ul>
-
-<h3 id="deadlock-detection-and-recovery">Deadlock Detection and recovery</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">데드락</code> 발생은 허용하되 그에 대한 <code class="language-plaintext highlighter-rouge">detection</code> 루틴을 두어 <code class="language-plaintext highlighter-rouge">데드락</code> 발견시 <code class="language-plaintext highlighter-rouge">recover</code></li>
-</ul>
-
-<h3 id="deadlock-ingorance">Deadlock Ingorance</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">데드락</code>을 시스템이 책임지지 않음</li>
-  <li><code class="language-plaintext highlighter-rouge">UNIX</code>를 포함한 대부분의 <code class="language-plaintext highlighter-rouge">OS</code>가 채택</li>
-  <li><code class="language-plaintext highlighter-rouge">데드락</code> 자체가 자주 발생하는 일이 아니기 때문에 <code class="language-plaintext highlighter-rouge">데드락</code>에 대비한다고 시스템의 자원 분배를 조절하는 것은 비효율적이기 때문에 사용자가 알아서 처리하도록 한다.<br /><br /></li>
-</ul>
-
-<h2 id="데드락-방지">데드락 방지</h2>
-<h3 id="mutual-exclusion">Mutual exclusion</h3>
-<ul>
-  <li>공유해서는 안 되는 자원의 경우 반드시 성립해야 함</li>
-  <li>즉 이 조건이 반드시 성립한다면 데드락이 발생할 수 없다.</li>
-</ul>
-
-<h3 id="hold-and-wait">Hold and Wait</h3>
-<ul>
-  <li>프로세스가 자원을 요청할 때 다른 어떤 자원도 가지고 있지 않아야 한다.</li>
-  <li>방법 1 : 프로세스 시작 시 모든 필요한 자원을 할당받게 하는 방법</li>
-  <li>방법 2 : 자원이 필요할 경우 보유 자원을 모두 놓고 다시 요청</li>
-</ul>
-
-<h3 id="no-preemption">No Preemption</h3>
-<ul>
-  <li>프로세스가 자원을 기다려야 하는 경우 이미 보유한 자원이 선점됨</li>
-  <li>모든 필요한 자원을 얻을 수 있을 때 그 프로세스는 다시 시작됨</li>
-  <li>즉 자원을 선점할 수 있게 하는 것</li>
-  <li><code class="language-plaintext highlighter-rouge">state</code>를 쉽게 <code class="language-plaintext highlighter-rouge">save</code>하고 <code class="language-plaintext highlighter-rouge">restore</code>할 수 있는 자원에서 주로 사용 (예: <code class="language-plaintext highlighter-rouge">CPU</code>, <code class="language-plaintext highlighter-rouge">memory</code>)</li>
-</ul>
-
-<h3 id="circular-wait">Circular Wait</h3>
-<ul>
-  <li>모든 자원 유형에 할당 순서를 정하여 정해진 순서대로만 자원 할당</li>
-  <li>예를 들어 순서가 3인 자원을 보유 중인 프로세스가 순서가 1인 자원을 할당받기 위해서는 우선 순서 3을 <code class="language-plaintext highlighter-rouge">release</code>해야 한다.</li>
-  <li>
-    <p>자원 요청 사이클이 생성되지 않게 하는 것<br /></p>
-  </li>
-  <li>하지만 위 기법들을 적용하면 <code class="language-plaintext highlighter-rouge">Utilization(이용률)</code> 저하, <code class="language-plaintext highlighter-rouge">Throughput(성능)</code> 감소, <code class="language-plaintext highlighter-rouge">Starvation</code> 문제가 생겨서 굉장히 비효율적이다.<br /><br /></li>
-</ul>
-
-<h2 id="deadlock-avoidance-1">Deadlock Avoidance</h2>
-<ul>
-  <li>자원 요청에 대한 부가정보를 이용해서 자원 할당이 데드락으로부터 안전한지 동적으로 조사해서 안전한 경우에만 할당</li>
-  <li>가장 단순하고 일반적인 모델은 프로세스들이 필요로 하는 각 자원별 최대 사용량을 미리 선언하도록 하는 방법</li>
-</ul>
-
-<h3 id="resource-allocation-graph-algorithm">Resource Allocation Graph algorithm</h3>
-<ul>
-  <li>자원당 하나의 인스턴스만 있을 때 사용하는 방법</li>
-  <li>자원들과 프로세스들 간을 실선과 점선으로 잇는 그래프를 그려 할당과 요청된 자원은 실선으로 표시하고 어떤 프로세스가 미래에 한 번은 사용할 수 있는 자원은 점선으로 표시하는 것이다.</li>
-  <li>새로운 자원 요청이 들어오면 실선을 점선으로 바꿨을 때 사이클이 생기지 않을 때에만 요청 자원을 할당한다.</li>
-  <li>사이클 생성 여부 조사시 프로세스의 수가 <code class="language-plaintext highlighter-rouge">n</code>일 때 <code class="language-plaintext highlighter-rouge">O(n^2)</code> 시간이 걸린다.</li>
-</ul>
-
-<h3 id="bankers-algorithm">Banker’s Algorithm</h3>
-<ul>
-  <li>가정
-    <ul>
-      <li>모든 프로세스는 자원의 최대 사용량을 미리 명시</li>
-      <li>프로세스가 요청 자원을 모두 할당받은 경우 유한 시간 안에 이들 자원을 다시 반납한다.</li>
-    </ul>
-  </li>
-  <li>방법
-    <ul>
-      <li>기본 개념 : 자원 요청 시 <code class="language-plaintext highlighter-rouge">safe</code> 상태를 유지할 경우에만 할당</li>
-      <li>총 요청 자원의 수가 가용 자원의 수보다 적은 프로세스를 선택 (그런 프로세스가 없으면 <code class="language-plaintext highlighter-rouge">unsafe</code> 상태)</li>
-      <li>위의 경우에 부합하는 프로세스가 있으면 그 프로세스에게 자원 할당</li>
-      <li>할당받은 프로세스가 종료되면 모든 자원 반납</li>
-      <li>모든 프로세스가 종료될 때까지 이러한 과정 반복</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="deadlock-detection-and-recovery-1">Deadlock Detection and Recovery</h2>
-<h3 id="detection">Detection</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Banker's Algorithm</code>과 유사한 방법으로 사이클의 존재 여부를 주기적으로 검사하여 자원을 할당하는 방법이 있다.</li>
-</ul>
-
-<h3 id="recovery">Recovery</h3>
-<h4 id="process-termination">Process termination</h4>
-<ul>
-  <li>데드락 된 모든 프로세스 종료</li>
-  <li>데드락이 해결될 때 까지 데드락에 갇혀 있는 프로세스를 하나씩 종료</li>
-</ul>
-
-<h4 id="resource-preemption">Resource preemption</h4>
-<ul>
-  <li>비용을 최소화 할 <code class="language-plaintext highlighter-rouge">victim</code> 선정</li>
-  <li><code class="language-plaintext highlighter-rouge">safe state</code>로 <code class="language-plaintext highlighter-rouge">rollback</code>하여 프로세스 재시작</li>
-  <li><code class="language-plaintext highlighter-rouge">Starvation</code> 문제
-    <ul>
-      <li>동일한 프로세스가 계속해서 <code class="language-plaintext highlighter-rouge">victim</code>으로 선정되는 경우</li>
-      <li><code class="language-plaintext highlighter-rouge">cost factor</code>에 <code class="language-plaintext highlighter-rouge">rollback</code> 횟수도 같이 고려<br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="deadlock-ignorance">Deadlock Ignorance</h2>
-<ul>
-  <li>데드락이 일어나지 않는다고 생각하고 아무런 조치도 취하지 않음</li>
-  <li>데드락은 매우 드물게 발생하므로 데드락에 대한 조치 자체가 더 큰 오버헤드일 수 있다.</li>
-  <li>만약, 시스템에 데드락이 발생한 경우 시스템이 비정상적으로 작동하는 것을 사람이 느낀 후 직접 프로세스를 죽이는 등의 방법으로 대처</li>
-  <li><code class="language-plaintext highlighter-rouge">UNIX</code>, <code class="language-plaintext highlighter-rouge">Windows</code> 등 대부분의 범용 <code class="language-plaintext highlighter-rouge">OS</code>가 채택<br /><br /><br /></li>
-</ul>
-
-<h1 id="출처">출처</h1>
-<ul>
-  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="Process" /><category term="Deadlock" /><summary type="html"><![CDATA[👀 Deadlock(교착상태)란? 일련의 프로세스들이 서로가 가진 자원을 기다리며 block된 상태]]></summary></entry><entry><title type="html">C++) BOJ 2579. 계단 오르기</title><link href="http://localhost:4000/boj/boj1525-cpp/" rel="alternate" type="text/html" title="C++) BOJ 2579. 계단 오르기" /><published>2022-03-08T00:00:00+09:00</published><updated>2022-03-08T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1525-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj1525-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Science" /><category term="CS" /><category term="function" /><summary type="html"><![CDATA[Function function call이 이뤄짐에 따라 중간에 생기는 연산값을 저장하고 불러오는 과정이 필요하며 return값에 따라 Jump &amp; Link가 이뤄져야 하고 그에 따라 스택 프레임 포인터도 변경해줘야 하는 등 할 게 많다. function call과 return 없이 순차적으로 실행하는 코드에 비해 수행해야 할 명령어의 수가 많아지기 때문에 오버헤드가 커지고 성능이 떨어진다.]]></summary></entry><entry><title type="html">C++) BOJ 2579. 계단 오르기</title><link href="http://localhost:4000/boj/boj1525-cpp/" rel="alternate" type="text/html" title="C++) BOJ 2579. 계단 오르기" /><published>2022-03-08T00:00:00+09:00</published><updated>2022-03-08T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1525-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj1525-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
