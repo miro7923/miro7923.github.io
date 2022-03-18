@@ -1,0 +1,100 @@
+I"Q#<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+<ul>
+  <li>현재 <code class="language-plaintext highlighter-rouge">MVC Model2</code> 패턴을 적용한 웹 사이트를 만드는 프로젝트를 진행중이다.</li>
+  <li>페이지 이동 요청이 들어왔을 때 <code class="language-plaintext highlighter-rouge">front</code>에서 이동할 페이지를 매핑한 다음 서블릿에서 필요한 액션들을 처리한 후 최종 목적지로 이동하게 된다.</li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">마이페이지</code> 기능을 구현하고 있었는데, 로그인 후 마이페이지에 입장하려면 비밀번호를 한 번 더 입력한 후 일치하면 회원 정보를 수정할 수 있는 페이지로 이동하고 그렇지 않으면 비밀번호가 틀렸다는 알림창을 띄우고 싶었다.</li>
+  <li>그래서 <code class="language-plaintext highlighter-rouge">JAVA</code> 코드에서 <code class="language-plaintext highlighter-rouge">JavaScript</code> 코드를 사용할 수 있어야 했다.</li>
+  <li>그리하여 처음에 시도했던 모델…</li>
+</ul>
+
+<h2 id="checkpassactionjava">CheckPassAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckPassAction</span> <span class="kd">implements</span> <span class="nc">Action</span>
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span>
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : CheckPassAction - execute() 호출"</span><span class="o">);</span>
+
+        <span class="c1">// 파라메터 저장</span>
+        <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">pass</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">);</span>
+
+        <span class="c1">// 회원정보 저장</span>
+        <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDTO</span><span class="o">();</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setPass</span><span class="o">(</span><span class="n">pass</span><span class="o">);</span>
+
+        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+
+        <span class="c1">// DB 연동해서 아이디와 비밀번호가 일치하는 지 확인</span>
+        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">loginCheck</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">==</span> <span class="n">result</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="c1">// 비번 일치</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./myPage.me"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span>
+        <span class="o">{</span>
+            <span class="c1">// 비번 불일치</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;script&gt;alert('비밀번호가 일치하지 않습니다!');&lt;/script&gt;"</span><span class="o">);</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./checkPass.me"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<ul>
+  <li>구글에 <code class="language-plaintext highlighter-rouge">jsp 절대경로</code>를 검색하니까 자료가 많았다.</li>
+  <li>절대경로를 설정하는 간단한 방법은 루트를 뜻하는 <code class="language-plaintext highlighter-rouge">/</code>를 입력하고 하위 폴더명을 타고타고 입력하는 것이지만 저게 먹히지 않았기 때문에 다른 방법을 찾았다.</li>
+  <li>바로<br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>${pageContext.request.contextPath}
+</code></pre></div></div>
+<p><br />
+를 이용해 어느 경우라도 절대경로가 적용될 수 있게 해주는 것이다.</p>
+<ul>
+  <li>한 시간동안 헤메면서도 생각했지만 jsp 페이지에 직접 접근했을 때와 서블릿을 통해 접근했을 때 상대경로의 기준이 달라져서 그러는 것 같았는데 찾아보니까 진짜였다.<br /><br /></li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"${pageContext.request.contextPath}/css/default.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이런 식으로 찾아가고자 하는 폴더와 파일의 경로를 <code class="language-plaintext highlighter-rouge">el 표현식</code>을 사용한 <code class="language-plaintext highlighter-rouge">contextPath</code> 뒤에 입력해주면 절대경로로 세팅되면서 정상적으로 <code class="language-plaintext highlighter-rouge">css</code> 파일을 찾아가게 된다.</li>
+  <li>그런데 방금 적용시켜 보니까 jsp 액션태그의 경로에는 절대경로를 넣으니까 <code class="language-plaintext highlighter-rouge">500 에러</code>가 나서 액션태그는 피하고 <code class="language-plaintext highlighter-rouge">HTML</code> 태그에만 적용시켜 주면 될 거 같다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/pathSolve.png" width="400" /></p>
+
+<ul>
+  <li>짠👏 적용 끝!</li>
+</ul>
+:ET
