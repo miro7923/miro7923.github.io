@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>프로젝트) Cafe(웹 사이트) 만들기 8 - 회원 정보 수정 기능 구현 | Yujin Dev Log</title>
+<!-- begin _includes/seo.html --><title>프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현 | Yujin Dev Log</title>
 <meta name="description" content="개발환경    MacBook Air (M1, 2020)   OpenJDK 8   Eclipse 2021-12   tomcat 8.5">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="프로젝트) Cafe(웹 사이트) 만들기 8 - 회원 정보 수정 기능 구현">
+<meta property="og:title" content="프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현">
 <meta property="og:url" content="http://localhost:4000/project%20log/cafe-project-09/">
 
 
@@ -34,7 +34,7 @@
 
 
 
-  <meta property="article:published_time" content="2022-03-19T00:00:00+09:00">
+  <meta property="article:published_time" content="2022-03-21T00:00:00+09:00">
 
 
 
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">프로젝트) Cafe(웹 사이트) 만들기 8 - 회원 정보 수정 기능 구현</li>
+        <li class="current">프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현</li>
       
     
   </ol>
@@ -310,16 +310,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="프로젝트) Cafe(웹 사이트) 만들기 8 - 회원 정보 수정 기능 구현">
+    <meta itemprop="headline" content="프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현">
     <meta itemprop="description" content="개발환경  MacBook Air (M1, 2020)  OpenJDK 8  Eclipse 2021-12  tomcat 8.5">
-    <meta itemprop="datePublished" content="2022-03-19T00:00:00+09:00">
+    <meta itemprop="datePublished" content="2022-03-21T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/project%20log/cafe-project-09/" class="u-url" itemprop="url">프로젝트) Cafe(웹 사이트) 만들기 8 - 회원 정보 수정 기능 구현
+            <a href="http://localhost:4000/project%20log/cafe-project-09/" class="u-url" itemprop="url">프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현
 </a>
           </h1>
           
@@ -336,7 +336,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          7 분 소요
+          3 분 소요
         
       </span>
     
@@ -351,7 +351,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#시작">시작</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#checkpassjsp">checkPass.jsp</a></li><li><a href="#checkpassjs">checkPass.js</a></li><li><a href="#checkpassactionjava">CheckPassAction.java</a></li><li><a href="#mypagejsp">myPage.jsp</a></li><li><a href="#mypagejs">myPage.js</a></li><li><a href="#memberfrontcontrollerjava">MemberFrontController.java</a></li><li><a href="#memberupdateactionjava">MemberUpdateAction.java</a></li><li><a href="#memberdao---updatememberdto">MemberDAO - updateMember(dto)</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#시작">시작</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#mypagejsp">myPage.jsp</a></li><li><a href="#memberfrontcontrollerjava">MemberFrontController.java</a></li><li><a href="#deletejsp">delete.jsp</a></li><li><a href="#memberdeleteactionjava">MemberDeleteAction.java</a></li><li><a href="#memberdaojava---deletememberdto">MemberDAO.java - deleteMember(dto)</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
 
             </nav>
           </aside>
@@ -379,280 +379,28 @@
 
 <h1 id="진행상황">진행상황</h1>
 <ul>
-  <li>마이페이지로 이동해서 회원 정보를 수정할 수 있는 기능을 추가했다.</li>
-  <li>로그인 하면 마이페이지로 이동할 수 있는 버튼이 활성화 된다.</li>
-</ul>
-
-<h2 id="checkpassjsp">checkPass.jsp</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 회원정보 수정 페이지로 가기 전에 비밀번호 한 번 더 확인 후 이동 --&gt;</span>
-<span class="nt">&lt;h3&gt;</span>마이페이지<span class="nt">&lt;/h3&gt;</span>
-<span class="nt">&lt;</span><span class="err">%</span>
-    <span class="na">String</span> <span class="na">id = </span><span class="s">(String)session.getAttribute("id");</span>
-    <span class="na">if</span> <span class="na">(null =</span><span class="s">=</span> <span class="na">id</span><span class="err">)</span>
-        <span class="na">response.sendRedirect</span><span class="err">("./</span><span class="na">login.me</span><span class="err">");</span>
-<span class="err">%</span><span class="nt">&gt;</span>
-<span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">"checkPass"</span> <span class="na">action=</span><span class="s">"./CheckPassAction.me"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"&lt;%=id%&gt;"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        비밀번호를 한 번 더 입력해 주세요.
-    <span class="nt">&lt;/div&gt;&lt;br&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"pass"</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>확인<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>마이페이지로 이동하기 전에 비밀번호를 한 번 더 확인 할 것이다.</li>
-</ul>
-
-<h2 id="checkpassjs">checkPass.js</h2>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">finalCheck</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">checkPass</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">checkPass</span><span class="p">;</span>
-	
-    <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&gt;=</span> <span class="nx">checkPass</span><span class="p">.</span><span class="nx">pass</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// 비밀번호가 입력되지 않았으면 false</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">비밀번호를 입력해 주세요!</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">checkPass</span><span class="p">.</span><span class="nx">pass</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>자바스크립트 코드를 사용해서 빈 데이터가 넘어가지 않게 처리했다.</li>
-</ul>
-
-<h2 id="checkpassactionjava">CheckPassAction.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckPassAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
-<span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
-    <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : CheckPassAction - execute() 호출"</span><span class="o">);</span>
-		
-        <span class="c1">// 파라메터 저장</span>
-        <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
-        <span class="nc">String</span> <span class="n">pass</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">);</span>
-		
-        <span class="c1">// 회원정보 저장</span>
-        <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDTO</span><span class="o">();</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setPass</span><span class="o">(</span><span class="n">pass</span><span class="o">);</span>
-		
-        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
-        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
-		
-        <span class="c1">// DB 연동해서 아이디와 비밀번호가 일치하는 지 확인</span>
-        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
-        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">loginCheck</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">==</span> <span class="n">result</span><span class="o">)</span>
-        <span class="o">{</span>
-            <span class="c1">// 비번 일치</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"location.href='./myPage.me';"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">else</span> 
-        <span class="o">{</span>
-            <span class="c1">// 비번 불일치</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"alert('비밀번호가 일치하지 않습니다!');"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"history.back();"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
-        <span class="o">}</span>
-		
-        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-		
-        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>입력된 비밀번호가 전달되면 DB와 접속해서 비밀번호가 일치하는 지 확인한다.</li>
-  <li>비밀번호가 틀렸을 때에 알림창을 출력하기 위해서 자바스크립트 코드를 사용한다. 그래서 여기에서의 페이지 이동방식도 자바스크립트로 처리해 주었다.(페이지 이동은 자바 코드로 하면서 알림창 출력만 자바스크립트로 하면 충돌 생겨서 정상 동작이 안 됨)</li>
-  <li>관련글 : <a href="https://miro7923.github.io/errorlog/warning-log-03/">에러해결 Log) java.lang.IllegalStateException 응답이 이미 커밋된 후에는 sendRedirect()를 호출할 수 없습니다.</a></li>
+  <li>마이페이지에 접속해서 회원 탈퇴를 할 수 있는 기능을 만들었다.</li>
 </ul>
 
 <h2 id="mypagejsp">myPage.jsp</h2>
 
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-생략
+<p align="center"><img src="../../assets/images/myPage.png" width="400" /></p>
 
-<span class="nt">&lt;h3&gt;</span>마이페이지<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
-<span class="nt">&lt;%</span>
-    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
-    <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
-        <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
-      	
-        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
-        <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getMember</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
-      	
-        <span class="nc">String</span><span class="o">[]</span> <span class="n">regdate</span> <span class="o">=</span> <span class="n">dto</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
-<span class="nt">%&gt;</span>
-<span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">"myPage"</span> <span class="na">action=</span><span class="s">"./MemberUpdateAction.me"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>회원번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"memberNum"</span> <span class="na">id=</span><span class="s">"memberNum"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getMemberNum</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"idMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span> <span class="na">id=</span><span class="s">"pass"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"passMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 확인 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"confirm"</span> <span class="na">id=</span><span class="s">"confirm"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"confirmMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>이름 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"name"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"nameMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>생년월일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"date"</span> <span class="na">name=</span><span class="s">"birth"</span> <span class="na">class=</span><span class="s">"birth"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getBirth</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"birthMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>나이 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"age"</span> <span class="na">class=</span><span class="s">"age"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">disabled</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"ageMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>성별 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"남"</span>
-            <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"남"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span> 
-                <span class="na">checked</span>
-            <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>남<span class="nt">&lt;/label&gt;</span> 
-        <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"여"</span>
-            <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"여"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
-                <span class="na">checked</span>
-            <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>여<span class="nt">&lt;/label&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"genderMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>도시 <span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"city"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">selected</span> <span class="na">disabled</span><span class="nt">&gt;</span>도시를 선택하세요.<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option</span> 
-            <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getAddress</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"서울"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
-                <span class="na">selected</span>
-            <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;&gt;</span>서울<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option</span>
-            <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getAddress</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"부산"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
-                <span class="na">selected</span>
-            <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;&gt;</span>부산<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option</span>
-            <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getAddress</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"대전"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
-                <span class="na">selected</span>
-            <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;&gt;</span>대전<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;/select&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"cityMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span> <span class="na">id=</span><span class="s">"phoneArea"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_TelField"</span><span class="nt">&gt;</span>휴대폰 번호 <span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone1"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone1"</span> <span class="na">size=</span><span class="s">"1"</span> <span class="na">maxlength=</span><span class="s">"3"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">oninput=</span><span class="s">"tabCursor(1)"</span><span class="nt">&gt;</span> - 
-            <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone2"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone2"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">7</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">oninput=</span><span class="s">"tabCursor(2)"</span><span class="nt">&gt;</span> - 
-            <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone3"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone3"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="mi">11</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"requestBtn"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"requestBtn"</span> <span class="na">onclick=</span><span class="s">"changePhoneBtnStatus();"</span><span class="nt">&gt;&lt;/button&gt;</span>
-        <span class="nt">&lt;/label&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"phoneMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span> <span class="na">id=</span><span class="s">"validateArea"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_EmailField"</span><span class="nt">&gt;</span>인증번호 <span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"validateNum"</span> <span class="na">id=</span><span class="s">"validateNum"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"validateBtn"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"validateBtn"</span><span class="nt">&gt;</span>인증번호 확인<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;/label&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"validateMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_EmailField"</span><span class="nt">&gt;</span>이메일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span> <span class="na">id=</span><span class="s">"email"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"emailMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>가입일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"regdate"</span> <span class="na">id=</span><span class="s">"regdate"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">regdate</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>회원 정보 수정<span class="nt">&lt;/button&gt;</span>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./delete.me"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"pass"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPass</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>회원탈퇴<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/form&gt;</span>
-
-생략
-...
 </code></pre></div></div>
 
 <ul>
-  <li>회원번호와 아이디, 가입일과 같은 정보들은 변경할 수 없게 했다.</li>
-  <li>비밀번호는 빈 칸으로 두고 비밀번호를 입력해야만 최종 정보 수정을 할 수 있도록 했다.(기존과 같은 비밀번호 입력해도 ok)</li>
-  <li>휴대폰 번호는 기본적으로 변경할 필요가 없되, 변경을 원하면 <code class="language-plaintext highlighter-rouge">휴대폰변경</code> 버튼을 눌러서 변경할 수 있도록 했다. 이에 대한 처리는 자바스크립트로 해 주었다.</li>
-</ul>
-
-<h2 id="mypagejs">myPage.js</h2>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="nx">생략</span><span class="p">(</span><span class="nx">join</span><span class="p">.</span><span class="nx">js</span> <span class="nx">코드와</span> <span class="nx">유사</span><span class="p">)</span>
-
-<span class="kd">function</span> <span class="nx">changePhoneBtnStatus</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="c1">// 휴대폰 번호 변경 버튼을 클릭하면 부분만 새로고침</span>
-    <span class="nx">$changePh</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phoneArea</span><span class="dl">"</span><span class="p">).</span><span class="nx">load</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> #phoneArea</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateArea</span><span class="dl">"</span><span class="p">).</span><span class="nx">load</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> #validateArea</span><span class="dl">"</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">changePhone</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">$changePh</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// 휴대폰 번호 변경 </span>
-        <span class="c1">// 휴대폰변경 버튼을 누르면 휴대폰 번호 입력란과 인증번호 입력란을 활성화 시킴</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone1</span><span class="dl">"</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="dl">"</span><span class="s2">readonly</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone2</span><span class="dl">"</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="dl">"</span><span class="s2">readonly</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone3</span><span class="dl">"</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="dl">"</span><span class="s2">readonly</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateNum</span><span class="dl">"</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="dl">"</span><span class="s2">disabled</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="dl">"</span><span class="s2">disabled</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#requestBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="dl">"</span><span class="s2">휴대폰인증</span><span class="dl">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span> 
-    <span class="p">{</span>
-        <span class="c1">// 초기값은 변경 불가능</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone1</span><span class="dl">"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">readonly</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone2</span><span class="dl">"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">readonly</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone3</span><span class="dl">"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">readonly</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateNum</span><span class="dl">"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">disabled</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">disabled</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#requestBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="dl">"</span><span class="s2">휴대폰변경</span><span class="dl">"</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">생략</span>
-<span class="p">...</span>
-</code></pre></div></div>
-
-<ul>
-  <li>입력한 정보의 유효성을 검사하는 부분은 <code class="language-plaintext highlighter-rouge">join.js</code>에 썼던 코드와 같은 것을 사용해서 생략했다.</li>
-  <li><code class="language-plaintext highlighter-rouge">휴대폰변경</code> 버튼을 클릭하면 휴대폰 번호와 인증번호 입력 필드 부분만 새로고침한다. 이후 인증 로직은 회원 가입 때 썼던 것과 동일</li>
+  <li>마이페이지 하단에 회원 탈퇴 버튼을 추가했다.</li>
+  <li>바로 탈퇴 동작을 수행하지 않고 <code class="language-plaintext highlighter-rouge">delete.me</code> 페이지로 이동해 비밀번호를 한 번 더 확인한 후에 진행할 것이다.</li>
 </ul>
 
 <h2 id="memberfrontcontrollerjava">MemberFrontController.java</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
@@ -666,86 +414,46 @@
 <span class="o">{</span>
     <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
     <span class="o">{</span>
-        <span class="c1">// 주소 계산 부분 생략</span>
-        <span class="o">...</span>
-        
+        <span class="c1">// 1. 전달되는 가상주소 계산</span>
+        <span class="c1">// 매핑된(.me로 끝나는) 주소를 받아옴</span>
+        <span class="nc">String</span> <span class="n">requestURI</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getRequestURI</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"requestURI : "</span> <span class="o">+</span> <span class="n">requestURI</span><span class="o">);</span>
+		
+        <span class="c1">// 매핑된 해당 프로젝트 주소를 구함</span>
+        <span class="nc">String</span> <span class="n">ctxPath</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ctxPath : "</span> <span class="o">+</span> <span class="n">ctxPath</span><span class="o">);</span>
+		
+        <span class="c1">// 매핑된 주소 - 프로젝트 주소 = 계속 바뀔 뒷자리 주소 구함</span>
+        <span class="nc">String</span> <span class="n">command</span> <span class="o">=</span> <span class="n">requestURI</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">ctxPath</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"command : "</span> <span class="o">+</span> <span class="n">command</span><span class="o">);</span>
+		
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 가상주소 계산 완료\n"</span><span class="o">);</span>
+        <span class="c1">// 1. 전달되는 가상주소 계산</span>
+		
+		
         <span class="c1">// 2. 가상주소 매핑</span>
         <span class="nc">Action</span> <span class="n">action</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
         <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
 
-        <span class="k">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/MemberJoinAction.me"</span><span class="o">))</span>
-        <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /MemberJoinAction.me 호출"</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 이전 페이지 정보를 가져와서 DB 테이블에 저장 후 페이지 이동"</span><span class="o">);</span>
-			
-            <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberJoinAction</span><span class="o">();</span> <span class="c1">// 인터페이스를 통해 객체를 생성함으로써 약한결합이 되도록 한다.</span>
-			
-            <span class="k">try</span> <span class="o">{</span>
-                <span class="n">forward</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-            <span class="o">}</span> 
-            <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/MemberUpdateAction.me"</span><span class="o">))</span>
-        <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /MemberUpdateAction.me 호출"</span><span class="o">);</span>
-			
-            <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberUpdateAction</span><span class="o">();</span>
-			
-            <span class="k">try</span> <span class="o">{</span>
-                <span class="n">forward</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/CheckPassAction.me"</span><span class="o">))</span>
-        <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /CheckPassAction.me 호출"</span><span class="o">);</span>
-			
-            <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CheckPassAction</span><span class="o">();</span>
-			
-            <span class="k">try</span> <span class="o">{</span>
-                <span class="n">forward</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
+		<span class="o">...</span>
+        <span class="n">생략</span>
+        
         <span class="k">else</span>
         <span class="o">{</span>
             <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
 
-            <span class="k">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/main.me"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 메인페이지 호출"</span><span class="o">);</span>
-                <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./main/main.jsp"</span><span class="o">);</span>				
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/join.me"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 회원가입 페이지 호출"</span><span class="o">);</span>
-                <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./member/join.jsp"</span><span class="o">);</span>				
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/login.me"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 로그인 페이지 호출"</span><span class="o">);</span>
-                <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./member/login.jsp"</span><span class="o">);</span>				
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/logout.me"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 로그아웃 페이지 호출"</span><span class="o">);</span>
-                <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"/logout.me"</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/checkPass.me"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 비번 한 번 더 입력하는 페이지 호출"</span><span class="o">);</span>
-                <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./member/checkPass.jsp"</span><span class="o">);</span>
-            <span class="o">}</span>
+            <span class="o">...</span>
+            <span class="n">생략</span>
+            
             <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/myPage.me"</span><span class="o">))</span>
             <span class="o">{</span>
                 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 마이페이지 호출"</span><span class="o">);</span>
                 <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./member/myPage.jsp"</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/delete.me"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 삭제 확인 페이지 호출"</span><span class="o">);</span>
+                <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./member/delete.jsp"</span><span class="o">);</span>
             <span class="o">}</span>
 			
             <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
@@ -754,116 +462,108 @@
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 가상주소 매핑 완료\n"</span><span class="o">);</span>
         <span class="c1">// 2. 가상주소 매핑</span>
 		
+		
         <span class="c1">// 3. 페이지 이동</span>
-        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">forward</span><span class="o">)</span> <span class="c1">// 페이지 이동정보가 있을 때</span>
-        <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">isRedirect</span><span class="o">())</span>
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : sendRedirect 방식 - "</span> <span class="o">+</span> <span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">()</span> <span class="o">+</span> <span class="s">" 이동"</span><span class="o">);</span>
-                <span class="n">resp</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
-            <span class="o">}</span>
-            <span class="k">else</span> 
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : forward 방식 - "</span> <span class="o">+</span> <span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">()</span> <span class="o">+</span> <span class="s">" 이동"</span><span class="o">);</span>
-                <span class="nc">RequestDispatcher</span> <span class="n">dis</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
-                <span class="n">dis</span><span class="o">.</span><span class="na">forward</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-            <span class="o">}</span>
-			
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : 페이지 이동 완료"</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="c1">// 3. 페이지 이동</span>
-    <span class="o">}</span>
+        <span class="o">...</span>
+	<span class="o">}</span>
 	
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-    <span class="o">}</span>
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
 
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-    <span class="o">}</span>
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li>수정하고 싶은 회원 정보를 입력하고 제출 버튼을 누르면 <code class="language-plaintext highlighter-rouge">Front</code>로 이동해서 매핑된 페이지로 이동한다.</li>
-  <li>회원 정보를 DB에서 업데이트 할 것이니까 <code class="language-plaintext highlighter-rouge">MemberUpdateAction()</code> 객체를 만들어서 이동한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">컨트롤러</code>에서 삭제 전 비밀번호를 확인하는 페이지로 연결시켜 준다.</li>
 </ul>
 
-<h2 id="memberupdateactionjava">MemberUpdateAction.java</h2>
+<h2 id="deletejsp">delete.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3&gt;</span>회원탈퇴<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;%</span>
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+<span class="nt">%&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">"checkPass"</span> <span class="na">action=</span><span class="s">"./MemberDeleteAction.me"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">id</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"delete"</span> <span class="na">name=</span><span class="s">"actionType"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+        탈퇴하시려면 비밀번호를 한 번 더 입력해 주세요.
+    <span class="nt">&lt;/div&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"pass"</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>확인<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>보통 로그인 된 상태로 여기까지 오겠지만 혹시 모르니까 로그인 정보가 없을 때의 예외처리를 해 주었다.</li>
+  <li>마이페이지 입장 전 비밀번호를 확인하는 페이지인 <code class="language-plaintext highlighter-rouge">checkPass.jsp</code> 페이지와 동일한 구성이기 때문에 <code class="language-plaintext highlighter-rouge">onsubmit</code> 필드의 함수는 <code class="language-plaintext highlighter-rouge">checkPass.js</code>의 <code class="language-plaintext highlighter-rouge">finalCheck()</code> 함수를 그대로 썼다.</li>
+</ul>
+
+<h2 id="memberdeleteactionjava">MemberDeleteAction.java</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.sql.Date</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Calendar</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
 
-<span class="c1">// 회원 정보 수정</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberUpdateAction</span> <span class="kd">implements</span> <span class="nc">Action</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberDeleteAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
 <span class="o">{</span>
-    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">(</span><span class="nc">String</span> <span class="n">birth</span><span class="o">)</span>
-    <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">year</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">birth</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">"-"</span><span class="o">)[</span><span class="mi">0</span><span class="o">]);</span>
-        <span class="kt">int</span> <span class="n">curYear</span> <span class="o">=</span> <span class="nc">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">YEAR</span><span class="o">);</span>
-		
-        <span class="k">return</span> <span class="n">curYear</span> <span class="o">-</span> <span class="n">year</span><span class="o">;</span>
-    <span class="o">}</span>
-	
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
     <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : MemberUpdateAction - execute() 호출"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : MemberDeleteAction - execute() 호출"</span><span class="o">);</span>
 		
         <span class="c1">// 한글처리</span>
         <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
 		
-        <span class="c1">// 전달받은 파라미터 저장</span>
+        <span class="c1">// 전달된 정보 저장</span>
         <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDTO</span><span class="o">();</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"city"</span><span class="o">));</span>
-		
-        <span class="c1">// 나이 계산</span>
-        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">getAge</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"birth"</span><span class="o">));</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">age</span><span class="o">);</span>
-		
-        <span class="n">dto</span><span class="o">.</span><span class="na">setBirth</span><span class="o">(</span><span class="nc">Date</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"birth"</span><span class="o">)));</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"email"</span><span class="o">));</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setGender</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"gender"</span><span class="o">));</span>
         <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
         <span class="n">dto</span><span class="o">.</span><span class="na">setPass</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">));</span>
 		
-        <span class="c1">// 폰번호 3개 필드 합치기</span>
-        <span class="nc">String</span> <span class="n">phone</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone1"</span><span class="o">)</span> <span class="o">+</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone2"</span><span class="o">)</span> <span class="o">+</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone3"</span><span class="o">);</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setPhone</span><span class="o">(</span><span class="n">phone</span><span class="o">);</span>
-		
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : 수정된 회원 정보 저장"</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : "</span> <span class="o">+</span> <span class="n">dto</span><span class="o">);</span>
-		
-        <span class="c1">// DAO 객체 생성</span>
+        <span class="c1">// DB 연결해서 삭제</span>
         <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">deleteMember</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
 		
-        <span class="c1">// update 함수 호출</span>
-        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">updateMember</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
-		
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : result - "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : 회원 정보 수정 완료"</span><span class="o">);</span>
-		
+        <span class="c1">// 삭제 완료 알림창 띄우고 메인페이지 이동</span>
         <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=UTF-8"</span><span class="o">);</span>
         <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('정보 수정이 완료되었습니다.');"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./myPage.me';"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">==</span> <span class="n">result</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="c1">// 탈퇴가 완료되면 세션 초기화 및 메인으로 이동</span>
+            <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
+            <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+			
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"alert('회원 탈퇴가 완료되었습니다.');"</span><span class="o">);</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"location.href='./main.me';"</span><span class="o">);</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> 
+        <span class="o">{</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"alert('비밀번호가 일치하지 않습니다!');"</span><span class="o">);</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"history.back();"</span><span class="o">);</span>			
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+        <span class="o">}</span>
 		
         <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
 		
@@ -873,63 +573,47 @@
 </code></pre></div></div>
 
 <ul>
-  <li>전달된 정보들을 <code class="language-plaintext highlighter-rouge">MemberDTO</code> 객체에 저장한 뒤 DB와 연결해서 <code class="language-plaintext highlighter-rouge">update</code> 동작을 수행한다.</li>
-  <li>수정이 완료되면 알림창을 띄우기 위해서 자바스크립트 코드를 사용했다.</li>
+  <li>회원정보 수정을 할 때와 마찬가지로 DB와 연결해서 회원 정보가 존재하는 지 확인한 후 결과에 따라 탈퇴 동작을 수행한다.</li>
+  <li>회원탈퇴를 했는데 로그인 상태로 남아있지 않게 하기 위해서 <code class="language-plaintext highlighter-rouge">delete</code>가 완료되면 세션 초기화를 해 주었다.</li>
 </ul>
 
-<h2 id="memberdao---updatememberdto">MemberDAO - updateMember(dto)</h2>
+<h2 id="memberdaojava---deletememberdto">MemberDAO.java - deleteMember(dto)</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">updateMember</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">dto</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">deleteMember</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">dto</span><span class="o">)</span>
 <span class="o">{</span>
     <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
 		
     <span class="k">try</span> <span class="o">{</span>
         <span class="c1">// 1.2 DB 연결</span>
-        <span class="c1">// 회원 정보가 존재하는 지 먼저 확인한 후에 수정 동작 수행</span>
         <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
-        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_members where id=?"</span><span class="o">;</span>
+			
+        <span class="c1">// 3. sql 작성 &amp; pstmt 생성</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select pass from cafe_members where id=?"</span><span class="o">;</span>
         <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
         <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+			
+        <span class="c1">// 4. sql 실행</span>
         <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
 			
+        <span class="c1">// 5. 데이터 처리</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
         <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()))</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"pass"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getPass</span><span class="o">()))</span>
             <span class="o">{</span>
-                <span class="c1">// 회원 정보가 있으면</span>
-                <span class="c1">// 3. sql 작성 &amp; pstmt 객체 생성</span>
-                <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_members set pass=?, name=?, birth=?, age=?, gender=?, address=?, phone=?, email=? where id=?"</span><span class="o">;</span>
+                <span class="c1">// 삭제하는 쿼리문 실행</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from cafe_members where id=?"</span><span class="o">;</span>
                 <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
 					
-                <span class="c1">// ? 채우기</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getPass</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getBirth</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getAddress</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">8</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">9</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
 					
-                <span class="c1">// 4. sql 실행</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
-					
-                <span class="c1">// 5. 데이터 처리</span>
-                <span class="c1">// 수정 성공</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 회원 정보 수정 완료"</span><span class="o">);</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 회원정보 삭제 완료"</span><span class="o">);</span>
             <span class="o">}</span>
-            <span class="k">else</span> 
-            <span class="o">{</span>
+            <span class="k">else</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="o">}</span>
         <span class="o">}</span>
-        <span class="k">else</span> 
-        <span class="o">{</span>
-            <span class="c1">// 회원 정보 없음 - 비회원</span>
+        <span class="k">else</span>
             <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
-        <span class="o">}</span>
     <span class="o">}</span>
     <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
@@ -937,22 +621,25 @@
     <span class="k">finally</span> <span class="o">{</span>
         <span class="nc">CloseDB</span><span class="o">();</span>
     <span class="o">}</span>
-		
+    
     <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">select</code> 조회 결과 일치하는 회원 정보가 있을 때에만 <code class="language-plaintext highlighter-rouge">update</code> 동작을 수행한다.</li>
-  <li>
-    <p>마이페이지에 들어가기 전에 비밀번호를 한 번 더 확인하고 들어오기 때문에 항상 정보가 있는 회원만 들어오게 되지만 그래도 업데이트 동작은 안전하게 하는 것이 정석이라 배워서 이렇게 구현했다.<br /></p>
-  </li>
-  <li>이제 회원 탈퇴 기능을 만들어야지…!<br /><br /><br /></li>
+  <li>DB 접속 후 입력받은 회원정보가 DB에 존재하며 아이디와 비밀번호가 일치하는 지 확인한 후 삭제 동작을 수행한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/deleteMember.png" width="400" /></p>
+
+<ul>
+  <li>이렇게 회원 탈퇴도 완료!</li>
+  <li>이제 게시판 만들어야지!<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">D-16</code></li>
+  <li><code class="language-plaintext highlighter-rouge">D-14</code></li>
 </ul>
 
         
@@ -999,7 +686,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-03-19T00:00:00+09:00">March 19, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-03-21T00:00:00+09:00">March 21, 2022</time></p>
 
       </footer>
 
@@ -1008,7 +695,7 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+8+-+%ED%9A%8C%EC%9B%90+%EC%A0%95%EB%B3%B4+%EC%88%98%EC%A0%95+%EA%B8%B0%EB%8A%A5+%EA%B5%AC%ED%98%84%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-09%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+9+-+%ED%9A%8C%EC%9B%90+%ED%83%88%ED%87%B4+%EA%B8%B0%EB%8A%A5+%EA%B5%AC%ED%98%84%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-09%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-09%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -1019,7 +706,7 @@
       
   <nav class="pagination">
     
-      <a href="/errorlog/warning-log-03/" class="pagination--pager" title="에러해결 Log) java.lang.IllegalStateException 응답이 이미 커밋된 후에는 sendRedirect()를 호출할 수 없습니다.
+      <a href="/project%20log/cafe-project-08/" class="pagination--pager" title="프로젝트) Cafe(웹 사이트) 만들기 8 - 회원 정보 수정 기능 구현
 ">이전</a>
     
     
@@ -1037,6 +724,52 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-08/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 8 - 회원 정보 수정 기능 구현
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          7 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -1076,52 +809,6 @@
 
   MacBook Air (M1, 2020) 16GB
   JDK 8
-  Eclipse 2021-12
-  tomcat 8.5
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/project%20log/cafe-project-08/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 7 - 로그인 기능 구현
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">개발환경
-
-  MacBook Air (M1, 2020)
-  OpenJDK 8
   Eclipse 2021-12
   tomcat 8.5
 
