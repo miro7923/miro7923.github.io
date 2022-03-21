@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-21T15:24:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-09/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현" /><published>2022-03-21T00:00:00+09:00</published><updated>2022-03-21T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-09</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-09/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-21T23:51:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-09/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현" /><published>2022-03-21T00:00:00+09:00</published><updated>2022-03-21T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-09</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-09/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -277,6 +277,190 @@
 <ul>
   <li>이렇게 회원 탈퇴도 완료!</li>
   <li>이제 게시판 만들어야지!<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-14</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 10 - 게시판 만들기 시작</title><link href="http://localhost:4000/project%20log/cafe-project-10/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 10 - 게시판 만들기 시작" /><published>2022-03-21T00:00:00+09:00</published><updated>2022-03-21T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-10</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-10/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>게시판을 만들기 위한 기본 세팅만 했다.</li>
+  <li>새로운 게시판 전용 컨트롤러를 만들고 <code class="language-plaintext highlighter-rouge">xml</code> 페이지에서 매핑시켜 주었다.</li>
+</ul>
+
+<h2 id="webxml">web.xml</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+생략
+
+<span class="c">&lt;!-- 회원(Member) 처리 컨트롤러 --&gt;</span>
+<span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>MemberFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>com.project.cafe.member.action.MemberFrontController<span class="nt">&lt;/servlet-class&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+  
+<span class="nt">&lt;servlet-mapping&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>MemberFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.me<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+<span class="c">&lt;!-- 회원(Member) 처리 컨트롤러 --&gt;</span>
+  
+<span class="c">&lt;!-- 게시판(Board) 처리 컨트롤러 --&gt;</span>
+<span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>BoardFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>com.project.cafe.board.action.BoardFrontController<span class="nt">&lt;/servlet-class&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+  
+<span class="nt">&lt;servlet-mapping&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>BoardFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.bo<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+
+...
+생략
+</code></pre></div></div>
+
+<ul>
+  <li>게시판용 컨트롤러를 추가하기 위해서 서블릿 매핑을 추가해 주었다.</li>
+  <li>두 번째 하니까 좀 더 쉽게 느껴진다. ☺️</li>
+</ul>
+
+<h2 id="actionforwardjava">ActionForward.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.action</span><span class="o">;</span> <span class="c1">// MemberController에서도 같이 사용하는 클래스라서 다른 패키지 사용</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActionForward</span> 
+<span class="o">{</span>
+    <span class="c1">// 페이지를 이동할 때 필요한 정보를 저장하는 클래스</span>
+	
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">path</span><span class="o">;</span> <span class="c1">// 이동경로</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isRedirect</span><span class="o">;</span> <span class="c1">// 이동방식</span>
+	
+    <span class="c1">// isRedirect = true  =&gt; 주소가 바뀌고 화면도 바뀜</span>
+    <span class="c1">// isRedirect = false  =&gt; 주소는 바뀌지 않고 화면만 바뀜</span>
+	
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getPath</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">path</span><span class="o">;}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPath</span><span class="o">(</span><span class="nc">String</span> <span class="n">path</span><span class="o">)</span> <span class="o">{</span><span class="k">this</span><span class="o">.</span><span class="na">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">;}</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isRedirect</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">isRedirect</span><span class="o">;}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRedirect</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">isRedirect</span><span class="o">)</span> <span class="o">{</span><span class="k">this</span><span class="o">.</span><span class="na">isRedirect</span> <span class="o">=</span> <span class="n">isRedirect</span><span class="o">;}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="boardfrontcontrollerjava">BoardFrontController.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardFrontController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="c1">// 1. 전달되는 가상주소 계산</span>
+        <span class="c1">// 매핑된(.bo로 끝나는) 주소를 받아옴</span>
+        <span class="nc">String</span> <span class="n">requestURI</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getRequestURI</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"requestURI : "</span> <span class="o">+</span> <span class="n">requestURI</span><span class="o">);</span>
+		
+        <span class="c1">// 매핑된 해당 프로젝트 주소 구함</span>
+        <span class="nc">String</span> <span class="n">ctxPath</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ctxPath : "</span> <span class="o">+</span> <span class="n">ctxPath</span><span class="o">);</span>
+		
+        <span class="c1">// 매핑된 주소(requestURI)에서 프로젝트 주소(ctxPath)를 빼서 계속 바뀌는 맨 뒤 주소를 구함</span>
+        <span class="nc">String</span> <span class="n">command</span> <span class="o">=</span> <span class="n">requestURI</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">ctxPath</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"command : "</span> <span class="o">+</span> <span class="n">command</span><span class="o">);</span>
+		
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1. 가상주소 계산 완료\n"</span><span class="o">);</span>
+		
+		
+        <span class="c1">// 2. 가상주소 매핑</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+        <span class="k">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/board.bo"</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /board.bo 호출"</span><span class="o">);</span>
+			
+            <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardList.jsp"</span><span class="o">);</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/boardWrite.bo"</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /boardWrite.bo 호출"</span><span class="o">);</span>
+			
+            <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardWrite.jsp"</span><span class="o">);</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        <span class="o">}</span>
+		
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2. 가상주소 매핑 완료"</span><span class="o">);</span>
+		
+		
+        <span class="c1">// 3. 페이지 이동</span>
+        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">forward</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="c1">// 페이지 정보가 있을 때</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">isRedirect</span><span class="o">())</span>
+            <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : sendRedirect 방식으로 페이지 이동 : "</span> <span class="o">+</span> <span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+            <span class="o">}</span>
+            <span class="k">else</span> 
+            <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : forward 방식으로 페이지 이동 : "</span> <span class="o">+</span> <span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+                <span class="nc">RequestDispatcher</span> <span class="n">dis</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+                <span class="n">dis</span><span class="o">.</span><span class="na">forward</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+            <span class="o">}</span>
+			
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"3. 페이지 이동 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+	
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>게시판용 <code class="language-plaintext highlighter-rouge">컨트롤러</code>를 만들고 게시글 리스트를 보는 페이지와 글쓰기 페이지를 연결시켜 주었다.</li>
+  <li>그런데 글쓰기 페이지로 연결하는 기능을 만들고 나서 생각해 보니까 로그인 한 사용자인지 확인을 하지 않고 글쓰기 버튼을 누르면 무조건 연결시켜 주고 있었다… 😅 이제부터 로그인 한 회원만 글을 쓸 수 있도록 유효성 검사하는 부분을 추가할 것이다!<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -1986,91 +2170,7 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-24</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">C++) BOJ 10610. 30</title><link href="http://localhost:4000/boj/boj10610-cpp/" rel="alternate" type="text/html" title="C++) BOJ 10610. 30" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10610-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj10610-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/10610">https://www.acmicpc.net/problem/10610</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>어느 날, 미르코는 우연히 길거리에서 양수 N을 보았다. 미르코는 30이란 수를 존경하기 때문에, 그는 길거리에서 찾은 수에 포함된 숫자들을 섞어 30의 배수가 되는 가장 큰 수를 만들고 싶어한다.</p>
-  </li>
-  <li>
-    <p>미르코를 도와 그가 만들고 싶어하는 수를 계산하는 프로그램을 작성하라.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>N을 입력받는다. N는 최대 105개의 숫자로 구성되어 있으며, 0으로 시작하지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>미르코가 만들고 싶어하는 수가 존재한다면 그 수를 출력하라. 그 수가 존재하지 않는다면, -1을 출력하라.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>참고 풀이 : <a href="https://ongveloper.tistory.com/114">https://ongveloper.tistory.com/114</a></p>
-  </li>
-  <li>
-    <p>문제 이해를 잘못해서.. 자꾸 틀려서 구글링했다.<br /></p>
-  </li>
-  <li>입력으로 주어지는 N이 자릿수를 말하는 것이 아니라 N개의 수이기 때문에 최대 10^5개의 숫자가 입력으로 주어진다.</li>
-  <li>
-    <p>그래서 정수형으로는 절대 받을 수 없는 숫자였던 것이다… 문자열로 입력을 받아야 했음 - 틀린 이유 1<br /></p>
-  </li>
-  <li>입력을 해결하고 나면 이제 이 수들의 배치를 바꿔가며 30의 배수가 되는지 확인해야 하는데 처음에는 문제 이해 자체를 잘못했기 때문에 입력받은 수를 배열로 바꿔서 prev_permutation으로 순열을 구한 다음 30의 배수인지 구하는 코드를 작성했다. 물론 입력 자체가 잘못되었기 때문에 틑림</li>
-  <li>입력의 최대값이 아주 크기 때문에 처음에 작성했던 것처럼 완전 탐색 방식으로는 시간초과를 받을 수 밖에 없고 규칙을 찾아서 적용해야 한다.</li>
-  <li>
-    <p>일단 30의 배수가 되려면 맨 마지막 자릿수가 0이어야 하고 3으로 나누어 떨어지려면 각 자릿수를 더한 값이 3의 배수가 되어야 한다.<br /></p>
-  </li>
-  <li>
-    <ol>
-      <li>입력받은 수를 내림차순으로 정렬한 후 맨 마지막 원소가 0인지 검사 후 0이 아니면 -1 출력</li>
-    </ol>
-  </li>
-  <li>
-    <ol>
-      <li>1번을 통과했으면 각 자릿수를 더해서 3의 배수가 되는지 확인한 후 결과값 출력<br /></li>
-    </ol>
-  </li>
-  <li>언제쯤.. 무난하게 풀 수 있을까…<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 4 ms</li>
-  <li>메모리 : 2300 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/55212f123cfa1b4e659191c74ac6ef3e.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10610" /><category term="Greedy" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10610 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">DB) 관계 데이터 모델링</title><link href="http://localhost:4000/database/db-05-relation/" rel="alternate" type="text/html" title="DB) 관계 데이터 모델링" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/database/db-05-relation</id><content type="html" xml:base="http://localhost:4000/database/db-05-relation/"><![CDATA[<h1 id="-관계-데이터-모델의-개념">👀 관계 데이터 모델의 개념</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">DB) 관계 데이터 모델링</title><link href="http://localhost:4000/database/db-05-relation/" rel="alternate" type="text/html" title="DB) 관계 데이터 모델링" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/database/db-05-relation</id><content type="html" xml:base="http://localhost:4000/database/db-05-relation/"><![CDATA[<h1 id="-관계-데이터-모델의-개념">👀 관계 데이터 모델의 개념</h1>
 <ul>
   <li>개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델</li>
   <li>하나의 개체에 대한 데이터를 하나의 릴레이션에 저장</li>
@@ -2257,7 +2357,91 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 관계 데이터 모델의 개념 개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델 하나의 개체에 대한 데이터를 하나의 릴레이션에 저장]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 4</title><link href="http://localhost:4000/project%20log/cafe-project-04/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 4" /><published>2022-03-10T00:00:00+09:00</published><updated>2022-03-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-04</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-04/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 관계 데이터 모델의 개념 개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델 하나의 개체에 대한 데이터를 하나의 릴레이션에 저장]]></summary></entry><entry><title type="html">C++) BOJ 10610. 30</title><link href="http://localhost:4000/boj/boj10610-cpp/" rel="alternate" type="text/html" title="C++) BOJ 10610. 30" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10610-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj10610-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/10610">https://www.acmicpc.net/problem/10610</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>어느 날, 미르코는 우연히 길거리에서 양수 N을 보았다. 미르코는 30이란 수를 존경하기 때문에, 그는 길거리에서 찾은 수에 포함된 숫자들을 섞어 30의 배수가 되는 가장 큰 수를 만들고 싶어한다.</p>
+  </li>
+  <li>
+    <p>미르코를 도와 그가 만들고 싶어하는 수를 계산하는 프로그램을 작성하라.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>N을 입력받는다. N는 최대 105개의 숫자로 구성되어 있으며, 0으로 시작하지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>미르코가 만들고 싶어하는 수가 존재한다면 그 수를 출력하라. 그 수가 존재하지 않는다면, -1을 출력하라.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>참고 풀이 : <a href="https://ongveloper.tistory.com/114">https://ongveloper.tistory.com/114</a></p>
+  </li>
+  <li>
+    <p>문제 이해를 잘못해서.. 자꾸 틀려서 구글링했다.<br /></p>
+  </li>
+  <li>입력으로 주어지는 N이 자릿수를 말하는 것이 아니라 N개의 수이기 때문에 최대 10^5개의 숫자가 입력으로 주어진다.</li>
+  <li>
+    <p>그래서 정수형으로는 절대 받을 수 없는 숫자였던 것이다… 문자열로 입력을 받아야 했음 - 틀린 이유 1<br /></p>
+  </li>
+  <li>입력을 해결하고 나면 이제 이 수들의 배치를 바꿔가며 30의 배수가 되는지 확인해야 하는데 처음에는 문제 이해 자체를 잘못했기 때문에 입력받은 수를 배열로 바꿔서 prev_permutation으로 순열을 구한 다음 30의 배수인지 구하는 코드를 작성했다. 물론 입력 자체가 잘못되었기 때문에 틑림</li>
+  <li>입력의 최대값이 아주 크기 때문에 처음에 작성했던 것처럼 완전 탐색 방식으로는 시간초과를 받을 수 밖에 없고 규칙을 찾아서 적용해야 한다.</li>
+  <li>
+    <p>일단 30의 배수가 되려면 맨 마지막 자릿수가 0이어야 하고 3으로 나누어 떨어지려면 각 자릿수를 더한 값이 3의 배수가 되어야 한다.<br /></p>
+  </li>
+  <li>
+    <ol>
+      <li>입력받은 수를 내림차순으로 정렬한 후 맨 마지막 원소가 0인지 검사 후 0이 아니면 -1 출력</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>1번을 통과했으면 각 자릿수를 더해서 3의 배수가 되는지 확인한 후 결과값 출력<br /></li>
+    </ol>
+  </li>
+  <li>언제쯤.. 무난하게 풀 수 있을까…<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 4 ms</li>
+  <li>메모리 : 2300 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/55212f123cfa1b4e659191c74ac6ef3e.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10610" /><category term="Greedy" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10610 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 4</title><link href="http://localhost:4000/project%20log/cafe-project-04/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 4" /><published>2022-03-10T00:00:00+09:00</published><updated>2022-03-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-04</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-04/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>OpenJDK 8</li>
   <li>Eclipse 2021-12</li>
@@ -2531,443 +2715,4 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-26</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료</title><link href="http://localhost:4000/project%20log/cafe-project-05/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 5 - 회원가입 유효성 검사 구현 완료" /><published>2022-03-10T00:00:00+09:00</published><updated>2022-03-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-05</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-05/"><![CDATA[<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="시작">시작</h1>
-<ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황-1">진행상황 1</h1>
-<ul>
-  <li>어제 회원가입 페이지에서 사용자가 입력한 아이디의 유효성을 검증하는 부분까지 구현했다.</li>
-  <li>그리고 오늘 회원가입 시 사용자가 입력한 정보가 유효한지 검증하는 로직을 모두 구현했다!</li>
-</ul>
-
-<h2 id="1-joinjsp">1. join.jsp</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3&gt;</span>회원가입<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
-<span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">"join"</span> <span class="na">action=</span><span class="s">"./MemberJoinAction.me"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">placeholder=</span><span class="s">"5~10자 이내의 영문+숫자 조합"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"idMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pass"</span> <span class="na">id=</span><span class="s">"pass"</span> <span class="na">placeholder=</span><span class="s">"8~20자 영문+숫자+특수문자 조합"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"passMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>비밀번호 확인 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"confirm"</span> <span class="na">id=</span><span class="s">"confirm"</span> <span class="na">placeholder=</span><span class="s">"비밀번호를 다시 입력하세요."</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"confirmMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>이름 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"name"</span> <span class="na">placeholder=</span><span class="s">"이름을 입력하세요."</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"nameMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>생년월일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"date"</span> <span class="na">name=</span><span class="s">"birth"</span> <span class="na">class=</span><span class="s">"birth"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"birthMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>성별 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"남"</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>남<span class="nt">&lt;/label&gt;</span> 
-    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"여"</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>여<span class="nt">&lt;/label&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"genderMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>도시 <span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"city"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">selected</span> <span class="na">disabled</span><span class="nt">&gt;</span>도시를 선택하세요.<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option&gt;</span>서울<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option&gt;</span>부산<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option&gt;</span>대전<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;/select&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"cityMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_TelField"</span><span class="nt">&gt;</span>휴대폰 번호 <span class="nt">&lt;/label&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone1"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone1"</span> <span class="na">size=</span><span class="s">"1"</span> <span class="na">maxlength=</span><span class="s">"3"</span> <span class="na">oninput=</span><span class="s">"tabCursor(1)"</span><span class="nt">&gt;</span> - 
-    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone2"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone2"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">oninput=</span><span class="s">"tabCursor(2)"</span><span class="nt">&gt;</span> - 
-    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone3"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone3"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/label&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"phoneMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_EmailField"</span><span class="nt">&gt;</span>이메일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span> <span class="na">id=</span><span class="s">"email"</span> <span class="na">placeholder=</span><span class="s">"abc123@gmail.com"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"emailMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>Send form<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">html</code> 부분은 무료 템플릿 사이트에 있는 것을 다운받아서 사용한 것이고 입력 정보 유효성 검사를 위해 각 필드별로 <code class="language-plaintext highlighter-rouge">id</code>와 <code class="language-plaintext highlighter-rouge">class</code>만 추가했다.</li>
-  <li>거주지를 입력하는 부분은 약식으로 도시 3개만 넣었다.</li>
-  <li><code class="language-plaintext highlighter-rouge">form</code> 태그를 최종 <code class="language-plaintext highlighter-rouge">submit</code> 하기 전에 <code class="language-plaintext highlighter-rouge">finalCheck()</code> 함수를 호출해 입력한 정보들의 유효성 검사를 완료한 후에 결과에 따라 페이지를 이동하도록 했다.</li>
-</ul>
-
-<h2 id="2-joinjs">2. join.js</h2>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">$id</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">$pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">$passConfirm</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">$name</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">$birth</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">$gender</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">$city</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">$phone</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">$email</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
- 
-<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="nx">idCheck</span><span class="p">();</span>
-	<span class="nx">passCheck</span><span class="p">();</span>
-	<span class="nx">passConfirm</span><span class="p">();</span>
-	<span class="nx">nameCheck</span><span class="p">();</span>
-	<span class="nx">birthCheck</span><span class="p">();</span>
-	<span class="nx">emailCheck</span><span class="p">();</span>
-<span class="p">});</span>
-
-<span class="c1">// 휴대폰 번호 필드 1, 2번 칸에서 지정된 숫자만큼 입력하면 다음 칸으로 커서 넘기는 함수</span>
-<span class="kd">function</span> <span class="nx">tabCursor</span><span class="p">(</span><span class="nx">section</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">ph</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="k">switch</span> <span class="p">(</span><span class="nx">section</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-			<span class="nx">ph</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone1</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-			<span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="o">===</span> <span class="nx">ph</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-				<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone2</span><span class="dl">"</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
-			<span class="k">break</span><span class="p">;</span>
-		
-		<span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
-			<span class="nx">ph</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone2</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-			<span class="k">if</span> <span class="p">(</span><span class="mi">4</span> <span class="o">===</span> <span class="nx">ph</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-				<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone3</span><span class="dl">"</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
-			<span class="k">break</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="p">}</span> 
-
-<span class="kd">function</span> <span class="nx">idCheck</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-	<span class="p">{</span>
-		<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-			<span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-			<span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-			<span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./idCheck.me</span><span class="dl">'</span><span class="p">,</span>
-			<span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-				<span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
-			<span class="p">},</span>
-			<span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span>
-			<span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-				<span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">true</span><span class="dl">'</span><span class="p">)</span>
-				<span class="p">{</span>
-					<span class="kd">var</span> <span class="nx">userId</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-					<span class="k">if</span> <span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="nx">userId</span><span class="p">.</span><span class="nx">length</span> <span class="o">||</span> <span class="mi">10</span> <span class="o">&lt;</span> <span class="nx">userId</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-					<span class="p">{</span>
-						<span class="nx">$id</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">5자리 이상 10자리 이하로 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
-						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-					<span class="p">}</span>
-					<span class="k">else</span> 
-					<span class="p">{</span>
-						<span class="nx">$id</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">사용할 수 있는 아이디입니다.</span><span class="dl">'</span><span class="p">);</span>
-						<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">);</span>
-					<span class="p">}</span>
-				<span class="p">}</span>
-				<span class="k">else</span> 
-				<span class="p">{</span>
-					<span class="nx">$id</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-					<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">이미 존재하는 아이디입니다.</span><span class="dl">'</span><span class="p">);</span>
-					<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#idMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-				<span class="p">}</span>
-			<span class="p">},</span>
-			<span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">);</span>
-			<span class="p">}</span>
-		<span class="p">});</span>
-	<span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// 비밀번호 유효성 검사하는 함수</span>
-<span class="kd">function</span> <span class="nx">passCheck</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#pass</span><span class="dl">'</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-	<span class="p">{</span>
-		<span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#pass</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-		<span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">pass</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">0-9</span><span class="se">]</span><span class="sr">/g</span><span class="p">);</span>
-		<span class="kd">var</span> <span class="nx">eng</span> <span class="o">=</span> <span class="nx">pass</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">a-z</span><span class="se">]</span><span class="sr">/ig</span><span class="p">);</span>
-		<span class="kd">var</span> <span class="nx">spe</span> <span class="o">=</span> <span class="nx">pass</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">`~!@@#$%^&amp;*|₩₩₩'₩";:₩</span><span class="se">/</span><span class="sr">?</span><span class="se">]</span><span class="sr">/gi</span><span class="p">);</span>
-
-		<span class="k">if</span> <span class="p">(</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="nx">pass</span><span class="p">.</span><span class="nx">length</span> <span class="o">||</span> <span class="mi">20</span> <span class="o">&lt;</span> <span class="nx">pass</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="nx">$pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#passMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">8자 ~ 20자 이내로 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#passMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-		<span class="p">}</span>
-		<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">pass</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">/</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="nx">$pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#passMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">공백 없이 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#passMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-		<span class="p">}</span>
-		<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">eng</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">spe</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="nx">$pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#passMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">영문, 숫자, 특수문자를 포함해서 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#passMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-		<span class="p">}</span>
-		<span class="k">else</span> 
-		<span class="p">{</span>
-			<span class="nx">$pass</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#passMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">사용 가능한 비밀번호 입니다!</span><span class="dl">'</span><span class="p">);</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#passMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">);</span>
-		<span class="p">}</span>
-	<span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// 재입력한 비밀번호가 맞는지 확인하는 함수</span>
-<span class="kd">function</span> <span class="nx">passConfirm</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#confirm</span><span class="dl">'</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> 
-	<span class="p">{</span>
-		<span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#confirm</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-
-		<span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&gt;=</span> <span class="nx">pass</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="nx">$passConfirm</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#confirmMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">비밀번호를 한 번 더 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#confirmMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-		<span class="p">}</span>
-		<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#pass</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">!==</span> <span class="nx">pass</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="nx">$passConfirm</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#confirmMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">비밀번호가 일치하지 않습니다.</span><span class="dl">'</span><span class="p">);</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#confirmMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-		<span class="p">}</span>
-		<span class="k">else</span>
-		<span class="p">{</span>
-			<span class="nx">$passConfirm</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#confirmMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">비밀번호가 일치합니다!</span><span class="dl">'</span><span class="p">);</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#confirmMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">);</span>
-		<span class="p">}</span>
-	<span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// 이름 입력 여부 확인하는 함수</span>
-<span class="kd">function</span> <span class="nx">nameCheck</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.name</span><span class="dl">'</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-	<span class="p">{</span>
-		<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.name</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-
-		<span class="k">if</span> <span class="p">(</span><span class="dl">""</span> <span class="o">===</span> <span class="nx">name</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="nx">$name</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#nameMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">이름을 입력해 주세요.</span><span class="dl">'</span><span class="p">);</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#nameMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-		<span class="p">}</span>
-		<span class="k">else</span> 
-		<span class="p">{</span>
-			<span class="nx">$name</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#nameMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
-		<span class="p">}</span>
-	<span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// 생년월일 유효성 검사하는 함수</span>
-<span class="kd">function</span> <span class="nx">birthCheck</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="c1">// input 태그에서 date type으로 입력받아서 태그단에서 미리 유효한 날짜만 선택할 수 있게 하지만 첫 프로젝트라 연습 삼아 구현했다.</span>
-	<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.birth</span><span class="dl">'</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-	<span class="p">{</span>
-		<span class="kd">var</span> <span class="nx">birth</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.birth</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-		
-		<span class="kd">var</span> <span class="nx">birthArr</span> <span class="o">=</span> <span class="nx">birth</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">);</span>
-		<span class="kd">var</span> <span class="nx">year</span> <span class="o">=</span> <span class="nx">birthArr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-		<span class="kd">var</span> <span class="nx">month</span> <span class="o">=</span> <span class="nx">birthArr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-		<span class="kd">var</span> <span class="nx">day</span> <span class="o">=</span> <span class="nx">birthArr</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-		<span class="kd">var</span> <span class="nx">today</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-		<span class="kd">var</span> <span class="nx">curYear</span> <span class="o">=</span> <span class="nx">today</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">();</span>
-
-		<span class="k">if</span> <span class="p">(</span><span class="mi">10</span> <span class="o">&gt;=</span> <span class="nx">birth</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="k">if</span> <span class="p">(</span><span class="mi">1900</span> <span class="o">&gt;</span> <span class="nx">year</span> <span class="o">||</span> <span class="nx">curYear</span> <span class="o">&lt;</span> <span class="nx">year</span><span class="p">)</span> 
-				<span class="nx">$birth</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="nx">month</span> <span class="o">||</span> <span class="mi">12</span> <span class="o">&lt;</span> <span class="nx">month</span><span class="p">)</span> 
-				<span class="nx">$birth</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="nx">day</span> <span class="o">||</span> <span class="mi">31</span> <span class="o">&lt;</span> <span class="nx">day</span><span class="p">)</span> 
-				<span class="nx">$birth</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">31</span> <span class="o">==</span> <span class="nx">day</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mi">4</span> <span class="o">==</span> <span class="nx">month</span> <span class="o">||</span> <span class="mi">6</span> <span class="o">==</span> <span class="nx">month</span> <span class="o">||</span> <span class="mi">9</span> <span class="o">==</span> <span class="nx">month</span> <span class="o">||</span> <span class="mi">11</span> <span class="o">==</span> <span class="nx">month</span><span class="p">))</span>
-				<span class="nx">$birth</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">2</span> <span class="o">==</span> <span class="nx">month</span><span class="p">)</span>
-			<span class="p">{</span>
-				<span class="c1">// 2월엔 윤년 여부 검사</span>
-				<span class="kd">var</span> <span class="nx">leapYear</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="nx">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mi">0</span> <span class="o">!=</span> <span class="nx">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">||</span> <span class="mi">0</span> <span class="o">==</span> <span class="nx">year</span> <span class="o">%</span> <span class="mi">400</span><span class="p">));</span>
-				<span class="k">if</span> <span class="p">(</span><span class="mi">29</span> <span class="o">&lt;</span> <span class="nx">day</span> <span class="o">||</span> <span class="p">(</span><span class="mi">29</span> <span class="o">==</span> <span class="nx">day</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">leapYear</span><span class="p">))</span>
-					<span class="nx">$birth</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-				<span class="k">else</span> 
-					<span class="nx">$birth</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-			<span class="p">}</span>
-			<span class="k">else</span> 
-				<span class="nx">$birth</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">else</span> 
-			<span class="nx">$birth</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// 성별 선택 여부 확인하는 함수</span>
-<span class="kd">function</span> <span class="nx">genderCheck</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[name=gender]</span><span class="dl">'</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="dl">"</span><span class="s2">:checked</span><span class="dl">"</span><span class="p">))</span>
-	<span class="p">{</span>
-		<span class="nx">$gender</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-		<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#genderMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
-	<span class="p">}</span>	
-	<span class="k">else</span>
-	<span class="p">{</span>
-		<span class="nx">$gender</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-		<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#genderMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">성별을 선택하세요!</span><span class="dl">'</span><span class="p">);</span>
-		<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#genderMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>	
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 도시 선택 여부 확인하는 함수</span>
-<span class="kd">function</span> <span class="nx">cityCheck</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="k">if</span> <span class="p">(</span><span class="dl">'</span><span class="s1">0</span><span class="dl">'</span> <span class="o">==</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[name=city] &gt; option:selected</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">())</span>
-	<span class="p">{</span>
-		<span class="nx">$city</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-		<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#cityMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">"</span><span class="s2">거주 중인 도시를 선택하세요!</span><span class="dl">"</span><span class="p">);</span>
-		<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#cityMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
-	<span class="p">}</span>	
-	<span class="k">else</span> 
-	<span class="p">{</span>
-		<span class="nx">$city</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-		<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#cityMsg</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 휴대폰 번호 유효성 검사하는 함수</span>
-<span class="kd">function</span> <span class="nx">phoneCheck</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">first</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone1</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-	<span class="kd">var</span> <span class="nx">second</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone2</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-	<span class="kd">var</span> <span class="nx">third</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phone3</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-	
-	<span class="k">if</span> <span class="p">(</span><span class="dl">"</span><span class="s2">010</span><span class="dl">"</span> <span class="o">==</span> <span class="nx">first</span> <span class="o">&amp;&amp;</span> <span class="mi">4</span> <span class="o">==</span> <span class="nx">second</span><span class="p">.</span><span class="nx">length</span> <span class="o">&amp;&amp;</span> <span class="mi">4</span> <span class="o">==</span> <span class="nx">third</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="nx">$phone</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-		<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phoneMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
-	<span class="p">}</span>	
-	<span class="k">else</span> 
-	<span class="p">{</span>
-		<span class="nx">$phone</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-		<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phoneMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">"</span><span class="s2">휴대폰 번호 형식이 올바르지 않습니다!</span><span class="dl">"</span><span class="p">);</span>
-		<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#phoneMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 이메일 유효성 검사하는 함수</span>
-<span class="kd">function</span> <span class="nx">emailCheck</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#email</span><span class="dl">"</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-	<span class="p">{</span>
-		<span class="kd">var</span> <span class="nx">email</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#email</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-		<span class="kd">var</span> <span class="nx">regEmail</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">([</span><span class="sr">0-9a-zA-Z_</span><span class="se">\.</span><span class="sr">-</span><span class="se">]</span><span class="sr">+</span><span class="se">)</span><span class="sr">@</span><span class="se">([</span><span class="sr">0-9a-zA-Z_-</span><span class="se">]</span><span class="sr">+</span><span class="se">)(\.[</span><span class="sr">0-9a-zA-Z_-</span><span class="se">]</span><span class="sr">+</span><span class="se">){1,2}</span><span class="sr">$/</span><span class="p">;</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">regEmail</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">email</span><span class="p">))</span>
-		<span class="p">{</span>
-			<span class="nx">$email</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#emailMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
-		<span class="p">}</span>
-		<span class="k">else</span> 
-		<span class="p">{</span>
-			<span class="nx">$email</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#emailMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">"</span><span class="s2">이메일 형식이 올바르지 않습니다!</span><span class="dl">"</span><span class="p">);</span>
-			<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#emailMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
-		<span class="p">}</span>
-	<span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// 마지막 제출 전에 유효성 검사하는 함수</span>
-<span class="kd">function</span> <span class="nx">finalCheck</span><span class="p">()</span> 
-<span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">join</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">join</span><span class="p">;</span>
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$id</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="nx">join</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="p">}</span>
-		
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$pass</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="nx">join</span><span class="p">.</span><span class="nx">pass</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$passConfirm</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="nx">join</span><span class="p">.</span><span class="nx">confirm</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$name</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="nx">join</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$birth</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="nx">join</span><span class="p">.</span><span class="nx">birth</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="p">}</span>
-	
-	<span class="nx">genderCheck</span><span class="p">();</span>
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$gender</span><span class="p">)</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-
-	<span class="nx">cityCheck</span><span class="p">();</span>
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$city</span><span class="p">)</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-	
-	<span class="nx">phoneCheck</span><span class="p">();</span>
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$phone</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="nx">join</span><span class="p">.</span><span class="nx">phone1</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="p">}</span>
-	
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$email</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="nx">join</span><span class="p">.</span><span class="nx">email</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>입력 데이터 중 생년월일은 <code class="language-plaintext highlighter-rouge">input</code> 태그에서 <code class="language-plaintext highlighter-rouge">type="date"</code>로 지정해서 입력 단계에서 유효성 검사가 이루어지긴 하는데 웹 개발 프로젝트는 처음 진행하는 것이라 연습 삼아 <code class="language-plaintext highlighter-rouge">String</code>형으로만 입력을 받았을 때에 유효성 검사를 확인하는 코드도 작성해 보았다. 사실상 필요 없는 부분이라 최종 빌드 때엔 삭제할 예정이다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-25</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry></feed>
