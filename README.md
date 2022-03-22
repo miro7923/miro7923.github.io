@@ -1,7 +1,8 @@
 # Yujin's Tech Blog
 
-* 소프트웨어 개발 공부 중 배운 내용들과 개인 프로젝트 진행 상황을 저장하는 공간입니다.
-* [블로그로 이동!](https://miro7923.github.io/)
+* 소프트웨어 개발 공부 중 배운 내용들과 개인 프로젝트 진행 상황을 저장하는 공간입니다.<br>
+
+👉 [블로그로 이동!](https://miro7923.github.io/)
 
 <!--# [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)-->
 <!---->
