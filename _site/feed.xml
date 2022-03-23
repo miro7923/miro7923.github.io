@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-24T00:11:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 12 - 게시판 글쓰기 기능 만들기</title><link href="http://localhost:4000/project%20log/cafe-project-12/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 12 - 게시판 글쓰기 기능 만들기" /><published>2022-03-23T00:00:00+09:00</published><updated>2022-03-23T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-12</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-12/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-24T08:18:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 03-3. 숫자 카드 게임</title><link href="http://localhost:4000/boj/CodingTestBook-03-3-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 03-3. 숫자 카드 게임" /><published>2022-03-24T00:00:00+09:00</published><updated>2022-03-24T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-03-3-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-03-3-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+<hr />
+
+<ul>
+  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
+  <li>Chapter 03 - 3. 숫자 카드 게임<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>여러 개의 숫자 카드 중에서 가장 높은 숫자가 쓰인 카드 한 장을 뽑는 게임</p>
+  </li>
+  <li>
+    <p>단, 게임의 룰을 지키며 뽑아야 한다.</p>
+  </li>
+</ul>
+
+<ol>
+  <li>숫자가 쓰인 카드들이 N X M 형태로 놓여 있다. 이때 N은 행의 개수를 의미하고, M은 열의 개수를 의미</li>
+  <li>먼저 뽑고자 하는 카드가 포함된 행을 선택한다.</li>
+  <li>선택된 행에 포함된 카드들 중 가장 숫자가 낮은 카드를 뽑는다.</li>
+  <li>따라서 처음에 카드를 골라낼 행을 선택할 때, 이후 해당 행에서 가장 숫자가 낮은 카드를 뽑아야 하는 것을 고려해 가장 높은 숫자를 뽑을 수 있도록 해야한다.<br /><br /></li>
+</ol>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 숫자 카드들이 놓인 행의 개수 N과 열의 개수 M이 공백을 기준으로 하여 각각 자연수로 주어진다. (1 &lt;= N, M &lt;= 100)</li>
+  <li>둘째 줄부터 N개의 줄에 걸쳐 각 카드에 적힌 숫자가 주어진다. 각 숫자는 1 이상 10,000 이하의 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 게임의 룰에 맞게 선택한 카드에 적힌 숫자를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음에 문제의 4번 조건이 이해가 안 되서 문제 이해를 위한 구글링을 해야 했다…</li>
+  <li>구글링 결과 각 행에서 가장 낮은 숫자를 뽑은 다음 그 중에서 가장 큰 수를 뽑는 문제였다.</li>
+  <li>
+    <p>이걸 이렇게 어렵게 설명할 필요가 있나? ㅠㅠ 문제 이해력 좀 올려야 겠다…<br /></p>
+  </li>
+  <li>문제 풀이는 2차원 배열을 입력받은 후</li>
+  <li>2중 반복문으로 각 행에서 가장 작은 숫자를 찾은 뒤 그 수를 지금까지 찾은 가장 큰 수와 비교해서 더 큰 값으로 갱신해주는 방식으로 짰다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/f578c88e1b3cf22d5fa5298a2f5ddbe6.js"></script>
+<p><br /><br /></p>
+
+<h1 id="정답-참고-코드-1">정답 참고 코드 1</h1>
+<hr />
+
+<ul>
+  <li>책의 해설을 참고하여 min() 함수를 사용한 코드</li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/fc0c42f1141bb1fa857533a65a482113.js"></script>
+<p><br /><br /></p>
+
+<h1 id="정답-참고-코드-2">정답 참고 코드 2</h1>
+<hr />
+
+<ul>
+  <li>2중 반복문과 min() 함수를 사용한 코드</li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/7076e1b5bae957f6692e2413ea5d3ecf.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Greedy" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 03 - 3. 숫자 카드 게임 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 12 - 게시판 글쓰기 기능 만들기</title><link href="http://localhost:4000/project%20log/cafe-project-12/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 12 - 게시판 글쓰기 기능 만들기" /><published>2022-03-23T00:00:00+09:00</published><updated>2022-03-23T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-12</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-12/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -709,190 +795,6 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-13</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 10 - 게시판 만들기 시작</title><link href="http://localhost:4000/project%20log/cafe-project-10/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 10 - 게시판 만들기 시작" /><published>2022-03-21T00:00:00+09:00</published><updated>2022-03-21T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-10</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-10/"><![CDATA[<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="시작">시작</h1>
-<ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황">진행상황</h1>
-<ul>
-  <li>게시판을 만들기 위한 기본 세팅만 했다.</li>
-  <li>새로운 게시판 전용 컨트롤러를 만들고 <code class="language-plaintext highlighter-rouge">xml</code> 페이지에서 매핑시켜 주었다.</li>
-</ul>
-
-<h2 id="webxml">web.xml</h2>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-생략
-
-<span class="c">&lt;!-- 회원(Member) 처리 컨트롤러 --&gt;</span>
-<span class="nt">&lt;servlet&gt;</span>
-    <span class="nt">&lt;servlet-name&gt;</span>MemberFrontController<span class="nt">&lt;/servlet-name&gt;</span>
-    <span class="nt">&lt;servlet-class&gt;</span>com.project.cafe.member.action.MemberFrontController<span class="nt">&lt;/servlet-class&gt;</span>
-<span class="nt">&lt;/servlet&gt;</span>
-  
-<span class="nt">&lt;servlet-mapping&gt;</span>
-    <span class="nt">&lt;servlet-name&gt;</span>MemberFrontController<span class="nt">&lt;/servlet-name&gt;</span>
-    <span class="nt">&lt;url-pattern&gt;</span>*.me<span class="nt">&lt;/url-pattern&gt;</span>
-<span class="nt">&lt;/servlet-mapping&gt;</span>
-<span class="c">&lt;!-- 회원(Member) 처리 컨트롤러 --&gt;</span>
-  
-<span class="c">&lt;!-- 게시판(Board) 처리 컨트롤러 --&gt;</span>
-<span class="nt">&lt;servlet&gt;</span>
-    <span class="nt">&lt;servlet-name&gt;</span>BoardFrontController<span class="nt">&lt;/servlet-name&gt;</span>
-    <span class="nt">&lt;servlet-class&gt;</span>com.project.cafe.board.action.BoardFrontController<span class="nt">&lt;/servlet-class&gt;</span>
-<span class="nt">&lt;/servlet&gt;</span>
-  
-<span class="nt">&lt;servlet-mapping&gt;</span>
-    <span class="nt">&lt;servlet-name&gt;</span>BoardFrontController<span class="nt">&lt;/servlet-name&gt;</span>
-    <span class="nt">&lt;url-pattern&gt;</span>*.bo<span class="nt">&lt;/url-pattern&gt;</span>
-<span class="nt">&lt;/servlet-mapping&gt;</span>
-
-...
-생략
-</code></pre></div></div>
-
-<ul>
-  <li>게시판용 컨트롤러를 추가하기 위해서 서블릿 매핑을 추가해 주었다.</li>
-  <li>두 번째 하니까 좀 더 쉽게 느껴진다. ☺️</li>
-</ul>
-
-<h2 id="actionforwardjava">ActionForward.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.action</span><span class="o">;</span> <span class="c1">// MemberController에서도 같이 사용하는 클래스라서 다른 패키지 사용</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActionForward</span> 
-<span class="o">{</span>
-    <span class="c1">// 페이지를 이동할 때 필요한 정보를 저장하는 클래스</span>
-	
-    <span class="kd">private</span> <span class="nc">String</span> <span class="n">path</span><span class="o">;</span> <span class="c1">// 이동경로</span>
-    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isRedirect</span><span class="o">;</span> <span class="c1">// 이동방식</span>
-	
-    <span class="c1">// isRedirect = true  =&gt; 주소가 바뀌고 화면도 바뀜</span>
-    <span class="c1">// isRedirect = false  =&gt; 주소는 바뀌지 않고 화면만 바뀜</span>
-	
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getPath</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">path</span><span class="o">;}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPath</span><span class="o">(</span><span class="nc">String</span> <span class="n">path</span><span class="o">)</span> <span class="o">{</span><span class="k">this</span><span class="o">.</span><span class="na">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">;}</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isRedirect</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">isRedirect</span><span class="o">;}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRedirect</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">isRedirect</span><span class="o">)</span> <span class="o">{</span><span class="k">this</span><span class="o">.</span><span class="na">isRedirect</span> <span class="o">=</span> <span class="n">isRedirect</span><span class="o">;}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="boardfrontcontrollerjava">BoardFrontController.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardFrontController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
-<span class="o">{</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="c1">// 1. 전달되는 가상주소 계산</span>
-        <span class="c1">// 매핑된(.bo로 끝나는) 주소를 받아옴</span>
-        <span class="nc">String</span> <span class="n">requestURI</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getRequestURI</span><span class="o">();</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"requestURI : "</span> <span class="o">+</span> <span class="n">requestURI</span><span class="o">);</span>
-		
-        <span class="c1">// 매핑된 해당 프로젝트 주소 구함</span>
-        <span class="nc">String</span> <span class="n">ctxPath</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">();</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ctxPath : "</span> <span class="o">+</span> <span class="n">ctxPath</span><span class="o">);</span>
-		
-        <span class="c1">// 매핑된 주소(requestURI)에서 프로젝트 주소(ctxPath)를 빼서 계속 바뀌는 맨 뒤 주소를 구함</span>
-        <span class="nc">String</span> <span class="n">command</span> <span class="o">=</span> <span class="n">requestURI</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">ctxPath</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"command : "</span> <span class="o">+</span> <span class="n">command</span><span class="o">);</span>
-		
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1. 가상주소 계산 완료\n"</span><span class="o">);</span>
-		
-		
-        <span class="c1">// 2. 가상주소 매핑</span>
-        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-		
-        <span class="k">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/board.bo"</span><span class="o">))</span>
-        <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /board.bo 호출"</span><span class="o">);</span>
-			
-            <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
-            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardList.jsp"</span><span class="o">);</span>
-            <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/boardWrite.bo"</span><span class="o">))</span>
-        <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /boardWrite.bo 호출"</span><span class="o">);</span>
-			
-            <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
-            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardWrite.jsp"</span><span class="o">);</span>
-            <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-        <span class="o">}</span>
-		
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2. 가상주소 매핑 완료"</span><span class="o">);</span>
-		
-		
-        <span class="c1">// 3. 페이지 이동</span>
-        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">forward</span><span class="o">)</span>
-        <span class="o">{</span>
-            <span class="c1">// 페이지 정보가 있을 때</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">isRedirect</span><span class="o">())</span>
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : sendRedirect 방식으로 페이지 이동 : "</span> <span class="o">+</span> <span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
-                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
-            <span class="o">}</span>
-            <span class="k">else</span> 
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : forward 방식으로 페이지 이동 : "</span> <span class="o">+</span> <span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
-                <span class="nc">RequestDispatcher</span> <span class="n">dis</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
-                <span class="n">dis</span><span class="o">.</span><span class="na">forward</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
-            <span class="o">}</span>
-			
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"3. 페이지 이동 완료"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-	
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>게시판용 <code class="language-plaintext highlighter-rouge">컨트롤러</code>를 만들고 게시글 리스트를 보는 페이지와 글쓰기 페이지를 연결시켜 주었다.</li>
-  <li>그런데 글쓰기 페이지로 연결하는 기능을 만들고 나서 생각해 보니까 로그인 한 사용자인지 확인을 하지 않고 글쓰기 버튼을 누르면 무조건 연결시켜 주고 있었다… 😅 이제부터 로그인 한 회원만 글을 쓸 수 있도록 유효성 검사하는 부분을 추가할 것이다!<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-14</code></li>
 </ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-09/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 9 - 회원 탈퇴 기능 구현" /><published>2022-03-21T00:00:00+09:00</published><updated>2022-03-21T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-09</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-09/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
@@ -1172,6 +1074,190 @@
 <ul>
   <li>이렇게 회원 탈퇴도 완료!</li>
   <li>이제 게시판 만들어야지!<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-14</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 10 - 게시판 만들기 시작</title><link href="http://localhost:4000/project%20log/cafe-project-10/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 10 - 게시판 만들기 시작" /><published>2022-03-21T00:00:00+09:00</published><updated>2022-03-21T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-10</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-10/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>게시판을 만들기 위한 기본 세팅만 했다.</li>
+  <li>새로운 게시판 전용 컨트롤러를 만들고 <code class="language-plaintext highlighter-rouge">xml</code> 페이지에서 매핑시켜 주었다.</li>
+</ul>
+
+<h2 id="webxml">web.xml</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+생략
+
+<span class="c">&lt;!-- 회원(Member) 처리 컨트롤러 --&gt;</span>
+<span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>MemberFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>com.project.cafe.member.action.MemberFrontController<span class="nt">&lt;/servlet-class&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+  
+<span class="nt">&lt;servlet-mapping&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>MemberFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.me<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+<span class="c">&lt;!-- 회원(Member) 처리 컨트롤러 --&gt;</span>
+  
+<span class="c">&lt;!-- 게시판(Board) 처리 컨트롤러 --&gt;</span>
+<span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>BoardFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>com.project.cafe.board.action.BoardFrontController<span class="nt">&lt;/servlet-class&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+  
+<span class="nt">&lt;servlet-mapping&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>BoardFrontController<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.bo<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+
+...
+생략
+</code></pre></div></div>
+
+<ul>
+  <li>게시판용 컨트롤러를 추가하기 위해서 서블릿 매핑을 추가해 주었다.</li>
+  <li>두 번째 하니까 좀 더 쉽게 느껴진다. ☺️</li>
+</ul>
+
+<h2 id="actionforwardjava">ActionForward.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.action</span><span class="o">;</span> <span class="c1">// MemberController에서도 같이 사용하는 클래스라서 다른 패키지 사용</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActionForward</span> 
+<span class="o">{</span>
+    <span class="c1">// 페이지를 이동할 때 필요한 정보를 저장하는 클래스</span>
+	
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">path</span><span class="o">;</span> <span class="c1">// 이동경로</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isRedirect</span><span class="o">;</span> <span class="c1">// 이동방식</span>
+	
+    <span class="c1">// isRedirect = true  =&gt; 주소가 바뀌고 화면도 바뀜</span>
+    <span class="c1">// isRedirect = false  =&gt; 주소는 바뀌지 않고 화면만 바뀜</span>
+	
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getPath</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">path</span><span class="o">;}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPath</span><span class="o">(</span><span class="nc">String</span> <span class="n">path</span><span class="o">)</span> <span class="o">{</span><span class="k">this</span><span class="o">.</span><span class="na">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">;}</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isRedirect</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">isRedirect</span><span class="o">;}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRedirect</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">isRedirect</span><span class="o">)</span> <span class="o">{</span><span class="k">this</span><span class="o">.</span><span class="na">isRedirect</span> <span class="o">=</span> <span class="n">isRedirect</span><span class="o">;}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="boardfrontcontrollerjava">BoardFrontController.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardFrontController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="c1">// 1. 전달되는 가상주소 계산</span>
+        <span class="c1">// 매핑된(.bo로 끝나는) 주소를 받아옴</span>
+        <span class="nc">String</span> <span class="n">requestURI</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getRequestURI</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"requestURI : "</span> <span class="o">+</span> <span class="n">requestURI</span><span class="o">);</span>
+		
+        <span class="c1">// 매핑된 해당 프로젝트 주소 구함</span>
+        <span class="nc">String</span> <span class="n">ctxPath</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ctxPath : "</span> <span class="o">+</span> <span class="n">ctxPath</span><span class="o">);</span>
+		
+        <span class="c1">// 매핑된 주소(requestURI)에서 프로젝트 주소(ctxPath)를 빼서 계속 바뀌는 맨 뒤 주소를 구함</span>
+        <span class="nc">String</span> <span class="n">command</span> <span class="o">=</span> <span class="n">requestURI</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">ctxPath</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"command : "</span> <span class="o">+</span> <span class="n">command</span><span class="o">);</span>
+		
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1. 가상주소 계산 완료\n"</span><span class="o">);</span>
+		
+		
+        <span class="c1">// 2. 가상주소 매핑</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+        <span class="k">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/board.bo"</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /board.bo 호출"</span><span class="o">);</span>
+			
+            <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardList.jsp"</span><span class="o">);</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/boardWrite.bo"</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /boardWrite.bo 호출"</span><span class="o">);</span>
+			
+            <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardWrite.jsp"</span><span class="o">);</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        <span class="o">}</span>
+		
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2. 가상주소 매핑 완료"</span><span class="o">);</span>
+		
+		
+        <span class="c1">// 3. 페이지 이동</span>
+        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">forward</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="c1">// 페이지 정보가 있을 때</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">isRedirect</span><span class="o">())</span>
+            <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : sendRedirect 방식으로 페이지 이동 : "</span> <span class="o">+</span> <span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+            <span class="o">}</span>
+            <span class="k">else</span> 
+            <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : forward 방식으로 페이지 이동 : "</span> <span class="o">+</span> <span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+                <span class="nc">RequestDispatcher</span> <span class="n">dis</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="n">forward</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+                <span class="n">dis</span><span class="o">.</span><span class="na">forward</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+            <span class="o">}</span>
+			
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"3. 페이지 이동 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+	
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="n">doProcess</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>게시판용 <code class="language-plaintext highlighter-rouge">컨트롤러</code>를 만들고 게시글 리스트를 보는 페이지와 글쓰기 페이지를 연결시켜 주었다.</li>
+  <li>그런데 글쓰기 페이지로 연결하는 기능을 만들고 나서 생각해 보니까 로그인 한 사용자인지 확인을 하지 않고 글쓰기 버튼을 누르면 무조건 연결시켜 주고 있었다… 😅 이제부터 로그인 한 회원만 글을 쓸 수 있도록 유효성 검사하는 부분을 추가할 것이다!<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -2426,275 +2512,459 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/0e431e2a9e5963c84a699a83ca8af0a4.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1213" /><category term="String" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1213 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">DB) 관계 데이터 모델링</title><link href="http://localhost:4000/database/db-05-relation/" rel="alternate" type="text/html" title="DB) 관계 데이터 모델링" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/database/db-05-relation</id><content type="html" xml:base="http://localhost:4000/database/db-05-relation/"><![CDATA[<h1 id="-관계-데이터-모델의-개념">👀 관계 데이터 모델의 개념</h1>
+<script src="https://gist.github.com/miro7923/0e431e2a9e5963c84a699a83ca8af0a4.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1213" /><category term="String" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1213 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현</title><link href="http://localhost:4000/project%20log/cafe-project-06/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 6 - 휴대폰 인증기능 구현" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-06</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-06/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
-  <li>개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델</li>
-  <li>하나의 개체에 대한 데이터를 하나의 릴레이션에 저장</li>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
 </ul>
 
-<h2 id="기본-용어">기본 용어</h2>
-<h3 id="릴레이션relation">릴레이션(relation)</h3>
+<h1 id="시작">시작</h1>
 <ul>
-  <li>하나의 개체에 대한 데이터를 2차원 테이블의 구조로 저장한 것</li>
-  <li>파일 관리 시스템 관점에서 파일(file)에 대응</li>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
 </ul>
 
-<h3 id="속성attribute">속성(attribute)</h3>
+<h1 id="주제">주제</h1>
 <ul>
-  <li>릴레이션의 열, 애트리뷰트로 <code class="language-plaintext highlighter-rouge">세로줄!</code></li>
-  <li>파일 관리 시스템 관점에서 필드(field)에 대응</li>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
 </ul>
 
-<h3 id="투플tuple">투플(tuple)</h3>
+<h1 id="진행상황">진행상황</h1>
 <ul>
-  <li>릴레이션의 행. <code class="language-plaintext highlighter-rouge">가로줄!</code></li>
-  <li>파일 관리 시스템 관점에서 레코드(record)에 대응</li>
+  <li><code class="language-plaintext highlighter-rouge">openAPI</code> 사용법을 익히고 싶어서 휴대폰 번호 인증하기 기능을 만들어 보았다.</li>
+  <li>그동안 <code class="language-plaintext highlighter-rouge">openAPI</code> 쓰면 쉽게 만들 수 있다, 개발이 편해진다 하는 말을 참 많이 들었는데 직접 해 보니까 쉽지 않아서 많이 헤멨다… 😔 처음 해 보는 것이라 그런걸까?</li>
+  <li>그리고 아직 <code class="language-plaintext highlighter-rouge">Spring framework</code>는 배우지 않은 상태라서 <code class="language-plaintext highlighter-rouge">Java</code>와 <code class="language-plaintext highlighter-rouge">Servlet</code>을 이용해 <code class="language-plaintext highlighter-rouge">MVC Model2</code> 패턴으로 구현해야 하는데 대부분의 자료는 <code class="language-plaintext highlighter-rouge">Spring framework</code>를 이용한 것이라 더 어렵게 느껴졌던 것 같다. 하지만 지금까지는 코드로 일일이 구현해 왔던 것을 <code class="language-plaintext highlighter-rouge">Spring</code>에서는 어노테이션으로 처리할 수 있는 것을 보니까 빨리 <code class="language-plaintext highlighter-rouge">Spring</code>을 배워 보고 싶어졌다.</li>
+  <li>그래도 이번 구현을 통해 휴대폰 번호 인증 로직이 어떻게 돌아가는 지 알게 되었고 <code class="language-plaintext highlighter-rouge">openAPI</code>도 어떤 방식으로 사용하는지 어느 정도 알게 되어서 좋은 경험이었다고 생각한다.</li>
 </ul>
 
-<h3 id="도메인domain">도메인(domain)</h3>
+<h2 id="1-네이버-클라우드-회원가입-하기">1. 네이버 클라우드 회원가입 하기</h2>
 <ul>
-  <li>하나의 속성이 가질 수 있는 모든 값의 집합</li>
-  <li>속성 값을 입력 및 수정할 때 적합성의 판단 기준이 됨</li>
-  <li>일반적으로 속성의 특성을 고려한 데이터 타입으로 정의</li>
-</ul>
-
-<h3 id="널null">널(null)</h3>
-<ul>
-  <li>속성 값을 아직 모르거나 해당되는 값이 없음을 표현</li>
-</ul>
-
-<h3 id="차수degree">차수(degree)</h3>
-<ul>
-  <li>하나의 릴레이션에서 속성의 전체 개수</li>
-</ul>
-
-<h3 id="카디널리티cardinality">카디널리티(cardinality)</h3>
-<ul>
-  <li>하나의 릴레이션에서 투플의 전체 개수<br /><br /></li>
-</ul>
-
-<h2 id="릴레이션의-구성">릴레이션의 구성</h2>
-<h3 id="릴레이션-스키마relation-schema">릴레이션 스키마(relation schema)</h3>
-<ul>
-  <li>릴레이션의 논리적 구조. 뼈대라 할 수 있다.</li>
-  <li>릴레이션의 이름과 릴레이션이 포함된 모든 속성 이름으로 정의
-    <ul>
-      <li>예) 고객(고객 아이디, 고객 이름, 나이, 등급, 직업, 적립금)</li>
-    </ul>
+  <li>
+    <p>대부분의 휴대폰 번호 인증 API는 유료였는데 네이버 클라우드의 API는 한 달에 50건까지 무료라서 사용했다.<br /></p>
   </li>
-  <li>릴레이션 내포(relation intension)라고도 함</li>
-  <li>정적인 특징이 있음</li>
+  <li><a href="https://giron.tistory.com/75">NAVER CLOUD PlATFORM[SENS API] - 네이버 문자 인증</a></li>
+  <li>기본적인 프로젝트 생성 방법은 이 블로그 글을 참고했다.</li>
+  <li>처음엔 <code class="language-plaintext highlighter-rouge">Products &amp; Services</code> 탭에서 활성화 된 메뉴가 아주 적을 수 있는데 결제 수단을 등록해 주면 모든 메뉴를 볼 수 있다.</li>
 </ul>
 
-<h3 id="릴레이션-인스턴스relation-instance">릴레이션 인스턴스(relation instance)</h3>
-<ul>
-  <li>어느 한 시점에 릴레이션에 존재하는 투플들의 집합. 릴레이션 안에 실제로 들어있는 값이다.</li>
-  <li>릴레이션 외연(relation extension)이라고도 함</li>
-  <li>시간이 흐름에 따라 투플이 계속 추가되거나 삭제될 수 있기 때문에 동적인 특징이 있다.<br /><br /></li>
-</ul>
+<h2 id="2-joinjsp에-휴대폰-번호-인증란-추가">2. join.jsp에 휴대폰 번호 인증란 추가</h2>
 
-<h2 id="데이터베이스의-구성">데이터베이스의 구성</h2>
-<h3 id="데이터베이스-스키마database-schema">데이터베이스 스키마(database schema)</h3>
-<ul>
-  <li>데이터베이스의 전체 구조</li>
-  <li>데이터베이스를 구성하는 릴레이션 스키마의 모음</li>
-</ul>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- join.jsp --&gt;</span>
 
-<h3 id="데이터베이스-인스턴스database-instance">데이터베이스 인스턴스(database instance)</h3>
-<ul>
-  <li>데이터베이스를 구성하는 릴레이션 인스턴스의 모음<br /><br /></li>
-</ul>
+...
+생략
 
-<h2 id="릴레이션의-특성">릴레이션의 특성</h2>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_TelField"</span><span class="nt">&gt;</span>휴대폰 번호 <span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone1"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone1"</span> <span class="na">size=</span><span class="s">"1"</span> <span class="na">maxlength=</span><span class="s">"3"</span> <span class="na">oninput=</span><span class="s">"tabCursor(1)"</span><span class="nt">&gt;</span> - 
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone2"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone2"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">oninput=</span><span class="s">"tabCursor(2)"</span><span class="nt">&gt;</span> - 
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone3"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone3"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"requestBtn"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"requestBtn"</span><span class="nt">&gt;</span>휴대폰인증<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"phoneMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_EmailField"</span><span class="nt">&gt;</span>인증번호 <span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"validateNum"</span> <span class="na">id=</span><span class="s">"validateNum"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"validateBtn"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"validateBtn"</span><span class="nt">&gt;</span>인증번호 확인<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"validateMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+...
+생략
+</code></pre></div></div>
+
+<h2 id="3-휴대폰-번호-인증을-처리하는-클래스-만들기">3. 휴대폰 번호 인증을 처리하는 클래스 만들기</h2>
 <ul>
-  <li>투플의 유일성
-    <ul>
-      <li>하나의 릴레이션에는 동일한 투플이 존재할 수 없다.</li>
-    </ul>
+  <li><a href="https://bemind.tistory.com/66">네이버 클라우드 플랫폼 SMS API 사용법 전체 코드, 예제 코드, Java, Spring, 스프링, Simple &amp; Easy Notification Service, SENS</a></li>
+  <li>
+    <p>이 블로그 글을 참고해서 구현했다. 지금까지 수업에서 <code class="language-plaintext highlighter-rouge">JSON</code>을 배운 적이 없어서 처음 <code class="language-plaintext highlighter-rouge">API</code> 문서를 봤을 때 굉장히 난감했는데 이 글 덕분에 코드를 분석하며 <code class="language-plaintext highlighter-rouge">JSON</code>을 무슨 용도로, 어떻게 사용하는 지 알 수 있었다.<br /></p>
   </li>
-  <li>투플의 무순서
-    <ul>
-      <li>하나의 릴레이션에서 투플 사이의 순서는 무의미하다.</li>
-    </ul>
-  </li>
-  <li>속성의 무순서
-    <ul>
-      <li>하나의 릴레이션에서 속성 사이의 순서는 무의미하다.</li>
-    </ul>
-  </li>
-  <li>속성의 원자성
-    <ul>
-      <li>속성 값으로 원자 값만 사용할 수 있다. 즉 한 속성 필드에 값이 2개 이상 들어갈 수 없음!<br /><br /></li>
-    </ul>
-  </li>
+  <li><a href="https://blog.naver.com/PostView.naver?blogId=n_cloudplatform&amp;logNo=222475388473&amp;parentCategoryNo=&amp;categoryNo=12&amp;viewDate=&amp;isShowPopularPosts=false&amp;from=postView">[이렇게 사용하세요!] SMS 문자 메시지 발송 앱 사용하기 (SENS API 활용법)</a></li>
+  <li>API의 각 항목에 대한 가이드는 공식 블로그를 참고했다. 여기만 확인해도 서비스 아이디가 뭔지, uri는 또 무슨 용도인지… 등등을 알 수 있다.</li>
 </ul>
 
-<h2 id="키key">키(key)</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// SmsService.java</span>
+
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.DataOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.InvalidKeyException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Base64</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.crypto.Mac</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.spec.SecretKeySpec</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.json.simple.JSONArray</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.simple.JSONObject</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SmsService</span> 
+<span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="nf">makeSignature</span><span class="o">(</span><span class="nc">String</span> <span class="n">method</span><span class="o">,</span> <span class="nc">String</span> <span class="n">url</span><span class="o">,</span> <span class="nc">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="nc">String</span> <span class="n">accessKey</span><span class="o">,</span> <span class="nc">String</span> <span class="n">secretKey</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">UnsupportedEncodingException</span><span class="o">,</span> <span class="nc">NoSuchAlgorithmException</span><span class="o">,</span> <span class="nc">InvalidKeyException</span>
+    <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">space</span> <span class="o">=</span> <span class="s">" "</span><span class="o">;</span>					<span class="c1">// one space</span>
+        <span class="nc">String</span> <span class="n">newLine</span> <span class="o">=</span> <span class="s">"\n"</span><span class="o">;</span>					<span class="c1">// new line</span>
+		
+        <span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">method</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">space</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">url</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">newLine</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">timestamp</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">newLine</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">accessKey</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+		
+        <span class="nc">SecretKeySpec</span> <span class="n">signingKey</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">encodeBase64String</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">signingKey</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SecretKeySpec</span><span class="o">(</span><span class="n">secretKey</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">),</span> <span class="s">"HmacSHA256"</span><span class="o">);</span>
+            <span class="nc">Mac</span> <span class="n">mac</span> <span class="o">=</span> <span class="nc">Mac</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"HmacSHA256"</span><span class="o">);</span>
+            <span class="n">mac</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">signingKey</span><span class="o">);</span>
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">rawHmac</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">message</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">));</span>
+            <span class="n">encodeBase64String</span> <span class="o">=</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">rawHmac</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">encodeBase64String</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+        <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">encodeBase64String</span><span class="o">;</span>
+<span class="o">}</span>
+	
+<span class="c1">//	{</span>
+<span class="c1">//    "type":"(SMS | LMS | MMS)", // sms 타입</span>
+<span class="c1">//    "contentType":"(COMM | AD)", // 메세지 타입</span>
+<span class="c1">//    "countryCode":"string", // 국가번호</span>
+<span class="c1">//    "from":"string",		// 발신번호</span>
+<span class="c1">//    "subject":"string",		// 기본 메시지 제목</span>
+<span class="c1">//    "content":"string",		// 기본 메시지 내용</span>
+<span class="c1">//    "messages":[			// 메시지 정보(Object) - 최대 1000개</span>
+<span class="c1">//        {</span>
+<span class="c1">//            "to":"string",	// 수신번호(String)</span>
+<span class="c1">//            "subject":"string", // 개별 메시지 제목(String)</span>
+<span class="c1">//            "content":"string"  // 개별 메시지 내용(String)</span>
+<span class="c1">//        }</span>
+<span class="c1">//    ]</span>
+<span class="c1">//}</span>
+	
+    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"unchecked"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">sendSms</span><span class="o">(</span><span class="nc">String</span> <span class="n">dstPhoneNumber</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"sendSms() 호출"</span><span class="o">);</span>
+		
+        <span class="nc">String</span> <span class="n">method</span> <span class="o">=</span> <span class="s">"POST"</span><span class="o">;</span>					<span class="c1">// method</span>
+        <span class="nc">String</span> <span class="n">smsUrl</span> <span class="o">=</span> <span class="s">"https://sens.apigw.ntruss.com"</span><span class="o">;</span>	<span class="c1">// url (include query string)</span>
+        <span class="nc">String</span> <span class="n">requestUrl</span> <span class="o">=</span> <span class="s">"/sms/v2/services/"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">requestUrlType</span> <span class="o">=</span> <span class="s">"/messages"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">accessKey</span> <span class="o">=</span> <span class="s">"{user access key id}"</span><span class="o">;</span>			<span class="c1">// access key id (from portal or Sub Account)</span>
+        <span class="nc">String</span> <span class="n">secretKey</span> <span class="o">=</span> <span class="s">"{user secret key}"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">serviceId</span> <span class="o">=</span> <span class="s">"{user service id}"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span>			<span class="c1">// current timestamp (epoch)</span>
+		
+        <span class="n">requestUrl</span> <span class="o">+=</span> <span class="n">serviceId</span> <span class="o">+</span> <span class="n">requestUrlType</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">apiUrl</span> <span class="o">=</span> <span class="n">smsUrl</span> <span class="o">+</span> <span class="n">requestUrl</span><span class="o">;</span>
+		
+        <span class="nc">JSONObject</span> <span class="n">bodyJson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">();</span>
+        <span class="nc">JSONObject</span> <span class="n">toJson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">();</span>
+        <span class="nc">JSONArray</span> <span class="n">toArr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONArray</span><span class="o">();</span>
+		
+        <span class="n">toJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"to"</span><span class="o">,</span> <span class="n">dstPhoneNumber</span><span class="o">);</span>
+        <span class="n">toArr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">toJson</span><span class="o">);</span>
+		
+        <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"SMS"</span><span class="o">);</span>
+        <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"contentType"</span><span class="o">,</span> <span class="s">"COMM"</span><span class="o">);</span>
+        <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"countryCode"</span><span class="o">,</span> <span class="s">"82"</span><span class="o">);</span>
+        <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"from"</span><span class="o">,</span> <span class="s">"발신번호로 등록한 폰번호"</span><span class="o">);</span>
+        <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"subject"</span><span class="o">,</span> <span class="s">"[Web 발신]"</span><span class="o">);</span>
+
+        <span class="c1">// 난수 생성</span>
+        <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">9999</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">validateNum</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="o">(</span><span class="n">max</span> <span class="o">-</span> <span class="n">min</span> <span class="o">+</span> <span class="mi">1</span><span class="o">))</span> <span class="o">+</span> <span class="n">min</span><span class="o">;</span>
+        <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"content"</span><span class="o">,</span> <span class="s">"인증번호 : "</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">validateNum</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"validateNum : "</span> <span class="o">+</span> <span class="n">validateNum</span><span class="o">);</span>
+		
+        <span class="n">bodyJson</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"messages"</span><span class="o">,</span> <span class="n">toArr</span><span class="o">);</span>
+		
+        <span class="nc">String</span> <span class="n">body</span> <span class="o">=</span> <span class="n">bodyJson</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+		
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"body : "</span> <span class="o">+</span> <span class="n">body</span><span class="o">);</span>
+		
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="n">apiUrl</span><span class="o">);</span>
+			
+            <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setUseCaches</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setDoInput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"x-ncp-apigw-timestamp"</span><span class="o">,</span> <span class="n">timestamp</span><span class="o">);</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"x-ncp-iam-access-key"</span><span class="o">,</span> <span class="n">accessKey</span><span class="o">);</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"x-ncp-apigw-signature-v2"</span><span class="o">,</span> <span class="n">makeSignature</span><span class="o">(</span><span class="n">method</span><span class="o">,</span> <span class="n">requestUrl</span><span class="o">,</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">accessKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">));</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="n">method</span><span class="o">);</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+            <span class="nc">DataOutputStream</span> <span class="n">dos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DataOutputStream</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>
+			
+            <span class="n">dos</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">body</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+            <span class="n">dos</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+            <span class="n">dos</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			
+            <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+            <span class="nc">BufferedReader</span> <span class="n">br</span><span class="o">;</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"responseCode : "</span> <span class="o">+</span> <span class="n">responseCode</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="mi">202</span> <span class="o">==</span> <span class="n">responseCode</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="c1">// 정상호출</span>
+                <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="o">}</span>
+            <span class="k">else</span> 
+            <span class="o">{</span>
+                <span class="c1">// 에러발생</span>
+                <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getErrorStream</span><span class="o">()));</span>
+            <span class="o">}</span>
+			
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+            <span class="k">while</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="o">(</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">()))</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+			
+            <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+		
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"sendSms() 끝"</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">validateNum</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
 <ul>
-  <li>릴레이션에서 투플들을 유일하게 구별하는 속성 또는 속성들의 집합</li>
+  <li>난수를 발생시켜서 인증번호를 만들었으며 사용자가 입력한 번호와 비교하기 위해서 생성된 난수를 리턴하도록 했다.</li>
+  <li>난수는 4자리 숫자를 만들도록 범위를 지정해 주었다.</li>
 </ul>
 
-<h3 id="키의-특성">키의 특성</h3>
+<h2 id="4-문자-전송-결과를-받아올-서블릿-생성">4. 문자 전송 결과를 받아올 서블릿 생성</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/validatePhone.me"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValidatePhone</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> 
+<span class="o">{</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+		
+		<span class="nc">SmsService</span> <span class="n">smsService</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SmsService</span><span class="o">();</span>
+		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+		<span class="kt">int</span> <span class="n">validateNum</span> <span class="o">=</span> <span class="n">smsService</span><span class="o">.</span><span class="na">sendSms</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone"</span><span class="o">));</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">validateNum</span><span class="o">);</span>
+		
+		<span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+	<span class="o">{</span>
+		<span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
 <ul>
-  <li>유일성(uniqueness)
-    <ul>
-      <li>하나의 릴레이션에서 모든 투플은 서로 다른 키 값을 가져야 함</li>
-    </ul>
-  </li>
-  <li>최소성(minimality)
-    <ul>
-      <li>꼭 필요한 최소한의 속성들로만 키를 구성</li>
-    </ul>
-  </li>
+  <li>문자 전송 후 발생된 난수를 받아와 출력 스트림을 이용해 <code class="language-plaintext highlighter-rouge">response</code> 객체로 전달하도록 했다.</li>
 </ul>
 
-<h3 id="키의-종류">키의 종류</h3>
-<h4 id="슈퍼키super-key">슈퍼키(super key)</h4>
+<h2 id="5-joinjs에서-joinjsp와-인증-페이지를-연결하는-코드-작성">5. join.js에서 join.jsp와 인증 페이지를 연결하는 코드 작성</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="nx">생략</span>
+
+<span class="kd">var</span> <span class="nx">$validateNum</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">$checkValidate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+ 
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="nx">중략</span>
+    
+    <span class="nx">getToken</span><span class="p">();</span>
+    <span class="nx">checkValidateNum</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">getToken</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#requestBtn</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">phoneCheck</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">$phone</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">phoneNum</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#phone1</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#phone2</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#phone3</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+                <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./validatePhone.me</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="dl">'</span><span class="s1">phone</span><span class="dl">'</span><span class="p">:</span> <span class="nx">phoneNum</span>
+                <span class="p">},</span>
+                <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">인증번호 전송 완료!</span><span class="dl">'</span><span class="p">);</span>
+                    <span class="nx">$validateNum</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">});</span>					
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">checkValidateNum</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#validateBtn</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">userInput</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateNum</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">$validateNum</span> <span class="o">===</span> <span class="nx">userInput</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nx">$checkValidate</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">"</span><span class="s2">인증이 완료되었습니다!</span><span class="dl">"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">green</span><span class="dl">"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">"</span><span class="s2">disabled</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#requestBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">"</span><span class="s2">disabled</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">background</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">gray</span><span class="dl">"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#requestBtn</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">background</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">gray</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> 
+        <span class="p">{</span>
+            <span class="nx">$checkValidate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">"</span><span class="s2">인증번호가 일치하지 않습니다.</span><span class="dl">"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#validateMsg</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 마지막 제출 전에 유효성 검사하는 함수</span>
+<span class="kd">function</span> <span class="nx">finalCheck</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">join</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">join</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+		
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$pass</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">pass</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$passConfirm</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">confirm</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$birth</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">birth</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="nx">genderCheck</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$gender</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+
+    <span class="nx">cityCheck</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$city</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+	
+    <span class="nx">phoneCheck</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$phone</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">phone1</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$checkValidate</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">validateNum</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$email</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">join</span><span class="p">.</span><span class="nx">email</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> 
+
+<span class="p">...</span>
+<span class="nx">생략</span>
+</code></pre></div></div>
+
 <ul>
-  <li>유일성을 만족하는 속성 또는 속성들의 집합</li>
-  <li>예) 고객 릴레이션의 슈퍼키 : 고객아이디, (고객아이디, 고객이름), (고객이름, 주소) 등</li>
+  <li>서블릿을 이용해 문자 전송 요청을 보내고 발생된 난수를 받아올 것이기 때문에 <code class="language-plaintext highlighter-rouge">Ajax</code>를 이용했다.</li>
+  <li>인증번호 확인 버튼을 누르면 서블릿에서 받아온 번호와 비교해서 일치하는지 아닌지 확인 후 결과를 알려준다.<br /><br /></li>
 </ul>
 
-<h4 id="후보키candidate-key">후보키(candidate key)</h4>
+<p align="center"><img src="../../assets/images/validatePhone.png" width="400" /></p>
+<p><br /><br /></p>
+
+<h1 id="오늘-얻은-팁">오늘 얻은 팁</h1>
 <ul>
-  <li>유일성과 최소성을 만족하는 속성 또는 속성들의 집합</li>
-  <li>예) 고객 릴레이션의 후보키 : 고객아이디, (고객이름, 주소) 등</li>
+  <li>만약 css 변경 사항이 적용되지 않을 때에는 css 파일 경로 설정하는 부분의 맨 뒤에 <code class="language-plaintext highlighter-rouge">?</code>를 붙여주면 된다.</li>
 </ul>
 
-<h4 id="기본키primary-key">기본키(primary key)</h4>
-<ul>
-  <li>후보키 중에서 기본적으로 사용하기 위해 선택한 키</li>
-  <li>널값을 가질 수 있는 속성이 포함된 후보키는 부적합</li>
-  <li>값이 자주 변경될 수 있는 속성이 포함된 후보키는 부적합</li>
-  <li>단순한 후보키를 선택</li>
-  <li>예) 고객 릴레이션의 기본키 : 고객아이디</li>
-</ul>
-
-<h4 id="대체키alternate-key">대체키(alternate key)</h4>
-<ul>
-  <li>기본키로 선택되지 못한 후보키</li>
-  <li>예) 고객 릴레이션의 대체키 : (고객이름, 주소)</li>
-</ul>
-
-<h4 id="외래키foreign-key">외래키(foreign key)</h4>
-<ul>
-  <li>다른 릴레이션의 기본키를 참조하는 속성 또는 속성들의 집합</li>
-  <li>릴레이션들 간의 관계를 표현</li>
-  <li>참조하는 릴레이션 : 외래키를 가진 릴레이션(주문 릴레이션)</li>
-  <li>참조되는 릴레이션 : 외래키가 참조하는 기본키를 가진 릴레이션(고객 릴레이션)</li>
-  <li>역할
-    <ul>
-      <li>고객 릴레이션과 주문 릴레이션이 관계를 맺어 주문 릴레이션의 투플과 연관성 있는 고객 릴레이션의 투플을 연결할 수 있음</li>
-      <li>외래키 속성과 그것이 참조하는 기본키 속성의 이름은 달라도 되지만 도메인은 같아야 한다.</li>
-    </ul>
-  </li>
-  <li>하나의 릴레이션에는 외래키가 여러 개 존재할 수도 있고 외래키를 기본키로 사용할 수도 있다.</li>
-  <li>같은 릴레이션의 기본키를 참조하는 외래키도 정의할 수 있다.</li>
-  <li>외래키 속성은 널 값을 가질 수도 있다.<br /><br /></li>
-</ul>
-
-<h2 id="무결성-제약조건integrity-constraint">무결성 제약조건(integrity constraint)</h2>
-<ul>
-  <li>데이터의 무결성을 보장하고 일관된 상태로 유지하기 위한 규칙</li>
-  <li>무결성 : 데이터를 결함이 없는 상태, 즉 정확하고 유효하게 유지하는 것</li>
-</ul>
-
-<h3 id="개체-무결성-제약조건entity-integrity-constraint">개체 무결성 제약조건(entity integrity constraint)</h3>
-<ul>
-  <li>기본키를 구성하는 모든 속성은 널 값을 가질 수 없는 규칙</li>
-</ul>
-
-<h3 id="참조-무결성-제약조건referential-integrity-constraint">참조 무결성 제약조건(referential integrity constraint)</h3>
-<ul>
-  <li>외래키는 참조할 수 없는 값을 가질 수 없는 규칙</li>
-  <li>널 값은 가질 수 있지만 널 값이 아닌데 참조하려는 테이블에는 해당 값이 없으면 외래키로 사용할 수 없다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="출처">출처</h1>
-<ul>
-  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1163794">데이터베이스의 원리와 응용 - 한양대학교 KOCW 공개 강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Database" /><category term="DB" /><summary type="html"><![CDATA[👀 관계 데이터 모델의 개념 개념적 구조를 논리적 구조로 표현하는 논리적 데이터 모델 하나의 개체에 대한 데이터를 하나의 릴레이션에 저장]]></summary></entry><entry><title type="html">C++) BOJ 10610. 30</title><link href="http://localhost:4000/boj/boj10610-cpp/" rel="alternate" type="text/html" title="C++) BOJ 10610. 30" /><published>2022-03-11T00:00:00+09:00</published><updated>2022-03-11T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj10610-cpp</id><content type="html" xml:base="http://localhost:4000/boj/boj10610-cpp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/10610">https://www.acmicpc.net/problem/10610</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nt">link</span> <span class="nt">rel</span><span class="o">=</span><span class="s1">"stylesheet"</span> <span class="nt">href</span><span class="o">=</span><span class="s1">"${pageContext.request.contextPath}/css/modules.css?after"</span><span class="o">&gt;</span>
+</code></pre></div></div>
 
 <ul>
   <li>
-    <p>어느 날, 미르코는 우연히 길거리에서 양수 N을 보았다. 미르코는 30이란 수를 존경하기 때문에, 그는 길거리에서 찾은 수에 포함된 숫자들을 섞어 30의 배수가 되는 가장 큰 수를 만들고 싶어한다.</p>
+    <p>이런 식으로 맨 뒤에 <code class="language-plaintext highlighter-rouge">?</code>를 붙이고 다음에는 아무 말이나 입력해도 되고 입력하지 않아도 된다.</p>
   </li>
   <li>
-    <p>미르코를 도와 그가 만들고 싶어하는 수를 계산하는 프로그램을 작성하라.<br /><br /></p>
+    <p>이제 로그인 기능 만들어야지… <br /><br /><br /></p>
   </li>
 </ul>
 
-<h1 id="입력">입력</h1>
-<hr />
-
+<h1 id="마감까지">마감까지</h1>
 <ul>
-  <li>N을 입력받는다. N는 최대 105개의 숫자로 구성되어 있으며, 0으로 시작하지 않는다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>미르코가 만들고 싶어하는 수가 존재한다면 그 수를 출력하라. 그 수가 존재하지 않는다면, -1을 출력하라.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>참고 풀이 : <a href="https://ongveloper.tistory.com/114">https://ongveloper.tistory.com/114</a></p>
-  </li>
-  <li>
-    <p>문제 이해를 잘못해서.. 자꾸 틀려서 구글링했다.<br /></p>
-  </li>
-  <li>입력으로 주어지는 N이 자릿수를 말하는 것이 아니라 N개의 수이기 때문에 최대 10^5개의 숫자가 입력으로 주어진다.</li>
-  <li>
-    <p>그래서 정수형으로는 절대 받을 수 없는 숫자였던 것이다… 문자열로 입력을 받아야 했음 - 틀린 이유 1<br /></p>
-  </li>
-  <li>입력을 해결하고 나면 이제 이 수들의 배치를 바꿔가며 30의 배수가 되는지 확인해야 하는데 처음에는 문제 이해 자체를 잘못했기 때문에 입력받은 수를 배열로 바꿔서 prev_permutation으로 순열을 구한 다음 30의 배수인지 구하는 코드를 작성했다. 물론 입력 자체가 잘못되었기 때문에 틑림</li>
-  <li>입력의 최대값이 아주 크기 때문에 처음에 작성했던 것처럼 완전 탐색 방식으로는 시간초과를 받을 수 밖에 없고 규칙을 찾아서 적용해야 한다.</li>
-  <li>
-    <p>일단 30의 배수가 되려면 맨 마지막 자릿수가 0이어야 하고 3으로 나누어 떨어지려면 각 자릿수를 더한 값이 3의 배수가 되어야 한다.<br /></p>
-  </li>
-  <li>
-    <ol>
-      <li>입력받은 수를 내림차순으로 정렬한 후 맨 마지막 원소가 0인지 검사 후 0이 아니면 -1 출력</li>
-    </ol>
-  </li>
-  <li>
-    <ol>
-      <li>1번을 통과했으면 각 자릿수를 더해서 3의 배수가 되는지 확인한 후 결과값 출력<br /></li>
-    </ol>
-  </li>
-  <li>언제쯤.. 무난하게 풀 수 있을까…<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 4 ms</li>
-  <li>메모리 : 2300 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/55212f123cfa1b4e659191c74ac6ef3e.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No10610" /><category term="Greedy" /><category term="C++" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/10610 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry></feed>
+  <li><code class="language-plaintext highlighter-rouge">D-24</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry></feed>
