@@ -1,0 +1,1051 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>프로젝트) Cafe(웹 사이트) 만들기 13 - 게시글 조회 기능 만들기 | Yujin Dev Log</title>
+<meta name="description" content="개발환경    MacBook Air (M1, 2020)   OpenJDK 8   Eclipse 2021-12   tomcat 8.5   MySQL Workbench 8.0.19">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="프로젝트) Cafe(웹 사이트) 만들기 13 - 게시글 조회 기능 만들기">
+<meta property="og:url" content="http://localhost:4000/project%20log/cafe-project-13/">
+
+
+  <meta property="og:description" content="개발환경    MacBook Air (M1, 2020)   OpenJDK 8   Eclipse 2021-12   tomcat 8.5   MySQL Workbench 8.0.19">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-03-24T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/project%20log/cafe-project-13/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#project-log" itemprop="item"><span itemprop="name">Project log</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">프로젝트) Cafe(웹 사이트) 만들기 13 - 게시글 조회 기능 만들기</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 성장하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="프로젝트) Cafe(웹 사이트) 만들기 13 - 게시글 조회 기능 만들기">
+    <meta itemprop="description" content="개발환경  MacBook Air (M1, 2020)  OpenJDK 8  Eclipse 2021-12  tomcat 8.5  MySQL Workbench 8.0.19">
+    <meta itemprop="datePublished" content="2022-03-24T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/project%20log/cafe-project-13/" class="u-url" itemprop="url">프로젝트) Cafe(웹 사이트) 만들기 13 - 게시글 조회 기능 만들기
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#시작">시작</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#boardlistjsp">boardList.jsp</a></li><li><a href="#boardfrontcontrollerjava">BoardFrontController.java</a></li><li><a href="#boardcontentactionjava">BoardContentAction.java</a></li><li><a href="#boarddaojava---updatereadcountnum">BoardDAO.java - updateReadCount(num)</a></li><li><a href="#boarddaojava---getpostnum">BoardDAO.java - getPost(num)</a></li><li><a href="#boardcontentjsp">boardContent.jsp</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>게시판 목록에서 게시글을 선택하면 내용을 볼 수 있는 기능을 만들었다.</li>
+</ul>
+
+<h2 id="boardlistjsp">boardList.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...생략
+
+<span class="nt">&lt;thead&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>No.<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>제목<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>작성자<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>작성일<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>조회수<span class="nt">&lt;/th&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/thead&gt;</span>
+<span class="nt">&lt;tbody&gt;</span>
+<span class="nt">&lt;%</span>
+  <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">postList</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">postList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> 
+    <span class="o">{</span>
+      <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">postList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="nt">%&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./BoardContent.bo?num=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getDate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getReadcount</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;%</span><span class="o">}}</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/tbody&gt;</span>
+
+...생략
+</code></pre></div></div>
+
+<ul>
+  <li>글 목록을 출력하는 부분에서 <code class="language-plaintext highlighter-rouge">a</code> 태그를 사용해 <code class="language-plaintext highlighter-rouge">하이퍼링크</code>를 추가했다.</li>
+  <li>글 번호와 현재 페이지 정보를 <code class="language-plaintext highlighter-rouge">get</code> 방식으로 파라미터로 넘겨준다.</li>
+  <li>페이지 정보를 넘겨주는 이유는 글을 보고 나서 목록으로 다시 돌아갈 때 사용자가 이전에 있던 페이지로 이동하기 위해서다.</li>
+</ul>
+
+<h2 id="boardfrontcontrollerjava">BoardFrontController.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// .. 생략</span>
+
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+<span class="o">{</span>
+    <span class="c1">// .. 생략</span>
+    
+    <span class="c1">// 2. 가상주소 매핑</span>
+    <span class="nc">Action</span> <span class="n">action</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    
+    <span class="c1">// .. 생략</span>
+
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/BoardContent.bo"</span><span class="o">))</span>
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /BoardContent.bo 호출"</span><span class="o">);</span>
+			
+        <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardContentAction</span><span class="o">();</span>
+			
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">forward</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+<span class="c1">// .. 생략</span>
+</code></pre></div></div>
+
+<ul>
+  <li>글 제목을 누르면 <code class="language-plaintext highlighter-rouge">Controller</code>로 와서 글 내용을 보여주는 페이지로 연결된다.</li>
+</ul>
+
+<h2 id="boardcontentactionjava">BoardContentAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardContentAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : BoardContentAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 전달받은 파라메터(글 번호, 페이지정보) 저장</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
+        <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span> <span class="c1">// 페이지번호는 DB 처리할 때 사용하진 않아서 형변환 필요 X</span>
+		
+        <span class="c1">// DAO 객체 생성</span>
+        <span class="nc">BoardDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDAO</span><span class="o">();</span>
+
+        <span class="c1">// 글 조회수 1 증가</span>
+        <span class="n">dao</span><span class="o">.</span><span class="na">updateReadCount</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+		
+        <span class="c1">// 글 정보 불러오기</span>
+        <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getPost</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+		
+        <span class="c1">// request 영역에 글 정보랑 페이지정보 저장</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">,</span> <span class="n">dto</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">);</span>
+		
+        <span class="c1">// 페이지 이동</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardContent.jsp"</span><span class="o">);</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Action class</code>에 오면 <code class="language-plaintext highlighter-rouge">DB</code>와 연결해서 글 조회수를 증가시킨 후 글 정보를 가져오는 동작을 수행한다.</li>
+</ul>
+
+<h2 id="boarddaojava---updatereadcountnum">BoardDAO.java - updateReadCount(num)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateReadCount</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set readcount = readcount + 1 where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+			
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 조회수 1 증가 완료"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>글 정보를 가져오기에 앞서 조회수를 먼저 증가시킨다.</li>
+</ul>
+
+<h2 id="boarddaojava---getpostnum">BoardDAO.java - getPost(num)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">getPost</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDTO</span><span class="o">();</span>
+				
+            <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"content"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">"date"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"file"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setIp</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"ip"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRe_lev</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"re_lev"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRe_ref</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"re_ref"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRe_seq</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"re_seq"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setReadcount</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"readcount"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"title"</span><span class="o">));</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 1개 정보 저장 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">dto</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>조회수 증가가 완료되면 글 1개의 정보를 가져온다.</li>
+</ul>
+
+<h2 id="boardcontentjsp">boardContent.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span>
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+	
+    <span class="kt">boolean</span> <span class="n">isLogin</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span> <span class="n">isLogin</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">else</span> <span class="n">isLogin</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+	
+    <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="o">(</span><span class="nc">BoardDTO</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span>
+<span class="nt">%&gt;</span>
+<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/leftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h2&gt;</span>최신글 보기<span class="nt">&lt;/h2&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">align=</span><span class="s">"right"</span><span class="nt">&gt;&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">id=</span><span class="s">"writeBtn"</span> 
+        <span class="na">onclick=</span><span class="s">"memberCheck(</span><span class="nt">&lt;%=</span><span class="n">isLogin</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;</span>글쓰기<span class="nt">&lt;/button&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"type09"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;colgroup&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"45%"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"20%"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"15%"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/colgroup&gt;</span>
+        <span class="nt">&lt;thead&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getDate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>조회수 <span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getReadcount</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/thead&gt;</span>
+        <span class="nt">&lt;tbody&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"5"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>첨부파일<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"3"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/tbody&gt;</span>
+      <span class="nt">&lt;/table&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"boardPage"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
+        <span class="na">onclick=</span><span class="s">"location.href='#';"</span><span class="nt">&gt;</span>수정하기<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
+        <span class="na">onclick=</span><span class="s">"location.href='#';"</span><span class="nt">&gt;</span>삭제하기<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
+        <span class="na">onclick=</span><span class="s">"location.href='#';"</span><span class="nt">&gt;</span>답글쓰기<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
+        <span class="na">onclick=</span><span class="s">"location.href='./BoardList.bo?pageNum=</span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">';"</span><span class="nt">&gt;</span>목록이동<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이제 글 내용을 보여주는 페이지로 오면 <code class="language-plaintext highlighter-rouge">DB</code>에서 불러온 내용을 화면에 출력한다.</li>
+  <li>하단에 <code class="language-plaintext highlighter-rouge">목록이동</code> 버튼을 누르면 글을 보기 전에 머물러 있던 페이지로 이동한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/boardContent.png" /></p>
+
+<ul>
+  <li>연결 성공!</li>
+  <li>다음에는 게시글 수정 기능을 만들 것이다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-11</code></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cafe" class="page__taxonomy-item p-category" rel="tag">Cafe</a><span class="sep">, </span>
+    
+      <a href="/tags/#log" class="page__taxonomy-item p-category" rel="tag">Log</a><span class="sep">, </span>
+    
+      <a href="/tags/#project" class="page__taxonomy-item p-category" rel="tag">Project</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#project-log" class="page__taxonomy-item p-category" rel="tag">Project Log</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-03-24T00:00:00+09:00">March 24, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+13+-+%EA%B2%8C%EC%8B%9C%EA%B8%80+%EC%A1%B0%ED%9A%8C+%EA%B8%B0%EB%8A%A5+%EB%A7%8C%EB%93%A4%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-13%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-13%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-13%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/boj/CodingTestBook-03-3-py/" class="pagination--pager" title="Python) 이것이 취업을 위한 코딩테스트다 03-3. 숫자 카드 게임
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/CodingTestBook-03-3-py/" rel="permalink">Python) 이것이 취업을 위한 코딩테스트다 03-3. 숫자 카드 게임
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 출처
+
+
+
+  이것이 취업을 위한 코딩테스트다 with 파이썬
+  Chapter 03 - 3. 숫자 카드 게임
+
+
+제한
+
+
+
+  시간 제한 : 1 초
+  메모리 제한 : 128 MB
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-12/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 12 - 게시판 글쓰기 기능 만들기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-11/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 11 - 회원만 게시판 글 쓸 수 있게 하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-10/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 10 - 게시판 만들기 시작
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

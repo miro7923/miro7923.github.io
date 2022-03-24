@@ -1,0 +1,310 @@
+I"`y<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>게시판 목록에서 게시글을 선택하면 내용을 볼 수 있는 기능을 만들었다.</li>
+</ul>
+
+<h2 id="boardlistjsp">boardList.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...생략
+
+<span class="nt">&lt;thead&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>No.<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>제목<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>작성자<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>작성일<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>조회수<span class="nt">&lt;/th&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/thead&gt;</span>
+<span class="nt">&lt;tbody&gt;</span>
+<span class="nt">&lt;%</span>
+  <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">postList</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">postList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> 
+    <span class="o">{</span>
+      <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">postList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="nt">%&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./BoardContent.bo?num=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getDate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getReadcount</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;%</span><span class="o">}}</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/tbody&gt;</span>
+
+...생략
+</code></pre></div></div>
+
+<ul>
+  <li>글 목록을 출력하는 부분에서 <code class="language-plaintext highlighter-rouge">a</code> 태그를 사용해 <code class="language-plaintext highlighter-rouge">하이퍼링크</code>를 추가했다.</li>
+  <li>글 번호와 현재 페이지 정보를 <code class="language-plaintext highlighter-rouge">get</code> 방식으로 파라미터로 넘겨준다.</li>
+  <li>페이지 정보를 넘겨주는 이유는 글을 보고 나서 목록으로 다시 돌아갈 때 사용자가 이전에 있던 페이지로 이동하기 위해서다.</li>
+</ul>
+
+<h2 id="boardfrontcontrollerjava">BoardFrontController.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// .. 생략</span>
+
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+<span class="o">{</span>
+    <span class="c1">// .. 생략</span>
+    
+    <span class="c1">// 2. 가상주소 매핑</span>
+    <span class="nc">Action</span> <span class="n">action</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    
+    <span class="c1">// .. 생략</span>
+
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/BoardContent.bo"</span><span class="o">))</span>
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /BoardContent.bo 호출"</span><span class="o">);</span>
+			
+        <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardContentAction</span><span class="o">();</span>
+			
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">forward</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+<span class="c1">// .. 생략</span>
+</code></pre></div></div>
+
+<ul>
+  <li>글 제목을 누르면 <code class="language-plaintext highlighter-rouge">Controller</code>로 와서 글 내용을 보여주는 페이지로 연결된다.</li>
+</ul>
+
+<h2 id="boardcontentactionjava">BoardContentAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardContentAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : BoardContentAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 전달받은 파라메터(글 번호, 페이지정보) 저장</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
+        <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span> <span class="c1">// 페이지번호는 DB 처리할 때 사용하진 않아서 형변환 필요 X</span>
+		
+        <span class="c1">// DAO 객체 생성</span>
+        <span class="nc">BoardDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDAO</span><span class="o">();</span>
+
+        <span class="c1">// 글 조회수 1 증가</span>
+        <span class="n">dao</span><span class="o">.</span><span class="na">updateReadCount</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+		
+        <span class="c1">// 글 정보 불러오기</span>
+        <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getPost</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+		
+        <span class="c1">// request 영역에 글 정보랑 페이지정보 저장</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">,</span> <span class="n">dto</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">);</span>
+		
+        <span class="c1">// 페이지 이동</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardContent.jsp"</span><span class="o">);</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Action class</code>에 오면 <code class="language-plaintext highlighter-rouge">DB</code>와 연결해서 글 조회수를 증가시킨 후 글 정보를 가져오는 동작을 수행한다.</li>
+</ul>
+
+<h2 id="boarddaojava---updatereadcountnum">BoardDAO.java - updateReadCount(num)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateReadCount</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set readcount = readcount + 1 where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+			
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 조회수 1 증가 완료"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>글 정보를 가져오기에 앞서 조회수를 먼저 증가시킨다.</li>
+</ul>
+
+<h2 id="boarddaojava---getpostnum">BoardDAO.java - getPost(num)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">getPost</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDTO</span><span class="o">();</span>
+				
+            <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"content"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">"date"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"file"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setIp</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"ip"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRe_lev</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"re_lev"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRe_ref</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"re_ref"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRe_seq</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"re_seq"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setReadcount</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"readcount"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"title"</span><span class="o">));</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 1개 정보 저장 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">dto</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>조회수 증가가 완료되면 글 1개의 정보를 가져온다.</li>
+</ul>
+
+<h2 id="boardcontentjsp">boardContent.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span>
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+	
+    <span class="kt">boolean</span> <span class="n">isLogin</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span> <span class="n">isLogin</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">else</span> <span class="n">isLogin</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+	
+    <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="o">(</span><span class="nc">BoardDTO</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span>
+<span class="nt">%&gt;</span>
+<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/leftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h2&gt;</span>최신글 보기<span class="nt">&lt;/h2&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">align=</span><span class="s">"right"</span><span class="nt">&gt;&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">id=</span><span class="s">"writeBtn"</span> 
+        <span class="na">onclick=</span><span class="s">"memberCheck(</span><span class="nt">&lt;%=</span><span class="n">isLogin</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;</span>글쓰기<span class="nt">&lt;/button&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"type09"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;colgroup&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"45%"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"20%"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"15%"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/colgroup&gt;</span>
+        <span class="nt">&lt;thead&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getDate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"cols"</span><span class="nt">&gt;</span>조회수 <span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getReadcount</span><span class="o">()</span> <span class="nt">%&gt;&lt;/th&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/thead&gt;</span>
+        <span class="nt">&lt;tbody&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"5"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>첨부파일<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"3"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/tbody&gt;</span>
+      <span class="nt">&lt;/table&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"boardPage"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
+        <span class="na">onclick=</span><span class="s">"location.href='#';"</span><span class="nt">&gt;</span>수정하기<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
+        <span class="na">onclick=</span><span class="s">"location.href='#';"</span><span class="nt">&gt;</span>삭제하기<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
+        <span class="na">onclick=</span><span class="s">"location.href='#';"</span><span class="nt">&gt;</span>답글쓰기<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
+        <span class="na">onclick=</span><span class="s">"location.href='./BoardList.bo?pageNum=</span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">';"</span><span class="nt">&gt;</span>목록이동<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이제 글 내용을 보여주는 페이지로 오면 <code class="language-plaintext highlighter-rouge">DB</code>에서 불러온 내용을 화면에 출력한다.</li>
+  <li>하단에 <code class="language-plaintext highlighter-rouge">목록이동</code> 버튼을 누르면 글을 보기 전에 머물러 있던 페이지로 이동한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/boardContent.png" /></p>
+
+<ul>
+  <li>연결 성공!</li>
+  <li>다음에는 게시글 수정 기능을 만들 것이다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-11</code></li>
+</ul>
+:ET
