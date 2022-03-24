@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 3
+title: 프로젝트) Cafe(웹 사이트) 만들기 3 - 회원가입 기능 만들기
 toc: true
 toc_sticky: true
 toc_label: 목차
@@ -14,7 +14,8 @@ tags:
 # 개발환경
 * OpenJDK 8
 * Eclipse 2021-12
-* tomcat 8.5<br><br><br>
+* tomcat 8.5
+* MySQL Workbench 8.0.19<br><br><br>
 
 # 시작
 * 2022.3.4 ~ <br><br><br>
