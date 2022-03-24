@@ -15,7 +15,8 @@ tags:
 * MacBook Air (M1, 2020)
 * OpenJDK 8
 * Eclipse 2021-12
-* tomcat 8.5<br><br><br>
+* tomcat 8.5
+* MySQL Workbench 8.0.19<br><br><br>
 
 # 시작
 * 2022.3.4 ~ <br><br><br>
