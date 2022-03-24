@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>프로젝트) Cafe(웹 사이트) 만들기 1 | Yujin Dev Log</title>
-<meta name="description" content="개발환경    OpenJDK 8   Eclipse 2021-12   tomcat 8.5">
+<!-- begin _includes/seo.html --><title>프로젝트) Cafe(웹 사이트) 만들기 1 - 페이지 템플릿 세팅 및 서블릿 매핑 | Yujin Dev Log</title>
+<meta name="description" content="개발환경    OpenJDK 8   Eclipse 2021-12   tomcat 8.5   MySQL Workbench 8.0.19">
 
 
   <meta name="author" content="Yujin Hwang">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="프로젝트) Cafe(웹 사이트) 만들기 1">
+<meta property="og:title" content="프로젝트) Cafe(웹 사이트) 만들기 1 - 페이지 템플릿 세팅 및 서블릿 매핑">
 <meta property="og:url" content="http://localhost:4000/project%20log/cafe-project-01/">
 
 
-  <meta property="og:description" content="개발환경    OpenJDK 8   Eclipse 2021-12   tomcat 8.5">
+  <meta property="og:description" content="개발환경    OpenJDK 8   Eclipse 2021-12   tomcat 8.5   MySQL Workbench 8.0.19">
 
 
 
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">프로젝트) Cafe(웹 사이트) 만들기 1</li>
+        <li class="current">프로젝트) Cafe(웹 사이트) 만들기 1 - 페이지 템플릿 세팅 및 서블릿 매핑</li>
       
     
   </ol>
@@ -206,7 +206,7 @@
     </h3>
     
       <div class="author__bio p-note" itemprop="description">
-        <p>꾸준히 성장하는 개발자</p>
+        <p>책임감 있는 개발자</p>
 
       </div>
     
@@ -310,8 +310,8 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="프로젝트) Cafe(웹 사이트) 만들기 1">
-    <meta itemprop="description" content="개발환경  OpenJDK 8  Eclipse 2021-12  tomcat 8.5">
+    <meta itemprop="headline" content="프로젝트) Cafe(웹 사이트) 만들기 1 - 페이지 템플릿 세팅 및 서블릿 매핑">
+    <meta itemprop="description" content="개발환경  OpenJDK 8  Eclipse 2021-12  tomcat 8.5  MySQL Workbench 8.0.19">
     <meta itemprop="datePublished" content="2022-03-05T00:00:00+09:00">
     
 
@@ -319,7 +319,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/project%20log/cafe-project-01/" class="u-url" itemprop="url">프로젝트) Cafe(웹 사이트) 만들기 1
+            <a href="http://localhost:4000/project%20log/cafe-project-01/" class="u-url" itemprop="url">프로젝트) Cafe(웹 사이트) 만들기 1 - 페이지 템플릿 세팅 및 서블릿 매핑
 </a>
           </h1>
           
@@ -360,7 +360,8 @@
 <ul>
   <li>OpenJDK 8</li>
   <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
 </ul>
 
 <h1 id="시작">시작</h1>
@@ -381,7 +382,7 @@
 <p><br /></p>
 
 <ul>
-  <li>그래서 오늘 진행한 것은 무료 템플릿 사이트에서 다운받은 템플릿을 이용해 기본적인 사이트 틀을 만들었다.</li>
+  <li>오늘 진행한 것은 무료 템플릿 사이트에서 다운받은 템플릿을 이용해 기본적인 사이트 틀을 만들었다.</li>
   <li>메인 페이지를 만들고 로그인 페이지와 회원가입 페이지 폼을 만들어서 연결시키는 것 까지 했다.<br /><br /></li>
 </ul>
 
@@ -576,7 +577,7 @@ END MODULE AREA 2: Menu 1
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+1%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+1+-+%ED%8E%98%EC%9D%B4%EC%A7%80+%ED%85%9C%ED%94%8C%EB%A6%BF+%EC%84%B8%ED%8C%85+%EB%B0%8F+%EC%84%9C%EB%B8%94%EB%A6%BF+%EB%A7%A4%ED%95%91%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-01%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -606,6 +607,53 @@ END MODULE AREA 2: Menu 1
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-14/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 14 - 게시글 수정 기능 구현
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -749,52 +797,6 @@ END MODULE AREA 2: Menu 1
   Eclipse 2021-12
   tomcat 8.5
   MySQL Workbench 8.0.19
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/project%20log/cafe-project-11/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 11 - 회원만 게시판 글 쓸 수 있게 하기
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">개발환경
-
-  MacBook Air (M1, 2020)
-  OpenJDK 8
-  Eclipse 2021-12
-  tomcat 8.5
 
 </p>
   </article>

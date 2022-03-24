@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>프로젝트) Cafe(웹 사이트) 만들기 2 | Yujin Dev Log</title>
-<meta name="description" content="개발환경    OpenJDK 8   Eclipse 2021-12   tomcat 8.5">
+<!-- begin _includes/seo.html --><title>프로젝트) Cafe(웹 사이트) 만들기 2 - DB 테이블 만들기 | Yujin Dev Log</title>
+<meta name="description" content="개발환경    OpenJDK 8   Eclipse 2021-12   tomcat 8.5   MySQL Workbench 8.0.19">
 
 
   <meta name="author" content="Yujin Hwang">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="프로젝트) Cafe(웹 사이트) 만들기 2">
+<meta property="og:title" content="프로젝트) Cafe(웹 사이트) 만들기 2 - DB 테이블 만들기">
 <meta property="og:url" content="http://localhost:4000/project%20log/cafe-project-02/">
 
 
-  <meta property="og:description" content="개발환경    OpenJDK 8   Eclipse 2021-12   tomcat 8.5">
+  <meta property="og:description" content="개발환경    OpenJDK 8   Eclipse 2021-12   tomcat 8.5   MySQL Workbench 8.0.19">
 
 
 
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">프로젝트) Cafe(웹 사이트) 만들기 2</li>
+        <li class="current">프로젝트) Cafe(웹 사이트) 만들기 2 - DB 테이블 만들기</li>
       
     
   </ol>
@@ -206,7 +206,7 @@
     </h3>
     
       <div class="author__bio p-note" itemprop="description">
-        <p>꾸준히 성장하는 개발자</p>
+        <p>책임감 있는 개발자</p>
 
       </div>
     
@@ -310,8 +310,8 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="프로젝트) Cafe(웹 사이트) 만들기 2">
-    <meta itemprop="description" content="개발환경  OpenJDK 8  Eclipse 2021-12  tomcat 8.5">
+    <meta itemprop="headline" content="프로젝트) Cafe(웹 사이트) 만들기 2 - DB 테이블 만들기">
+    <meta itemprop="description" content="개발환경  OpenJDK 8  Eclipse 2021-12  tomcat 8.5  MySQL Workbench 8.0.19">
     <meta itemprop="datePublished" content="2022-03-06T00:00:00+09:00">
     
 
@@ -319,7 +319,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/project%20log/cafe-project-02/" class="u-url" itemprop="url">프로젝트) Cafe(웹 사이트) 만들기 2
+            <a href="http://localhost:4000/project%20log/cafe-project-02/" class="u-url" itemprop="url">프로젝트) Cafe(웹 사이트) 만들기 2 - DB 테이블 만들기
 </a>
           </h1>
           
@@ -360,7 +360,8 @@
 <ul>
   <li>OpenJDK 8</li>
   <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
 </ul>
 
 <h1 id="시작">시작</h1>
@@ -422,13 +423,20 @@
 
 <h2 id="2-게시글post">2. 게시글(post)</h2>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="n">post</span> <span class="p">(</span>
-    <span class="n">num</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
-    <span class="n">writer</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">title</span> <span class="nb">longtext</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">content</span> <span class="nb">longtext</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">posted_date</span> <span class="nb">datetime</span> <span class="k">not</span> <span class="k">null</span>
-<span class="p">);</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`cafe_board`</span> <span class="p">(</span>
+  <span class="nv">`num`</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`id`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`title`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`content`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`readcount`</span> <span class="nb">int</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`re_ref`</span> <span class="nb">int</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`re_lev`</span> <span class="nb">int</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`re_seq`</span> <span class="nb">int</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`date`</span> <span class="nb">date</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`ip`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`file`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="nv">`num`</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div></div>
 
 <p align="center"><img src="../../assets/images/postTable.png" /></p>
@@ -436,10 +444,16 @@
 
 <ul>
   <li>num : 게시글 번호. 1부터 차례대로 증가하며 고유 식별자로 사용</li>
-  <li>writer : 작성자 아이디</li>
+  <li>id : 작성자 아이디</li>
   <li>title : 게시글 제목</li>
   <li>content : 게시글 내용</li>
-  <li>posted_date : 최초로 작성된 날짜. YYYY-MM-DD 형식</li>
+  <li>readcount : 조회수</li>
+  <li>re_ref : 게시글 그룹. 답글을 달게 되면 몇 번 게시글의 답글인지 구분할 때 쓸 그룹이다.</li>
+  <li>re_lev : 게시글의 들여쓰기 레벨. 어떤 게시글의 답글이면 1번 들여쓰고 답글의 답글이면 2번 들여쓰는 용도로 사용할 값이다.</li>
+  <li>re_seq : 게시글 그룹에서 작성된 순서. 어떤 게시글에 답글이 달린 순서를 표시할 값이다.</li>
+  <li>date : 최초로 작성된 날짜. YYYY-MM-DD 형식</li>
+  <li>ip : 작성자의 <code class="language-plaintext highlighter-rouge">IP</code> 주소</li>
+  <li>file : 파일 업로드 시 파일명</li>
 </ul>
 
 <h2 id="3-댓글comment">3. 댓글(comment)</h2>
@@ -524,7 +538,7 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+2%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-02%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+2+-+DB+%ED%85%8C%EC%9D%B4%EB%B8%94+%EB%A7%8C%EB%93%A4%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-02%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-02%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -554,6 +568,53 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-14/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 14 - 게시글 수정 기능 구현
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -697,52 +758,6 @@
   Eclipse 2021-12
   tomcat 8.5
   MySQL Workbench 8.0.19
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/project%20log/cafe-project-11/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 11 - 회원만 게시판 글 쓸 수 있게 하기
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">개발환경
-
-  MacBook Air (M1, 2020)
-  OpenJDK 8
-  Eclipse 2021-12
-  tomcat 8.5
 
 </p>
   </article>
