@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 2
+title: 프로젝트) Cafe(웹 사이트) 만들기 2 - DB 테이블 만들기
 toc: true
 toc_sticky: true
 toc_label: 목차
@@ -14,7 +14,8 @@ tags:
 # 개발환경
 * OpenJDK 8
 * Eclipse 2021-12
-* tomcat 8.5<br><br><br>
+* tomcat 8.5
+* MySQL Workbench 8.0.19<br><br><br>
 
 # 시작
 * 2022.3.4 ~ <br><br><br>
@@ -67,22 +68,35 @@ create table cafe_members (
 ## 2. 게시글(post)
 
 ```sql
-create table post (
-    num int primary key auto_increment,
-    writer varchar(10) not null,
-    title longtext not null,
-    content longtext not null,
-    posted_date datetime not null
-);
+CREATE TABLE `cafe_board` (
+  `num` int NOT NULL,
+  `id` varchar(10) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `content` varchar(5000) NOT NULL,
+  `readcount` int DEFAULT NULL,
+  `re_ref` int DEFAULT NULL,
+  `re_lev` int DEFAULT NULL,
+  `re_seq` int DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `ip` varchar(200) DEFAULT NULL,
+  `file` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`num`)
+)
 ```
 
 <p align="center"><img src="../../assets/images/postTable.png"></p><br>
 
 * num : 게시글 번호. 1부터 차례대로 증가하며 고유 식별자로 사용
-* writer : 작성자 아이디
+* id : 작성자 아이디
 * title : 게시글 제목
 * content : 게시글 내용
-* posted_date : 최초로 작성된 날짜. YYYY-MM-DD 형식
+* readcount : 조회수
+* re_ref : 게시글 그룹. 답글을 달게 되면 몇 번 게시글의 답글인지 구분할 때 쓸 그룹이다.
+* re_lev : 게시글의 들여쓰기 레벨. 어떤 게시글의 답글이면 1번 들여쓰고 답글의 답글이면 2번 들여쓰는 용도로 사용할 값이다.
+* re_seq : 게시글 그룹에서 작성된 순서. 어떤 게시글에 답글이 달린 순서를 표시할 값이다.
+* date : 최초로 작성된 날짜. YYYY-MM-DD 형식
+* ip : 작성자의 `IP` 주소
+* file : 파일 업로드 시 파일명
 
 ## 3. 댓글(comment)
 

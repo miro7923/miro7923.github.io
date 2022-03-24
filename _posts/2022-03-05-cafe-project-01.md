@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 1
+title: 프로젝트) Cafe(웹 사이트) 만들기 1 - 페이지 템플릿 세팅 및 서블릿 매핑
 toc: true
 toc_sticky: true
 toc_label: 목차
@@ -14,7 +14,8 @@ tags:
 # 개발환경
 * OpenJDK 8
 * Eclipse 2021-12
-* tomcat 8.5<br><br><br>
+* tomcat 8.5
+* MySQL Workbench 8.0.19<br><br><br>
 
 # 시작
 * 2022.3.4 ~ <br><br><br>
@@ -28,7 +29,7 @@ tags:
 # 진행상황
 <p align="center"><img src="../../assets/images/cafeProj01.png"></p><br>
 
-* 그래서 오늘 진행한 것은 무료 템플릿 사이트에서 다운받은 템플릿을 이용해 기본적인 사이트 틀을 만들었다.
+* 오늘 진행한 것은 무료 템플릿 사이트에서 다운받은 템플릿을 이용해 기본적인 사이트 틀을 만들었다.
 * 메인 페이지를 만들고 로그인 페이지와 회원가입 페이지 폼을 만들어서 연결시키는 것 까지 했다.<br><br>
 
 ```xml
