@@ -346,7 +346,7 @@ public void reWritePost(BoardDTO dto)
 ```
 
 * 답글을 작성할 때 `re_ref` 필드를 이용해 부모 글을 설정해 준 다음 들여쓰기 레벨과 게시글 그룹 내 순서를 설정해 준다.
-* 자세한 알고리즘은 [여기](#) 포스트에 따로 작성했다.
+* 자세한 알고리즘은 [프로젝트) Cafe(웹 사이트) 만들기 17 - 게시판 답글 작성 알고리즘](https://miro7923.github.io/project%20log/cafe-project-17/) 포스트에 따로 작성했다.
 
 ## boardList.jsp
 
