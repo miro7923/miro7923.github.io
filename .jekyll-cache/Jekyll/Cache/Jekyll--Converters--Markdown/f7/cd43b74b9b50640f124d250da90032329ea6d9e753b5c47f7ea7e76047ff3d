@@ -1,0 +1,9 @@
+I"�<h1 id="-rest">👀 REST?</h1>
+<ul>
+  <li>서버가 클라이언트의 상태 정보를 가지고 있지 않는 것</li>
+  <li><code class="language-plaintext highlighter-rouge">HTTP</code>를 통한 서버 클라이언트 모델에서 서버가 클라이언트의 위치와 같은 현재 상태를 유지하는 정보를 가지고 있으면 오버헤드가 크다.</li>
+  <li>그래서 클라이언트의 상태 정보를 서버에 저장하지 않고 서버와 클라이언트 간에 주고받는 <code class="language-plaintext highlighter-rouge">HTTP</code> 메세지 안에 클라이언트의 상태 정보를 담고 그것을 해석할 수 있는 방법까지 담는다.</li>
+  <li>서버는 특정 클라이언트에 대한 정보를 저장하고 있지 않아도 <code class="language-plaintext highlighter-rouge">HTTP request</code> 메세지만 보고 클라이언트의 상태를 알 수 있고 클라이언트는 <code class="language-plaintext highlighter-rouge">HTTP response</code> 메세지를 받으면 어떤 방식으로 메세지를 가져와야 할 지 알 수 있다.</li>
+  <li>이런 아키텍처를 따르는 서비스를 <code class="language-plaintext highlighter-rouge">RESTful</code>이라 한다.<br /><br /></li>
+</ul>
+:ET
