@@ -32,7 +32,7 @@ tags:
 * 그래도 숱한 구글링 끝에 아이디 중복체크 부분은 내가 원하는대로 구현이 되었다!
 * 내가 모티브로 잡고 구현했던 기능은 `네이버 회원가입 페이지의 아이디 중복검사` 기능이다.
 
-## 1. 회원가입 페이지에 아이디 중복여부를 알려주는 문구 추가
+## 회원가입 페이지에 아이디 중복여부를 알려주는 문구 추가
 
 * join.jsp
 
@@ -52,78 +52,52 @@ tags:
 
 * `jQuery`를 이용해서 `<div id="idMsg"></div>` 태그에 중복인지 아닌지 알려주는 메세지를 삽입할 것이다.
 
-## 2. MemeberDAO에서 DB에 아이디 존재여부를 확인하는 함수 작성
-
-* MemberDAO.java
+## MemberFrontController.java
 
 ```java
-// isExist(id)
-public boolean isExist(String id)
+package com.project.cafe.member.action;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.project.cafe.action.Action;
+import com.project.cafe.action.ActionForward;
+
+public class MemberFrontController extends HttpServlet
 {
-	System.out.println("DAO : isExist() 호출");
+    protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+    {
+        // 1. 전달되는 가상주소 계산
+        // .. 생략
 		
-	try 
-	{
-		// 1. 2. DB 연결
-		con = getCon();
-			
-		// 3. sql 작성 & pstmt 연결
-		sql = "select id from cafe_members where id=?";
-		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, id);
-			
-		// 4. sql 실행
-		rs = pstmt.executeQuery();
-			
-		System.out.println("DAO : 아이디 정보 조회 완료");
-			
-		if (rs.next()) return true;
-		else return false;
-	} 
-	catch (Exception e) 
-	{
-		e.printStackTrace();
-	}
-	finally 
-	{
-		CloseDB();
-	}
-		
-	System.out.println("DAO : isExist(id) 끝!!!");
-		
-	return true;
-}
-// isExist(id)
-```
+        // 2. 가상주소 매핑
+        Action action = null;
+        ActionForward forward = null;
 
-* 매개변수로 받은 아이디를 이용해 DB에서 조회한 후 해당 아이디가 존재한다면 `true`를, 존재하지 않으면 `false`를 리턴하도록 했다.
-* 매개변수로 받은 아이디가 존재하지 않을 때에만(`return false`) 모든 정보를 입력했을 때에 회원가입 프로세스가 진행되도록 할 것이기 때문에 기본 리턴값은 `true`로 설정했다.
-
-## 3. 서블릿 만들어서 중복체크 확인하는 동작 수행
-* IdCheck.java
-
-```java
-@WebServlet("/idCheck.me")
-public class IdCheck extends HttpServlet
-{
-	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
-	{
-		req.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html; charset=utf-8");
+        // .. 생략
+        else if (command.equals("/IdCheck.me"))
+        {
+            System.out.println("C : /IdCheck.me 호출");
+			
+            action = new IdCheck();
+			
+            try {
+                forward = action.execute(req, resp);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // .. 생략
 		
-		MemberDAO dao = new MemberDAO();
-		PrintWriter out = resp.getWriter();
-		boolean result = dao.isExist(req.getParameter("id"));
-		if (result)
-		{
-			out.print("false");
-		}
-		else 
-		{
-			out.print("true");
-		}
-        
-		out.close();
+		
+        // 3. 페이지 이동
+        // .. 생략
 	}
 	
 	@Override
@@ -140,69 +114,146 @@ public class IdCheck extends HttpServlet
 }
 ```
 
-* 처음엔 `jsp` 페이지를 만들어서 아주 간단하게 만들었는데 생각보다 잘 안 되서 구글링 후 서블릿으로 만들었다.
+* `컨트롤러`에서 `DB`접속 동작을 수행할 서블릿 `IdCheck`와 연결시켜 준다.
+
+## IdCheck.java
+
+```java
+package com.project.cafe.member.action;
+
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.project.cafe.action.Action;
+import com.project.cafe.action.ActionForward;
+import com.project.cafe.member.db.MemberDAO;
+
+public class IdCheck implements Action
+{
+    @Override
+    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception 
+    {
+        System.out.println("M : IdCheck - execute() 호출");
+		
+        MemberDAO dao = new MemberDAO();
+        PrintWriter out = response.getWriter();
+        boolean result = dao.isExist(request.getParameter("id"));
+        if (result)
+            out.print("false");
+        else 
+            out.print("true");
+		
+        out.close();
+		
+        return null;
+	}
+}
+```
+
 * `PrintWriter`를 이용해 출력 스트림을 만들어 DB 검색 결과를 보내도록 했다. 검색 결과가 있다면 중복되는 아이디가 있어서 사용할 수 없는 아이디니까 `false`, 없다면 중복되는 아이디가 없어서 사용 가능한 아이디니까 `true`
 * 이 부분을 구현하면서 출력 스트림에 대해 다시 공부하게 되어서 좋았다! 역시 그냥 배우는 것 보다는 직접 써 봐야 머리에 잘 들어온다.
 
-## 4. jQuery로 아이디 중복체크 하는 함수 구현
-* join.js
+## MemeberDAO - isExist(id)
+
+```java
+// isExist(id)
+public boolean isExist(String id)
+{
+    System.out.println("DAO : isExist() 호출");
+		
+    try {
+        // 1. 2. DB 연결
+        con = getCon();
+			
+        // 3. sql 작성 & pstmt 연결
+        sql = "select id from cafe_members where id=?";
+        pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, id);
+			
+        // 4. sql 실행
+        rs = pstmt.executeQuery();
+			
+        System.out.println("DAO : 아이디 정보 조회 완료");
+			
+        if (rs.next()) return true;
+        else return false;
+    } 
+    catch (Exception e) {
+        e.printStackTrace();
+    }
+    finally {
+        CloseDB();
+    }
+		
+    System.out.println("DAO : isExist(id) 끝!!!");
+		
+    return true;
+}
+// isExist(id)
+```
+
+* 매개변수로 받은 아이디를 이용해 DB에서 조회한 후 해당 아이디가 존재한다면 `true`를, 존재하지 않으면 `false`를 리턴하도록 했다.
+* 매개변수로 받은 아이디가 존재하지 않을 때에만(`return false`) 모든 정보를 입력했을 때에 회원가입 프로세스가 진행되도록 할 것이기 때문에 기본 리턴값은 `true`로 설정했다.
+
+## join.js
 
 ```javascript
 $(document).ready(function(){
-	var $idCheck = idCheck();
+    var $idCheck = idCheck();
 });
 
 function idCheck()
 {
-	console.log("idCheck() 호출");
+    var ret;
 	
-	var ret;
+    $('#id').blur(function(){
+        $.ajax({
+            type: 'POST',
+            async: false,
+            url: './idCheck.me',
+            data: {
+                'id': $('#id').val()
+            },
+            dataType: 'text',
+            success: function(data) {
+                if (data === 'true')
+                {
+                    var userId = $('#id').val();
+                    if (5 > userId.length || 10 < userId.length)
+                    {
+                        $id = false;
+                        $('#idMsg').text('5자리 이상 10자리 이하로 입력해 주세요.');
+                        $('#idMsg').css('color', 'red');
+                    }
+                    else 
+                    {
+                        ret = true;
+                        $('#idMsg').text('사용할 수 있는 아이디입니다.');
+                        $('#idMsg').css('color', 'green');
+                    }
+                }
+                else 
+                {
+                    ret = false;
+                    $('#idMsg').text('이미 존재하는 아이디입니다.');
+                    $('#idMsg').css('color', 'red');
+                }
+            },
+            error: function(data) {
+                console.log('error');
+            }
+        });
+    });
 	
-	$('#id').blur(function(){
-		$.ajax({
-			type: 'POST',
-			async: false,
-			url: './idCheck.me',
-			data: {
-				'id': $('#id').val()
-			},
-			dataType: 'text',
-			success: function(data) {
-				if (data === 'true')
-				{
-					var userId = $('#id').val();
-					if (5 > userId.length || 10 < userId.length)
-					{
-						$id = false;
-						$('#idMsg').text('5자리 이상 10자리 이하로 입력해 주세요.');
-						$('#idMsg').css('color', 'red');
-					}
-					else 
-					{
-						ret = true;
-						$('#idMsg').text('사용할 수 있는 아이디입니다.');
-						$('#idMsg').css('color', 'green');
-					}
-				}
-				else 
-				{
-					ret = false;
-					$('#idMsg').text('이미 존재하는 아이디입니다.');
-					$('#idMsg').css('color', 'red');
-				}
-			},
-			error: function(data) {
-				console.log('error');
-			}
-		});
-	});
-	
-	return ret;
+    return ret;
 }
 ```
 
 * `IdCheck`에서 출력 스트림으로 받은 결과값을 이용해 아이디 입력란 하단에 출력할 메세지를 결정하는데 리턴값이 `false`라면 사용불가 메세지를 바로 출력하면 되지만 `true`인 경우에 사용가능 메세지를 바로 출력하니까 아이디를 입력하지 않고 입력란 바깥을 클릭했을 때에도 사용가능한 아이디라는 메세지가 출력되었다. 아이디를 입력하지 않았을 때에도 DB에서 검색되지 않을 테니까 최종적으로 사용이 가능하다는 파라미터가 리턴될 것이다. 
 * 그래서 리턴값이 `true`인 경우에는 아이디 입력란에 입력되어 있는 문자열의 길이를 검사한 후 그에 따라 분기를 나누었다.
+
 * 여기까지 해서 `네이버 회원가입 페이지`의 아이디 중복검사 기능과 같게 구현했다! 뿌듯뿌듯 ☺️
 <p align="center"><img src="../../assets/images/existId.png" width="400"></p>
 <p align="center"><img src="../../assets/images/nonExistId.png" width="400"></p>

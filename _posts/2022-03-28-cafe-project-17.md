@@ -97,7 +97,7 @@ function getFeeds()
         dataType: 'json',
         data: {
             'cnt': 3,
-            'len': 71
+            'len': 70
         },
         success: function(data) {
             if (data != null)
@@ -120,7 +120,6 @@ function getFeeds()
 
 * 메인 화면이 로드되었을 때 다른 페이지 이동 없이 보여져야 하니까 `ajax`를 이용해 비동기 방식으로 보여줄 것이다.
 * 최대 `cnt`의 수만큼 게시물을 가져오되 내용물은 `len` 길이만큼만 가져오도록 했다.
-* 여긴 더 좋은 방법 생기면 수정할 예정!
 
 ## GetFeed.java
 
@@ -215,7 +214,10 @@ public ArrayList<BoardDTO> getPosts(int cnt, int len)
             if (len > content.length())
                 content = content.substring(0, content.length() - 1);
             else
+            {
                 content = content.substring(0, len);
+                content = content.concat("...");
+            }
 				
             dto.setContent(content);
 				
@@ -236,7 +238,7 @@ public ArrayList<BoardDTO> getPosts(int cnt, int len)
 ```
 
 * 이렇게 하면 메인 화면에서 최신 게시글 일부가 출력이 되는데 출력 범위를 넘어가면 ... 으로 생략되게 하고 싶은데 아직 아이디어를 못 얻어서 일단은 DB에서 가져오는 글자수를 제한해서 가져온 뒤 출력하는 형태로 구현했다.
-* 나중에 선생님한테 물어보고 수정할 것!!<br><br><br>
+* 네이버 블로그 메인 페이지의 `html` 소스를 보니까 각 포스트별 미리보기 창에서 텍스트 자체는 일정 글자수 만큼만 출력하고 이상은 ... 이 붙은 형태로 되어 있어서 이렇게 구현해 보았다.<br><br><br>
 
 # 마감까지 
 * `D-7`
