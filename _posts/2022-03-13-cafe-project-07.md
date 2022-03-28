@@ -30,7 +30,7 @@ tags:
 # 진행상황
 * 오늘은 로그인 기능을 만들었다.
 
-## 1. login.jsp 페이지 준비
+## login.jsp
 
 ```html
 ...
@@ -53,7 +53,7 @@ tags:
 
 * `submit` 버튼을 누르면 메인페이지로 이동하되 `DB` 조회 결과 확인 후 이동하도록 `onsubmit` 조건을 걸어주었다.
 
-## 2. login.js 생성
+## login.js
 
 ```javascript
 var $login = false;
@@ -112,66 +112,110 @@ function finalCheck()
 
 * `Ajax`로 `DB` 조회 결과를 알아오도록 했다.
 
-## 3. DB 조회 결과를 알려줄 서블릿 생성
+## MemberFrontController.java
 
 ```java
+package com.project.cafe.member.action;
+
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.project.cafe.action.Action;
+import com.project.cafe.action.ActionForward;
+
+public class MemberFrontController extends HttpServlet
+{
+    protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+    {
+        // 1. 전달되는 가상주소 계산
+        // .. 생략
+		
+        // 2. 가상주소 매핑
+        Action action = null;
+        ActionForward forward = null;
+
+        // .. 생략
+        else if (command.equals("/LoginCheck.me"))
+        {
+            System.out.println("C : /LoginCheck.me 호출");
+			
+            action = new LoginCheck();
+			
+            try {
+                forward = action.execute(req, resp);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // .. 생략
+		
+        // 3. 페이지 이동
+        // .. 생략
+    }
+
+    // .. 생략
+}
+```
+
+* `컨트롤러`에서 `DB`연결 작업을 수행할 서블릿과 연결한다.
+
+## LoginCheck.java
+
+```java
+package com.project.cafe.member.action;
+
 import java.io.PrintWriter;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/LoginCheck.me")
-public class LoginCheck extends HttpServlet
+import com.project.cafe.action.Action;
+import com.project.cafe.action.ActionForward;
+import com.project.cafe.member.db.MemberDAO;
+import com.project.cafe.member.db.MemberDTO;
+
+public class LoginCheck implements Action
 {
-    protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+    @Override
+    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception 
     {
-        System.out.println("M : LoginCheck - doProcess() 호출");
+        System.out.println("M : LoginCheck - execute() 호출");
 		
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=utf-8");
-		
-        PrintWriter out = resp.getWriter();
+        PrintWriter out = response.getWriter();
         HttpSession session = null;
         MemberDAO dao = new MemberDAO();
 		
         MemberDTO dto = new MemberDTO();
-        dto.setId(req.getParameter("id"));
-        dto.setPass(req.getParameter("pass"));
+        dto.setId(request.getParameter("id"));
+        dto.setPass(request.getParameter("pass"));
 		
         int result = dao.loginCheck(dto);
         if (1 == result)
         {
-            session = req.getSession();
+            session = request.getSession();
             session.setAttribute("id", dto.getId());
+            session.setMaxInactiveInterval(600);
         }
 		
         out.print(result);
 		
         out.close();
-    }
-	
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
-    {
-        doProcess(req, resp);
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
-    {
-        doProcess(req, resp);
+        return null;
     }
 }
 ```
 
 * 로그인에 성공했을 때에만 세션 값을 설정해 주었다.
 
-## 4. top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기
+## top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기
 
 ```html
 <p class="MOD_HEADER1_Phone">
@@ -204,7 +248,7 @@ public class LoginCheck extends HttpServlet
 
 * 로그인 성공 시 출력하는 상단 메뉴
 
-## 5. LogoutAction.java 생성
+## LogoutAction.java 생성
 
 ```java
 import java.io.IOException;
