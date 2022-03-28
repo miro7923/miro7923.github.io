@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 17 - 최신글 미리보기 기능 추가
+title: 프로젝트) Cafe(웹 사이트) 만들기 17 - 메인 화면에서 최신글 미리보기 기능 추가
 toc: true
 toc_sticky: true
 toc_label: 목차
@@ -45,7 +45,7 @@ tags:
   <div data-layout="_r" class="MOD_ARTICLEBLOCKS1">
     <div data-layout="al16 ec8" class="MOD_ARTICLEBLOCKS1_Cont">
     <h2>최신글</h2>
-      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockLarge">
+      <a href="" class="MOD_ARTICLEBLOCKS1_BlockLarge" id="mainHref1">
         <div style="background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/aperitif-large-object1-luca-bravo.jpg)" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
         <div class="MOD_ARTICLEBLOCKS1_Txt">
           <h3 class="MOD_ARTICLEBLOCKS1_Title" id="mainTitle1">Article Title</h3>
@@ -54,7 +54,7 @@ tags:
       </a>
     </div>
     <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
-      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
+      <a href="" class="MOD_ARTICLEBLOCKS1_BlockSmall" id="mainHref2">
         <div style="background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/aperitif-large-object1-luca-bravo.jpg)" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
 
         <div class="MOD_ARTICLEBLOCKS1_Txt">
@@ -64,7 +64,7 @@ tags:
       </a>
     </div>
     <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
-      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
+      <a href="" class="MOD_ARTICLEBLOCKS1_BlockSmall" id="mainHref3">
         <div style="background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/aperitif-large-object1-luca-bravo.jpg)" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
 
         <div class="MOD_ARTICLEBLOCKS1_Txt">
@@ -105,12 +105,16 @@ function getFeeds()
                 for (var i = 0; i < data.length; i++)
                 {
                     var titleId = '#mainTitle';
-                    var contentId = '#mainContent';
                     titleId += (i + 1);
-                    contentId += (i + 1);
-                    
                     $(titleId).html(data[i].title);
+
+                    var contentId = '#mainContent';
+                    contentId += (i + 1);
                     $(contentId).html(data[i].content);
+
+                    var hrefId = '#mainHref';
+                    hrefId += (i + 1);
+                    $(hrefId).attr('href', './BoardContent.bo?num='+data[i].num+'&pageNum=1');
                 }
             }
         }
@@ -120,33 +124,84 @@ function getFeeds()
 
 * 메인 화면이 로드되었을 때 다른 페이지 이동 없이 보여져야 하니까 `ajax`를 이용해 비동기 방식으로 보여줄 것이다.
 * 최대 `cnt`의 수만큼 게시물을 가져오되 내용물은 `len` 길이만큼만 가져오도록 했다.
+* 태그의 아이디는 맨 뒤에 숫자만 바껴서 `i` 값에 따라 변경되도록 했다.
+* 각 게시물마다 다른 글번호를 가진 페이지로 연결되어야 하기 때문에 게시글 하나를 불러올 때마다 해당 게시글의 `a` 태그의 `href`를 바꿔주었다.
+* 최신글 3개만 보여주기 때문에 페이지 번호는 1번으로 고정한다.
+
+## BoardFrontController.java
+
+```java
+package com.project.cafe.board.action;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.project.cafe.action.Action;
+import com.project.cafe.action.ActionForward;
+
+public class BoardFrontController extends HttpServlet
+{
+    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+        // 1. 전달되는 가상주소 계산
+        // .. 생략
+		
+        // 2. 가상주소 매핑
+        Action action = null;
+        ActionForward forward = null;
+		
+        // .. 생략
+        else if (command.equals("/GetFeed.bo"))
+        {
+            System.out.println("C : /GetFeed.bo 호출");
+			
+            action = new GetFeed();
+			
+            try {
+                forward = action.execute(request, response);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+		
+        // 3. 페이지 이동
+        // .. 생략
+	}
+}
+```
+
+* `컨트롤러`에서 `DB`에 접속해서 작업을 수행할 서블릿과 연결한다.
 
 ## GetFeed.java
 
 ```java
 package com.project.cafe.board.action;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.project.cafe.action.Action;
+import com.project.cafe.action.ActionForward;
 import com.project.cafe.board.db.BoardDAO;
 import com.project.cafe.board.db.BoardDTO;
 
-@WebServlet("/GetFeed.bo")
-public class GetFeed extends HttpServlet 
+public class GetFeed implements Action 
 {
-    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    @Override
+    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception 
     {
-        System.out.println("ajax 시작 - GetFeed");
+        System.out.println("ajax 시작_GetFeed - execute() 호출");
 		
         BoardDAO dao = new BoardDAO();
         ArrayList<BoardDTO> list = dao.getPosts
@@ -157,6 +212,7 @@ public class GetFeed extends HttpServlet
         for (int i = 0; i < list.size(); i++)
         {
             JSONObject feed = new JSONObject();
+            feed.put("num", list.get(i).getNum());
             feed.put("title", list.get(i).getTitle());
             feed.put("content", list.get(i).getContent());
 			
@@ -168,18 +224,9 @@ public class GetFeed extends HttpServlet
         response.setCharacterEncoding("UTF-8");
         // json 데이터 넘김
         response.getWriter().print(feedList.toJSONString());
-    }
-	
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-    {
-        doProcess(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-    {
-        doProcess(request, response);
+        response.getWriter().close();
+		
+        return null;
     }
 }
 ```
@@ -237,8 +284,8 @@ public ArrayList<BoardDTO> getPosts(int cnt, int len)
 }
 ```
 
-* 이렇게 하면 메인 화면에서 최신 게시글 일부가 출력이 되는데 출력 범위를 넘어가면 ... 으로 생략되게 하고 싶은데 아직 아이디어를 못 얻어서 일단은 DB에서 가져오는 글자수를 제한해서 가져온 뒤 출력하는 형태로 구현했다.
-* 네이버 블로그 메인 페이지의 `html` 소스를 보니까 각 포스트별 미리보기 창에서 텍스트 자체는 일정 글자수 만큼만 출력하고 이상은 ... 이 붙은 형태로 되어 있어서 이렇게 구현해 보았다.<br><br><br>
+* 네이버 블로그 메인 페이지의 `html` 소스를 보니까 각 포스트별 미리보기 창에서 텍스트 자체는 일정 글자수 만큼만 출력하고 이상은 ... 이 붙은 형태로 되어 있어서 이렇게 구현해 보았다.
+* 일단 구현한 후 학원 선생님한테 여쭤보니까 이런 방식으로 구현하면 된다고 하셔서 이대로 고정하기로 했다. 😄<br><br><br>
 
 # 마감까지 
 * `D-7`
