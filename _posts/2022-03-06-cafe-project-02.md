@@ -36,18 +36,21 @@ tags:
 ## 1. 회원 테이블(cafe_members)
 
 ```sql
-create table cafe_members (
-    member_num int primary key auto_increment,
-    id varchar(10) unique not null,
-    pass varchar(10) not null,
-    name varchar(20) not null,
-    birth date not null,
-    age int not null,
-    gender varchar(2) not null,
-    address varchar(100),
-    phone varchar(11) not null,
-    email varchar(200),
-    regdate timestamp not null
+CREATE TABLE `cafe_members` (
+  `member_num` int NOT NULL AUTO_INCREMENT,
+  `id` varchar(10) NOT NULL,
+  `pass` varchar(10) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `birth` date NOT NULL,
+  `age` int NOT NULL,
+  `gender` varchar(2) NOT NULL,
+  `postalcode` int NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `regdate` timestamp NOT NULL,
+  PRIMARY KEY (`member_num`),
+  UNIQUE KEY `id` (`id`)
 );
 ```
 
@@ -60,6 +63,7 @@ create table cafe_members (
 * birth : 회원의 생년월일
 * age : 회원 나이
 * gender : 회원 성별
+* postalcode : 우편번호
 * address : 회원의 거주지 주소
 * phone : 회원 휴대폰 번호
 * email : 회원 이메일 주소
@@ -81,7 +85,7 @@ CREATE TABLE `cafe_board` (
   `ip` varchar(200) DEFAULT NULL,
   `file` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`num`)
-)
+);
 ```
 
 <p align="center"><img src="../../assets/images/postTable.png"></p><br>
