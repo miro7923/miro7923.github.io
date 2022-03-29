@@ -336,7 +336,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          3 분 소요
         
       </span>
     
@@ -351,7 +351,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#시작">시작</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#1-loginjsp-페이지-준비">1. login.jsp 페이지 준비</a></li><li><a href="#2-loginjs-생성">2. login.js 생성</a></li><li><a href="#3-db-조회-결과를-알려줄-서블릿-생성">3. DB 조회 결과를 알려줄 서블릿 생성</a></li><li><a href="#4-topjsp에서-로그인-유무에-따라-상단-메뉴-다르게-출력하기">4. top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기</a></li><li><a href="#5-logoutactionjava-생성">5. LogoutAction.java 생성</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#시작">시작</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#loginjsp">login.jsp</a></li><li><a href="#loginjs">login.js</a></li><li><a href="#memberfrontcontrollerjava">MemberFrontController.java</a></li><li><a href="#logincheckjava">LoginCheck.java</a></li><li><a href="#topjsp에서-로그인-유무에-따라-상단-메뉴-다르게-출력하기">top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기</a></li><li><a href="#logoutactionjava-생성">LogoutAction.java 생성</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
 
             </nav>
           </aside>
@@ -383,7 +383,7 @@
   <li>오늘은 로그인 기능을 만들었다.</li>
 </ul>
 
-<h2 id="1-loginjsp-페이지-준비">1. login.jsp 페이지 준비</h2>
+<h2 id="loginjsp">login.jsp</h2>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 생략
@@ -407,7 +407,7 @@
   <li><code class="language-plaintext highlighter-rouge">submit</code> 버튼을 누르면 메인페이지로 이동하되 <code class="language-plaintext highlighter-rouge">DB</code> 조회 결과 확인 후 이동하도록 <code class="language-plaintext highlighter-rouge">onsubmit</code> 조건을 걸어주었다.</li>
 </ul>
 
-<h2 id="2-loginjs-생성">2. login.js 생성</h2>
+<h2 id="loginjs">login.js</h2>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">$login</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 
@@ -467,58 +467,103 @@
   <li><code class="language-plaintext highlighter-rouge">Ajax</code>로 <code class="language-plaintext highlighter-rouge">DB</code> 조회 결과를 알아오도록 했다.</li>
 </ul>
 
-<h2 id="3-db-조회-결과를-알려줄-서블릿-생성">3. DB 조회 결과를 알려줄 서블릿 생성</h2>
+<h2 id="memberfrontcontrollerjava">MemberFrontController.java</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberFrontController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="c1">// 1. 전달되는 가상주소 계산</span>
+        <span class="c1">// .. 생략</span>
+		
+        <span class="c1">// 2. 가상주소 매핑</span>
+        <span class="nc">Action</span> <span class="n">action</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="c1">// .. 생략</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/LoginCheck.me"</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /LoginCheck.me 호출"</span><span class="o">);</span>
+			
+            <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LoginCheck</span><span class="o">();</span>
+			
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">forward</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="c1">// .. 생략</span>
+		
+        <span class="c1">// 3. 페이지 이동</span>
+        <span class="c1">// .. 생략</span>
+    <span class="o">}</span>
+
+    <span class="c1">// .. 생략</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">컨트롤러</code>에서 <code class="language-plaintext highlighter-rouge">DB</code>연결 작업을 수행할 서블릿과 연결한다.</li>
+</ul>
+
+<h2 id="logincheckjava">LoginCheck.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
+
 <span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
 
-<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
 
-<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/LoginCheck.me"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginCheck</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginCheck</span> <span class="kd">implements</span> <span class="nc">Action</span>
 <span class="o">{</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
     <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : LoginCheck - doProcess() 호출"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : LoginCheck - execute() 호출"</span><span class="o">);</span>
 		
-        <span class="n">req</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
-        <span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
-		
-        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
         <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
         <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
 		
         <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDTO</span><span class="o">();</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setPass</span><span class="o">(</span><span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">));</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setPass</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pass"</span><span class="o">));</span>
 		
         <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">loginCheck</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
         <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">==</span> <span class="n">result</span><span class="o">)</span>
         <span class="o">{</span>
-            <span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
+            <span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
             <span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+            <span class="n">session</span><span class="o">.</span><span class="na">setMaxInactiveInterval</span><span class="o">(</span><span class="mi">600</span><span class="o">);</span>
         <span class="o">}</span>
 		
         <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
 		
         <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="o">}</span>
-	
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-    <span class="o">}</span>
 
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
@@ -527,7 +572,7 @@
   <li>로그인에 성공했을 때에만 세션 값을 설정해 주었다.</li>
 </ul>
 
-<h2 id="4-topjsp에서-로그인-유무에-따라-상단-메뉴-다르게-출력하기">4. top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기</h2>
+<h2 id="topjsp에서-로그인-유무에-따라-상단-메뉴-다르게-출력하기">top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기</h2>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_HEADER1_Phone"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;</span><span class="err">%</span>
@@ -563,7 +608,7 @@
   <li>로그인 성공 시 출력하는 상단 메뉴</li>
 </ul>
 
-<h2 id="5-logoutactionjava-생성">5. LogoutAction.java 생성</h2>
+<h2 id="logoutactionjava-생성">LogoutAction.java 생성</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 
@@ -710,7 +755,54 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/project%20log/cafe-project-17/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 17 - 최신글 미리보기 기능 추가
+        <a href="/project%20log/cafe-project-18/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 18 - 우편번호 검색 기능 추가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-17/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 17 - 메인 화면에서 최신글 미리보기 기능 추가
 </a>
       
     </h2>
@@ -841,49 +933,6 @@
   서버가 클라이언트의 상태 정보를 가지고 있지 않는 것
   HTTP를 통한 서버 클라이언트 모델에서 서버가 클라이언트의 위치와 같은 현재 상태를 유지하는 정보를 가지고 있으면 오버헤드가 크다.
   그래서 클라이언트의 상태 정보를 서버에 저장하지 않고 서버와 클라이...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer%20network/computer-network-application/" rel="permalink">컴퓨터 네트워크) Application
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">👀 Application?
-
-  응용프로그램이라고도 하며 사용자가 직접 다루는 프로그램을 의미한다.
-  그래서 네트워크 응용프로그램이라면 인터넷 상에서 통신을 할 때 사용자가 직접 다루게 되는 프로그램을 의미하게 된다.
-  종류에는 이메일, 크롬과 같은 웹 브라우저, P2P 파일 ...</p>
   </article>
 </div>
 

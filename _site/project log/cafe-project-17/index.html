@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>프로젝트) Cafe(웹 사이트) 만들기 17 - 최신글 미리보기 기능 추가 | Yujin Dev Log</title>
+<!-- begin _includes/seo.html --><title>프로젝트) Cafe(웹 사이트) 만들기 17 - 메인 화면에서 최신글 미리보기 기능 추가 | Yujin Dev Log</title>
 <meta name="description" content="개발환경    MacBook Air (M1, 2020)   OpenJDK 8   Eclipse 2021-12   tomcat 8.5   MySQL Workbench 8.0.19">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Yujin Dev Log">
-<meta property="og:title" content="프로젝트) Cafe(웹 사이트) 만들기 17 - 최신글 미리보기 기능 추가">
+<meta property="og:title" content="프로젝트) Cafe(웹 사이트) 만들기 17 - 메인 화면에서 최신글 미리보기 기능 추가">
 <meta property="og:url" content="http://localhost:4000/project%20log/cafe-project-17/">
 
 
@@ -175,7 +175,7 @@
     
       
       
-        <li class="current">프로젝트) Cafe(웹 사이트) 만들기 17 - 최신글 미리보기 기능 추가</li>
+        <li class="current">프로젝트) Cafe(웹 사이트) 만들기 17 - 메인 화면에서 최신글 미리보기 기능 추가</li>
       
     
   </ol>
@@ -310,7 +310,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="프로젝트) Cafe(웹 사이트) 만들기 17 - 최신글 미리보기 기능 추가">
+    <meta itemprop="headline" content="프로젝트) Cafe(웹 사이트) 만들기 17 - 메인 화면에서 최신글 미리보기 기능 추가">
     <meta itemprop="description" content="개발환경  MacBook Air (M1, 2020)  OpenJDK 8  Eclipse 2021-12  tomcat 8.5  MySQL Workbench 8.0.19">
     <meta itemprop="datePublished" content="2022-03-28T00:00:00+09:00">
     
@@ -319,7 +319,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/project%20log/cafe-project-17/" class="u-url" itemprop="url">프로젝트) Cafe(웹 사이트) 만들기 17 - 최신글 미리보기 기능 추가
+            <a href="http://localhost:4000/project%20log/cafe-project-17/" class="u-url" itemprop="url">프로젝트) Cafe(웹 사이트) 만들기 17 - 메인 화면에서 최신글 미리보기 기능 추가
 </a>
           </h1>
           
@@ -351,7 +351,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#시작">시작</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#mainjsp">main.jsp</a></li><li><a href="#mainjs">main.js</a></li><li><a href="#getfeedjava">GetFeed.java</a></li><li><a href="#boarddao---getpostscnt-len">BoardDAO - getPosts(cnt, len)</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#시작">시작</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#mainjsp">main.jsp</a></li><li><a href="#mainjs">main.js</a></li><li><a href="#boardfrontcontrollerjava">BoardFrontController.java</a></li><li><a href="#getfeedjava">GetFeed.java</a></li><li><a href="#boarddao---getpostscnt-len">BoardDAO - getPosts(cnt, len)</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
 
             </nav>
           </aside>
@@ -397,7 +397,7 @@
   <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al16 ec8"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Cont"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h2&gt;</span>최신글<span class="nt">&lt;/h2&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_BlockLarge"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_BlockLarge"</span> <span class="na">id=</span><span class="s">"mainHref1"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/aperitif-large-object1-luca-bravo.jpg)"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Img"</span> <span class="na">role=</span><span class="s">"img"</span> <span class="na">aria-label=</span><span class="s">"alt text"</span><span class="nt">&gt;&lt;/div&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Txt"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Title"</span> <span class="na">id=</span><span class="s">"mainTitle1"</span><span class="nt">&gt;</span>Article Title<span class="nt">&lt;/h3&gt;</span>
@@ -406,7 +406,7 @@
       <span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al16 ch8 ec4"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Cont"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_BlockSmall"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_BlockSmall"</span> <span class="na">id=</span><span class="s">"mainHref2"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/aperitif-large-object1-luca-bravo.jpg)"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Img"</span> <span class="na">role=</span><span class="s">"img"</span> <span class="na">aria-label=</span><span class="s">"alt text"</span><span class="nt">&gt;&lt;/div&gt;</span>
 
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Txt"</span><span class="nt">&gt;</span>
@@ -416,7 +416,7 @@
       <span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al16 ch8 ec4"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Cont"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_BlockSmall"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_BlockSmall"</span> <span class="na">id=</span><span class="s">"mainHref3"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/aperitif-large-object1-luca-bravo.jpg)"</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Img"</span> <span class="na">role=</span><span class="s">"img"</span> <span class="na">aria-label=</span><span class="s">"alt text"</span><span class="nt">&gt;&lt;/div&gt;</span>
 
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"MOD_ARTICLEBLOCKS1_Txt"</span><span class="nt">&gt;</span>
@@ -450,7 +450,7 @@
         <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
             <span class="dl">'</span><span class="s1">cnt</span><span class="dl">'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-            <span class="dl">'</span><span class="s1">len</span><span class="dl">'</span><span class="p">:</span> <span class="mi">71</span>
+            <span class="dl">'</span><span class="s1">len</span><span class="dl">'</span><span class="p">:</span> <span class="mi">70</span>
         <span class="p">},</span>
         <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span>
@@ -458,12 +458,16 @@
                 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
                 <span class="p">{</span>
                     <span class="kd">var</span> <span class="nx">titleId</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">#mainTitle</span><span class="dl">'</span><span class="p">;</span>
-                    <span class="kd">var</span> <span class="nx">contentId</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">#mainContent</span><span class="dl">'</span><span class="p">;</span>
                     <span class="nx">titleId</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-                    <span class="nx">contentId</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-                    
                     <span class="nx">$</span><span class="p">(</span><span class="nx">titleId</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="p">);</span>
+
+                    <span class="kd">var</span> <span class="nx">contentId</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">#mainContent</span><span class="dl">'</span><span class="p">;</span>
+                    <span class="nx">contentId</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
                     <span class="nx">$</span><span class="p">(</span><span class="nx">contentId</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">content</span><span class="p">);</span>
+
+                    <span class="kd">var</span> <span class="nx">hrefId</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">#mainHref</span><span class="dl">'</span><span class="p">;</span>
+                    <span class="nx">hrefId</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+                    <span class="nx">$</span><span class="p">(</span><span class="nx">hrefId</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">href</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./BoardContent.bo?num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">num</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;pageNum=1</span><span class="dl">'</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -474,34 +478,85 @@
 <ul>
   <li>메인 화면이 로드되었을 때 다른 페이지 이동 없이 보여져야 하니까 <code class="language-plaintext highlighter-rouge">ajax</code>를 이용해 비동기 방식으로 보여줄 것이다.</li>
   <li>최대 <code class="language-plaintext highlighter-rouge">cnt</code>의 수만큼 게시물을 가져오되 내용물은 <code class="language-plaintext highlighter-rouge">len</code> 길이만큼만 가져오도록 했다.</li>
-  <li>여긴 더 좋은 방법 생기면 수정할 예정!</li>
+  <li>태그의 아이디는 맨 뒤에 숫자만 바껴서 <code class="language-plaintext highlighter-rouge">i</code> 값에 따라 변경되도록 했다.</li>
+  <li>각 게시물마다 다른 글번호를 가진 페이지로 연결되어야 하기 때문에 게시글 하나를 불러올 때마다 해당 게시글의 <code class="language-plaintext highlighter-rouge">a</code> 태그의 <code class="language-plaintext highlighter-rouge">href</code>를 바꿔주었다.</li>
+  <li>최신글 3개만 보여주기 때문에 페이지 번호는 1번으로 고정한다.</li>
+</ul>
+
+<h2 id="boardfrontcontrollerjava">BoardFrontController.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardFrontController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="o">{</span>
+        <span class="c1">// 1. 전달되는 가상주소 계산</span>
+        <span class="c1">// .. 생략</span>
+		
+        <span class="c1">// 2. 가상주소 매핑</span>
+        <span class="nc">Action</span> <span class="n">action</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+        <span class="c1">// .. 생략</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/GetFeed.bo"</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /GetFeed.bo 호출"</span><span class="o">);</span>
+			
+            <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GetFeed</span><span class="o">();</span>
+			
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">forward</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="c1">// 3. 페이지 이동</span>
+        <span class="c1">// .. 생략</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">컨트롤러</code>에서 <code class="language-plaintext highlighter-rouge">DB</code>에 접속해서 작업을 수행할 서블릿과 연결한다.</li>
 </ul>
 
 <h2 id="getfeedjava">GetFeed.java</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
 
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 
-<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">org.json.simple.JSONArray</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.json.simple.JSONObject</span><span class="o">;</span>
 
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDTO</span><span class="o">;</span>
 
-<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/GetFeed.bo"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GetFeed</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GetFeed</span> <span class="kd">implements</span> <span class="nc">Action</span> 
 <span class="o">{</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
     <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ajax 시작 - GetFeed"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ajax 시작_GetFeed - execute() 호출"</span><span class="o">);</span>
 		
         <span class="nc">BoardDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDAO</span><span class="o">();</span>
         <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getPosts</span>
@@ -512,6 +567,7 @@
         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
         <span class="o">{</span>
             <span class="nc">JSONObject</span> <span class="n">feed</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">();</span>
+            <span class="n">feed</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"num"</span><span class="o">,</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">());</span>
             <span class="n">feed</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"title"</span><span class="o">,</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getTitle</span><span class="o">());</span>
             <span class="n">feed</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"content"</span><span class="o">,</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getContent</span><span class="o">());</span>
 			
@@ -523,18 +579,9 @@
         <span class="n">response</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
         <span class="c1">// json 데이터 넘김</span>
         <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">().</span><span class="na">print</span><span class="o">(</span><span class="n">feedList</span><span class="o">.</span><span class="na">toJSONString</span><span class="o">());</span>
-    <span class="o">}</span>
-	
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">().</span><span class="na">close</span><span class="o">();</span>
+		
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
@@ -570,7 +617,10 @@
             <span class="k">if</span> <span class="o">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="n">content</span><span class="o">.</span><span class="na">length</span><span class="o">())</span>
                 <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">content</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
             <span class="k">else</span>
+            <span class="o">{</span>
                 <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">len</span><span class="o">);</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="na">concat</span><span class="o">(</span><span class="s">"..."</span><span class="o">);</span>
+            <span class="o">}</span>
 				
             <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
 				
@@ -591,8 +641,8 @@
 </code></pre></div></div>
 
 <ul>
-  <li>이렇게 하면 메인 화면에서 최신 게시글 일부가 출력이 되는데 출력 범위를 넘어가면 … 으로 생략되게 하고 싶은데 아직 아이디어를 못 얻어서 일단은 DB에서 가져오는 글자수를 제한해서 가져온 뒤 출력하는 형태로 구현했다.</li>
-  <li>나중에 선생님한테 물어보고 수정할 것!!<br /><br /><br /></li>
+  <li>네이버 블로그 메인 페이지의 <code class="language-plaintext highlighter-rouge">html</code> 소스를 보니까 각 포스트별 미리보기 창에서 텍스트 자체는 일정 글자수 만큼만 출력하고 이상은 … 이 붙은 형태로 되어 있어서 이렇게 구현해 보았다.</li>
+  <li>일단 구현한 후 학원 선생님한테 여쭤보니까 이런 방식으로 구현하면 된다고 하셔서 이대로 고정하기로 했다. 😄<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -653,7 +703,7 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+17+-+%EC%B5%9C%EC%8B%A0%EA%B8%80+%EB%AF%B8%EB%A6%AC%EB%B3%B4%EA%B8%B0+%EA%B8%B0%EB%8A%A5+%EC%B6%94%EA%B0%80%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-17%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+17+-+%EB%A9%94%EC%9D%B8+%ED%99%94%EB%A9%B4%EC%97%90%EC%84%9C+%EC%B5%9C%EC%8B%A0%EA%B8%80+%EB%AF%B8%EB%A6%AC%EB%B3%B4%EA%B8%B0+%EA%B8%B0%EB%8A%A5+%EC%B6%94%EA%B0%80%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-17%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-17%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -668,7 +718,8 @@
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/project%20log/cafe-project-18/" class="pagination--pager" title="프로젝트) Cafe(웹 사이트) 만들기 18 - 우편번호 검색 기능 추가
+">다음</a>
     
   </nav>
 
@@ -682,6 +733,53 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-18/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 18 - 우편번호 검색 기능 추가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -819,60 +917,6 @@
   응용프로그램이라고도 하며 사용자가 직접 다루는 프로그램을 의미한다.
   그래서 네트워크 응용프로그램이라면 인터넷 상에서 통신을 할 때 사용자가 직접 다루게 되는 프로그램을 의미하게 된다.
   종류에는 이메일, 크롬과 같은 웹 브라우저, P2P 파일 ...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/boj/CodingTestBook-04-h3-py/" rel="permalink">Python) 이것이 취업을 위한 코딩테스트다 04 실전문제 2. 왕실의 나이트
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">문제 출처
-
-
-
-  이것이 취업을 위한 코딩테스트다 with 파이썬
-  Chapter 04 - 실전문제 2. 왕실의 나이트
-
-
-제한
-
-
-
-  시간 제한 : 1 초
-  메모리 제한 : 128 MB
-
-</p>
   </article>
 </div>
 
