@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-30T15:41:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 18 - 우편번호 검색 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-18/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 18 - 우편번호 검색 기능 추가" /><published>2022-03-30T00:00:00+09:00</published><updated>2022-03-30T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-18</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-18/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-31T09:05:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 06 실전문제 4. 두 배열의 원소 교체</title><link href="http://localhost:4000/boj/CodingTestBook-06-12-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 06 실전문제 4. 두 배열의 원소 교체" /><published>2022-03-31T00:00:00+09:00</published><updated>2022-03-31T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-06-12-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-06-12-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+<hr />
+
+<ul>
+  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
+  <li>Chapter 06 - 실전문제 4. 두 배열의 원소 교체<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>동빈이는 두 개의 배열 A와 B를 가지고 있다. 두 배열은 N개의 원소로 구성되어 있으며, 배열의 원소는 모두 자연수이다. 동빈이는 최대 K번의 바꿔치기 연산을 수행할 수 있는데, 바꿔치기 연산이란 배열 A에 있는 원소 하나와 배열 B에 있는 원소 하나를 골라서 두 원소를 서로 바꾸는 것을 말한다. 동빈이의 최종 목표는 배열 A의 모든 원소의 합이 최대가 되도록 하는 것이며, 여러분은 동빈이를 도와야 한다.</li>
+  <li>N, K, 그리고 배열 A와 B의 정보가 주어졌을 때, 최대 K번의 바꿔치기 연산을 수행하여 만들 수 있는 배열 A의 모든 원소의 합의 최댓값을 출력하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 N, K가 공백으로 구분되어 입력된다. (1 &lt;= N &lt;= 100,000,0 &lt;= K &lt;= N)</li>
+  <li>두 번째 줄에 배열 A의 원소들이 공백으로 구분되어 입력된다. 모든 원소는 10,000,000보다 작은 자연수이다.</li>
+  <li>세 번째 줄에 배열 B의 원소들이 공백으로 구분되어 입력된다. 모든 원소는 10,000,000보다 작은 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>최대 K번의 바꿔치기 연산을 수행하여 만들 수 있는 배열 A의 모든 원소의 합의 최댓값을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">배열 A</code>의 <code class="language-plaintext highlighter-rouge">최솟값</code>을 <code class="language-plaintext highlighter-rouge">배열 B</code>의 <code class="language-plaintext highlighter-rouge">최댓값</code>과 <code class="language-plaintext highlighter-rouge">K</code>번만큼 바꿔가면 된다.</li>
+  <li>그럴려면 <code class="language-plaintext highlighter-rouge">배열 A는 오름차순 정렬</code>, <code class="language-plaintext highlighter-rouge">배열 B는 내림차순 정렬</code>을 해야 한다.</li>
+  <li>그 후 <code class="language-plaintext highlighter-rouge">0</code>번째부터 <code class="language-plaintext highlighter-rouge">K - 1</code>번째 원소까지 두 배열의 원소를 바꿔주면 되는데 <code class="language-plaintext highlighter-rouge">배열 A</code>의 <code class="language-plaintext highlighter-rouge">i</code>번째 원소가 <code class="language-plaintext highlighter-rouge">배열 B</code>의 <code class="language-plaintext highlighter-rouge">i</code>번째 원소보다 작을 때에만 바꿔준다. 만약 <code class="language-plaintext highlighter-rouge">배열 A</code>의 <code class="language-plaintext highlighter-rouge">i</code>번째 원소가 <code class="language-plaintext highlighter-rouge">배열 B</code>의 <code class="language-plaintext highlighter-rouge">i</code>번째 원소보다 크다면 거기부터는 <code class="language-plaintext highlighter-rouge">배열 B</code>의 원소가 항상 작은 것이기 때문에 남은 <code class="language-plaintext highlighter-rouge">K</code>번만큼 계속 바꾸면 오답을 받게 될 것이다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/e0b6d22501b86b0f97b9e17a7ea0c974.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BFS" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 06 - 실전문제 4. 두 배열의 원소 교체 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 18 - 우편번호 검색 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-18/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 18 - 우편번호 검색 기능 추가" /><published>2022-03-30T00:00:00+09:00</published><updated>2022-03-30T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-18</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-18/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -1191,340 +1243,4 @@ END MODULE AREA 5: Footer 2
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kmooc.kr/courses/course-v1:PNUk+CN_C01+2021_KM_013/video">컴퓨터 네트워킹 - 부산대학교 K-MOOC 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><category term="Application" /><summary type="html"><![CDATA[👀 Application? 응용프로그램이라고도 하며 사용자가 직접 다루는 프로그램을 의미한다. 그래서 네트워크 응용프로그램이라면 인터넷 상에서 통신을 할 때 사용자가 직접 다루게 되는 프로그램을 의미하게 된다. 종류에는 이메일, 크롬과 같은 웹 브라우저, P2P 파일 공유 프로그램, SNS, 카카오톡과 같은 메신저, 온라인 게임, 유튜브와 같은 비디오 스트리밍 서비스 등이 있다.]]></summary></entry><entry><title type="html">프로젝트) Cafe(웹 사이트) 만들기 16_1 - 게시판 답글 작성 알고리즘</title><link href="http://localhost:4000/project%20log/cafe-project-16_1/" rel="alternate" type="text/html" title="프로젝트) Cafe(웹 사이트) 만들기 16_1 - 게시판 답글 작성 알고리즘" /><published>2022-03-25T00:00:00+09:00</published><updated>2022-03-25T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-16_1</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-16_1/"><![CDATA[<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
-
-<h1 id="시작">시작</h1>
-<ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="게시글-답글-작성-알고리즘">게시글 답글 작성 알고리즘</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">re_ref</code> : 부모글과 그로부터 파생된 자식글들이 같은 값을 가지기 위한 필드</li>
-  <li><code class="language-plaintext highlighter-rouge">re_lev</code> : 같은 <code class="language-plaintext highlighter-rouge">re_ref</code> 내에서의 들여쓰기 깊이</li>
-  <li><code class="language-plaintext highlighter-rouge">re_seq</code> : 같은 <code class="language-plaintext highlighter-rouge">re_ref</code> 내에서의 순서</li>
-</ul>
-
-<h2 id="첫-번째-글쓰기-입력">첫 번째 글쓰기 입력</h2>
-<ul>
-  <li>처음엔 답글이 아닌 일반 글들이 각자 고유한 <code class="language-plaintext highlighter-rouge">re_ref</code> 번호를 가지고 등록된다.</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th>num</th>
-      <th>title</th>
-      <th>re_ref</th>
-      <th>re_lev</th>
-      <th>re_seq</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>1st</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>2nd</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>3rd</td>
-      <td>3</td>
-      <td>0</td>
-      <td>1</td>
-      <td><br /></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="1번-글에-답변-글-달기">1번 글에 답변 글 달기</h2>
-<p>순서1) <code class="language-plaintext highlighter-rouge">re_ref</code>값은 부모글 1st의 <code class="language-plaintext highlighter-rouge">re_ref</code>값을 사용한다.<br />
-순서2) <code class="language-plaintext highlighter-rouge">re_seq</code>값은 부모글 1st에서 1 증가 한 값을 사용한다.<br />
-순서3) <code class="language-plaintext highlighter-rouge">re_lev</code>값은 부모글 1st에서 1 증가 한 값을 사용한다.<br /></p>
-
-<ul>
-  <li>그러면 아래와 같이 글이 등록될 것이다.</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th>num</th>
-      <th>title</th>
-      <th>re_ref</th>
-      <th>re_lev</th>
-      <th>re_seq</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>1st</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>2nd</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>3rd</td>
-      <td>3</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>1st_re1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-      <td><br /></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">re_seq</code>값이 1인 글은 부모글, 1보다 크면 자식글이라는 것을 알 수 있다.</li>
-</ul>
-
-<h2 id="1번-글의-답변-글에-또-답변-글-달기">1번 글의 답변 글에 또 답변 글 달기</h2>
-<ul>
-  <li>1번 글에 답글을 달 때와 같은 순서로 작성하면 아래와 같이 등록될 것이다.</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th>num</th>
-      <th>title</th>
-      <th>re_ref</th>
-      <th>re_lev</th>
-      <th>re_seq</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>1st</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>2nd</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>3rd</td>
-      <td>3</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>1st_re1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>1st_re1_re1</td>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td><br /></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="1번-글에-답변-글-달기-1">1번 글에 답변 글 달기</h2>
-<p>순서1) <code class="language-plaintext highlighter-rouge">re_ref</code>값은 부모글 1st의 <code class="language-plaintext highlighter-rouge">re_ref</code>값을 사용한다.<br />
-순서2) <code class="language-plaintext highlighter-rouge">re_seq</code>값은 부모글 1st에서 1 증가 한 값을 사용한다. 단 부모글을 제외한 값 <code class="language-plaintext highlighter-rouge">re_ref</code> 내에서 먼저 입력된 글은 <code class="language-plaintext highlighter-rouge">re_seq</code>값을 1 증가시킨다.<br />
-순서3) <code class="language-plaintext highlighter-rouge">re_lev</code>값은 부모글 1st에서 1 증가 한 값을 사용한다.<br /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>num</th>
-      <th>title</th>
-      <th>re_ref</th>
-      <th>re_lev</th>
-      <th>re_seq</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>1st</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>2nd</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>3rd</td>
-      <td>3</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>1st_re1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>1st_re1_re1</td>
-      <td>1</td>
-      <td>2</td>
-      <td>4</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>1st_re2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-      <td><br /></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul>
-  <li>그러면 위와 같은 값을 가지게 된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">re_ref</code>값을 기준으로 먼저 내림차순 정렬을 한 뒤 <code class="language-plaintext highlighter-rouge">re_ref</code>값 내에서 2차로 <code class="language-plaintext highlighter-rouge">re_seq</code>값을 기준으로 오름차순 정렬을 한다.</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th>num</th>
-      <th>title</th>
-      <th>re_ref</th>
-      <th>re_lev</th>
-      <th>re_seq</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>3</td>
-      <td>3rd</td>
-      <td>3</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>2nd</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1st</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>1st_re2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>1st_re1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>1st_re1_re1</td>
-      <td>1</td>
-      <td>2</td>
-      <td>4</td>
-      <td><br /></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul>
-  <li>그러면 이렇게 최신 글이 가장 위로 올라오면서 들여쓰기 레벨에 따라 작성된 글을 볼 수 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-8</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><category term="Application" /><summary type="html"><![CDATA[👀 Application? 응용프로그램이라고도 하며 사용자가 직접 다루는 프로그램을 의미한다. 그래서 네트워크 응용프로그램이라면 인터넷 상에서 통신을 할 때 사용자가 직접 다루게 되는 프로그램을 의미하게 된다. 종류에는 이메일, 크롬과 같은 웹 브라우저, P2P 파일 공유 프로그램, SNS, 카카오톡과 같은 메신저, 온라인 게임, 유튜브와 같은 비디오 스트리밍 서비스 등이 있다.]]></summary></entry></feed>
