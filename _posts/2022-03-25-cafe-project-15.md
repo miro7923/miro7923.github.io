@@ -38,105 +38,24 @@ tags:
     <button type="button" class="btn" 
       onclick="location.href='./BoardModify.bo?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>';">수정하기</button>
     <button type="button" class="btn" 
-      onclick="location.href='./BoardDeleteConfirm.bo?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>';">삭제하기</button>
+      onclick="location.href='deleteCheck(<%=dto.getNum()%>, <%=pageNum%>);">삭제하기</button>
   <%} %>
 ```
 
 * 로그인 한 사용자 중 작성 글의 `ID`와 일치하는 사용자 본인일 때에만 `삭제하기` 버튼이 활성화 된다.
-* 버튼을 누르면 정말 삭제할 것인지 한 번 더 묻는 액션 페이지로 연결된다.
+* 버튼을 누르면 정말 삭제할 것인지 확인하는 함수를 호출해 알림창을 띄운다.
 
-## BoardFrontController.java
+## boardList.js - deleteCheck(num, pageNum)
 
-```java
-package com.project.cafe.board.action;
-
-import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.project.cafe.action.Action;
-import com.project.cafe.action.ActionForward;
-
-public class BoardFrontController extends HttpServlet
+```javascript
+function deleteCheck(num, pageNum)
 {
-    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-    {
-        // 1. 전달되는 가상주소 계산
-        // .. 생략
-        
-        // 2. 가상주소 매핑
-        Action action = null;
-        ActionForward forward = null;
-		
-        // .. 생략
-        else 
-        {
-            forward = new ActionForward();
-
-			// .. 생략			
-            else if (command.equals("/BoardDeleteConfirm.bo"))
-            {
-                System.out.println("C : /BoardDeleteConfirm.bo 호출");
-				
-                forward.setPath("./contents/boardDelete.jsp");
-            }
-
-            forward.setRedirect(false);
-        }
-		
-        System.out.println("2. 가상주소 매핑 완료");
-		
-		
-        // 3. 페이지 이동
-        // .. 생략
-	}
+    if (confirm('정말 삭제 하시겠습니까?'))
+        location.href='./BoardDelete.bo?num='+num+'&pageNum='+pageNum;
 }
 ```
 
-* 삭제 버튼을 누르면 컨트롤러에서 확인 동작을 수행하는 페이지로 연결한다.
-
-## boardDelete.jsp
-
-```jsp
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="${pageContext.request.contextPath }/js/jquery-3.6.0.js"></script>
-</head>
-<body>
-<%
-	int num = Integer.parseInt(request.getParameter("num"));
-	String pageNum = request.getParameter("pageNum");
-%>
-<input type="hidden" id="num" value="<%=num%>">
-<input type="hidden" id="pageNum" value="<%=pageNum%>">
-<script type="text/javascript">
-	function deleteCheck()
-	{
-		var num = $('#num').val();
-		var pageNum = $('#pageNum').val();
-		if (confirm('정말 삭제 하시겠습니까?'))
-			location.href='./BoardDelete.bo?num='+num+'&pageNum='+pageNum;
-		else 
-			history.back();
-	}
-	
-	deleteCheck();
-</script>
-</body>
-</html>
-```
-
-* 자바 스크립트를 이용해 알림창을 띄운 후 최종 삭제 동작을 확인할 것이라서 `jsp` 페이지를 간단하게 만들어서 사용했다.
-* 취소 버튼을 누르면 게시글 본문 페이지로 돌아가고 확인 버튼을 누르면 삭제 동작을 수행하는 액션 클래스로 연결하기 위해 컨트롤러로 이동한다.
+* 취소 버튼을 누르면 게시글 본문 페이지에 머무르고 확인 버튼을 누르면 삭제 동작을 수행하는 서블릿으로 연결하기 위해 컨트롤러로 이동한다.
 
 ## BoardFrontController.java
 
