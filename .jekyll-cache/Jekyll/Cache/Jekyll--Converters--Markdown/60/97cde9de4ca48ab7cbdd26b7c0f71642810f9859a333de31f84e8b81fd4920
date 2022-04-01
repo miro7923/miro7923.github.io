@@ -1,0 +1,43 @@
+I"�<h1 id="다른-데이터베이스로-테이블을-이동하고-싶을-때">다른 데이터베이스로 테이블을 이동하고 싶을 때</h1>
+<ul>
+  <li>테이블 이름을 변경하는 명령어는 다음과 같다.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">alter</span> <span class="k">table</span> <span class="err">테이블명</span> <span class="k">rename</span> <span class="err">새</span> <span class="err">테이블명</span><span class="p">;</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<ul>
+  <li>이걸 이용해서 테이블을 다른 데이터베이스로 옮길 수 있다.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">alter</span> <span class="k">table</span> <span class="err">데이터베이스</span><span class="n">A</span><span class="p">.</span><span class="err">테이블명</span> <span class="k">rename</span> <span class="err">데이터베이스</span><span class="n">B</span><span class="p">.</span><span class="err">테이블명</span><span class="p">;</span>
+</code></pre></div></div>
+<p><br /><br /><br /></p>
+
+<h1 id="테이블-복사">테이블 복사</h1>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">table</span> <span class="err">새</span> <span class="err">테이블명</span> <span class="k">like</span> <span class="err">복사할</span> <span class="err">테이블명</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이걸 이용해서 다른 데이터베이스에 있는 테이블을 복사할 수 있다.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">table</span> <span class="err">데이터베이스</span><span class="n">A</span><span class="p">.</span><span class="err">테이블명</span> <span class="k">like</span> <span class="err">데이터베이스</span><span class="n">B</span><span class="p">.</span><span class="err">테이블명</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">insert</code> 구문을 이용한 방법</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="err">새</span> <span class="err">테이블명</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="err">원본테이블명</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">insert</code> 구문을 이용해서 다른 데이터베이스에 있는 테이블 복사</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="err">데이터베이스</span><span class="n">B</span><span class="p">.</span><span class="err">테이블명</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="err">데이터베이스</span><span class="n">A</span><span class="p">.</span><span class="err">테이블명</span><span class="p">;</span>
+</code></pre></div></div>
+:ET

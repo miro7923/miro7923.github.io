@@ -976,4 +976,10 @@ var store = [{
         "tags": ["Algorithm","BinarySearch","Python"],
         "url": "/boj/CodingTestBook-07-8-py/",
         "teaser": null
+      },{
+        "title": "MySQL) 다른 데이터베이스로 테이블 이동, 복사 및 변경하기",
+        "excerpt":"다른 데이터베이스로 테이블을 이동하고 싶을 때     테이블 이름을 변경하는 명령어는 다음과 같다.   mysql&gt; alter table 테이블명 rename 새 테이블명;         이걸 이용해서 테이블을 다른 데이터베이스로 옮길 수 있다.   mysql&gt; alter table 데이터베이스A.테이블명 rename 데이터베이스B.테이블명;        테이블 복사   mysql&gt; create table 새 테이블명 like 복사할 테이블명;         이걸 이용해서 다른 데이터베이스에 있는 테이블을 복사할 수 있다.   mysql&gt; create table 데이터베이스A.테이블명 like 데이터베이스B.테이블명;         insert 구문을 이용한 방법   mysql&gt; insert into 새 테이블명 select * from 원본테이블명;         insert 구문을 이용해서 다른 데이터베이스에 있는 테이블 복사   mysql&gt; insert into 데이터베이스B.테이블명 select * from 데이터베이스A.테이블명;  ","categories": ["MySQL"],
+        "tags": ["MySQL","alterTable"],
+        "url": "/mysql/mysql-alter-table/",
+        "teaser": null
       }]
