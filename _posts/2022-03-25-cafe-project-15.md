@@ -45,7 +45,7 @@ tags:
 * 로그인 한 사용자 중 작성 글의 `ID`와 일치하는 사용자 본인일 때에만 `삭제하기` 버튼이 활성화 된다.
 * 버튼을 누르면 정말 삭제할 것인지 확인하는 함수를 호출해 알림창을 띄운다.
 
-## boardList.js - deleteCheck(num, pageNum)
+## boardContent.js - deleteCheck(num, pageNum)
 
 ```javascript
 function deleteCheck(num, pageNum)
