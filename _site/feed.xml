@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-01T08:41:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 07 실전문제 2. 부품 찾기</title><link href="http://localhost:4000/boj/CodingTestBook-07-5-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 07 실전문제 2. 부품 찾기" /><published>2022-04-01T00:00:00+09:00</published><updated>2022-04-01T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-07-5-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-07-5-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-01T09:25:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 07 실전문제 3. 떡볶이 떡 만들기</title><link href="http://localhost:4000/boj/CodingTestBook-07-8-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 07 실전문제 3. 떡볶이 떡 만들기" /><published>2022-04-01T00:00:00+09:00</published><updated>2022-04-01T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-07-8-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-07-8-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+<hr />
+
+<ul>
+  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
+  <li>Chapter 07 - 실전문제 3. 떡볶이 떡 만들기<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>오늘 동빈이는 여행 가신 부모님을 대신해서 떡집 일을 하기로 했다. 오늘은 떡볶이 떡을 만드는 날이다. 동빈이네 떡볶이 떡은 재밌게도 떡볶이 떡의 길이가 일정하지 않다. 대신에 한 봉지 안에 들어가는 떡의 총 길이는 절단기로 잘라서 맞춰준다.</li>
+  <li>절단기에 높이(H)를 지정하면 줄지어진 떡을 한 번에 절단한다. 높이가 H보다 긴 떡은 H 위의 부분이 잘릴 것이고, 낮은 떡은 잘리지 않는다.</li>
+  <li>예를 들어 높이가 19, 14, 10, 17cm인 떡이 나란히 있고 절단기 높이를 15cm로 지정하면 자른 뒤 떡의 높이는 15, 14, 10, 15cm가 될 것이다. 잘린 떡의 높이는 차례대로 4, 0, 0, 2cm이다. 손님은 6cm만큼의 길이를 가져간다.</li>
+  <li>손님이 왔을 때 요청한 총 길이가 M일 때 적어도 M만큼의 떡을 얻기 위해 절단기에 설정할 수 있는 높이의 최댓값을 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 떡의 개수 N과 요청한 떡의 길이 M이 주어진다. (1 &lt;= N &lt;= 1,000,000, 1 &lt;= M &lt;= 2,000,000,000)</li>
+  <li>둘째 줄에는 떡의 개별 높이가 주어진다. 떡 높이의 총합은 항상 M 이상이므로, 손님은 필요한 양만큼 떡을 사갈 수 있다. 높이는 10억보다 작거나 같은 양의 정수 또는 0이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>적어도 M만큼의 떡을 집에 가져가기 위해 절단기에 설정할 수 있는 높이의 최댓값을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>이진탐색 문제이자 파라메트릭 서치 문제라고 한다.</li>
+  <li>이런 유형의 문제는 풀어본 적이 없어서 책에 나와 있는 해설을 보고 풀었다.</li>
+  <li>자른 떡의 길이가 M과 같아질 때까지 절단기의 위치를 옮겨가면서 적절한 높이(H)를 찾는다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/16e20d83fcb01090e7464e072607dbdb.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BinarySearch" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 07 - 실전문제 3. 떡볶이 떡 만들기 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 07 실전문제 2. 부품 찾기</title><link href="http://localhost:4000/boj/CodingTestBook-07-5-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 07 실전문제 2. 부품 찾기" /><published>2022-04-01T00:00:00+09:00</published><updated>2022-04-01T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-07-5-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-07-5-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
 <hr />
 
 <ul>
@@ -1476,62 +1529,4 @@ END MODULE AREA 5: Footer 2
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kmooc.kr/courses/course-v1:PNUk+CN_C01+2021_KM_013/video">컴퓨터 네트워킹 - 부산대학교 K-MOOC 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><category term="Application" /><summary type="html"><![CDATA[👀 REST? 서버가 클라이언트의 상태 정보를 가지고 있지 않는 것 HTTP를 통한 서버 클라이언트 모델에서 서버가 클라이언트의 위치와 같은 현재 상태를 유지하는 정보를 가지고 있으면 오버헤드가 크다. 그래서 클라이언트의 상태 정보를 서버에 저장하지 않고 서버와 클라이언트 간에 주고받는 HTTP 메세지 안에 클라이언트의 상태 정보를 담고 그것을 해석할 수 있는 방법까지 담는다. 서버는 특정 클라이언트에 대한 정보를 저장하고 있지 않아도 HTTP request 메세지만 보고 클라이언트의 상태를 알 수 있고 클라이언트는 HTTP response 메세지를 받으면 어떤 방식으로 메세지를 가져와야 할 지 알 수 있다. 이런 아키텍처를 따르는 서비스를 RESTful이라 한다.]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 04 실전문제 2. 왕실의 나이트</title><link href="http://localhost:4000/boj/CodingTestBook-04-h3-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 04 실전문제 2. 왕실의 나이트" /><published>2022-03-27T00:00:00+09:00</published><updated>2022-03-27T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-04-h3-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-04-h3-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
-<hr />
-
-<ul>
-  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
-  <li>Chapter 04 - 실전문제 2. 왕실의 나이트<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>행복 왕국의 왕실 정원은 체스판과 같은 8 X 8 좌표 평면이다. 왕실 정원의 특정한 한 칸에 나이트가 서 있다. 나이트는 매우 충성스러운 신하로서 매일 무술을 연마한다.</li>
-  <li>나이트는 말을 타고 있기 때문에 이동을 할 때는 L자 형태로만 이동할 수 있으며 정원 밖으로는 나갈 수 없다. 나이트는 특정한 위치에서 다음과 같은 2가지 경우로 이동할 수 있다.</li>
-</ul>
-
-<ol>
-  <li>수평으로 두 칸 이동한 뒤에 수직으로 한 칸 이동하기</li>
-  <li>수직으로 두 칸 이동한 뒤에 수평으로 한 칸 이동하기</li>
-</ol>
-
-<ul>
-  <li>8 X 8 좌표 평면상에서 나이트의 위치가 주어졌을 때 나이트가 이동할 수 있는 경우의 수를 출력하는 프로그램을 작성하시오. 이때 왕실의 정원에서 행 위치를 표현할 때는 1부터 8로 표현하며, 열 위치를 표현할 때는 a부터 h로 표현한다.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 8 X 8 좌표 평면상에서 현재 나이트가 위치한 곳의 좌표를 나타내는 두 문자로 구성된 문자열이 입력된다. 입력 문자는 a1처럼 열과 행으로 이뤄진다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 나이트가 이동할 수 있는 경우의 수를 출력하시오.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>나이트가 이동할 수 있는 모든 방향 쌍을 배열에 저장한 다음 반복문을 돌려 그 방향으로 이동했을 때 체스판 안 인지 확인해서 체스판 안일 때에만 경우의 수를 증가시키면 된다.</li>
-  <li>입력 중 열은 a1과 같이 알파벳으로 주어지기 때문에 이걸 숫자로 바꿔주는 것이 계산하기 편하다.<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/13a3a9a7105a54df2f0dd5bcbb99cdbe.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 04 - 실전문제 2. 왕실의 나이트 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><category term="Application" /><summary type="html"><![CDATA[👀 REST? 서버가 클라이언트의 상태 정보를 가지고 있지 않는 것 HTTP를 통한 서버 클라이언트 모델에서 서버가 클라이언트의 위치와 같은 현재 상태를 유지하는 정보를 가지고 있으면 오버헤드가 크다. 그래서 클라이언트의 상태 정보를 서버에 저장하지 않고 서버와 클라이언트 간에 주고받는 HTTP 메세지 안에 클라이언트의 상태 정보를 담고 그것을 해석할 수 있는 방법까지 담는다. 서버는 특정 클라이언트에 대한 정보를 저장하고 있지 않아도 HTTP request 메세지만 보고 클라이언트의 상태를 알 수 있고 클라이언트는 HTTP response 메세지를 받으면 어떤 방식으로 메세지를 가져와야 할 지 알 수 있다. 이런 아키텍처를 따르는 서비스를 RESTful이라 한다.]]></summary></entry></feed>
