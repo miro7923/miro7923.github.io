@@ -83,6 +83,7 @@ CREATE TABLE `cafe_board` (
   `re_seq` int DEFAULT NULL,
   `date` date DEFAULT NULL,
   `ip` varchar(200) DEFAULT NULL,
+  `image` varchar(50) DEFAULT NULL,
   `file` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`num`)
 );
@@ -100,6 +101,7 @@ CREATE TABLE `cafe_board` (
 * re_seq : 게시글 그룹에서 작성된 순서. 어떤 게시글에 답글이 달린 순서를 표시할 값이다.
 * date : 최초로 작성된 날짜. YYYY-MM-DD 형식
 * ip : 작성자의 `IP` 주소
+* image : 이미지 업로드 시 이미지 파일명
 * file : 파일 업로드 시 파일명
 
 ## 3. 댓글(comment)
