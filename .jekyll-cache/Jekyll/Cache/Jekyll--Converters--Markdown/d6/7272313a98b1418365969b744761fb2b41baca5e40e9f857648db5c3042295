@@ -1,4 +1,4 @@
-I"�j<h1 id="개발환경">개발환경</h1>
+I"�L<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -32,111 +32,29 @@
     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
       <span class="na">onclick=</span><span class="s">"location.href='./BoardModify.bo?num=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">';"</span><span class="nt">&gt;</span>수정하기<span class="nt">&lt;/button&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> 
-      <span class="na">onclick=</span><span class="s">"location.href='./BoardDeleteConfirm.bo?num=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">';"</span><span class="nt">&gt;</span>삭제하기<span class="nt">&lt;/button&gt;</span>
+      <span class="na">onclick=</span><span class="s">"location.href='deleteCheck(</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;</span>삭제하기<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
 </code></pre></div></div>
 
 <ul>
   <li>로그인 한 사용자 중 작성 글의 <code class="language-plaintext highlighter-rouge">ID</code>와 일치하는 사용자 본인일 때에만 <code class="language-plaintext highlighter-rouge">삭제하기</code> 버튼이 활성화 된다.</li>
-  <li>버튼을 누르면 정말 삭제할 것인지 한 번 더 묻는 액션 페이지로 연결된다.</li>
+  <li>버튼을 누르면 정말 삭제할 것인지 확인하는 함수를 호출해 알림창을 띄운다.</li>
+</ul>
+
+<h2 id="boardcontentjs---deletechecknum-pagenum">boardContent.js - deleteCheck(num, pageNum)</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">deleteCheck</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">pageNum</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">정말 삭제 하시겠습니까?</span><span class="dl">'</span><span class="p">))</span>
+        <span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="dl">'</span><span class="s1">./BoardDelete.bo?num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;pageNum=</span><span class="dl">'</span><span class="o">+</span><span class="nx">pageNum</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>취소 버튼을 누르면 게시글 본문 페이지에 머무르고 확인 버튼을 누르면 삭제 동작을 수행하는 서블릿으로 연결하기 위해 컨트롤러로 이동한다.</li>
 </ul>
 
 <h2 id="boardfrontcontrollerjava">BoardFrontController.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardFrontController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span>
-<span class="o">{</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="c1">// 1. 전달되는 가상주소 계산</span>
-        <span class="c1">// .. 생략</span>
-        
-        <span class="c1">// 2. 가상주소 매핑</span>
-        <span class="nc">Action</span> <span class="n">action</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-		
-        <span class="c1">// .. 생략</span>
-        <span class="k">else</span> 
-        <span class="o">{</span>
-            <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
-
-			<span class="c1">// .. 생략			</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/BoardDeleteConfirm.bo"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"C : /BoardDeleteConfirm.bo 호출"</span><span class="o">);</span>
-				
-                <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardDelete.jsp"</span><span class="o">);</span>
-            <span class="o">}</span>
-
-            <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-        <span class="o">}</span>
-		
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2. 가상주소 매핑 완료"</span><span class="o">);</span>
-		
-		
-        <span class="c1">// 3. 페이지 이동</span>
-        <span class="c1">// .. 생략</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>삭제 버튼을 누르면 컨트롤러에서 확인 동작을 수행하는 페이지로 연결한다.</li>
-</ul>
-
-<h2 id="boarddeletejsp">boardDelete.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
-    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
-<span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${pageContext.request.contextPath }/js/jquery-3.6.0.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-<span class="nt">&lt;%</span>
-	<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
-	<span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span>
-<span class="nt">%&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"num"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">num</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"pageNum"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-	<span class="kd">function</span> <span class="nx">deleteCheck</span><span class="p">()</span>
-	<span class="p">{</span>
-		<span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#num</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-		<span class="kd">var</span> <span class="nx">pageNum</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#pageNum</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">정말 삭제 하시겠습니까?</span><span class="dl">'</span><span class="p">))</span>
-			<span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="dl">'</span><span class="s1">./BoardDelete.bo?num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;pageNum=</span><span class="dl">'</span><span class="o">+</span><span class="nx">pageNum</span><span class="p">;</span>
-		<span class="k">else</span> 
-			<span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
-	<span class="p">}</span>
-	
-	<span class="nx">deleteCheck</span><span class="p">();</span>
-<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>자바 스크립트를 이용해 알림창을 띄운 후 최종 삭제 동작을 확인할 것이라서 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지를 간단하게 만들어서 사용했다.</li>
-  <li>취소 버튼을 누르면 게시글 본문 페이지로 돌아가고 확인 버튼을 누르면 삭제 동작을 수행하는 액션 클래스로 연결하기 위해 컨트롤러로 이동한다.</li>
-</ul>
-
-<h2 id="boardfrontcontrollerjava-1">BoardFrontController.java</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
 

@@ -1,4 +1,4 @@
-I"�,<h1 id="개발환경">개발환경</h1>
+I"�-<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>OpenJDK 8</li>
   <li>Eclipse 2021-12</li>
@@ -80,6 +80,7 @@
   <span class="nv">`re_seq`</span> <span class="nb">int</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`date`</span> <span class="nb">date</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`ip`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`image`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`file`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="nv">`num`</span><span class="p">)</span>
 <span class="p">);</span>
@@ -99,6 +100,7 @@
   <li>re_seq : 게시글 그룹에서 작성된 순서. 어떤 게시글에 답글이 달린 순서를 표시할 값이다.</li>
   <li>date : 최초로 작성된 날짜. YYYY-MM-DD 형식</li>
   <li>ip : 작성자의 <code class="language-plaintext highlighter-rouge">IP</code> 주소</li>
+  <li>image : 이미지 업로드 시 이미지 파일명</li>
   <li>file : 파일 업로드 시 파일명</li>
 </ul>
 

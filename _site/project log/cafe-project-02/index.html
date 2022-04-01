@@ -438,6 +438,7 @@
   <span class="nv">`re_seq`</span> <span class="nb">int</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`date`</span> <span class="nb">date</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`ip`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`image`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`file`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="nv">`num`</span><span class="p">)</span>
 <span class="p">);</span>
@@ -457,6 +458,7 @@
   <li>re_seq : 게시글 그룹에서 작성된 순서. 어떤 게시글에 답글이 달린 순서를 표시할 값이다.</li>
   <li>date : 최초로 작성된 날짜. YYYY-MM-DD 형식</li>
   <li>ip : 작성자의 <code class="language-plaintext highlighter-rouge">IP</code> 주소</li>
+  <li>image : 이미지 업로드 시 이미지 파일명</li>
   <li>file : 파일 업로드 시 파일명</li>
 </ul>
 
@@ -625,6 +627,53 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/project%20log/cafe-project-21/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 21 - 게시물에 첨부된 이미지와 파일 다른 경로에 저장하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/boj/CodingTestBook-07-8-py/" rel="permalink">Python) 이것이 취업을 위한 코딩테스트다 07 실전문제 3. 떡볶이 떡 만들기
 </a>
       
@@ -718,53 +767,6 @@
 
   시간 제한 : 1 초
   메모리 제한 : 128 MB
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/project%20log/cafe-project-20/" rel="permalink">프로젝트) Cafe(웹 사이트) 만들기 20 - 파일업로드 기능 추가
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          4 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">개발환경
-
-  MacBook Air (M1, 2020)
-  OpenJDK 8
-  Eclipse 2021-12
-  tomcat 8.5
-  MySQL Workbench 8.0.19
 
 </p>
   </article>
