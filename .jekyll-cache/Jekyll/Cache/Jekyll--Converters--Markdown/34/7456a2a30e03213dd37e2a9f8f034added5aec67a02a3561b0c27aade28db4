@@ -1,0 +1,320 @@
+I"B[<h1 id="-논리적-주소와-물리적-주소">👀 논리적 주소와 물리적 주소</h1>
+<ul>
+  <li>
+    <p>데이터가 메모리에 위치하고 있는 곳을 가리키는 주소는 논리적 주소와 물리적 주소로 나뉜다.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Logical address (= virtual address)</code>
+    <ul>
+      <li>프로세스마다 독립적으로 가지는 주소 공간</li>
+      <li>각 프로세스마다 0번지부터 시작</li>
+      <li><code class="language-plaintext highlighter-rouge">CPU</code>가 보는 주소는 <code class="language-plaintext highlighter-rouge">logical address</code>임</li>
+      <li>왜냐면 코드상의 주소가 <code class="language-plaintext highlighter-rouge">logical address</code>인데 이게 물리적 주소로 바뀐다 해서 코드상의 주소도 물리적 주소로 바뀌는 것은 아니다. 만약 바뀐다면 컴파일을 새로 해야 하는데 이러면 이상하다. 그래서 <code class="language-plaintext highlighter-rouge">CPU</code>는 논리적 주소를 참고하게 된다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Physical address</code>
+    <ul>
+      <li>메모리에 실제로 올라가는 위치</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 <code class="language-plaintext highlighter-rouge">instruction</code>을 수행하다가 메모리에 있는 데이터에 접근할 필요가 있으면 그 데이터가 위치하고 있는 주소를 알아야 한다.</li>
+  <li>이때 코드에 물리적 주소가 항상 명시되어 있어서 바로 그 위치로 가서 읽어오면 서로 편하겠지만 프로그램이 실행되는 컴퓨터와 환경에 따라 항상 같은 물리적 주소를 사용할 수 있다는 보장이 없다.</li>
+  <li>그래서 코드에는 논리적 주소를 사용해 각 프로세스별로 전용 주소공간을 사용할 수 있게 하고 그 논리적 주소를 이용해 메모리에 실제로 올려져 있는 위치를 참고할 수 있도록 하는 것이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code>는 메모리에 접근할 필요가 있으면 먼저 논리적 주소를 물리적 주소로 변환한 뒤 해당 위치에 접근해서 데이터를 읽어온다.</li>
+</ul>
+
+<h2 id="주소-바인딩address-binding">주소 바인딩(Address Binding)</h2>
+<ul>
+  <li>논리적 주소를 물리적 주소로 변환하는 것</li>
+  <li>하지만 주소변환은 <code class="language-plaintext highlighter-rouge">CPU</code>가 하는 것이 아닌 하드웨어적으로 이루어진다.</li>
+  <li>주소변환이 필요할 때마다 <code class="language-plaintext highlighter-rouge">CPU</code>가 필요하면 그 때마다 <code class="language-plaintext highlighter-rouge">interrupt</code>가 일어나게 될 것이고 그건 굉장히 비효율적일 것이다.</li>
+</ul>
+
+<h3 id="주소-바인딩-시점에-따른-분류">주소 바인딩 시점에 따른 분류</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Compile time binding</code>
+    <ul>
+      <li>컴파일될 때 물리적 주소가 결정된다.</li>
+      <li>시작위치가 변경되면 재컴파일</li>
+      <li>컴파일러는 절대 코드(absolute code) 생성</li>
+      <li>옛날에 많이 쓰다가 지금은 잘 안 쓴다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Load time binding</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Loader</code>의 책임하에 물리적 메모리 주소 부여</li>
+      <li>프로그램이 메모리에 로드될 때 물리적 주소가 결정된다.</li>
+      <li>컴파일러가 재배치 가능 코드(relocatable code)를 생성한 경우 가능</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Execution time binding (= Run time binding)</code>
+    <ul>
+      <li>수행이 시작된 이후에도 프로세스의 메모리 상 위치를 옮길 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">CPU</code>가 주소를 참조할 때마다 <code class="language-plaintext highlighter-rouge">binding</code> 점검 (address mapping table)</li>
+      <li>하드웨어에서 지원해야 가능하다.</li>
+      <li>최근 시스템에서 사용하는 방식</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="memory-management-unit-mmu">Memory-Management Unit (MMU)</h2>
+<ul>
+  <li>주소 변환을 위한 하드웨어</li>
+  <li>논리적 주소를 물리적 주소로 매핑해 준다.</li>
+  <li>실제 물리적 주소의 시작점에서 논리적 주소의 <code class="language-plaintext highlighter-rouge">offset</code>만큼을 더해서 물리적 주소를 알려준다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Limit register</code> : 만약 프로세스가 자기 범위를 넘어가는 위치에 있는 데이터에 접근을 요구하면 다른 프로세스의 중요 데이터에 접근하게 될 수 있다. 그래서 주소를 변환할 때 프로세스가 가질 수 있는 주소의 최대 크기를 먼저 제한해놓고 그 범위 안에서만 변환할 수 있도록 한다.<br /><br /></li>
+</ul>
+
+<h1 id="메모리-로드-기법들">메모리 로드 기법들</h1>
+<h2 id="dynamic-loading">Dynamic Loading</h2>
+<ul>
+  <li>프로세스 전체를 메모리에 미리 다 올리는 것이 아니라 해당 루틴이 불려질 때 메모리에 <code class="language-plaintext highlighter-rouge">load</code>하는 것</li>
+  <li><code class="language-plaintext highlighter-rouge">memory utilization</code>이 향상됨</li>
+  <li>가끔씩 사용되는 코드가 많을 때 유용하다.
+    <ul>
+      <li>자주 사용되는 부분이 한정적인데 전체를 올리면 비효율적이다.</li>
+      <li>예 : 오류 처리 루틴</li>
+    </ul>
+  </li>
+  <li>운영체제의 특별한 지원 없이 프로그램 자체에서 구현 가능 (<code class="language-plaintext highlighter-rouge">OS</code>는 라이브러리를 통해 지원 가능)</li>
+</ul>
+
+<h2 id="dynamic-linking">Dynamic Linking</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Linking</code>을 실행시간(execution time)`까지 미루는 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">Static linking</code>
+    <ul>
+      <li>라이브러리가 프로그램의 실행 파일 코드에 포함됨</li>
+      <li>실행 파일의 크기가 커짐</li>
+      <li>동일한 라이브러리를 각각의 프로세스가 메모리에 올리므로 메모리 낭비가 생긴다.(예: <code class="language-plaintext highlighter-rouge">printf</code>함수의 라이브러리 코드)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Overlays</code>
+    <ul>
+      <li>메모리에 프로세스의 부분 중 실제 필요한 정보만을 올림</li>
+      <li>이렇게 보면 <code class="language-plaintext highlighter-rouge">Dynamic loading</code>과 비슷해 보이지만 프로그래머가 수작업으로 구현해야 한다는 점에서 다르다. 작은 공간의 메모리를 사용하던 초창기 시스템에서 사용하던 방식으로 프로그래밍이 매우 복잡하다.</li>
+      <li>프로세스의 크기가 메모리보다 클 때 유용</li>
+      <li>운영체제의 지원 없이 사용자에 의해 구현</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Dynamic linking</code>
+    <ul>
+      <li>라이브러리가 실행시 연결된다.</li>
+      <li>라이브러리 호출 부분에 라이브러리 루틴의 위치를 찾기 위한 <code class="language-plaintext highlighter-rouge">stub</code>이라는 작은 코드를 둔다.</li>
+      <li>라이브러리가 이미 메모리에 있으면 그 루틴의 주소로 가고 없으면 디스크에서 읽어옴</li>
+      <li>운영체제의 도움 필요</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Swapping</code>
+    <ul>
+      <li>프로세스를 일시적으로 메모리에서 <code class="language-plaintext highlighter-rouge">backing store(하드디스크)</code>로 쫓아내는 것</li>
+      <li><code class="language-plaintext highlighter-rouge">Backing store</code> : 많은 사용자의 프로세스 이미지를 담을 만큼 충분히 빠르고 큰 저장 공간</li>
+      <li>일반적으로 중기 스케줄러(swapper)에 의해 <code class="language-plaintext highlighter-rouge">swap in/out</code>될 프로세스가 선정된다.</li>
+      <li>프로세스의 우선순위에 따라 <code class="language-plaintext highlighter-rouge">swap</code>이 이루어진다.</li>
+      <li><code class="language-plaintext highlighter-rouge">Compile time</code> 혹은 <code class="language-plaintext highlighter-rouge">load time binding</code>에서는 원래 메모리 위치로 <code class="language-plaintext highlighter-rouge">swap in</code>해야 함</li>
+      <li><code class="language-plaintext highlighter-rouge">Execution time binding</code>에서는 추후 빈 메모리 영역 아무 곳에나 올릴 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">swap time</code>은 대부분 <code class="language-plaintext highlighter-rouge">transfer time</code>(swap되는 양에 비례하는 시간)이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="allocation-of-physical-memory">Allocation of Physical Memory</h2>
+<ul>
+  <li>
+    <p>메모리는 일반적으로 두 영역으로 나뉘어 사용된다.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">OS</code> 상주 영역 : <code class="language-plaintext highlighter-rouge">interrupt vector</code>와 함께 낮은 주소 영역 사용</li>
+  <li>사용자 프로세스 영역 : 높은 주소 영역 사용</li>
+</ul>
+
+<h2 id="사용자-프로세스-영역의-할당-방법">사용자 프로세스 영역의 할당 방법</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Contiguous allocation</code>
+    <ul>
+      <li>각각의 프로세스가 메모리의 연속적인 공간에 적재되도록 하는 것</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Noncontiguous allocation</code>
+    <ul>
+      <li>하나의 프로세스가 메모리의 여러 영역에 분산되어 올라갈 수 있다.</li>
+      <li>현대 운영체제에서 사용</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="contiguous-allocation">Contiguous Allocation</h3>
+<ul>
+  <li>고정분할 (Fixed partition) 방식
+    <ul>
+      <li>물리적 메모리를 몇 개의 영구적 분할로 나눔</li>
+      <li>분할의 크기가 모두 동일한 방식과 서로 다른 방식 존재</li>
+      <li>분할당 하나의 프로그램 적재</li>
+      <li>동시에 메모리에 로드되는 프로그램의 수가 고정됨</li>
+      <li>최대 수행 가능 프로그램 크기 제한</li>
+      <li><code class="language-plaintext highlighter-rouge">internal fragmentation(내부 조각)</code>, <code class="language-plaintext highlighter-rouge">external fragmentation(외부 조각)</code> 발생</li>
+    </ul>
+  </li>
+  <li>가변분할 (Variable partition) 방식
+    <ul>
+      <li>프로그램의 크기를 고려해서 할당</li>
+      <li>분할의 크기, 개수가 동적으로 변함</li>
+      <li>기술적 관리 기법 필요</li>
+      <li><code class="language-plaintext highlighter-rouge">external fragmentation(외부 조각)</code> 발생</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">External fragmentation(외부 조각)</code>
+    <ul>
+      <li>프로그램 크기보다 분할 크기가 작을 때 생김</li>
+      <li>아무 프로그램에도 배정되지 않은 빈 공간이지만 프로그램이 올라갈 수 없는 작은 공간</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Internal fragmentation(내부 조각)</code>
+    <ul>
+      <li>프로그램 크기보다 분할 크기가 글 때 생김</li>
+      <li>하나의 분할 내부에서 발생하는 사용되지 않는 메모리 조각</li>
+      <li>특정 프로그램에 배정되었지만 사용되지 않는 공간</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Hole</code>
+    <ul>
+      <li>가용 메모리 공간</li>
+      <li>다양한 크기의 <code class="language-plaintext highlighter-rouge">hole</code>들이 메모리 여러 곳에 흩어져 있다.</li>
+      <li>프로세스가 도착하면 수용가능한 <code class="language-plaintext highlighter-rouge">hole</code>을 할당</li>
+      <li>운영체제는 다음의 정보 유지 - 할당공간, 가용공간</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Dynamic Storage-Allocation Problem</code>
+    <ul>
+      <li>
+        <p>가변 분할 방식에서 size = n 인 요청을 만족하는 가장 적절한 <code class="language-plaintext highlighter-rouge">hole</code>을 찾는 문제</p>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">First-fit</code>
+        <ul>
+          <li>사이즈가 n 이상인 것 중 최초로 찾아지는 <code class="language-plaintext highlighter-rouge">hole</code>에 할당</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">Best-fit</code>
+        <ul>
+          <li>사이즈가 n 이상인 가장 작은 <code class="language-plaintext highlighter-rouge">hole</code>을 찾아서 할당</li>
+          <li><code class="language-plaintext highlighter-rouge">hole</code>들의 리스트가 크기순으로 정렬되지 않은 경우 모든 <code class="language-plaintext highlighter-rouge">hole</code> 리스트를 탐색해야 함</li>
+          <li>많은 수의 아주 작은 <code class="language-plaintext highlighter-rouge">hole</code>들이 생성됨</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">Wost-fit</code>
+        <ul>
+          <li>가장 큰 <code class="language-plaintext highlighter-rouge">hole</code>에 할당</li>
+          <li>모든 리스트를 탐색해야 함</li>
+          <li>상대적으로 아주 큰 <code class="language-plaintext highlighter-rouge">hole</code>들이 생성됨</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">First-fit</code>과 <code class="language-plaintext highlighter-rouge">Best-fit</code>이 <code class="language-plaintext highlighter-rouge">Wost-fit</code>보다 속도와 공간 이용률 측면에서 효과적</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Compaction</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">external fragmentation(외부 조각)</code> 문제를 해결하는 한 가지 방법</li>
+      <li>사용 중인 메모리 영역을 한 군데로 몰고 <code class="language-plaintext highlighter-rouge">hole</code>들을 다른 한 곳으로 몰아 큰 <code class="language-plaintext highlighter-rouge">block</code>을 만드는 것</li>
+      <li>이렇게 보면 <code class="language-plaintext highlighter-rouge">Windows</code>의 디스크 조각 모음과 비슷해 보이지만 디스크 모음은 디스크에 있는 조각들을 모으는 것인데 반해 <code class="language-plaintext highlighter-rouge">Compaction</code>은 실행 중인 메모리의 조각들을 모으는 것이라는 점에서 다르다.</li>
+      <li>비용이 매우 많이 든다.</li>
+      <li>최소한의 메모리 이동으로 <code class="language-plaintext highlighter-rouge">Compaction</code>하는 방법이 있지만 매우 복잡하다.</li>
+      <li>프로세스의 주소가 실행 시간에 동적으로 재배치 가능한 경우에만 수행될 수 있다. 런타임 바인딩이 지원될 때에만 사용 가능</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="paging">Paging</h1>
+<ul>
+  <li>프로세스의 <code class="language-plaintext highlighter-rouge">virtual memory</code>를 동일한 사이즈의 <code class="language-plaintext highlighter-rouge">page</code>로 나눈다.</li>
+  <li><code class="language-plaintext highlighter-rouge">virtual memory</code>의 내용이 <code class="language-plaintext highlighter-rouge">page</code> 단위로 비연속적으로 저장된다.</li>
+  <li>일부는 <code class="language-plaintext highlighter-rouge">backing storage</code>에, 일부는 <code class="language-plaintext highlighter-rouge">physical memory</code>에 저장</li>
+  <li>
+    <p>각 페이지마다 논리적 - 물리적 주소 매핑 정보(페이징 테이블)가 필요하다.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">physical memory</code>를 동일한 크기의 <code class="language-plaintext highlighter-rouge">frame</code>으로 나눔</li>
+  <li><code class="language-plaintext highlighter-rouge">logical memory</code>를 동일 크기의 <code class="language-plaintext highlighter-rouge">page</code>로 나눔(<code class="language-plaintext highlighter-rouge">frame</code>과 같은 크기)</li>
+  <li>모든 가용 <code class="language-plaintext highlighter-rouge">frame</code>들을 관리</li>
+  <li><code class="language-plaintext highlighter-rouge">page table</code>을 사용하여 논리적 주소를 물리적 주소로 바꾼다.</li>
+  <li>
+    <p>외부조각이 발생하지 않지만 페이징한 프로세스의 마지막 조각은 페이지 크기보다 작을 수 있기 때문에 내부조각은 발생할 수 있다.</p>
+  </li>
+  <li>속도 향상을 위해 <code class="language-plaintext highlighter-rouge">TLB(Translation Look-aside Buffer)</code>라는 하드웨어를 사용한다.
+    <ul>
+      <li>일종의 캐시로 논리적 - 물리적 주소 쌍을 가지고 있다.</li>
+    </ul>
+  </li>
+  <li>페이지 갯수만큼 페이징 테이블이 필요하기 때문에 공간이 많이 필요하다.</li>
+</ul>
+
+<h2 id="two-level-page-table">Two-Level Page Table</h2>
+<ul>
+  <li>페이지 테이블 공간을 줄이기 위해 사용한다. (속도 향상적인 측면에서는 별 효과 없음)</li>
+  <li>페이지 테이블 자체를 페이지로 구성해서 페이지 안에 페이지가 또 있는 형태이다.</li>
+  <li>사용되지 않는 페이지 영역은 안쪽 페이지 테이블을 안 만들고 포인터를 <code class="language-plaintext highlighter-rouge">NULL</code>로 두기 때문에 공간을 절약할 수 있다.</li>
+  <li>주소 공간이 더 커지면 다단계 페이지 테이블을 사용할 수도 있다.</li>
+</ul>
+
+<h2 id="memory-protection">Memory Protection</h2>
+<ul>
+  <li>
+    <p>페이지 테이블 각 <code class="language-plaintext highlighter-rouge">entry</code>마다 <code class="language-plaintext highlighter-rouge">bit</code>를 둔다.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Protection bit</code>
+    <ul>
+      <li>페이지에 대한 접근 권한 설정(read/write/read-only 등 연산에 대한 접근 권한)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Valid-invalid bit</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">valid</code> : 해당 주소의 <code class="language-plaintext highlighter-rouge">frame</code>에 그 프로세스를 구성하는 유효한 내용이 있음을 뜻함(접근 허용)</li>
+      <li><code class="language-plaintext highlighter-rouge">invalid</code> : 해당 주소의 <code class="language-plaintext highlighter-rouge">frame</code>에 유효한 내용이 없음 (접근 불허)
+        <ul>
+          <li>프로세스가 그 주소 부분을 사용하지 않는 경우</li>
+          <li>해당 페이지가 메모리에 올라와 있지 않고 <code class="language-plaintext highlighter-rouge">swap area</code>에 있는 경우</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="inverted-page-table">Inverted Page Table</h2>
+<ul>
+  <li>페이지 갯수가 많아짐에 따라 페이지 테이블이 커지는 문제를 줄여보려고 사용하는 테이블</li>
+  <li>프로세스별로 페이지 테이블을 두는 것이 아닌 페이지 프레임 하나당 페이지 테이블에 하나의 <code class="language-plaintext highlighter-rouge">entry</code>를 둔 것</li>
+  <li>각 <code class="language-plaintext highlighter-rouge">page table entry</code>는 각각의 물리적 메모리의 <code class="language-plaintext highlighter-rouge">page frame</code>이 담고 있는 내용 표시</li>
+  <li>물리적 주소를 보고 논리적 주소를 알 수 있는 테이블이라 할 수 있다.</li>
+</ul>
+
+<h1 id="shared-page">Shared Page</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Shared code</code>
+    <ul>
+      <li>공유가 가능한 코드는 <code class="language-plaintext highlighter-rouge">read-only</code>로 한 <code class="language-plaintext highlighter-rouge">frame</code>에만 올리는 것</li>
+      <li>모든 프로세스의 <code class="language-plaintext highlighter-rouge">logical address space</code>에서 동일한 위치에 있어야 함</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Private code and data</code>
+    <ul>
+      <li>각 프로세스들은 독자적으로 메모리에 올림</li>
+      <li><code class="language-plaintext highlighter-rouge">private data</code>는 <code class="language-plaintext highlighter-rouge">logical address space</code> 아무 곳에 와도 무방함</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="segmentation">Segmentation</h1>
+<ul>
+  <li>프로그램은 의미 단위인 여러 개의 <code class="language-plaintext highlighter-rouge">segment</code>로 구성</li>
+  <li>작게는 프로그램을 구성하는 함수 하나하나에서 크게는 프로그램 전체까지도 가능</li>
+  <li>일반적으로는 <code class="language-plaintext highlighter-rouge">code</code>, <code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">stack</code> 부분이 하나씩의 세그먼트로 정의됨
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">main()</code>, <code class="language-plaintext highlighter-rouge">function</code>, <code class="language-plaintext highlighter-rouge">global variables</code>, <code class="language-plaintext highlighter-rouge">stack</code>, <code class="language-plaintext highlighter-rouge">symbol table</code>, <code class="language-plaintext highlighter-rouge">arrays</code></li>
+    </ul>
+  </li>
+  <li>논리적 주소는 <code class="language-plaintext highlighter-rouge">segment-number, offest</code> 쌍으로 구성된다.</li>
+  <li>세그먼트별 주소 변환 정보를 담고 있는 <code class="language-plaintext highlighter-rouge">segment table</code>이 필요하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">segment-number</code>로부터 <code class="language-plaintext highlighter-rouge">offest</code>만큼 떨어진 위치에 접근하는 방식</li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
+</ul>
+:ET
