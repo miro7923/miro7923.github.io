@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 1 - 페이지 템플릿 세팅 및 서블릿 매핑
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 1 - 페이지 템플릿 세팅 및 서블릿 매핑
 toc: true
 toc_sticky: true
 toc_label: 목차

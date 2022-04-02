@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 4 - 회원가입 유효성 검사하기
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 4 - 회원가입 유효성 검사하기
 toc: true
 toc_sticky: true
 toc_label: 목차

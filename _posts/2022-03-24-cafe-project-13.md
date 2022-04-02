@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 13 - 게시글 조회 기능 만들기
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 13 - 게시글 조회 기능 만들기
 toc: true
 toc_sticky: true
 toc_label: 목차

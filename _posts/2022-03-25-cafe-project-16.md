@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 16 - 답글 작성 기능 구현
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 16 - 답글 작성 기능 구현
 toc: true
 toc_sticky: true
 toc_label: 목차

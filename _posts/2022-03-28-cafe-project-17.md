@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 17 - 메인 화면에서 최신글 미리보기 기능 추가
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 17 - 메인 화면에서 최신글 미리보기 기능 추가
 toc: true
 toc_sticky: true
 toc_label: 목차

@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 10 - 게시판 만들기 시작
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 10 - 게시판 만들기 시작
 toc: true
 toc_sticky: true
 toc_label: 목차

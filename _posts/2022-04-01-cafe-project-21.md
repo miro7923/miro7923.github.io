@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 21 - 게시물에 첨부된 이미지와 파일 다른 경로에 저장하기
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 21 - 게시물에 첨부된 이미지와 파일 다른 경로에 저장하기
 toc: true
 toc_sticky: true
 toc_label: 목차

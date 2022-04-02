@@ -1,5 +1,5 @@
 ---
-title: 프로젝트) Cafe(웹 사이트) 만들기 20 - 파일업로드 기능 추가
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 20 - 파일업로드 기능 추가
 toc: true
 toc_sticky: true
 toc_label: 목차
