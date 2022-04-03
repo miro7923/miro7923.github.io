@@ -1,0 +1,12 @@
+I"�<h1 id="-transport-layer">👀 Transport Layer</h1>
+<ul>
+  <li>응용 계층 바로 아래에 있는 계층</li>
+  <li>대표적인 서비스는 프로세스들 간의 논리적 연결</li>
+  <li>하나의 컴퓨터 안에서는 여러 프로세스가 동시에 기동되고 있다.</li>
+  <li>전송 계층 바로 아래에 있는 네트워크 계층에서는 <code class="language-plaintext highlighter-rouge">IP</code>를 이용해 상대 호스트를 찾아가는데 이것 만으로는 상대방의 어떤 프로세스에게 전달해야 하는지 알 수 없다.</li>
+  <li>그래서 전송 계층에서 여러 프로세스들 중에서 어떤 프로세스에게 전달해야 할 지 알려주는 정보를 제공하는 것이다.</li>
+  <li>전송 계층의 보내는 쪽에서는 보내고자 하는 메세지(파일 등)를 분할한 다음에 세그먼트에 담아서 전송한다.</li>
+  <li>그러면 받는 쪽에서 분할되어 온 세그먼트들을 합친 후에 응용 계층으로 전달한다.</li>
+  <li>이때 사용하는 프로토콜은 <code class="language-plaintext highlighter-rouge">TCP</code>와 <code class="language-plaintext highlighter-rouge">UDP</code> 두 가지가 대표적으로 사용된다.<br /><br /></li>
+</ul>
+:ET
