@@ -1,0 +1,362 @@
+I"��<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1">진행상황 1</h1>
+<ul>
+  <li>게시글에 달린 댓글을 볼 수 있는 기능을 추가했다.</li>
+</ul>
+
+<h2 id="boardcontentjsp">boardContent.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 게시글 본문 영역 --&gt;</span>
+
+<span class="c">&lt;!-- 댓글 영역 --&gt;</span>  
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"comments"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>댓글<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"postNum"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
+    <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">coList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> 
+            <span class="nc">CommentDTO</span> <span class="n">coDto</span> <span class="o">=</span> <span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"comId"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;%=</span><span class="n">coDto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="ni">&amp;nbsp;</span>		
+    <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"comDate"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;%=</span><span class="n">coDto</span><span class="o">.</span><span class="na">getCommentedDate</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="ni">&amp;nbsp;</span>
+    <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>수정<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>삭제<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"comContent"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;%=</span><span class="n">coDto</span><span class="o">.</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;</span>
+  <span class="nt">&lt;/p&gt;&lt;br&gt;</span>
+  <span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- 댓글 영역 --&gt;</span>
+
+<span class="c">&lt;!-- 하단 버튼 영역 --&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>게시글 본문 페이지에 작성된 댓글들을 볼 수 있는 공간을 추가했다.</li>
+  <li>게시글 본문을 불러오는 서블릿에서 댓글 목록도 함께 불러와서 출력한다.</li>
+</ul>
+
+<h2 id="boardcontentactionjava">BoardContentAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.CommentDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardContentAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : BoardContentAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 전달받은 파라메터(글 번호, 페이지정보) 저장</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
+        <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span> <span class="c1">// 페이지번호는 DB 처리할 때 사용하진 않아서 형변환 필요 X</span>
+		
+        <span class="c1">// DAO 객체 생성</span>
+        <span class="nc">BoardDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDAO</span><span class="o">();</span>
+
+        <span class="c1">// 글 조회수 1 증가</span>
+        <span class="n">dao</span><span class="o">.</span><span class="na">updateReadCount</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+		
+        <span class="c1">// 글 정보 불러오기</span>
+        <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getPost</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+        
+        <span class="c1">// 해당 글에 달린 댓글 정보 불러오기</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">CommentDTO</span><span class="o">&gt;</span> <span class="n">coList</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getComments</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+		
+        <span class="c1">// request 영역에 글 정보랑 페이지정보, 댓글목록 저장</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">,</span> <span class="n">dto</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"coList"</span><span class="o">,</span> <span class="n">coList</span><span class="o">);</span>
+		
+        <span class="c1">// 페이지 이동</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardContent.jsp"</span><span class="o">);</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>게시글 내용을 불러올 때 해당 글에 달린 댓글 정보도 함께 불러온다.</li>
+</ul>
+
+<h2 id="boarddaojava---getcommentsnum">BoardDAO.java - getComments(num)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">CommentDTO</span><span class="o">&gt;</span> <span class="nf">getComments</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">CommentDTO</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">CommentDTO</span><span class="o">&gt;();</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_comment where post_num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="nc">CommentDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CommentDTO</span><span class="o">();</span>
+				
+            <span class="n">dto</span><span class="o">.</span><span class="na">setCommentedDate</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">"commented_date"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"content"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setIp</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"ip"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setPost_num</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"post_num"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRe_lev</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"re_lev"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRe_ref</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"re_ref"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRe_seq</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"re_seq"</span><span class="o">));</span>
+				
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+        <span class="o">}</span>
+			
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 댓글 목록 저장 완료"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>게시글 번호를 매개변수로 받아서 해당 글에 달린 댓글들만 불러온다.<br /><br /></li>
+</ul>
+
+<p align="center"><img src="../../assets/images/commentEmpty.png" /></p>
+
+<ul>
+  <li>작성된 댓글이 없을 때엔 불러오지 않는다.</li>
+</ul>
+
+<h1 id="진행상황-2">진행상황 2</h1>
+<ul>
+  <li>게시글에 댓글을 다는 기능을 추가했다.</li>
+</ul>
+
+<h2 id="boardcontentjsp-1">boardContent.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 게시글 본문 영역 --&gt;</span>
+
+<span class="c">&lt;!-- 댓글 영역 --&gt;</span>  
+<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./CommentWriteAction.bo?post_num=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">pageNum</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return writeComment();"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">id</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"comment"</span> <span class="na">name=</span><span class="s">"comment"</span> <span class="na">placeholder=</span><span class="s">"댓글 달기"</span><span class="err">.</span> <span class="na">maxlength=</span><span class="s">"500"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">id=</span><span class="s">"commentBtn"</span><span class="nt">&gt;</span>입력<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;&lt;br&gt;&lt;br&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"comments"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>댓글<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"postNum"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
+    <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">coList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> 
+            <span class="nc">CommentDTO</span> <span class="n">coDto</span> <span class="o">=</span> <span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"comId"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;%=</span><span class="n">coDto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="ni">&amp;nbsp;</span>		
+    <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"comDate"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;%=</span><span class="n">coDto</span><span class="o">.</span><span class="na">getCommentedDate</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="ni">&amp;nbsp;</span>
+    <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>수정<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>삭제<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"comContent"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;%=</span><span class="n">coDto</span><span class="o">.</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;</span>
+  <span class="nt">&lt;/p&gt;&lt;br&gt;</span>
+  <span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- 댓글 영역 --&gt;</span>
+
+<span class="c">&lt;!-- 하단 버튼 영역 --&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>작성한 댓글을 전송할 폼태그를 추가했다.</li>
+</ul>
+
+<h2 id="boardcontentjs">boardContent.js</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">writeComment</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#comment</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">내용을 입력하세요.</span><span class="dl">'</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>댓글 작성 서블릿으로 이동하기 전에 댓글이 작성된 것을 확인한 후 서블릿으로 이동한다.</li>
+</ul>
+
+<h2 id="commentwriteactionjava">CommentWriteAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.CommentDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CommentWriteAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : CommentWriteAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 한글처리</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+		
+        <span class="c1">// 파라메터 저장</span>
+        <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">comment</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"comment"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">postNum</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"post_num"</span><span class="o">));</span>
+        <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span>
+		
+        <span class="nc">CommentDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CommentDTO</span><span class="o">();</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">comment</span><span class="o">);</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setIp</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getRemoteAddr</span><span class="o">());</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setPost_num</span><span class="o">(</span><span class="n">postNum</span><span class="o">);</span>
+		
+        <span class="c1">// DB 연결해서 댓글 저장</span>
+        <span class="nc">BoardDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDAO</span><span class="o">();</span>
+        <span class="n">dao</span><span class="o">.</span><span class="na">insertComment</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+		
+        <span class="c1">// 페이지 이동</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./BoardContent.bo?num="</span><span class="o">+</span><span class="n">postNum</span><span class="o">+</span><span class="s">"&amp;pageNum="</span><span class="o">+</span><span class="n">pageNum</span><span class="o">);</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>컨트롤러를 통해 댓글 작성 동작을 수행하는 서블릿으로 이동한다.</li>
+  <li>게시글을 작성할 때와 마찬가지로 폼태그로 받아온 파라메터들을 저장한 후 <code class="language-plaintext highlighter-rouge">DB</code>에 접속해서 <code class="language-plaintext highlighter-rouge">insert</code> 동작을 수행한다.</li>
+  <li>게시글 본문 페이지에서 게시글 번호와 페이지 번호 정보를 필요로 하기 때문에 <code class="language-plaintext highlighter-rouge">get</code>방식으로 함께 넘겨준다.</li>
+</ul>
+
+<h2 id="boarddaojava---insertcommentdto">BoardDAO.java - insertComment(dto)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertComment</span><span class="o">(</span><span class="nc">CommentDTO</span> <span class="n">dto</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="kt">int</span> <span class="n">lastNum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="c1">// 새 글 번호 찾기</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select max(num) from cafe_comment"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+            <span class="n">lastNum</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+			
+        <span class="c1">// 댓글 삽입</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into cafe_comment(num, post_num, id, content, commented_date, re_ref, re_lev, re_seq, ip)"</span>
+                <span class="o">+</span> <span class="s">" values(?,?,?,?,now(),?,?,?,?)"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">lastNum</span><span class="o">);</span>
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getPost_num</span><span class="o">());</span>
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">lastNum</span><span class="o">);</span>
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">8</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getIp</span><span class="o">());</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+			
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 댓글 삽입 완료"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>게시글 삽입 때와 마찬가지로 삽입 연산을 수행한다.<br /><br /></li>
+</ul>
+
+<p align="center"><img src="../../assets/images/loadComments.png" /></p>
+
+<ul>
+  <li>댓글 삽입 연산이 완료된 후 다시 게시글 본문 페이지로 이동하면 새로 작성된 댓글을 확인할 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li>마감 기한이 늘어났다.</li>
+  <li><code class="language-plaintext highlighter-rouge">D-5</code></li>
+</ul>
+:ET
