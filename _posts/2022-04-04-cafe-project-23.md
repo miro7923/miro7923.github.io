@@ -30,6 +30,102 @@ tags:
 # 진행상황 1
 * 게시글에 달린 댓글을 볼 수 있는 기능을 추가했다.
 
+## boardList.jsp
+
+```jsp
+<tbody>
+<%
+    if (null != postList) {
+        for (int i = 0; i < postList.size(); i++) 
+        {
+            BoardDTO dto = postList.get(i);
+%>
+  <tr>
+    <th scope="row"><%=dto.getNum() %></th>
+    <td>
+<%
+            int width = 0;
+            if (0 < dto.getRe_lev()) // 답글일 때
+            {
+                width = 10 * dto.getRe_lev();
+%>
+      <img class="reImg" src="./contents/level.gif" width="<%=width%>" height="15">
+      <img class="reImg" src="./contents/re.gif">
+<%
+            }
+%>
+      <a href="./BoardContent.bo?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>"><%=dto.getTitle() %> (<%=dto.getComment_count() %>)</a>
+    </td>
+    <td><%=dto.getId() %></td>
+    <td><%=dto.getDate() %></td>
+    <td><%=dto.getReadcount() %></td>
+  </tr>
+<%}} %>
+</tbody>
+```
+
+* 게시글 목록에서 댓글이 달린 갯수를 확인할 수 있게 수정했다.
+
+## BoardDAO.java - getPostList(startRow, pageSize)
+
+```java
+public ArrayList<BoardDTO> getPostList(int startRow, int pageSize)
+{
+    ArrayList<BoardDTO> postList = new ArrayList<BoardDTO>();
+		
+    try {
+        con = getCon();
+			
+        // 글 자르기 : limit 시작행-1, 갯수
+        // 시작행-1부터 x개 만큼 가져온다.
+        // 정렬 : re_ref(내림차순) / re_seq(오름차순)
+        sql = "select * from cafe_board order by re_ref desc, re_seq asc limit ?,?";
+        pstmt = con.prepareStatement(sql);
+			
+        pstmt.setInt(1, startRow - 1); // 시작행 - 1
+        pstmt.setInt(2, pageSize); // 갯수
+			
+        rs = pstmt.executeQuery();
+			
+        while (rs.next())
+        {
+            // 글 1개의 정보(dto)에 저장한 후 배열에 저장
+            BoardDTO dto = new BoardDTO();
+				
+            dto.setContent(rs.getString("content"));
+            dto.setDate(rs.getDate("date"));
+            dto.setFile(rs.getString("file"));
+            dto.setId(rs.getString("id"));
+            dto.setIp(rs.getString("ip"));
+            dto.setNum(rs.getInt("num"));
+            dto.setRe_lev(rs.getInt("re_lev"));
+            dto.setRe_ref(rs.getInt("re_ref"));
+            dto.setRe_seq(rs.getInt("re_seq"));
+            dto.setReadcount(rs.getInt("readcount"));
+            dto.setTitle(rs.getString("title"));
+            dto.setComment_count(rs.getInt("comment_count"));
+				
+            postList.add(dto);
+        }
+			
+        System.out.println("DAO : 글 정보 저장 완료");
+    }
+    catch (Exception e) {
+        e.printStackTrace();
+    }
+    finally {
+        closeDB();
+    }
+		
+    return postList;
+}
+```
+
+* 게시글 목록을 불러올 때 댓글의 갯수도 함께 저장하도록 수정했다.
+* 물론 테이블에도 댓글 갯수 컬럼을 추가했다.
+
+<p align="center"><img src="../../assets/images/boardListComment.png"></p>
+
 ## boardContent.jsp
 
 ```jsp
