@@ -775,6 +775,14 @@
 
     <span class="k">try</span> <span class="o">{</span>
         <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+        
+        <span class="c1">// 게시글의 댓글 갯수 증가</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set comment_count = comment_count + 1 where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+			
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 댓글 갯수 증가 완료"</span><span class="o">);</span>
 			
         <span class="c1">// 새 글 번호 찾기</span>
         <span class="n">sql</span> <span class="o">=</span> <span class="s">"select max(num) from cafe_comment"</span><span class="o">;</span>
@@ -813,7 +821,8 @@
 </code></pre></div></div>
 
 <ul>
-  <li>게시글 삽입 때와 마찬가지로 삽입 연산을 수행한다.<br /><br /></li>
+  <li>게시글 삽입 때와 마찬가지로 삽입 연산을 수행한다.</li>
+  <li>댓글이 달릴 게시글의 댓글 갯수를 증가시킨다.<br /><br /></li>
 </ul>
 
 <p align="center"><img src="../../assets/images/loadComments.png" /></p>
@@ -896,7 +905,8 @@
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/project%20log/cafe-project-24/" class="pagination--pager" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 24 - 댓글 수정 기능 추가
+">다음</a>
     
   </nav>
 
@@ -910,6 +920,53 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-24/" rel="permalink">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 24 - 댓글 수정 기능 추가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -1039,49 +1096,6 @@
     <p class="archive__item-excerpt" itemprop="description">👀 논리적 주소와 물리적 주소
 
   데이터가 메모리에 위치하고 있는 곳을 가리키는 주소는 논리적 주소와 물리적 주소로 나뉜다.
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/mysql-alter-table/" rel="permalink">MySQL) 다른 데이터베이스로 테이블 이동, 복사 및 변경하기
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">다른 데이터베이스로 테이블을 이동하고 싶을 때
-
-  테이블 이름을 변경하는 명령어는 다음과 같다.
 
 </p>
   </article>
