@@ -411,6 +411,14 @@ public void insertComment(CommentDTO dto)
 
     try {
         con = getCon();
+        
+        // 게시글의 댓글 갯수 증가
+        sql = "update cafe_board set comment_count = comment_count + 1 where num=?";
+        pstmt = con.prepareStatement(sql);
+			
+        pstmt.executeUpdate();
+			
+        System.out.println("DAO : 댓글 갯수 증가 완료");
 			
         // 새 글 번호 찾기
         sql = "select max(num) from cafe_comment";
@@ -448,7 +456,8 @@ public void insertComment(CommentDTO dto)
 }
 ```
 
-* 게시글 삽입 때와 마찬가지로 삽입 연산을 수행한다.<br><br>
+* 게시글 삽입 때와 마찬가지로 삽입 연산을 수행한다.
+* 댓글이 달릴 게시글의 댓글 갯수를 증가시킨다.<br><br>
 
 <p align="center"><img src="../../assets/images/loadComments.png"></p>
 
