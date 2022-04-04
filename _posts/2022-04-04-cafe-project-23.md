@@ -33,6 +33,18 @@ tags:
 ## boardContent.jsp
 
 ```jsp
+<%
+    String id = (String)session.getAttribute("id");
+	
+    boolean isLogin = false;
+    if (null == id) isLogin = false;
+    else isLogin = true;
+	
+    BoardDTO dto = (BoardDTO)request.getAttribute("dto");
+    String pageNum = (String)request.getAttribute("pageNum");
+    ArrayList<CommentDTO> coList = (ArrayList<CommentDTO>)request.getAttribute("coList");
+%>
+
 <!-- 게시글 본문 영역 -->
 
 <!-- 댓글 영역 -->  
