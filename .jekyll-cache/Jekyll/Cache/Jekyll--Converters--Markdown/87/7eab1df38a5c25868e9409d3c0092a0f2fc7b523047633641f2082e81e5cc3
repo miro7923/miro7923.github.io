@@ -1,0 +1,400 @@
+I"#�<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1">진행상황 1</h1>
+<ul>
+  <li>관리자 페이지를 추가했다.</li>
+  <li>관리자 아이디인 <code class="language-plaintext highlighter-rouge">admin</code>으로 로그인 했을 때에만 접근할 수 있다.</li>
+</ul>
+
+<h2 id="topjsp">top.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_HEADER1_Phone"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;%</span>
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+		
+    <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="nt">%&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./login.me"</span><span class="nt">&gt;</span>로그인<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./join.me"</span><span class="nt">&gt;</span>회원가입<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;%</span>
+    <span class="o">}</span>
+    <span class="k">else</span> 
+    <span class="o">{</span>
+        <span class="nt">%&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./logout.me"</span><span class="nt">&gt;</span>로그아웃<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
+        <span class="nt">&lt;%</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="nt">%&gt;</span>
+              <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./admin.me"</span><span class="nt">&gt;</span>관리자 페이지<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;%</span>
+        <span class="o">}</span>
+        <span class="k">else</span>
+        <span class="o">{</span>
+            <span class="nt">%&gt;</span>
+              <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./checkPass.me"</span><span class="nt">&gt;</span>마이페이지<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;%</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="nt">%&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>세션에 저장된 아이디 정보가 <code class="language-plaintext highlighter-rouge">admin</code>일 때만 관리자 페이지 버튼이 활성화된다.</li>
+</ul>
+
+<h2 id="adminjsp">admin.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/adminLeftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h3&gt;</span>관리자 페이지<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;%</span>
+      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+      	<span class="k">else</span> 
+      	<span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 관리자 계정이 아니면 쫓아내기</span>
+                <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+            <span class="o">}</span>
+      	<span class="o">}</span>
+      <span class="nt">%&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>관리자님 환영합니다. <span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>관리자로 로그인하면 관리자 전용 페이지에 접근할 수 있으며 만약 관리자가 아닌 사용자가 접근하면 세션 정보를 초기화하고 쫓아낸다.</li>
+</ul>
+
+<h2 id="adminleftnavjsp">adminLeftNav.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al16 al-o2 de-o1 de6 ec4"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Menu"</span> <span class="na">data-theme=</span><span class="s">"_bo2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Menutitle"</span> <span class="na">data-theme=</span><span class="s">"_bgs"</span><span class="nt">&gt;</span>Menu<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./MemberListAction.me"</span><span class="nt">&gt;</span>회원관리<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>게시글 관리<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/nav&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>관리자 메뉴용 사이드 메뉴도 따로 만들었다.<br /><br /></li>
+</ul>
+
+<p align="center"><img src="../../assets/images/adminPageMain.png" /></p>
+
+<ul>
+  <li>회원관리 메뉴를 누르면 먼저 회원 전체 정보를 불러오기 위해서 해당 동작을 수행할 서블릿으로 이동한다.</li>
+</ul>
+
+<h2 id="memberlistactionjava">MemberListAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberListAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : MemberListAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 한글처리</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+		
+        <span class="c1">// DB에서 전체 회원 목록 불러오기</span>
+        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="n">memberList</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getMemberList</span><span class="o">();</span>
+		
+        <span class="c1">// 세션에 저장</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"memberList"</span><span class="o">,</span> <span class="n">memberList</span><span class="o">);</span>
+		
+        <span class="c1">// 페이지 이동</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./MemberManagement.me"</span><span class="o">);</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>회원 전체 목록을 세션에 저장한 후 회원관리 페이지로 이동한다.</li>
+</ul>
+
+<h2 id="membermanagementjsp">memberManagement.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/adminLeftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h3&gt;</span>회원관리 페이지<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;%</span>
+      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+      	<span class="k">else</span> 
+      	<span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 관리자 계정이 아니면 쫓아내기</span>
+                <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+            <span class="o">}</span>
+      	<span class="o">}</span>
+      	
+      	<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="err">&gt;</span> <span class="n">memberList</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="err">&gt;</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"memberList"</span><span class="o">);</span>
+      <span class="nt">%&gt;</span>
+      <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./AdminDeleteAction.me"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"type09"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;tbody&gt;</span>
+            <span class="nt">&lt;colgroup&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"5%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"35%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">""</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/colgroup&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;th&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"selectAll"</span><span class="nt">&gt;&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>아이디<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>이름<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>이메일<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>가입일<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">memberList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+              <span class="o">{</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">memberList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
+                  <span class="o">{</span> <span class="nt">%&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"member"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getName</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getEmail</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getRegdate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
+          <span class="nt">&lt;/tbody&gt;</span>
+        <span class="nt">&lt;/table&gt;&lt;br&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>회원 삭제<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>아까 세션에 저장했던 회원목록을 토대로 회원들을 출력해서 보여준다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/memberManagementPage.png" /></p>
+
+<ul>
+  <li>회원 삭제 동작을 테스트 한다고 좀 삭제했더니 회원이 많이 줄었다. 😅</li>
+</ul>
+
+<h2 id="membermanagementjs">memberManagement.js</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">selectAll</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">selectAll</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// 전체 선택 / 해제</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#selectAll</span><span class="dl">'</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>		
+        <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#selectAll</span><span class="dl">'</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="dl">'</span><span class="s1">:checked</span><span class="dl">'</span><span class="p">))</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:checkbox[name=member]</span><span class="dl">'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        <span class="k">else</span> 
+            <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:checkbox[name=member]</span><span class="dl">'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">finalCheck</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:checkbox[name=member]:checked</span><span class="dl">'</span><span class="p">).</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 선택된 엘리먼트가 없으면 삭제할 회원이 없음</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">선택된 회원이 없습니다!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> 
+    <span class="p">{</span>
+        <span class="c1">// 선택된 회원이 있을 때</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">선택한 회원들을 탈퇴 시키겠습니까?</span><span class="dl">'</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="k">else</span> 
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>테이블의 맨 위에 있는 체크박스를 누르면 전체 선택과 헤재가 가능하다.</li>
+  <li>삭제 버튼을 눌렀을 때엔 <code class="language-plaintext highlighter-rouge">finalCheck()</code> 메서드를 통해 동작 분기를 나누었다.<br /><br /></li>
+</ul>
+
+<h1 id="진행상황-2">진행상황 2</h1>
+<ul>
+  <li>관리자가 회원을 일괄 삭제할 수 있는 기능을 추가했다.</li>
+</ul>
+
+<h2 id="admindeleteactionjava">AdminDeleteAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AdminDeleteAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : AdminDeleteAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 파라미터 저장</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">members</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameterValues</span><span class="o">(</span><span class="s">"member"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"members size: "</span><span class="o">+</span><span class="n">members</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+		
+        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+        <span class="c1">// DB 접속해서 삭제 연산</span>
+        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">id</span> <span class="o">:</span> <span class="n">members</span><span class="o">)</span> 
+        <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"id: "</span><span class="o">+</span><span class="n">id</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">deleteMember</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('잘못된 접근!');"</span><span class="o">);</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"history.back();"</span><span class="o">);</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+				
+                <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+				
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="c1">// 페이지 이동</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('선택한 회원 탈퇴가 완료 되었습니다.');"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./MemberListAction.me';"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>체크박스로 선택한 회원들의 아이디를 받아서 그 갯수만큼 삭제 연산을 반복한다.</li>
+  <li>기존에 만들었던 회원 한 명을 삭제하는 메소드가 있긴 했는데 회원의 아이디와 비밀번호를 함께 확인한 후 삭제 동작을 수행하는 메서드라 목적에 좀 맞지 않아서 오버로딩해서 하나 더 만들었다.</li>
+</ul>
+
+<h2 id="memberdaojava---deletememberid">MemberDAO.java - deleteMember(id)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">deleteMember</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_members where id=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from cafe_members where id=?"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+				
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+				
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 운영자가 회원정보 삭제 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="nc">CloseDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>아이디를 매개변수로 받아 일치하는 회원 한 명의 정보를 삭제한다.</li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li>마감 기한이 늘어났다.</li>
+  <li><code class="language-plaintext highlighter-rouge">D-3</code></li>
+</ul>
+:ET
