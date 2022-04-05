@@ -150,13 +150,13 @@ public class MemberListAction implements Action
         MemberDAO dao = new MemberDAO();
         ArrayList<MemberDTO> memberList = dao.getMemberList();
 		
-        // 세션에 저장
-        request.getSession().setAttribute("memberList", memberList);
+        // request에 저장
+        request.setAttribute("memberList", memberList);
 		
         // 페이지 이동
         ActionForward forward = new ActionForward();
-        forward.setPath("./MemberManagement.me");
-        forward.setRedirect(true);
+        forward.setPath("./admin/memberManagement.jsp");
+        forward.setRedirect(false);
 		
         return forward;
     }
@@ -237,7 +237,7 @@ public ArrayList<MemberDTO> getMemberList()
             }
       	}
       	
-      	ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>)session.getAttribute("memberList");
+      	ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>)request.getAttribute("memberList");
       %>
       <form action="./AdminDeleteAction.me" method="post" onsubmit="return finalCheck();">
         <table class="type09">
