@@ -247,7 +247,7 @@ public class AdminDeleteAction implements Action
 		
         // 게시글 관리 페이지로 이동
         out.print("alert('선택한 게시글 삭제가 완료 되었습니다.');");
-        out.print("location.href='./BoardManagementAction.bo';");
+        out.print("location.href='./BoardList.bo?flag=a';");
         out.print("</script>");
 		
         out.close();
