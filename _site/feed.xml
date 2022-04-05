@@ -1,4 +1,207 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-04T23:15:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 25 - 댓글 삭제 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-25/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 25 - 댓글 삭제 기능 추가" /><published>2022-04-04T00:00:00+09:00</published><updated>2022-04-04T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-25</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-25/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-05T17:53:07+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 27 - 관리자 페이지에서 회원 상세정보 보기 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-27/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 27 - 관리자 페이지에서 회원 상세정보 보기 기능 추가" /><published>2022-04-05T00:00:00+09:00</published><updated>2022-04-05T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-27</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-27/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>관리자 페이지에서 회원 한 명의 상세 정보를 확인하고 거기에서 삭제할 수 있는 기능을 추가했다.</li>
+</ul>
+
+<h2 id="membermanagementjsp">memberManagement.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">memberList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+  <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">memberList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
+    <span class="o">{</span> <span class="nt">%&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"member"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./MemberInfoAction.me?id=</span><span class="nt">&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getName</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getEmail</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getRegdate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>회원 목록을 보는 페이지에서 아이디를 클릭하면 해당 회원의 정보를 가져오는 서블릿으로 이동한다.</li>
+</ul>
+
+<h2 id="memberinfoactionjava">MemberInfoAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberInfoAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : MemberInfoAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 파라메터 저장</span>
+        <span class="nc">String</span> <span class="n">memberId</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+		
+        <span class="c1">// DB 접속해서 회원 정보 가져오기</span>
+        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+        <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getMember</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+		
+        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
+		
+        <span class="k">if</span> <span class="o">(</span><span class="n">dto</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="c1">// 해당 회원정보 없을 때</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('잘못된 접근!');"</span><span class="o">);</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./MemberManagement.me';"</span><span class="o">);</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+			
+            <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			
+            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span>
+		
+        <span class="c1">// 세션에 회원정보 저장</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">,</span> <span class="n">dto</span><span class="o">);</span>
+
+        <span class="c1">// 회원 상세 정보 페이지로 이동</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./MemberInfo.me';"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>회원 한 명의 정보를 가져온 뒤 세션에 저장한다.</li>
+  <li>세션 저장이 끝나면 회원 상세 정보 페이지로 이동한다.</li>
+</ul>
+
+<h2 id="memberinfojsp">memberInfo.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/leftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h3&gt;</span>회원 상세 정보<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;%</span>
+      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+      		<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+      	
+      	<span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="o">(</span><span class="nc">MemberDTO</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">);</span>
+      	
+      	<span class="nc">String</span><span class="o">[]</span> <span class="n">regdate</span> <span class="o">=</span> <span class="n">dto</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+      <span class="nt">%&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>회원번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"memberNum"</span> <span class="na">id=</span><span class="s">"memberNum"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getMemberNum</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>이름 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"name"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>생년월일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"date"</span> <span class="na">name=</span><span class="s">"birth"</span> <span class="na">class=</span><span class="s">"birth"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getBirth</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>나이 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"age"</span> <span class="na">class=</span><span class="s">"age"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">disabled</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>성별 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"남"</span>
+          <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"남"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span> 
+          <span class="na">checked</span>
+          <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span> <span class="na">readonly</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>남<span class="nt">&lt;/label&gt;</span> 
+          <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"여"</span>
+          <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"여"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+          <span class="na">checked</span>
+          <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span> <span class="na">readonly</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>여<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>우편번호 <span class="nt">&lt;/label&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"postalcode"</span> <span class="na">id=</span><span class="s">"postalcode"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPostalcode</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"guide"</span> <span class="na">style=</span><span class="s">"color:#999;display:none"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>도로명 주소 <span class="nt">&lt;/label&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"roadAddress"</span> <span class="na">name=</span><span class="s">"roadAddress"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getRoad_address</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>상세 주소 <span class="nt">&lt;/label&gt;</span>
+		  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"detailAddress"</span> <span class="na">name=</span><span class="s">"detailAddress"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getDetail_address</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span> <span class="na">id=</span><span class="s">"phoneArea"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_TelField"</span><span class="nt">&gt;</span>휴대폰 번호 <span class="nt">&lt;/label&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone1"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone1"</span> <span class="na">size=</span><span class="s">"1"</span> <span class="na">maxlength=</span><span class="s">"3"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">oninput=</span><span class="s">"tabCursor(1)"</span> <span class="na">readonly</span><span class="nt">&gt;</span> - 
+          <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone2"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone2"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">7</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">oninput=</span><span class="s">"tabCursor(2)"</span> <span class="na">readonly</span><span class="nt">&gt;</span> - 
+          <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone3"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone3"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="mi">11</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_EmailField"</span><span class="nt">&gt;</span>이메일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span> <span class="na">id=</span><span class="s">"email"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"emailMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>가입일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"regdate"</span> <span class="na">id=</span><span class="s">"regdate"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">regdate</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./AdminDeleteAction.me"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"member"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>회원삭제<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/form&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">onclick=</span><span class="s">"history.back();"</span><span class="nt">&gt;</span>회원 목록 보기<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>회원 상세 정보 페이지는 마이페이지와 동일한 레이아웃이되, 각 정보를 관리자가 수정할 필요는 없기 때문에 모두 <code class="language-plaintext highlighter-rouge">readonly</code>를 걸었다.</li>
+  <li>하단에 있는 <code class="language-plaintext highlighter-rouge">회원삭제</code> 버튼을 누르면 해당 회원을 삭제할 수 있다. 삭제 로직은 이전 일지에서 만들었던 것과 동일하다.</li>
+  <li>참고 : <a href="https://miro7923.github.io/project%20log/cafe-project-26/">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 26 - 관리자 페이지 + 회원 관리 기능 추가</a></li>
+  <li><code class="language-plaintext highlighter-rouge">회원 목록 보기</code> 버튼을 누르면 이전 페이지로 되돌아 간다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li>마감 기한이 늘어났다.</li>
+  <li><code class="language-plaintext highlighter-rouge">D-2</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 24 - 댓글 수정 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-24/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 24 - 댓글 수정 기능 추가" /><published>2022-04-04T00:00:00+09:00</published><updated>2022-04-04T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-24</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-24/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -22,7 +225,7 @@
 
 <h1 id="진행상황-1">진행상황 1</h1>
 <ul>
-  <li>게시글에 달린 댓글을 삭제하는 기능을 추가했다.</li>
+  <li>게시글에 달린 댓글을 수정하는 기능을 추가했다.</li>
 </ul>
 
 <h2 id="boardcontentjsp">boardContent.jsp</h2>
@@ -33,7 +236,7 @@
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">onclick=</span><span class="s">"showCommentBox(</span><span class="nt">&lt;%=</span><span class="n">i</span> <span class="nt">%&gt;</span><span class="s">);"</span> <span class="na">id=</span><span class="s">"modify"</span><span class="nt">&gt;</span>수정<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;span&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">onclick=</span><span class="s">"confirmDelete(</span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getPost_num</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;</span>삭제<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>삭제<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;%</span> <span class="o">}</span> <span class="nt">%&gt;</span>
 </code></pre></div></div>
@@ -44,18 +247,47 @@
 
 <h2 id="boardcontentjs">boardContent.js</h2>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">confirmDelete</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">postNum</span><span class="p">,</span> <span class="nx">pageNum</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">showCommentBox</span><span class="p">(</span><span class="nx">idx</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">정말 삭제 하시겠습니까?</span><span class="dl">'</span><span class="p">))</span>
-        <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./CommentDeleteAction.bo?num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;post_num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">postNum</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;pageNum=</span><span class="dl">'</span><span class="o">+</span><span class="nx">pageNum</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">con</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">modify</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">idx</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">comBlock</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">modifyComment</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">idx</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">comBlock</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">comBlock</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">inline-block</span><span class="dl">'</span><span class="p">;</span>
+        <span class="nx">con</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">취소</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> 
+    <span class="p">{</span>
+        <span class="nx">comBlock</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
+        <span class="nx">con</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">수정</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li>삭제 버튼을 누르면 확인창을 띄워서 최종 확인한 뒤 삭제 서블릿으로 이동한다.</li>
+  <li>수정 버튼을 누르면 댓글을 수정할 수 있는 창을 보여주거나 숨김 수 있게 제어한다.</li>
 </ul>
 
-<h2 id="commentdeleteactionjava">CommentDeleteAction.java</h2>
+<h2 id="boardcontentjsp-1">boardContent.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"comContent"</span> <span class="na">id=</span><span class="s">"comContent</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"display: none;"</span> <span class="na">id=</span><span class="s">"modifyComment</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./CommentModifyAction.bo?num=</span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;post_num=</span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getPost_num</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return writeComment();"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">id</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"comment"</span> <span class="na">name=</span><span class="s">"comment"</span> <span class="na">rows=</span><span class="s">"10"</span> <span class="na">cols=</span><span class="s">"80"</span> <span class="na">maxlength=</span><span class="s">"500"</span><span class="nt">&gt;&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;&lt;/textarea&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">id=</span><span class="s">"commentBtn"</span><span class="nt">&gt;</span>입력<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/form&gt;&lt;br&gt;</span>
+<span class="nt">&lt;/div&gt;&lt;br&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>수정 버튼을 누르면 댓글 수정창이 나타나고 한 번 더 누르면 댓글 수정창이 사라진다.</li>
+  <li>댓글 수정 내용과 함께 댓글 번호와 게시글 정보도 함께 전달한다.</li>
+</ul>
+
+<h2 id="commentmodifyactionjava">CommentModifyAction.java</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
 
@@ -67,24 +299,35 @@
 <span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.CommentDTO</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CommentDeleteAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CommentModifyAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
 <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
     <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : CommentDeleteAction - execute() 호출"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : CommentModifyAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 한글처리</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
 		
         <span class="c1">// 파라메터 저장</span>
         <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
         <span class="kt">int</span> <span class="n">post_num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"post_num"</span><span class="o">));</span>
         <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">comment</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"comment"</span><span class="o">);</span>
 		
-        <span class="c1">// DB 접속해서 삭제 연산 수행</span>
+        <span class="nc">CommentDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CommentDTO</span><span class="o">();</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setPost_num</span><span class="o">(</span><span class="n">post_num</span><span class="o">);</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">comment</span><span class="o">);</span>
+		
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : commentDTO: "</span><span class="o">+</span><span class="n">dto</span><span class="o">);</span>
+		
+        <span class="c1">// DB 접속 및 update 실행</span>
         <span class="nc">BoardDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDAO</span><span class="o">();</span>
-        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">deleteComment</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">updateComment</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
 		
-        <span class="c1">// 페이지 이동</span>
         <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
         <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
         <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">!=</span> <span class="n">result</span><span class="o">)</span>
@@ -96,11 +339,8 @@
         <span class="o">}</span>
 		
         <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('댓글 삭제 완료!');"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./BoardContent.bo?num="</span><span class="o">+</span><span class="n">post_num</span><span class="o">+</span><span class="s">"&amp;pageNum="</span><span class="o">+</span><span class="n">pageNum</span><span class="o">+</span><span class="s">"';"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./BoardContent.bo?num="</span><span class="o">+</span><span class="n">post_num</span><span class="o">+</span><span class="s">"&amp;pageNum="</span><span class="o">+</span><span class="n">pageNum</span><span class="o">+</span><span class="s">";'"</span><span class="o">);</span>
         <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
-		
-        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
 		
         <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
     <span class="o">}</span>
@@ -108,13 +348,13 @@
 </code></pre></div></div>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">DB</code>에 접속해서 댓글 삭제 동작을 수행한 뒤 결과에 따라 페이지를 이동한다.</li>
-  <li>로그인 한 본인만 삭제할 수 있기 때문에 접근한 사람이 본인이 아닌 경우는 없을 것이라 생각하지만 혹시 모르니까  예외처리를 해 주었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">DB</code>에 접속해서 댓글 수정 동작을 수행한 뒤 결과에 따라 페이지를 이동한다.</li>
+  <li>로그인 한 본인만 수정할 수 있기 때문에 접근한 사람이 본인이 아닌 경우는 없을 것이라 생각하지만 혹시 모르니까  예외처리를 해 주었다.</li>
 </ul>
 
-<h2 id="boarddaojava---deletecommentnum">BoardDAO.java - deleteComment(num)</h2>
+<h2 id="boarddaojava---updatecommentdto">BoardDAO.java - updateComment(dto)</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">deleteComment</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">updateComment</span><span class="o">(</span><span class="nc">CommentDTO</span> <span class="n">dto</span><span class="o">)</span>
 <span class="o">{</span>
     <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
 		
@@ -124,29 +364,22 @@
         <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_comment where num=?"</span><span class="o">;</span>
         <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
 			
-        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
 			
         <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
 			
         <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
         <span class="o">{</span>
-            <span class="c1">// 게시글의 댓글 갯수 감소</span>
-            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set comment_count = comment_count - 1 where num=?"</span><span class="o">;</span>
+            <span class="c1">// 댓글이 존재하면 수정</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_comment set content=? where num=?"</span><span class="o">;</span>
             <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
 				
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"post_num"</span><span class="o">));</span>
-            
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
-				
-            <span class="c1">// 댓글 삭제</span>
-            <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from cafe_comment where num=?"</span><span class="o">;</span>
-            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-				
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
 				
             <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
 				
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 댓글 삭제 완료"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 댓글 수정 완료"</span><span class="o">);</span>
         <span class="o">}</span>
     <span class="o">}</span>
     <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
@@ -161,9 +394,458 @@
 </code></pre></div></div>
 
 <ul>
-  <li>댓글이 존재하는지 확인한 후 삭제한다.</li>
-  <li>댓글이 달렸던 게시글에서도 갯수를 감소시킨다.</li>
-  <li>모든 동작이 완료된 후 다시 게시글 본문 페이지로 이동하면 댓글이 삭제된 것과 댓글의 갯수도 줄어든 것을 확인할 수 있다.<br /><br /><br /></li>
+  <li>댓글이 존재하는지 확인한 후 수정한다.</li>
+  <li>모든 동작이 완료된 후 다시 게시글 본문 페이지로 이동하면 수정된 댓글을 확인할 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li>마감 기한이 늘어났다.</li>
+  <li><code class="language-plaintext highlighter-rouge">D-3</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 26 - 관리자 페이지 + 회원 관리 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-26/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 26 - 관리자 페이지 + 회원 관리 기능 추가" /><published>2022-04-04T00:00:00+09:00</published><updated>2022-04-04T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-26</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-26/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1">진행상황 1</h1>
+<ul>
+  <li>관리자 페이지를 추가했다.</li>
+  <li>관리자 아이디인 <code class="language-plaintext highlighter-rouge">admin</code>으로 로그인 했을 때에만 접근할 수 있다.</li>
+</ul>
+
+<h2 id="topjsp">top.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_HEADER1_Phone"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;%</span>
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+		
+    <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="nt">%&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./login.me"</span><span class="nt">&gt;</span>로그인<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./join.me"</span><span class="nt">&gt;</span>회원가입<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;%</span>
+    <span class="o">}</span>
+    <span class="k">else</span> 
+    <span class="o">{</span>
+        <span class="nt">%&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./logout.me"</span><span class="nt">&gt;</span>로그아웃<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
+        <span class="nt">&lt;%</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="nt">%&gt;</span>
+              <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./admin.me"</span><span class="nt">&gt;</span>관리자 페이지<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;%</span>
+        <span class="o">}</span>
+        <span class="k">else</span>
+        <span class="o">{</span>
+            <span class="nt">%&gt;</span>
+              <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./checkPass.me"</span><span class="nt">&gt;</span>마이페이지<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;%</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="nt">%&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>세션에 저장된 아이디 정보가 <code class="language-plaintext highlighter-rouge">admin</code>일 때만 관리자 페이지 버튼이 활성화된다.</li>
+</ul>
+
+<h2 id="adminjsp">admin.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/adminLeftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h3&gt;</span>관리자 페이지<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;%</span>
+      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+      	<span class="k">else</span> 
+      	<span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 관리자 계정이 아니면 쫓아내기</span>
+                <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+            <span class="o">}</span>
+      	<span class="o">}</span>
+      <span class="nt">%&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>관리자님 환영합니다. <span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>관리자로 로그인하면 관리자 전용 페이지에 접근할 수 있으며 만약 관리자가 아닌 사용자가 접근하면 세션 정보를 초기화하고 쫓아낸다.</li>
+</ul>
+
+<h2 id="adminleftnavjsp">adminLeftNav.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al16 al-o2 de-o1 de6 ec4"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Menu"</span> <span class="na">data-theme=</span><span class="s">"_bo2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Menutitle"</span> <span class="na">data-theme=</span><span class="s">"_bgs"</span><span class="nt">&gt;</span>Menu<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./MemberListAction.me"</span><span class="nt">&gt;</span>회원관리<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>게시글 관리<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/nav&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>관리자 메뉴용 사이드 메뉴도 따로 만들었다.<br /><br /></li>
+</ul>
+
+<p align="center"><img src="../../assets/images/adminPageMain.png" width="500" /></p>
+
+<ul>
+  <li>회원관리 메뉴를 누르면 먼저 회원 전체 정보를 불러오기 위해서 해당 동작을 수행할 서블릿으로 이동한다.</li>
+</ul>
+
+<h2 id="memberlistactionjava">MemberListAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberListAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : MemberListAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 한글처리</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+		
+        <span class="c1">// DB에서 전체 회원 목록 불러오기</span>
+        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="n">memberList</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getMemberList</span><span class="o">();</span>
+		
+        <span class="c1">// 세션에 저장</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"memberList"</span><span class="o">,</span> <span class="n">memberList</span><span class="o">);</span>
+		
+        <span class="c1">// 페이지 이동</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./MemberManagement.me"</span><span class="o">);</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>회원 전체 목록을 세션에 저장한 후 회원관리 페이지로 이동한다.</li>
+</ul>
+
+<h2 id="memberdaojava---getmemberlist">MemberDAO.java - getMemberList()</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="nf">getMemberList</span><span class="o">()</span>
+<span class="o">{</span>
+    <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="n">memberList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;();</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_members where id != 'admin'"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDTO</span><span class="o">();</span>
+				
+            <span class="n">dto</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"address"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"age"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setBirth</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">"birth"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"email"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setGender</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"gender"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setMemberNum</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"member_num"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setPhone</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"phone"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setPostalcode</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"postalcode"</span><span class="o">));</span>
+            <span class="n">dto</span><span class="o">.</span><span class="na">setRegdate</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="s">"regdate"</span><span class="o">));</span>
+				
+            <span class="n">memberList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+        <span class="o">}</span>
+			
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 회원 전체 목록 저장 완료"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="nc">CloseDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">memberList</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>전체 회원 정보를 불러온다.</li>
+  <li>하지만 관리자 정보는 보여줄 필요가 없기 때문에 제외하고 불러온다.</li>
+</ul>
+
+<h2 id="membermanagementjsp">memberManagement.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/adminLeftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h3&gt;</span>회원관리 페이지<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;%</span>
+      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+      	<span class="k">else</span> 
+      	<span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 관리자 계정이 아니면 쫓아내기</span>
+                <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+            <span class="o">}</span>
+      	<span class="o">}</span>
+      	
+      	<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="err">&gt;</span> <span class="n">memberList</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="err">&gt;</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"memberList"</span><span class="o">);</span>
+      <span class="nt">%&gt;</span>
+      <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./AdminDeleteAction.me"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"type09"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;tbody&gt;</span>
+            <span class="nt">&lt;colgroup&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"5%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"35%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">""</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/colgroup&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;th&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"selectAll"</span><span class="nt">&gt;&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>아이디<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>이름<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>이메일<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>가입일<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">memberList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+              <span class="o">{</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">memberList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
+                  <span class="o">{</span> <span class="nt">%&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"member"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getName</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getEmail</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getRegdate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
+          <span class="nt">&lt;/tbody&gt;</span>
+        <span class="nt">&lt;/table&gt;&lt;br&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>회원 삭제<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>아까 세션에 저장했던 회원목록을 토대로 회원들을 출력해서 보여준다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/memberManagementPage.png" /></p>
+
+<ul>
+  <li>회원 삭제 동작을 테스트 한다고 좀 삭제했더니 회원이 많이 줄었다. 😅</li>
+</ul>
+
+<h2 id="membermanagementjs">memberManagement.js</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">selectAll</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">selectAll</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// 전체 선택 / 해제</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#selectAll</span><span class="dl">'</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>		
+        <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#selectAll</span><span class="dl">'</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="dl">'</span><span class="s1">:checked</span><span class="dl">'</span><span class="p">))</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:checkbox[name=member]</span><span class="dl">'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        <span class="k">else</span> 
+            <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:checkbox[name=member]</span><span class="dl">'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">finalCheck</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:checkbox[name=member]:checked</span><span class="dl">'</span><span class="p">).</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 선택된 엘리먼트가 없으면 삭제할 회원이 없음</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">선택된 회원이 없습니다!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> 
+    <span class="p">{</span>
+        <span class="c1">// 선택된 회원이 있을 때</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">선택한 회원들을 탈퇴 시키겠습니까?</span><span class="dl">'</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="k">else</span> 
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>테이블의 맨 위에 있는 체크박스를 누르면 전체 선택과 헤재가 가능하다.</li>
+  <li>삭제 버튼을 눌렀을 때엔 <code class="language-plaintext highlighter-rouge">finalCheck()</code> 메서드를 통해 동작 분기를 나누었다.<br /><br /></li>
+</ul>
+
+<h1 id="진행상황-2">진행상황 2</h1>
+<ul>
+  <li>관리자가 회원을 일괄 삭제할 수 있는 기능을 추가했다.</li>
+</ul>
+
+<h2 id="admindeleteactionjava">AdminDeleteAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AdminDeleteAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : AdminDeleteAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 파라미터 저장</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">members</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameterValues</span><span class="o">(</span><span class="s">"member"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"members size: "</span><span class="o">+</span><span class="n">members</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+		
+        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+        <span class="c1">// DB 접속해서 삭제 연산</span>
+        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">id</span> <span class="o">:</span> <span class="n">members</span><span class="o">)</span> 
+        <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"id: "</span><span class="o">+</span><span class="n">id</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">deleteMember</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('잘못된 접근!');"</span><span class="o">);</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"history.back();"</span><span class="o">);</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+				
+                <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+				
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="c1">// 페이지 이동</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('선택한 회원 탈퇴가 완료 되었습니다.');"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./MemberListAction.me';"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>체크박스로 선택한 회원들의 아이디를 받아서 그 갯수만큼 삭제 연산을 반복한다.</li>
+  <li>기존에 만들었던 회원 한 명을 삭제하는 메소드가 있긴 했는데 회원의 아이디와 비밀번호를 함께 확인한 후 삭제 동작을 수행하는 메서드라 목적에 좀 맞지 않아서 오버로딩해서 하나 더 만들었다.</li>
+</ul>
+
+<h2 id="memberdaojava---deletememberid">MemberDAO.java - deleteMember(id)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">deleteMember</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_members where id=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from cafe_members where id=?"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+				
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+				
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 운영자가 회원정보 삭제 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="nc">CloseDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>아이디를 매개변수로 받아 일치하는 회원 한 명의 정보를 삭제한다.</li>
+  <li>여기까지 수행하고 아까전에 있던 회원관리 페이지로 돌아가면 업데이트 된 회원 목록을 볼 수 있다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -649,7 +1331,7 @@
 <ul>
   <li>마감 기한이 늘어났다.</li>
   <li><code class="language-plaintext highlighter-rouge">D-5</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 26 - 관리자 페이지 + 회원 관리 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-26/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 26 - 관리자 페이지 + 회원 관리 기능 추가" /><published>2022-04-04T00:00:00+09:00</published><updated>2022-04-04T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-26</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-26/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 25 - 댓글 삭제 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-25/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 25 - 댓글 삭제 기능 추가" /><published>2022-04-04T00:00:00+09:00</published><updated>2022-04-04T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-25</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-25/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -673,457 +1355,7 @@
 
 <h1 id="진행상황-1">진행상황 1</h1>
 <ul>
-  <li>관리자 페이지를 추가했다.</li>
-  <li>관리자 아이디인 <code class="language-plaintext highlighter-rouge">admin</code>으로 로그인 했을 때에만 접근할 수 있다.</li>
-</ul>
-
-<h2 id="topjsp">top.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_HEADER1_Phone"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;%</span>
-    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
-		
-    <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
-    <span class="o">{</span>
-        <span class="nt">%&gt;</span>
-          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./login.me"</span><span class="nt">&gt;</span>로그인<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
-          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./join.me"</span><span class="nt">&gt;</span>회원가입<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;%</span>
-    <span class="o">}</span>
-    <span class="k">else</span> 
-    <span class="o">{</span>
-        <span class="nt">%&gt;</span>
-          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./logout.me"</span><span class="nt">&gt;</span>로그아웃<span class="nt">&lt;/a&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>
-        <span class="nt">&lt;%</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
-        <span class="o">{</span>
-            <span class="nt">%&gt;</span>
-              <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./admin.me"</span><span class="nt">&gt;</span>관리자 페이지<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;%</span>
-        <span class="o">}</span>
-        <span class="k">else</span>
-        <span class="o">{</span>
-            <span class="nt">%&gt;</span>
-              <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./checkPass.me"</span><span class="nt">&gt;</span>마이페이지<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;%</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="nt">%&gt;</span>
-<span class="nt">&lt;/p&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>세션에 저장된 아이디 정보가 <code class="language-plaintext highlighter-rouge">admin</code>일 때만 관리자 페이지 버튼이 활성화된다.</li>
-</ul>
-
-<h2 id="adminjsp">admin.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/adminLeftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;h3&gt;</span>관리자 페이지<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
-      <span class="nt">&lt;%</span>
-      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
-      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
-            <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
-      	<span class="k">else</span> 
-      	<span class="o">{</span>
-            <span class="k">if</span> <span class="o">(!</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="c1">// 관리자 계정이 아니면 쫓아내기</span>
-                <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
-                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
-            <span class="o">}</span>
-      	<span class="o">}</span>
-      <span class="nt">%&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>관리자님 환영합니다. <span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>관리자로 로그인하면 관리자 전용 페이지에 접근할 수 있으며 만약 관리자가 아닌 사용자가 접근하면 세션 정보를 초기화하고 쫓아낸다.</li>
-</ul>
-
-<h2 id="adminleftnavjsp">adminLeftNav.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al16 al-o2 de-o1 de6 ec4"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Menu"</span> <span class="na">data-theme=</span><span class="s">"_bo2"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Menutitle"</span> <span class="na">data-theme=</span><span class="s">"_bgs"</span><span class="nt">&gt;</span>Menu<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;ul&gt;</span>
-      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./MemberListAction.me"</span><span class="nt">&gt;</span>회원관리<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>게시글 관리<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-  <span class="nt">&lt;/nav&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>관리자 메뉴용 사이드 메뉴도 따로 만들었다.<br /><br /></li>
-</ul>
-
-<p align="center"><img src="../../assets/images/adminPageMain.png" width="500" /></p>
-
-<ul>
-  <li>회원관리 메뉴를 누르면 먼저 회원 전체 정보를 불러오기 위해서 해당 동작을 수행할 서블릿으로 이동한다.</li>
-</ul>
-
-<h2 id="memberlistactionjava">MemberListAction.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberListAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
-<span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
-    <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : MemberListAction - execute() 호출"</span><span class="o">);</span>
-		
-        <span class="c1">// 한글처리</span>
-        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
-		
-        <span class="c1">// DB에서 전체 회원 목록 불러오기</span>
-        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="n">memberList</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getMemberList</span><span class="o">();</span>
-		
-        <span class="c1">// 세션에 저장</span>
-        <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"memberList"</span><span class="o">,</span> <span class="n">memberList</span><span class="o">);</span>
-		
-        <span class="c1">// 페이지 이동</span>
-        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
-        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./MemberManagement.me"</span><span class="o">);</span>
-        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-		
-        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>회원 전체 목록을 세션에 저장한 후 회원관리 페이지로 이동한다.</li>
-</ul>
-
-<h2 id="memberdaojava---getmemberlist">MemberDAO.java - getMemberList()</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="nf">getMemberList</span><span class="o">()</span>
-<span class="o">{</span>
-    <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="n">memberList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;();</span>
-		
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
-			
-        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_members where id != 'admin'"</span><span class="o">;</span>
-        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-			
-        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
-			
-        <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
-        <span class="o">{</span>
-            <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDTO</span><span class="o">();</span>
-				
-            <span class="n">dto</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"address"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"age"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setBirth</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">"birth"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"email"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setGender</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"gender"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setMemberNum</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"member_num"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setPhone</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"phone"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setPostalcode</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"postalcode"</span><span class="o">));</span>
-            <span class="n">dto</span><span class="o">.</span><span class="na">setRegdate</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="s">"regdate"</span><span class="o">));</span>
-				
-            <span class="n">memberList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
-        <span class="o">}</span>
-			
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 회원 전체 목록 저장 완료"</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-    <span class="o">}</span>
-    <span class="k">finally</span> <span class="o">{</span>
-        <span class="nc">CloseDB</span><span class="o">();</span>
-    <span class="o">}</span>
-		
-    <span class="k">return</span> <span class="n">memberList</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>전체 회원 정보를 불러온다.</li>
-  <li>하지만 관리자 정보는 보여줄 필요가 없기 때문에 제외하고 불러온다.</li>
-</ul>
-
-<h2 id="membermanagementjsp">memberManagement.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/adminLeftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;h3&gt;</span>회원관리 페이지<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
-      <span class="nt">&lt;%</span>
-      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
-      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
-            <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
-      	<span class="k">else</span> 
-      	<span class="o">{</span>
-            <span class="k">if</span> <span class="o">(!</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="c1">// 관리자 계정이 아니면 쫓아내기</span>
-                <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
-                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
-            <span class="o">}</span>
-      	<span class="o">}</span>
-      	
-      	<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="err">&gt;</span> <span class="n">memberList</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="err">&gt;</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"memberList"</span><span class="o">);</span>
-      <span class="nt">%&gt;</span>
-      <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./AdminDeleteAction.me"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"type09"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;tbody&gt;</span>
-            <span class="nt">&lt;colgroup&gt;</span>
-              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"5%"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"35%"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">""</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;/colgroup&gt;</span>
-            <span class="nt">&lt;tr&gt;</span>
-              <span class="nt">&lt;th&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"selectAll"</span><span class="nt">&gt;&lt;/th&gt;</span>
-              <span class="nt">&lt;th&gt;</span>아이디<span class="nt">&lt;/th&gt;</span>
-              <span class="nt">&lt;th&gt;</span>이름<span class="nt">&lt;/th&gt;</span>
-              <span class="nt">&lt;th&gt;</span>이메일<span class="nt">&lt;/th&gt;</span>
-              <span class="nt">&lt;th&gt;</span>가입일<span class="nt">&lt;/th&gt;</span>
-            <span class="nt">&lt;/tr&gt;</span>
-            <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">memberList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
-              <span class="o">{</span>
-                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">memberList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
-                  <span class="o">{</span> <span class="nt">%&gt;</span>
-            <span class="nt">&lt;tr&gt;</span>
-              <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"member"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/td&gt;</span>
-              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
-              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getName</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
-              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getEmail</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
-              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getRegdate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
-            <span class="nt">&lt;/tr&gt;</span>
-            <span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
-          <span class="nt">&lt;/tbody&gt;</span>
-        <span class="nt">&lt;/table&gt;&lt;br&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>회원 삭제<span class="nt">&lt;/button&gt;</span>
-      <span class="nt">&lt;/form&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>아까 세션에 저장했던 회원목록을 토대로 회원들을 출력해서 보여준다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/memberManagementPage.png" /></p>
-
-<ul>
-  <li>회원 삭제 동작을 테스트 한다고 좀 삭제했더니 회원이 많이 줄었다. 😅</li>
-</ul>
-
-<h2 id="membermanagementjs">memberManagement.js</h2>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nx">selectAll</span><span class="p">();</span>
-<span class="p">});</span>
-
-<span class="kd">function</span> <span class="nx">selectAll</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="c1">// 전체 선택 / 해제</span>
-    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#selectAll</span><span class="dl">'</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-    <span class="p">{</span>		
-        <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#selectAll</span><span class="dl">'</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="dl">'</span><span class="s1">:checked</span><span class="dl">'</span><span class="p">))</span>
-            <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:checkbox[name=member]</span><span class="dl">'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-        <span class="k">else</span> 
-            <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:checkbox[name=member]</span><span class="dl">'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-    <span class="p">});</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">finalCheck</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:checkbox[name=member]:checked</span><span class="dl">'</span><span class="p">).</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// 선택된 엘리먼트가 없으면 삭제할 회원이 없음</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">선택된 회원이 없습니다!</span><span class="dl">'</span><span class="p">);</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span> 
-    <span class="p">{</span>
-        <span class="c1">// 선택된 회원이 있을 때</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">선택한 회원들을 탈퇴 시키겠습니까?</span><span class="dl">'</span><span class="p">))</span>
-            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="k">else</span> 
-            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>테이블의 맨 위에 있는 체크박스를 누르면 전체 선택과 헤재가 가능하다.</li>
-  <li>삭제 버튼을 눌렀을 때엔 <code class="language-plaintext highlighter-rouge">finalCheck()</code> 메서드를 통해 동작 분기를 나누었다.<br /><br /></li>
-</ul>
-
-<h1 id="진행상황-2">진행상황 2</h1>
-<ul>
-  <li>관리자가 회원을 일괄 삭제할 수 있는 기능을 추가했다.</li>
-</ul>
-
-<h2 id="admindeleteactionjava">AdminDeleteAction.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AdminDeleteAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
-<span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
-    <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : AdminDeleteAction - execute() 호출"</span><span class="o">);</span>
-		
-        <span class="c1">// 파라미터 저장</span>
-        <span class="nc">String</span><span class="o">[]</span> <span class="n">members</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameterValues</span><span class="o">(</span><span class="s">"member"</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"members size: "</span><span class="o">+</span><span class="n">members</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
-		
-        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
-        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
-		
-        <span class="c1">// DB 접속해서 삭제 연산</span>
-        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">id</span> <span class="o">:</span> <span class="n">members</span><span class="o">)</span> 
-        <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"id: "</span><span class="o">+</span><span class="n">id</span><span class="o">);</span>
-            <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">deleteMember</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span>
-            <span class="o">{</span>
-                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('잘못된 접근!');"</span><span class="o">);</span>
-                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"history.back();"</span><span class="o">);</span>
-                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
-				
-                <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-				
-                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-		
-        <span class="c1">// 페이지 이동</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('선택한 회원 탈퇴가 완료 되었습니다.');"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./MemberListAction.me';"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
-		
-        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-		
-        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>체크박스로 선택한 회원들의 아이디를 받아서 그 갯수만큼 삭제 연산을 반복한다.</li>
-  <li>기존에 만들었던 회원 한 명을 삭제하는 메소드가 있긴 했는데 회원의 아이디와 비밀번호를 함께 확인한 후 삭제 동작을 수행하는 메서드라 목적에 좀 맞지 않아서 오버로딩해서 하나 더 만들었다.</li>
-</ul>
-
-<h2 id="memberdaojava---deletememberid">MemberDAO.java - deleteMember(id)</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">deleteMember</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span>
-<span class="o">{</span>
-    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
-		
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
-			
-        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_members where id=?"</span><span class="o">;</span>
-        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-			
-        <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
-			
-        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
-			
-        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
-        <span class="o">{</span>
-            <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from cafe_members where id=?"</span><span class="o">;</span>
-            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-				
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
-				
-            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
-				
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 운영자가 회원정보 삭제 완료"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-    <span class="o">}</span>
-    <span class="k">finally</span> <span class="o">{</span>
-        <span class="nc">CloseDB</span><span class="o">();</span>
-    <span class="o">}</span>
-		
-    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>아이디를 매개변수로 받아 일치하는 회원 한 명의 정보를 삭제한다.</li>
-  <li>여기까지 수행하고 아까전에 있던 회원관리 페이지로 돌아가면 업데이트 된 회원 목록을 볼 수 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li>마감 기한이 늘어났다.</li>
-  <li><code class="language-plaintext highlighter-rouge">D-3</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 24 - 댓글 수정 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-24/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 24 - 댓글 수정 기능 추가" /><published>2022-04-04T00:00:00+09:00</published><updated>2022-04-04T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-24</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-24/"><![CDATA[<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
-
-<h1 id="시작">시작</h1>
-<ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황-1">진행상황 1</h1>
-<ul>
-  <li>게시글에 달린 댓글을 수정하는 기능을 추가했다.</li>
+  <li>게시글에 달린 댓글을 삭제하는 기능을 추가했다.</li>
 </ul>
 
 <h2 id="boardcontentjsp">boardContent.jsp</h2>
@@ -1134,7 +1366,7 @@
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">onclick=</span><span class="s">"showCommentBox(</span><span class="nt">&lt;%=</span><span class="n">i</span> <span class="nt">%&gt;</span><span class="s">);"</span> <span class="na">id=</span><span class="s">"modify"</span><span class="nt">&gt;</span>수정<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;span&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>삭제<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">onclick=</span><span class="s">"confirmDelete(</span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getPost_num</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;</span>삭제<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;%</span> <span class="o">}</span> <span class="nt">%&gt;</span>
 </code></pre></div></div>
@@ -1145,47 +1377,18 @@
 
 <h2 id="boardcontentjs">boardContent.js</h2>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">showCommentBox</span><span class="p">(</span><span class="nx">idx</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">confirmDelete</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">postNum</span><span class="p">,</span> <span class="nx">pageNum</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">con</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">modify</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">idx</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">comBlock</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">modifyComment</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">idx</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">comBlock</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nx">comBlock</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">inline-block</span><span class="dl">'</span><span class="p">;</span>
-        <span class="nx">con</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">취소</span><span class="dl">'</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span> 
-    <span class="p">{</span>
-        <span class="nx">comBlock</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
-        <span class="nx">con</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">수정</span><span class="dl">'</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">정말 삭제 하시겠습니까?</span><span class="dl">'</span><span class="p">))</span>
+        <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./CommentDeleteAction.bo?num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;post_num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">postNum</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;pageNum=</span><span class="dl">'</span><span class="o">+</span><span class="nx">pageNum</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li>수정 버튼을 누르면 댓글을 수정할 수 있는 창을 보여주거나 숨김 수 있게 제어한다.</li>
+  <li>삭제 버튼을 누르면 확인창을 띄워서 최종 확인한 뒤 삭제 서블릿으로 이동한다.</li>
 </ul>
 
-<h2 id="boardcontentjsp-1">boardContent.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"comContent"</span> <span class="na">id=</span><span class="s">"comContent</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;</span>
-<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"display: none;"</span> <span class="na">id=</span><span class="s">"modifyComment</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./CommentModifyAction.bo?num=</span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;post_num=</span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getPost_num</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return writeComment();"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">id</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"comment"</span> <span class="na">name=</span><span class="s">"comment"</span> <span class="na">rows=</span><span class="s">"10"</span> <span class="na">cols=</span><span class="s">"80"</span> <span class="na">maxlength=</span><span class="s">"500"</span><span class="nt">&gt;&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;&lt;/textarea&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">id=</span><span class="s">"commentBtn"</span><span class="nt">&gt;</span>입력<span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/form&gt;&lt;br&gt;</span>
-<span class="nt">&lt;/div&gt;&lt;br&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>수정 버튼을 누르면 댓글 수정창이 나타나고 한 번 더 누르면 댓글 수정창이 사라진다.</li>
-  <li>댓글 수정 내용과 함께 댓글 번호와 게시글 정보도 함께 전달한다.</li>
-</ul>
-
-<h2 id="commentmodifyactionjava">CommentModifyAction.java</h2>
+<h2 id="commentdeleteactionjava">CommentDeleteAction.java</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
 
@@ -1197,35 +1400,24 @@
 <span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.CommentDTO</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CommentModifyAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CommentDeleteAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
 <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
     <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : CommentModifyAction - execute() 호출"</span><span class="o">);</span>
-		
-        <span class="c1">// 한글처리</span>
-        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : CommentDeleteAction - execute() 호출"</span><span class="o">);</span>
 		
         <span class="c1">// 파라메터 저장</span>
         <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
         <span class="kt">int</span> <span class="n">post_num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"post_num"</span><span class="o">));</span>
         <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span>
-        <span class="nc">String</span> <span class="n">comment</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"comment"</span><span class="o">);</span>
 		
-        <span class="nc">CommentDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CommentDTO</span><span class="o">();</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setPost_num</span><span class="o">(</span><span class="n">post_num</span><span class="o">);</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">comment</span><span class="o">);</span>
-		
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : commentDTO: "</span><span class="o">+</span><span class="n">dto</span><span class="o">);</span>
-		
-        <span class="c1">// DB 접속 및 update 실행</span>
+        <span class="c1">// DB 접속해서 삭제 연산 수행</span>
         <span class="nc">BoardDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDAO</span><span class="o">();</span>
-        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">updateComment</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">deleteComment</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
 		
+        <span class="c1">// 페이지 이동</span>
         <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
         <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
         <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">!=</span> <span class="n">result</span><span class="o">)</span>
@@ -1237,8 +1429,11 @@
         <span class="o">}</span>
 		
         <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./BoardContent.bo?num="</span><span class="o">+</span><span class="n">post_num</span><span class="o">+</span><span class="s">"&amp;pageNum="</span><span class="o">+</span><span class="n">pageNum</span><span class="o">+</span><span class="s">";'"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('댓글 삭제 완료!');"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./BoardContent.bo?num="</span><span class="o">+</span><span class="n">post_num</span><span class="o">+</span><span class="s">"&amp;pageNum="</span><span class="o">+</span><span class="n">pageNum</span><span class="o">+</span><span class="s">"';"</span><span class="o">);</span>
         <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
 		
         <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
     <span class="o">}</span>
@@ -1246,13 +1441,13 @@
 </code></pre></div></div>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">DB</code>에 접속해서 댓글 수정 동작을 수행한 뒤 결과에 따라 페이지를 이동한다.</li>
-  <li>로그인 한 본인만 수정할 수 있기 때문에 접근한 사람이 본인이 아닌 경우는 없을 것이라 생각하지만 혹시 모르니까  예외처리를 해 주었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">DB</code>에 접속해서 댓글 삭제 동작을 수행한 뒤 결과에 따라 페이지를 이동한다.</li>
+  <li>로그인 한 본인만 삭제할 수 있기 때문에 접근한 사람이 본인이 아닌 경우는 없을 것이라 생각하지만 혹시 모르니까  예외처리를 해 주었다.</li>
 </ul>
 
-<h2 id="boarddaojava---updatecommentdto">BoardDAO.java - updateComment(dto)</h2>
+<h2 id="boarddaojava---deletecommentnum">BoardDAO.java - deleteComment(num)</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">updateComment</span><span class="o">(</span><span class="nc">CommentDTO</span> <span class="n">dto</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">deleteComment</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span>
 <span class="o">{</span>
     <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
 		
@@ -1262,22 +1457,29 @@
         <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_comment where num=?"</span><span class="o">;</span>
         <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
 			
-        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
 			
         <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
 			
         <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
         <span class="o">{</span>
-            <span class="c1">// 댓글이 존재하면 수정</span>
-            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_comment set content=? where num=?"</span><span class="o">;</span>
+            <span class="c1">// 게시글의 댓글 갯수 감소</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set comment_count = comment_count - 1 where num=?"</span><span class="o">;</span>
             <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
 				
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"post_num"</span><span class="o">));</span>
+            
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+				
+            <span class="c1">// 댓글 삭제</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from cafe_comment where num=?"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+				
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
 				
             <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
 				
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 댓글 수정 완료"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 댓글 삭제 완료"</span><span class="o">);</span>
         <span class="o">}</span>
     <span class="o">}</span>
     <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
@@ -1292,8 +1494,9 @@
 </code></pre></div></div>
 
 <ul>
-  <li>댓글이 존재하는지 확인한 후 수정한다.</li>
-  <li>모든 동작이 완료된 후 다시 게시글 본문 페이지로 이동하면 수정된 댓글을 확인할 수 있다.<br /><br /><br /></li>
+  <li>댓글이 존재하는지 확인한 후 삭제한다.</li>
+  <li>댓글이 달렸던 게시글에서도 갯수를 감소시킨다.</li>
+  <li>모든 동작이 완료된 후 다시 게시글 본문 페이지로 이동하면 댓글이 삭제된 것과 댓글의 갯수도 줄어든 것을 확인할 수 있다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -2102,72 +2305,4 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/16e20d83fcb01090e7464e072607dbdb.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BinarySearch" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 07 - 실전문제 3. 떡볶이 떡 만들기 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 07 실전문제 2. 부품 찾기</title><link href="http://localhost:4000/boj/CodingTestBook-07-5-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 07 실전문제 2. 부품 찾기" /><published>2022-04-01T00:00:00+09:00</published><updated>2022-04-01T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-07-5-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-07-5-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
-<hr />
-
-<ul>
-  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
-  <li>Chapter 07 - 실전문제 2. 부품 찾기<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>동빈이네 전자 매장에는 부품이 N개 있다. 각 부품은 정수 형태의 고유한 번호가 있다. 어느 날 손님이 M개 종류의 부품을 대량으로 구매하겠다며 당일 날 견적서를 요청했다. 동빈이는 때를 놓치지 않고 손님이 문의한 부품 M개 종류를 모두 확인해서 견적서를 작성해야 한다. 이때 가게 안에 부품이 모두 있는지 확인하는 프로그램을 작성해보자.</li>
-  <li>손님이 요청한 부품 번호의 순서대로 부품을 확인해 부품이 있으면 yes를, 없으면 no를 출력한다. 구분은 공백으로 한다.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 정수 N이 주어진다. (1 &lt;= N &lt;= 1,000,000)</li>
-  <li>둘째 줄에는 공백으로 구분하여 N개의 정수가 주어진다. 이때 정수는 1보다 크고 1,000,000 이하이다.</li>
-  <li>셋째 줄에는 정수 M이 주어진다. (1 &lt;= M &lt;= 100,000)</li>
-  <li>넷째 줄에는 공백으로 구분하여 M개의 정수가 주어진다. 이때 정수는 1보다 크고 1,000,000 이하이다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 공백으로 구분하여 각 부품이 존재하면 yes를, 없으면 no를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>이진탐색으로 풀 수 있는 문제이지만 책에는 이진탐색 외에도 두 가지 방법을 더 사용해 푸는 방법이 나와 있어서 모두 연습해 보았다.</li>
-  <li>이진탐색으로 풀 경우에는 가게에 있는 부품 배열을 먼저 오름차순으로 정렬한 후에 손님 배열의 원소를 하나씩 이진탐색으로 찾는다.<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<ul>
-  <li>이진탐색 코드</li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/c1027fffb78b83143e2238e337f9fd37.js"></script>
-
-<ul>
-  <li>계수정렬을 사용한 코드</li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/cac49cf2696f190a80f965bd68662e02.js"></script>
-
-<ul>
-  <li>집합 자료형을 사용한 코드</li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/71c4854afe7c44680d6208f1caabab6a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BinarySearch" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 07 - 실전문제 2. 부품 찾기 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/16e20d83fcb01090e7464e072607dbdb.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BinarySearch" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 07 - 실전문제 3. 떡볶이 떡 만들기 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry></feed>
