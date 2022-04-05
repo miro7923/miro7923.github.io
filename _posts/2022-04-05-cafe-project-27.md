@@ -78,39 +78,21 @@ public class MemberInfoAction implements Action
         MemberDAO dao = new MemberDAO();
         MemberDTO dto = dao.getMember(memberId);
 		
-        response.setContentType("text/html; charset=utf-8");
-        PrintWriter out = response.getWriter();
-		
-        out.print("<script>");
-		
-        if (dto == null)
-        {
-            // 해당 회원정보 없을 때
-            out.print("alert('잘못된 접근!');");
-            out.print("location.href='./MemberManagement.me';");
-            out.print("</script>");
-			
-            out.close();
-			
-            return null;
-        }
-		
-        // 세션에 회원정보 저장
-        request.getSession().setAttribute("dto", dto);
+        // 회원정보 저장
+        request.setAttribute("dto", dto);
 
         // 회원 상세 정보 페이지로 이동
-        out.print("location.href='./MemberInfo.me';");
-        out.print("</script>");
+        ActionForward forward = new ActionForward();
+        forward.setPath("./admin/memberInfo.jsp");
+        forward.setRedirect(false);
 		
-        out.close();
-		
-        return null;
+        return forward;
     }
 }
 ```
 
-* 회원 한 명의 정보를 가져온 뒤 세션에 저장한다.
-* 세션 저장이 끝나면 회원 상세 정보 페이지로 이동한다.
+* 회원 한 명의 정보를 가져온 뒤 `request` 영역에 저장한다.
+* 그 다음 회원 상세 정보 페이지로 이동한다.
 
 ## memberInfo.jsp
 
@@ -125,7 +107,7 @@ public class MemberInfoAction implements Action
       	if (null == id)
       		response.sendRedirect("./login.me");
       	
-      	MemberDTO dto = (MemberDTO)session.getAttribute("dto");
+      	MemberDTO dto = (MemberDTO)request.getAttribute("dto");
       	
       	String[] regdate = dto.getRegdate().toString().split(" ");
       %>
