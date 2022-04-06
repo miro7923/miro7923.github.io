@@ -122,8 +122,73 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$JAVA_
 alias setJava8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 alias setJava11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
 ```
-* 위 명령어를 한 줄씩 복붙해서 실행하면 자바 버전별로 `앨리어스`를 지정해 사용할 수 있다.
+* `bash_profile`에 위 커맨드들을 추가하면 자바 버전별로 `앨리어스`를 지정해 사용할 수 있다.
 <br><br>
+
+## bash_profile 수정하기
+
+```java
+유저명@MacBook-Air ~ % ls -a
+```
+
+* 터미널을 실행하면 아마 기본 경로가 홈 디렉토리일텐데 아니라면 홈 디렉토리로 이동해서 `ls -a`를 실행한다.
+
+```java
+.				.plastic4
+..				.rbenv
+.AnySign4PC			.softforum
+.CFUserTextEncoding		.ssh
+.DS_Store			.swiftpm
+.IdentityService		.templateengine
+.Trash				.viminfo
+.android			.vscode
+.bash_history			.zprofile
+.bash_profile			.zsh_history
+.bundle				.zsh_sessions
+.cache				.zshrc
+.config				AndroidStudioProjects
+.delfino.conf			Applications
+.dotnet				Desktop
+.eclipse			Documents
+.emulator_console_auth_token	Downloads
+.gem				Library
+.gitconfig			Movies
+.gradle				Music
+.lemminx			Pictures
+.local				Public
+.m2				PycharmProjects
+.mono				Sites
+.ms_openjdk_config		eclipse-workspace
+.mysql_history			makefile
+.npki_pkcs11.cnf		spring-workspace
+.p2
+```
+
+* 그러면 이런 목록을 쭉 볼 수 있다.
+* 중간쯤에서 `.bash_profile`을 볼 수 있다.
+
+```java
+@MacBook-Air ~ % vi .bash_profile
+```
+
+* 위 명령어를 입력하면 수정 모드로 이동한다.
+
+```java
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$JAVA_HOME"
+alias setJava8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
+alias setJava11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
+```
+
+* 키보드의 `I` 버튼을 누르면 `insert` 모드에 진입한다. 
+* 위 커맨드들을 복붙해서 붙여넣고 `esc`를 누르면 `insert` 모드에서 빠져나온다.
+* `:wq`를 입력 후 엔터를 눌러서 수정 모드를 빠져나오자.
+
+```java
+@MacBook-Air ~ % source ~/.bash_profile
+```
+
+* 나와 보면 별 변화가 없어서 이대로 적용이 된 건가 싶지만 위 명령어를 입력해서 최종 적용시켜 주어야 한다.
 
 ```java
 % setJava11
@@ -138,6 +203,7 @@ openjdk version "1.8.0_312"
 OpenJDK Runtime Environment (Zulu 8.58.0.13-CA-macos-aarch64) (build 1.8.0_312-b07)
 OpenJDK 64-Bit Server VM (Zulu 8.58.0.13-CA-macos-aarch64) (build 25.312-b07, mixed mode)
 ```
+
 * 이제 터미널에서 `setJava11`만 입력하면 11버전으로 바꿀 수 있다! 8로 돌아가는 것도 마찬가지
 <br><br>
 
