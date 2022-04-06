@@ -336,7 +336,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 분 소요
+          2 분 소요
         
       </span>
     
@@ -431,40 +431,22 @@
         <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
         <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getMember</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
 		
-        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
-        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
-		
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-		
-        <span class="k">if</span> <span class="o">(</span><span class="n">dto</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
-        <span class="o">{</span>
-            <span class="c1">// 해당 회원정보 없을 때</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('잘못된 접근!');"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./MemberManagement.me';"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
-			
-            <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-			
-            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="o">}</span>
-		
-        <span class="c1">// 세션에 회원정보 저장</span>
-        <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">,</span> <span class="n">dto</span><span class="o">);</span>
+        <span class="c1">// 회원정보 저장</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">,</span> <span class="n">dto</span><span class="o">);</span>
 
         <span class="c1">// 회원 상세 정보 페이지로 이동</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./MemberInfo.me';"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./admin/memberInfo.jsp"</span><span class="o">);</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 		
-        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-		
-        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li>회원 한 명의 정보를 가져온 뒤 세션에 저장한다.</li>
-  <li>세션 저장이 끝나면 회원 상세 정보 페이지로 이동한다.</li>
+  <li>회원 한 명의 정보를 가져온 뒤 <code class="language-plaintext highlighter-rouge">request</code> 영역에 저장한다.</li>
+  <li>그 다음 회원 상세 정보 페이지로 이동한다.</li>
 </ul>
 
 <h2 id="memberinfojsp">memberInfo.jsp</h2>
@@ -479,7 +461,7 @@
       	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
       		<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
       	
-      	<span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="o">(</span><span class="nc">MemberDTO</span><span class="o">)</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">);</span>
+      	<span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="o">(</span><span class="nc">MemberDTO</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">);</span>
       	
       	<span class="nc">String</span><span class="o">[]</span> <span class="n">regdate</span> <span class="o">=</span> <span class="n">dto</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
       <span class="nt">%&gt;</span>
@@ -654,6 +636,52 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/errorlog/warning-log-04/" rel="permalink">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">사용환경
+
+  MacBook Air (M1, 2020) 16GB
+  JDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/project%20log/cafe-project-28/" rel="permalink">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 28 - 관리자 페이지에서 게시글 관리 기능 추가
 </a>
       
@@ -749,53 +777,6 @@
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/project%20log/cafe-project-25/" rel="permalink">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 25 - 댓글 삭제 기능 추가
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">개발환경
-
-  MacBook Air (M1, 2020)
-  OpenJDK 8
-  Eclipse 2021-12
-  tomcat 8.5
-  MySQL Workbench 8.0.19
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/project%20log/cafe-project-24/" rel="permalink">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 24 - 댓글 수정 기능 추가
 </a>
       
     </h2>
