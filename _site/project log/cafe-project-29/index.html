@@ -1,0 +1,1002 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 29 - 파일업로드 기능 수정(중복파일명 처리) | Yujin Dev Log</title>
+<meta name="description" content="개발환경    MacBook Air (M1, 2020)   OpenJDK 8   Eclipse 2021-12   tomcat 8.5   MySQL Workbench 8.0.19">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 29 - 파일업로드 기능 수정(중복파일명 처리)">
+<meta property="og:url" content="http://localhost:4000/project%20log/cafe-project-29/">
+
+
+  <meta property="og:description" content="개발환경    MacBook Air (M1, 2020)   OpenJDK 8   Eclipse 2021-12   tomcat 8.5   MySQL Workbench 8.0.19">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-04-06T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/project%20log/cafe-project-29/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#project-log" itemprop="item"><span itemprop="name">Project log</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 29 - 파일업로드 기능 수정(중복파일명 처리)</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>책임감 있는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 29 - 파일업로드 기능 수정(중복파일명 처리)">
+    <meta itemprop="description" content="개발환경  MacBook Air (M1, 2020)  OpenJDK 8  Eclipse 2021-12  tomcat 8.5  MySQL Workbench 8.0.19">
+    <meta itemprop="datePublished" content="2022-04-06T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/project%20log/cafe-project-29/" class="u-url" itemprop="url">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 29 - 파일업로드 기능 수정(중복파일명 처리)
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#시작">시작</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#fileuploadjava">FileUpload.java</a></li><li><a href="#boardcontentjsp">boardContent.jsp</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>기존에 만들었던 파일업로드 기능에 수정이 필요했다.</li>
+  <li>처음에 만들었던 형태는 단순한 업로드와 다운로드 기능만 있었기 때문에 첨부파일을 수정하거나 삭제했을 때 해당 부분을 반영하는 로직이 없었고 중복 파일명을 처리하는 부분도 없었다. 그래서 중복파일명 처리와 수정/삭제 처리를 추가했다.</li>
+  <li>관련 내용은 <a href="https://miro7923.github.io/errorlog/warning-log-04/">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제</a> 에서도 확인할 수 있다.</li>
+</ul>
+
+<h2 id="fileuploadjava">FileUpload.java</h2>
+<ul>
+  <li>먼저 <code class="language-plaintext highlighter-rouge">DB</code> 테이블에서 실제 파일명을 저장할 필드도 만들었다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.DefaultFileRenamePolicy</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.FilePart</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.MultipartParser</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.ParamPart</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.Part</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDTO</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">net.coobird.thumbnailator.Thumbnails</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">net.coobird.thumbnailator.name.Rename</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileUpload</span> 
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">upload</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span>
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"upload() 호출 "</span><span class="o">);</span>
+		
+        <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDTO</span><span class="o">();</span>
+		
+        <span class="nc">ServletContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getServletContext</span><span class="o">();</span>
+		
+        <span class="c1">// 파일의 저장크기</span>
+        <span class="kt">int</span> <span class="n">maxSize</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">;</span> <span class="c1">// 10MB</span>
+		
+        <span class="nc">MultipartParser</span> <span class="n">mp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MultipartParser</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">maxSize</span><span class="o">);</span>
+        <span class="n">mp</span><span class="o">.</span><span class="na">setEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+        <span class="nc">Part</span> <span class="n">part</span><span class="o">;</span>
+
+        <span class="c1">// 기존에 저장되 있던 파일 정보를 저장할 변수</span>
+        <span class="nc">String</span> <span class="n">imgUploadStatus</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">oldImgPath</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">oldImgName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+        <span class="nc">String</span> <span class="n">fileUploadStatus</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">oldFilePath</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">oldFileName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+        <span class="k">while</span> <span class="o">((</span><span class="n">part</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="na">readNextPart</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="c1">// form 태그로 저장된 파라미터를 읽어옴</span>
+            <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">part</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+			
+            <span class="k">if</span> <span class="o">(</span><span class="n">part</span><span class="o">.</span><span class="na">isParam</span><span class="o">())</span>
+            <span class="o">{</span>
+                <span class="c1">// 파일이 아닐 때</span>
+                <span class="nc">ParamPart</span> <span class="n">param</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ParamPart</span><span class="o">)</span><span class="n">part</span><span class="o">;</span>
+                <span class="nc">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="na">getStringValue</span><span class="o">();</span>
+				
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"param name :"</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">" value : "</span> <span class="o">+</span> <span class="n">value</span><span class="o">);</span>
+				
+                <span class="c1">// 각 파라미터에 맞춰 dto에 저장</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"id"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"title"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"content"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"num"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"re_lev"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setRe_lev</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"re_ref"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setRe_ref</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"re_seq"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setRe_seq</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldImgName"</span><span class="o">))</span>
+                    <span class="n">oldImgName</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldFileName"</span><span class="o">))</span>
+                    <span class="n">oldFileName</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"fileUploadStatus"</span><span class="o">))</span>
+                    <span class="n">fileUploadStatus</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"imgUploadStatus"</span><span class="o">))</span>
+                    <span class="n">imgUploadStatus</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldImgPath"</span><span class="o">))</span>
+                    <span class="n">oldImgPath</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldFilePath"</span><span class="o">))</span>
+                    <span class="n">oldFilePath</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">part</span><span class="o">.</span><span class="na">isFile</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"image"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 이미지 파일일 때</span>
+                <span class="c1">// 이미지 저장 경로 지정</span>
+                <span class="nc">File</span> <span class="n">dir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/images"</span><span class="o">));</span>
+                <span class="nc">File</span> <span class="n">originDir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">dir</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"origins"</span><span class="o">);</span> <span class="c1">// 원본 이미지 저장 경로</span>
+                <span class="nc">File</span> <span class="n">thumbnailDir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">dir</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"thumbnails"</span><span class="o">);</span> <span class="c1">// 썸네일 저장 경로</span>
+				
+                <span class="c1">// 경로가 없으면 생성</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">dir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">dir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">originDir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">originDir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">thumbnailDir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">thumbnailDir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
+				
+                <span class="nc">FilePart</span> <span class="n">filePart</span> <span class="o">=</span> <span class="o">(</span><span class="nc">FilePart</span><span class="o">)</span> <span class="n">part</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="o">{</span>
+                    <span class="c1">// 중복 파일명 처리 - 실제 참고할 파일은 rename된 파일이름 쓰기</span>
+                    <span class="n">filePart</span><span class="o">.</span><span class="na">setRenamePolicy</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultFileRenamePolicy</span><span class="o">());</span>
+
+                    <span class="c1">// 지정한 경로에 파일 쓰기</span>
+                    <span class="nc">String</span> <span class="n">file</span> <span class="o">=</span> <span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">();</span>
+                    <span class="n">filePart</span><span class="o">.</span><span class="na">writeTo</span><span class="o">(</span><span class="n">originDir</span><span class="o">);</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setImage_uid</span><span class="o">(</span><span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
+					
+                    <span class="c1">// 원본 이미지 파일을 이용해서 썸네일을 만들어 저장</span>
+                    <span class="c1">// 크기 지정 후 지정 경로에 저장</span>
+                    <span class="c1">// 썸네일 파일명은 중복처리된 파일명과 같게 만든다.</span>
+                    <span class="nc">Thumbnails</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">originDir</span><span class="o">.</span><span class="na">getPath</span><span class="o">()</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">()))</span>
+                        <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">400</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">toFiles</span><span class="o">(</span><span class="n">thumbnailDir</span><span class="o">,</span> <span class="nc">Rename</span><span class="o">.</span><span class="na">NO_CHANGE</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">else</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"img empty!"</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">part</span><span class="o">.</span><span class="na">isFile</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"file"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 일반 파일일 때</span>
+                <span class="nc">File</span> <span class="n">dir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/upload"</span><span class="o">));</span>
+				
+                <span class="c1">// 경로 없으면 생성</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">dir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">dir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
+				
+                <span class="nc">FilePart</span> <span class="n">filePart</span> <span class="o">=</span> <span class="o">(</span><span class="nc">FilePart</span><span class="o">)</span> <span class="n">part</span><span class="o">;</span>
+                <span class="nc">String</span> <span class="n">file</span> <span class="o">=</span> <span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">file</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="o">{</span>
+                    <span class="n">filePart</span><span class="o">.</span><span class="na">setRenamePolicy</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultFileRenamePolicy</span><span class="o">());</span>
+                    <span class="n">filePart</span><span class="o">.</span><span class="na">writeTo</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span> <span class="c1">// 지정한 경로에 파일 쓰기</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setFile_uid</span><span class="o">(</span><span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
+                <span class="o">}</span>
+                <span class="k">else</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"file empty!"</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="c1">// 사용자 ip주소 저장</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setIp</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getRemoteAddr</span><span class="o">());</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">imgUploadStatus</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">imgUploadStatus</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"false"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 등록된 이미지를 삭제하는 경우</span>
+                <span class="n">dto</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="s">"없음"</span><span class="o">);</span>
+                <span class="nc">File</span> <span class="n">oldImg</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">oldImgPath</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">oldImg</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="n">oldImg</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+				
+                <span class="c1">// 썸네일도 삭제한다.</span>
+                <span class="nc">File</span> <span class="n">oldThumbnail</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/thumbnail"</span><span class="o">)</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="n">oldImgName</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">oldThumbnail</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="n">oldThumbnail</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">else</span> 
+            <span class="o">{</span>
+                <span class="c1">// 삭제하지 않는 경우</span>
+                <span class="c1">// 만약 dto의 파일명 필드가 비어 있으면 기존 파일명을 저장한다.</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">oldImgName</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="k">if</span> <span class="o">(</span><span class="n">fileUploadStatus</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">fileUploadStatus</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"false"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="s">"없음"</span><span class="o">);</span>
+                <span class="nc">File</span> <span class="n">oldFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">oldFilePath</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">oldFile</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="n">oldFile</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">else</span> 
+            <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="n">oldFileName</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="k">return</span> <span class="n">dto</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>파일명의 중복처리를 지정해 준 다음 업로드되면 중복처리된 파일명을 받아온다.</li>
+  <li>게시글에서 사용자에게 보여줄 파일명과 서버에서 다운로드 할 때 참고할 파일명을 따로 저장한다.</li>
+  <li>실제 다운로드가 이루어질 땐 서버에 업로드 된 파일명인 <code class="language-plaintext highlighter-rouge">image_uid</code>, <code class="language-plaintext highlighter-rouge">file_uid</code>를 참고할 것이다.</li>
+</ul>
+
+<h2 id="boardcontentjsp">boardContent.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;tr&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"5"</span> <span class="na">style=</span><span class="s">"white-space:pre-wrap; word-wrap:break-word; word-break: break-all;"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;&lt;br&gt;&lt;br&gt;</span>
+  <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"없음"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+    <span class="c">&lt;!-- 실제 서버에 업로드 된 파일명이 중복되면 이름이 바뀌기 때문에 바뀐 파일명을 참조해야 한다. --&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"./BoardImgAction.bo?img_name=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">().</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>첨부파일<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"3"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- 첨부파일이 있을 때에만 하이퍼링크 연결 --&gt;</span>
+  <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"없음"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+      없음
+  <span class="nt">&lt;%</span> <span class="o">}</span>
+    <span class="k">else</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./BoardFileDownloadAction.bo?file_name=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;</span>
+  <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>사용자에게 보여주는 파일명은 사용자가 업로드했던 파일명 그대로 쓰지만 실제 참조할 파일명은 중복처리된 파일명을 사용한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/uploadedImg.png" width="300" /></p>
+
+<ul>
+  <li>업로드 되는 폴더에 중복처리되어 들어가는 것을 확인할 수 있다.</li>
+  <li>이제 내일이 발표니까 발표자료 만들어야겠다…<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li>내일이 발표네…</li>
+  <li><code class="language-plaintext highlighter-rouge">D-1</code></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cafe" class="page__taxonomy-item p-category" rel="tag">Cafe</a><span class="sep">, </span>
+    
+      <a href="/tags/#log" class="page__taxonomy-item p-category" rel="tag">Log</a><span class="sep">, </span>
+    
+      <a href="/tags/#project" class="page__taxonomy-item p-category" rel="tag">Project</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#project-log" class="page__taxonomy-item p-category" rel="tag">Project Log</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-04-06T00:00:00+09:00">April 6, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JAVA+Servlet+%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%29+Cafe%28%EC%9B%B9+%EC%82%AC%EC%9D%B4%ED%8A%B8%29+%EB%A7%8C%EB%93%A4%EA%B8%B0+29+-+%ED%8C%8C%EC%9D%BC%EC%97%85%EB%A1%9C%EB%93%9C+%EA%B8%B0%EB%8A%A5+%EC%88%98%EC%A0%95%28%EC%A4%91%EB%B3%B5%ED%8C%8C%EC%9D%BC%EB%AA%85+%EC%B2%98%EB%A6%AC%29%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Fcafe-project-29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/project%20log/cafe-project-28/" class="pagination--pager" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 28 - 관리자 페이지에서 게시글 관리 기능 추가
+">이전</a>
+    
+    
+      <a href="/errorlog/warning-log-04/" class="pagination--pager" title="에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/errorlog/warning-log-04/" rel="permalink">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">사용환경
+
+  MacBook Air (M1, 2020) 16GB
+  JDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-28/" rel="permalink">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 28 - 관리자 페이지에서 게시글 관리 기능 추가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-27/" rel="permalink">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 27 - 관리자 페이지에서 회원 상세정보 보기 기능 추가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/project%20log/cafe-project-26/" rel="permalink">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 26 - 관리자 페이지 + 회원 관리 기능 추가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">개발환경
+
+  MacBook Air (M1, 2020)
+  OpenJDK 8
+  Eclipse 2021-12
+  tomcat 8.5
+  MySQL Workbench 8.0.19
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'miro7923/miro7923.github.com');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'Comment');
+    script.setAttribute('theme', 'boxy-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>
