@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-06T13:12:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제</title><link href="http://localhost:4000/errorlog/warning-log-04/" rel="alternate" type="text/html" title="에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제" /><published>2022-04-06T00:00:00+09:00</published><updated>2022-04-06T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-04</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-04/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-06T23:12:46+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제</title><link href="http://localhost:4000/errorlog/warning-log-04/" rel="alternate" type="text/html" title="에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제" /><published>2022-04-06T00:00:00+09:00</published><updated>2022-04-06T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-04</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-04/"><![CDATA[<h1 id="사용환경">사용환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020) 16GB</li>
   <li>JDK 8</li>
@@ -564,192 +564,155 @@
 <ul>
   <li>내일이 발표네…</li>
   <li><code class="language-plaintext highlighter-rouge">D-1</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 27 - 관리자 페이지에서 회원 상세정보 보기 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-27/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 27 - 관리자 페이지에서 회원 상세정보 보기 기능 추가" /><published>2022-04-05T00:00:00+09:00</published><updated>2022-04-05T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-27</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-27/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제2</title><link href="http://localhost:4000/errorlog/warning-log-05/" rel="alternate" type="text/html" title="에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제2" /><published>2022-04-06T00:00:00+09:00</published><updated>2022-04-06T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-05</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-05/"><![CDATA[<h1 id="사용환경">사용환경</h1>
 <ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
   <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+  <li>tomcat 8.5<br /><br /><br /></li>
 </ul>
 
-<h1 id="시작">시작</h1>
+<h1 id="에러의-발생">에러의 발생</h1>
 <ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
+  <li>무슨 버그가 수정을 해도해도 계속 나오는지… 얼렁뚱땅 돌아가는 느낌이다 🥲</li>
+  <li>게시글을 수정할 때 첨부파일이 사라지는 버그를 해결했다고 생각했는데 완벽히 해결되지 않았다.</li>
+  <li>여전히 일부 케이스에서 제대로 처리가 되지 않아 <code class="language-plaintext highlighter-rouge">DB</code> 상에서의 파일명이 <code class="language-plaintext highlighter-rouge">null</code>로 바뀌는 문제가 존재했다.</li>
+  <li>그래서 좀 더 근본적인 원인을 떠올려 보았다… 게시글을 수정하며 파일 업로드 단계를 거치는 과정에서 <code class="language-plaintext highlighter-rouge">DTO</code> 생성 시 파일명이 지정되지 않아 <code class="language-plaintext highlighter-rouge">null</code>로 남아있는 것이 <code class="language-plaintext highlighter-rouge">DB</code> 수정 동작 때 넘어와서 문제라면 <code class="language-plaintext highlighter-rouge">DB</code>에 접근하는 메서드를 수정하는 것이 빠르지 않을까…</li>
 </ul>
 
-<h1 id="주제">주제</h1>
+<h1 id="문제-해결">문제 해결</h1>
 <ul>
-  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+  <li>기존에 작성했던 게시글 수정 메서드</li>
 </ul>
 
-<h1 id="진행상황">진행상황</h1>
-<ul>
-  <li>관리자 페이지에서 회원 한 명의 상세 정보를 확인하고 거기에서 삭제할 수 있는 기능을 추가했다.</li>
-</ul>
-
-<h2 id="membermanagementjsp">memberManagement.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">memberList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
-  <span class="o">{</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">memberList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
-    <span class="o">{</span> <span class="nt">%&gt;</span>
-  <span class="nt">&lt;tr&gt;</span>
-    <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"member"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/td&gt;</span>
-    <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./MemberInfoAction.me?id=</span><span class="nt">&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;&lt;/td&gt;</span>
-    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getName</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
-    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getEmail</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
-    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getRegdate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
-  <span class="nt">&lt;/tr&gt;</span>
-<span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>회원 목록을 보는 페이지에서 아이디를 클릭하면 해당 회원의 정보를 가져오는 서블릿으로 이동한다.</li>
-</ul>
-
-<h2 id="memberinfoactionjava">MemberInfoAction.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberInfoAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">modifyPost</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">dto</span><span class="o">)</span>
 <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
-    <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : MemberInfoAction - execute() 호출"</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
 		
-        <span class="c1">// 파라메터 저장</span>
-        <span class="nc">String</span> <span class="n">memberId</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
-		
-        <span class="c1">// DB 접속해서 회원 정보 가져오기</span>
-        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
-        <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getMember</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
-		
-        <span class="c1">// 회원정보 저장</span>
-        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">,</span> <span class="n">dto</span><span class="o">);</span>
-
-        <span class="c1">// 회원 상세 정보 페이지로 이동</span>
-        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
-        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./admin/memberInfo.jsp"</span><span class="o">);</span>
-        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-		
-        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="c1">// 번호로 해당 글 찾기</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="c1">// update 동작 수행</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set title=?, image=?, image_uid=?, file=?, file_uid=? content=? where num=?"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+				
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+				
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 수정 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
     <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li>회원 한 명의 정보를 가져온 뒤 <code class="language-plaintext highlighter-rouge">request</code> 영역에 저장한다.</li>
-  <li>그 다음 회원 상세 정보 페이지로 이동한다.</li>
+  <li>매개변수로 받은 <code class="language-plaintext highlighter-rouge">DTO</code>를 그대로 받아서 바로 업데이트 동작을 수행한다.</li>
+  <li>
+    <p>이러니 <code class="language-plaintext highlighter-rouge">DTO</code>의 파일명 필드가 <code class="language-plaintext highlighter-rouge">null</code>로 넘어와도 아무 필터링 없이 <code class="language-plaintext highlighter-rouge">DB</code>에 <code class="language-plaintext highlighter-rouge">null</code>이 저장되는 것이었다.
+<br /><br /></p>
+  </li>
+  <li>수정한 메서드</li>
 </ul>
 
-<h2 id="memberinfojsp">memberInfo.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/leftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;h3&gt;</span>회원 상세 정보<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
-      <span class="nt">&lt;%</span>
-      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
-      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
-      		<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
-      	
-      	<span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="o">(</span><span class="nc">MemberDTO</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">);</span>
-      	
-      	<span class="nc">String</span><span class="o">[]</span> <span class="n">regdate</span> <span class="o">=</span> <span class="n">dto</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
-      <span class="nt">%&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>회원번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"memberNum"</span> <span class="na">id=</span><span class="s">"memberNum"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getMemberNum</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>이름 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"name"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>생년월일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"date"</span> <span class="na">name=</span><span class="s">"birth"</span> <span class="na">class=</span><span class="s">"birth"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getBirth</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>나이 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"age"</span> <span class="na">class=</span><span class="s">"age"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">disabled</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>성별 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"남"</span>
-          <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"남"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span> 
-          <span class="na">checked</span>
-          <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span> <span class="na">readonly</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>남<span class="nt">&lt;/label&gt;</span> 
-          <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"여"</span>
-          <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"여"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
-          <span class="na">checked</span>
-          <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span> <span class="na">readonly</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>여<span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>우편번호 <span class="nt">&lt;/label&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"postalcode"</span> <span class="na">id=</span><span class="s">"postalcode"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPostalcode</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"guide"</span> <span class="na">style=</span><span class="s">"color:#999;display:none"</span><span class="nt">&gt;&lt;/span&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>도로명 주소 <span class="nt">&lt;/label&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"roadAddress"</span> <span class="na">name=</span><span class="s">"roadAddress"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getRoad_address</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>상세 주소 <span class="nt">&lt;/label&gt;</span>
-		  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"detailAddress"</span> <span class="na">name=</span><span class="s">"detailAddress"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getDetail_address</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span> <span class="na">id=</span><span class="s">"phoneArea"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_TelField"</span><span class="nt">&gt;</span>휴대폰 번호 <span class="nt">&lt;/label&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone1"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone1"</span> <span class="na">size=</span><span class="s">"1"</span> <span class="na">maxlength=</span><span class="s">"3"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">oninput=</span><span class="s">"tabCursor(1)"</span> <span class="na">readonly</span><span class="nt">&gt;</span> - 
-          <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone2"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone2"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">7</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">oninput=</span><span class="s">"tabCursor(2)"</span> <span class="na">readonly</span><span class="nt">&gt;</span> - 
-          <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone3"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone3"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="mi">11</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_EmailField"</span><span class="nt">&gt;</span>이메일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span> <span class="na">id=</span><span class="s">"email"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"emailMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>가입일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"regdate"</span> <span class="na">id=</span><span class="s">"regdate"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">regdate</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./AdminDeleteAction.me"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"member"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>회원삭제<span class="nt">&lt;/button&gt;</span>
-      <span class="nt">&lt;/form&gt;&lt;br&gt;</span>
-      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">onclick=</span><span class="s">"history.back();"</span><span class="nt">&gt;</span>회원 목록 보기<span class="nt">&lt;/button&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">modifyPost</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">dto</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="c1">// 번호로 해당 글 찾기</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="c1">// update 동작 수행</span>
+            <span class="c1">// 새로 수정한 글에서 파일 정보가 있으면 그걸로 수정 / 없으면 그대로 놔둠</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set image=?, image_uid=? where num=?"</span><span class="o">;</span>
+                <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+            <span class="o">}</span>
+				
+            <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set file=?, file_uid=? where num=?"</span><span class="o">;</span>
+                <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+            <span class="o">}</span>
+				
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set title=?, content=? where num=?"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+				
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+				
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 수정 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li>회원 상세 정보 페이지는 마이페이지와 동일한 레이아웃이되, 각 정보를 관리자가 수정할 필요는 없기 때문에 모두 <code class="language-plaintext highlighter-rouge">readonly</code>를 걸었다.</li>
-  <li>하단에 있는 <code class="language-plaintext highlighter-rouge">회원삭제</code> 버튼을 누르면 해당 회원을 삭제할 수 있다. 삭제 로직은 이전 일지에서 만들었던 것과 동일하다.</li>
-  <li>참고 : <a href="https://miro7923.github.io/project%20log/cafe-project-26/">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 26 - 관리자 페이지 + 회원 관리 기능 추가</a></li>
-  <li><code class="language-plaintext highlighter-rouge">회원 목록 보기</code> 버튼을 누르면 이전 페이지로 되돌아 간다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li>마감 기한이 늘어났다.</li>
-  <li><code class="language-plaintext highlighter-rouge">D-2</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 28 - 관리자 페이지에서 게시글 관리 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-28/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 28 - 관리자 페이지에서 게시글 관리 기능 추가" /><published>2022-04-05T00:00:00+09:00</published><updated>2022-04-05T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-28</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-28/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+  <li>전달되어 온 <code class="language-plaintext highlighter-rouge">DTO</code>에 파일명 정보가 있을 때에만 업데이트가 되도록 수정했다.</li>
+  <li>이렇게 하니까 그동안 고민했던 문제들이 싹 해결되었다.</li>
+  <li>
+    <p>역시 근본적인 원인을 제거했어야…</p>
+  </li>
+  <li>이렇게 문제 해결~!! 👏</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 28 - 관리자 페이지에서 게시글 관리 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-28/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 28 - 관리자 페이지에서 게시글 관리 기능 추가" /><published>2022-04-05T00:00:00+09:00</published><updated>2022-04-05T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-28</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-28/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -1057,6 +1020,191 @@
 
 <ul>
   <li>관리자는 삭제만 할 수 있도록 조건 제한을 해 주었다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li>마감 기한이 늘어났다.</li>
+  <li><code class="language-plaintext highlighter-rouge">D-2</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 27 - 관리자 페이지에서 회원 상세정보 보기 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-27/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 27 - 관리자 페이지에서 회원 상세정보 보기 기능 추가" /><published>2022-04-05T00:00:00+09:00</published><updated>2022-04-05T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-27</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-27/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>관리자 페이지에서 회원 한 명의 상세 정보를 확인하고 거기에서 삭제할 수 있는 기능을 추가했다.</li>
+</ul>
+
+<h2 id="membermanagementjsp">memberManagement.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">memberList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+  <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">memberList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
+    <span class="o">{</span> <span class="nt">%&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"member"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./MemberInfoAction.me?id=</span><span class="nt">&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getName</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getEmail</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">memberList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getRegdate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>회원 목록을 보는 페이지에서 아이디를 클릭하면 해당 회원의 정보를 가져오는 서블릿으로 이동한다.</li>
+</ul>
+
+<h2 id="memberinfoactionjava">MemberInfoAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.member.db.MemberDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberInfoAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : MemberInfoAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 파라메터 저장</span>
+        <span class="nc">String</span> <span class="n">memberId</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+		
+        <span class="c1">// DB 접속해서 회원 정보 가져오기</span>
+        <span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+        <span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">getMember</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+		
+        <span class="c1">// 회원정보 저장</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">,</span> <span class="n">dto</span><span class="o">);</span>
+
+        <span class="c1">// 회원 상세 정보 페이지로 이동</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./admin/memberInfo.jsp"</span><span class="o">);</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>회원 한 명의 정보를 가져온 뒤 <code class="language-plaintext highlighter-rouge">request</code> 영역에 저장한다.</li>
+  <li>그 다음 회원 상세 정보 페이지로 이동한다.</li>
+</ul>
+
+<h2 id="memberinfojsp">memberInfo.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/leftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h3&gt;</span>회원 상세 정보<span class="nt">&lt;/h3&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;%</span>
+      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+      		<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+      	
+      	<span class="nc">MemberDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="o">(</span><span class="nc">MemberDTO</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"dto"</span><span class="o">);</span>
+      	
+      	<span class="nc">String</span><span class="o">[]</span> <span class="n">regdate</span> <span class="o">=</span> <span class="n">dto</span><span class="o">.</span><span class="na">getRegdate</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+      <span class="nt">%&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>회원번호 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"memberNum"</span> <span class="na">id=</span><span class="s">"memberNum"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getMemberNum</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>아이디 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>이름 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"name"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>생년월일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"date"</span> <span class="na">name=</span><span class="s">"birth"</span> <span class="na">class=</span><span class="s">"birth"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getBirth</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>나이 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">id=</span><span class="s">"MOD_TEXTFORM_NameField"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"age"</span> <span class="na">class=</span><span class="s">"age"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">disabled</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>성별 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"남"</span>
+          <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"남"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span> 
+          <span class="na">checked</span>
+          <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span> <span class="na">readonly</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>남<span class="nt">&lt;/label&gt;</span> 
+          <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"gender"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"gender"</span> <span class="na">value=</span><span class="s">"여"</span>
+          <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getGender</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"여"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+          <span class="na">checked</span>
+          <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span> <span class="na">readonly</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"radioText"</span><span class="nt">&gt;</span>여<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>우편번호 <span class="nt">&lt;/label&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"postalcode"</span> <span class="na">id=</span><span class="s">"postalcode"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPostalcode</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"guide"</span> <span class="na">style=</span><span class="s">"color:#999;display:none"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>도로명 주소 <span class="nt">&lt;/label&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"roadAddress"</span> <span class="na">name=</span><span class="s">"roadAddress"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getRoad_address</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>상세 주소 <span class="nt">&lt;/label&gt;</span>
+		  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"detailAddress"</span> <span class="na">name=</span><span class="s">"detailAddress"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getDetail_address</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span> <span class="na">id=</span><span class="s">"phoneArea"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_TelField"</span><span class="nt">&gt;</span>휴대폰 번호 <span class="nt">&lt;/label&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone1"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone1"</span> <span class="na">size=</span><span class="s">"1"</span> <span class="na">maxlength=</span><span class="s">"3"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">oninput=</span><span class="s">"tabCursor(1)"</span> <span class="na">readonly</span><span class="nt">&gt;</span> - 
+          <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone2"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone2"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">7</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">oninput=</span><span class="s">"tabCursor(2)"</span> <span class="na">readonly</span><span class="nt">&gt;</span> - 
+          <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"phone3"</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">"phone3"</span> <span class="na">size=</span><span class="s">"3"</span> <span class="na">maxlength=</span><span class="s">"4"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getPhone</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="mi">11</span><span class="o">)</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_EmailField"</span><span class="nt">&gt;</span>이메일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span> <span class="na">id=</span><span class="s">"email"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"emailMsg"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formRow"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"MOD_TEXTFORM_NameField"</span><span class="nt">&gt;</span>가입일 <span class="nt">&lt;/label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"regdate"</span> <span class="na">id=</span><span class="s">"regdate"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">regdate</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="nt">%&gt;</span><span class="s">"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./AdminDeleteAction.me"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"member"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>회원삭제<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/form&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">onclick=</span><span class="s">"history.back();"</span><span class="nt">&gt;</span>회원 목록 보기<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>회원 상세 정보 페이지는 마이페이지와 동일한 레이아웃이되, 각 정보를 관리자가 수정할 필요는 없기 때문에 모두 <code class="language-plaintext highlighter-rouge">readonly</code>를 걸었다.</li>
+  <li>하단에 있는 <code class="language-plaintext highlighter-rouge">회원삭제</code> 버튼을 누르면 해당 회원을 삭제할 수 있다. 삭제 로직은 이전 일지에서 만들었던 것과 동일하다.</li>
+  <li>참고 : <a href="https://miro7923.github.io/project%20log/cafe-project-26/">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 26 - 관리자 페이지 + 회원 관리 기능 추가</a></li>
+  <li><code class="language-plaintext highlighter-rouge">회원 목록 보기</code> 버튼을 누르면 이전 페이지로 되돌아 간다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -2394,334 +2542,4 @@
 <h1 id="출처">출처</h1>
 <ul>
   <li><a href="http://www.kmooc.kr/courses/course-v1:PNUk+CN_C01+2021_KM_013/video">컴퓨터 네트워킹 - 부산대학교 K-MOOC 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><category term="Application" /><summary type="html"><![CDATA[👀 Transport Layer 응용 계층 바로 아래에 있는 계층 대표적인 서비스는 프로세스들 간의 논리적 연결 하나의 컴퓨터 안에서는 여러 프로세스가 동시에 기동되고 있다. 전송 계층 바로 아래에 있는 네트워크 계층에서는 IP를 이용해 상대 호스트를 찾아가는데 이것 만으로는 상대방의 어떤 프로세스에게 전달해야 하는지 알 수 없다. 그래서 전송 계층에서 여러 프로세스들 중에서 어떤 프로세스에게 전달해야 할 지 알려주는 정보를 제공하는 것이다. 전송 계층의 보내는 쪽에서는 보내고자 하는 메세지(파일 등)를 분할한 다음에 세그먼트에 담아서 전송한다. 그러면 받는 쪽에서 분할되어 온 세그먼트들을 합친 후에 응용 계층으로 전달한다. 이때 사용하는 프로토콜은 TCP와 UDP 두 가지가 대표적으로 사용된다.]]></summary></entry><entry><title type="html">OS) Memory Management</title><link href="http://localhost:4000/operating%20system/OS-08-Memory-Management/" rel="alternate" type="text/html" title="OS) Memory Management" /><published>2022-04-02T00:00:00+09:00</published><updated>2022-04-02T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-08-Memory-Management</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-08-Memory-Management/"><![CDATA[<h1 id="-논리적-주소와-물리적-주소">👀 논리적 주소와 물리적 주소</h1>
-<ul>
-  <li>
-    <p>데이터가 메모리에 위치하고 있는 곳을 가리키는 주소는 논리적 주소와 물리적 주소로 나뉜다.</p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Logical address (= virtual address)</code>
-    <ul>
-      <li>프로세스마다 독립적으로 가지는 주소 공간</li>
-      <li>각 프로세스마다 0번지부터 시작</li>
-      <li><code class="language-plaintext highlighter-rouge">CPU</code>가 보는 주소는 <code class="language-plaintext highlighter-rouge">logical address</code>임</li>
-      <li>왜냐면 코드상의 주소가 <code class="language-plaintext highlighter-rouge">logical address</code>인데 이게 물리적 주소로 바뀐다 해서 코드상의 주소도 물리적 주소로 바뀌는 것은 아니다. 만약 바뀐다면 컴파일을 새로 해야 하는데 이러면 이상하다. 그래서 <code class="language-plaintext highlighter-rouge">CPU</code>는 논리적 주소를 참고하게 된다.</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Physical address</code>
-    <ul>
-      <li>메모리에 실제로 올라가는 위치</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>가 <code class="language-plaintext highlighter-rouge">instruction</code>을 수행하다가 메모리에 있는 데이터에 접근할 필요가 있으면 그 데이터가 위치하고 있는 주소를 알아야 한다.</li>
-  <li>이때 코드에 물리적 주소가 항상 명시되어 있어서 바로 그 위치로 가서 읽어오면 서로 편하겠지만 프로그램이 실행되는 컴퓨터와 환경에 따라 항상 같은 물리적 주소를 사용할 수 있다는 보장이 없다.</li>
-  <li>그래서 코드에는 논리적 주소를 사용해 각 프로세스별로 전용 주소공간을 사용할 수 있게 하고 그 논리적 주소를 이용해 메모리에 실제로 올려져 있는 위치를 참고할 수 있도록 하는 것이다.</li>
-  <li><code class="language-plaintext highlighter-rouge">CPU</code>는 메모리에 접근할 필요가 있으면 먼저 논리적 주소를 물리적 주소로 변환한 뒤 해당 위치에 접근해서 데이터를 읽어온다.</li>
-</ul>
-
-<h2 id="주소-바인딩address-binding">주소 바인딩(Address Binding)</h2>
-<ul>
-  <li>논리적 주소를 물리적 주소로 변환하는 것</li>
-  <li>하지만 주소변환은 <code class="language-plaintext highlighter-rouge">CPU</code>가 하는 것이 아닌 하드웨어적으로 이루어진다.</li>
-  <li>주소변환이 필요할 때마다 <code class="language-plaintext highlighter-rouge">CPU</code>가 필요하면 그 때마다 <code class="language-plaintext highlighter-rouge">interrupt</code>가 일어나게 될 것이고 그건 굉장히 비효율적일 것이다.</li>
-</ul>
-
-<h3 id="주소-바인딩-시점에-따른-분류">주소 바인딩 시점에 따른 분류</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Compile time binding</code>
-    <ul>
-      <li>컴파일될 때 물리적 주소가 결정된다.</li>
-      <li>시작위치가 변경되면 재컴파일</li>
-      <li>컴파일러는 절대 코드(absolute code) 생성</li>
-      <li>옛날에 많이 쓰다가 지금은 잘 안 쓴다.</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Load time binding</code>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">Loader</code>의 책임하에 물리적 메모리 주소 부여</li>
-      <li>프로그램이 메모리에 로드될 때 물리적 주소가 결정된다.</li>
-      <li>컴파일러가 재배치 가능 코드(relocatable code)를 생성한 경우 가능</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Execution time binding (= Run time binding)</code>
-    <ul>
-      <li>수행이 시작된 이후에도 프로세스의 메모리 상 위치를 옮길 수 있다.</li>
-      <li><code class="language-plaintext highlighter-rouge">CPU</code>가 주소를 참조할 때마다 <code class="language-plaintext highlighter-rouge">binding</code> 점검 (address mapping table)</li>
-      <li>하드웨어에서 지원해야 가능하다.</li>
-      <li>최근 시스템에서 사용하는 방식</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="memory-management-unit-mmu">Memory-Management Unit (MMU)</h2>
-<ul>
-  <li>주소 변환을 위한 하드웨어</li>
-  <li>논리적 주소를 물리적 주소로 매핑해 준다.</li>
-  <li>실제 물리적 주소의 시작점에서 논리적 주소의 <code class="language-plaintext highlighter-rouge">offset</code>만큼을 더해서 물리적 주소를 알려준다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Limit register</code> : 만약 프로세스가 자기 범위를 넘어가는 위치에 있는 데이터에 접근을 요구하면 다른 프로세스의 중요 데이터에 접근하게 될 수 있다. 그래서 주소를 변환할 때 프로세스가 가질 수 있는 주소의 최대 크기를 먼저 제한해놓고 그 범위 안에서만 변환할 수 있도록 한다.<br /><br /></li>
-</ul>
-
-<h1 id="메모리-로드-기법들">메모리 로드 기법들</h1>
-<h2 id="dynamic-loading">Dynamic Loading</h2>
-<ul>
-  <li>프로세스 전체를 메모리에 미리 다 올리는 것이 아니라 해당 루틴이 불려질 때 메모리에 <code class="language-plaintext highlighter-rouge">load</code>하는 것</li>
-  <li><code class="language-plaintext highlighter-rouge">memory utilization</code>이 향상됨</li>
-  <li>가끔씩 사용되는 코드가 많을 때 유용하다.
-    <ul>
-      <li>자주 사용되는 부분이 한정적인데 전체를 올리면 비효율적이다.</li>
-      <li>예 : 오류 처리 루틴</li>
-    </ul>
-  </li>
-  <li>운영체제의 특별한 지원 없이 프로그램 자체에서 구현 가능 (<code class="language-plaintext highlighter-rouge">OS</code>는 라이브러리를 통해 지원 가능)</li>
-</ul>
-
-<h2 id="dynamic-linking">Dynamic Linking</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Linking</code>을 실행시간(execution time)`까지 미루는 기법</li>
-  <li><code class="language-plaintext highlighter-rouge">Static linking</code>
-    <ul>
-      <li>라이브러리가 프로그램의 실행 파일 코드에 포함됨</li>
-      <li>실행 파일의 크기가 커짐</li>
-      <li>동일한 라이브러리를 각각의 프로세스가 메모리에 올리므로 메모리 낭비가 생긴다.(예: <code class="language-plaintext highlighter-rouge">printf</code>함수의 라이브러리 코드)</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Overlays</code>
-    <ul>
-      <li>메모리에 프로세스의 부분 중 실제 필요한 정보만을 올림</li>
-      <li>이렇게 보면 <code class="language-plaintext highlighter-rouge">Dynamic loading</code>과 비슷해 보이지만 프로그래머가 수작업으로 구현해야 한다는 점에서 다르다. 작은 공간의 메모리를 사용하던 초창기 시스템에서 사용하던 방식으로 프로그래밍이 매우 복잡하다.</li>
-      <li>프로세스의 크기가 메모리보다 클 때 유용</li>
-      <li>운영체제의 지원 없이 사용자에 의해 구현</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Dynamic linking</code>
-    <ul>
-      <li>라이브러리가 실행시 연결된다.</li>
-      <li>라이브러리 호출 부분에 라이브러리 루틴의 위치를 찾기 위한 <code class="language-plaintext highlighter-rouge">stub</code>이라는 작은 코드를 둔다.</li>
-      <li>라이브러리가 이미 메모리에 있으면 그 루틴의 주소로 가고 없으면 디스크에서 읽어옴</li>
-      <li>운영체제의 도움 필요</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Swapping</code>
-    <ul>
-      <li>프로세스를 일시적으로 메모리에서 <code class="language-plaintext highlighter-rouge">backing store(하드디스크)</code>로 쫓아내는 것</li>
-      <li><code class="language-plaintext highlighter-rouge">Backing store</code> : 많은 사용자의 프로세스 이미지를 담을 만큼 충분히 빠르고 큰 저장 공간</li>
-      <li>일반적으로 중기 스케줄러(swapper)에 의해 <code class="language-plaintext highlighter-rouge">swap in/out</code>될 프로세스가 선정된다.</li>
-      <li>프로세스의 우선순위에 따라 <code class="language-plaintext highlighter-rouge">swap</code>이 이루어진다.</li>
-      <li><code class="language-plaintext highlighter-rouge">Compile time</code> 혹은 <code class="language-plaintext highlighter-rouge">load time binding</code>에서는 원래 메모리 위치로 <code class="language-plaintext highlighter-rouge">swap in</code>해야 함</li>
-      <li><code class="language-plaintext highlighter-rouge">Execution time binding</code>에서는 추후 빈 메모리 영역 아무 곳에나 올릴 수 있다.</li>
-      <li><code class="language-plaintext highlighter-rouge">swap time</code>은 대부분 <code class="language-plaintext highlighter-rouge">transfer time</code>(swap되는 양에 비례하는 시간)이다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="allocation-of-physical-memory">Allocation of Physical Memory</h2>
-<ul>
-  <li>
-    <p>메모리는 일반적으로 두 영역으로 나뉘어 사용된다.</p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">OS</code> 상주 영역 : <code class="language-plaintext highlighter-rouge">interrupt vector</code>와 함께 낮은 주소 영역 사용</li>
-  <li>사용자 프로세스 영역 : 높은 주소 영역 사용</li>
-</ul>
-
-<h2 id="사용자-프로세스-영역의-할당-방법">사용자 프로세스 영역의 할당 방법</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Contiguous allocation</code>
-    <ul>
-      <li>각각의 프로세스가 메모리의 연속적인 공간에 적재되도록 하는 것</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Noncontiguous allocation</code>
-    <ul>
-      <li>하나의 프로세스가 메모리의 여러 영역에 분산되어 올라갈 수 있다.</li>
-      <li>현대 운영체제에서 사용</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="contiguous-allocation">Contiguous Allocation</h3>
-<ul>
-  <li>고정분할 (Fixed partition) 방식
-    <ul>
-      <li>물리적 메모리를 몇 개의 영구적 분할로 나눔</li>
-      <li>분할의 크기가 모두 동일한 방식과 서로 다른 방식 존재</li>
-      <li>분할당 하나의 프로그램 적재</li>
-      <li>동시에 메모리에 로드되는 프로그램의 수가 고정됨</li>
-      <li>최대 수행 가능 프로그램 크기 제한</li>
-      <li><code class="language-plaintext highlighter-rouge">internal fragmentation(내부 조각)</code>, <code class="language-plaintext highlighter-rouge">external fragmentation(외부 조각)</code> 발생</li>
-    </ul>
-  </li>
-  <li>가변분할 (Variable partition) 방식
-    <ul>
-      <li>프로그램의 크기를 고려해서 할당</li>
-      <li>분할의 크기, 개수가 동적으로 변함</li>
-      <li>기술적 관리 기법 필요</li>
-      <li><code class="language-plaintext highlighter-rouge">external fragmentation(외부 조각)</code> 발생</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">External fragmentation(외부 조각)</code>
-    <ul>
-      <li>프로그램 크기보다 분할 크기가 작을 때 생김</li>
-      <li>아무 프로그램에도 배정되지 않은 빈 공간이지만 프로그램이 올라갈 수 없는 작은 공간</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Internal fragmentation(내부 조각)</code>
-    <ul>
-      <li>프로그램 크기보다 분할 크기가 글 때 생김</li>
-      <li>하나의 분할 내부에서 발생하는 사용되지 않는 메모리 조각</li>
-      <li>특정 프로그램에 배정되었지만 사용되지 않는 공간</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Hole</code>
-    <ul>
-      <li>가용 메모리 공간</li>
-      <li>다양한 크기의 <code class="language-plaintext highlighter-rouge">hole</code>들이 메모리 여러 곳에 흩어져 있다.</li>
-      <li>프로세스가 도착하면 수용가능한 <code class="language-plaintext highlighter-rouge">hole</code>을 할당</li>
-      <li>운영체제는 다음의 정보 유지 - 할당공간, 가용공간</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Dynamic Storage-Allocation Problem</code>
-    <ul>
-      <li>
-        <p>가변 분할 방식에서 size = n 인 요청을 만족하는 가장 적절한 <code class="language-plaintext highlighter-rouge">hole</code>을 찾는 문제</p>
-      </li>
-      <li><code class="language-plaintext highlighter-rouge">First-fit</code>
-        <ul>
-          <li>사이즈가 n 이상인 것 중 최초로 찾아지는 <code class="language-plaintext highlighter-rouge">hole</code>에 할당</li>
-        </ul>
-      </li>
-      <li><code class="language-plaintext highlighter-rouge">Best-fit</code>
-        <ul>
-          <li>사이즈가 n 이상인 가장 작은 <code class="language-plaintext highlighter-rouge">hole</code>을 찾아서 할당</li>
-          <li><code class="language-plaintext highlighter-rouge">hole</code>들의 리스트가 크기순으로 정렬되지 않은 경우 모든 <code class="language-plaintext highlighter-rouge">hole</code> 리스트를 탐색해야 함</li>
-          <li>많은 수의 아주 작은 <code class="language-plaintext highlighter-rouge">hole</code>들이 생성됨</li>
-        </ul>
-      </li>
-      <li><code class="language-plaintext highlighter-rouge">Wost-fit</code>
-        <ul>
-          <li>가장 큰 <code class="language-plaintext highlighter-rouge">hole</code>에 할당</li>
-          <li>모든 리스트를 탐색해야 함</li>
-          <li>상대적으로 아주 큰 <code class="language-plaintext highlighter-rouge">hole</code>들이 생성됨</li>
-        </ul>
-      </li>
-      <li><code class="language-plaintext highlighter-rouge">First-fit</code>과 <code class="language-plaintext highlighter-rouge">Best-fit</code>이 <code class="language-plaintext highlighter-rouge">Wost-fit</code>보다 속도와 공간 이용률 측면에서 효과적</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Compaction</code>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">external fragmentation(외부 조각)</code> 문제를 해결하는 한 가지 방법</li>
-      <li>사용 중인 메모리 영역을 한 군데로 몰고 <code class="language-plaintext highlighter-rouge">hole</code>들을 다른 한 곳으로 몰아 큰 <code class="language-plaintext highlighter-rouge">block</code>을 만드는 것</li>
-      <li>이렇게 보면 <code class="language-plaintext highlighter-rouge">Windows</code>의 디스크 조각 모음과 비슷해 보이지만 디스크 모음은 디스크에 있는 조각들을 모으는 것인데 반해 <code class="language-plaintext highlighter-rouge">Compaction</code>은 실행 중인 메모리의 조각들을 모으는 것이라는 점에서 다르다.</li>
-      <li>비용이 매우 많이 든다.</li>
-      <li>최소한의 메모리 이동으로 <code class="language-plaintext highlighter-rouge">Compaction</code>하는 방법이 있지만 매우 복잡하다.</li>
-      <li>프로세스의 주소가 실행 시간에 동적으로 재배치 가능한 경우에만 수행될 수 있다. 런타임 바인딩이 지원될 때에만 사용 가능</li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="paging">Paging</h1>
-<ul>
-  <li>프로세스의 <code class="language-plaintext highlighter-rouge">virtual memory</code>를 동일한 사이즈의 <code class="language-plaintext highlighter-rouge">page</code>로 나눈다.</li>
-  <li><code class="language-plaintext highlighter-rouge">virtual memory</code>의 내용이 <code class="language-plaintext highlighter-rouge">page</code> 단위로 비연속적으로 저장된다.</li>
-  <li>일부는 <code class="language-plaintext highlighter-rouge">backing storage</code>에, 일부는 <code class="language-plaintext highlighter-rouge">physical memory</code>에 저장</li>
-  <li>
-    <p>각 페이지마다 논리적 - 물리적 주소 매핑 정보(페이징 테이블)가 필요하다.</p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">physical memory</code>를 동일한 크기의 <code class="language-plaintext highlighter-rouge">frame</code>으로 나눔</li>
-  <li><code class="language-plaintext highlighter-rouge">logical memory</code>를 동일 크기의 <code class="language-plaintext highlighter-rouge">page</code>로 나눔(<code class="language-plaintext highlighter-rouge">frame</code>과 같은 크기)</li>
-  <li>모든 가용 <code class="language-plaintext highlighter-rouge">frame</code>들을 관리</li>
-  <li><code class="language-plaintext highlighter-rouge">page table</code>을 사용하여 논리적 주소를 물리적 주소로 바꾼다.</li>
-  <li>
-    <p>외부조각이 발생하지 않지만 페이징한 프로세스의 마지막 조각은 페이지 크기보다 작을 수 있기 때문에 내부조각은 발생할 수 있다.</p>
-  </li>
-  <li>속도 향상을 위해 <code class="language-plaintext highlighter-rouge">TLB(Translation Look-aside Buffer)</code>라는 하드웨어를 사용한다.
-    <ul>
-      <li>일종의 캐시로 논리적 - 물리적 주소 쌍을 가지고 있다.</li>
-    </ul>
-  </li>
-  <li>페이지 갯수만큼 페이징 테이블이 필요하기 때문에 공간이 많이 필요하다.</li>
-</ul>
-
-<h2 id="two-level-page-table">Two-Level Page Table</h2>
-<ul>
-  <li>페이지 테이블 공간을 줄이기 위해 사용한다. (속도 향상적인 측면에서는 별 효과 없음)</li>
-  <li>페이지 테이블 자체를 페이지로 구성해서 페이지 안에 페이지가 또 있는 형태이다.</li>
-  <li>사용되지 않는 페이지 영역은 안쪽 페이지 테이블을 안 만들고 포인터를 <code class="language-plaintext highlighter-rouge">NULL</code>로 두기 때문에 공간을 절약할 수 있다.</li>
-  <li>주소 공간이 더 커지면 다단계 페이지 테이블을 사용할 수도 있다.</li>
-</ul>
-
-<h2 id="memory-protection">Memory Protection</h2>
-<ul>
-  <li>
-    <p>페이지 테이블 각 <code class="language-plaintext highlighter-rouge">entry</code>마다 <code class="language-plaintext highlighter-rouge">bit</code>를 둔다.</p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Protection bit</code>
-    <ul>
-      <li>페이지에 대한 접근 권한 설정(read/write/read-only 등 연산에 대한 접근 권한)</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Valid-invalid bit</code>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">valid</code> : 해당 주소의 <code class="language-plaintext highlighter-rouge">frame</code>에 그 프로세스를 구성하는 유효한 내용이 있음을 뜻함(접근 허용)</li>
-      <li><code class="language-plaintext highlighter-rouge">invalid</code> : 해당 주소의 <code class="language-plaintext highlighter-rouge">frame</code>에 유효한 내용이 없음 (접근 불허)
-        <ul>
-          <li>프로세스가 그 주소 부분을 사용하지 않는 경우</li>
-          <li>해당 페이지가 메모리에 올라와 있지 않고 <code class="language-plaintext highlighter-rouge">swap area</code>에 있는 경우</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="inverted-page-table">Inverted Page Table</h2>
-<ul>
-  <li>페이지 갯수가 많아짐에 따라 페이지 테이블이 커지는 문제를 줄여보려고 사용하는 테이블</li>
-  <li>프로세스별로 페이지 테이블을 두는 것이 아닌 페이지 프레임 하나당 페이지 테이블에 하나의 <code class="language-plaintext highlighter-rouge">entry</code>를 둔 것</li>
-  <li>각 <code class="language-plaintext highlighter-rouge">page table entry</code>는 각각의 물리적 메모리의 <code class="language-plaintext highlighter-rouge">page frame</code>이 담고 있는 내용 표시</li>
-  <li>물리적 주소를 보고 논리적 주소를 알 수 있는 테이블이라 할 수 있다.</li>
-</ul>
-
-<h1 id="shared-page">Shared Page</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Shared code</code>
-    <ul>
-      <li>공유가 가능한 코드는 <code class="language-plaintext highlighter-rouge">read-only</code>로 한 <code class="language-plaintext highlighter-rouge">frame</code>에만 올리는 것</li>
-      <li>모든 프로세스의 <code class="language-plaintext highlighter-rouge">logical address space</code>에서 동일한 위치에 있어야 함</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Private code and data</code>
-    <ul>
-      <li>각 프로세스들은 독자적으로 메모리에 올림</li>
-      <li><code class="language-plaintext highlighter-rouge">private data</code>는 <code class="language-plaintext highlighter-rouge">logical address space</code> 아무 곳에 와도 무방함</li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="segmentation">Segmentation</h1>
-<ul>
-  <li>프로그램은 의미 단위인 여러 개의 <code class="language-plaintext highlighter-rouge">segment</code>로 구성</li>
-  <li>작게는 프로그램을 구성하는 함수 하나하나에서 크게는 프로그램 전체까지도 가능</li>
-  <li>일반적으로는 <code class="language-plaintext highlighter-rouge">code</code>, <code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">stack</code> 부분이 하나씩의 세그먼트로 정의됨
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">main()</code>, <code class="language-plaintext highlighter-rouge">function</code>, <code class="language-plaintext highlighter-rouge">global variables</code>, <code class="language-plaintext highlighter-rouge">stack</code>, <code class="language-plaintext highlighter-rouge">symbol table</code>, <code class="language-plaintext highlighter-rouge">arrays</code></li>
-    </ul>
-  </li>
-  <li>논리적 주소는 <code class="language-plaintext highlighter-rouge">segment-number, offest</code> 쌍으로 구성된다.</li>
-  <li>세그먼트별 주소 변환 정보를 담고 있는 <code class="language-plaintext highlighter-rouge">segment table</code>이 필요하다.</li>
-  <li><code class="language-plaintext highlighter-rouge">segment-number</code>로부터 <code class="language-plaintext highlighter-rouge">offest</code>만큼 떨어진 위치에 접근하는 방식</li>
-  <li>각 세그먼트별로 <code class="language-plaintext highlighter-rouge">protection bit</code> 설정하기가 용이하다.</li>
-  <li>의미 단위이기 때문에 공유와 보안에 있어 페이징 기법보다 훨씬 효과적이다.(페이징은 한 페이지 안에 한 종류만 들어있지 않을 수 있기 때문에 종류별로 보안 설정을 다르게 해 줘야 한다)</li>
-  <li>페이징 기법보다는 테이블 크기가 작다.</li>
-  <li>외부조각 발생</li>
-  <li>할당은 <code class="language-plaintext highlighter-rouge">first fit / best fit</code> 방식으로 이루어지며 세그먼트의 길이가 동일하지 않기 때문에 가변분할에서와 동일한 문제점이 발생한다.</li>
-</ul>
-
-<h1 id="segmentation-with-paging">Segmentation with Paging</h1>
-<ul>
-  <li>세그먼트 하나가 여러개의 페이지로 구성된다. 둘을 섞은 것</li>
-  <li>훨씬 효율적이라 많이 쓰는 방식이다.</li>
-  <li>메모리에 올라갈 땐 페이지 단위로 올라가고 공유는 세그먼트 단위에서 이루어진다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="출처">출처</h1>
-<ul>
-  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="Process" /><category term="MemoryManagement" /><summary type="html"><![CDATA[👀 논리적 주소와 물리적 주소 데이터가 메모리에 위치하고 있는 곳을 가리키는 주소는 논리적 주소와 물리적 주소로 나뉜다.]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><category term="Application" /><summary type="html"><![CDATA[👀 Transport Layer 응용 계층 바로 아래에 있는 계층 대표적인 서비스는 프로세스들 간의 논리적 연결 하나의 컴퓨터 안에서는 여러 프로세스가 동시에 기동되고 있다. 전송 계층 바로 아래에 있는 네트워크 계층에서는 IP를 이용해 상대 호스트를 찾아가는데 이것 만으로는 상대방의 어떤 프로세스에게 전달해야 하는지 알 수 없다. 그래서 전송 계층에서 여러 프로세스들 중에서 어떤 프로세스에게 전달해야 할 지 알려주는 정보를 제공하는 것이다. 전송 계층의 보내는 쪽에서는 보내고자 하는 메세지(파일 등)를 분할한 다음에 세그먼트에 담아서 전송한다. 그러면 받는 쪽에서 분할되어 온 세그먼트들을 합친 후에 응용 계층으로 전달한다. 이때 사용하는 프로토콜은 TCP와 UDP 두 가지가 대표적으로 사용된다.]]></summary></entry></feed>

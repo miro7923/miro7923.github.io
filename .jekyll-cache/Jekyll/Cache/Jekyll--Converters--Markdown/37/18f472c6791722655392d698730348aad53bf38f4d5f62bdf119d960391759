@@ -1,0 +1,150 @@
+I"D><h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+<ul>
+  <li>무슨 버그가 수정을 해도해도 계속 나오는지… 얼렁뚱땅 돌아가는 느낌이다 🥲</li>
+  <li>게시글을 수정할 때 첨부파일이 사라지는 버그를 해결했다고 생각했는데 완벽히 해결되지 않았다.</li>
+  <li>여전히 일부 케이스에서 제대로 처리가 되지 않아 <code class="language-plaintext highlighter-rouge">DB</code> 상에서의 파일명이 <code class="language-plaintext highlighter-rouge">null</code>로 바뀌는 문제가 존재했다.</li>
+  <li>그래서 좀 더 근본적인 원인을 떠올려 보았다… 게시글을 수정하며 파일 업로드 단계를 거치는 과정에서 <code class="language-plaintext highlighter-rouge">DTO</code> 생성 시 파일명이 지정되지 않아 <code class="language-plaintext highlighter-rouge">null</code>로 남아있는 것이 <code class="language-plaintext highlighter-rouge">DB</code> 수정 동작 때 넘어와서 문제라면 <code class="language-plaintext highlighter-rouge">DB</code>에 접근하는 메서드를 수정하는 것이 빠르지 않을까…</li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+<ul>
+  <li>기존에 작성했던 게시글 수정 메서드</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">modifyPost</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">dto</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="c1">// 번호로 해당 글 찾기</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="c1">// update 동작 수행</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set title=?, image=?, image_uid=?, file=?, file_uid=? content=? where num=?"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+				
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+				
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 수정 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>매개변수로 받은 <code class="language-plaintext highlighter-rouge">DTO</code>를 그대로 받아서 바로 업데이트 동작을 수행한다.</li>
+  <li>
+    <p>이러니 <code class="language-plaintext highlighter-rouge">DTO</code>의 파일명 필드가 <code class="language-plaintext highlighter-rouge">null</code>로 넘어와도 아무 필터링 없이 <code class="language-plaintext highlighter-rouge">DB</code>에 <code class="language-plaintext highlighter-rouge">null</code>이 저장되는 것이었다.
+<br /><br /></p>
+  </li>
+  <li>수정한 메서드</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">modifyPost</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">dto</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="c1">// 번호로 해당 글 찾기</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="c1">// update 동작 수행</span>
+            <span class="c1">// 새로 수정한 글에서 파일 정보가 있으면 그걸로 수정 / 없으면 그대로 놔둠</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set image=?, image_uid=? where num=?"</span><span class="o">;</span>
+                <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+            <span class="o">}</span>
+				
+            <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set file=?, file_uid=? where num=?"</span><span class="o">;</span>
+                <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+            <span class="o">}</span>
+				
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set title=?, content=? where num=?"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+				
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+				
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 수정 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>전달되어 온 <code class="language-plaintext highlighter-rouge">DTO</code>에 파일명 정보가 있을 때에만 업데이트가 되도록 수정했다.</li>
+  <li>이렇게 하니까 그동안 고민했던 문제들이 싹 해결되었다.</li>
+  <li>
+    <p>역시 근본적인 원인을 제거했어야…</p>
+  </li>
+  <li>이렇게 문제 해결~!! 👏</li>
+</ul>
+:ET
