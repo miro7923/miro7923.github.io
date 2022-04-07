@@ -1,4 +1,4 @@
-I"�W<p>👀 터미널에서 단어 하나만 입력하면 <code class="language-plaintext highlighter-rouge">OpenJDK 8</code> 버전과 <code class="language-plaintext highlighter-rouge">OpenJDK 11</code> 버전을 그 때 그 때 기본으로 세팅할 수 있다.</p>
+I"�s<p>👀 터미널에서 단어 하나만 입력하면 <code class="language-plaintext highlighter-rouge">OpenJDK 8</code> 버전과 <code class="language-plaintext highlighter-rouge">OpenJDK 11</code> 버전을 그 때 그 때 기본으로 세팅할 수 있다.</p>
 
 <h1 id="homebrew로-openjdk-설치">Homebrew로 OpenJDK 설치</h1>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span>
@@ -124,8 +124,78 @@
 <span class="n">alias</span> <span class="n">setJava11</span><span class="o">=</span><span class="err">'</span><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mi">11</span><span class="o">)</span><span class="err">'</span>
 </code></pre></div></div>
 <ul>
-  <li>위 명령어를 한 줄씩 복붙해서 실행하면 자바 버전별로 <code class="language-plaintext highlighter-rouge">앨리어스</code>를 지정해 사용할 수 있다.
+  <li><code class="language-plaintext highlighter-rouge">bash_profile</code>에 위 커맨드들을 추가하면 자바 버전별로 <code class="language-plaintext highlighter-rouge">앨리어스</code>를 지정해 사용할 수 있다.
 <br /><br /></li>
+</ul>
+
+<h2 id="bash_profile-수정하기">bash_profile 수정하기</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">유저명</span><span class="nd">@MacBook</span><span class="o">-</span><span class="nc">Air</span> <span class="o">~</span> <span class="o">%</span> <span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+</code></pre></div></div>
+
+<ul>
+  <li>터미널을 실행하면 아마 기본 경로가 홈 디렉토리일텐데 아니라면 홈 디렉토리로 이동해서 <code class="language-plaintext highlighter-rouge">ls -a</code>를 실행한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">.</span>				<span class="o">.</span><span class="na">plastic4</span>
+<span class="o">..</span>				<span class="o">.</span><span class="na">rbenv</span>
+<span class="o">.</span><span class="na">AnySign4PC</span>			<span class="o">.</span><span class="na">softforum</span>
+<span class="o">.</span><span class="na">CFUserTextEncoding</span>		<span class="o">.</span><span class="na">ssh</span>
+<span class="o">.</span><span class="na">DS_Store</span>			<span class="o">.</span><span class="na">swiftpm</span>
+<span class="o">.</span><span class="na">IdentityService</span>		<span class="o">.</span><span class="na">templateengine</span>
+<span class="o">.</span><span class="na">Trash</span>				<span class="o">.</span><span class="na">viminfo</span>
+<span class="o">.</span><span class="na">android</span>			<span class="o">.</span><span class="na">vscode</span>
+<span class="o">.</span><span class="na">bash_history</span>			<span class="o">.</span><span class="na">zprofile</span>
+<span class="o">.</span><span class="na">bash_profile</span>			<span class="o">.</span><span class="na">zsh_history</span>
+<span class="o">.</span><span class="na">bundle</span>				<span class="o">.</span><span class="na">zsh_sessions</span>
+<span class="o">.</span><span class="na">cache</span>				<span class="o">.</span><span class="na">zshrc</span>
+<span class="o">.</span><span class="na">config</span>				<span class="nc">AndroidStudioProjects</span>
+<span class="o">.</span><span class="na">delfino</span><span class="o">.</span><span class="na">conf</span>			<span class="nc">Applications</span>
+<span class="o">.</span><span class="na">dotnet</span>				<span class="nc">Desktop</span>
+<span class="o">.</span><span class="na">eclipse</span>			<span class="nc">Documents</span>
+<span class="o">.</span><span class="na">emulator_console_auth_token</span>	<span class="nc">Downloads</span>
+<span class="o">.</span><span class="na">gem</span>				<span class="nc">Library</span>
+<span class="o">.</span><span class="na">gitconfig</span>			<span class="nc">Movies</span>
+<span class="o">.</span><span class="na">gradle</span>				<span class="nc">Music</span>
+<span class="o">.</span><span class="na">lemminx</span>			<span class="nc">Pictures</span>
+<span class="o">.</span><span class="na">local</span>				<span class="nc">Public</span>
+<span class="o">.</span><span class="na">m2</span>				<span class="nc">PycharmProjects</span>
+<span class="o">.</span><span class="na">mono</span>				<span class="nc">Sites</span>
+<span class="o">.</span><span class="na">ms_openjdk_config</span>		<span class="n">eclipse</span><span class="o">-</span><span class="n">workspace</span>
+<span class="o">.</span><span class="na">mysql_history</span>			<span class="n">makefile</span>
+<span class="o">.</span><span class="na">npki_pkcs11</span><span class="o">.</span><span class="na">cnf</span>		<span class="n">spring</span><span class="o">-</span><span class="n">workspace</span>
+<span class="o">.</span><span class="na">p2</span>
+</code></pre></div></div>
+
+<ul>
+  <li>그러면 이런 목록을 쭉 볼 수 있다.</li>
+  <li>중간쯤에서 <code class="language-plaintext highlighter-rouge">.bash_profile</code>을 볼 수 있다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@MacBook</span><span class="o">-</span><span class="nc">Air</span> <span class="o">~</span> <span class="o">%</span> <span class="n">vi</span> <span class="o">.</span><span class="na">bash_profile</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위 명령어를 입력하면 수정 모드로 이동한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mf">1.8</span><span class="o">)</span>
+<span class="n">export</span> <span class="no">PATH</span><span class="o">=</span><span class="s">"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$JAVA_HOME"</span>
+<span class="n">alias</span> <span class="n">setJava8</span><span class="o">=</span><span class="err">'</span><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mf">1.8</span><span class="o">)</span><span class="err">'</span>
+<span class="n">alias</span> <span class="n">setJava11</span><span class="o">=</span><span class="err">'</span><span class="n">export</span> <span class="no">JAVA_HOME</span><span class="o">=</span><span class="err">$</span><span class="o">(/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mi">11</span><span class="o">)</span><span class="err">'</span>
+</code></pre></div></div>
+
+<ul>
+  <li>키보드의 <code class="language-plaintext highlighter-rouge">I</code> 버튼을 누르면 <code class="language-plaintext highlighter-rouge">insert</code> 모드에 진입한다.</li>
+  <li>위 커맨드들을 복붙해서 붙여넣고 <code class="language-plaintext highlighter-rouge">esc</code>를 누르면 <code class="language-plaintext highlighter-rouge">insert</code> 모드에서 빠져나온다.</li>
+  <li><code class="language-plaintext highlighter-rouge">:wq</code>를 입력 후 엔터를 눌러서 수정 모드를 빠져나오자.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@MacBook</span><span class="o">-</span><span class="nc">Air</span> <span class="o">~</span> <span class="o">%</span> <span class="n">source</span> <span class="o">~/.</span><span class="na">bash_profile</span>
+</code></pre></div></div>
+
+<ul>
+  <li>나와 보면 별 변화가 없어서 이대로 적용이 된 건가 싶지만 위 명령어를 입력해서 최종 적용시켜 주어야 한다.</li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">setJava11</span>
@@ -140,6 +210,7 @@
 <span class="nc">OpenJDK</span> <span class="nc">Runtime</span> <span class="nf">Environment</span> <span class="o">(</span><span class="nc">Zulu</span> <span class="mf">8.58</span><span class="o">.</span><span class="mf">0.13</span><span class="o">-</span><span class="no">CA</span><span class="o">-</span><span class="n">macos</span><span class="o">-</span><span class="n">aarch64</span><span class="o">)</span> <span class="o">(</span><span class="n">build</span> <span class="mf">1.8</span><span class="o">.</span><span class="mi">0_312</span><span class="o">-</span><span class="n">b07</span><span class="o">)</span>
 <span class="nc">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="nf">VM</span> <span class="o">(</span><span class="nc">Zulu</span> <span class="mf">8.58</span><span class="o">.</span><span class="mf">0.13</span><span class="o">-</span><span class="no">CA</span><span class="o">-</span><span class="n">macos</span><span class="o">-</span><span class="n">aarch64</span><span class="o">)</span> <span class="o">(</span><span class="n">build</span> <span class="mf">25.312</span><span class="o">-</span><span class="n">b07</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
 </code></pre></div></div>
+
 <ul>
   <li>이제 터미널에서 <code class="language-plaintext highlighter-rouge">setJava11</code>만 입력하면 11버전으로 바꿀 수 있다! 8로 돌아가는 것도 마찬가지
 <br /><br /></li>
