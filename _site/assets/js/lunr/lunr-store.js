@@ -1066,10 +1066,4 @@ var store = [{
         "tags": ["Project","Cafe","Log"],
         "url": "/project%20log/make-portfolio-01/",
         "teaser": null
-      },{
-        "title": "깃허브 블로그(Github Blog) minimal-mistakes 테마 게시글 날짜 출력하기",
-        "excerpt":"🎬 시작     네이버 블로그를 오래 했었는데 네이버 블로그는 게시글 제목 옆에 작성한 날짜를 보여준다. 그런데 GitHub으로 이사오고 minimal-mistakes 테마를 쓰다 보니… 왜 작성한 날짜 보기가 이렇게 어렵지? 외국인들은 날짜에 연연하지 않나…   기본 설정은 게시글 제목 근처에 표시되지 않고 게시글 본문의 맨 아래로 내려야 작성 날짜를 볼 수 있다.   그래서 이걸 바꿀 것이다.   GitHub Pages 기타 설정   [jekyll] jekyll 블로그 포스팅 시간 출력하기   두 블로그 글들을 참고했는데 난 설정 페이지의 코드가 약간 달라서 아주 조금 수정이 필요했다. 같은 테마 파일을 다운 받았을텐데 난 왜 남들 다 있는 코드가 없었을까…     _includes/archive-single.html      파일을 열고 하단에 보면         이런 부분을 볼 수 있다.   다른 분들은 if post.read_time ~으로 시작하는 코드가 있던데 난 없었다. 왜지?         include page__meta.html ~로 시작하는 코드와 if post.excerpt ~ 로 시작하는 코드 사이에 게시글의 작성 날짜를 표시할 코드를 넣어주었다.              여기까지는 잘 되었다.            이제 각 포스트 페이지의 제목 아래에 날짜가 표시되게 수정해줘야 하는데 여기서 좀 달라서 헤멨었다. 우리 다 같은 파일 받아서 쓰는거 아닌가용 🥲       _layouts/single.html   ","categories": ["Story"],
-        "tags": ["story"],
-        "url": "/story/making-github-blog-02/",
-        "teaser": null
       }]
