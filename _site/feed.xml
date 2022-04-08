@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-08T18:40:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">개발자 GitHub 포트폴리오 사이트 만들기 01 - 내가 코딩한 일수 자동 계산하기</title><link href="http://localhost:4000/project%20log/make-portfolio-01/" rel="alternate" type="text/html" title="개발자 GitHub 포트폴리오 사이트 만들기 01 - 내가 코딩한 일수 자동 계산하기" /><published>2022-04-07T00:00:00+09:00</published><updated>2022-04-07T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/make-portfolio-01</id><content type="html" xml:base="http://localhost:4000/project%20log/make-portfolio-01/"><![CDATA[<h1 id="제작목적">제작목적</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-08T18:56:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">깃허브 블로그(Github Blog) minimal-mistakes 테마 게시글 날짜 출력하기</title><link href="http://localhost:4000/story/making-github-blog-02/" rel="alternate" type="text/html" title="깃허브 블로그(Github Blog) minimal-mistakes 테마 게시글 날짜 출력하기" /><published>2022-04-08T00:00:00+09:00</published><updated>2022-04-08T00:00:00+09:00</updated><id>http://localhost:4000/story/making-github-blog-02</id><content type="html" xml:base="http://localhost:4000/story/making-github-blog-02/"><![CDATA[<h1 id="-시작">🎬 시작</h1>
+<ul>
+  <li>네이버 블로그를 오래 했었는데 네이버 블로그는 게시글 제목 옆에 작성한 날짜를 보여준다. 그런데 <code class="language-plaintext highlighter-rouge">GitHub</code>으로 이사오고 <code class="language-plaintext highlighter-rouge">minimal-mistakes</code> 테마를 쓰다 보니… 왜 작성한 날짜 보기가 이렇게 어렵지? 외국인들은 날짜에 연연하지 않나…</li>
+  <li>기본 설정은 게시글 제목 근처에 표시되지 않고 게시글 본문의 맨 아래로 내려야 작성 날짜를 볼 수 있다.</li>
+  <li>그래서 이걸 바꿀 것이다.</li>
+  <li><a href="https://devinlife.com/howto%20github%20pages/github-pages-settings/">GitHub Pages 기타 설정</a></li>
+  <li><a href="https://jhlov.github.io/jekyll-%EB%B8%94%EB%A1%9C%EA%B7%B8-%ED%8F%AC%EC%8A%A4%ED%8C%85-%EC%8B%9C%EA%B0%84-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">[jekyll] jekyll 블로그 포스팅 시간 출력하기</a></li>
+  <li>
+    <p>두 블로그 글들을 참고했는데 난 설정 페이지의 코드가 약간 달라서 같은 방법을 적용할 수 없었다. 같은 테마 파일을 다운 받았을텐데 난 왜 남들 다 있는 코드가 없었을까…</p>
+  </li>
+  <li>그래서 결정적으로는 <a href="https://github.com/devinlife/devinlife.github.io/commit/c6a8fe5a2f2a6f208b4ad90528074842e5c3ee66">https://github.com/devinlife/devinlife.github.io/commit/c6a8fe5a2f2a6f208b4ad90528074842e5c3ee66</a> 이 커밋에 달린 댓글에 있는 방법으로 해결할 수 있었다.<br /><br /></li>
+</ul>
+
+<h1 id="수정-시도">수정 시도</h1>
+<ul>
+  <li>위의 두 블로그처럼 <code class="language-plaintext highlighter-rouge">_inclues/archive-single.html</code>이랑 <code class="language-plaintext highlighter-rouge">_layouts/single.html</code>을 수정해 봤는데 적용이 되지 않았다. 아마 남들은 다 있는 코드가 나에겐 없었던 이유가 저 분들처럼 만들어 줄 파일이 존재하지 않아서였던 것이 아닐까… 로컬 서버를 실행시켜서 미리보기로 봤을 때엔 잘 되고 <code class="language-plaintext highlighter-rouge">commit</code>까지도 잘 됐는데 <code class="language-plaintext highlighter-rouge">push</code>를 시도하니까 참고를 찾을 수 없다는 내용의 에러가 뜨면서 적용이 되지 않았다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/solveComment.png" width="700" /></p>
+
+<ul>
+  <li>그러다 이 댓글을 보고 <code class="language-plaintext highlighter-rouge">_config.yml</code>을 수정해 봤는데 미리보기 상에서는 적용이 되지 않았다.</li>
+  <li>그래서 처음엔 난 안 되는 줄 알고 계속 <code class="language-plaintext highlighter-rouge">_inclues/archive-single.html</code>과 <code class="language-plaintext highlighter-rouge">_layouts/single.html</code> 파일을 수정해보다가 마지막에 밑지는 느낌으로 해 봤는데 <code class="language-plaintext highlighter-rouge">push</code>도 잘 되고 조금 기다리니까 블로그에 적용도 잘 되었다.</li>
+</ul>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Defaults</span>
+<span class="na">defaults</span><span class="pi">:</span>
+  <span class="c1"># _posts</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">read_time</span><span class="pi">:</span> <span class="no">false</span> <span class="c1"># false로 변경</span>
+      <span class="na">show_date</span><span class="pi">:</span> <span class="no">true</span> <span class="c1"># 원래 없어서 생성 후 true로 설정</span>
+      <span class="na">comments</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p align="center"><img src="../../assets/images/archiveDate.png" width="700" /></p>
+
+<ul>
+  <li>잘 나오네!</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Story" /><category term="story" /><summary type="html"><![CDATA[🎬 시작 네이버 블로그를 오래 했었는데 네이버 블로그는 게시글 제목 옆에 작성한 날짜를 보여준다. 그런데 GitHub으로 이사오고 minimal-mistakes 테마를 쓰다 보니… 왜 작성한 날짜 보기가 이렇게 어렵지? 외국인들은 날짜에 연연하지 않나… 기본 설정은 게시글 제목 근처에 표시되지 않고 게시글 본문의 맨 아래로 내려야 작성 날짜를 볼 수 있다. 그래서 이걸 바꿀 것이다. GitHub Pages 기타 설정 [jekyll] jekyll 블로그 포스팅 시간 출력하기 두 블로그 글들을 참고했는데 난 설정 페이지의 코드가 약간 달라서 같은 방법을 적용할 수 없었다. 같은 테마 파일을 다운 받았을텐데 난 왜 남들 다 있는 코드가 없었을까…]]></summary></entry><entry><title type="html">개발자 GitHub 포트폴리오 사이트 만들기 01 - 내가 코딩한 일수 자동 계산하기</title><link href="http://localhost:4000/project%20log/make-portfolio-01/" rel="alternate" type="text/html" title="개발자 GitHub 포트폴리오 사이트 만들기 01 - 내가 코딩한 일수 자동 계산하기" /><published>2022-04-07T00:00:00+09:00</published><updated>2022-04-07T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/make-portfolio-01</id><content type="html" xml:base="http://localhost:4000/project%20log/make-portfolio-01/"><![CDATA[<h1 id="제작목적">제작목적</h1>
 <ul>
   <li>웹 개발을 공부하며 첫 번째 프로젝트를 끝내고 나니까 이걸 잘 포장해서 보여줘야 할 필요가 생겼다. 즉 포트폴리오 문서가 필요해진 것!</li>
   <li>포트폴리오 문서는 서류 형식으로도 만들 것이지만 나는 웹 개발을 공부하고 있으니까 나의 포트폴리오를 보여줄 웹 사이트도 만들기로 결정했다. 기본적인 기능이 다 구현되어 있는 무료 템플릿을 쓰겠지만 그걸 나에게 맞게 수정하는 과정에서도 배울 점이 많을 것이다.</li>
@@ -81,419 +126,7 @@
 </ul>
 
 <!--# 포트폴리오 페이지-->
-<!--* 아직 수정 중... [백엔드 개발자 황유진](https://miro7923.github.io/web-porfolio/)-->]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[제작목적 웹 개발을 공부하며 첫 번째 프로젝트를 끝내고 나니까 이걸 잘 포장해서 보여줘야 할 필요가 생겼다. 즉 포트폴리오 문서가 필요해진 것! 포트폴리오 문서는 서류 형식으로도 만들 것이지만 나는 웹 개발을 공부하고 있으니까 나의 포트폴리오를 보여줄 웹 사이트도 만들기로 결정했다. 기본적인 기능이 다 구현되어 있는 무료 템플릿을 쓰겠지만 그걸 나에게 맞게 수정하는 과정에서도 배울 점이 많을 것이다.]]></summary></entry><entry><title type="html">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제2</title><link href="http://localhost:4000/errorlog/warning-log-05/" rel="alternate" type="text/html" title="에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제2" /><published>2022-04-06T00:00:00+09:00</published><updated>2022-04-06T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-05</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-05/"><![CDATA[<h1 id="사용환경">사용환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020) 16GB</li>
-  <li>JDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="에러의-발생">에러의 발생</h1>
-<ul>
-  <li>무슨 버그가 수정을 해도해도 계속 나오는지… 얼렁뚱땅 돌아가는 느낌이다 🥲</li>
-  <li>게시글을 수정할 때 첨부파일이 사라지는 버그를 해결했다고 생각했는데 완벽히 해결되지 않았다.</li>
-  <li>여전히 일부 케이스에서 제대로 처리가 되지 않아 <code class="language-plaintext highlighter-rouge">DB</code> 상에서의 파일명이 <code class="language-plaintext highlighter-rouge">null</code>로 바뀌는 문제가 존재했다.</li>
-  <li>그래서 좀 더 근본적인 원인을 떠올려 보았다… 게시글을 수정하며 파일 업로드 단계를 거치는 과정에서 <code class="language-plaintext highlighter-rouge">DTO</code> 생성 시 파일명이 지정되지 않아 <code class="language-plaintext highlighter-rouge">null</code>로 남아있는 것이 <code class="language-plaintext highlighter-rouge">DB</code> 수정 동작 때 넘어와서 문제라면 <code class="language-plaintext highlighter-rouge">DB</code>에 접근하는 메서드를 수정하는 것이 빠르지 않을까…</li>
-</ul>
-
-<h1 id="문제-해결">문제 해결</h1>
-<ul>
-  <li>기존에 작성했던 게시글 수정 메서드</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">modifyPost</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">dto</span><span class="o">)</span>
-<span class="o">{</span>
-    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
-		
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
-			
-        <span class="c1">// 번호로 해당 글 찾기</span>
-        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
-        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-			
-        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
-			
-        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
-			
-        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
-        <span class="o">{</span>
-            <span class="c1">// update 동작 수행</span>
-            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set title=?, image=?, image_uid=?, file=?, file_uid=? content=? where num=?"</span><span class="o">;</span>
-            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-				
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">());</span>
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">());</span>
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">());</span>
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
-				
-            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
-				
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 수정 완료"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-    <span class="o">}</span>
-    <span class="k">finally</span> <span class="o">{</span>
-        <span class="n">closeDB</span><span class="o">();</span>
-    <span class="o">}</span>
-		
-    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>매개변수로 받은 <code class="language-plaintext highlighter-rouge">DTO</code>를 그대로 받아서 바로 업데이트 동작을 수행한다.</li>
-  <li>
-    <p>이러니 <code class="language-plaintext highlighter-rouge">DTO</code>의 파일명 필드가 <code class="language-plaintext highlighter-rouge">null</code>로 넘어와도 아무 필터링 없이 <code class="language-plaintext highlighter-rouge">DB</code>에 <code class="language-plaintext highlighter-rouge">null</code>이 저장되는 것이었다.
-<br /><br /></p>
-  </li>
-  <li>수정한 메서드</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">modifyPost</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">dto</span><span class="o">)</span>
-<span class="o">{</span>
-    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
-		
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
-			
-        <span class="c1">// 번호로 해당 글 찾기</span>
-        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
-        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-			
-        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
-			
-        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
-			
-        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
-        <span class="o">{</span>
-            <span class="c1">// update 동작 수행</span>
-            <span class="c1">// 새로 수정한 글에서 파일 정보가 있으면 그걸로 수정 / 없으면 그대로 놔둠</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-            <span class="o">{</span>
-                <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set image=?, image_uid=? where num=?"</span><span class="o">;</span>
-                <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-					
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
-					
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
-            <span class="o">}</span>
-				
-            <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-            <span class="o">{</span>
-                <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set file=?, file_uid=? where num=?"</span><span class="o">;</span>
-                <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-					
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">());</span>
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
-					
-                <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
-            <span class="o">}</span>
-				
-            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set title=?, content=? where num=?"</span><span class="o">;</span>
-            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-				
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
-				
-            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
-				
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 수정 완료"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-    <span class="o">}</span>
-    <span class="k">finally</span> <span class="o">{</span>
-        <span class="n">closeDB</span><span class="o">();</span>
-    <span class="o">}</span>
-		
-    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>전달되어 온 <code class="language-plaintext highlighter-rouge">DTO</code>에 파일명 정보가 있을 때에만 업데이트가 되도록 수정했다.</li>
-  <li>이렇게 하니까 그동안 고민했던 문제들이 싹 해결되었다.</li>
-  <li>
-    <p>역시 근본적인 원인을 제거했어야…</p>
-  </li>
-  <li>이렇게 문제 해결~!! 👏</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 29 - 파일업로드 기능 수정(중복파일명 처리)</title><link href="http://localhost:4000/project%20log/cafe-project-29/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 29 - 파일업로드 기능 수정(중복파일명 처리)" /><published>2022-04-06T00:00:00+09:00</published><updated>2022-04-06T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-29</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-29/"><![CDATA[<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
-
-<h1 id="시작">시작</h1>
-<ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황">진행상황</h1>
-<ul>
-  <li>기존에 만들었던 파일업로드 기능에 수정이 필요했다.</li>
-  <li>처음에 만들었던 형태는 단순한 업로드와 다운로드 기능만 있었기 때문에 첨부파일을 수정하거나 삭제했을 때 해당 부분을 반영하는 로직이 없었고 중복 파일명을 처리하는 부분도 없었다. 그래서 중복파일명 처리와 수정/삭제 처리를 추가했다.</li>
-  <li>관련 내용은 <a href="https://miro7923.github.io/errorlog/warning-log-04/">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제</a> 에서도 확인할 수 있다.</li>
-</ul>
-
-<h2 id="fileuploadjava">FileUpload.java</h2>
-<ul>
-  <li>먼저 <code class="language-plaintext highlighter-rouge">DB</code> 테이블에서 실제 파일명을 저장할 필드도 만들었다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.servlet.ServletContext</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.DefaultFileRenamePolicy</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.FilePart</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.MultipartParser</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.ParamPart</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.Part</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDTO</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">net.coobird.thumbnailator.Thumbnails</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">net.coobird.thumbnailator.name.Rename</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileUpload</span> 
-<span class="o">{</span>
-    <span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">upload</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span>
-    <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"upload() 호출 "</span><span class="o">);</span>
-		
-        <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDTO</span><span class="o">();</span>
-		
-        <span class="nc">ServletContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getServletContext</span><span class="o">();</span>
-		
-        <span class="c1">// 파일의 저장크기</span>
-        <span class="kt">int</span> <span class="n">maxSize</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">;</span> <span class="c1">// 10MB</span>
-		
-        <span class="nc">MultipartParser</span> <span class="n">mp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MultipartParser</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">maxSize</span><span class="o">);</span>
-        <span class="n">mp</span><span class="o">.</span><span class="na">setEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
-        <span class="nc">Part</span> <span class="n">part</span><span class="o">;</span>
-
-        <span class="c1">// 기존에 저장되 있던 파일 정보를 저장할 변수</span>
-        <span class="nc">String</span> <span class="n">imgUploadStatus</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="nc">String</span> <span class="n">oldImgPath</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="nc">String</span> <span class="n">oldImgName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-		
-        <span class="nc">String</span> <span class="n">fileUploadStatus</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="nc">String</span> <span class="n">oldFilePath</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="nc">String</span> <span class="n">oldFileName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-		
-        <span class="k">while</span> <span class="o">((</span><span class="n">part</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="na">readNextPart</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-        <span class="o">{</span>
-            <span class="c1">// form 태그로 저장된 파라미터를 읽어옴</span>
-            <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">part</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
-			
-            <span class="k">if</span> <span class="o">(</span><span class="n">part</span><span class="o">.</span><span class="na">isParam</span><span class="o">())</span>
-            <span class="o">{</span>
-                <span class="c1">// 파일이 아닐 때</span>
-                <span class="nc">ParamPart</span> <span class="n">param</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ParamPart</span><span class="o">)</span><span class="n">part</span><span class="o">;</span>
-                <span class="nc">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="na">getStringValue</span><span class="o">();</span>
-				
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"param name :"</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">" value : "</span> <span class="o">+</span> <span class="n">value</span><span class="o">);</span>
-				
-                <span class="c1">// 각 파라미터에 맞춰 dto에 저장</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"id"</span><span class="o">))</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"title"</span><span class="o">))</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"content"</span><span class="o">))</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"num"</span><span class="o">))</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"re_lev"</span><span class="o">))</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setRe_lev</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"re_ref"</span><span class="o">))</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setRe_ref</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"re_seq"</span><span class="o">))</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setRe_seq</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldImgName"</span><span class="o">))</span>
-                    <span class="n">oldImgName</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldFileName"</span><span class="o">))</span>
-                    <span class="n">oldFileName</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"fileUploadStatus"</span><span class="o">))</span>
-                    <span class="n">fileUploadStatus</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"imgUploadStatus"</span><span class="o">))</span>
-                    <span class="n">imgUploadStatus</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldImgPath"</span><span class="o">))</span>
-                    <span class="n">oldImgPath</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldFilePath"</span><span class="o">))</span>
-                    <span class="n">oldFilePath</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">part</span><span class="o">.</span><span class="na">isFile</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"image"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="c1">// 이미지 파일일 때</span>
-                <span class="c1">// 이미지 저장 경로 지정</span>
-                <span class="nc">File</span> <span class="n">dir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/images"</span><span class="o">));</span>
-                <span class="nc">File</span> <span class="n">originDir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">dir</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"origins"</span><span class="o">);</span> <span class="c1">// 원본 이미지 저장 경로</span>
-                <span class="nc">File</span> <span class="n">thumbnailDir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">dir</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"thumbnails"</span><span class="o">);</span> <span class="c1">// 썸네일 저장 경로</span>
-				
-                <span class="c1">// 경로가 없으면 생성</span>
-                <span class="k">if</span> <span class="o">(!</span><span class="n">dir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">dir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
-                <span class="k">if</span> <span class="o">(!</span><span class="n">originDir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">originDir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
-                <span class="k">if</span> <span class="o">(!</span><span class="n">thumbnailDir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">thumbnailDir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
-				
-                <span class="nc">FilePart</span> <span class="n">filePart</span> <span class="o">=</span> <span class="o">(</span><span class="nc">FilePart</span><span class="o">)</span> <span class="n">part</span><span class="o">;</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-                <span class="o">{</span>
-                    <span class="c1">// 중복 파일명 처리 - 실제 참고할 파일은 rename된 파일이름 쓰기</span>
-                    <span class="n">filePart</span><span class="o">.</span><span class="na">setRenamePolicy</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultFileRenamePolicy</span><span class="o">());</span>
-
-                    <span class="c1">// 지정한 경로에 파일 쓰기</span>
-                    <span class="nc">String</span> <span class="n">file</span> <span class="o">=</span> <span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">();</span>
-                    <span class="n">filePart</span><span class="o">.</span><span class="na">writeTo</span><span class="o">(</span><span class="n">originDir</span><span class="o">);</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setImage_uid</span><span class="o">(</span><span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
-					
-                    <span class="c1">// 원본 이미지 파일을 이용해서 썸네일을 만들어 저장</span>
-                    <span class="c1">// 크기 지정 후 지정 경로에 저장</span>
-                    <span class="c1">// 썸네일 파일명은 중복처리된 파일명과 같게 만든다.</span>
-                    <span class="nc">Thumbnails</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">originDir</span><span class="o">.</span><span class="na">getPath</span><span class="o">()</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">()))</span>
-                        <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">400</span><span class="o">)</span>
-                        <span class="o">.</span><span class="na">toFiles</span><span class="o">(</span><span class="n">thumbnailDir</span><span class="o">,</span> <span class="nc">Rename</span><span class="o">.</span><span class="na">NO_CHANGE</span><span class="o">);</span>
-                <span class="o">}</span>
-                <span class="k">else</span>
-                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"img empty!"</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">part</span><span class="o">.</span><span class="na">isFile</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"file"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="c1">// 일반 파일일 때</span>
-                <span class="nc">File</span> <span class="n">dir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/upload"</span><span class="o">));</span>
-				
-                <span class="c1">// 경로 없으면 생성</span>
-                <span class="k">if</span> <span class="o">(!</span><span class="n">dir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">dir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
-				
-                <span class="nc">FilePart</span> <span class="n">filePart</span> <span class="o">=</span> <span class="o">(</span><span class="nc">FilePart</span><span class="o">)</span> <span class="n">part</span><span class="o">;</span>
-                <span class="nc">String</span> <span class="n">file</span> <span class="o">=</span> <span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">();</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">file</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-                <span class="o">{</span>
-                    <span class="n">filePart</span><span class="o">.</span><span class="na">setRenamePolicy</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultFileRenamePolicy</span><span class="o">());</span>
-                    <span class="n">filePart</span><span class="o">.</span><span class="na">writeTo</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span> <span class="c1">// 지정한 경로에 파일 쓰기</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setFile_uid</span><span class="o">(</span><span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
-                <span class="o">}</span>
-                <span class="k">else</span>
-                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"file empty!"</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-		
-        <span class="c1">// 사용자 ip주소 저장</span>
-        <span class="n">dto</span><span class="o">.</span><span class="na">setIp</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getRemoteAddr</span><span class="o">());</span>
-        
-        <span class="k">if</span> <span class="o">(</span><span class="n">imgUploadStatus</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-        <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">imgUploadStatus</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"false"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="c1">// 등록된 이미지를 삭제하는 경우</span>
-                <span class="n">dto</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="s">"없음"</span><span class="o">);</span>
-                <span class="nc">File</span> <span class="n">oldImg</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">oldImgPath</span><span class="o">);</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">oldImg</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="n">oldImg</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
-				
-                <span class="c1">// 썸네일도 삭제한다.</span>
-                <span class="nc">File</span> <span class="n">oldThumbnail</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/thumbnail"</span><span class="o">)</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="n">oldImgName</span><span class="o">);</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">oldThumbnail</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="n">oldThumbnail</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
-            <span class="o">}</span>
-            <span class="k">else</span> 
-            <span class="o">{</span>
-                <span class="c1">// 삭제하지 않는 경우</span>
-                <span class="c1">// 만약 dto의 파일명 필드가 비어 있으면 기존 파일명을 저장한다.</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">oldImgName</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-		
-        <span class="k">if</span> <span class="o">(</span><span class="n">fileUploadStatus</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-        <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">fileUploadStatus</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"false"</span><span class="o">))</span>
-            <span class="o">{</span>
-                <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="s">"없음"</span><span class="o">);</span>
-                <span class="nc">File</span> <span class="n">oldFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">oldFilePath</span><span class="o">);</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">oldFile</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="n">oldFile</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
-            <span class="o">}</span>
-            <span class="k">else</span> 
-            <span class="o">{</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
-                    <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="n">oldFileName</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-		
-        <span class="k">return</span> <span class="n">dto</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>파일명의 중복처리를 지정해 준 다음 업로드되면 중복처리된 파일명을 받아온다.</li>
-  <li>게시글에서 사용자에게 보여줄 파일명과 서버에서 다운로드 할 때 참고할 파일명을 따로 저장한다.</li>
-  <li>실제 다운로드가 이루어질 땐 서버에 업로드 된 파일명인 <code class="language-plaintext highlighter-rouge">image_uid</code>, <code class="language-plaintext highlighter-rouge">file_uid</code>를 참고할 것이다.</li>
-</ul>
-
-<h2 id="boardcontentjsp">boardContent.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;tr&gt;</span>
-  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"5"</span> <span class="na">style=</span><span class="s">"white-space:pre-wrap; word-wrap:break-word; word-break: break-all;"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;&lt;br&gt;&lt;br&gt;</span>
-  <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"없음"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
-    <span class="c">&lt;!-- 실제 서버에 업로드 된 파일명이 중복되면 이름이 바뀌기 때문에 바뀐 파일명을 참조해야 한다. --&gt;</span>
-    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"./BoardImgAction.bo?img_name=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">().</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;</span>
-  <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
-<span class="nt">&lt;/tr&gt;</span>
-<span class="nt">&lt;tr&gt;</span>
-  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>첨부파일<span class="nt">&lt;/td&gt;</span>
-  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"3"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- 첨부파일이 있을 때에만 하이퍼링크 연결 --&gt;</span>
-  <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"없음"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
-      없음
-  <span class="nt">&lt;%</span> <span class="o">}</span>
-    <span class="k">else</span> <span class="o">{</span> <span class="nt">%&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./BoardFileDownloadAction.bo?file_name=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;</span>
-  <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
-  <span class="nt">&lt;/td&gt;</span>
-<span class="nt">&lt;/tr&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>사용자에게 보여주는 파일명은 사용자가 업로드했던 파일명 그대로 쓰지만 실제 참조할 파일명은 중복처리된 파일명을 사용한다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/uploadedImg.png" width="300" /></p>
-
-<ul>
-  <li>업로드 되는 폴더에 중복처리되어 들어가는 것을 확인할 수 있다.</li>
-  <li>이제 내일이 발표니까 발표자료 만들어야겠다…<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li>내일이 발표네…</li>
-  <li><code class="language-plaintext highlighter-rouge">D-1</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제</title><link href="http://localhost:4000/errorlog/warning-log-04/" rel="alternate" type="text/html" title="에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제" /><published>2022-04-06T00:00:00+09:00</published><updated>2022-04-06T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-04</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-04/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<!--* 아직 수정 중... [백엔드 개발자 황유진](https://miro7923.github.io/web-porfolio/)-->]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[제작목적 웹 개발을 공부하며 첫 번째 프로젝트를 끝내고 나니까 이걸 잘 포장해서 보여줘야 할 필요가 생겼다. 즉 포트폴리오 문서가 필요해진 것! 포트폴리오 문서는 서류 형식으로도 만들 것이지만 나는 웹 개발을 공부하고 있으니까 나의 포트폴리오를 보여줄 웹 사이트도 만들기로 결정했다. 기본적인 기능이 다 구현되어 있는 무료 템플릿을 쓰겠지만 그걸 나에게 맞게 수정하는 과정에서도 배울 점이 많을 것이다.]]></summary></entry><entry><title type="html">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제</title><link href="http://localhost:4000/errorlog/warning-log-04/" rel="alternate" type="text/html" title="에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제" /><published>2022-04-06T00:00:00+09:00</published><updated>2022-04-06T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-04</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-04/"><![CDATA[<h1 id="사용환경">사용환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020) 16GB</li>
   <li>JDK 8</li>
@@ -795,6 +428,418 @@
 
 <ul>
   <li>해결~!!</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 29 - 파일업로드 기능 수정(중복파일명 처리)</title><link href="http://localhost:4000/project%20log/cafe-project-29/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 29 - 파일업로드 기능 수정(중복파일명 처리)" /><published>2022-04-06T00:00:00+09:00</published><updated>2022-04-06T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-29</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-29/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>기존에 만들었던 파일업로드 기능에 수정이 필요했다.</li>
+  <li>처음에 만들었던 형태는 단순한 업로드와 다운로드 기능만 있었기 때문에 첨부파일을 수정하거나 삭제했을 때 해당 부분을 반영하는 로직이 없었고 중복 파일명을 처리하는 부분도 없었다. 그래서 중복파일명 처리와 수정/삭제 처리를 추가했다.</li>
+  <li>관련 내용은 <a href="https://miro7923.github.io/errorlog/warning-log-04/">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제</a> 에서도 확인할 수 있다.</li>
+</ul>
+
+<h2 id="fileuploadjava">FileUpload.java</h2>
+<ul>
+  <li>먼저 <code class="language-plaintext highlighter-rouge">DB</code> 테이블에서 실제 파일명을 저장할 필드도 만들었다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.DefaultFileRenamePolicy</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.FilePart</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.MultipartParser</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.ParamPart</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.oreilly.servlet.multipart.Part</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDTO</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">net.coobird.thumbnailator.Thumbnails</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">net.coobird.thumbnailator.name.Rename</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileUpload</span> 
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">upload</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span>
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"upload() 호출 "</span><span class="o">);</span>
+		
+        <span class="nc">BoardDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDTO</span><span class="o">();</span>
+		
+        <span class="nc">ServletContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getServletContext</span><span class="o">();</span>
+		
+        <span class="c1">// 파일의 저장크기</span>
+        <span class="kt">int</span> <span class="n">maxSize</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">;</span> <span class="c1">// 10MB</span>
+		
+        <span class="nc">MultipartParser</span> <span class="n">mp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MultipartParser</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">maxSize</span><span class="o">);</span>
+        <span class="n">mp</span><span class="o">.</span><span class="na">setEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+        <span class="nc">Part</span> <span class="n">part</span><span class="o">;</span>
+
+        <span class="c1">// 기존에 저장되 있던 파일 정보를 저장할 변수</span>
+        <span class="nc">String</span> <span class="n">imgUploadStatus</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">oldImgPath</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">oldImgName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+        <span class="nc">String</span> <span class="n">fileUploadStatus</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">oldFilePath</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">oldFileName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+        <span class="k">while</span> <span class="o">((</span><span class="n">part</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="na">readNextPart</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="c1">// form 태그로 저장된 파라미터를 읽어옴</span>
+            <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">part</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+			
+            <span class="k">if</span> <span class="o">(</span><span class="n">part</span><span class="o">.</span><span class="na">isParam</span><span class="o">())</span>
+            <span class="o">{</span>
+                <span class="c1">// 파일이 아닐 때</span>
+                <span class="nc">ParamPart</span> <span class="n">param</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ParamPart</span><span class="o">)</span><span class="n">part</span><span class="o">;</span>
+                <span class="nc">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="na">getStringValue</span><span class="o">();</span>
+				
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"param name :"</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">" value : "</span> <span class="o">+</span> <span class="n">value</span><span class="o">);</span>
+				
+                <span class="c1">// 각 파라미터에 맞춰 dto에 저장</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"id"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"title"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"content"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"num"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"re_lev"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setRe_lev</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"re_ref"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setRe_ref</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"re_seq"</span><span class="o">))</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setRe_seq</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldImgName"</span><span class="o">))</span>
+                    <span class="n">oldImgName</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldFileName"</span><span class="o">))</span>
+                    <span class="n">oldFileName</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"fileUploadStatus"</span><span class="o">))</span>
+                    <span class="n">fileUploadStatus</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"imgUploadStatus"</span><span class="o">))</span>
+                    <span class="n">imgUploadStatus</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldImgPath"</span><span class="o">))</span>
+                    <span class="n">oldImgPath</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"oldFilePath"</span><span class="o">))</span>
+                    <span class="n">oldFilePath</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">part</span><span class="o">.</span><span class="na">isFile</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"image"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 이미지 파일일 때</span>
+                <span class="c1">// 이미지 저장 경로 지정</span>
+                <span class="nc">File</span> <span class="n">dir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/images"</span><span class="o">));</span>
+                <span class="nc">File</span> <span class="n">originDir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">dir</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"origins"</span><span class="o">);</span> <span class="c1">// 원본 이미지 저장 경로</span>
+                <span class="nc">File</span> <span class="n">thumbnailDir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">dir</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"thumbnails"</span><span class="o">);</span> <span class="c1">// 썸네일 저장 경로</span>
+				
+                <span class="c1">// 경로가 없으면 생성</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">dir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">dir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">originDir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">originDir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">thumbnailDir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">thumbnailDir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
+				
+                <span class="nc">FilePart</span> <span class="n">filePart</span> <span class="o">=</span> <span class="o">(</span><span class="nc">FilePart</span><span class="o">)</span> <span class="n">part</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="o">{</span>
+                    <span class="c1">// 중복 파일명 처리 - 실제 참고할 파일은 rename된 파일이름 쓰기</span>
+                    <span class="n">filePart</span><span class="o">.</span><span class="na">setRenamePolicy</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultFileRenamePolicy</span><span class="o">());</span>
+
+                    <span class="c1">// 지정한 경로에 파일 쓰기</span>
+                    <span class="nc">String</span> <span class="n">file</span> <span class="o">=</span> <span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">();</span>
+                    <span class="n">filePart</span><span class="o">.</span><span class="na">writeTo</span><span class="o">(</span><span class="n">originDir</span><span class="o">);</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setImage_uid</span><span class="o">(</span><span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
+					
+                    <span class="c1">// 원본 이미지 파일을 이용해서 썸네일을 만들어 저장</span>
+                    <span class="c1">// 크기 지정 후 지정 경로에 저장</span>
+                    <span class="c1">// 썸네일 파일명은 중복처리된 파일명과 같게 만든다.</span>
+                    <span class="nc">Thumbnails</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">originDir</span><span class="o">.</span><span class="na">getPath</span><span class="o">()</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">()))</span>
+                        <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">400</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">toFiles</span><span class="o">(</span><span class="n">thumbnailDir</span><span class="o">,</span> <span class="nc">Rename</span><span class="o">.</span><span class="na">NO_CHANGE</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">else</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"img empty!"</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">part</span><span class="o">.</span><span class="na">isFile</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"file"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 일반 파일일 때</span>
+                <span class="nc">File</span> <span class="n">dir</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/upload"</span><span class="o">));</span>
+				
+                <span class="c1">// 경로 없으면 생성</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">dir</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="n">dir</span><span class="o">.</span><span class="na">mkdir</span><span class="o">();</span>
+				
+                <span class="nc">FilePart</span> <span class="n">filePart</span> <span class="o">=</span> <span class="o">(</span><span class="nc">FilePart</span><span class="o">)</span> <span class="n">part</span><span class="o">;</span>
+                <span class="nc">String</span> <span class="n">file</span> <span class="o">=</span> <span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">file</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="o">{</span>
+                    <span class="n">filePart</span><span class="o">.</span><span class="na">setRenamePolicy</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultFileRenamePolicy</span><span class="o">());</span>
+                    <span class="n">filePart</span><span class="o">.</span><span class="na">writeTo</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span> <span class="c1">// 지정한 경로에 파일 쓰기</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setFile_uid</span><span class="o">(</span><span class="n">filePart</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
+                <span class="o">}</span>
+                <span class="k">else</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"file empty!"</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="c1">// 사용자 ip주소 저장</span>
+        <span class="n">dto</span><span class="o">.</span><span class="na">setIp</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getRemoteAddr</span><span class="o">());</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">imgUploadStatus</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">imgUploadStatus</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"false"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 등록된 이미지를 삭제하는 경우</span>
+                <span class="n">dto</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="s">"없음"</span><span class="o">);</span>
+                <span class="nc">File</span> <span class="n">oldImg</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">oldImgPath</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">oldImg</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="n">oldImg</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+				
+                <span class="c1">// 썸네일도 삭제한다.</span>
+                <span class="nc">File</span> <span class="n">oldThumbnail</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/thumbnail"</span><span class="o">)</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="n">oldImgName</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">oldThumbnail</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="n">oldThumbnail</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">else</span> 
+            <span class="o">{</span>
+                <span class="c1">// 삭제하지 않는 경우</span>
+                <span class="c1">// 만약 dto의 파일명 필드가 비어 있으면 기존 파일명을 저장한다.</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">oldImgName</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="k">if</span> <span class="o">(</span><span class="n">fileUploadStatus</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">fileUploadStatus</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"false"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="s">"없음"</span><span class="o">);</span>
+                <span class="nc">File</span> <span class="n">oldFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">oldFilePath</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">oldFile</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="n">oldFile</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">else</span> 
+            <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+                    <span class="n">dto</span><span class="o">.</span><span class="na">setFile</span><span class="o">(</span><span class="n">oldFileName</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="k">return</span> <span class="n">dto</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>파일명의 중복처리를 지정해 준 다음 업로드되면 중복처리된 파일명을 받아온다.</li>
+  <li>게시글에서 사용자에게 보여줄 파일명과 서버에서 다운로드 할 때 참고할 파일명을 따로 저장한다.</li>
+  <li>실제 다운로드가 이루어질 땐 서버에 업로드 된 파일명인 <code class="language-plaintext highlighter-rouge">image_uid</code>, <code class="language-plaintext highlighter-rouge">file_uid</code>를 참고할 것이다.</li>
+</ul>
+
+<h2 id="boardcontentjsp">boardContent.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;tr&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"5"</span> <span class="na">style=</span><span class="s">"white-space:pre-wrap; word-wrap:break-word; word-break: break-all;"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">()</span> <span class="nt">%&gt;&lt;br&gt;&lt;br&gt;</span>
+  <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"없음"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+    <span class="c">&lt;!-- 실제 서버에 업로드 된 파일명이 중복되면 이름이 바뀌기 때문에 바뀐 파일명을 참조해야 한다. --&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"./BoardImgAction.bo?img_name=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">().</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>첨부파일<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"3"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- 첨부파일이 있을 때에만 하이퍼링크 연결 --&gt;</span>
+  <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"없음"</span><span class="o">))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+      없음
+  <span class="nt">&lt;%</span> <span class="o">}</span>
+    <span class="k">else</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./BoardFileDownloadAction.bo?file_name=</span><span class="nt">&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;%=</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;</span>
+  <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>사용자에게 보여주는 파일명은 사용자가 업로드했던 파일명 그대로 쓰지만 실제 참조할 파일명은 중복처리된 파일명을 사용한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/uploadedImg.png" width="300" /></p>
+
+<ul>
+  <li>업로드 되는 폴더에 중복처리되어 들어가는 것을 확인할 수 있다.</li>
+  <li>이제 내일이 발표니까 발표자료 만들어야겠다…<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li>내일이 발표네…</li>
+  <li><code class="language-plaintext highlighter-rouge">D-1</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제2</title><link href="http://localhost:4000/errorlog/warning-log-05/" rel="alternate" type="text/html" title="에러해결 Log) JAVA JSP Servlet 글 내용 수정할 때 첨부파일이 사라지는 문제2" /><published>2022-04-06T00:00:00+09:00</published><updated>2022-04-06T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-05</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-05/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+<ul>
+  <li>무슨 버그가 수정을 해도해도 계속 나오는지… 얼렁뚱땅 돌아가는 느낌이다 🥲</li>
+  <li>게시글을 수정할 때 첨부파일이 사라지는 버그를 해결했다고 생각했는데 완벽히 해결되지 않았다.</li>
+  <li>여전히 일부 케이스에서 제대로 처리가 되지 않아 <code class="language-plaintext highlighter-rouge">DB</code> 상에서의 파일명이 <code class="language-plaintext highlighter-rouge">null</code>로 바뀌는 문제가 존재했다.</li>
+  <li>그래서 좀 더 근본적인 원인을 떠올려 보았다… 게시글을 수정하며 파일 업로드 단계를 거치는 과정에서 <code class="language-plaintext highlighter-rouge">DTO</code> 생성 시 파일명이 지정되지 않아 <code class="language-plaintext highlighter-rouge">null</code>로 남아있는 것이 <code class="language-plaintext highlighter-rouge">DB</code> 수정 동작 때 넘어와서 문제라면 <code class="language-plaintext highlighter-rouge">DB</code>에 접근하는 메서드를 수정하는 것이 빠르지 않을까…</li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+<ul>
+  <li>기존에 작성했던 게시글 수정 메서드</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">modifyPost</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">dto</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="c1">// 번호로 해당 글 찾기</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="c1">// update 동작 수행</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set title=?, image=?, image_uid=?, file=?, file_uid=? content=? where num=?"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+				
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+				
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 수정 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>매개변수로 받은 <code class="language-plaintext highlighter-rouge">DTO</code>를 그대로 받아서 바로 업데이트 동작을 수행한다.</li>
+  <li>
+    <p>이러니 <code class="language-plaintext highlighter-rouge">DTO</code>의 파일명 필드가 <code class="language-plaintext highlighter-rouge">null</code>로 넘어와도 아무 필터링 없이 <code class="language-plaintext highlighter-rouge">DB</code>에 <code class="language-plaintext highlighter-rouge">null</code>이 저장되는 것이었다.
+<br /><br /></p>
+  </li>
+  <li>수정한 메서드</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">modifyPost</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">dto</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
+			
+        <span class="c1">// 번호로 해당 글 찾기</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_board where num=?"</span><span class="o">;</span>
+        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			
+        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+			
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="c1">// update 동작 수행</span>
+            <span class="c1">// 새로 수정한 글에서 파일 정보가 있으면 그걸로 수정 / 없으면 그대로 놔둠</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set image=?, image_uid=? where num=?"</span><span class="o">;</span>
+                <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getImage_uid</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+            <span class="o">}</span>
+				
+            <span class="k">if</span> <span class="o">(</span><span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set file=?, file_uid=? where num=?"</span><span class="o">;</span>
+                <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getFile_uid</span><span class="o">());</span>
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+					
+                <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+            <span class="o">}</span>
+				
+            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set title=?, content=? where num=?"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+				
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getNum</span><span class="o">());</span>
+				
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+				
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 글 수정 완료"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">closeDB</span><span class="o">();</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>전달되어 온 <code class="language-plaintext highlighter-rouge">DTO</code>에 파일명 정보가 있을 때에만 업데이트가 되도록 수정했다.</li>
+  <li>이렇게 하니까 그동안 고민했던 문제들이 싹 해결되었다.</li>
+  <li>
+    <p>역시 근본적인 원인을 제거했어야…</p>
+  </li>
+  <li>이렇게 문제 해결~!! 👏</li>
 </ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Eclipse 2021-12 tomcat 8.5]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 28 - 관리자 페이지에서 게시글 관리 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-28/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 28 - 관리자 페이지에서 게시글 관리 기능 추가" /><published>2022-04-05T00:00:00+09:00</published><updated>2022-04-05T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-28</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-28/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
@@ -2424,176 +2469,4 @@
 <ul>
   <li>마감 기한이 늘어났다.</li>
   <li><code class="language-plaintext highlighter-rouge">D-5</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 25 - 댓글 삭제 기능 추가</title><link href="http://localhost:4000/project%20log/cafe-project-25/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 25 - 댓글 삭제 기능 추가" /><published>2022-04-04T00:00:00+09:00</published><updated>2022-04-04T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-25</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-25/"><![CDATA[<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
-
-<h1 id="시작">시작</h1>
-<ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황-1">진행상황 1</h1>
-<ul>
-  <li>게시글에 달린 댓글을 삭제하는 기능을 추가했다.</li>
-</ul>
-
-<h2 id="boardcontentjsp">boardContent.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 본인 글 일때만 수정/삭제 가능 --&gt;</span>
-<span class="nt">&lt;span&gt;</span>
-<span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">id</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">onclick=</span><span class="s">"showCommentBox(</span><span class="nt">&lt;%=</span><span class="n">i</span> <span class="nt">%&gt;</span><span class="s">);"</span> <span class="na">id=</span><span class="s">"modify"</span><span class="nt">&gt;</span>수정<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/span&gt;</span>
-<span class="nt">&lt;span&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">onclick=</span><span class="s">"confirmDelete(</span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getPost_num</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;</span>삭제<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/span&gt;</span>
-<span class="nt">&lt;%</span> <span class="o">}</span> <span class="nt">%&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>로그인 정보를 확인 후 본인 글 일때만 수정과 삭제를 할 수 있는 버튼이 보인다.</li>
-</ul>
-
-<h2 id="boardcontentjs">boardContent.js</h2>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">confirmDelete</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">postNum</span><span class="p">,</span> <span class="nx">pageNum</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">정말 삭제 하시겠습니까?</span><span class="dl">'</span><span class="p">))</span>
-        <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./CommentDeleteAction.bo?num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;post_num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">postNum</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;pageNum=</span><span class="dl">'</span><span class="o">+</span><span class="nx">pageNum</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>삭제 버튼을 누르면 확인창을 띄워서 최종 확인한 뒤 삭제 서블릿으로 이동한다.</li>
-</ul>
-
-<h2 id="commentdeleteactionjava">CommentDeleteAction.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CommentDeleteAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
-<span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
-    <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : CommentDeleteAction - execute() 호출"</span><span class="o">);</span>
-		
-        <span class="c1">// 파라메터 저장</span>
-        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
-        <span class="kt">int</span> <span class="n">post_num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"post_num"</span><span class="o">));</span>
-        <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span>
-		
-        <span class="c1">// DB 접속해서 삭제 연산 수행</span>
-        <span class="nc">BoardDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDAO</span><span class="o">();</span>
-        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">deleteComment</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
-		
-        <span class="c1">// 페이지 이동</span>
-        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
-        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
-        <span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">!=</span> <span class="n">result</span><span class="o">)</span>
-        <span class="o">{</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('잘못된 접근');"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"history.back();"</span><span class="o">);</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
-        <span class="o">}</span>
-		
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('댓글 삭제 완료!');"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./BoardContent.bo?num="</span><span class="o">+</span><span class="n">post_num</span><span class="o">+</span><span class="s">"&amp;pageNum="</span><span class="o">+</span><span class="n">pageNum</span><span class="o">+</span><span class="s">"';"</span><span class="o">);</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
-		
-        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-		
-        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">DB</code>에 접속해서 댓글 삭제 동작을 수행한 뒤 결과에 따라 페이지를 이동한다.</li>
-  <li>로그인 한 본인만 삭제할 수 있기 때문에 접근한 사람이 본인이 아닌 경우는 없을 것이라 생각하지만 혹시 모르니까  예외처리를 해 주었다.</li>
-</ul>
-
-<h2 id="boarddaojava---deletecommentnum">BoardDAO.java - deleteComment(num)</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">deleteComment</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span>
-<span class="o">{</span>
-    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
-		
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="n">con</span> <span class="o">=</span> <span class="n">getCon</span><span class="o">();</span>
-			
-        <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cafe_comment where num=?"</span><span class="o">;</span>
-        <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-			
-        <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
-			
-        <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
-			
-        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
-        <span class="o">{</span>
-            <span class="c1">// 게시글의 댓글 갯수 감소</span>
-            <span class="n">sql</span> <span class="o">=</span> <span class="s">"update cafe_board set comment_count = comment_count - 1 where num=?"</span><span class="o">;</span>
-            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-				
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"post_num"</span><span class="o">));</span>
-            
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
-				
-            <span class="c1">// 댓글 삭제</span>
-            <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from cafe_comment where num=?"</span><span class="o">;</span>
-            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-				
-            <span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
-				
-            <span class="n">ret</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
-				
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"DAO : 댓글 삭제 완료"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-    <span class="o">}</span>
-    <span class="k">finally</span> <span class="o">{</span>
-        <span class="n">closeDB</span><span class="o">();</span>
-    <span class="o">}</span>
-		
-    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>댓글이 존재하는지 확인한 후 삭제한다.</li>
-  <li>댓글이 달렸던 게시글에서도 갯수를 감소시킨다.</li>
-  <li>모든 동작이 완료된 후 다시 게시글 본문 페이지로 이동하면 댓글이 삭제된 것과 댓글의 갯수도 줄어든 것을 확인할 수 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li>마감 기한이 늘어났다.</li>
-  <li><code class="language-plaintext highlighter-rouge">D-3</code></li>
 </ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry></feed>
