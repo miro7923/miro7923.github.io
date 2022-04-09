@@ -1,0 +1,110 @@
+I"]<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="시작">시작</h1>
+<ul>
+  <li>2022.3.4 ~ <br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>
+    <p>프로젝트 제작 기한이 끝나고 발표도 다 하고 과제물도 다 제출했지만 마지막으로 요즘 대세인 <code class="language-plaintext highlighter-rouge">AWS</code>로 배포도 해 보고 싶었다! 그래서 구글링 가이드를 따라가며 하고 있는데 마냥 쉽지는 않군</p>
+  </li>
+  <li><a href="https://m.blog.naver.com/scw0531/221438323697">https://m.blog.naver.com/scw0531/221438323697</a></li>
+  <li>전체적인 세팅 방법은 이 블로그 글을 참고했다.</li>
+</ul>
+
+<h2 id="회원가입">회원가입</h2>
+
+<p align="center"><img src="../../assets/images/joinAwsPlan.png" width="500" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">AWS</code>가 어떤 것인지 맛보기 용이니까 무료 플랜 선택<br /><br /></li>
+</ul>
+
+<p align="center"><img src="../../assets/images/awsPayAlarm.png" width="700" /></p>
+
+<ul>
+  <li>
+    <p>그리고 재수 없게(?) 과금 경험을 하신 분들이 결제 알림 설정을 꼭 해 놓으라 그래서 알림 설정도 했다.</p>
+  </li>
+  <li>
+    <p>그 후로는 위에 첨부한 블로그 글대로 쭉 따라갔는데 위 글과는 다른 자바 버전을 쓰려고 자바 설치 과정만 좀 다르게 했다.</p>
+  </li>
+</ul>
+
+<h2 id="open-jdk11-설치">open jdk11 설치</h2>
+<ul>
+  <li><a href="https://codechacha.com/ko/ubuntu-install-open-jdk11/">https://codechacha.com/ko/ubuntu-install-open-jdk11/</a></li>
+  <li><code class="language-plaintext highlighter-rouge">open jdk</code> 설치는 이 블로그 글을 참고했다.</li>
+</ul>
+
+<h2 id="tomcat8-설치-그리고">Tomcat8 설치 그리고…</h2>
+<ul>
+  <li>자바를 설치한 후에 다시 처음에 참고하던 블로그 글로 돌아와서 <code class="language-plaintext highlighter-rouge">Tomcat8</code>도 설치하고 잘 따라가고 있었는데 안타깝게도 톰캣을 어떻게 실행하라는 설명이 없었다..(아직 잘 모름…ㅎ)</li>
+  <li>그래서 구글링 해 보니까 설치된 폴더로 이동한 후 <code class="language-plaintext highlighter-rouge">./startup.sh</code>로 실행을 하는 것이라 해서 해 보았다. 그런데 안 됨 ㅠ.ㅠ</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/failToStartTomcat.png" width="600" /></p>
+<p align="center">차갑다...</p>
+
+<ul>
+  <li>암튼 그래서 에러 메시지로 구글링을 하다가 <a href="https://rimkongs.tistory.com/241">https://rimkongs.tistory.com/241</a> 이 블로그 글을 참고해서 원인을 알 수 있었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">sudo apt-get</code> 방식으로 설치한 톰캣은 <code class="language-plaintext highlighter-rouge">./startup.sh</code>이걸로 실행할 수 없었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">sudo /etc/init.d/tomcat8 start</code> 이걸 써야 했음…</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/succeedToStartTomcat.png" width="500" /></p>
+<p align="center">실행 성공!</p>
+<p><br /></p>
+
+<ul>
+  <li>이제 톰캣 서버가 잘 돌아가고 있는지 웹사이트로 접속해 봐야 하는데 원래 참고하고 있던 블로그 글에서 그 주소에 대한 언급 또한 없어서… 처음에 좀 헤멨다. 당췌 어디로 접속해서 <code class="language-plaintext highlighter-rouge">It works</code>를 확인하란 것인지…</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/awsDns.png" width="700" /></p>
+
+<ul>
+  <li>알고 보니 <code class="language-plaintext highlighter-rouge">퍼블릭 IPv4 DNS</code> 주소의 맨 뒤에 <code class="language-plaintext highlighter-rouge">:8080</code>을 붙이면 접속할 수 있는 것이었다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/itWorks.png" /></p>
+
+<ul>
+  <li>접속 안 될까봐 좀 조마조마 했는데 다행히 잘 된다.</li>
+</ul>
+
+<h2 id="filezilla-설치">FileZilla 설치</h2>
+
+<p align="center"><img src="../../assets/images/fileZillaClient.png" width="500" /></p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">FileZilla</code>를 설치해야 했는데 이거 또한 클라이언트 설치인지 서버 설치인지 언급되어 있지 않아서 둘 다 깔아봤는데 클라이언트를 설치하는 것이었다.</p>
+  </li>
+  <li>
+    <p>근데 새 사이트 관리자를 만들어서 접속에 성공한 것 같은데 나는 또 저분과 다르게 폴더가 쭈루루 뜨지 않는 것이었다. 😟 머선 일이고… 맞게 접속한 거 같긴 한데</p>
+  </li>
+</ul>
+
+<p align="center"><img src="../../assets/images/folderList.png" width="500" /></p>
+
+<ul>
+  <li></li>
+</ul>
+:ET
