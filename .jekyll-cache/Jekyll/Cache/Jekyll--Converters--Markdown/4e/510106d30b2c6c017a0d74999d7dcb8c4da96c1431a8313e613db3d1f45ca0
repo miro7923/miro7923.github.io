@@ -1,0 +1,27 @@
+I"<h1 id="-transmission-control-protocol">👀 Transmission Control Protocol</h1>
+<ul>
+  <li>데이터 송수신 시 연결과 흐름 제어 동작을 수행하는 <code class="language-plaintext highlighter-rouge">TCP</code>에서 사용되는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">UDP</code>에 비해 긴 헤더로 구성되어 있으며 <code class="language-plaintext highlighter-rouge">Sequence number</code>와 <code class="language-plaintext highlighter-rouge">Acknowledgment number</code>를 이용해 데이터가 전송되었는지 확인하고 흐름을 제어한다.</li>
+</ul>
+
+<h2 id="sequence-number">Sequence number</h2>
+<ul>
+  <li>전송된 세그먼트의 순서로 전체 메세지에서 어느 부분에 해당하는지 구분하는 번호</li>
+  <li>1, 2, 3, … 순서로 세그먼트가 전송된다고 하면 <code class="language-plaintext highlighter-rouge">Sequence number</code>를 통해 지금 받고 있는 부분이 어디쯤인지 알 수 있다.</li>
+</ul>
+
+<h2 id="acknowledgment-number">Acknowledgment number</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 다음에 받아야 하는 <code class="language-plaintext highlighter-rouge">Sequence number</code></li>
+  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 세그먼트를 받고 나서 다음에 몇 번 세그먼트를 받아야 하는지 <code class="language-plaintext highlighter-rouge">sender</code>에게 알려줄 때 사용하는 번호</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">sender</code>는 <code class="language-plaintext highlighter-rouge">receiver</code>로부터 온 <code class="language-plaintext highlighter-rouge">Acknowledgment number</code>를 보고 어떤 세그먼트를 보내야 하는지 알 수 있다.</p>
+  </li>
+  <li></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kmooc.kr/courses/course-v1:PNUk+CN_C01+2021_KM_013/video">컴퓨터 네트워킹 - 부산대학교 K-MOOC 공개강의</a></li>
+</ul>
+:ET

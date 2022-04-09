@@ -9,7 +9,7 @@ categories:
 tags:
     - CS
     - Network
-    - Application
+    - Transport
 ---
 # 👀 Transport Layer
 * 응용 계층 바로 아래에 있는 계층

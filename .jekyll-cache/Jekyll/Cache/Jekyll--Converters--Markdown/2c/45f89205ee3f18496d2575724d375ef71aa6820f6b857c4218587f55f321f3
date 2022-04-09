@@ -1,0 +1,40 @@
+I"�<h1 id="-transmission-control-protocol">👀 Transmission Control Protocol</h1>
+<ul>
+  <li>데이터 송수신 시 연결과 흐름 제어 동작을 수행하는 <code class="language-plaintext highlighter-rouge">TCP</code>에서 사용되는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">UDP</code>에 비해 긴 헤더로 구성되어 있으며 <code class="language-plaintext highlighter-rouge">Sequence number</code>와 <code class="language-plaintext highlighter-rouge">Acknowledgment number</code>를 이용해 데이터가 전송되었는지 확인하고 흐름을 제어한다.</li>
+</ul>
+
+<h2 id="sequence-number">Sequence number</h2>
+<ul>
+  <li>전송된 세그먼트의 순서로 전체 메세지에서 어느 부분에 해당하는지 구분하는 번호</li>
+  <li>1, 2, 3, … 순서로 세그먼트가 전송된다고 하면 <code class="language-plaintext highlighter-rouge">Sequence number</code>를 통해 지금 받고 있는 부분이 어디쯤인지 알 수 있다.</li>
+</ul>
+
+<h2 id="acknowledgment-number">Acknowledgment number</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 다음에 받아야 하는 <code class="language-plaintext highlighter-rouge">Sequence number</code></li>
+  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 세그먼트를 받고 나서 다음에 몇 번 세그먼트를 받아야 하는지 <code class="language-plaintext highlighter-rouge">sender</code>에게 알려줄 때 사용하는 번호</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">sender</code>는 <code class="language-plaintext highlighter-rouge">receiver</code>로부터 온 <code class="language-plaintext highlighter-rouge">Acknowledgment number</code>를 보고 어떤 세그먼트를 보내야 하는지 알 수 있다.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">TCP</code> 프로토콜에서 데이터의 송수신은 <code class="language-plaintext highlighter-rouge">sequence number</code>와 <code class="language-plaintext highlighter-rouge">ACK</code>의 확인으로 이루어지며 중간에 데이터가 누락되었다면 <code class="language-plaintext highlighter-rouge">ACK</code>를 통해 몇 번이 누락되었는지 확인하고 재전송 할 수 있다.</li>
+</ul>
+
+<h2 id="flow-control">flow control</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 수용할 수 있는 속도보다 훨씬 빠른 속도로 보내는 것을 막기 위해 사용된다.</li>
+  <li>데이터를 보낼 때 데이터를 받을 버퍼의 크기를 미리 제한한 뒤 그만큼씩 보내는 것이다.<br /><br /></li>
+</ul>
+
+<h1 id="congestion-control">Congestion Control</h1>
+<ul>
+  <li>트래픽의 양이 늘어나면 전송 가능한 양이 점점 줄어들어서 나중에는 하나도 보내지 못 하게 된다.</li>
+  <li>그래서 지속 가능한 서비스를 할 수 있도록 네트워크 상에서 전송되는 데이터의 총량을 제한하는 것이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">end-to-end</code>와 <code class="language-plaintext highlighter-rouge">network-assisted</code> 방식이 있는데 <code class="language-plaintext highlighter-rouge">end-to-end</code>의 대표적인 방식은 <code class="language-plaintext highlighter-rouge">TCP</code>가 있고 <code class="language-plaintext highlighter-rouge">network-assisted</code>에는 <code class="language-plaintext highlighter-rouge">ATM</code>이 있다.</li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kmooc.kr/courses/course-v1:PNUk+CN_C01+2021_KM_013/video">컴퓨터 네트워킹 - 부산대학교 K-MOOC 공개강의</a></li>
+</ul>
+:ET
