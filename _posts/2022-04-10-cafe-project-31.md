@@ -1,5 +1,5 @@
 ---
-title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기 2. RDS 연결
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결
 toc: true
 toc_sticky: true
 toc_label: 목차
