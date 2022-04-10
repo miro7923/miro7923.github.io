@@ -1,5 +1,5 @@
 ---
-title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기 1. war파일 배포
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기
 toc: true
 toc_sticky: true
 toc_label: 목차
@@ -18,8 +18,8 @@ tags:
 * tomcat 8.5
 * MySQL Workbench 8.0.19<br><br><br>
 
-# 기간
-* 2022.3.4 ~ 2022.4.6<br><br><br>
+# 시작
+* 2022.3.4 ~ <br><br><br>
 
 # 주제
 * 웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.
