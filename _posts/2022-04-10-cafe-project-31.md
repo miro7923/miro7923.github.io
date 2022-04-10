@@ -1,5 +1,5 @@
 ---
-title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기
+title: JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기 2. RDS 연결
 toc: true
 toc_sticky: true
 toc_label: 목차
@@ -18,8 +18,8 @@ tags:
 * tomcat 8.5
 * MySQL Workbench 8.0.19<br><br><br>
 
-# 시작
-* 2022.3.4 ~ <br><br><br>
+# 기간
+* 2022.3.4 ~ 2022.4.6<br><br><br>
 
 # 주제
 * 웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.
@@ -28,75 +28,44 @@ tags:
 * 평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br><br><br>
 
 # 진행상황
-* 프로젝트 제작 기한이 끝나고 발표도 다 하고 과제물도 다 제출했지만 마지막으로 요즘 대세인 `AWS`로 배포도 해 보고 싶었다! 그래서 구글링 가이드를 따라가며 하고 있는데 마냥 쉽지는 않군
+* `AWA RDS`를 사용해서 어제 업로드 했던 `war`파일과 `DB`를 연동했다.
+* [MySQL 데이터베이스 생성 및 연결](https://aws.amazon.com/ko/getting-started/hands-on/create-mysql-db/)
+* `AWS` 웹사이트에 있는 공식 가이드를 따라서 만들었다.(프리티어 버전)
+* 처음에는 어제 만들었던 `EC2`에 `MySQL`을 깔아야 하나 했는데 그럴 필요 없이 공식 가이드대로 하니까 내 로컬 `MySQL Workbench`에서 `RDS`의 `MySQL Workbench`로 접속이 되었다. 완전 간편!
 
-* [https://m.blog.naver.com/scw0531/221438323697](https://m.blog.naver.com/scw0531/221438323697)
-* 전체적인 세팅 방법은 이 블로그 글을 참고했다.
+## EC2에서 RDS에 접근할 수 있도록 보안그룹 설정
+* [https://m.blog.naver.com/scw0531/221440516899](https://m.blog.naver.com/scw0531/221440516899)
+* 이 글을 참고해서 새로 생성한 `RDS`의 인바운드 규칙을 설정했다.
+* 어제 만들었던 `EC2`의 보안그룹 ID를 새 인바운드 규칙으로 추가해 주었다.
 
-## 회원가입
+## DB 데이터 불러오기
+* 프로젝트를 진행하며 만들었던 데이터가 있으니까 이 데이터들을 그대로 넘기기로 했다.
+* `cafedb`라는 이름으로 기본 데이터베이스만 하나 생성한 뒤 상단 메뉴의 `Server - Date Import`에서 내 로컬 컴퓨터에 있는 `DB` 백업 파일을 선택한 뒤 `import` 시키니까 바로 들어갔다. 가상 PC에 백업 파일을 옮겨줄 필요도 없고 정말 편하네!
 
-<p align="center"><img src="../../assets/images/joinAwsPlan.png" width="500"></p>
+<p align="center"><img src="../../assets/images/dbImportSuccess.png" width="600"></p>
 
-* `AWS`가 어떤 것인지 맛보기 용이니까 무료 플랜 선택<br><br>
+## context.xml 수정
+* 어제 배포했던 프로젝트의 `DB` 연결 정보를 수정해 주었다.
+* 로컬호스트에서 테스트하던 `url`과 `계정정보`로 작성되어 있었기 때문에 `RDS`와 연결이 되지 않았기 때문이다.
+* `FileZilla`로 `EC2`에 접속해 `context.xml`만 로컬로 다운받은 다음에 접속 정보를 수정해서 다시 업로드 했다.
+* `url`은 `jdbc:mysql://엔드포인트 이름:3306/cafedb`
+* `username`과 `password`는 `RDS`를 만들면서 설정했던 ID와 비밀번호로 설정했다.
 
-<p align="center"><img src="../../assets/images/awsPayAlarm.png" width="700"></p> 
+<p align="center"><img src="../../assets/images/uploadContextXml.png" width="600"></p>
 
-* 그리고 재수 없게(?) 과금 경험을 하신 분들이 결제 알림 설정을 꼭 해 놓으라 그래서 알림 설정도 했다.
+## 내 프로젝트 사이트 접속해서 확인!
 
-* 그 후로는 위에 첨부한 블로그 글대로 쭉 따라갔는데 위 글과는 다른 자바 버전을 쓰려고 자바 설치 과정만 좀 다르게 했다.
+<p align="center"><img src="../../assets/images/cafeMain.png" width="700"></p>
 
-## open jdk11 설치
-* [https://codechacha.com/ko/ubuntu-install-open-jdk11/](https://codechacha.com/ko/ubuntu-install-open-jdk11/)
-* `open jdk` 설치는 이 블로그 글을 참고했다.
+* 메인 페이지에서 최신글 3개를 보여주는 기능을 만들었는데 내 사이트에 접속하니까 로드가 잘 된다! 감격스러워...
+* 첨부된 이미지가 있으면 썸네일도 보여주도록 했는데 썸네일도 잘 나온다.<br><br>
 
-## Tomcat8 설치 그리고...
-* 자바를 설치한 후에 다시 처음에 참고하던 블로그 글로 돌아와서 `Tomcat8`도 설치하고 잘 따라가고 있었는데 안타깝게도 톰캣을 어떻게 실행하라는 설명이 없었다..(아직 잘 모름...ㅎ)
-* 그래서 구글링 해 보니까 설치된 폴더로 이동한 후 `./startup.sh`로 실행을 하는 것이라 해서 해 보았다. 그런데 안 됨 ㅠ.ㅠ
+<p align="center"><img src="../../assets/images/cafeDownloadSuccess.png" width="700"></p>
 
-<p align="center"><img src="../../assets/images/failToStartTomcat.png" width="600"></p>
-<p align="center">차갑다...</p>
+* 게시글 작성도 잘 되고 게시글 첨부파일 다운로드도 잘 되고... 하 정말 감격스럽다! 😭
 
-* 암튼 그래서 에러 메시지로 구글링을 하다가 [https://rimkongs.tistory.com/241](https://rimkongs.tistory.com/241) 이 블로그 글을 참고해서 원인을 알 수 있었다.
-* `sudo apt-get` 방식으로 설치한 톰캣은 `./startup.sh`이걸로 실행할 수 없었다.
-* `sudo /etc/init.d/tomcat8 start` 이걸 써야 했음...
+## 탄력적 IP 연결
+* [https://jiwontip.tistory.com/43](https://jiwontip.tistory.com/43)
+* 마지막으로 여기를 참고해서 탄력적 IP도 생성한 후 연결해 주었다.<br><br><br>
 
-<p align="center"><img src="../../assets/images/succeedToStartTomcat.png" width="500"></p>
-<p align="center">실행 성공!</p><br>
-
-* 이제 톰캣 서버가 잘 돌아가고 있는지 웹사이트로 접속해 봐야 하는데 원래 참고하고 있던 블로그 글에서 그 주소에 대한 언급 또한 없어서... 처음에 좀 헤멨다. 당췌 어디로 접속해서 `It works`를 확인하란 것인지...
-
-<p align="center"><img src="../../assets/images/awsDns.png" width="700"></p>
-
-* 알고 보니 `퍼블릭 IPv4 DNS` 주소의 맨 뒤에 `:8080`을 붙이면 접속할 수 있는 것이었다.
-
-<p align="center"><img src="../../assets/images/itWorks.png"></p>
-
-* 접속 안 될까봐 좀 조마조마 했는데 다행히 잘 된다.
-
-## FileZilla 설치
-
-<p align="center"><img src="../../assets/images/fileZillaClient.png" width="500"></p>
-
-* `FileZilla`를 설치해야 했는데 이거 또한 클라이언트 설치인지 서버 설치인지 언급되어 있지 않아서 둘 다 깔아봤는데 클라이언트를 설치하는 것이었다.
-
-* 근데 새 사이트 관리자를 만들어서 접속에 성공한 것 같은데 나는 또 저분과 다르게 폴더가 쭈루루 뜨지 않는 것이었다. 😟 머선 일이고... 맞게 접속한 거 같긴 한데
-
-<p align="center"><img src="../../assets/images/folderList.png" width="300"></p>
-
-* ? 떠 있는 폴더들을 누르니까 하나씩 로드가 되었다.<br><br>
-
-<p align="center"><img src="../../assets/images/failToUpload.png" width="600"></p>
-
-* 근데 `war` 파일 업로드를 하려니까 권한이 없다면서 업로드가 되지 않았다.
-* [https://threeidiotscoding.tistory.com/14](https://threeidiotscoding.tistory.com/14)
-* 이 글을 참고해서 권한 설정을 해 준 뒤 업로드를 할 수 있었다.
-
-## 배포된 프로젝트 사이트에 접속하기
-* `war` 파일이 정상적으로 업로드 되고 프로젝트 폴더도 추출되어서 잘 만들어진 것을 확인했는데 8080으로 접속하면 계속 It works 페이만 뜨는 것이었다. 머선 일이고...2
-* [https://gdtbgl93.tistory.com/m/99](https://gdtbgl93.tistory.com/m/99) 이 글을 참고해서 또 문제를 알았다. 
-* 8080 뒤에 `/프로젝트명`을 붙여줘야 했던 것이었다. 글고보니 폴더가 따로 생성이 되는데 넘 당황해서 저기까지 생각을 못 했었네...ㅎ 
-
-<p align="center"><img src="../../assets/images/awsProjectPage.png"></p>
-
-* 이제 진짜로 접속이 잘 되는 것을 확인했다. 신기해!
-* 프로젝트 배포가 잘 되는지만 확인하려고 기본 세팅만 진행했기 때문에 `DB`연결은 아직 하지 않았다. 내 사이트가 제대로 동작하는지 확인하려면 `DB` 연결을 해 봐야 하는데 오늘은 시간이 늦어서 내일 마저 해야겠다.
+* 이렇게 `AWS` 배포도 끝! 정말 좋은 경험이었다.

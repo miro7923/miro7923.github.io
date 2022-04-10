@@ -1,0 +1,80 @@
+I"9<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.3.4 ~ 2022.4.6<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">AWA RDS</code>를 사용해서 어제 업로드 했던 <code class="language-plaintext highlighter-rouge">war</code>파일과 <code class="language-plaintext highlighter-rouge">DB</code>를 연동했다.</li>
+  <li><a href="https://aws.amazon.com/ko/getting-started/hands-on/create-mysql-db/">MySQL 데이터베이스 생성 및 연결</a></li>
+  <li><code class="language-plaintext highlighter-rouge">AWS</code> 웹사이트에 있는 공식 가이드를 따라서 만들었다.(프리티어 버전)</li>
+  <li>처음에는 어제 만들었던 <code class="language-plaintext highlighter-rouge">EC2</code>에 <code class="language-plaintext highlighter-rouge">MySQL</code>을 깔아야 하나 했는데 그럴 필요 없이 공식 가이드대로 하니까 내 로컬 <code class="language-plaintext highlighter-rouge">MySQL Workbench</code>에서 <code class="language-plaintext highlighter-rouge">RDS</code>의 <code class="language-plaintext highlighter-rouge">MySQL Workbench</code>로 접속이 되었다. 완전 간편!</li>
+</ul>
+
+<h2 id="ec2에서-rds에-접근할-수-있도록-보안그룹-설정">EC2에서 RDS에 접근할 수 있도록 보안그룹 설정</h2>
+<ul>
+  <li><a href="https://m.blog.naver.com/scw0531/221440516899">https://m.blog.naver.com/scw0531/221440516899</a></li>
+  <li>이 글을 참고해서 새로 생성한 <code class="language-plaintext highlighter-rouge">RDS</code>의 인바운드 규칙을 설정했다.</li>
+  <li>어제 만들었던 <code class="language-plaintext highlighter-rouge">EC2</code>의 보안그룹 ID를 새 인바운드 규칙으로 추가해 주었다.</li>
+</ul>
+
+<h2 id="db-데이터-불러오기">DB 데이터 불러오기</h2>
+<ul>
+  <li>프로젝트를 진행하며 만들었던 데이터가 있으니까 이 데이터들을 그대로 넘기기로 했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">cafedb</code>라는 이름으로 기본 데이터베이스만 하나 생성한 뒤 상단 메뉴의 <code class="language-plaintext highlighter-rouge">Server - Date Import</code>에서 내 로컬 컴퓨터에 있는 <code class="language-plaintext highlighter-rouge">DB</code> 백업 파일을 선택한 뒤 <code class="language-plaintext highlighter-rouge">import</code> 시키니까 바로 들어갔다. 가상 PC에 백업 파일을 옮겨줄 필요도 없고 정말 편하네!</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/dbImportSuccess.png" width="600" /></p>
+
+<h2 id="contextxml-수정">context.xml 수정</h2>
+<ul>
+  <li>어제 배포했던 프로젝트의 <code class="language-plaintext highlighter-rouge">DB</code> 연결 정보를 수정해 주었다.</li>
+  <li>로컬호스트에서 테스트하던 <code class="language-plaintext highlighter-rouge">url</code>과 <code class="language-plaintext highlighter-rouge">계정정보</code>로 작성되어 있었기 때문에 <code class="language-plaintext highlighter-rouge">RDS</code>와 연결이 되지 않았기 때문이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">FileZilla</code>로 <code class="language-plaintext highlighter-rouge">EC2</code>에 접속해 <code class="language-plaintext highlighter-rouge">context.xml</code>만 로컬로 다운받은 다음에 접속 정보를 수정해서 다시 업로드 했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">url</code>은 <code class="language-plaintext highlighter-rouge">jdbc:mysql://엔드포인트 이름:3306/cafedb</code></li>
+  <li><code class="language-plaintext highlighter-rouge">username</code>과 <code class="language-plaintext highlighter-rouge">password</code>는 <code class="language-plaintext highlighter-rouge">RDS</code>를 만들면서 설정했던 ID와 비밀번호로 설정했다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/uploadContextXml.png" width="600" /></p>
+
+<h2 id="내-프로젝트-사이트-접속해서-확인">내 프로젝트 사이트 접속해서 확인!</h2>
+
+<p align="center"><img src="../../assets/images/cafeMain.png" width="700" /></p>
+
+<ul>
+  <li>메인 페이지에서 최신글 3개를 보여주는 기능을 만들었는데 내 사이트에 접속하니까 로드가 잘 된다! 감격스러워…</li>
+  <li>첨부된 이미지가 있으면 썸네일도 보여주도록 했는데 썸네일도 잘 나온다.<br /><br /></li>
+</ul>
+
+<p align="center"><img src="../../assets/images/cafeDownloadSuccess.png" width="700" /></p>
+
+<ul>
+  <li>게시글 작성도 잘 되고 게시글 첨부파일 다운로드도 잘 되고… 하 정말 감격스럽다! 😭</li>
+</ul>
+
+<h2 id="탄력적-ip-연결">탄력적 IP 연결</h2>
+<ul>
+  <li></li>
+  <li>
+    <p>마지막으로</p>
+  </li>
+  <li>이렇게 <code class="language-plaintext highlighter-rouge">AWS</code> 배포도 끝! 정말 좋은 경험이었다.</li>
+</ul>
+:ET
