@@ -1,0 +1,316 @@
+I"Ŏ<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.3.4 ~ 2022.4.6<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1">진행상황 1</h1>
+<ul>
+  <li>관리자 페이지에서 전체 게시글 목록을 확인하고 여러 개를 선택해서 삭제할 수 있는 기능을 추가했다.</li>
+</ul>
+
+<h2 id="boardmanagementjsp">boardManagement.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"_r"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/adminLeftNav.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al-o1 de-o2 de10"</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h3&gt;</span>게시글 관리 페이지<span class="nt">&lt;/h3&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"font-size: medium;"</span><span class="nt">&gt;</span>글 제목을 클릭하면 내용을 볼 수 있습니다.<span class="nt">&lt;/p&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;%</span>
+      	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+      	<span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+      	<span class="k">else</span> 
+      	<span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="c1">// 관리자 계정이 아니면 쫓아내기</span>
+                <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./login.me"</span><span class="o">);</span>
+            <span class="o">}</span>
+      	<span class="o">}</span>
+      	
+        <span class="kt">int</span> <span class="n">postCnt</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"postCnt"</span><span class="o">);</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="err">&gt;</span> <span class="n">postList</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="err">&gt;</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"postList"</span><span class="o">);</span>
+    	
+        <span class="nc">String</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">pageCnt</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"pageCnt"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">pageBlockCnt</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"pageBlockCnt"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">startBlock</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"startBlock"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">endBlock</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"endBlock"</span><span class="o">);</span>
+      <span class="nt">%&gt;</span>
+      <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"./AdminDeleteAction.bo"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return finalCheck();"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"type09"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;tbody&gt;</span>
+            <span class="nt">&lt;colgroup&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"5%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"10%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"40%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">"15%"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;col</span> <span class="na">width=</span><span class="s">""</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/colgroup&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;th&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"selectAll"</span><span class="nt">&gt;&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>글번호<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>글제목<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>글쓴이<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>작성일<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">boardList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+              <span class="o">{</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">boardList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
+                  <span class="o">{</span> <span class="nt">%&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"post"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">postList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">postList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./BoardContent.bo?num=</span><span class="nt">&lt;%=</span><span class="n">postList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;pageNum=1"</span><span class="nt">&gt;&lt;%=</span><span class="n">postList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getTitle</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">postList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">postList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getDate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
+          <span class="nt">&lt;/tbody&gt;</span>
+        <span class="nt">&lt;/table&gt;&lt;br&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"boardPage"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">startBlock</span> <span class="err">&gt;</span> <span class="n">pageBlockCnt</span><span class="o">)</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./BoardList.bo?flag=a&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">startBlock</span> <span class="o">-</span> <span class="n">pageBlockCnt</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>[이전]<span class="nt">&lt;/a&gt;</span>
+          <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
+			
+          <span class="nt">&lt;%</span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">startBlock</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">endBlock</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./BoardList.bo?flag=a&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>[<span class="nt">&lt;%=</span><span class="n">i</span> <span class="nt">%&gt;</span>]<span class="nt">&lt;/a&gt;</span>
+          <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
+			
+          <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">endBlock</span> <span class="err">&gt;</span> <span class="n">pageBlockCnt</span><span class="o">)</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"./BoardList.bo?flag=a&amp;pageNum=</span><span class="nt">&lt;%=</span><span class="n">startBlock</span> <span class="o">+</span> <span class="n">pageBlockCnt</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>[다음]<span class="nt">&lt;/a&gt;</span>
+          <span class="nt">&lt;%</span><span class="o">}</span> <span class="nt">%&gt;</span>
+		<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>게시글 삭제<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>전체 회원 목록을 보는 페이지의 레이아웃을 약간 수정해서 만들었다.</li>
+  <li>선택해서 삭제하는 기능이 동일하기 때문에 <code class="language-plaintext highlighter-rouge">javascript</code> 코드는 회원 목록 페이지의 코드를 그대로 썼다.</li>
+  <li>기존에 만들었던 자유게시판의 페이징 기능을 그대로 쓸 것이기 때문에 스크립틀릿의 코드도 게시글 목록을 보여주는 페이지의 코드를 그대로 썼다.</li>
+</ul>
+
+<h2 id="adminleftnavjsp">adminLeftNav.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-layout=</span><span class="s">"al16 al-o2 de-o1 de6 ec4"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Menu"</span> <span class="na">data-theme=</span><span class="s">"_bo2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"MOD_SUBNAVIGATION1_Menutitle"</span> <span class="na">data-theme=</span><span class="s">"_bgs"</span><span class="nt">&gt;</span>Menu<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./MemberListAction.me"</span><span class="nt">&gt;</span>회원관리<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./BoardList.bo?flag=a"</span><span class="nt">&gt;</span>게시글 관리<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/nav&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>게시글 관리 메뉴를 클릭하면 게시글 전체 목록을 불러오는 서블릿으로 이동한다.</li>
+  <li>기존에 만들었던 게시글 목록을 불러오는 서블릿을 재활용 할 것이기 때문에 파라미터로 함께 보내는 <code class="language-plaintext highlighter-rouge">flag</code>로 최종적으로 이동할 뷰 페이지를 결정한다.</li>
+</ul>
+
+<h2 id="boardmanagementactionjava">BoardManagementAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardListAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : BoardListAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 어디로 이동할 지 결정하는 정보 받아오기</span>
+        <span class="c1">// a : 관리자용 게시글 관리 페이지</span>
+        <span class="c1">// n : 일반 게시판</span>
+        <span class="nc">String</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"flag"</span><span class="o">);</span>
+		
+        <span class="c1">// .. 중간 생략</span>
+		
+        <span class="c1">// 페이지 이동</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+		
+        <span class="k">if</span> <span class="o">(</span><span class="n">flag</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"a"</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./admin/boardManagement.jsp"</span><span class="o">);</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> 
+        <span class="o">{</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./contents/boardList.jsp"</span><span class="o">);</span>
+            <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>			
+        <span class="o">}</span>
+		
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>게시글 목록을 불러오는 부분은 자유게시판에서 사용했던 것을 조금 수정해서 재활용했다.</li>
+  <li>매핑된 주소로 이동할 때 함께 받아온 <code class="language-plaintext highlighter-rouge">flag</code> 값으로 이동할 뷰 페이지를 구분한 뒤 자유게시판과 관리자용 게시글 관리 페이지로 이동한다.</li>
+  <li>
+    <p>생략한 코드는 <a href="https://miro7923.github.io/project%20log/cafe-project-12/">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 12 - 게시판 글쓰기 기능 만들기</a> 에서 확인할 수 있다.</p>
+  </li>
+  <li>게시글 목록을 모두 불러오고 나면 게시글 관리 페이지로 이동한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/boardManagementPage.png" width="600" /></p>
+<p><br /><br /></p>
+
+<h1 id="진행상황-2">진행상황 2</h1>
+<ul>
+  <li>선택한 게시글을 일괄 삭제할 수 있는 기능을 추가했다.</li>
+  <li>삭제할 게시글들을 선택한 다음 게시글 관리 페이지 하단의 <code class="language-plaintext highlighter-rouge">게시글 삭제</code> 버튼을 누르면 일괄 삭제 동작을 수행할 서블릿으로 이동한다.</li>
+</ul>
+
+<h2 id="admindeleteactionjava">AdminDeleteAction.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.board.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.board.db.BoardDAO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AdminDeleteAction</span> <span class="kd">implements</span> <span class="nc">Action</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
+    <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"M : AdminDeleteAction - execute() 호출"</span><span class="o">);</span>
+		
+        <span class="c1">// 파라메터 받기</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">params</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameterValues</span><span class="o">(</span><span class="s">"post"</span><span class="o">);</span>
+		
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">postNums</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">p</span> <span class="o">:</span> <span class="n">params</span><span class="o">)</span>
+            <span class="n">postNums</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+		
+        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html; charset=utf-8"</span><span class="o">);</span>
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;script&gt;"</span><span class="o">);</span>
+		
+        <span class="c1">// DB 접속해서 선택된 글들 삭제</span>
+        <span class="nc">BoardDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BoardDAO</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">p</span> <span class="o">:</span> <span class="n">postNums</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">deletePost</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('잘못된 접근!');"</span><span class="o">);</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"history.back()"</span><span class="o">);</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+				
+                <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+				
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+		
+        <span class="c1">// 게시글 관리 페이지로 이동</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"alert('선택한 게시글 삭제가 완료 되었습니다.');"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"location.href='./BoardList.bo?flag=a';"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;/script&gt;"</span><span class="o">);</span>
+		
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>회원과 관련된 클래스들과 게시글과 관련된 클래스들을 각각 다른 패키지로 모아놓았기 때문에 클래스명은 회원 관리할 때 썼던 것과 같이 썼다.</li>
+  <li>게시글 관리 페이지로 돌아오면 업데이트 된 목록을 볼 수 있다.<br /><br /></li>
+</ul>
+
+<h1 id="진행상황-3">진행상황 3</h1>
+<ul>
+  <li>게시글 하나의 내용을 확인하고 삭제할 수 있는 기능을 추가했다.</li>
+</ul>
+
+<h2 id="boardmanagementjsp-1">boardManagement.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(!</span><span class="n">boardList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+  <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">boardList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
+    <span class="o">{</span> <span class="nt">%&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"post"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">boardList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span> <span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">boardList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"./BoardContent.bo?num=</span><span class="nt">&lt;%=</span><span class="n">boardList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">&amp;pageNum=1"</span><span class="nt">&gt;&lt;%=</span><span class="n">boardList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getTitle</span><span class="o">()</span> <span class="nt">%&gt;&lt;/a&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">boardList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">boardList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getDate</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;%</span> <span class="o">}}</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>게시글 제목을 클릭하면 게시글 본문으로 이동하는 링크를 걸어주었다.</li>
+</ul>
+
+<h2 id="boardcontentjsp">boardContent.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 본인 글 일때만 수정/삭제 가능 --&gt;</span>
+<span class="c">&lt;!-- 관리자는 삭제만 가능 --&gt;</span>
+<span class="nt">&lt;%</span><span class="k">if</span> <span class="o">((</span><span class="n">id</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()))</span> <span class="o">||</span> <span class="o">(</span><span class="n">id</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">)))</span> 
+  <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getId</span><span class="o">()))</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+      <span class="nt">&lt;span&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">onclick=</span><span class="s">"showCommentBox(</span><span class="nt">&lt;%=</span><span class="n">i</span> <span class="nt">%&gt;</span><span class="s">);"</span> <span class="na">id=</span><span class="s">"modify"</span><span class="nt">&gt;</span>수정<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;%</span> <span class="o">}</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;span&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">onclick=</span><span class="s">"confirmDelete(</span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getNum</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">coList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getPost_num</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">pageNum</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;</span>삭제<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;%</span> <span class="o">}</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>관리자는 삭제만 할 수 있도록 조건 제한을 해 주었다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li>마감 기한이 늘어났다.</li>
+  <li><code class="language-plaintext highlighter-rouge">D-2</code></li>
+</ul>
+:ET

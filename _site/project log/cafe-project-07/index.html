@@ -348,7 +348,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#시작">시작</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#loginjsp">login.jsp</a></li><li><a href="#loginjs">login.js</a></li><li><a href="#memberfrontcontrollerjava">MemberFrontController.java</a></li><li><a href="#logincheckjava">LoginCheck.java</a></li><li><a href="#topjsp에서-로그인-유무에-따라-상단-메뉴-다르게-출력하기">top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기</a></li><li><a href="#logoutactionjava-생성">LogoutAction.java 생성</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#기간">기간</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#loginjsp">login.jsp</a></li><li><a href="#loginjs">login.js</a></li><li><a href="#memberfrontcontrollerjava">MemberFrontController.java</a></li><li><a href="#logincheckjava">LoginCheck.java</a></li><li><a href="#topjsp에서-로그인-유무에-따라-상단-메뉴-다르게-출력하기">top.jsp에서 로그인 유무에 따라 상단 메뉴 다르게 출력하기</a></li><li><a href="#logoutactionjava-생성">LogoutAction.java 생성</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
 
             </nav>
           </aside>
@@ -362,9 +362,9 @@
   <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
 </ul>
 
-<h1 id="시작">시작</h1>
+<h1 id="기간">기간</h1>
 <ul>
-  <li>2022.3.4 ~ <br /><br /><br /></li>
+  <li>2022.3.4 ~ 2022.4.6<br /><br /><br /></li>
 </ul>
 
 <h1 id="주제">주제</h1>
@@ -607,38 +607,27 @@
 
 <h2 id="logoutactionjava-생성">LogoutAction.java 생성</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.project.cafe.member.action</span><span class="o">;</span>
 
-<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
 
-<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/logout.me"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogoutAction</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> 
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.Action</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.project.cafe.action.ActionForward</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogoutAction</span> <span class="kd">implements</span> <span class="nc">Action</span>
 <span class="o">{</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doProcess</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ActionForward</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> 
     <span class="o">{</span>
-        <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
-        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">session</span><span class="o">)</span>
-            <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">())</span>
+            <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">invalidate</span><span class="o">();</span>
 		
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"로그아웃 완료"</span><span class="o">);</span>
-        <span class="n">resp</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"./main.me"</span><span class="o">);</span>
-    <span class="o">}</span>
-	
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> 
-    <span class="o">{</span>
-        <span class="n">doProcess</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+        <span class="nc">ActionForward</span> <span class="n">forward</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionForward</span><span class="o">();</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"./main.me"</span><span class="o">);</span>
+        <span class="n">forward</span><span class="o">.</span><span class="na">setRedirect</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">forward</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
@@ -752,7 +741,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/project%20log/cafe-project-31/" rel="permalink">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기 2. RDS 연결
+        <a href="/project%20log/cafe-project-31/" rel="permalink">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결
 </a>
       
     </h2>
@@ -995,31 +984,6 @@
 <script src="/assets/js/lunr/lunr-en.js"></script>
 
 
-
-
-    <script>
-  'use strict';
-
-  (function() {
-    var commentContainer = document.querySelector('#utterances-comments');
-
-    if (!commentContainer) {
-      return;
-    }
-
-    var script = document.createElement('script');
-    script.setAttribute('src', 'https://utteranc.es/client.js');
-    script.setAttribute('repo', 'miro7923/miro7923.github.com');
-    script.setAttribute('issue-term', 'pathname');
-    script.setAttribute('label', 'Comment');
-    script.setAttribute('theme', 'boxy-light');
-    script.setAttribute('crossorigin', 'anonymous');
-
-    commentContainer.appendChild(script);
-  })();
-</script>
-
-  
 
 
 
