@@ -251,38 +251,27 @@ public class LoginCheck implements Action
 ## LogoutAction.java 생성
 
 ```java
-import java.io.IOException;
+package com.project.cafe.member.action;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/logout.me")
-public class LogoutAction extends HttpServlet 
+import com.project.cafe.action.Action;
+import com.project.cafe.action.ActionForward;
+
+public class LogoutAction implements Action
 {
-    protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+    @Override
+    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception 
     {
-        HttpSession session = req.getSession();
-        if (null != session)
-            session.invalidate();
+        if (null != request.getSession())
+            request.getSession().invalidate();
 		
-        System.out.println("로그아웃 완료");
-        resp.sendRedirect("./main.me");
-    }
-	
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
-    {
-        doProcess(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
-    {
-        doProcess(req, resp);
+        ActionForward forward = new ActionForward();
+        forward.setPath("./main.me");
+        forward.setRedirect(true);
+		
+        return forward;
     }
 }
 ```
