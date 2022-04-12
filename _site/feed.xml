@@ -1,4 +1,225 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-12T16:35:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결</title><link href="http://localhost:4000/project%20log/cafe-project-31/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결" /><published>2022-04-10T00:00:00+09:00</published><updated>2022-04-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-31</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-31/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-12T23:51:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 2. 곱하기 혹은 더하기</title><link href="http://localhost:4000/boj/CodingTestBook-11-02-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 11 그리디 2. 곱하기 혹은 더하기" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-11-02-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-11-02-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+<hr />
+
+<ul>
+  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
+  <li>Chapter 11 - 그리디 2. 곱하기 혹은 더하기<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>각 자리가 숫자(0부터 9)로만 이루어진 문자열 S가 주어졌을 때, 왼쪽부터 오른쪽으로 하나씩 모든 숫자를 확인하며 숫자 사이에 ‘X’ 혹은 ‘+’ 연산자를 넣어 결과적으로 만들어질 수 있는 가장 큰 수를 구하는 프로그램을 작성하시오. 모든 연산은 왼쪽에서부터 순서대로 이루어진다고 가정한다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 여러 개의 숫자로 구성된 하나의 문자열 S가 주어진다.(1 &lt;= S의 길이 &lt;= 20)<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 만들어질 수 있는 가장 큰 수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음에는 연산에 참여하는 두 수 중 하나라도 0이라면 더하기 연산을 수행하고 나머지는 모두 곱하기 연산을 수행하게 짰다.</li>
+  <li>책에 나와 있는 예제는 맞았지만 정답 코드를 보니까 두 수 중 하나가 1인 경우를 고려하지 않은 코드였다.</li>
+  <li>1일 때엔 더하는 것이 곱하는 것보다 더 크기 때문이다.</li>
+  <li>그래서 최종 수정한 코드는 연산에 참여하는 두 수 중 하나라도 1 이하라면 더하기 연산을 수행하고 나머지는 모두 곱하기 연산을 수행하도록 했다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/783130e9e3010e3f50b3561b33c5f119.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 11 - 그리디 2. 곱하기 혹은 더하기 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) BOJ 1439. 뒤집기</title><link href="http://localhost:4000/boj/boj1439-py/" rel="alternate" type="text/html" title="Python) BOJ 1439. 뒤집기" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1439-py</id><content type="html" xml:base="http://localhost:4000/boj/boj1439-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/1439">https://www.acmicpc.net/problem/1439</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>다솜이는 0과 1로만 이루어진 문자열 S를 가지고 있다. 다솜이는 이 문자열 S에 있는 모든 숫자를 전부 같게 만들려고 한다. 다솜이가 할 수 있는 행동은 S에서 연속된 하나 이상의 숫자를 잡고 모두 뒤집는 것이다. 뒤집는 것은 1을 0으로, 0을 1로 바꾸는 것을 의미한다.</p>
+  </li>
+  <li>
+    <p>예를 들어 S=0001100 일 때,</p>
+  </li>
+  <li>전체를 뒤집으면 1110011이 된다.</li>
+  <li>4번째 문자부터 5번째 문자까지 뒤집으면 1111111이 되어서 2번 만에 모두 같은 숫자로 만들 수 있다.</li>
+  <li>
+    <p>하지만, 처음부터 4번째 문자부터 5번째 문자까지 문자를 뒤집으면 한 번에 0000000이 되어서 1번 만에 모두 같은 숫자로 만들 수 있다.</p>
+  </li>
+  <li>문자열 S가 주어졌을 때, 다솜이가 해야하는 행동의 최소 횟수를 출력하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 문자열 S가 주어진다. S의 길이는 100만보다 작다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 다솜이가 해야하는 행동의 최소 횟수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>0과 1이 연속된 덩어리가 각각 몇 개인지 센 다음에 더 적은 덩어리의 갯수를 출력한다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 72 ms</li>
+  <li>메모리 : 30840 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/8b96b77f58480499b52f61a1b2246629.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1439" /><category term="Greedy" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1439 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 4. 만들 수 없는 금액</title><link href="http://localhost:4000/boj/CodingTestBook-11-04-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 11 그리디 4. 만들 수 없는 금액" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-11-04-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-11-04-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+<hr />
+
+<ul>
+  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
+  <li>Chapter 11 - 그리디 4. 만들 수 없는 금액<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>동네 편의점의 주인인 동빈이는 N개의 동전을 가지고 있다. 이때 N개의 동전을 이용하여 만들 수 없는 양의 정수 금액 중 최솟값을 구하는 프로그램을 작성하시오.</li>
+  <li>예를 들어 N = 3이고, 각 동전이 각각 3원, 5원, 7원짜리 동전이라고 가정하면 만들 수 없는 양의 정수 금액 중 최솟값은 1원이다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에는 동전의 개수를 나타내는 양의 정수 N이 주어진다.(1 &lt;= N &lt;= 1,000)</li>
+  <li>둘째 줄에는 각 동전의 화폐 단위를 나타내는 N개의 자연수가 주어지며, 각 자연수는 공백으로 구분한다. 이때 각 화폐 단위는 1,000,000 이하의 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 주어진 동전들로 만들 수 없는 양의 정수 금액 중 최솟값을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음에는 bool 배열을 만들어서 N개의 동전들로 가능한 조합들을 구한 다음 그 조합들의 누적합을 각각 구해서 만들 수 있는 숫자를 체크했다. 그러면 부분 집합에서 생기지 않은 합의 인덱스에는 체크가 되지 않았을 것이니까 해당 인덱스는 false로 남아있을 것이다. false인 인덱스 중에서 가장 작은 값을 출력했다.</li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/44d9ecf5a60d33dc8346bdb53db805bb.js"></script>
+<p><br /></p>
+
+<ul>
+  <li>근데 이렇게 작성하고 디버깅을 해 보니까 중복되는 조합이 넘 많이 만들어져서 같은 숫자가 나오는 연산이 반복되었다. 그래서 좀 비효율적인 것 같아서 정답코드를 참고했다.</li>
+  <li>책에 있는 정답 풀이는 <code class="language-plaintext highlighter-rouge">target</code>이 될 숫자를 정한 다음 해당 숫자를 만들 수 있다면 <code class="language-plaintext highlighter-rouge">target</code>값을 업데이트하고 그렇지 않다면 마지막에 구한 <code class="language-plaintext highlighter-rouge">target</code>값이 정답이 되는 것이다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/eacaa6cdc5a8f36040c7bccccfb85f80.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Greedy" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 11 - 그리디 4. 만들 수 없는 금액 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 1. 모험가 길드</title><link href="http://localhost:4000/boj/CodingTestBook-11-01-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 11 그리디 1. 모험가 길드" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-11-01-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-11-01-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+<hr />
+
+<ul>
+  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
+  <li>Chapter 11 - 그리디 1. 모험가 길드<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>한 마을에 모험가가 N명 있다. 모험가 길드에서는 N명의 모험가를 대상으로 ‘공포도’를 측정했는데, ‘공포도’가 높은 모험가는 쉽게 공포를 느껴 위험 상황에서 제대로 대처할 능력이 떨어진다. 모험가 길드장인 동빈이는 모험가 그룹을 안전하게 구성하고자 공포도가 X인 모험가는 반드시 X명 이상으로 구성한 모험가 그룹에 참여해야 여행을 떠날 수 있도록 규정했다.</li>
+  <li>N명의 모험가에 대한 정보가 주어졌을 때, 여행을 떠날 수 있는 그룹 수의 최댓값을 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 모험가의 수 N이 주어진다.(1 &lt;= N &lt;= 100,000)</li>
+  <li>둘째 줄에 각 모험가의 공포도의 값을 N 이하의 자연수로 주어지며, 각 자연수는 공백으로 구분한다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>여행을 떠날 수 있는 그룹 수의 최댓값을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>입력으로 주어지는 배열을 오름차순으로 정렬한 뒤 각 원소의 크기만큼 팀원을 구성할 수 있으면 정답 카운트를 늘리면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/d8d0c8c90988f4a298725e0c0afb2b3f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 11 - 그리디 1. 모험가 길드 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결</title><link href="http://localhost:4000/project%20log/cafe-project-31/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결" /><published>2022-04-10T00:00:00+09:00</published><updated>2022-04-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-31</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-31/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -76,137 +297,69 @@
     <p>마지막으로 여기를 참고해서 탄력적 IP도 생성한 후 연결해 주었다.<br /><br /><br /></p>
   </li>
   <li>이렇게 <code class="language-plaintext highlighter-rouge">AWS</code> 배포도 끝! 정말 좋은 경험이었다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기 1. war파일 배포</title><link href="http://localhost:4000/project%20log/cafe-project-30/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기 1. war파일 배포" /><published>2022-04-09T00:00:00+09:00</published><updated>2022-04-09T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-30</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-30/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">컴퓨터 네트워크) Transmission Control Protocol</title><link href="http://localhost:4000/computer%20network/computer-network-transmission-control/" rel="alternate" type="text/html" title="컴퓨터 네트워크) Transmission Control Protocol" /><published>2022-04-09T00:00:00+09:00</published><updated>2022-04-09T00:00:00+09:00</updated><id>http://localhost:4000/computer%20network/computer-network-transmission-control</id><content type="html" xml:base="http://localhost:4000/computer%20network/computer-network-transmission-control/"><![CDATA[<h1 id="-transmission-control-protocol">👀 Transmission Control Protocol</h1>
 <ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Eclipse 2021-12</li>
-  <li>tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">TCP</code>에서 데이터 송수신 시 연결과 흐름 제어 동작을 수행하기 위해 사용되는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">UDP</code>에 비해 긴 헤더로 구성되어 있으며 <code class="language-plaintext highlighter-rouge">Sequence number</code>와 <code class="language-plaintext highlighter-rouge">Acknowledgment number</code>를 이용해 데이터가 전송되었는지 확인하고 흐름을 제어한다.</li>
 </ul>
 
-<h1 id="기간">기간</h1>
+<h2 id="sequence-number">Sequence number</h2>
 <ul>
-  <li>2022.3.4 ~ 2022.4.6<br /><br /><br /></li>
+  <li>전송된 세그먼트의 순서로 전체 메세지에서 어느 부분에 해당하는지 구분하는 번호</li>
+  <li>1, 2, 3, … 순서로 세그먼트가 전송된다고 하면 <code class="language-plaintext highlighter-rouge">Sequence number</code>를 통해 지금 받고 있는 부분이 어디쯤인지 알 수 있다.</li>
 </ul>
 
-<h1 id="주제">주제</h1>
+<h2 id="acknowledgment-number">Acknowledgment number</h2>
 <ul>
-  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
-  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
-  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
-  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황">진행상황</h1>
-<ul>
+  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 다음에 받아야 하는 <code class="language-plaintext highlighter-rouge">Sequence number</code></li>
+  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 세그먼트를 받고 나서 다음에 몇 번 세그먼트를 받아야 하는지 <code class="language-plaintext highlighter-rouge">sender</code>에게 알려줄 때 사용하는 번호</li>
   <li>
-    <p>프로젝트 제작 기한이 끝나고 발표도 다 하고 과제물도 다 제출했지만 마지막으로 요즘 대세인 <code class="language-plaintext highlighter-rouge">AWS</code>로 배포도 해 보고 싶었다! 그래서 구글링 가이드를 따라가며 하고 있는데 마냥 쉽지는 않군</p>
+    <p><code class="language-plaintext highlighter-rouge">sender</code>는 <code class="language-plaintext highlighter-rouge">receiver</code>로부터 온 <code class="language-plaintext highlighter-rouge">Acknowledgment number</code>를 보고 어떤 세그먼트를 보내야 하는지 알 수 있다.</p>
   </li>
-  <li><a href="https://m.blog.naver.com/scw0531/221438323697">https://m.blog.naver.com/scw0531/221438323697</a></li>
-  <li>전체적인 세팅 방법은 이 블로그 글을 참고했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">TCP</code> 프로토콜에서 데이터의 송수신은 <code class="language-plaintext highlighter-rouge">sequence number</code>와 <code class="language-plaintext highlighter-rouge">ACK</code>의 확인으로 이루어지며 중간에 데이터가 누락되었다면 <code class="language-plaintext highlighter-rouge">ACK</code>를 통해 몇 번이 누락되었는지 확인하고 재전송 할 수 있다.</li>
 </ul>
 
-<h2 id="회원가입">회원가입</h2>
-
-<p align="center"><img src="../../assets/images/joinAwsPlan.png" width="500" /></p>
-
+<h2 id="flow-control">flow control</h2>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">AWS</code>가 어떤 것인지 맛보기 용이니까 무료 플랜 선택<br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 수용할 수 있는 속도보다 훨씬 빠른 속도로 보내는 것을 막기 위해 사용된다.</li>
+  <li>데이터를 보낼 때 데이터를 받을 버퍼의 크기를 미리 제한한 뒤 그만큼씩 보내는 것이다.<br /><br /></li>
 </ul>
 
-<p align="center"><img src="../../assets/images/awsPayAlarm.png" width="700" /></p>
-
+<h1 id="congestion-control">Congestion Control</h1>
 <ul>
-  <li>
-    <p>그리고 재수 없게(?) 과금 경험을 하신 분들이 결제 알림 설정을 꼭 해 놓으라 그래서 알림 설정도 했다.</p>
-  </li>
-  <li>
-    <p>그 후로는 위에 첨부한 블로그 글대로 쭉 따라갔는데 위 글과는 다른 자바 버전을 쓰려고 자바 설치 과정만 좀 다르게 했다.</p>
-  </li>
+  <li>트래픽의 양이 늘어나면 전송 가능한 양이 점점 줄어들어서 나중에는 하나도 보내지 못 하게 된다.</li>
+  <li>그래서 지속 가능한 서비스를 할 수 있도록 네트워크 상에서 전송되는 데이터의 총량을 제한하는 것이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">end-to-end</code>와 <code class="language-plaintext highlighter-rouge">network-assisted</code> 방식이 있는데 <code class="language-plaintext highlighter-rouge">end-to-end</code>의 대표적인 방식은 <code class="language-plaintext highlighter-rouge">TCP</code>가 있고 <code class="language-plaintext highlighter-rouge">network-assisted</code>에는 <code class="language-plaintext highlighter-rouge">ATM</code>이 있다.</li>
 </ul>
 
-<h2 id="open-jdk11-설치">open jdk11 설치</h2>
+<h2 id="aimd">AIMD</h2>
 <ul>
-  <li><a href="https://codechacha.com/ko/ubuntu-install-open-jdk11/">https://codechacha.com/ko/ubuntu-install-open-jdk11/</a></li>
-  <li><code class="language-plaintext highlighter-rouge">open jdk</code> 설치는 이 블로그 글을 참고했다.</li>
+  <li>혼잡이 생기면 <code class="language-plaintext highlighter-rouge">congestion window</code>의 크기를 갑자기 줄여서 혼잡을 해결한 후에 다시 크기를 서서히 증가시키는 것</li>
 </ul>
 
-<h2 id="tomcat8-설치-그리고">Tomcat8 설치 그리고…</h2>
+<h2 id="congestion-windowcwnd">Congestion Window(cwnd)</h2>
 <ul>
-  <li>자바를 설치한 후에 다시 처음에 참고하던 블로그 글로 돌아와서 <code class="language-plaintext highlighter-rouge">Tomcat8</code>도 설치하고 잘 따라가고 있었는데 안타깝게도 톰캣을 어떻게 실행하라는 설명이 없었다..(아직 잘 모름…ㅎ)</li>
-  <li>그래서 구글링 해 보니까 설치된 폴더로 이동한 후 <code class="language-plaintext highlighter-rouge">./startup.sh</code>로 실행을 하는 것이라 해서 해 보았다. 그런데 안 됨 ㅠ.ㅠ</li>
+  <li>네트워크가 <code class="language-plaintext highlighter-rouge">congestion</code>을 일으키지 않는 한도 내에서 <code class="language-plaintext highlighter-rouge">ACK</code>를 받지 않고 보낼 수 있는 데이터의 양</li>
+  <li><code class="language-plaintext highlighter-rouge">cwnd</code>의 크기는 네트워크 상황에 따라서 유동적으로 조절된다.<br /><br /></li>
 </ul>
 
-<p align="center"><img src="../../assets/images/failToStartTomcat.png" width="600" /></p>
-<p align="center">차갑다...</p>
-
+<h1 id="한-번-더-비교해보는-tcp-vs-udp">한 번 더 비교해보는 TCP vs UDP</h1>
+<h2 id="tcp">TCP</h2>
 <ul>
-  <li>암튼 그래서 에러 메시지로 구글링을 하다가 <a href="https://rimkongs.tistory.com/241">https://rimkongs.tistory.com/241</a> 이 블로그 글을 참고해서 원인을 알 수 있었다.</li>
-  <li><code class="language-plaintext highlighter-rouge">sudo apt-get</code> 방식으로 설치한 톰캣은 <code class="language-plaintext highlighter-rouge">./startup.sh</code>이걸로 실행할 수 없었다.</li>
-  <li><code class="language-plaintext highlighter-rouge">sudo /etc/init.d/tomcat8 start</code> 이걸 써야 했음…</li>
+  <li>데이터를 주고받을 당사자 간에 연결을 먼저 수립한 다음에 데이터의 송수신을 시작하고 데이터가 정확하게 도착하게 하기 위해서 흐름 제어 동작을 수행하기 때문에 <code class="language-plaintext highlighter-rouge">UDP</code>에 비해서는 느리다. 그만큼 데이터가 중간에 누락되지 않고 정확하게 도착하는 것을 보장할 수 있다.</li>
+  <li>데이터의 정확한 송수신을 요구하는 <code class="language-plaintext highlighter-rouge">Email</code>, <code class="language-plaintext highlighter-rouge">Web browsing</code>에서 주로 사용된다.</li>
 </ul>
 
-<p align="center"><img src="../../assets/images/succeedToStartTomcat.png" width="500" /></p>
-<p align="center">실행 성공!</p>
-<p><br /></p>
-
+<h2 id="udp">UDP</h2>
 <ul>
-  <li>이제 톰캣 서버가 잘 돌아가고 있는지 웹사이트로 접속해 봐야 하는데 원래 참고하고 있던 블로그 글에서 그 주소에 대한 언급 또한 없어서… 처음에 좀 헤멨다. 당췌 어디로 접속해서 <code class="language-plaintext highlighter-rouge">It works</code>를 확인하란 것인지…</li>
+  <li>연결과 흐름 제어를 위한 동작을 수행하지 않고 받은 대로 그냥 보내기 때문에 <code class="language-plaintext highlighter-rouge">TCP</code>에 비해서는 빠른 속도를 보여준다. 그만큼 데이터가 정확하게 도착한다는 보장이 없다.</li>
+  <li>중간에 데이터가 좀 누락되어도 괜찮고 속도가 빠른 것이 더 중시되는 실시간 스트리밍 서비스에서 주로 사용된다.<br /><br /><br /></li>
 </ul>
 
-<p align="center"><img src="../../assets/images/awsDns.png" width="700" /></p>
-
+<h1 id="출처">출처</h1>
 <ul>
-  <li>알고 보니 <code class="language-plaintext highlighter-rouge">퍼블릭 IPv4 DNS</code> 주소의 맨 뒤에 <code class="language-plaintext highlighter-rouge">:8080</code>을 붙이면 접속할 수 있는 것이었다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/itWorks.png" /></p>
-
-<ul>
-  <li>접속 안 될까봐 좀 조마조마 했는데 다행히 잘 된다.</li>
-</ul>
-
-<h2 id="filezilla-설치">FileZilla 설치</h2>
-
-<p align="center"><img src="../../assets/images/fileZillaClient.png" width="500" /></p>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">FileZilla</code>를 설치해야 했는데 이거 또한 클라이언트 설치인지 서버 설치인지 언급되어 있지 않아서 둘 다 깔아봤는데 클라이언트를 설치하는 것이었다.</p>
-  </li>
-  <li>
-    <p>근데 새 사이트 관리자를 만들어서 접속에 성공한 것 같은데 나는 또 저분과 다르게 폴더가 쭈루루 뜨지 않는 것이었다. 😟 머선 일이고… 맞게 접속한 거 같긴 한데</p>
-  </li>
-</ul>
-
-<p align="center"><img src="../../assets/images/folderList.png" width="300" /></p>
-
-<ul>
-  <li>? 떠 있는 폴더들을 누르니까 하나씩 로드가 되었다.<br /><br /></li>
-</ul>
-
-<p align="center"><img src="../../assets/images/failToUpload.png" width="600" /></p>
-
-<ul>
-  <li>근데 <code class="language-plaintext highlighter-rouge">war</code> 파일 업로드를 하려니까 권한이 없다면서 업로드가 되지 않았다.</li>
-  <li><a href="https://threeidiotscoding.tistory.com/14">https://threeidiotscoding.tistory.com/14</a></li>
-  <li>이 글을 참고해서 권한 설정을 해 준 뒤 업로드를 할 수 있었다.</li>
-</ul>
-
-<h2 id="배포된-프로젝트-사이트에-접속하기">배포된 프로젝트 사이트에 접속하기</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">war</code> 파일이 정상적으로 업로드 되고 프로젝트 폴더도 추출되어서 잘 만들어진 것을 확인했는데 8080으로 접속하면 계속 It works 페이만 뜨는 것이었다. 머선 일이고…2</li>
-  <li><a href="https://gdtbgl93.tistory.com/m/99">https://gdtbgl93.tistory.com/m/99</a> 이 글을 참고해서 또 문제를 알았다.</li>
-  <li>8080 뒤에 <code class="language-plaintext highlighter-rouge">/프로젝트명</code>을 붙여줘야 했던 것이었다. 글고보니 폴더가 따로 생성이 되는데 넘 당황해서 저기까지 생각을 못 했었네…ㅎ</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/awsProjectPage.png" /></p>
-
-<ul>
-  <li>이제 진짜로 접속이 잘 되는 것을 확인했다. 신기해!</li>
-  <li>프로젝트 배포가 잘 되는지만 확인하려고 기본 세팅만 진행했기 때문에 <code class="language-plaintext highlighter-rouge">DB</code>연결은 아직 하지 않았다. 내 사이트가 제대로 동작하는지 확인하려면 <code class="language-plaintext highlighter-rouge">DB</code> 연결을 해 봐야 하는데 오늘은 시간이 늦어서 내일 마저 해야겠다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">Python) BOJ 1647. 도시 분할 계획</title><link href="http://localhost:4000/boj/boj1647-py/" rel="alternate" type="text/html" title="Python) BOJ 1647. 도시 분할 계획" /><published>2022-04-09T00:00:00+09:00</published><updated>2022-04-09T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1647-py</id><content type="html" xml:base="http://localhost:4000/boj/boj1647-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+  <li><a href="http://www.kmooc.kr/courses/course-v1:PNUk+CN_C01+2021_KM_013/video">컴퓨터 네트워킹 - 부산대학교 K-MOOC 공개강의</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><category term="Transport" /><summary type="html"><![CDATA[👀 Transmission Control Protocol TCP에서 데이터 송수신 시 연결과 흐름 제어 동작을 수행하기 위해 사용되는 프로토콜 UDP에 비해 긴 헤더로 구성되어 있으며 Sequence number와 Acknowledgment number를 이용해 데이터가 전송되었는지 확인하고 흐름을 제어한다.]]></summary></entry><entry><title type="html">Python) BOJ 1647. 도시 분할 계획</title><link href="http://localhost:4000/boj/boj1647-py/" rel="alternate" type="text/html" title="Python) BOJ 1647. 도시 분할 계획" /><published>2022-04-09T00:00:00+09:00</published><updated>2022-04-09T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1647-py</id><content type="html" xml:base="http://localhost:4000/boj/boj1647-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -388,302 +541,134 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/f960c66a0d5c664798c3da51b9219a37.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 10 - 실전문제 2. 팀 결성 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">컴퓨터 네트워크) Transmission Control Protocol</title><link href="http://localhost:4000/computer%20network/computer-network-transmission-control/" rel="alternate" type="text/html" title="컴퓨터 네트워크) Transmission Control Protocol" /><published>2022-04-09T00:00:00+09:00</published><updated>2022-04-09T00:00:00+09:00</updated><id>http://localhost:4000/computer%20network/computer-network-transmission-control</id><content type="html" xml:base="http://localhost:4000/computer%20network/computer-network-transmission-control/"><![CDATA[<h1 id="-transmission-control-protocol">👀 Transmission Control Protocol</h1>
+<script src="https://gist.github.com/miro7923/f960c66a0d5c664798c3da51b9219a37.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 10 - 실전문제 2. 팀 결성 제한 시간 제한 : 2 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기 1. war파일 배포</title><link href="http://localhost:4000/project%20log/cafe-project-30/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 30 - AWS로 프로젝트 배포하기 1. war파일 배포" /><published>2022-04-09T00:00:00+09:00</published><updated>2022-04-09T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-30</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-30/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">TCP</code>에서 데이터 송수신 시 연결과 흐름 제어 동작을 수행하기 위해 사용되는 프로토콜</li>
-  <li><code class="language-plaintext highlighter-rouge">UDP</code>에 비해 긴 헤더로 구성되어 있으며 <code class="language-plaintext highlighter-rouge">Sequence number</code>와 <code class="language-plaintext highlighter-rouge">Acknowledgment number</code>를 이용해 데이터가 전송되었는지 확인하고 흐름을 제어한다.</li>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Eclipse 2021-12</li>
+  <li>tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
 </ul>
 
-<h2 id="sequence-number">Sequence number</h2>
+<h1 id="기간">기간</h1>
 <ul>
-  <li>전송된 세그먼트의 순서로 전체 메세지에서 어느 부분에 해당하는지 구분하는 번호</li>
-  <li>1, 2, 3, … 순서로 세그먼트가 전송된다고 하면 <code class="language-plaintext highlighter-rouge">Sequence number</code>를 통해 지금 받고 있는 부분이 어디쯤인지 알 수 있다.</li>
+  <li>2022.3.4 ~ 2022.4.6<br /><br /><br /></li>
 </ul>
 
-<h2 id="acknowledgment-number">Acknowledgment number</h2>
+<h1 id="주제">주제</h1>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 다음에 받아야 하는 <code class="language-plaintext highlighter-rouge">Sequence number</code></li>
-  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 세그먼트를 받고 나서 다음에 몇 번 세그먼트를 받아야 하는지 <code class="language-plaintext highlighter-rouge">sender</code>에게 알려줄 때 사용하는 번호</li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">sender</code>는 <code class="language-plaintext highlighter-rouge">receiver</code>로부터 온 <code class="language-plaintext highlighter-rouge">Acknowledgment number</code>를 보고 어떤 세그먼트를 보내야 하는지 알 수 있다.</p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">TCP</code> 프로토콜에서 데이터의 송수신은 <code class="language-plaintext highlighter-rouge">sequence number</code>와 <code class="language-plaintext highlighter-rouge">ACK</code>의 확인으로 이루어지며 중간에 데이터가 누락되었다면 <code class="language-plaintext highlighter-rouge">ACK</code>를 통해 몇 번이 누락되었는지 확인하고 재전송 할 수 있다.</li>
-</ul>
-
-<h2 id="flow-control">flow control</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">receiver</code>가 수용할 수 있는 속도보다 훨씬 빠른 속도로 보내는 것을 막기 위해 사용된다.</li>
-  <li>데이터를 보낼 때 데이터를 받을 버퍼의 크기를 미리 제한한 뒤 그만큼씩 보내는 것이다.<br /><br /></li>
-</ul>
-
-<h1 id="congestion-control">Congestion Control</h1>
-<ul>
-  <li>트래픽의 양이 늘어나면 전송 가능한 양이 점점 줄어들어서 나중에는 하나도 보내지 못 하게 된다.</li>
-  <li>그래서 지속 가능한 서비스를 할 수 있도록 네트워크 상에서 전송되는 데이터의 총량을 제한하는 것이다.</li>
-  <li><code class="language-plaintext highlighter-rouge">end-to-end</code>와 <code class="language-plaintext highlighter-rouge">network-assisted</code> 방식이 있는데 <code class="language-plaintext highlighter-rouge">end-to-end</code>의 대표적인 방식은 <code class="language-plaintext highlighter-rouge">TCP</code>가 있고 <code class="language-plaintext highlighter-rouge">network-assisted</code>에는 <code class="language-plaintext highlighter-rouge">ATM</code>이 있다.</li>
-</ul>
-
-<h2 id="aimd">AIMD</h2>
-<ul>
-  <li>혼잡이 생기면 <code class="language-plaintext highlighter-rouge">congestion window</code>의 크기를 갑자기 줄여서 혼잡을 해결한 후에 다시 크기를 서서히 증가시키는 것</li>
-</ul>
-
-<h2 id="congestion-windowcwnd">Congestion Window(cwnd)</h2>
-<ul>
-  <li>네트워크가 <code class="language-plaintext highlighter-rouge">congestion</code>을 일으키지 않는 한도 내에서 <code class="language-plaintext highlighter-rouge">ACK</code>를 받지 않고 보낼 수 있는 데이터의 양</li>
-  <li><code class="language-plaintext highlighter-rouge">cwnd</code>의 크기는 네트워크 상황에 따라서 유동적으로 조절된다.<br /><br /></li>
-</ul>
-
-<h1 id="한-번-더-비교해보는-tcp-vs-udp">한 번 더 비교해보는 TCP vs UDP</h1>
-<h2 id="tcp">TCP</h2>
-<ul>
-  <li>데이터를 주고받을 당사자 간에 연결을 먼저 수립한 다음에 데이터의 송수신을 시작하고 데이터가 정확하게 도착하게 하기 위해서 흐름 제어 동작을 수행하기 때문에 <code class="language-plaintext highlighter-rouge">UDP</code>에 비해서는 느리다. 그만큼 데이터가 중간에 누락되지 않고 정확하게 도착하는 것을 보장할 수 있다.</li>
-  <li>데이터의 정확한 송수신을 요구하는 <code class="language-plaintext highlighter-rouge">Email</code>, <code class="language-plaintext highlighter-rouge">Web browsing</code>에서 주로 사용된다.</li>
-</ul>
-
-<h2 id="udp">UDP</h2>
-<ul>
-  <li>연결과 흐름 제어를 위한 동작을 수행하지 않고 받은 대로 그냥 보내기 때문에 <code class="language-plaintext highlighter-rouge">TCP</code>에 비해서는 빠른 속도를 보여준다. 그만큼 데이터가 정확하게 도착한다는 보장이 없다.</li>
-  <li>중간에 데이터가 좀 누락되어도 괜찮고 속도가 빠른 것이 더 중시되는 실시간 스트리밍 서비스에서 주로 사용된다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="출처">출처</h1>
-<ul>
-  <li><a href="http://www.kmooc.kr/courses/course-v1:PNUk+CN_C01+2021_KM_013/video">컴퓨터 네트워킹 - 부산대학교 K-MOOC 공개강의</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Computer Network" /><category term="CS" /><category term="Network" /><category term="Transport" /><summary type="html"><![CDATA[👀 Transmission Control Protocol TCP에서 데이터 송수신 시 연결과 흐름 제어 동작을 수행하기 위해 사용되는 프로토콜 UDP에 비해 긴 헤더로 구성되어 있으며 Sequence number와 Acknowledgment number를 이용해 데이터가 전송되었는지 확인하고 흐름을 제어한다.]]></summary></entry><entry><title type="html">깃허브 블로그(Github Blog) minimal-mistakes 테마 게시글 날짜 출력하기</title><link href="http://localhost:4000/story/making-github-blog-02/" rel="alternate" type="text/html" title="깃허브 블로그(Github Blog) minimal-mistakes 테마 게시글 날짜 출력하기" /><published>2022-04-08T00:00:00+09:00</published><updated>2022-04-08T00:00:00+09:00</updated><id>http://localhost:4000/story/making-github-blog-02</id><content type="html" xml:base="http://localhost:4000/story/making-github-blog-02/"><![CDATA[<h1 id="-시작">🎬 시작</h1>
-<ul>
-  <li>네이버 블로그를 오래 했었는데 네이버 블로그는 게시글 제목 옆에 작성한 날짜를 보여준다. 그런데 <code class="language-plaintext highlighter-rouge">GitHub</code>으로 이사오고 <code class="language-plaintext highlighter-rouge">minimal-mistakes</code> 테마를 쓰다 보니… 왜 작성한 날짜 보기가 이렇게 어렵지? 외국인들은 날짜에 연연하지 않나…</li>
-  <li>기본 설정은 게시글 제목 근처에 표시되지 않고 게시글 본문의 맨 아래로 내려야 작성 날짜를 볼 수 있다.</li>
-  <li>그래서 이걸 바꿀 것이다.</li>
-  <li><a href="https://devinlife.com/howto%20github%20pages/github-pages-settings/">GitHub Pages 기타 설정</a></li>
-  <li><a href="https://jhlov.github.io/jekyll-%EB%B8%94%EB%A1%9C%EA%B7%B8-%ED%8F%AC%EC%8A%A4%ED%8C%85-%EC%8B%9C%EA%B0%84-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">[jekyll] jekyll 블로그 포스팅 시간 출력하기</a></li>
-  <li>
-    <p>두 블로그 글들을 참고했는데 난 설정 페이지의 코드가 약간 달라서 같은 방법을 적용할 수 없었다. 같은 테마 파일을 다운 받았을텐데 난 왜 남들 다 있는 코드가 없었을까…</p>
-  </li>
-  <li>그래서 결정적으로는 <a href="https://github.com/devinlife/devinlife.github.io/commit/c6a8fe5a2f2a6f208b4ad90528074842e5c3ee66">https://github.com/devinlife/devinlife.github.io/commit/c6a8fe5a2f2a6f208b4ad90528074842e5c3ee66</a> 이 커밋에 달린 댓글에 있는 방법으로 해결할 수 있었다.<br /><br /></li>
-</ul>
-
-<h1 id="수정-시도">수정 시도</h1>
-<ul>
-  <li>위의 두 블로그처럼 <code class="language-plaintext highlighter-rouge">_inclues/archive-single.html</code>이랑 <code class="language-plaintext highlighter-rouge">_layouts/single.html</code>을 수정해 봤는데 적용이 되지 않았다. 아마 남들은 다 있는 코드가 나에겐 없었던 이유가 저 분들처럼 만들어 줄 파일이 존재하지 않아서였던 것이 아닐까… 로컬 서버를 실행시켜서 미리보기로 봤을 때엔 잘 되고 <code class="language-plaintext highlighter-rouge">commit</code>까지도 잘 됐는데 <code class="language-plaintext highlighter-rouge">push</code>를 시도하니까 참고를 찾을 수 없다는 내용의 에러가 뜨면서 적용이 되지 않았다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/solveComment.png" width="700" /></p>
-
-<ul>
-  <li>그러다 이 댓글을 보고 <code class="language-plaintext highlighter-rouge">_config.yml</code>을 수정해 봤는데 미리보기 상에서는 적용이 되지 않았다.</li>
-  <li>그래서 처음엔 난 안 되는 줄 알고 계속 <code class="language-plaintext highlighter-rouge">_inclues/archive-single.html</code>과 <code class="language-plaintext highlighter-rouge">_layouts/single.html</code> 파일을 수정해보다가 마지막에 밑지는 느낌으로 해 봤는데 <code class="language-plaintext highlighter-rouge">push</code>도 잘 되고 조금 기다리니까 블로그에 적용도 잘 되었다.</li>
-</ul>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Defaults</span>
-<span class="na">defaults</span><span class="pi">:</span>
-  <span class="c1"># _posts</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">read_time</span><span class="pi">:</span> <span class="no">false</span> <span class="c1"># false로 변경</span>
-      <span class="na">show_date</span><span class="pi">:</span> <span class="no">true</span> <span class="c1"># 원래 없어서 생성 후 true로 설정</span>
-      <span class="na">comments</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">share</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">related</span><span class="pi">:</span> <span class="no">true</span>
-</code></pre></div></div>
-
-<p align="center"><img src="../../assets/images/archiveDate.png" width="700" /></p>
-
-<ul>
-  <li>잘 나오네!</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Story" /><category term="story" /><summary type="html"><![CDATA[🎬 시작 네이버 블로그를 오래 했었는데 네이버 블로그는 게시글 제목 옆에 작성한 날짜를 보여준다. 그런데 GitHub으로 이사오고 minimal-mistakes 테마를 쓰다 보니… 왜 작성한 날짜 보기가 이렇게 어렵지? 외국인들은 날짜에 연연하지 않나… 기본 설정은 게시글 제목 근처에 표시되지 않고 게시글 본문의 맨 아래로 내려야 작성 날짜를 볼 수 있다. 그래서 이걸 바꿀 것이다. GitHub Pages 기타 설정 [jekyll] jekyll 블로그 포스팅 시간 출력하기 두 블로그 글들을 참고했는데 난 설정 페이지의 코드가 약간 달라서 같은 방법을 적용할 수 없었다. 같은 테마 파일을 다운 받았을텐데 난 왜 남들 다 있는 코드가 없었을까…]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 09 실전문제 2. 미래 도시</title><link href="http://localhost:4000/boj/CodingTestBook-09-4-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 09 실전문제 2. 미래 도시" /><published>2022-04-08T00:00:00+09:00</published><updated>2022-04-08T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-09-4-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-09-4-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
-<hr />
-
-<ul>
-  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
-  <li>Chapter 09 - 실전문제 2. 미래 도시<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>방문 판매원 A는 많은 회사가 모여 있는 공중 미래 도시에 있다. 공중 미래 도시에는 1번부터 N번까지의 회사가 있는데 특정 회사끼리는 서로 도로를 통해 연결되어 있다. 방문 판매원 A는 현재 1번 회사에 위치해 있으며, X번 회사에 방문해 물건을 판매하고자 한다.</li>
-  <li>공중 미래 도시에서 특정 회사에 도착하기 위한 방법은 회사끼리 연결되어 있는 도로를 이용하는 방법이 유일하다. 또한 연결된 2개의 회사는 양방향으로 이동할 수 있다. 공중 미래 도시에서의 도로는 마하의 속도로 사람을 이동시켜주기 때문에 특정 회사와 다른 회사가 도로로 연결되어 있다면, 정확히 1만큼의 시간으로 이동할 수 있다.</li>
-  <li>또한 오늘 방문 판매원 A는 기대하던 소개팅에도 참석하고자 한다. 소개팅의 상대는 K번 회사에 존재한다. 방문 판매원 A는 X번 회사에 가서 물건을 판매하기 전에 먼저 소개팅 상대의 회사에 찾아 가서 함께 커피를 마실 예정이다. 따라서 방문 판매원 A는 1번 회사에서 출발하여 K번 회사를 방문한 뒤에 X번 회사로 가는 것이 목표다. 이때 방문 판매원 A는 가능한 한 빠르게 이동하고자 한다. 방문 판매원이 회사 사이를 이동하게 되는 최소 시간을 계산하는 프로그램을 작성하시오. 이때 소개팅의 상대방과 커피를 마시는 시간 등은 고려하지 않는다고 가정한다.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 전체 회사의 개수 N과 경로의 개수 M이 공백으로 구분되어 차례대로 주어진다.(1 &lt;= N, M &lt;= 100)</li>
-  <li>둘째 줄부터 M+1번째 줄에는 연결된 두 회사의 번호가 공백으로 구분되어 주어진다.</li>
-  <li>M+2번째 줄에는 X와 K가 공백으로 구분되어 차례대로 주어진다.(1 &lt;= K &lt;= 100)<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 방문 판매원 A가 K번 회사를 거쳐 X번 회사로 가는 최소 이동 시간을 출력한다.</li>
-  <li>만약 X번 회사에 도착할 수 없다면 -1을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>N의 범위가 100 이하로 매우 작기 때문에 비교적 간단한 워셜 플로이드 알고리즘으로 풀 수 있다.</li>
-  <li>확실히 다익스트라에 비하면 워셜이 구현하기 쉬워서 손이 가게 되는 것 같다.</li>
-  <li>서로 연결된 회사의 거리는 1이라고 했으니 입력 받으면서 연결된 회사의 거리는 1로 초기화한다.</li>
-  <li>다음엔 워셜 플로이드 알고리즘으로 i번째 회사에서 j번째 회사로 가는 거리와 k번째 회사를 거쳐 가는 거리 중 더 짧은 거리로 갱신한다.<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/b6c57af04a5230a1b8a138d9aa4ab733.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 09 - 실전문제 2. 미래 도시 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 09 실전문제 3. 전보</title><link href="http://localhost:4000/boj/CodingTestBook-09-5-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 09 실전문제 3. 전보" /><published>2022-04-08T00:00:00+09:00</published><updated>2022-04-08T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-09-5-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-09-5-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
-<hr />
-
-<ul>
-  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
-  <li>Chapter 09 - 실전문제 3. 전보<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>어떤 나라에는 N개의 도시가 있다. 그리고 각 도시는 보내고자 하는 메시지가 있는 경우, 다른 도시로 전보를 보내서 다른 도시로 해당 메시지를 전송할 수 있다. 하지만 X라는 도시에서 Y라는 도시로 전보를 보내고자 한다면, 도시 X에서 도시 Y로 향하는 통로가 설치되어 있어야 한다. 예를 들어 X에서 Y로 향하는 통로는 있지만, Y에서 X로 향하는 통로가 없다면 Y는 X로 메시지를 보낼 수 없다. 또한 통로를 거쳐 메시지를 보낼 때에는 일정 시간이 소요된다.</li>
-  <li>어느 날 C라는 도시에서 위급 상황이 발생했다. 그래서 최대한 많은 도시로 메시지를 보내고자 한다. 메시지는 도시 C에서 출발하여 각 도시 사이에 설치된 통로를 거쳐, 최대한 많이 퍼져나갈 것이다. 각 도시의 번호와 통로가 설치되어 있는 정보가 주어졌을 때, 도시 C에서 보낸 메시지를 받게 되는 도시의 개수는 총 몇 개이며 도시들이 모두 메시지를 받는 데까지 걸리는 시간은 얼마인지 계산하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 도시의 개수 N, 통로의 개수 M, 메시지를 보내고자 하는 도시 C가 주어진다.(1 &lt;= N &lt;= 30,000, 1 &lt;= M &lt;= 200,000, 1 &lt;= C &lt;= N)</li>
-  <li>둘째 줄부터 M + 1번째 줄에 걸쳐서 통로에 대한 정보 X, Y, Z가 주어진다. 이는 특정 도시 X에서 다른 특정 도시 Y로 이어지는 통로가 있으며, 메시지가 전달되는 시간이 Z라는 의미이다.(1 &lt;= X, Y &lt;= N, 1 &lt;= Z &lt;= 1,000)<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 도시 C에서 보낸 메시지를 받는 도시의 총 개수와 총 걸리는 시간을 공백으로 구분하여 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>시작점이 정해져 있고 N의 범위가 꽤 커서 워셜 플로이드 보다는 다익스트라가 적합하다고 생각했고, 또 우선순위 큐를 사용하는 다익스트라를 쓰는 것이 좋겠다고 생각했다.</li>
-  <li>다익스트라 알고리즘으로 C 도시에서 다른 도시들로 이동하는 최단 거리를 찾아서 갱신한다.</li>
-  <li>마지막에 출력할 때 최단거리 테이블의 값이 무한대가 아닌 인덱스의 개수를 세고, 그 중에서 가장 먼 도시의 최단 거리를 출력하면 된다.</li>
-  <li>그런데 문제는 총 걸리는 시간을 출력하라고 되어 있어서 도착 가능한 도시들의 최단 거리의 합인가 싶어서 처음에는 저렇게 출력하니까 틀렸었다. 문제 설명 좀 명확했으면 좋겠다.</li>
-  <li>이동 가능한 도시의 개수를 셀 때엔 자기 자신도 포함되기 때문에 마지막 출력 시에는 1을 빼고 출력해야 한다.<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/a8681b5b930a425a7b7421636657bf8d.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 09 - 실전문제 3. 전보 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">개발자 GitHub 포트폴리오 사이트 만들기 01 - 내가 코딩한 일수 자동 계산하기</title><link href="http://localhost:4000/project%20log/make-portfolio-01/" rel="alternate" type="text/html" title="개발자 GitHub 포트폴리오 사이트 만들기 01 - 내가 코딩한 일수 자동 계산하기" /><published>2022-04-07T00:00:00+09:00</published><updated>2022-04-07T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/make-portfolio-01</id><content type="html" xml:base="http://localhost:4000/project%20log/make-portfolio-01/"><![CDATA[<h1 id="제작목적">제작목적</h1>
-<ul>
-  <li>웹 개발을 공부하며 첫 번째 프로젝트를 끝내고 나니까 이걸 잘 포장해서 보여줘야 할 필요가 생겼다. 즉 포트폴리오 문서가 필요해진 것!</li>
-  <li>포트폴리오 문서는 서류 형식으로도 만들 것이지만 나는 웹 개발을 공부하고 있으니까 나의 포트폴리오를 보여줄 웹 사이트도 만들기로 결정했다. 기본적인 기능이 다 구현되어 있는 무료 템플릿을 쓰겠지만 그걸 나에게 맞게 수정하는 과정에서도 배울 점이 많을 것이다.</li>
+  <li>웹 백엔드 수업 중 중간 과제로 개인 프로젝트를 진행하게 되었다.</li>
+  <li>회원가입/로그인/탈퇴 등 기본적인 회원관리 시스템을 가진 웹 사이트를 만드는 것이다. 주어진 기한은 <code class="language-plaintext highlighter-rouge">한 달</code></li>
+  <li>나는 <code class="language-plaintext highlighter-rouge">다음 카페</code>를 소규모로 만들어 보기로 했다. 평소 자주 이용하기도 했고 과제의 평가 기준에서 요구하는 기능들을 다 담고 있기도 했기 때문에 이번 기회에 구현해 보면 그동안 배운 것들을 활용하기에 좋을 거 같았다.</li>
+  <li>평가 기준에 사이트의 디자인 구현(HTML/CSS 등 프론트엔드)은 포함되지 않기 때문에 본인이 쓰고 싶은 HTML/CSS 템플릿을 구한 뒤 회원 관리 기능을 구현하면 된다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="진행상황">진행상황</h1>
 <ul>
-  <li>템플릿은 <code class="language-plaintext highlighter-rouge">GiHhub</code> 레포지토리에 무료로 공개되어 있는 <code class="language-plaintext highlighter-rouge">congchu</code>님의 템플릿을 사용했다.</li>
-  <li><a href="https://github.com/congchu/web-porfolio">https://github.com/congchu/web-porfolio</a></li>
-  <li><code class="language-plaintext highlighter-rouge">GitHub</code>을 써 보았다면 <code class="language-plaintext highlighter-rouge">fork</code>에서 로컬 저장소에 다운받기까지는 쉽게 할 수 있다. 몰라도 <code class="language-plaintext highlighter-rouge">Readme</code>에 친절하게 설명되어 있다.<br /><br /></li>
+  <li>
+    <p>프로젝트 제작 기한이 끝나고 발표도 다 하고 과제물도 다 제출했지만 마지막으로 요즘 대세인 <code class="language-plaintext highlighter-rouge">AWS</code>로 배포도 해 보고 싶었다! 그래서 구글링 가이드를 따라가며 하고 있는데 마냥 쉽지는 않군</p>
+  </li>
+  <li><a href="https://m.blog.naver.com/scw0531/221438323697">https://m.blog.naver.com/scw0531/221438323697</a></li>
+  <li>전체적인 세팅 방법은 이 블로그 글을 참고했다.</li>
 </ul>
 
-<h2 id="indexhtml---내가-코딩한-일수-수정">index.html - 내가 코딩한 일수 수정</h2>
-<ul>
-  <li>가장 먼저 이름을 수정하고 쭉 보다보니 <code class="language-plaintext highlighter-rouge">내가 코딩한 일수</code>를 기록하는 란이 있었다.</li>
-</ul>
+<h2 id="회원가입">회원가입</h2>
 
-<p align="center"><img src="../../assets/images/codingDaysDefault.png" width="300" /></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;strong</span> <span class="na">id=</span><span class="s">"codingDays"</span> <span class="na">class=</span><span class="s">"number"</span> <span class="na">data-number=</span><span class="s">"365"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/strong&gt;</span>
-    <span class="nt">&lt;span&gt;</span>코딩한 일수<span class="nt">&lt;/span&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
+<p align="center"><img src="../../assets/images/joinAwsPlan.png" width="500" /></p>
 
 <ul>
-  <li>코드 상의 기본 데이터는 <code class="language-plaintext highlighter-rouge">365</code>로 설정되어 있다.</li>
-  <li>이걸 내가 코딩한 날짜로 바꿔주면 되는데 이걸 일일이 계산하는 것은 정말 번거로운 작업이다.</li>
-  <li>날짜 하나를 정해서 박아놓으면 수동으로 업데이트 해 줘야 하는데 귀찮고 손이 많이 가니까… 고등 교육을 받은 현대인이니까 시간이 흐름에 따라 알아서 업데이트 되게 해 줄 것이다.<br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">AWS</code>가 어떤 것인지 맛보기 용이니까 무료 플랜 선택<br /><br /></li>
 </ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div></div>
+<p align="center"><img src="../../assets/images/awsPayAlarm.png" width="700" /></p>
 
 <ul>
-  <li>밑에 내려 보니까 <code class="language-plaintext highlighter-rouge">main.js</code> 파일을 수정하면 될 거 같아서 여기로 이동했다.</li>
+  <li>
+    <p>그리고 재수 없게(?) 과금 경험을 하신 분들이 결제 알림 설정을 꼭 해 놓으라 그래서 알림 설정도 했다.</p>
+  </li>
+  <li>
+    <p>그 후로는 위에 첨부한 블로그 글대로 쭉 따라갔는데 위 글과는 다른 자바 버전을 쓰려고 자바 설치 과정만 좀 다르게 했다.</p>
+  </li>
 </ul>
 
-<h2 id="mainjs">main.js</h2>
+<h2 id="open-jdk11-설치">open jdk11 설치</h2>
+<ul>
+  <li><a href="https://codechacha.com/ko/ubuntu-install-open-jdk11/">https://codechacha.com/ko/ubuntu-install-open-jdk11/</a></li>
+  <li><code class="language-plaintext highlighter-rouge">open jdk</code> 설치는 이 블로그 글을 참고했다.</li>
+</ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">countDate</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">startDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">);</span> <span class="c1">// 시작일</span>
-    <span class="kd">var</span> <span class="nx">today</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span> <span class="c1">// 오늘</span>
-    <span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span> <span class="c1">// 경과시간</span>
-    <span class="nx">total</span><span class="p">.</span><span class="nx">setTime</span><span class="p">((</span><span class="nx">today</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">-</span> <span class="nx">startDate</span><span class="p">.</span><span class="nx">getTime</span><span class="p">())</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">60</span> <span class="o">/</span> <span class="mi">60</span> <span class="o">/</span> <span class="mi">24</span><span class="p">);</span>
-    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#codingDays</span><span class="dl">'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">data-number</span><span class="dl">'</span><span class="p">,</span> <span class="nx">total</span><span class="p">.</span><span class="nx">getTime</span><span class="p">());</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<h2 id="tomcat8-설치-그리고">Tomcat8 설치 그리고…</h2>
+<ul>
+  <li>자바를 설치한 후에 다시 처음에 참고하던 블로그 글로 돌아와서 <code class="language-plaintext highlighter-rouge">Tomcat8</code>도 설치하고 잘 따라가고 있었는데 안타깝게도 톰캣을 어떻게 실행하라는 설명이 없었다..(아직 잘 모름…ㅎ)</li>
+  <li>그래서 구글링 해 보니까 설치된 폴더로 이동한 후 <code class="language-plaintext highlighter-rouge">./startup.sh</code>로 실행을 하는 것이라 해서 해 보았다. 그런데 안 됨 ㅠ.ㅠ</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/failToStartTomcat.png" width="600" /></p>
+<p align="center">차갑다...</p>
 
 <ul>
-  <li>시작일로부터 오늘까지 경과한 일수를 계산하는 함수를 작성했다. 간단해 보이지만 자바스크립트로 날짜 계산하는 함수를 쓴 지 오래되서 구글링을 열심히 해야했다…ㅎ</li>
+  <li>암튼 그래서 에러 메시지로 구글링을 하다가 <a href="https://rimkongs.tistory.com/241">https://rimkongs.tistory.com/241</a> 이 블로그 글을 참고해서 원인을 알 수 있었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">sudo apt-get</code> 방식으로 설치한 톰캣은 <code class="language-plaintext highlighter-rouge">./startup.sh</code>이걸로 실행할 수 없었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">sudo /etc/init.d/tomcat8 start</code> 이걸 써야 했음…</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="dl">"</span><span class="s2">use strict</span><span class="dl">"</span><span class="p">;</span>
-
-    <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">stellar</span><span class="p">({</span>
-    <span class="na">responsive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="na">parallaxBackgrounds</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="na">parallaxElements</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="na">horizontalScrolling</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="na">hideDistantElements</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="na">scrollProperty</span><span class="p">:</span> <span class="dl">'</span><span class="s1">scroll</span><span class="dl">'</span>
-  <span class="p">});</span>
-
-    <span class="nx">countDate</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<p align="center"><img src="../../assets/images/succeedToStartTomcat.png" width="500" /></p>
+<p align="center">실행 성공!</p>
+<p><br /></p>
 
 <ul>
-  <li>그리고 <code class="language-plaintext highlighter-rouge">jQuery</code> 시작 함수 안에서 호출하면 끝!</li>
+  <li>이제 톰캣 서버가 잘 돌아가고 있는지 웹사이트로 접속해 봐야 하는데 원래 참고하고 있던 블로그 글에서 그 주소에 대한 언급 또한 없어서… 처음에 좀 헤멨다. 당췌 어디로 접속해서 <code class="language-plaintext highlighter-rouge">It works</code>를 확인하란 것인지…</li>
 </ul>
 
-<p align="center"><img src="../../assets/images/codingDaysUpdate.png" width="300" /></p>
+<p align="center"><img src="../../assets/images/awsDns.png" width="700" /></p>
 
 <ul>
-  <li>계산 잘 된다! 😄<br /><br /><br /></li>
+  <li>알고 보니 <code class="language-plaintext highlighter-rouge">퍼블릭 IPv4 DNS</code> 주소의 맨 뒤에 <code class="language-plaintext highlighter-rouge">:8080</code>을 붙이면 접속할 수 있는 것이었다.</li>
 </ul>
 
-<!--# 포트폴리오 페이지-->
-<!--* 아직 수정 중... [백엔드 개발자 황유진](https://miro7923.github.io/web-porfolio/)-->]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[제작목적 웹 개발을 공부하며 첫 번째 프로젝트를 끝내고 나니까 이걸 잘 포장해서 보여줘야 할 필요가 생겼다. 즉 포트폴리오 문서가 필요해진 것! 포트폴리오 문서는 서류 형식으로도 만들 것이지만 나는 웹 개발을 공부하고 있으니까 나의 포트폴리오를 보여줄 웹 사이트도 만들기로 결정했다. 기본적인 기능이 다 구현되어 있는 무료 템플릿을 쓰겠지만 그걸 나에게 맞게 수정하는 과정에서도 배울 점이 많을 것이다.]]></summary></entry></feed>
+<p align="center"><img src="../../assets/images/itWorks.png" /></p>
+
+<ul>
+  <li>접속 안 될까봐 좀 조마조마 했는데 다행히 잘 된다.</li>
+</ul>
+
+<h2 id="filezilla-설치">FileZilla 설치</h2>
+
+<p align="center"><img src="../../assets/images/fileZillaClient.png" width="500" /></p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">FileZilla</code>를 설치해야 했는데 이거 또한 클라이언트 설치인지 서버 설치인지 언급되어 있지 않아서 둘 다 깔아봤는데 클라이언트를 설치하는 것이었다.</p>
+  </li>
+  <li>
+    <p>근데 새 사이트 관리자를 만들어서 접속에 성공한 것 같은데 나는 또 저분과 다르게 폴더가 쭈루루 뜨지 않는 것이었다. 😟 머선 일이고… 맞게 접속한 거 같긴 한데</p>
+  </li>
+</ul>
+
+<p align="center"><img src="../../assets/images/folderList.png" width="300" /></p>
+
+<ul>
+  <li>? 떠 있는 폴더들을 누르니까 하나씩 로드가 되었다.<br /><br /></li>
+</ul>
+
+<p align="center"><img src="../../assets/images/failToUpload.png" width="600" /></p>
+
+<ul>
+  <li>근데 <code class="language-plaintext highlighter-rouge">war</code> 파일 업로드를 하려니까 권한이 없다면서 업로드가 되지 않았다.</li>
+  <li><a href="https://threeidiotscoding.tistory.com/14">https://threeidiotscoding.tistory.com/14</a></li>
+  <li>이 글을 참고해서 권한 설정을 해 준 뒤 업로드를 할 수 있었다.</li>
+</ul>
+
+<h2 id="배포된-프로젝트-사이트에-접속하기">배포된 프로젝트 사이트에 접속하기</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">war</code> 파일이 정상적으로 업로드 되고 프로젝트 폴더도 추출되어서 잘 만들어진 것을 확인했는데 8080으로 접속하면 계속 It works 페이만 뜨는 것이었다. 머선 일이고…2</li>
+  <li><a href="https://gdtbgl93.tistory.com/m/99">https://gdtbgl93.tistory.com/m/99</a> 이 글을 참고해서 또 문제를 알았다.</li>
+  <li>8080 뒤에 <code class="language-plaintext highlighter-rouge">/프로젝트명</code>을 붙여줘야 했던 것이었다. 글고보니 폴더가 따로 생성이 되는데 넘 당황해서 저기까지 생각을 못 했었네…ㅎ</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/awsProjectPage.png" /></p>
+
+<ul>
+  <li>이제 진짜로 접속이 잘 되는 것을 확인했다. 신기해!</li>
+  <li>프로젝트 배포가 잘 되는지만 확인하려고 기본 세팅만 진행했기 때문에 <code class="language-plaintext highlighter-rouge">DB</code>연결은 아직 하지 않았다. 내 사이트가 제대로 동작하는지 확인하려면 <code class="language-plaintext highlighter-rouge">DB</code> 연결을 해 봐야 하는데 오늘은 시간이 늦어서 내일 마저 해야겠다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry></feed>
