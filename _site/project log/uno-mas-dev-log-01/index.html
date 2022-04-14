@@ -1,0 +1,829 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배 | Yujin Dev Log</title>
+<meta name="description" content="작성일 : 2022.04.14   작성자 : 황유진   팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진   GitHub Repository : https://github.com/miro7923/uno-mas">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배">
+<meta property="og:url" content="http://localhost:4000/project%20log/uno-mas-dev-log-01/">
+
+
+  <meta property="og:description" content="작성일 : 2022.04.14   작성자 : 황유진   팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진   GitHub Repository : https://github.com/miro7923/uno-mas">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-04-14T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/project%20log/uno-mas-dev-log-01/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#project-log" itemprop="item"><span itemprop="name">Project log</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>기록하고 복기하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배">
+    <meta itemprop="description" content="  작성일 : 2022.04.14  작성자 : 황유진  팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진  GitHub Repository : https://github.com/miro7923/uno-mas">
+    <meta itemprop="datePublished" content="2022-04-14T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/project%20log/uno-mas-dev-log-01/" class="u-url" itemprop="url">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-14T00:00:00+09:00">April 14, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#기간">기간</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#역할-분배">역할 분배</a></li><li><a href="#마감-기한">마감 기한</a></li><li><a href="#주제-선정">주제 선정</a></li><li><a href="#사이트-이름-선정">사이트 이름 선정</a></li><li><a href="#팀-이름-선정">팀 이름 선정</a></li><li><a href="#변수명-및-코드-작성-규칙">변수명 및 코드 작성 규칙</a></li><li><a href="#github-repository-생성-및-개발일지-작성">GitHub Repository 생성 및 개발일지 작성</a></li><li><a href="#tdd-주도-개발">TDD 주도 개발</a></li><li><a href="#필요-기능-정의서">필요 기능 정의서</a></li><li><a href="#db-테이블-설계">DB 테이블 설계</a></li><li><a href="#1차-구현-기능-분배">1차 구현 기능 분배</a></li></ul></li><li><a href="#마감까지">마감까지</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <ul>
+  <li>작성일 : 2022.04.14</li>
+  <li>작성자 : 황유진</li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/uno-mas">https://github.com/miro7923/uno-mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 11</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<h2 id="역할-분배">역할 분배</h2>
+<ul>
+  <li>팀장 : 황유진</li>
+  <li>부팀장 : 오성은</li>
+  <li>서기 : 반현빈</li>
+</ul>
+
+<h2 id="마감-기한">마감 기한</h2>
+<ul>
+  <li>5/20 으로 정했다.</li>
+  <li>6월 첫째주에 발표가 예정되어 있지만 발표 전에 강사님들께 최종 점검을 받을 기간이 필요하다고 판단되어서 발표일 보다는 조금 일찍 완성하는 것을 목표로 세웠다.</li>
+</ul>
+
+<h2 id="주제-선정">주제 선정</h2>
+<ul>
+  <li>쇼핑몰과 영화 예매 사이트가 제시되었다.</li>
+  <li>그 중에서 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>로 최종 결정되었다.</li>
+</ul>
+
+<h2 id="사이트-이름-선정">사이트 이름 선정</h2>
+<ul>
+  <li>싱글마켓, 혼자 잘 먹고 잘 사는 방법, 피투피(Person to Person), One Together, Uno más(스페인어로 하나 더) 등이 제시되었다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Uno más</code>가 최종 선정되었다.</li>
+</ul>
+
+<h2 id="팀-이름-선정">팀 이름 선정</h2>
+<ul>
+  <li>4월에 시작해서 <code class="language-plaintext highlighter-rouge">April</code>이 제시되었다. 이 외에 추가적으로 제시된 이름이 아직 없어서 아이디어가 더 나오면 의견 조율해서 최종 결정할 예정이다.</li>
+</ul>
+
+<h2 id="변수명-및-코드-작성-규칙">변수명 및 코드 작성 규칙</h2>
+<ul>
+  <li>변수명은 기본적으로 카멜 표기법(<code class="language-plaintext highlighter-rouge">codeCode</code>) 형식으로 쓰되, <code class="language-plaintext highlighter-rouge">CSS</code> 적용을 위한 선택자를 지정할 때엔 스네이크 표기법(<code class="language-plaintext highlighter-rouge">code_code</code>)을 사용하기로 했다.</li>
+  <li>이렇게 정한 이유는 <code class="language-plaintext highlighter-rouge">CSS</code> 파일에서 카멜 표기법으로 선택자를 작성했을 때엔 알아보기 어려웠다는 의견이 있었기 때문이다.</li>
+  <li>추가로 무의미한 변수명과 지나친 축약어로 만든 변수명은 사용은 하지 않기로 했다. 만약 정말 변수명을 못 정하겠다면 <a href="https://www.curioustore.com/#!/">https://www.curioustore.com/#!/</a> 여기를 참고할 것</li>
+  <li>코드 작성 시 다른 팀원이 보다 쉽게 알아볼 수 있게 주석으로 작성의도를 작성하기로 했다.</li>
+</ul>
+
+<h2 id="github-repository-생성-및-개발일지-작성">GitHub Repository 생성 및 개발일지 작성</h2>
+<ul>
+  <li>형상관리를 위해 <code class="language-plaintext highlighter-rouge">GitHub</code>을 사용하기로 했다.</li>
+  <li>추후 프로젝트 진행 결과 정리 및 발표 자료를 만들 때 참고하기 위해서 기능을 구현할 때마다 개발 일지를 작성하기로 했다.</li>
+  <li>본인이 구현한 내용은 꼭 정확하게 그때그때 기록해 놓기!!!</li>
+</ul>
+
+<h2 id="tdd-주도-개발">TDD 주도 개발</h2>
+<ul>
+  <li>수업시간에 TDD 코드 작성 방법을 배웠기 때문에 기능 구현 전에 테스트 코드 작성을 통해 구현하고자 하는 기능의 테스트 후 본 코드를 작성할 것이다.</li>
+</ul>
+
+<h2 id="필요-기능-정의서">필요 기능 정의서</h2>
+<ul>
+  <li>제작자 : 박승지</li>
+</ul>
+
+<p align="center"><img src="https://github.com/miro7923/uno-mas/raw/main/images/unoMasDocumentation.png" width="600" /></p>
+
+<ul>
+  <li>무료로 사용할 수 있는 쇼핑몰 템플릿을 이 기능 명세서에 맞게 변형해서 사용하기로 했다.</li>
+  <li><a href="https://freemiumdownload.com/demo?theme=fashi">https://freemiumdownload.com/demo?theme=fashi</a></li>
+  <li><a href="https://technext.github.io/ogani/index.html">https://technext.github.io/ogani/index.html</a></li>
+</ul>
+
+<h2 id="db-테이블-설계">DB 테이블 설계</h2>
+<ul>
+  <li>설계자 : 오성은, 황유진</li>
+  <li>4/17 까지 설계를 마친 후 4/17 오후 10시에 모든 팀원들이 온라인 미팅으로 모여서 검토하고 최종 결정할 것이다.</li>
+  <li>때문에 회원가입과 게시판 등 DB 테이블이 필요한 기능은 DB 테이블이 최종 결정되면 진행하고 그 외의 기능들은 지금부터 진행하기로 했다.</li>
+</ul>
+
+<h2 id="1차-구현-기능-분배">1차 구현 기능 분배</h2>
+<ul>
+  <li>목표 : 5/22 까지 구현 후 5/22 저녁에 리뷰</li>
+  <li>메인 페이지 디자인 : 반현빈, 박승지</li>
+  <li>회원가입/로그인/로그아웃/탈퇴 기능 구현 : 오은현, 오성은</li>
+  <li>메인 페이지에서 상품 상세 페이지 연결 및 상세 페이지의 세부 기능 구현(수량 증감, 상품 설명 디스플레이, 후기/문의 게시판) : 황유진, 박승지</li>
+  <li>고객센터 페이지의 게시판 구현(공지사항, 자주하는 질문, 1:1 문의) : 김진영, 윤정환</li>
+  <li>글쓰기 페이지 디자인 : 윤정환</li>
+  <li>헤더와 푸터 구성 및 클릭 시 해당 페이지로 연결 : 반현빈<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-36</code></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cafe" class="page__taxonomy-item p-category" rel="tag">Cafe</a><span class="sep">, </span>
+    
+      <a href="/tags/#log" class="page__taxonomy-item p-category" rel="tag">Log</a><span class="sep">, </span>
+    
+      <a href="/tags/#project" class="page__taxonomy-item p-category" rel="tag">Project</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#project-log" class="page__taxonomy-item p-category" rel="tag">Project Log</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-04-14T00:00:00+09:00">April 14, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JAVA+Spring%29+1%EC%9D%B8%EA%B0%80%EA%B5%AC%EB%A5%BC+%EC%9C%84%ED%95%9C+%EC%87%BC%ED%95%91%EB%AA%B0+Uno+m%C3%A1s+%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80+1+-+%EC%A3%BC%EC%A0%9C+%EC%84%A0%EC%A0%95%EA%B3%BC+%EC%97%AD%ED%95%A0+%EB%B6%84%EB%B0%B0%20http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Funo-mas-dev-log-01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Funo-mas-dev-log-01%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fproject%2520log%2Funo-mas-dev-log-01%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/boj/programmers-muziMukbang-py/" class="pagination--pager" title="Python) 프로그래머스. 무지의 먹방 라이브
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/programmers-muziMukbang-py/" rel="permalink">Python) 프로그래머스. 무지의 먹방 라이브
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-14T00:00:00+09:00">April 14, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://programmers.co.kr/learn/courses/30/lessons/42891
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/CodingTestBook-11-05-py/" rel="permalink">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 5. 볼링공 고르기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-13T00:00:00+09:00">April 13, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 출처
+
+
+
+  이것이 취업을 위한 코딩테스트다 with 파이썬
+  Chapter 11 - 그리디 5. 볼링공 고르기
+
+
+제한
+
+
+
+  시간 제한 : 1 초
+  메모리 제한 : 128 MB
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj1439-py/" rel="permalink">Python) BOJ 1439. 뒤집기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-12T00:00:00+09:00">April 12, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://www.acmicpc.net/problem/1439
+
+
+제한
+
+
+
+  시간 제한 : 2 초
+  메모리 제한 : 128 MB
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/CodingTestBook-11-04-py/" rel="permalink">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 4. 만들 수 없는 금액
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-12T00:00:00+09:00">April 12, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 출처
+
+
+
+  이것이 취업을 위한 코딩테스트다 with 파이썬
+  Chapter 11 - 그리디 4. 만들 수 없는 금액
+
+
+제한
+
+
+
+  시간 제한 : 1 초
+  메모리 제한 : 128 MB
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
