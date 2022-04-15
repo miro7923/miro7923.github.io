@@ -1,4 +1,4 @@
-I"�-<h1 id="개발환경">개발환경</h1>
+I"*2<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>OpenJDK 8</li>
   <li>Eclipse 2021-12</li>
@@ -40,7 +40,8 @@
   <span class="nv">`age`</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`gender`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`postalcode`</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-  <span class="nv">`address`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`road_address`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`detail_address`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`phone`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`email`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`regdate`</span> <span class="nb">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -61,7 +62,8 @@
   <li>age : 회원 나이</li>
   <li>gender : 회원 성별</li>
   <li>postalcode : 우편번호</li>
-  <li>address : 회원의 거주지 주소</li>
+  <li>road_address : 회원의 거주지 도로명 주소</li>
+  <li>detail_address : 거주지 상세 주소</li>
   <li>phone : 회원 휴대폰 번호</li>
   <li>email : 회원 이메일 주소</li>
   <li>regdate : 회원이 가입한 날짜. <code class="language-plaintext highlighter-rouge">timestamp</code>로 가입하는 당시의 날짜와 시간으로 자동 저장</li>
@@ -80,8 +82,11 @@
   <span class="nv">`re_seq`</span> <span class="nb">int</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`date`</span> <span class="nb">date</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`ip`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
-  <span class="nv">`image`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`image`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
   <span class="nv">`file`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`comment_count`</span> <span class="nb">int</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`image_uid`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">'없음'</span><span class="p">,</span>
+  <span class="nv">`file_uid`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">'없음'</span><span class="p">,</span>
   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="nv">`num`</span><span class="p">)</span>
 <span class="p">);</span>
 </code></pre></div></div>
@@ -102,17 +107,19 @@
   <li>ip : 작성자의 <code class="language-plaintext highlighter-rouge">IP</code> 주소</li>
   <li>image : 이미지 업로드 시 이미지 파일명</li>
   <li>file : 파일 업로드 시 파일명</li>
+  <li>comment_count : 해당 글에 작성된 댓글 개수</li>
+  <li>image_uid : 서버에 저장되는 이미지 파일 이름. 서로 다른 사용자가 같은 이름의 파일을 올렸을 때 서버상에서 중복처리된 실제 파일명. 게시글 로드 시 uid 기준으로 첨부된 파일을 불러올 것이다.</li>
+  <li>file_uid : 서버에 저장되는 파일 이름. 서로 다른 사용자가 같은 이름의 파일을 올렸을 때 서버상에서 중복처리된 실제 파일명</li>
 </ul>
 
 <h2 id="3-댓글comment">3. 댓글(comment)</h2>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="k">comment</span> <span class="p">(</span>
-	<span class="n">num</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
+    <span class="n">num</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
     <span class="n">post_num</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-	<span class="n">writer</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">writer</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
     <span class="n">content</span> <span class="nb">longtext</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
     <span class="n">commented_date</span> <span class="nb">datetime</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">parent</span> <span class="nb">int</span> <span class="k">default</span> <span class="mi">0</span>
 <span class="p">);</span>
 </code></pre></div></div>
 
@@ -124,8 +131,7 @@
   <li>post_num : 댓글이 등록된 글 번호</li>
   <li>writer : 댓글 작성자 아이디</li>
   <li>content : 댓글 내용</li>
-  <li>commented_date : 댓글이 작성된 날짜</li>
-  <li>parent : 만약 이 댓글이 대댓글이라면 대댓글을 단 원래 댓글의 댓글 번호. 모든 댓글이 대댓글이 되는 것은 아니기 때문에 디폴트값은 0으로 둔다. 0이라면 상위 댓글을 의미한다.<br /><br /><br /></li>
+  <li>commented_date : 댓글이 작성된 날짜<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>

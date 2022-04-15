@@ -45,7 +45,8 @@ CREATE TABLE `cafe_members` (
   `age` int NOT NULL,
   `gender` varchar(2) NOT NULL,
   `postalcode` int NOT NULL,
-  `address` varchar(500) NOT NULL,
+  `road_address` varchar(500) NOT NULL,
+  `detail_address` varchar(500) NOT NULL,
   `phone` varchar(11) NOT NULL,
   `email` varchar(200) DEFAULT NULL,
   `regdate` timestamp NOT NULL,
@@ -64,7 +65,8 @@ CREATE TABLE `cafe_members` (
 * age : 회원 나이
 * gender : 회원 성별
 * postalcode : 우편번호
-* address : 회원의 거주지 주소
+* road_address : 회원의 거주지 도로명 주소
+* detail_address : 거주지 상세 주소
 * phone : 회원 휴대폰 번호
 * email : 회원 이메일 주소
 * regdate : 회원이 가입한 날짜. `timestamp`로 가입하는 당시의 날짜와 시간으로 자동 저장
@@ -83,8 +85,11 @@ CREATE TABLE `cafe_board` (
   `re_seq` int DEFAULT NULL,
   `date` date DEFAULT NULL,
   `ip` varchar(200) DEFAULT NULL,
-  `image` varchar(50) DEFAULT NULL,
+  `image` varchar(200) DEFAULT NULL,
   `file` varchar(200) DEFAULT NULL,
+  `comment_count` int DEFAULT NULL,
+  `image_uid` varchar(200) DEFAULT '없음',
+  `file_uid` varchar(200) DEFAULT '없음',
   PRIMARY KEY (`num`)
 );
 ```
@@ -103,17 +108,19 @@ CREATE TABLE `cafe_board` (
 * ip : 작성자의 `IP` 주소
 * image : 이미지 업로드 시 이미지 파일명
 * file : 파일 업로드 시 파일명
+* comment_count : 해당 글에 작성된 댓글 개수
+* image_uid : 서버에 저장되는 이미지 파일 이름. 서로 다른 사용자가 같은 이름의 파일을 올렸을 때 서버상에서 중복처리된 실제 파일명. 게시글 로드 시 uid 기준으로 첨부된 파일을 불러올 것이다.
+* file_uid : 서버에 저장되는 파일 이름. 서로 다른 사용자가 같은 이름의 파일을 올렸을 때 서버상에서 중복처리된 실제 파일명
 
 ## 3. 댓글(comment)
 
 ```sql
 create table comment (
-	num int primary key auto_increment,
+    num int primary key auto_increment,
     post_num int not null,
-	writer varchar(10) not null,
+    writer varchar(10) not null,
     content longtext not null,
     commented_date datetime not null,
-    parent int default 0
 );
 ```
 
@@ -123,8 +130,7 @@ create table comment (
 * post_num : 댓글이 등록된 글 번호
 * writer : 댓글 작성자 아이디
 * content : 댓글 내용
-* commented_date : 댓글이 작성된 날짜
-* parent : 만약 이 댓글이 대댓글이라면 대댓글을 단 원래 댓글의 댓글 번호. 모든 댓글이 대댓글이 되는 것은 아니기 때문에 디폴트값은 0으로 둔다. 0이라면 상위 댓글을 의미한다.<br><br><br>
+* commented_date : 댓글이 작성된 날짜<br><br><br>
 
 # 마감까지 
 * `D-29`
