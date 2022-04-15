@@ -5,10 +5,10 @@ toc_sticky: true
 toc_label: 목차
 published: true
 categories:
-    - Project Log
+    - Uno mas
 tags:
     - Project
-    - Cafe
+    - UnoMas
     - Log
 ---
 
