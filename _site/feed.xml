@@ -1,4 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-15T15:05:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-01/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배" /><published>2022-04-14T00:00:00+09:00</published><updated>2022-04-14T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-01</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-01/"><![CDATA[<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-16T20:11:33+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) BOJ 18406. 럭키 스트레이트</title><link href="http://localhost:4000/boj/boj18406-py/" rel="alternate" type="text/html" title="Python) BOJ 18406. 럭키 스트레이트" /><published>2022-04-16T00:00:00+09:00</published><updated>2022-04-16T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18406-py</id><content type="html" xml:base="http://localhost:4000/boj/boj18406-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/18406">https://www.acmicpc.net/problem/18406</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>어떤 게임의 아웃복서 캐릭터에게는 럭키 스트레이트라는 기술이 존재한다. 이 기술은 매우 강력한 대신에 항상 사용할 수는 없으며, 현재 게임 내에서 점수가 특정 조건을 만족할 때만 사용할 수 있다.</p>
+  </li>
+  <li>
+    <p>특정 조건이란 현재 캐릭터의 점수를 N이라고 할 때 점수 N을 자릿수를 기준으로 반으로 나누어 왼쪽 부분의 각 자릿수의 합과 오른쪽 부분의 각 자릿수의 합을 더한 값이 동일한 상황을 의미한다. 예를 들어 현재 점수가 123,402라면 왼쪽 부분의 각 자릿수의 합은 1+2+3, 오른쪽 부분의 각 자릿수의 합은 4+0+2이므로 두 합이 6으로 동일하여 럭키 스트레이트를 사용할 수 있다.</p>
+  </li>
+  <li>
+    <p>현재 점수 N이 주어졌을 때, 럭키 스트레이트를 사용할 수 있는 상태인지 아닌지를 알려주는 프로그램을 작성하시오. 럭키 스트레이트를 사용할 수 있다면 “LUCKY”를, 사용할 수 없다면 “READY”라는 단어를 출력한다. 또한 점수 N의 자릿수는 항상 짝수 형태로만 주어진다. 예를 들어 자릿수가 5인 12,345와 같은 수는 입력으로 들어오지 않는다.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 점수 N이 정수로 주어진다. (10 ≤ N ≤ 99,999,999) 단, 점수 N의 자릿수는 항상 짝수 형태로만 주어진다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 럭키 스트레이트를 사용할 수 있다면 “LUCKY”를, 사용할 수 없다면 “READY”라는 단어를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>점수를 문자열로 입력받아서 앞부분과 뒷부분을 나눠서 따로 계산한 다음 변수에 각각 저장했다. 두 변수의 값이 같으면 <code class="language-plaintext highlighter-rouge">LUCKY</code>를 출력하고 아니라면 <code class="language-plaintext highlighter-rouge">READY</code>를 출력한다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 72 ms</li>
+  <li>메모리 : 30840 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/63d9087e23d9ac0eb589b70e103611d1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No18406" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/18406 제한 시간 제한 : 1 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">Python) 프로그래머스. 무지의 먹방 라이브</title><link href="http://localhost:4000/boj/programmers-muziMukbang-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 무지의 먹방 라이브" /><published>2022-04-14T00:00:00+09:00</published><updated>2022-04-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/programmers-muziMukbang-py</id><content type="html" xml:base="http://localhost:4000/boj/programmers-muziMukbang-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/42891">https://programmers.co.kr/learn/courses/30/lessons/42891</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>평소 식욕이 왕성한 무지는 자신의 재능을 뽐내고 싶어 졌고 고민 끝에 카카오 TV 라이브로 방송을 하기로 마음먹었다.</p>
+  </li>
+  <li>
+    <p>그냥 먹방을 하면 다른 방송과 차별성이 없기 때문에 무지는 아래와 같이 독특한 방식을 생각해냈다.</p>
+  </li>
+  <li>회전판에 먹어야 할 N 개의 음식이 있다.</li>
+  <li>각 음식에는 1부터 N 까지 번호가 붙어있으며, 각 음식을 섭취하는데 일정 시간이 소요된다.</li>
+  <li>
+    <p>무지는 다음과 같은 방법으로 음식을 섭취한다.</p>
+  </li>
+  <li>무지는 1번 음식부터 먹기 시작하며, 회전판은 번호가 증가하는 순서대로 음식을 무지 앞으로 가져다 놓는다.</li>
+  <li>마지막 번호의 음식을 섭취한 후에는 회전판에 의해 다시 1번 음식이 무지 앞으로 온다.</li>
+  <li>무지는 음식 하나를 1초 동안 섭취한 후 남은 음식은 그대로 두고, 다음 음식을 섭취한다.</li>
+  <li>다음 음식이란, 아직 남은 음식 중 다음으로 섭취해야 할 가장 가까운 번호의 음식을 말한다.</li>
+  <li>회전판이 다음 음식을 무지 앞으로 가져오는데 걸리는 시간은 없다고 가정한다.</li>
+  <li>무지가 먹방을 시작한 지 K 초 후에 네트워크 장애로 인해 방송이 잠시 중단되었다.</li>
+  <li>무지는 네트워크 정상화 후 다시 방송을 이어갈 때, 몇 번 음식부터 섭취해야 하는지를 알고자 한다.</li>
+  <li>각 음식을 모두 먹는데 필요한 시간이 담겨있는 배열 food_times, 네트워크 장애가 발생한 시간 K 초가 매개변수로 주어질 때 몇 번 음식부터 다시 섭취하면 되는지 return 하도록 solution 함수를 완성하라.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<ul>
+  <li>food_times 는 각 음식을 모두 먹는데 필요한 시간이 음식의 번호 순서대로 들어있는 배열이다.</li>
+  <li>k 는 방송이 중단된 시간을 나타낸다.</li>
+  <li>만약 더 섭취해야 할 음식이 없다면 -1을 반환하면 된다.</li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>food_times 의 길이는 1 이상 2,000 이하이다.</li>
+  <li>food_times 의 원소는 1 이상 1,000 이하의 자연수이다.</li>
+  <li>k는 1 이상 2,000,000 이하의 자연수이다.</li>
+  <li>food_times 의 길이는 1 이상 200,000 이하이다.</li>
+  <li>food_times 의 원소는 1 이상 100,000,000 이하의 자연수이다.</li>
+  <li>k는 1 이상 2 x 10^13 이하의 자연수이다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>적절한 풀이가 떠오르지 않아서 해설을 참고했다.</li>
+  <li>모든 음식을 시간 기준으로 오름차순 정렬한 뒤에 시간이 적게 걸리는 음식부터 제거해 나가는 것이 기본 아이디어<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/aa7a53e5e8b3997356df015841a1d1ff.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Programmers" /><category term="Greedy" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/42891]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-01/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배" /><published>2022-04-14T00:00:00+09:00</published><updated>2022-04-14T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-01</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-01/"><![CDATA[<ul>
   <li>작성일 : 2022.04.14</li>
   <li>작성자 : 황유진</li>
   <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
@@ -111,69 +235,7 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-36</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.14 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/uno-mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 무지의 먹방 라이브</title><link href="http://localhost:4000/boj/programmers-muziMukbang-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 무지의 먹방 라이브" /><published>2022-04-14T00:00:00+09:00</published><updated>2022-04-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/programmers-muziMukbang-py</id><content type="html" xml:base="http://localhost:4000/boj/programmers-muziMukbang-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/42891">https://programmers.co.kr/learn/courses/30/lessons/42891</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>평소 식욕이 왕성한 무지는 자신의 재능을 뽐내고 싶어 졌고 고민 끝에 카카오 TV 라이브로 방송을 하기로 마음먹었다.</p>
-  </li>
-  <li>
-    <p>그냥 먹방을 하면 다른 방송과 차별성이 없기 때문에 무지는 아래와 같이 독특한 방식을 생각해냈다.</p>
-  </li>
-  <li>회전판에 먹어야 할 N 개의 음식이 있다.</li>
-  <li>각 음식에는 1부터 N 까지 번호가 붙어있으며, 각 음식을 섭취하는데 일정 시간이 소요된다.</li>
-  <li>
-    <p>무지는 다음과 같은 방법으로 음식을 섭취한다.</p>
-  </li>
-  <li>무지는 1번 음식부터 먹기 시작하며, 회전판은 번호가 증가하는 순서대로 음식을 무지 앞으로 가져다 놓는다.</li>
-  <li>마지막 번호의 음식을 섭취한 후에는 회전판에 의해 다시 1번 음식이 무지 앞으로 온다.</li>
-  <li>무지는 음식 하나를 1초 동안 섭취한 후 남은 음식은 그대로 두고, 다음 음식을 섭취한다.</li>
-  <li>다음 음식이란, 아직 남은 음식 중 다음으로 섭취해야 할 가장 가까운 번호의 음식을 말한다.</li>
-  <li>회전판이 다음 음식을 무지 앞으로 가져오는데 걸리는 시간은 없다고 가정한다.</li>
-  <li>무지가 먹방을 시작한 지 K 초 후에 네트워크 장애로 인해 방송이 잠시 중단되었다.</li>
-  <li>무지는 네트워크 정상화 후 다시 방송을 이어갈 때, 몇 번 음식부터 섭취해야 하는지를 알고자 한다.</li>
-  <li>각 음식을 모두 먹는데 필요한 시간이 담겨있는 배열 food_times, 네트워크 장애가 발생한 시간 K 초가 매개변수로 주어질 때 몇 번 음식부터 다시 섭취하면 되는지 return 하도록 solution 함수를 완성하라.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<ul>
-  <li>food_times 는 각 음식을 모두 먹는데 필요한 시간이 음식의 번호 순서대로 들어있는 배열이다.</li>
-  <li>k 는 방송이 중단된 시간을 나타낸다.</li>
-  <li>만약 더 섭취해야 할 음식이 없다면 -1을 반환하면 된다.</li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>food_times 의 길이는 1 이상 2,000 이하이다.</li>
-  <li>food_times 의 원소는 1 이상 1,000 이하의 자연수이다.</li>
-  <li>k는 1 이상 2,000,000 이하의 자연수이다.</li>
-  <li>food_times 의 길이는 1 이상 200,000 이하이다.</li>
-  <li>food_times 의 원소는 1 이상 100,000,000 이하의 자연수이다.</li>
-  <li>k는 1 이상 2 x 10^13 이하의 자연수이다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>적절한 풀이가 떠오르지 않아서 해설을 참고했다.</li>
-  <li>모든 음식을 시간 기준으로 오름차순 정렬한 뒤에 시간이 적게 걸리는 음식부터 제거해 나가는 것이 기본 아이디어<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/aa7a53e5e8b3997356df015841a1d1ff.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Programmers" /><category term="Greedy" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/42891]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 5. 볼링공 고르기</title><link href="http://localhost:4000/boj/CodingTestBook-11-05-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 11 그리디 5. 볼링공 고르기" /><published>2022-04-13T00:00:00+09:00</published><updated>2022-04-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-11-05-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-11-05-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.14 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/uno-mas]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 5. 볼링공 고르기</title><link href="http://localhost:4000/boj/CodingTestBook-11-05-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 11 그리디 5. 볼링공 고르기" /><published>2022-04-13T00:00:00+09:00</published><updated>2022-04-13T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-11-05-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-11-05-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
 <hr />
 
 <ul>
@@ -224,57 +286,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/3b250691a76fca0ca44eb522ef8b6324.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Greedy" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 11 - 그리디 5. 볼링공 고르기 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 2. 곱하기 혹은 더하기</title><link href="http://localhost:4000/boj/CodingTestBook-11-02-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 11 그리디 2. 곱하기 혹은 더하기" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-11-02-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-11-02-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
-<hr />
-
-<ul>
-  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
-  <li>Chapter 11 - 그리디 2. 곱하기 혹은 더하기<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>각 자리가 숫자(0부터 9)로만 이루어진 문자열 S가 주어졌을 때, 왼쪽부터 오른쪽으로 하나씩 모든 숫자를 확인하며 숫자 사이에 ‘X’ 혹은 ‘+’ 연산자를 넣어 결과적으로 만들어질 수 있는 가장 큰 수를 구하는 프로그램을 작성하시오. 모든 연산은 왼쪽에서부터 순서대로 이루어진다고 가정한다.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 여러 개의 숫자로 구성된 하나의 문자열 S가 주어진다.(1 &lt;= S의 길이 &lt;= 20)<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 만들어질 수 있는 가장 큰 수를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>처음에는 연산에 참여하는 두 수 중 하나라도 0이라면 더하기 연산을 수행하고 나머지는 모두 곱하기 연산을 수행하게 짰다.</li>
-  <li>책에 나와 있는 예제는 맞았지만 정답 코드를 보니까 두 수 중 하나가 1인 경우를 고려하지 않은 코드였다.</li>
-  <li>1일 때엔 더하는 것이 곱하는 것보다 더 크기 때문이다.</li>
-  <li>그래서 최종 수정한 코드는 연산에 참여하는 두 수 중 하나라도 1 이하라면 더하기 연산을 수행하고 나머지는 모두 곱하기 연산을 수행하도록 했다.<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/783130e9e3010e3f50b3561b33c5f119.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 11 - 그리디 2. 곱하기 혹은 더하기 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 4. 만들 수 없는 금액</title><link href="http://localhost:4000/boj/CodingTestBook-11-04-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 11 그리디 4. 만들 수 없는 금액" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-11-04-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-11-04-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+<script src="https://gist.github.com/miro7923/3b250691a76fca0ca44eb522ef8b6324.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Greedy" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 11 - 그리디 5. 볼링공 고르기 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 4. 만들 수 없는 금액</title><link href="http://localhost:4000/boj/CodingTestBook-11-04-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 11 그리디 4. 만들 수 없는 금액" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-11-04-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-11-04-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
 <hr />
 
 <ul>
@@ -445,7 +457,57 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/d8d0c8c90988f4a298725e0c0afb2b3f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 11 - 그리디 1. 모험가 길드 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결</title><link href="http://localhost:4000/project%20log/cafe-project-31/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결" /><published>2022-04-10T00:00:00+09:00</published><updated>2022-04-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-31</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-31/"><![CDATA[<h1 id="개발환경">개발환경</h1>
+<script src="https://gist.github.com/miro7923/d8d0c8c90988f4a298725e0c0afb2b3f.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 11 - 그리디 1. 모험가 길드 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 이것이 취업을 위한 코딩테스트다 11 그리디 2. 곱하기 혹은 더하기</title><link href="http://localhost:4000/boj/CodingTestBook-11-02-py/" rel="alternate" type="text/html" title="Python) 이것이 취업을 위한 코딩테스트다 11 그리디 2. 곱하기 혹은 더하기" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/boj/CodingTestBook-11-02-py</id><content type="html" xml:base="http://localhost:4000/boj/CodingTestBook-11-02-py/"><![CDATA[<h1 id="문제-출처">문제 출처</h1>
+<hr />
+
+<ul>
+  <li>이것이 취업을 위한 코딩테스트다 with 파이썬</li>
+  <li>Chapter 11 - 그리디 2. 곱하기 혹은 더하기<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 128 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>각 자리가 숫자(0부터 9)로만 이루어진 문자열 S가 주어졌을 때, 왼쪽부터 오른쪽으로 하나씩 모든 숫자를 확인하며 숫자 사이에 ‘X’ 혹은 ‘+’ 연산자를 넣어 결과적으로 만들어질 수 있는 가장 큰 수를 구하는 프로그램을 작성하시오. 모든 연산은 왼쪽에서부터 순서대로 이루어진다고 가정한다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 여러 개의 숫자로 구성된 하나의 문자열 S가 주어진다.(1 &lt;= S의 길이 &lt;= 20)<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 만들어질 수 있는 가장 큰 수를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음에는 연산에 참여하는 두 수 중 하나라도 0이라면 더하기 연산을 수행하고 나머지는 모두 곱하기 연산을 수행하게 짰다.</li>
+  <li>책에 나와 있는 예제는 맞았지만 정답 코드를 보니까 두 수 중 하나가 1인 경우를 고려하지 않은 코드였다.</li>
+  <li>1일 때엔 더하는 것이 곱하는 것보다 더 크기 때문이다.</li>
+  <li>그래서 최종 수정한 코드는 연산에 참여하는 두 수 중 하나라도 1 이하라면 더하기 연산을 수행하고 나머지는 모두 곱하기 연산을 수행하도록 했다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/783130e9e3010e3f50b3561b33c5f119.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 11 - 그리디 2. 곱하기 혹은 더하기 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결</title><link href="http://localhost:4000/project%20log/cafe-project-31/" rel="alternate" type="text/html" title="JAVA Servlet 프로젝트) Cafe(웹 사이트) 만들기 31 - AWS로 프로젝트 배포하기 2. RDS 연결" /><published>2022-04-10T00:00:00+09:00</published><updated>2022-04-10T00:00:00+09:00</updated><id>http://localhost:4000/project%20log/cafe-project-31</id><content type="html" xml:base="http://localhost:4000/project%20log/cafe-project-31/"><![CDATA[<h1 id="개발환경">개발환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020)</li>
   <li>OpenJDK 8</li>
@@ -653,74 +715,4 @@
 <ul>
   <li>이제 진짜로 접속이 잘 되는 것을 확인했다. 신기해!</li>
   <li>프로젝트 배포가 잘 되는지만 확인하려고 기본 세팅만 진행했기 때문에 <code class="language-plaintext highlighter-rouge">DB</code>연결은 아직 하지 않았다. 내 사이트가 제대로 동작하는지 확인하려면 <code class="language-plaintext highlighter-rouge">DB</code> 연결을 해 봐야 하는데 오늘은 시간이 늦어서 내일 마저 해야겠다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry><entry><title type="html">Python) BOJ 1647. 도시 분할 계획</title><link href="http://localhost:4000/boj/boj1647-py/" rel="alternate" type="text/html" title="Python) BOJ 1647. 도시 분할 계획" /><published>2022-04-09T00:00:00+09:00</published><updated>2022-04-09T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj1647-py</id><content type="html" xml:base="http://localhost:4000/boj/boj1647-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/1647">https://www.acmicpc.net/problem/1647</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 256 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>동물원에서 막 탈출한 원숭이 한 마리가 세상구경을 하고 있다. 그러다가 평화로운 마을에 가게 되었는데, 그곳에서는 알 수 없는 일이 벌어지고 있었다.</p>
-  </li>
-  <li>
-    <p>마을은 N개의 집과 그 집들을 연결하는 M개의 길로 이루어져 있다. 길은 어느 방향으로든지 다닐 수 있는 편리한 길이다. 그리고 각 길마다 길을 유지하는데 드는 유지비가 있다.</p>
-  </li>
-  <li>
-    <p>마을의 이장은 마을을 두 개의 분리된 마을로 분할할 계획을 가지고 있다. 마을이 너무 커서 혼자서는 관리할 수 없기 때문이다. 마을을 분할할 때는 각 분리된 마을 안에 집들이 서로 연결되도록 분할해야 한다. 각 분리된 마을 안에 있는 임의의 두 집 사이에 경로가 항상 존재해야 한다는 뜻이다. 마을에는 집이 하나 이상 있어야 한다.</p>
-  </li>
-  <li>
-    <p>그렇게 마을의 이장은 계획을 세우다가 마을 안에 길이 너무 많다는 생각을 하게 되었다. 일단 분리된 두 마을 사이에 있는 길들은 필요가 없으므로 없앨 수 있다. 그리고 각 분리된 마을 안에서도 임의의 두 집 사이에 경로가 항상 존재하게 하면서 길을 더 없앨 수 있다. 마을의 이장은 위 조건을 만족하도록 길들을 모두 없애고 나머지 길의 유지비의 합을 최소로 하고 싶다. 이것을 구하는 프로그램을 작성하시오.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 집의 개수 N, 길의 개수 M이 주어진다. N은 2이상 100,000이하인 정수이고, M은 1이상 1,000,000이하인 정수이다. 그 다음 줄부터 M줄에 걸쳐 길의 정보가 A B C 세 개의 정수로 주어지는데 A번 집과 B번 집을 연결하는 길의 유지비가 C (1 ≤ C ≤ 1,000)라는 뜻이다.<br /><br /></li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 없애고 남은 길 유지비의 합의 최솟값을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>최소 신장 트리 문제인 것 까지는 알겠는데 2개로 쪼개는 걸 어떻게 해야하나 싶었다.</li>
-  <li>그래서 책 보니까 최소 신장 트리를 찾은 후에 가장 비싼 비용을 빼면 2개로 분할된다고 하는 것이었다…😦 생각해 보니까 진짜 간단하면서 맞는 말이었다.</li>
-  <li>
-    <p>최소 신장 트리를 구하는 코드까지는 금방 썼지만 가장 비싼 비용을 빼는 과정에서 어렵게 생까해서 헤멨는데 그냥 최소 신장 트리의 합을 구한 다음 마지막에 가장 비싼 비용을 빼 주면 되었다.</p>
-  </li>
-  <li>첫 제출때엔 시간초과가 났는데 입력 받는 부분을 <code class="language-plaintext highlighter-rouge">sys.stdin.readline</code>으로 바꿔주니까 통과할 수 있었다. 잊지말자… 입력 속도는 빠르게…<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 4076 ms</li>
-  <li>메모리 : 197288 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/b82a05569fc321630bfe177d8af5f674.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No1647" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/1647 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Project Log" /><category term="Project" /><category term="Cafe" /><category term="Log" /><summary type="html"><![CDATA[개발환경 MacBook Air (M1, 2020) OpenJDK 8 Eclipse 2021-12 tomcat 8.5 MySQL Workbench 8.0.19]]></summary></entry></feed>
