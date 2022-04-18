@@ -106,6 +106,12 @@ git branch --set-upstream-to origin/main
 * 새 브랜치를 만들었으면 이걸 사용해서 원격저장소에 업로드를 하겠다고 알려줘야 한다. 위 명령어를 입력하면 GitHub이 OK 하고 새 브랜치를 등록시켜 준다.
 * 새 브랜치를 만들었을 때 한 번만 하면 된다.
 
+```
+git checkout 내 브랜치 이름
+```
+
+* 다음부터는 위 명령어만 입력해서 내 개인 브랜치로 바꾸면 된다.
+
 ## 작업물 업로드하기
 
 <p align="center"><img src="../../assets/images/modifyTask.png" width="700"></p>
