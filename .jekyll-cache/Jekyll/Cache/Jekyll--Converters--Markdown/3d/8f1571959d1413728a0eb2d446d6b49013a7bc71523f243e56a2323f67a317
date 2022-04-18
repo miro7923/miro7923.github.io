@@ -1,13 +1,13 @@
-I"�<h1 id="이-글을-작성하게-된-이유">이 글을 작성하게 된 이유</h1>
+I"<h1 id="이-글을-작성하게-된-이유">이 글을 작성하게 된 이유</h1>
 <ul>
-  <li>평화롭게 알고리즘 문제를 풀다가 문자열 내부의 문자들을 정렬해야 하는 경우가 생겼는데 <code class="language-plaintext highlighter-rouge">sorted()</code>로 정렬이 되지 않았다. 그래서 구글 검색!</li>
+  <li>평화롭게 알고리즘 문제를 풀다가 문자열 내부의 문자들을 정렬해야 하는 경우가 생겼는데 <code class="language-plaintext highlighter-rouge">sorted()</code>로 정렬이 되지 않았다. 그래서 구글 검색!<br /><br /></li>
 </ul>
 
 <h1 id="파이썬에서의-정렬-함수">파이썬에서의 정렬 함수</h1>
 <ul>
   <li>파이썬에서 정렬하려면 <code class="language-plaintext highlighter-rouge">sort()</code>와 <code class="language-plaintext highlighter-rouge">sorted()</code> 두 가지 함수를 이용할 수 있다.</li>
   <li>그 중에서도 <code class="language-plaintext highlighter-rouge">sort()</code>는 리스트의 멤버함수이기 때문에 리스트를 정렬하고자 하는 경우에는 <code class="language-plaintext highlighter-rouge">arr.sort()</code>를 사용하면 간편하게 정렬할 수 있다.</li>
-  <li>리스트가 아닌 <code class="language-plaintext highlighter-rouge">iterable</code>을 정렬할 때엔 <code class="language-plaintext highlighter-rouge">sorted()</code> 함수를 쓰면 되는데 모든 <code class="language-plaintext highlighter-rouge">iterable</code>에 적용되지는 않는다. <code class="language-plaintext highlighter-rouge">dabc</code>와 같은 문자열 안에 있는 문자들을 정렬해서 <code class="language-plaintext highlighter-rouge">abcd</code>로 만들려고 할 때에는 그냥 <code class="language-plaintext highlighter-rouge">sorted()</code>를 쓰면 정렬이 안 된다.</li>
+  <li>리스트가 아닌 <code class="language-plaintext highlighter-rouge">iterable</code>을 정렬할 때엔 <code class="language-plaintext highlighter-rouge">sorted()</code> 함수를 쓰면 되는데 <code class="language-plaintext highlighter-rouge">dabc</code>와 같은 문자열 안에 있는 문자들을 정렬해서 <code class="language-plaintext highlighter-rouge">abcd</code>로 만들려고 할 때에는 그냥 <code class="language-plaintext highlighter-rouge">sorted()</code>를 쓰면 정렬이 안 된다.<br /><br /></li>
 </ul>
 
 <h1 id="문자열-내의-문자-정렬하기">문자열 내의 문자 정렬하기</h1>
@@ -22,6 +22,11 @@
 <ul>
   <li>대신 <code class="language-plaintext highlighter-rouge">sorted(s)</code>를 사용할 수 있는데 <code class="language-plaintext highlighter-rouge">sorted()</code>의 반환형이 <code class="language-plaintext highlighter-rouge">list</code>이기 때문에 정렬된 결과를 보려면 위와 같이 다른 변수에 대입하는 식을 써야 한다.</li>
   <li>하지만 나는 처음에 그냥 <code class="language-plaintext highlighter-rouge">sorted(s)</code> 라고만 쓰고 다른 변수에 저장조차 하지 않았기 때문에 정렬된 결과를 볼 수 없는 것이었다.😅</li>
-  <li>이것을 하나의 문자열로 만들기 위해서는 <code class="language-plaintext highlighter-rouge">str = ''.join(sorted(s))</code>와 같이 쓰면 된다.</li>
+  <li>이것을 하나의 문자열로 만들기 위해서는 <code class="language-plaintext highlighter-rouge">str = ''.join(sorted(s))</code>와 같이 쓰면 된다. <br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="https://otugi.tistory.com/268">파이썬 문자열 정렬, 문자열 리스트 정렬, anagram 찾기</a></li>
 </ul>
 :ET
