@@ -185,4 +185,8 @@ git push origin 내 브랜치 이름
 
 * 짠! `merge` 후 `main` 브랜치에 최종 반영된 것을 볼 수 있다.
 
-* 이후에 또 새로운 작업물을 업로드 해야 하면 **내 로컬저장소 최신버전으로 업데이트**부터 반복하면 된다.
+* 이후에 또 새로운 작업물을 업로드 해야 하면 **내 로컬저장소 최신버전으로 업데이트**부터 반복하면 된다.<br><br><br>
+
+# 출처
+* [[ 깃허브 ] github 브랜치 만들고 업로드 하기](https://jalynne-kim.medium.com/%EA%B9%83-%ED%9D%90%EB%A6%84-%EA%B9%83%ED%97%88%EB%B8%8C-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%97%85%EB%A1%9C%EB%93%9C-%ED%95%98%EA%B8%B0-d12bda2f7ff5)
+* [[pintOS] github으로 팀프로젝트 관리하기 (pintOS 팀플 맞춤)](https://velog.io/@johnny/pintOS-github)
