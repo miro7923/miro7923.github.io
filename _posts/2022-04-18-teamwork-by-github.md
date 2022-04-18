@@ -113,6 +113,13 @@ git checkout 내 브랜치 이름
 * 다음부터는 위 명령어만 입력해서 내 개인 브랜치로 바꾸면 된다.
 
 ## 작업물 업로드하기
+* 작업물 업로드 전에 
+
+```
+git checkout 내 브랜치 이름
+```
+
+* 이걸 입력해서 꼭 개인 브랜치로 바꾼 후에 업로드 하자!!!
 
 <p align="center"><img src="../../assets/images/modifyTask.png" width="700"></p>
 
