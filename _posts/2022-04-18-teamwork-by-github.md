@@ -11,7 +11,9 @@ tags:
     - Project
     - UnoMas
 ---
-* GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.<br><br>
+* GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.
+* 함께 참고하면 좋은 글
+* [Feature Branch Workflow](https://gmlwjd9405.github.io/2017/10/27/how-to-collaborate-on-GitHub-1.html)<br><br>
 
 # 🎬 시작 전에 팀장이 할 일
 <p align="center"><img src="../../assets/images/gitCollaborators.png"></p>
@@ -215,3 +217,5 @@ git push origin 내 브랜치 이름
 # 출처
 * [[ 깃허브 ] github 브랜치 만들고 업로드 하기](https://jalynne-kim.medium.com/%EA%B9%83-%ED%9D%90%EB%A6%84-%EA%B9%83%ED%97%88%EB%B8%8C-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%97%85%EB%A1%9C%EB%93%9C-%ED%95%98%EA%B8%B0-d12bda2f7ff5)
 * [[pintOS] github으로 팀프로젝트 관리하기 (pintOS 팀플 맞춤)](https://velog.io/@johnny/pintOS-github)
+* [[Git]GitHub Collaborator 추가하기](https://hyoje420.tistory.com/41)
+* [Feature Branch Workflow](https://gmlwjd9405.github.io/2017/10/27/how-to-collaborate-on-GitHub-1.html)
