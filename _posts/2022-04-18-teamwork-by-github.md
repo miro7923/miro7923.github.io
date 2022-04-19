@@ -11,6 +11,9 @@ tags:
     - Project
     - UnoMas
 ---
+* 작성자 : 황유진
+* 글 작성 도움 : 오은현
+
 * GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.
 * 함께 참고하면 좋은 글
 * [Feature Branch Workflow](https://gmlwjd9405.github.io/2017/10/27/how-to-collaborate-on-GitHub-1.html)<br><br>
