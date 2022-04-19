@@ -11,15 +11,16 @@ tags:
     - Project
     - UnoMas
 ---
-* GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.
+* GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.<br><br>
 
 # 🎬 시작 전에 팀장이 할 일
 <p align="center"><img src="../../assets/images/gitCollaborators.png"></p>
 * 새 프로젝트용 레포지토리 생성 후 함께 할 팀원들의 GitHub 메일 주소를 `Collaborator`에 추가한다.<br><br>
 
 # 팀원들이 새 레포지토리에 참여하기
-<p align="center"><img src="../../assets/images/forkRepo.png"></p>
-* 내 레포지토리 목록에서 찾기 쉽게 `fork`를 눌러 내 레포지토리로 복사한다.
+* 메일로 `Collaborator` 초대를 받은 뒤 `Accept invitation`을 눌러 수락하면 내 레포지토리 목록에 자동으로 추가된다.
+* [[Git]GitHub Collaborator 추가하기](https://hyoje420.tistory.com/41)
+* 그림과 함께 보고 싶으면 위 링크 참고<br><br>
 
 <p align="center"><img src="../../assets/images/gitClone3.png" width="500"></p>
 * [맥 OS 기준] 레포지토리를 다운받을 폴더를 선택한 뒤 `폴더에서 새로운 터미널 열기`를 선택하거나
@@ -30,10 +31,10 @@ cd 아까 복사한 폴더 경로
 ```
 
 * 위 명령어를 입력한 후 엔터를 누르면 해당 폴더로 이동할 수 있다.
-* 이제 아까전에 `fork`했던 레포지토리로 다시 돌아간다.
+* 이제 아까전에 자동으로 복사되었던 레포지토리로 다시 돌아간다.
 
 <p align="center"><img src="../../assets/images/gitClone1.png" width="600"></p>
-* `fork` 되었으면 내 로컬 컴퓨터로 다운받아야 한다.
+* 원격저장소에 있는 레포지토리를 내 로컬 컴퓨터로 다운받아야 한다.
 * 초록색 `Code` 버튼을 클릭하면 이 레포지토리의 주소를 볼 수 있다.
 
 <p align="center"><img src="../../assets/images/gitClone2.png" width="500"></p>

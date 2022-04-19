@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-18T23:40:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">GitHub로 팀 프로젝트 관리하는 방법</title><link href="http://localhost:4000/uno%20mas/teamwork-by-github/" rel="alternate" type="text/html" title="GitHub로 팀 프로젝트 관리하는 방법" /><published>2022-04-18T00:00:00+09:00</published><updated>2022-04-18T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/teamwork-by-github</id><content type="html" xml:base="http://localhost:4000/uno%20mas/teamwork-by-github/"><![CDATA[<ul>
-  <li>GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.</li>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-19T11:39:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">GitHub로 팀 프로젝트 관리하는 방법</title><link href="http://localhost:4000/uno%20mas/teamwork-by-github/" rel="alternate" type="text/html" title="GitHub로 팀 프로젝트 관리하는 방법" /><published>2022-04-18T00:00:00+09:00</published><updated>2022-04-18T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/teamwork-by-github</id><content type="html" xml:base="http://localhost:4000/uno%20mas/teamwork-by-github/"><![CDATA[<ul>
+  <li>GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.<br /><br /></li>
 </ul>
 
 <h1 id="-시작-전에-팀장이-할-일">🎬 시작 전에 팀장이 할 일</h1>
@@ -9,9 +9,10 @@
 </ul>
 
 <h1 id="팀원들이-새-레포지토리에-참여하기">팀원들이 새 레포지토리에 참여하기</h1>
-<p align="center"><img src="../../assets/images/forkRepo.png" /></p>
 <ul>
-  <li>내 레포지토리 목록에서 찾기 쉽게 <code class="language-plaintext highlighter-rouge">fork</code>를 눌러 내 레포지토리로 복사한다.</li>
+  <li>메일로 <code class="language-plaintext highlighter-rouge">Collaborator</code> 초대를 받은 뒤 <code class="language-plaintext highlighter-rouge">Accept invitation</code>을 눌러 수락하면 내 레포지토리 목록에 자동으로 추가된다.</li>
+  <li><a href="https://hyoje420.tistory.com/41">[Git]GitHub Collaborator 추가하기</a></li>
+  <li>그림과 함께 보고 싶으면 위 링크 참고<br /><br /></li>
 </ul>
 
 <p align="center"><img src="../../assets/images/gitClone3.png" width="500" /></p>
@@ -25,12 +26,12 @@
 
 <ul>
   <li>위 명령어를 입력한 후 엔터를 누르면 해당 폴더로 이동할 수 있다.</li>
-  <li>이제 아까전에 <code class="language-plaintext highlighter-rouge">fork</code>했던 레포지토리로 다시 돌아간다.</li>
+  <li>이제 아까전에 자동으로 복사되었던 레포지토리로 다시 돌아간다.</li>
 </ul>
 
 <p align="center"><img src="../../assets/images/gitClone1.png" width="600" /></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">fork</code> 되었으면 내 로컬 컴퓨터로 다운받아야 한다.</li>
+  <li>원격저장소에 있는 레포지토리를 내 로컬 컴퓨터로 다운받아야 한다.</li>
   <li>초록색 <code class="language-plaintext highlighter-rouge">Code</code> 버튼을 클릭하면 이 레포지토리의 주소를 볼 수 있다.</li>
 </ul>
 
@@ -117,7 +118,24 @@ git checkout -b 새 브랜치 이름    // 새 브랜치 생성 후 그 브랜�
   <li>새 브랜치를 만들었을 때 한 번만 하면 된다.</li>
 </ul>
 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout 내 브랜치 이름
+</code></pre></div></div>
+
+<ul>
+  <li>다음부터는 위 명령어만 입력해서 내 개인 브랜치로 바꾸면 된다.</li>
+</ul>
+
 <h2 id="작업물-업로드하기">작업물 업로드하기</h2>
+<ul>
+  <li>작업물 업로드 전에</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout 내 브랜치 이름
+</code></pre></div></div>
+
+<ul>
+  <li>이걸 입력해서 꼭 개인 브랜치로 바꾼 후에 업로드 하자!!!</li>
+</ul>
 
 <p align="center"><img src="../../assets/images/modifyTask.png" width="700" /></p>
 
@@ -222,8 +240,14 @@ git commit -m "[yujin] README 수정"  // 방금 추가한 파일들 업로드 �
     <p>짠! <code class="language-plaintext highlighter-rouge">merge</code> 후 <code class="language-plaintext highlighter-rouge">main</code> 브랜치에 최종 반영된 것을 볼 수 있다.</p>
   </li>
   <li>
-    <p>이후에 또 새로운 작업물을 업로드 해야 하면 <strong>내 로컬저장소 최신버전으로 업데이트</strong>부터 반복하면 된다.</p>
+    <p>이후에 또 새로운 작업물을 업로드 해야 하면 <strong>내 로컬저장소 최신버전으로 업데이트</strong>부터 반복하면 된다.<br /><br /><br /></p>
   </li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="https://jalynne-kim.medium.com/%EA%B9%83-%ED%9D%90%EB%A6%84-%EA%B9%83%ED%97%88%EB%B8%8C-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%97%85%EB%A1%9C%EB%93%9C-%ED%95%98%EA%B8%B0-d12bda2f7ff5">[ 깃허브 ] github 브랜치 만들고 업로드 하기</a></li>
+  <li><a href="https://velog.io/@johnny/pintOS-github">[pintOS] github으로 팀프로젝트 관리하기 (pintOS 팀플 맞춤)</a></li>
 </ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Log" /><category term="Project" /><category term="UnoMas" /><summary type="html"><![CDATA[GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.]]></summary></entry><entry><title type="html">Python) 프로그래머스. 기둥과 보 설치</title><link href="http://localhost:4000/programmers/programmers-pillar-and-plate-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 기둥과 보 설치" /><published>2022-04-18T00:00:00+09:00</published><updated>2022-04-18T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-pillar-and-plate-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-pillar-and-plate-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
