@@ -31,6 +31,7 @@ tags:
 <p align="center"><img src="../../assets/images/gitPinned.png" width="700"></p>
 
 * 내 GitHub 프로필 메인으로 가면 아까 `pin`했던 레포지토리 목록을 볼 수 있다. 이걸로 원격저장소에 찾아오면 된다.
+* 원격저장소는 하나만 존재하고 이걸 내 컴퓨터로 다운받아서 로컬저장소에서 각자 작업한 후에 원격저장소로 합치는 개념이다.
 
 <p align="center"><img src="../../assets/images/gitClone3.png" width="500"></p>
 * [맥 OS 기준] 레포지토리를 다운받을 폴더를 선택한 뒤 `폴더에서 새로운 터미널 열기`를 선택하거나
