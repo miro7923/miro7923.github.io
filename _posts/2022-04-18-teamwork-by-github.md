@@ -17,10 +17,20 @@ tags:
 <p align="center"><img src="../../assets/images/gitCollaborators.png"></p>
 * 새 프로젝트용 레포지토리 생성 후 함께 할 팀원들의 GitHub 메일 주소를 `Collaborator`에 추가한다.<br><br>
 
-# 팀원들이 새 레포지토리에 참여하기
+# 팀원들이 팀 레포지토리에 참여하기
 * 메일로 `Collaborator` 초대를 받은 뒤 `Accept invitation`을 눌러 수락하면 내 레포지토리 목록에 자동으로 추가된다.
 * [[Git]GitHub Collaborator 추가하기](https://hyoje420.tistory.com/41)
-* 그림과 함께 보고 싶으면 위 링크 참고<br><br>
+* 그림과 함께 보고 싶으면 위 링크 참고
+
+* ❗️ 참고로 `Collaborator`로 참여하면 내 레포지토리 목록에는 보이지 않는다. 
+
+<p align="center"><img src="../../assets/images/gitPin.png"></p>
+
+* 팀장의 레포지토리 상단에서 `pin`을 클릭하면 즐겨찾기에 추가된다.
+
+<p align="center"><img src="../../assets/images/gitPinned.png" width="700"></p>
+
+* 내 GitHub 프로필 메인으로 가면 아까 `pin`했던 레포지토리 목록을 볼 수 있다. 이걸로 원격저장소에 찾아오면 된다.
 
 <p align="center"><img src="../../assets/images/gitClone3.png" width="500"></p>
 * [맥 OS 기준] 레포지토리를 다운받을 폴더를 선택한 뒤 `폴더에서 새로운 터미널 열기`를 선택하거나
