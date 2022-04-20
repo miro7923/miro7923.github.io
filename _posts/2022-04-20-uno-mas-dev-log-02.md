@@ -12,7 +12,7 @@ tags:
     - Log
 ---
 
-* 작성일 : 2022.04.14
+* 작성일 : 2022.04.20
 * 작성자 : 황유진
 * 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진
 * GitHub Repository : [https://github.com/miro7923/Uno-Mas](https://github.com/miro7923/Uno-Mas)<br><br><br>
