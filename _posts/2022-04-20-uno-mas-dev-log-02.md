@@ -227,4 +227,4 @@ $RECYCLE.BIN/
 * [Spring Legacy 프로젝트에서 사용한 .gitignore 파일](https://jazzodevlab.tistory.com/50)<br><br><br>
 
 # 마감까지
-* `D-36`
+* `D-30`
