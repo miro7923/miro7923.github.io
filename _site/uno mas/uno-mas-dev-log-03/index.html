@@ -1,0 +1,868 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정 | Yujin Dev Log</title>
+<meta name="description" content="작성일 : 2022.04.21   작성자 : 황유진   팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진   GitHub Repository : https://github.com/miro7923/Uno-Mas">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정">
+<meta property="og:url" content="http://localhost:4000/uno%20mas/uno-mas-dev-log-03/">
+
+
+  <meta property="og:description" content="작성일 : 2022.04.21   작성자 : 황유진   팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진   GitHub Repository : https://github.com/miro7923/Uno-Mas">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-04-21T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/uno%20mas/uno-mas-dev-log-03/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#uno-mas" itemprop="item"><span itemprop="name">Uno mas</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업에 자신있는 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정">
+    <meta itemprop="description" content="  작성일 : 2022.04.21  작성자 : 황유진  팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진  GitHub Repository : https://github.com/miro7923/Uno-Mas">
+    <meta itemprop="datePublished" content="2022-04-21T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/uno%20mas/uno-mas-dev-log-03/" class="u-url" itemprop="url">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#기간">기간</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황-1">진행상황 1</a><ul><li><a href="#github-원격저장소-초기화생성">GitHub 원격저장소 초기화(생성)</a></li><li><a href="#gitignore-작성">.gitignore 작성</a></li><li><a href="#spring-legacy-project와-github-원격저장소-연결">Spring Legacy Project와 GitHub 원격저장소 연결</a></li></ul></li><li><a href="#진행상황-2">진행상황 2</a><ul><li><a href="#topjsp">top.jsp</a></li><li><a href="#indexjsp">index.jsp</a></li></ul></li><li><a href="#참고">참고</a></li><li><a href="#마감까지">마감까지</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <ul>
+  <li>작성일 : 2022.04.21</li>
+  <li>작성자 : 황유진</li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
+  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1">진행상황 1</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.gitignore</code> 때문에 제법 많은 시간을 쓴 프로젝트와 GitHub 원격저장소 연결… 다음에 또 같은 상황을 맞이하게 되었을 때 참고하기 위해서 글을 작성했다.</li>
+</ul>
+
+<h2 id="github-원격저장소-초기화생성">GitHub 원격저장소 초기화(생성)</h2>
+<ul>
+  <li>아직 팀 프로젝트를 위한 원격저장소가 없다면 새로 생성하면 되는데 우리 팀 같은 경우에는 기존에 테스트용으로 만들었던 원격저장소가 있었는데 기존에 쓸모 없이 업로드 되어 있던 파일들이 좀 있었던 터라 그대로 쓰기에는 적절하지 않았다. 그래서 초기화 후 다시 진행하기로 했다.</li>
+  <li>초기화 하는 방법에는 <a href="https://airvw.github.io/git/2020-10-29-github-init/">git으로 github repository 초기화 하기</a> 이 글처럼 로컬 저장소에 숨김처리 되어 있는 <code class="language-plaintext highlighter-rouge">.git</code> 폴더를 삭제한 후 강제 리모트해서 푸시 하는 방법이 있는데 해 보니까 <code class="language-plaintext highlighter-rouge">merge</code> 내역이 엉켜서 그런 것인지 되지 않아서 그냥 로컬저장소에 추가 되었던 내용물을 삭제한 후 빈 폴더를 <code class="language-plaintext highlighter-rouge">origin</code>으로 <code class="language-plaintext highlighter-rouge">push</code>해서 원격저장소를 초기화 했다. 그리고 로컬저장소를 삭제한 다음 원격저장소에서 다시 클론했다.</li>
+</ul>
+
+<h2 id="gitignore-작성">.gitignore 작성</h2>
+<ul>
+  <li>그간은 혼자 GitHub 원격저장소를 사용했기 때문에 시스템 환경설정 버튼이 함께 업로드 되는 것을 신경쓰지 않고 살았는데 팀 프로젝트를 하면서 공유하게 되니까 저것들이 신경쓰였다. 그래서 업로드에 앞서 <code class="language-plaintext highlighter-rouge">.gitignore</code> 설정을 가장 먼저 했다.</li>
+  <li><a href="https://miro7923.github.io/uno%20mas/uno-mas-dev-log-02/">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 2 - Spring Legacy 프로젝트를 위한 .gitignore 설정</a></li>
+  <li>클릭하면 <code class="language-plaintext highlighter-rouge">.gitignore</code>작성문을 참고할 수 있다.</li>
+</ul>
+
+<h2 id="spring-legacy-project와-github-원격저장소-연결">Spring Legacy Project와 GitHub 원격저장소 연결</h2>
+<ul>
+  <li><a href="https://idiottech.tistory.com/12">[Git] 이클립스(STS)에서 깃허브 연동 방법 정리</a></li>
+  <li>전체적인 진행은 위 글을 참고했다.</li>
+  <li>로컬저장소는 새로 생성하지 않고 아까 클론했던 폴더를 사용했다. 여기까지는 순조로웠다.</li>
+  <li>그런데 커밋을 하려 하니까 <code class="language-plaintext highlighter-rouge">Unstating</code> 목록에서 <code class="language-plaintext highlighter-rouge">Staging</code> 목록으로 파일들이 옮겨지지 않았다. 무슨 일… 그래서 클론했던 로컬저장소 폴더를 삭제하고 다른 경로로 클론한 뒤 프로젝트의 로컬저장소 경로도 거기로 설정해 주니까 첫 번째 <code class="language-plaintext highlighter-rouge">commit</code>과 <code class="language-plaintext highlighter-rouge">push</code>까지는 정상 작동하긴 했다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/1stCommit.png" width="400" /></p>
+
+<ul>
+  <li>그런데 원격저장소에 업로드가 잘 된 것을 확인했는데 <code class="language-plaintext highlighter-rouge">STS</code>상에서는 여전히 <code class="language-plaintext highlighter-rouge">commit</code>할 파일이 한가득이라고 뜨는 것이었다… 당시 캡쳐본이 없어서 글로 대신하지만 아까전에 <code class="language-plaintext highlighter-rouge">commit</code>했던 내역이 <code class="language-plaintext highlighter-rouge">Unstaged</code> 칸에 그대로 남아 있었다.</li>
+  <li>그래서 한 번 더 <code class="language-plaintext highlighter-rouge">commit &amp; push</code>를 시도했는데, 결과는 성공했는데 원격저장소의 프로젝트 파일이 모두 삭제된 것이었다. 환장….🥲 로컬 <code class="language-plaintext highlighter-rouge">STS</code>상에서는 커밋할 것이 있다는 표시도 나오지 않았다.</li>
+  <li>그래서 다시 한 번… 원격저장소의 클론부터 새 프로젝트 생성 및 원격저장소 연결까지 반복했다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/successToConnectToGithub.png" width="400" /></p>
+
+<ul>
+  <li>마지막 시도에서 드디어 커밋까지는 잘 되었는데 <code class="language-plaintext highlighter-rouge">push</code> 하는 과정에서 충돌이 생긴다며 <code class="language-plaintext highlighter-rouge">reject</code> 되었다.</li>
+  <li><a href="https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=sim4858&amp;logNo=220924984480">https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=sim4858&amp;logNo=220924984480</a></li>
+  <li>여기를 참고해서 해결할 수 있었다. 첫 번째 글을 작성했던 분이 마치 이 상황까지 예상한 듯이 게시글의 하단에 참고 링크를 올려 놓으셨다… 아마 레포지토리를 새로 생성한 직후가 아닌 기존에 사용하던 것을 재활용하다보니 병합 과정에서 충돌이 생긴 것 같았다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/unomasGithubMain.png" /></p>
+
+<ul>
+  <li>
+    <p>그리고 드디어 최종 업로드에 성공했다.</p>
+  </li>
+  <li>이 과정을 겪으며 알게 된 것은 <code class="language-plaintext highlighter-rouge">.gitignore</code>를 사전에 잘 만들어두고 시작해야 한다는 것과 <code class="language-plaintext highlighter-rouge">gitignore</code>가 꼭 원격저장소에 <code class="language-plaintext highlighter-rouge">push</code>되어 있지 않고 로컬저장소에만 있어도 적용이 된다는 것이었다.</li>
+  <li>왜냐면 처음엔 <code class="language-plaintext highlighter-rouge">.gitignore</code>가 원격저장소에 <code class="language-plaintext highlighter-rouge">push</code>되어 있어야만 적용이 되는 줄 알고 프로젝트 파일을 <code class="language-plaintext highlighter-rouge">push</code>하기 전에 <code class="language-plaintext highlighter-rouge">.gitignore</code>만 <code class="language-plaintext highlighter-rouge">push</code>하려다가 이상하게 꼬여서 <code class="language-plaintext highlighter-rouge">STS</code>에서 <code class="language-plaintext highlighter-rouge">commit</code>이 제대로 되지 않는 경우가 많이 생겨서 몇 번이나 처음부터 다시 시작해야 했기 때문이다…</li>
+  <li>그래도 이제 <code class="language-plaintext highlighter-rouge">GitHub</code>으로 팀 프로젝트를 어떻게 시작해야 할 지 조금 알 것 같다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-2">진행상황 2</h1>
+<ul>
+  <li>홈페이지 디자인으로는 무료 템플릿을 수정해서 사용하기로 했기 때문에 각 <code class="language-plaintext highlighter-rouge">html</code> 파일의 소스코드를 수정할 필요가 있었다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/templateOriginHead.png" /></p>
+
+<ul>
+  <li>모든 헤더 부분이 이렇게 되어 있었기 때문에 헤더만 따로 파일을 만들어서 각 <code class="language-plaintext highlighter-rouge">html</code>페이지의 헤더 부분에 <code class="language-plaintext highlighter-rouge">include</code> 해 주어야 했다. 그렇게 하지 않으면 헤더에 변경사항 생기면 모든 페이지의 헤더 부분을 수정해줘야 하니까… 헤더 페이지 하나만 수정하면 다른 페이지에도 일괄 적용되게 하고 싶었다.</li>
+  <li>그렇게 하기 위해서는 <code class="language-plaintext highlighter-rouge">jsp 액션태그</code>를 사용해야 해서 모든 <code class="language-plaintext highlighter-rouge">html</code> 페이지를 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지로 바꿨다.</li>
+</ul>
+
+<h2 id="topjsp">top.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"path"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">pageContext</span><span class="o">.</span><span class="na">request</span><span class="o">.</span><span class="na">contextPath</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;&lt;/c:set&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"Fashi Template"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"keywords"</span> <span class="na">content=</span><span class="s">"Fashi, unica, creative, html"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Uno más | Template<span class="nt">&lt;/title&gt;</span>
+
+    <span class="c">&lt;!-- Google Font --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Css Styles --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/bootstrap.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/font-awesome.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/themify-icons.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/elegant-icons.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/owl.carousel.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/nice-select.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/jquery-ui.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/slicknav.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/style.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/headerFooter.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이런 식으로 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>태그에 들어갈 것만 따로 분리한 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지를 만든 다음에</li>
+</ul>
+
+<h2 id="indexjsp">index.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"path"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">pageContext</span><span class="o">.</span><span class="na">request</span><span class="o">.</span><span class="na">contextPath</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;&lt;/c:set&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="c">&lt;!-- Start header --&gt;</span>
+<span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"inc/top.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+<span class="c">&lt;!-- Start header --&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- Header Section Begin --&gt;</span>
+	<span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"inc/header.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="c">&lt;!-- Header End --&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>각 페이지의 상단에 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 태그가 들어가는 부분에는 <code class="language-plaintext highlighter-rouge">top.jsp</code> 파일을 <code class="language-plaintext highlighter-rouge">include</code>하고 헤더 부분에는 <code class="language-plaintext highlighter-rouge">header.jsp</code> 파일을 <code class="language-plaintext highlighter-rouge">include</code> 해 주었다.</p>
+  </li>
+  <li>각 페이지 하단 부분
+    <div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">&lt;!-- Footer Section Begin --&gt;</span>
+  <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"inc/bottom.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+  <span class="c">&lt;!-- Footer Section End --&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">bottom.jsp</code> 파일을 만들어서 하단 부분에 <code class="language-plaintext highlighter-rouge">include</code> 해 주었다.</li>
+  <li>이제 헤더와 푸터 부분에서 수정사항이 생기면 <code class="language-plaintext highlighter-rouge">header.jsp</code>와 <code class="language-plaintext highlighter-rouge">bottom.jsp</code> 파일만 수정하면 된다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://idiottech.tistory.com/12">[Git] 이클립스(STS)에서 깃허브 연동 방법 정리</a></li>
+  <li><a href="https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=sim4858&amp;logNo=220924984480">https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=sim4858&amp;logNo=220924984480</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-29</code></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#log" class="page__taxonomy-item p-category" rel="tag">Log</a><span class="sep">, </span>
+    
+      <a href="/tags/#project" class="page__taxonomy-item p-category" rel="tag">Project</a><span class="sep">, </span>
+    
+      <a href="/tags/#unomas" class="page__taxonomy-item p-category" rel="tag">UnoMas</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#uno-mas" class="page__taxonomy-item p-category" rel="tag">Uno mas</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JAVA+Spring%29+1%EC%9D%B8%EA%B0%80%EA%B5%AC%EB%A5%BC+%EC%9C%84%ED%95%9C+%EC%87%BC%ED%95%91%EB%AA%B0+Uno+m%C3%A1s+%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80+3+-+Spring+Legacy+%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%99%80+GitHub+%EC%9B%90%EA%B2%A9%EC%A0%80%EC%9E%A5%EC%86%8C+%EC%97%B0%EA%B2%B0%ED%95%98%EA%B3%A0+%EC%82%AC%EC%9D%B4%ED%8A%B8+%ED%85%9C%ED%94%8C%EB%A6%BF+%EC%B4%88%EA%B8%B0%EC%84%A4%EC%A0%95%20http%3A%2F%2Flocalhost%3A4000%2Funo%2520mas%2Funo-mas-dev-log-03%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Funo%2520mas%2Funo-mas-dev-log-03%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Funo%2520mas%2Funo-mas-dev-log-03%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/programmers/programmers-maintenance-wall/" class="pagination--pager" title="Python) 프로그래머스. 외벽 점검
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-maintenance-wall/" rel="permalink">Python) 프로그래머스. 외벽 점검
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://programmers.co.kr/learn/courses/30/lessons/60062
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-02/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 2 - Spring Legacy 프로젝트를 위한 .gitignore 설정
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-20T00:00:00+09:00">April 20, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.04.20
+  작성자 : 황유진
+  팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진
+  GitHub Repository : https://github.com/miro7923/Uno-Mas
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj15686-py/" rel="permalink">Python) BOJ 15686. 치킨 배달
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-19T00:00:00+09:00">April 19, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://www.acmicpc.net/problem/15686
+
+
+제한
+
+
+
+  시간 제한 : 1 초
+  메모리 제한 : 512 MB
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/teamwork-by-github/" rel="permalink">GitHub로 팀 프로젝트 관리하는 방법
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-18T00:00:00+09:00">April 18, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성자 : 황유진
+  글 작성 도움 : 오은현
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
