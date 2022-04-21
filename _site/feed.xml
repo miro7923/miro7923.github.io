@@ -1,5 +1,505 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-19T12:28:06+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">GitHub로 팀 프로젝트 관리하는 방법</title><link href="http://localhost:4000/uno%20mas/teamwork-by-github/" rel="alternate" type="text/html" title="GitHub로 팀 프로젝트 관리하는 방법" /><published>2022-04-18T00:00:00+09:00</published><updated>2022-04-18T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/teamwork-by-github</id><content type="html" xml:base="http://localhost:4000/uno%20mas/teamwork-by-github/"><![CDATA[<ul>
-  <li>GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.<br /><br /></li>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-21T11:19:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 외벽 점검</title><link href="http://localhost:4000/programmers/programmers-maintenance-wall/" rel="alternate" type="text/html" title="Python) 프로그래머스. 외벽 점검" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maintenance-wall</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maintenance-wall/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/60062">https://programmers.co.kr/learn/courses/30/lessons/60062</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>레스토랑을 운영하고 있는 “스카피”는 레스토랑 내부가 너무 낡아 친구들과 함께 직접 리모델링 하기로 했습니다. 레스토랑이 있는 곳은 스노우타운으로 매우 추운 지역이어서 내부 공사를 하는 도중에 주기적으로 외벽의 상태를 점검해야 할 필요가 있습니다.</p>
+  </li>
+  <li>
+    <p>레스토랑의 구조는 완전히 동그란 모양이고 외벽의 총 둘레는 n미터이며, 외벽의 몇몇 지점은 추위가 심할 경우 손상될 수도 있는 취약한 지점들이 있습니다. 따라서 내부 공사 도중에도 외벽의 취약 지점들이 손상되지 않았는 지, 주기적으로 친구들을 보내서 점검을 하기로 했습니다. 다만, 빠른 공사 진행을 위해 점검 시간을 1시간으로 제한했습니다. 친구들이 1시간 동안 이동할 수 있는 거리는 제각각이기 때문에, 최소한의 친구들을 투입해 취약 지점을 점검하고 나머지 친구들은 내부 공사를 돕도록 하려고 합니다. 편의 상 레스토랑의 정북 방향 지점을 0으로 나타내며, 취약 지점의 위치는 정북 방향 지점으로부터 시계 방향으로 떨어진 거리로 나타냅니다. 또, 친구들은 출발 지점부터 시계, 혹은 반시계 방향으로 외벽을 따라서만 이동합니다.</p>
+  </li>
+  <li>
+    <p>외벽의 길이 n, 취약 지점의 위치가 담긴 배열 weak, 각 친구가 1시간 동안 이동할 수 있는 거리가 담긴 배열 dist가 매개변수로 주어질 때, 취약 지점을 점검하기 위해 보내야 하는 친구 수의 최소값을 return 하도록 solution 함수를 완성해주세요.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>n은 1 이상 200 이하인 자연수입니다.</li>
+  <li>weak의 길이는 1 이상 15 이하입니다.</li>
+  <li>서로 다른 두 취약점의 위치가 같은 경우는 주어지지 않습니다.</li>
+  <li>취약 지점의 위치는 오름차순으로 정렬되어 주어집니다.</li>
+  <li>weak의 원소는 0 이상 n - 1 이하인 정수입니다.</li>
+  <li>dist의 길이는 1 이상 8 이하입니다.</li>
+  <li>dist의 원소는 1 이상 100 이하인 자연수입니다.</li>
+  <li>친구들을 모두 투입해도 취약 지점을 전부 점검할 수 없는 경우에는 -1을 return 해주세요.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음엔 수리지점 한 군데에서 시계방향과 반시계방향으로 돌았을 때 더 짧은 거리를 찾아서 거리배열에서 그 거리와 합이 같거나 커지는 원소들의 개수를 찾으려 했다. 하지만 2번 예제에서만 통하고 1번 예제에서는 통하지 않았음…</li>
+  <li>그리하여 참고한 해설은 일단 외벽 배열을 원형탐색할 수 있게 확장한 다음 거리배열의 순열을 구해서 각 경우마다 몇 명을 보내면 외벽 수리를 마칠 수 있는지 확인하는 것이다. 원형배열로 확장하는 부분에 대한 아이디어가 없어서 헤멨는데 이걸 알고 나니까 조금 이해가 수월했다.</li>
+  <li>순열을 구하는 함수는 재귀로 직접 구현한 함수와 <code class="language-plaintext highlighter-rouge">itertools</code>에서 제공되는 함수 둘 다 써 봤는데 이 문제에서는 재귀로 직접 구현한 함수가 더 빨랐다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<h2 id="재귀로-순열-함수-구현한-코드">재귀로 순열 함수 구현한 코드</h2>
+
+<script src="https://gist.github.com/miro7923/3dbb17400670abbf4d9e50fd8677bd44.js"></script>
+
+<h2 id="itertools의-순열-함수-사용한-코드">itertools의 순열 함수 사용한 코드</h2>
+
+<script src="https://gist.github.com/miro7923/31c1614750fc4544770808bd672fa477.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60062]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 2 - Spring Legacy 프로젝트를 위한 .gitignore 설정</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-02/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 2 - Spring Legacy 프로젝트를 위한 .gitignore 설정" /><published>2022-04-20T00:00:00+09:00</published><updated>2022-04-20T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-02</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-02/"><![CDATA[<ul>
+  <li>작성일 : 2022.04.20</li>
+  <li>작성자 : 황유진</li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Spring Legacy Project</code>로 프로젝트를 진행하게 됨에 따라 <code class="language-plaintext highlighter-rouge">GitHub</code> 원격저장소에서 파일을 공유할 때 시스템 환경설정 파일은 함께 공유 되지 않아야 할 필요가 있었다.</li>
+  <li>하지만 아무 처리를 하지 않으면 각종 시스템 환경설정파일이 함께 업로드 되기 때문에 <code class="language-plaintext highlighter-rouge">.gitignore</code> 설정을 해줘야 했는데 유명한 <code class="language-plaintext highlighter-rouge">.gitignore</code>를 만들어주는 사이트에서 만드는 버전으로는 좀 한계가 있었다. <code class="language-plaintext highlighter-rouge">STS</code>에서 커밋을 하려고 할 때 <code class="language-plaintext highlighter-rouge">.classpath</code>같은 파일들이 제외되지 않았기 때문이다.</li>
+</ul>
+
+<h2 id="gitignore-1차-설정">.gitignore 1차 설정</h2>
+<ul>
+  <li><a href="https://lsjsj92.tistory.com/566">https://lsjsj92.tistory.com/566</a></li>
+  <li>처음엔 위 글을 참고하여 <a href="https://www.toptal.com/developers/gitignore">https://www.toptal.com/developers/gitignore</a> 이 사이트에서 만들었는데 좀 부족했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">STS</code>에서 커밋을 하려고 하니 <code class="language-plaintext highlighter-rouge">.classpath</code>, <code class="language-plaintext highlighter-rouge">MINIFEST.MF</code>와 같은 파일들이 제외되지 않았기 때문이다. 나 혼자 하는 프로젝트면 알아서 걸러내고 하면 되겠지만 팀으로 하는 프로젝트이기 때문에 누군가는 저 파일들을 실수로 업로드를 할 것이다. 그렇기 때문에 저것들이 처음부터 제외되도록 <code class="language-plaintext highlighter-rouge">.gitignore</code>를 수정해야 했다.</li>
+</ul>
+
+<h2 id="gitignore-2차-설정">.gitignore 2차 설정</h2>
+<ul>
+  <li><a href="https://jazzodevlab.tistory.com/50">Spring Legacy 프로젝트에서 사용한 .gitignore 파일</a></li>
+  <li>위 글을 참고하여 <code class="language-plaintext highlighter-rouge">gitignore</code>를 다시 한 번 설정했다.</li>
+  <li>나는 맥 OS를 쓰지만 나머지 팀원들은 모두 윈도우 OS를 사용하기 때문에 각각 운영체제의 환경설정 파일도 제외하는 코드를 추가했다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Created by https://www.toptal.com/developers/gitignore/api/windows,macos,eclipse,java
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,eclipse,java
+
+mybatis-config.xml
+log4j.xml
+
+lecture
+target
+pom.properties
+.classpath
+MANIFEST.MF
+
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
+
+# CDT- autotools
+.autotools
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# Tern plugin
+.tern-project
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Code Recommenders
+.recommenders/
+
+# Annotation Processing
+.apt_generated/
+.apt_generated_test/
+
+# Scala IDE specific (Scala <span class="err">&amp;</span> Java development for Eclipse)
+.cache-main
+.scala_dependencies
+.worksheet
+
+# Uncomment this line if you wish to ignore the project description file.
+# Typically, this file would be tracked if it contains build/dependency configurations:
+#.project
+
+### Eclipse Patch ###
+# Spring Boot Tooling
+.sts4-cache/
+
+# Eclipse Core
+.project
+
+# IDT-specific (Eclipse Java Development Tools)
+.classpath
+
+### Java ###
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### macOS Patch ###
+# iCloud generated files
+*.icloud
+
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# End of https://www.toptal.com/developers/gitignore/api/windows,macos,eclipse,java
+</code></pre></div></div>
+
+<ul>
+  <li>이렇게 수정하고 <code class="language-plaintext highlighter-rouge">STS</code>에서 다시 커밋을 시도해 보니까 소스파일만 깔끔하게 <code class="language-plaintext highlighter-rouge">Staging</code> 목록에 나타난다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="https://lsjsj92.tistory.com/566">https://lsjsj92.tistory.com/566</a></li>
+  <li><a href="https://jazzodevlab.tistory.com/50">Spring Legacy 프로젝트에서 사용한 .gitignore 파일</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-30</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.20 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) BOJ 15686. 치킨 배달</title><link href="http://localhost:4000/boj/boj15686-py/" rel="alternate" type="text/html" title="Python) BOJ 15686. 치킨 배달" /><published>2022-04-19T00:00:00+09:00</published><updated>2022-04-19T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj15686-py</id><content type="html" xml:base="http://localhost:4000/boj/boj15686-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/15686">https://www.acmicpc.net/problem/15686</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 1 초</li>
+  <li>메모리 제한 : 512 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>크기가 N×N인 도시가 있다. 도시는 1×1크기의 칸으로 나누어져 있다. 도시의 각 칸은 빈 칸, 치킨집, 집 중 하나이다. 도시의 칸은 (r, c)와 같은 형태로 나타내고, r행 c열 또는 위에서부터 r번째 칸, 왼쪽에서부터 c번째 칸을 의미한다. r과 c는 1부터 시작한다.</p>
+  </li>
+  <li>
+    <p>이 도시에 사는 사람들은 치킨을 매우 좋아한다. 따라서, 사람들은 “치킨 거리”라는 말을 주로 사용한다. 치킨 거리는 집과 가장 가까운 치킨집 사이의 거리이다. 즉, 치킨 거리는 집을 기준으로 정해지며, 각각의 집은 치킨 거리를 가지고 있다. 도시의 치킨 거리는 모든 집의 치킨 거리의 합이다.</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>임의의 두 칸 (r1, c1)과 (r2, c2) 사이의 거리는</td>
+          <td>r1-r2</td>
+          <td>+</td>
+          <td>c1-c2</td>
+          <td>로 구한다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>예를 들어, 아래와 같은 지도를 갖는 도시를 살펴보자.</p>
+  </li>
+  <li>0 2 0 1 0</li>
+  <li>1 0 1 0 0</li>
+  <li>0 0 0 0 0</li>
+  <li>0 0 0 1 1</li>
+  <li>0 0 0 1 2</li>
+  <li>
+    <p>0은 빈 칸, 1은 집, 2는 치킨집이다.</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>(2, 1)에 있는 집과 (1, 2)에 있는 치킨집과의 거리는</td>
+          <td>2-1</td>
+          <td>+</td>
+          <td>1-2</td>
+          <td>= 2, (5, 5)에 있는 치킨집과의 거리는</td>
+          <td>2-5</td>
+          <td>+</td>
+          <td>1-5</td>
+          <td>= 7이다. 따라서, (2, 1)에 있는 집의 치킨 거리는 2이다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>(5, 4)에 있는 집과 (1, 2)에 있는 치킨집과의 거리는</td>
+          <td>5-1</td>
+          <td>+</td>
+          <td>4-2</td>
+          <td>= 6, (5, 5)에 있는 치킨집과의 거리는</td>
+          <td>5-5</td>
+          <td>+</td>
+          <td>4-5</td>
+          <td>= 1이다. 따라서, (5, 4)에 있는 집의 치킨 거리는 1이다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>이 도시에 있는 치킨집은 모두 같은 프랜차이즈이다. 프렌차이즈 본사에서는 수익을 증가시키기 위해 일부 치킨집을 폐업시키려고 한다. 오랜 연구 끝에 이 도시에서 가장 수익을 많이 낼 수 있는  치킨집의 개수는 최대 M개라는 사실을 알아내었다.</p>
+  </li>
+  <li>도시에 있는 치킨집 중에서 최대 M개를 고르고, 나머지 치킨집은 모두 폐업시켜야 한다. 어떻게 고르면, 도시의 치킨 거리가 가장 작게 될지 구하는 프로그램을 작성하시오.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>첫째 줄에 N(2 ≤ N ≤ 50)과 M(1 ≤ M ≤ 13)이 주어진다.</p>
+  </li>
+  <li>
+    <p>둘째 줄부터 N개의 줄에는 도시의 정보가 주어진다.</p>
+  </li>
+  <li>
+    <p>도시의 정보는 0, 1, 2로 이루어져 있고, 0은 빈 칸, 1은 집, 2는 치킨집을 의미한다. 집의 개수는 2N개를 넘지 않으며, 적어도 1개는 존재한다. 치킨집의 개수는 M보다 크거나 같고, 13보다 작거나 같다.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 폐업시키지 않을 치킨집을 최대 M개를 골랐을 때, 도시의 치킨 거리의 최솟값을 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>치킨집을 최대 M개를 선택하다는 말 때문에 1개 이상 M개까지 선택할 수 있다는 말인 줄 알고(최종적으로 선택 가능한 치킨집의 개수가 변하는 것…) 그걸 다 어떻게 처리하느냐는 고민에 빠졌었다. 알고보니 쓸데 없는 고민이었다…</li>
+  <li>전체 치킨집 중에서 그냥 M개를 선택하는 것으로 X개의 치킨집 중에서 M개의 치킨을 고르는 경우의 수를 구하는 것이었다. 즉 xCr 조합을 구하면 되는 것이었다.</li>
+  <li>그 다음엔 조합들을 대상으로 각 집들의 치킨거리를 구해 치킨거리의 합을 구한다. 그 중에서 최솟값을 출력하면 정답이다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 440 ms</li>
+  <li>메모리 : 30840 KB<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/8a6a9b16d3b5de4b28503903d89e3c38.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No15686" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/15686 제한 시간 제한 : 1 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Python) 프로그래머스. 기둥과 보 설치</title><link href="http://localhost:4000/programmers/programmers-pillar-and-plate-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 기둥과 보 설치" /><published>2022-04-18T00:00:00+09:00</published><updated>2022-04-18T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-pillar-and-plate-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-pillar-and-plate-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/60061">https://programmers.co.kr/learn/courses/30/lessons/60061</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>빙하가 깨지면서 스노우타운에 떠내려 온 “죠르디”는 인생 2막을 위해 주택 건축사업에 뛰어들기로 결심하였습니다. “죠르디”는 기둥과 보를 이용하여 벽면 구조물을 자동으로 세우는 로봇을 개발할 계획인데, 그에 앞서 로봇의 동작을 시뮬레이션 할 수 있는 프로그램을 만들고 있습니다.</li>
+  <li>
+    <p>프로그램은 2차원 가상 벽면에 기둥과 보를 이용한 구조물을 설치할 수 있는데, 기둥과 보는 길이가 1인 선분으로 표현되며 다음과 같은 규칙을 가지고 있습니다.</p>
+  </li>
+  <li>기둥은 바닥 위에 있거나 보의 한쪽 끝 부분 위에 있거나, 또는 다른 기둥 위에 있어야 합니다.</li>
+  <li>보는 한쪽 끝 부분이 기둥 위에 있거나, 또는 양쪽 끝 부분이 다른 보와 동시에 연결되어 있어야 합니다.</li>
+  <li>
+    <p>단, 바닥은 벽면의 맨 아래 지면을 말합니다.</p>
+  </li>
+  <li>2차원 벽면은 n x n 크기 정사각 격자 형태이며, 각 격자는 1 x 1 크기입니다. 맨 처음 벽면은 비어있는 상태입니다. 기둥과 보는 격자선의 교차점에 걸치지 않고, 격자 칸의 각 변에 정확히 일치하도록 설치할 수 있습니다. 다음은 기둥과 보를 설치해 구조물을 만든 예시입니다.</li>
+</ul>
+
+<p align="center"><img src="https://grepp-programmers.s3.amazonaws.com/files/production/c453630fa0/834b86e5-6fd0-4d3c-8023-7f853ea4301f.jpg" width="400" /></p>
+
+<ul>
+  <li>
+    <p>예를 들어, 위 그림은 다음 순서에 따라 구조물을 만들었습니다.</p>
+  </li>
+  <li>(1, 0)에서 위쪽으로 기둥을 하나 설치 후, (1, 1)에서 오른쪽으로 보를 하나 만듭니다.</li>
+  <li>(2, 1)에서 위쪽으로 기둥을 하나 설치 후, (2, 2)에서 오른쪽으로 보를 하나 만듭니다.</li>
+  <li>(5, 0)에서 위쪽으로 기둥을 하나 설치 후, (5, 1)에서 위쪽으로 기둥을 하나 더 설치합니다.</li>
+  <li>(4, 2)에서 오른쪽으로 보를 설치 후, (3, 2)에서 오른쪽으로 보를 설치합니다.</li>
+  <li>
+    <p>만약 (4, 2)에서 오른쪽으로 보를 먼저 설치하지 않고, (3, 2)에서 오른쪽으로 보를 설치하려 한다면 2번 규칙에 맞지 않으므로 설치가 되지 않습니다. 기둥과 보를 삭제하는 기능도 있는데 기둥과 보를 삭제한 후에 남은 기둥과 보들 또한 위 규칙을 만족해야 합니다. 만약, 작업을 수행한 결과가 조건을 만족하지 않는다면 해당 작업은 무시됩니다.</p>
+  </li>
+  <li>벽면의 크기 n, 기둥과 보를 설치하거나 삭제하는 작업이 순서대로 담긴 2차원 배열 build_frame이 매개변수로 주어질 때, 모든 명령어를 수행한 후 구조물의 상태를 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>n은 5 이상 100 이하인 자연수입니다.</li>
+  <li>build_frame의 세로(행) 길이는 1 이상 1,000 이하입니다.</li>
+  <li>build_frame의 가로(열) 길이는 4입니다.</li>
+  <li>build_frame의 원소는 [x, y, a, b]형태입니다.</li>
+  <li>x, y는 기둥, 보를 설치 또는 삭제할 교차점의 좌표이며, [가로 좌표, 세로 좌표] 형태입니다.</li>
+  <li>a는 설치 또는 삭제할 구조물의 종류를 나타내며, 0은 기둥, 1은 보를 나타냅니다.</li>
+  <li>b는 구조물을 설치할 지, 혹은 삭제할 지를 나타내며 0은 삭제, 1은 설치를 나타냅니다.</li>
+  <li>벽면을 벗어나게 기둥, 보를 설치하는 경우는 없습니다.</li>
+  <li>바닥에 보를 설치 하는 경우는 없습니다.</li>
+  <li>구조물은 교차점 좌표를 기준으로 보는 오른쪽, 기둥은 위쪽 방향으로 설치 또는 삭제합니다.</li>
+  <li>구조물이 겹치도록 설치하는 경우와, 없는 구조물을 삭제하는 경우는 입력으로 주어지지 않습니다.</li>
+  <li>최종 구조물의 상태는 아래 규칙에 맞춰 return 해주세요.</li>
+  <li>return 하는 배열은 가로(열) 길이가 3인 2차원 배열로, 각 구조물의 좌표를 담고있어야 합니다.</li>
+  <li>return 하는 배열의 원소는 [x, y, a] 형식입니다.</li>
+  <li>x, y는 기둥, 보의 교차점 좌표이며, [가로 좌표, 세로 좌표] 형태입니다.</li>
+  <li>기둥, 보는 교차점 좌표를 기준으로 오른쪽, 또는 위쪽 방향으로 설치되어 있음을 나타냅니다.</li>
+  <li>a는 구조물의 종류를 나타내며, 0은 기둥, 1은 보를 나타냅니다.</li>
+  <li>return 하는 배열은 x좌표 기준으로 오름차순 정렬하며, x좌표가 같을 경우 y좌표 기준으로 오름차순 정렬해주세요.</li>
+  <li>x, y좌표가 모두 같은 경우 기둥이 보보다 앞에 오면 됩니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음엔 설치와 삭제를 할 때 주변 상황이 조건에 맞는지 확인한 후 동작을 수행하려 했다. 그런데 그렇게 하니까 코드 작성이 까다로워지고 내가 헷갈렸다. 그래서 해설을 참고했다.</li>
+  <li>풀이는 의외로 아주 간단했는데 입력의 수가 1,000개로 비교적 적고 시간 제한이 5초로 넉넉한 편이라 O(M^3) 알고리즘으로도 풀이가 가능했다. 바로 설치와 삭제를 할 때마다 일단 동작을 수행한 후에 전체 구조물을 검사해서 가능한 구조물이면 넘어가고 그렇지 않으면 수행했던 동작을 취소하는 것이다. 이걸 어렵게 생각하다니…🥲<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/3a36205058914a5909126f931eb32ea5.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60061]]></summary></entry><entry><title type="html">GitHub로 팀 프로젝트 관리하는 방법</title><link href="http://localhost:4000/uno%20mas/teamwork-by-github/" rel="alternate" type="text/html" title="GitHub로 팀 프로젝트 관리하는 방법" /><published>2022-04-18T00:00:00+09:00</published><updated>2022-04-18T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/teamwork-by-github</id><content type="html" xml:base="http://localhost:4000/uno%20mas/teamwork-by-github/"><![CDATA[<ul>
+  <li>작성자 : 황유진</li>
+  <li>
+    <p>글 작성 도움 : 오은현</p>
+  </li>
+  <li>GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.</li>
+  <li>함께 참고하면 좋은 글</li>
+  <li><a href="https://gmlwjd9405.github.io/2017/10/27/how-to-collaborate-on-GitHub-1.html">Feature Branch Workflow</a><br /><br /></li>
 </ul>
 
 <h1 id="-시작-전에-팀장이-할-일">🎬 시작 전에 팀장이 할 일</h1>
@@ -28,6 +528,7 @@
 
 <ul>
   <li>내 GitHub 프로필 메인으로 가면 아까 <code class="language-plaintext highlighter-rouge">pin</code>했던 레포지토리 목록을 볼 수 있다. 이걸로 원격저장소에 찾아오면 된다.</li>
+  <li>원격저장소는 하나만 존재하고 이걸 내 컴퓨터로 다운받아서 로컬저장소에서 각자 작업한 후에 원격저장소로 합치는 개념이다.</li>
 </ul>
 
 <p align="center"><img src="../../assets/images/gitClone3.png" width="500" /></p>
@@ -263,82 +764,58 @@ git commit -m "[yujin] README 수정"  // 방금 추가한 파일들 업로드 �
 <ul>
   <li><a href="https://jalynne-kim.medium.com/%EA%B9%83-%ED%9D%90%EB%A6%84-%EA%B9%83%ED%97%88%EB%B8%8C-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%97%85%EB%A1%9C%EB%93%9C-%ED%95%98%EA%B8%B0-d12bda2f7ff5">[ 깃허브 ] github 브랜치 만들고 업로드 하기</a></li>
   <li><a href="https://velog.io/@johnny/pintOS-github">[pintOS] github으로 팀프로젝트 관리하기 (pintOS 팀플 맞춤)</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Log" /><category term="Project" /><category term="UnoMas" /><summary type="html"><![CDATA[GitHub로 팀 프로젝트를 처음 진행할 때의 막막함을 덜고 나 스스로도 사용법을 정리하기 위해 작성한 글이다.]]></summary></entry><entry><title type="html">Python) 프로그래머스. 기둥과 보 설치</title><link href="http://localhost:4000/programmers/programmers-pillar-and-plate-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 기둥과 보 설치" /><published>2022-04-18T00:00:00+09:00</published><updated>2022-04-18T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-pillar-and-plate-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-pillar-and-plate-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+  <li><a href="https://hyoje420.tistory.com/41">[Git]GitHub Collaborator 추가하기</a></li>
+  <li><a href="https://gmlwjd9405.github.io/2017/10/27/how-to-collaborate-on-GitHub-1.html">Feature Branch Workflow</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Log" /><category term="Project" /><category term="UnoMas" /><summary type="html"><![CDATA[작성자 : 황유진 글 작성 도움 : 오은현]]></summary></entry><entry><title type="html">Python) 프로그래머스. 자물쇠와 열쇠</title><link href="http://localhost:4000/programmers/programmers-lock-and-key-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 자물쇠와 열쇠" /><published>2022-04-17T00:00:00+09:00</published><updated>2022-04-17T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-lock-and-key-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-lock-and-key-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/60061">https://programmers.co.kr/learn/courses/30/lessons/60061</a><br /><br /></li>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/60059">https://programmers.co.kr/learn/courses/30/lessons/60059</a><br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <hr />
 
 <ul>
-  <li>빙하가 깨지면서 스노우타운에 떠내려 온 “죠르디”는 인생 2막을 위해 주택 건축사업에 뛰어들기로 결심하였습니다. “죠르디”는 기둥과 보를 이용하여 벽면 구조물을 자동으로 세우는 로봇을 개발할 계획인데, 그에 앞서 로봇의 동작을 시뮬레이션 할 수 있는 프로그램을 만들고 있습니다.</li>
   <li>
-    <p>프로그램은 2차원 가상 벽면에 기둥과 보를 이용한 구조물을 설치할 수 있는데, 기둥과 보는 길이가 1인 선분으로 표현되며 다음과 같은 규칙을 가지고 있습니다.</p>
+    <p>고고학자인 “튜브”는 고대 유적지에서 보물과 유적이 가득할 것으로 추정되는 비밀의 문을 발견하였습니다. 그런데 문을 열려고 살펴보니 특이한 형태의 자물쇠로 잠겨 있었고 문 앞에는 특이한 형태의 열쇠와 함께 자물쇠를 푸는 방법에 대해 다음과 같이 설명해 주는 종이가 발견되었습니다.</p>
   </li>
-  <li>기둥은 바닥 위에 있거나 보의 한쪽 끝 부분 위에 있거나, 또는 다른 기둥 위에 있어야 합니다.</li>
-  <li>보는 한쪽 끝 부분이 기둥 위에 있거나, 또는 양쪽 끝 부분이 다른 보와 동시에 연결되어 있어야 합니다.</li>
   <li>
-    <p>단, 바닥은 벽면의 맨 아래 지면을 말합니다.</p>
+    <p>잠겨있는 자물쇠는 격자 한 칸의 크기가 1 x 1인 N x N 크기의 정사각 격자 형태이고 특이한 모양의 열쇠는 M x M 크기인 정사각 격자 형태로 되어 있습니다.</p>
   </li>
-  <li>2차원 벽면은 n x n 크기 정사각 격자 형태이며, 각 격자는 1 x 1 크기입니다. 맨 처음 벽면은 비어있는 상태입니다. 기둥과 보는 격자선의 교차점에 걸치지 않고, 격자 칸의 각 변에 정확히 일치하도록 설치할 수 있습니다. 다음은 기둥과 보를 설치해 구조물을 만든 예시입니다.</li>
-</ul>
-
-<p align="center"><img src="https://grepp-programmers.s3.amazonaws.com/files/production/c453630fa0/834b86e5-6fd0-4d3c-8023-7f853ea4301f.jpg" width="400" /></p>
-
-<ul>
   <li>
-    <p>예를 들어, 위 그림은 다음 순서에 따라 구조물을 만들었습니다.</p>
+    <p>자물쇠에는 홈이 파여 있고 열쇠 또한 홈과 돌기 부분이 있습니다. 열쇠는 회전과 이동이 가능하며 열쇠의 돌기 부분을 자물쇠의 홈 부분에 딱 맞게 채우면 자물쇠가 열리게 되는 구조입니다. 자물쇠 영역을 벗어난 부분에 있는 열쇠의 홈과 돌기는 자물쇠를 여는 데 영향을 주지 않지만, 자물쇠 영역 내에서는 열쇠의 돌기 부분과 자물쇠의 홈 부분이 정확히 일치해야 하며 열쇠의 돌기와 자물쇠의 돌기가 만나서는 안됩니다. 또한 자물쇠의 모든 홈을 채워 비어있는 곳이 없어야 자물쇠를 열 수 있습니다.</p>
   </li>
-  <li>(1, 0)에서 위쪽으로 기둥을 하나 설치 후, (1, 1)에서 오른쪽으로 보를 하나 만듭니다.</li>
-  <li>(2, 1)에서 위쪽으로 기둥을 하나 설치 후, (2, 2)에서 오른쪽으로 보를 하나 만듭니다.</li>
-  <li>(5, 0)에서 위쪽으로 기둥을 하나 설치 후, (5, 1)에서 위쪽으로 기둥을 하나 더 설치합니다.</li>
-  <li>(4, 2)에서 오른쪽으로 보를 설치 후, (3, 2)에서 오른쪽으로 보를 설치합니다.</li>
   <li>
-    <p>만약 (4, 2)에서 오른쪽으로 보를 먼저 설치하지 않고, (3, 2)에서 오른쪽으로 보를 설치하려 한다면 2번 규칙에 맞지 않으므로 설치가 되지 않습니다. 기둥과 보를 삭제하는 기능도 있는데 기둥과 보를 삭제한 후에 남은 기둥과 보들 또한 위 규칙을 만족해야 합니다. 만약, 작업을 수행한 결과가 조건을 만족하지 않는다면 해당 작업은 무시됩니다.</p>
+    <p>열쇠를 나타내는 2차원 배열 key와 자물쇠를 나타내는 2차원 배열 lock이 매개변수로 주어질 때, 열쇠로 자물쇠를 열수 있으면 true를, 열 수 없으면 false를 return 하도록 solution 함수를 완성해주세요.<br /><br /></p>
   </li>
-  <li>벽면의 크기 n, 기둥과 보를 설치하거나 삭제하는 작업이 순서대로 담긴 2차원 배열 build_frame이 매개변수로 주어질 때, 모든 명령어를 수행한 후 구조물의 상태를 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
 <hr />
 
 <ul>
-  <li>n은 5 이상 100 이하인 자연수입니다.</li>
-  <li>build_frame의 세로(행) 길이는 1 이상 1,000 이하입니다.</li>
-  <li>build_frame의 가로(열) 길이는 4입니다.</li>
-  <li>build_frame의 원소는 [x, y, a, b]형태입니다.</li>
-  <li>x, y는 기둥, 보를 설치 또는 삭제할 교차점의 좌표이며, [가로 좌표, 세로 좌표] 형태입니다.</li>
-  <li>a는 설치 또는 삭제할 구조물의 종류를 나타내며, 0은 기둥, 1은 보를 나타냅니다.</li>
-  <li>b는 구조물을 설치할 지, 혹은 삭제할 지를 나타내며 0은 삭제, 1은 설치를 나타냅니다.</li>
-  <li>벽면을 벗어나게 기둥, 보를 설치하는 경우는 없습니다.</li>
-  <li>바닥에 보를 설치 하는 경우는 없습니다.</li>
-  <li>구조물은 교차점 좌표를 기준으로 보는 오른쪽, 기둥은 위쪽 방향으로 설치 또는 삭제합니다.</li>
-  <li>구조물이 겹치도록 설치하는 경우와, 없는 구조물을 삭제하는 경우는 입력으로 주어지지 않습니다.</li>
-  <li>최종 구조물의 상태는 아래 규칙에 맞춰 return 해주세요.</li>
-  <li>return 하는 배열은 가로(열) 길이가 3인 2차원 배열로, 각 구조물의 좌표를 담고있어야 합니다.</li>
-  <li>return 하는 배열의 원소는 [x, y, a] 형식입니다.</li>
-  <li>x, y는 기둥, 보의 교차점 좌표이며, [가로 좌표, 세로 좌표] 형태입니다.</li>
-  <li>기둥, 보는 교차점 좌표를 기준으로 오른쪽, 또는 위쪽 방향으로 설치되어 있음을 나타냅니다.</li>
-  <li>a는 구조물의 종류를 나타내며, 0은 기둥, 1은 보를 나타냅니다.</li>
-  <li>return 하는 배열은 x좌표 기준으로 오름차순 정렬하며, x좌표가 같을 경우 y좌표 기준으로 오름차순 정렬해주세요.</li>
-  <li>x, y좌표가 모두 같은 경우 기둥이 보보다 앞에 오면 됩니다.<br /><br /><br /></li>
+  <li>key는 M x M(3 ≤ M ≤ 20, M은 자연수)크기 2차원 배열입니다.</li>
+  <li>lock은 N x N(3 ≤ N ≤ 20, N은 자연수)크기 2차원 배열입니다.</li>
+  <li>M은 항상 N 이하입니다.</li>
+  <li>key와 lock의 원소는 0 또는 1로 이루어져 있습니다.</li>
+  <li>0은 홈 부분, 1은 돌기 부분을 나타냅니다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>처음엔 설치와 삭제를 할 때 주변 상황이 조건에 맞는지 확인한 후 동작을 수행하려 했다. 그런데 그렇게 하니까 코드 작성이 까다로워지고 내가 헷갈렸다. 그래서 해설을 참고했다.</li>
-  <li>풀이는 의외로 아주 간단했는데 입력의 수가 1,000개로 비교적 적고 시간 제한이 5초로 넉넉한 편이라 O(M^3) 알고리즘으로도 풀이가 가능했다. 바로 설치와 삭제를 할 때마다 일단 동작을 수행한 후에 전체 구조물을 검사해서 가능한 구조물이면 넘어가고 그렇지 않으면 수행했던 동작을 취소하는 것이다. 이걸 어렵게 생각하다니…🥲<br /><br /></li>
+  <li>입력 배열의 크기가 작아서 완전탐색으로 찾으면 될 거 같은데 구체적인 방법이 떠오르지 않아서 책(이것이 취업을 위한 코딩테스트다)에 있는 해설을 봤다.</li>
+  <li>내가 고민했던 것은 열쇠를 회전만 하는 것이 아니라 상하좌우로 움직일 수 있는 것을 어떻게 구현하느냐 였다.</li>
+  <li>답은 간단했는데 자물쇠 배열을 3배로 확장한 후 반복문으로 열쇠를 확장한 배열의 처음부터 끝까지 한 칸씩 이동시키면서 자물쇠가 채워지는지 보는 것이었다. 이렇게 하면 회전시키는 것 뿐만 아니라 상하좌우로 이동시키는 것도 간단하게 구현할 수 있다.</li>
+  <li>자물쇠와 열쇠에서 채워진 곳은 1, 빈 곳은 0으로 표시되기 때문에 자물쇠 영역이 모두 1로만 채워진다면 <code class="language-plaintext highlighter-rouge">True</code>를 반환하고 하나라도 0이 있거나 2가 있으면 풀 수 없는 자물쇠이기 때문에 <code class="language-plaintext highlighter-rouge">False</code>를 반환하면 된다.<br /><br /></li>
 </ul>
 
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/3a36205058914a5909126f931eb32ea5.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60061]]></summary></entry><entry><title type="html">Python) BOJ 3190. 뱀</title><link href="http://localhost:4000/boj/boj3190-py/" rel="alternate" type="text/html" title="Python) BOJ 3190. 뱀" /><published>2022-04-17T00:00:00+09:00</published><updated>2022-04-17T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj3190-py</id><content type="html" xml:base="http://localhost:4000/boj/boj3190-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/c6577a09219c576654cac03a746fd1c7.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60059]]></summary></entry><entry><title type="html">Python) BOJ 3190. 뱀</title><link href="http://localhost:4000/boj/boj3190-py/" rel="alternate" type="text/html" title="Python) BOJ 3190. 뱀" /><published>2022-04-17T00:00:00+09:00</published><updated>2022-04-17T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj3190-py</id><content type="html" xml:base="http://localhost:4000/boj/boj3190-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -418,86 +895,55 @@ git commit -m "[yujin] README 수정"  // 방금 추가한 파일들 업로드 �
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/aa45bd78334e8ccf535592895bad133a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No3190" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/3190 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 프로그래머스. 자물쇠와 열쇠</title><link href="http://localhost:4000/programmers/programmers-lock-and-key-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 자물쇠와 열쇠" /><published>2022-04-17T00:00:00+09:00</published><updated>2022-04-17T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-lock-and-key-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-lock-and-key-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/aa45bd78334e8ccf535592895bad133a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No3190" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/3190 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 프로그래머스. 문자열 압축</title><link href="http://localhost:4000/programmers/programmers-compress-str-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 문자열 압축" /><published>2022-04-16T00:00:00+09:00</published><updated>2022-04-16T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-compress-str-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-compress-str-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/60059">https://programmers.co.kr/learn/courses/30/lessons/60059</a><br /><br /></li>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/60057">https://programmers.co.kr/learn/courses/30/lessons/60057</a><br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <hr />
 
 <ul>
+  <li>데이터 처리 전문가가 되고 싶은 “어피치”는 문자열을 압축하는 방법에 대해 공부를 하고 있습니다. 최근에 대량의 데이터 처리를 위한 간단한 비손실 압축 방법에 대해 공부를 하고 있는데, 문자열에서 같은 값이 연속해서 나타나는 것을 그 문자의 개수와 반복되는 값으로 표현하여 더 짧은 문자열로 줄여서 표현하는 알고리즘을 공부하고 있습니다.</li>
   <li>
-    <p>고고학자인 “튜브”는 고대 유적지에서 보물과 유적이 가득할 것으로 추정되는 비밀의 문을 발견하였습니다. 그런데 문을 열려고 살펴보니 특이한 형태의 자물쇠로 잠겨 있었고 문 앞에는 특이한 형태의 열쇠와 함께 자물쇠를 푸는 방법에 대해 다음과 같이 설명해 주는 종이가 발견되었습니다.</p>
+    <p>간단한 예로 “aabbaccc”의 경우 “2a2ba3c”(문자가 반복되지 않아 한번만 나타난 경우 1은 생략함)와 같이 표현할 수 있는데, 이러한 방식은 반복되는 문자가 적은 경우 압축률이 낮다는 단점이 있습니다. 예를 들면, “abcabcdede”와 같은 문자열은 전혀 압축되지 않습니다. “어피치”는 이러한 단점을 해결하기 위해 문자열을 1개 이상의 단위로 잘라서 압축하여 더 짧은 문자열로 표현할 수 있는지 방법을 찾아보려고 합니다.</p>
   </li>
   <li>
-    <p>잠겨있는 자물쇠는 격자 한 칸의 크기가 1 x 1인 N x N 크기의 정사각 격자 형태이고 특이한 모양의 열쇠는 M x M 크기인 정사각 격자 형태로 되어 있습니다.</p>
+    <p>예를 들어, “ababcdcdababcdcd”의 경우 문자를 1개 단위로 자르면 전혀 압축되지 않지만, 2개 단위로 잘라서 압축한다면 “2ab2cd2ab2cd”로 표현할 수 있습니다. 다른 방법으로 8개 단위로 잘라서 압축한다면 “2ababcdcd”로 표현할 수 있으며, 이때가 가장 짧게 압축하여 표현할 수 있는 방법입니다.</p>
   </li>
   <li>
-    <p>자물쇠에는 홈이 파여 있고 열쇠 또한 홈과 돌기 부분이 있습니다. 열쇠는 회전과 이동이 가능하며 열쇠의 돌기 부분을 자물쇠의 홈 부분에 딱 맞게 채우면 자물쇠가 열리게 되는 구조입니다. 자물쇠 영역을 벗어난 부분에 있는 열쇠의 홈과 돌기는 자물쇠를 여는 데 영향을 주지 않지만, 자물쇠 영역 내에서는 열쇠의 돌기 부분과 자물쇠의 홈 부분이 정확히 일치해야 하며 열쇠의 돌기와 자물쇠의 돌기가 만나서는 안됩니다. 또한 자물쇠의 모든 홈을 채워 비어있는 곳이 없어야 자물쇠를 열 수 있습니다.</p>
+    <p>다른 예로, “abcabcdede”와 같은 경우, 문자를 2개 단위로 잘라서 압축하면 “abcabc2de”가 되지만, 3개 단위로 자른다면 “2abcdede”가 되어 3개 단위가 가장 짧은 압축 방법이 됩니다. 이때 3개 단위로 자르고 마지막에 남는 문자열은 그대로 붙여주면 됩니다.</p>
   </li>
-  <li>
-    <p>열쇠를 나타내는 2차원 배열 key와 자물쇠를 나타내는 2차원 배열 lock이 매개변수로 주어질 때, 열쇠로 자물쇠를 열수 있으면 true를, 열 수 없으면 false를 return 하도록 solution 함수를 완성해주세요.<br /><br /></p>
-  </li>
+  <li>압축할 문자열 s가 매개변수로 주어질 때, 위에 설명한 방법으로 1개 이상 단위로 문자열을 잘라 압축하여 표현한 문자열 중 가장 짧은 것의 길이를 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
 <hr />
 
 <ul>
-  <li>key는 M x M(3 ≤ M ≤ 20, M은 자연수)크기 2차원 배열입니다.</li>
-  <li>lock은 N x N(3 ≤ N ≤ 20, N은 자연수)크기 2차원 배열입니다.</li>
-  <li>M은 항상 N 이하입니다.</li>
-  <li>key와 lock의 원소는 0 또는 1로 이루어져 있습니다.</li>
-  <li>0은 홈 부분, 1은 돌기 부분을 나타냅니다.<br /><br /><br /></li>
+  <li>s의 길이는 1 이상 1,000 이하입니다.</li>
+  <li>s는 알파벳 소문자로만 이루어져 있습니다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>입력 배열의 크기가 작아서 완전탐색으로 찾으면 될 거 같은데 구체적인 방법이 떠오르지 않아서 책(이것이 취업을 위한 코딩테스트다)에 있는 해설을 봤다.</li>
-  <li>내가 고민했던 것은 열쇠를 회전만 하는 것이 아니라 상하좌우로 움직일 수 있는 것을 어떻게 구현하느냐 였다.</li>
-  <li>답은 간단했는데 자물쇠 배열을 3배로 확장한 후 반복문으로 열쇠를 확장한 배열의 처음부터 끝까지 한 칸씩 이동시키면서 자물쇠가 채워지는지 보는 것이었다. 이렇게 하면 회전시키는 것 뿐만 아니라 상하좌우로 이동시키는 것도 간단하게 구현할 수 있다.</li>
-  <li>자물쇠와 열쇠에서 채워진 곳은 1, 빈 곳은 0으로 표시되기 때문에 자물쇠 영역이 모두 1로만 채워진다면 <code class="language-plaintext highlighter-rouge">True</code>를 반환하고 하나라도 0이 있거나 2가 있으면 풀 수 없는 자물쇠이기 때문에 <code class="language-plaintext highlighter-rouge">False</code>를 반환하면 된다.<br /><br /></li>
+  <li>옛날에 <code class="language-plaintext highlighter-rouge">C++</code>로 풀었던 문제인데 풀이가 기억나지 않아서… 옛날 코드를 참고했다.</li>
+  <li>1) 문자열의 처음부터 한 글자씩 늘려가면서 비교 대상이 될 부분 문자열을 구한다.</li>
+  <li>2) 위에서 구한 문자열의 다음 문자부터 위의 문자열과 같은 길이만큼 부분 문자열을 구한 다음에 둘을 비교한다.</li>
+  <li>둘이 같다면 카운트를 증가시키고 아니라면 현재까지 증가된 카운트를 압축된 문자열에 더한다. 그 뒤에 1)에서 구한 부분 문자열을 더한다. 그 다음엔 1)에서 구한 비교 대상 부분 문자열을 2)에서 구한 부분 문자열로 교체한다. 카운트를 1로 초기화 시킨다.</li>
+  <li>마지막 문자까지 비교가 끝나면 최종적으로 압축된 문자열을 구할 수 있다. 원래 문자열 길이와 최종 압축된 문자열의 길이 중 더 짧은 것을 정답으로 저장한다.</li>
+  <li>이 과정을 1)의 부분 문자열의 길이가 원본의 절반이 될 때까지 반복한다.</li>
+  <li>절반까지만 반복하는 이유는 1)의 부분 문자열의 길이가 절반을 넘어가면 어차피 압축할 수 없기 때문이다. 그래서 절반을 초과해서 반복문을 돌리는 것은 의미가 없다.<br /><br /></li>
 </ul>
 
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/c6577a09219c576654cac03a746fd1c7.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60059]]></summary></entry><entry><title type="html">Python) 파이썬에서 문자열 내의 문자 정렬</title><link href="http://localhost:4000/python/python-sort-string/" rel="alternate" type="text/html" title="Python) 파이썬에서 문자열 내의 문자 정렬" /><published>2022-04-16T00:00:00+09:00</published><updated>2022-04-16T00:00:00+09:00</updated><id>http://localhost:4000/python/python-sort-string</id><content type="html" xml:base="http://localhost:4000/python/python-sort-string/"><![CDATA[<h1 id="이-글을-작성하게-된-이유">이 글을 작성하게 된 이유</h1>
-<ul>
-  <li>평화롭게 알고리즘 문제를 풀다가 문자열 내부의 문자들을 정렬해야 하는 경우가 생겼는데 <code class="language-plaintext highlighter-rouge">sorted()</code>로 정렬이 되지 않았다. 그래서 구글 검색!<br /><br /></li>
-</ul>
-
-<h1 id="파이썬에서의-정렬-함수">파이썬에서의 정렬 함수</h1>
-<ul>
-  <li>파이썬에서 정렬하려면 <code class="language-plaintext highlighter-rouge">sort()</code>와 <code class="language-plaintext highlighter-rouge">sorted()</code> 두 가지 함수를 이용할 수 있다.</li>
-  <li>그 중에서도 <code class="language-plaintext highlighter-rouge">sort()</code>는 리스트의 멤버함수이기 때문에 리스트를 정렬하고자 하는 경우에는 <code class="language-plaintext highlighter-rouge">arr.sort()</code>를 사용하면 간편하게 정렬할 수 있다.</li>
-  <li>리스트가 아닌 <code class="language-plaintext highlighter-rouge">iterable</code>을 정렬할 때엔 <code class="language-plaintext highlighter-rouge">sorted()</code> 함수를 쓰면 되는데 <code class="language-plaintext highlighter-rouge">dabc</code>와 같은 문자열 안에 있는 문자들을 정렬해서 <code class="language-plaintext highlighter-rouge">abcd</code>로 만들려고 할 때에는 그냥 <code class="language-plaintext highlighter-rouge">sorted()</code>를 쓰면 정렬이 안 된다.<br /><br /></li>
-</ul>
-
-<h1 id="문자열-내의-문자-정렬하기">문자열 내의 문자 정렬하기</h1>
-<ul>
-  <li>그러면 어떻게 해야 할까? 파이썬에서의 <code class="language-plaintext highlighter-rouge">string</code> 멤버함수에는 <code class="language-plaintext highlighter-rouge">sort()</code>가 없다.</li>
-  <li>왜냐면 <code class="language-plaintext highlighter-rouge">string</code>의 경우 문자열 첫 글자로 주소값으로 참조를 하기 때문에 원본이 변경되면 해당 문자열을 찾을 수 없게 된다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</code></pre></div></div>
-
-<ul>
-  <li>대신 <code class="language-plaintext highlighter-rouge">sorted(s)</code>를 사용할 수 있는데 <code class="language-plaintext highlighter-rouge">sorted()</code>의 반환형이 <code class="language-plaintext highlighter-rouge">list</code>이기 때문에 정렬된 결과를 보려면 위와 같이 다른 변수에 대입하는 식을 써야 한다.</li>
-  <li>하지만 나는 처음에 그냥 <code class="language-plaintext highlighter-rouge">sorted(s)</code> 라고만 쓰고 다른 변수에 저장조차 하지 않았기 때문에 정렬된 결과를 볼 수 없는 것이었다.😅</li>
-  <li>이것을 하나의 문자열로 만들기 위해서는 <code class="language-plaintext highlighter-rouge">str = ''.join(sorted(s))</code>와 같이 쓰면 된다. <br /><br /></li>
-</ul>
-
-<h1 id="출처">출처</h1>
-<ul>
-  <li><a href="https://otugi.tistory.com/268">파이썬 문자열 정렬, 문자열 리스트 정렬, anagram 찾기</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Python" /><category term="Python" /><category term="Sorting" /><summary type="html"><![CDATA[이 글을 작성하게 된 이유 평화롭게 알고리즘 문제를 풀다가 문자열 내부의 문자들을 정렬해야 하는 경우가 생겼는데 sorted()로 정렬이 되지 않았다. 그래서 구글 검색!]]></summary></entry><entry><title type="html">Python) BOJ 18406. 럭키 스트레이트</title><link href="http://localhost:4000/boj/boj18406-py/" rel="alternate" type="text/html" title="Python) BOJ 18406. 럭키 스트레이트" /><published>2022-04-16T00:00:00+09:00</published><updated>2022-04-16T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18406-py</id><content type="html" xml:base="http://localhost:4000/boj/boj18406-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/1fb70e08a6ba383889b62b2137bcfa98.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60057]]></summary></entry><entry><title type="html">Python) BOJ 18406. 럭키 스트레이트</title><link href="http://localhost:4000/boj/boj18406-py/" rel="alternate" type="text/html" title="Python) BOJ 18406. 럭키 스트레이트" /><published>2022-04-16T00:00:00+09:00</published><updated>2022-04-16T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18406-py</id><content type="html" xml:base="http://localhost:4000/boj/boj18406-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -607,227 +1053,4 @@ git commit -m "[yujin] README 수정"  // 방금 추가한 파일들 업로드 �
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/fe56f87d393663b2c29bc35f8973d7b1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="AlgorithmStudy" /><category term="Algorithm" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 12 - 구현문제 8. 문자열 재정렬 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry><entry><title type="html">Python) 프로그래머스. 문자열 압축</title><link href="http://localhost:4000/programmers/programmers-compress-str-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 문자열 압축" /><published>2022-04-16T00:00:00+09:00</published><updated>2022-04-16T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-compress-str-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-compress-str-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/60057">https://programmers.co.kr/learn/courses/30/lessons/60057</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>데이터 처리 전문가가 되고 싶은 “어피치”는 문자열을 압축하는 방법에 대해 공부를 하고 있습니다. 최근에 대량의 데이터 처리를 위한 간단한 비손실 압축 방법에 대해 공부를 하고 있는데, 문자열에서 같은 값이 연속해서 나타나는 것을 그 문자의 개수와 반복되는 값으로 표현하여 더 짧은 문자열로 줄여서 표현하는 알고리즘을 공부하고 있습니다.</li>
-  <li>
-    <p>간단한 예로 “aabbaccc”의 경우 “2a2ba3c”(문자가 반복되지 않아 한번만 나타난 경우 1은 생략함)와 같이 표현할 수 있는데, 이러한 방식은 반복되는 문자가 적은 경우 압축률이 낮다는 단점이 있습니다. 예를 들면, “abcabcdede”와 같은 문자열은 전혀 압축되지 않습니다. “어피치”는 이러한 단점을 해결하기 위해 문자열을 1개 이상의 단위로 잘라서 압축하여 더 짧은 문자열로 표현할 수 있는지 방법을 찾아보려고 합니다.</p>
-  </li>
-  <li>
-    <p>예를 들어, “ababcdcdababcdcd”의 경우 문자를 1개 단위로 자르면 전혀 압축되지 않지만, 2개 단위로 잘라서 압축한다면 “2ab2cd2ab2cd”로 표현할 수 있습니다. 다른 방법으로 8개 단위로 잘라서 압축한다면 “2ababcdcd”로 표현할 수 있으며, 이때가 가장 짧게 압축하여 표현할 수 있는 방법입니다.</p>
-  </li>
-  <li>
-    <p>다른 예로, “abcabcdede”와 같은 경우, 문자를 2개 단위로 잘라서 압축하면 “abcabc2de”가 되지만, 3개 단위로 자른다면 “2abcdede”가 되어 3개 단위가 가장 짧은 압축 방법이 됩니다. 이때 3개 단위로 자르고 마지막에 남는 문자열은 그대로 붙여주면 됩니다.</p>
-  </li>
-  <li>압축할 문자열 s가 매개변수로 주어질 때, 위에 설명한 방법으로 1개 이상 단위로 문자열을 잘라 압축하여 표현한 문자열 중 가장 짧은 것의 길이를 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>s의 길이는 1 이상 1,000 이하입니다.</li>
-  <li>s는 알파벳 소문자로만 이루어져 있습니다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>옛날에 <code class="language-plaintext highlighter-rouge">C++</code>로 풀었던 문제인데 풀이가 기억나지 않아서… 옛날 코드를 참고했다.</li>
-  <li>1) 문자열의 처음부터 한 글자씩 늘려가면서 비교 대상이 될 부분 문자열을 구한다.</li>
-  <li>2) 위에서 구한 문자열의 다음 문자부터 위의 문자열과 같은 길이만큼 부분 문자열을 구한 다음에 둘을 비교한다.</li>
-  <li>둘이 같다면 카운트를 증가시키고 아니라면 현재까지 증가된 카운트를 압축된 문자열에 더한다. 그 뒤에 1)에서 구한 부분 문자열을 더한다. 그 다음엔 1)에서 구한 비교 대상 부분 문자열을 2)에서 구한 부분 문자열로 교체한다. 카운트를 1로 초기화 시킨다.</li>
-  <li>마지막 문자까지 비교가 끝나면 최종적으로 압축된 문자열을 구할 수 있다. 원래 문자열 길이와 최종 압축된 문자열의 길이 중 더 짧은 것을 정답으로 저장한다.</li>
-  <li>이 과정을 1)의 부분 문자열의 길이가 원본의 절반이 될 때까지 반복한다.</li>
-  <li>절반까지만 반복하는 이유는 1)의 부분 문자열의 길이가 절반을 넘어가면 어차피 압축할 수 없기 때문이다. 그래서 절반을 초과해서 반복문을 돌리는 것은 의미가 없다.<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/1fb70e08a6ba383889b62b2137bcfa98.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60057]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-01/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 1 - 주제 선정과 역할 분배" /><published>2022-04-14T00:00:00+09:00</published><updated>2022-04-14T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-01</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-01/"><![CDATA[<ul>
-  <li>작성일 : 2022.04.14</li>
-  <li>작성자 : 황유진</li>
-  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
-  <li>GitHub Repository : <a href="https://github.com/miro7923/uno-mas">https://github.com/miro7923/uno-mas</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 11</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>Tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
-
-<h1 id="기간">기간</h1>
-<ul>
-  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
-  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
-  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황">진행상황</h1>
-<h2 id="역할-분배">역할 분배</h2>
-<ul>
-  <li>팀장 : 황유진</li>
-  <li>부팀장 : 오성은</li>
-  <li>서기 : 반현빈</li>
-</ul>
-
-<h2 id="마감-기한">마감 기한</h2>
-<ul>
-  <li>5/20 으로 정했다.</li>
-  <li>6월 첫째주에 발표가 예정되어 있지만 발표 전에 강사님들께 최종 점검을 받을 기간이 필요하다고 판단되어서 발표일 보다는 조금 일찍 완성하는 것을 목표로 세웠다.</li>
-</ul>
-
-<h2 id="주제-선정">주제 선정</h2>
-<ul>
-  <li>쇼핑몰과 영화 예매 사이트가 제시되었다.</li>
-  <li>그 중에서 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>로 최종 결정되었다.</li>
-</ul>
-
-<h2 id="사이트-이름-선정">사이트 이름 선정</h2>
-<ul>
-  <li>싱글마켓, 혼자 잘 먹고 잘 사는 방법, 피투피(Person to Person), One Together, Uno más(스페인어로 하나 더) 등이 제시되었다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Uno más</code>가 최종 선정되었다.</li>
-</ul>
-
-<h2 id="팀-이름-선정">팀 이름 선정</h2>
-<ul>
-  <li>4월에 시작해서 <code class="language-plaintext highlighter-rouge">April</code>이 제시되었다. 이 외에 추가적으로 제시된 이름이 아직 없어서 아이디어가 더 나오면 의견 조율해서 최종 결정할 예정이다.</li>
-</ul>
-
-<h2 id="변수명-및-코드-작성-규칙">변수명 및 코드 작성 규칙</h2>
-<ul>
-  <li>변수명은 기본적으로 카멜 표기법(<code class="language-plaintext highlighter-rouge">codeCode</code>) 형식으로 쓰되, <code class="language-plaintext highlighter-rouge">CSS</code> 적용을 위한 선택자를 지정할 때엔 스네이크 표기법(<code class="language-plaintext highlighter-rouge">code_code</code>)을 사용하기로 했다.</li>
-  <li>이렇게 정한 이유는 <code class="language-plaintext highlighter-rouge">CSS</code> 파일에서 카멜 표기법으로 선택자를 작성했을 때엔 알아보기 어려웠다는 의견이 있었기 때문이다.</li>
-  <li>추가로 무의미한 변수명과 지나친 축약어로 만든 변수명은 사용은 하지 않기로 했다. 만약 정말 변수명을 못 정하겠다면 <a href="https://www.curioustore.com/#!/">https://www.curioustore.com/#!/</a> 여기를 참고할 것</li>
-  <li>코드 작성 시 다른 팀원이 보다 쉽게 알아볼 수 있게 주석으로 작성의도를 작성하기로 했다.</li>
-</ul>
-
-<h2 id="github-repository-생성-및-개발일지-작성">GitHub Repository 생성 및 개발일지 작성</h2>
-<ul>
-  <li>형상관리를 위해 <code class="language-plaintext highlighter-rouge">GitHub</code>을 사용하기로 했다.</li>
-  <li>추후 프로젝트 진행 결과 정리 및 발표 자료를 만들 때 참고하기 위해서 기능을 구현할 때마다 개발 일지를 작성하기로 했다.</li>
-  <li>본인이 구현한 내용은 꼭 정확하게 그때그때 기록해 놓기!!!</li>
-</ul>
-
-<h2 id="tdd-주도-개발">TDD 주도 개발</h2>
-<ul>
-  <li>수업시간에 TDD 코드 작성 방법을 배웠기 때문에 기능 구현 전에 테스트 코드 작성을 통해 구현하고자 하는 기능의 테스트 후 본 코드를 작성할 것이다.</li>
-</ul>
-
-<h2 id="필요-기능-정의서">필요 기능 정의서</h2>
-<ul>
-  <li>제작자 : 박승지</li>
-</ul>
-
-<p align="center"><img src="https://github.com/miro7923/uno-mas/raw/main/images/unoMasDocumentation.png" width="600" /></p>
-
-<ul>
-  <li>무료로 사용할 수 있는 쇼핑몰 템플릿을 이 기능 명세서에 맞게 변형해서 사용하기로 했다.</li>
-  <li><a href="https://freemiumdownload.com/demo?theme=fashi">https://freemiumdownload.com/demo?theme=fashi</a></li>
-  <li><a href="https://technext.github.io/ogani/index.html">https://technext.github.io/ogani/index.html</a></li>
-</ul>
-
-<h2 id="db-테이블-설계">DB 테이블 설계</h2>
-<ul>
-  <li>설계자 : 오성은, 황유진</li>
-  <li>4/17 까지 설계를 마친 후 4/17 오후 10시에 모든 팀원들이 온라인 미팅으로 모여서 검토하고 최종 결정할 것이다.</li>
-  <li>때문에 회원가입과 게시판 등 DB 테이블이 필요한 기능은 DB 테이블이 최종 결정되면 진행하고 그 외의 기능들은 지금부터 진행하기로 했다.</li>
-</ul>
-
-<h2 id="1차-구현-기능-분배">1차 구현 기능 분배</h2>
-<ul>
-  <li>목표 : 5/22 까지 구현 후 5/22 저녁에 리뷰</li>
-  <li>메인 페이지 디자인 : 반현빈, 박승지</li>
-  <li>회원가입/로그인/로그아웃/탈퇴 기능 구현 : 오은현, 오성은</li>
-  <li>메인 페이지에서 상품 상세 페이지 연결 및 상세 페이지의 세부 기능 구현(수량 증감, 상품 설명 디스플레이, 후기/문의 게시판) : 황유진, 박승지</li>
-  <li>고객센터 페이지의 게시판 구현(공지사항, 자주하는 질문, 1:1 문의) : 김진영, 윤정환</li>
-  <li>글쓰기 페이지 디자인 : 윤정환</li>
-  <li>헤더와 푸터 구성 및 클릭 시 해당 페이지로 연결 : 반현빈<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-36</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.14 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/uno-mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 무지의 먹방 라이브</title><link href="http://localhost:4000/boj/programmers-muziMukbang-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 무지의 먹방 라이브" /><published>2022-04-14T00:00:00+09:00</published><updated>2022-04-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/programmers-muziMukbang-py</id><content type="html" xml:base="http://localhost:4000/boj/programmers-muziMukbang-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/42891">https://programmers.co.kr/learn/courses/30/lessons/42891</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>평소 식욕이 왕성한 무지는 자신의 재능을 뽐내고 싶어 졌고 고민 끝에 카카오 TV 라이브로 방송을 하기로 마음먹었다.</p>
-  </li>
-  <li>
-    <p>그냥 먹방을 하면 다른 방송과 차별성이 없기 때문에 무지는 아래와 같이 독특한 방식을 생각해냈다.</p>
-  </li>
-  <li>회전판에 먹어야 할 N 개의 음식이 있다.</li>
-  <li>각 음식에는 1부터 N 까지 번호가 붙어있으며, 각 음식을 섭취하는데 일정 시간이 소요된다.</li>
-  <li>
-    <p>무지는 다음과 같은 방법으로 음식을 섭취한다.</p>
-  </li>
-  <li>무지는 1번 음식부터 먹기 시작하며, 회전판은 번호가 증가하는 순서대로 음식을 무지 앞으로 가져다 놓는다.</li>
-  <li>마지막 번호의 음식을 섭취한 후에는 회전판에 의해 다시 1번 음식이 무지 앞으로 온다.</li>
-  <li>무지는 음식 하나를 1초 동안 섭취한 후 남은 음식은 그대로 두고, 다음 음식을 섭취한다.</li>
-  <li>다음 음식이란, 아직 남은 음식 중 다음으로 섭취해야 할 가장 가까운 번호의 음식을 말한다.</li>
-  <li>회전판이 다음 음식을 무지 앞으로 가져오는데 걸리는 시간은 없다고 가정한다.</li>
-  <li>무지가 먹방을 시작한 지 K 초 후에 네트워크 장애로 인해 방송이 잠시 중단되었다.</li>
-  <li>무지는 네트워크 정상화 후 다시 방송을 이어갈 때, 몇 번 음식부터 섭취해야 하는지를 알고자 한다.</li>
-  <li>각 음식을 모두 먹는데 필요한 시간이 담겨있는 배열 food_times, 네트워크 장애가 발생한 시간 K 초가 매개변수로 주어질 때 몇 번 음식부터 다시 섭취하면 되는지 return 하도록 solution 함수를 완성하라.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<ul>
-  <li>food_times 는 각 음식을 모두 먹는데 필요한 시간이 음식의 번호 순서대로 들어있는 배열이다.</li>
-  <li>k 는 방송이 중단된 시간을 나타낸다.</li>
-  <li>만약 더 섭취해야 할 음식이 없다면 -1을 반환하면 된다.</li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>food_times 의 길이는 1 이상 2,000 이하이다.</li>
-  <li>food_times 의 원소는 1 이상 1,000 이하의 자연수이다.</li>
-  <li>k는 1 이상 2,000,000 이하의 자연수이다.</li>
-  <li>food_times 의 길이는 1 이상 200,000 이하이다.</li>
-  <li>food_times 의 원소는 1 이상 100,000,000 이하의 자연수이다.</li>
-  <li>k는 1 이상 2 x 10^13 이하의 자연수이다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>적절한 풀이가 떠오르지 않아서 해설을 참고했다.</li>
-  <li>모든 음식을 시간 기준으로 오름차순 정렬한 뒤에 시간이 적게 걸리는 음식부터 제거해 나가는 것이 기본 아이디어<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/aa7a53e5e8b3997356df015841a1d1ff.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="Programmers" /><category term="Greedy" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/42891]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/fe56f87d393663b2c29bc35f8973d7b1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="AlgorithmStudy" /><category term="Algorithm" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 출처 이것이 취업을 위한 코딩테스트다 with 파이썬 Chapter 12 - 구현문제 8. 문자열 재정렬 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry></feed>
