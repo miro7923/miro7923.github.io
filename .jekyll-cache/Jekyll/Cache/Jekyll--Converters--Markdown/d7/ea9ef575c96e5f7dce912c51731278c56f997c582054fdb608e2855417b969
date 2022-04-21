@@ -1,0 +1,44 @@
+I"<p><br /></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Spring MVC</code> 프로젝트를 배우면서 기존에 사용하던 <code class="language-plaintext highlighter-rouge">JAVA JSP</code> 프로젝트와는 약간 달라져서 헷갈리는 것이 많았는데 그 중 하나가 <code class="language-plaintext highlighter-rouge">css</code>와 <code class="language-plaintext highlighter-rouge">js</code> 파일 경로 설정이었다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="overview">Overview</h1>
+
+<p align="center"><img src="../../assets/images/springMvcProject1.png" width="400" /></p>
+
+<ul>
+  <li>한 줄 요약하자면 <code class="language-plaintext highlighter-rouge">css</code>와 <code class="language-plaintext highlighter-rouge">js</code> 같은 리소스 파일들은
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main/webapp/resources
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>경로에 있어야 하고</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">html/jsp</code>와 같은 <code class="language-plaintext highlighter-rouge">view</code> 파일들은
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main/webapp/WEB-INF/views
+</code></pre></div>    </div>
+  </li>
+  <li>경로에 존재해야 한다.</li>
+</ul>
+
+<h2 id="servlet-contextxml">servlet-context.xml</h2>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory --&gt;</span>
+<span class="nt">&lt;resources</span> <span class="na">mapping=</span><span class="s">"/resources/**"</span> <span class="na">location=</span><span class="s">"/resources/"</span> <span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory --&gt;</span>
+<span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"prefix"</span> <span class="na">value=</span><span class="s">"/WEB-INF/views/"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"suffix"</span> <span class="na">value=</span><span class="s">".jsp"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans:bean&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>해당 내용은 <code class="language-plaintext highlighter-rouge">servlet-context.xml</code> 파일에서도 확인할 수 있었다. 경로 문제를 겪기 전엔 봐도 모르다가 겪고 나서 알게 되니까 그제서야 눈에 들어오는 매직… <br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li></li>
+</ul>
+:ET
