@@ -1,0 +1,47 @@
+I"�<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+
+<p align="center"><img src="../../assets/images/javaCompilerError1.png" width="700" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Spring framework</code>를 배우기 시작하면서 <code class="language-plaintext highlighter-rouge">Spring Legacy Project</code>로 진행하고 있는데 프로젝트의 자바 컴파일러 버전을 맞춰 주었는데도 저 에러 메시지가 계속 뜨는 것이었다. 실행하는데 문제가 없긴 했지만 신경쓰였다… 알고보니 컴파일러 뿐만 아니라 <code class="language-plaintext highlighter-rouge">Project facets</code>의 자바 버전도 맞춰 주어야 했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<p align="center"><img src="../../assets/images/javaCompilerError2.png" width="400" /></p>
+
+<ul>
+  <li>프로젝트 이름 위에서 마우스 우클릭하면 위와 같은 메뉴를 볼 수 있다. 맨 아래에 있는 <code class="language-plaintext highlighter-rouge">Properties</code>를 선택한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/javaCompilerError3.png" width="600" /></p>
+
+<ul>
+  <li>메뉴 중에서 <code class="language-plaintext highlighter-rouge">Project Facets</code>라는 메뉴를 선택한다. 그러면 옆에 현재 프로젝트에 설정되어 있는 자바 버전을 볼 수 있다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/javaCompilerError4.png" width="600" /></p>
+
+<ul>
+  <li>현재 사용하고 있는 자바 컴파일러 버전과 맞춰 준다. 난 8 버전을 사용하고 있어서 1.8로 맞춰주었다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/javaCompilerError5.png" width="600" /></p>
+
+<ul>
+  <li>에러 해결! 👏<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://myblog.opendocs.co.kr/archives/1566">[문제해결] Java compiler level does not match the version of the installed Java project facet.</a></li>
+</ul>
+:ET

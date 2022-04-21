@@ -1234,4 +1234,10 @@ var store = [{
         "tags": ["Project","UnoMas","Log"],
         "url": "/uno%20mas/uno-mas-dev-log-03/",
         "teaser": null
+      },{
+        "title": "에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet",
+        "excerpt":"사용환경     MacBook Air (M1, 2020) 16GB   JDK 8   Spring Tool Suite 4.14.0   tomcat 8.5      에러의 발생         Spring framework를 배우기 시작하면서 Spring Legacy Project로 진행하고 있는데 프로젝트의 자바 컴파일러 버전을 맞춰 주었는데도 저 에러 메시지가 계속 뜨는 것이었다. 실행하는데 문제가 없긴 했지만 신경쓰였다… 알고보니 컴파일러 뿐만 아니라 Project facets의 자바 버전도 맞춰 주어야 했다.      문제 해결         프로젝트 이름 위에서 마우스 우클릭하면 위와 같은 메뉴를 볼 수 있다. 맨 아래에 있는 Properties를 선택한다.         메뉴 중에서 Project Facets라는 메뉴를 선택한다. 그러면 옆에 현재 프로젝트에 설정되어 있는 자바 버전을 볼 수 있다.         현재 사용하고 있는 자바 컴파일러 버전과 맞춰 준다. 난 8 버전을 사용하고 있어서 1.8로 맞춰주었다.         에러 해결! 👏      참고     [문제해결] Java compiler level does not match the version of the installed Java project facet.  ","categories": ["ErrorLog"],
+        "tags": ["Error","Solve","Log"],
+        "url": "/errorlog/warning-log-06/",
+        "teaser": null
       }]
