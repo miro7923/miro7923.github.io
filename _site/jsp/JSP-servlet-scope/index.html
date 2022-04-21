@@ -1,0 +1,750 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JSP &amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이 | Yujin Dev Log</title>
+<meta name="description" content="👀 영역객체(Scope)란?    JSP 내장객체로 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="JSP &amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이">
+<meta property="og:url" content="http://localhost:4000/jsp/JSP-servlet-scope/">
+
+
+  <meta property="og:description" content="👀 영역객체(Scope)란?    JSP 내장객체로 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-04-21T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/jsp/JSP-servlet-scope/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#jsp" itemprop="item"><span itemprop="name">Jsp</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">JSP & Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업에 자신있는 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JSP &amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이">
+    <meta itemprop="description" content="👀 영역객체(Scope)란?  JSP 내장객체로 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체">
+    <meta itemprop="datePublished" content="2022-04-21T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/jsp/JSP-servlet-scope/" class="u-url" itemprop="url">JSP &amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#-영역객체scope란">👀 영역객체(Scope)란?</a></li><li><a href="#4가지-영역별-차이">4가지 영역별 차이</a><ul><li><a href="#page">Page</a></li><li><a href="#request">Request</a></li><li><a href="#session">Session</a></li><li><a href="#application">Application</a></li></ul></li><li><a href="#참고">참고</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+<h1 id="-영역객체scope란">👀 영역객체(Scope)란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code> 내장객체로 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체</li>
+</ul>
+
+<p align="center"><img src="https://t1.daumcdn.net/cfile/tistory/99E89A3C5C6D04451B" width="600" /></p>
+<p><br /><br /><br /></p>
+
+<h1 id="4가지-영역별-차이">4가지 영역별 차이</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Page</code> : 페이지 내에서만 지역 변수처럼 사용할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Request</code> : 한 페이지에서 다른 페이지로 전달해서 사용할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Session</code> : 웹 브라우저의 상태가 유지되는 동안 사용 가능하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Application</code> : 웹 어플리케이션에 있는 모든 대상이 사용 가능하다.</li>
+</ul>
+
+<h2 id="page">Page</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Page</code> 영역 안에서만 사용 가능. 지역 변수 개념</li>
+  <li>영역객체 : <code class="language-plaintext highlighter-rouge">pageContext</code></li>
+  <li>사용범위 : 해당 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지 (다른 페이지로 넘겨줄 수 없다)</li>
+  <li><code class="language-plaintext highlighter-rouge">JSP</code>에서 <code class="language-plaintext highlighter-rouge">pageScope</code>에 값을 저장한 후 해당 값을 <code class="language-plaintext highlighter-rouge">EL표기법</code>, <code class="language-plaintext highlighter-rouge">JSTL</code>에서 사용할 때 사용된다.</li>
+</ul>
+
+<h2 id="request">Request</h2>
+<ul>
+  <li>어떤 페이지에 있는 값을 서블릿이나 다른 페이지로 넘겨주고 싶을 때 사용할 수 있다.</li>
+  <li>영역객체 : JSP 페이지) <code class="language-plaintext highlighter-rouge">request</code> / 서블릿) <code class="language-plaintext highlighter-rouge">HttpServletRequest</code></li>
+  <li>사용범위 : 클라이언트 요청이 처리되는 페이지</li>
+  <li>값을 저장할 때엔 <code class="language-plaintext highlighter-rouge">request.setAttribute("속성명", 값)</code> 메서드를 사용한다.</li>
+  <li>저장된 값을 꺼내올 때엔 <code class="language-plaintext highlighter-rouge">request.getAttribute("속성명")</code> 메서드를 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">GET/POST</code> 방식으로 날아온 데이터를 가져올 때엔 <code class="language-plaintext highlighter-rouge">getParameter("파라미터 이름")</code> 메서드를 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">forward</code>시 값을 유지하고자 사용한다.</li>
+</ul>
+
+<h2 id="session">Session</h2>
+<ul>
+  <li>로그인 한 회원의 상태유지와 같이 웹 브라우저에서 상태가 지속적으로 유지되어야 할 필요가 있을 때 사용한다.</li>
+  <li>영역객체 : JSP 페이지) <code class="language-plaintext highlighter-rouge">session</code> / 서블릿) <code class="language-plaintext highlighter-rouge">HttpServletRequest</code>의 <code class="language-plaintext highlighter-rouge">getSession()</code> 메서드를 사용해 얻음</li>
+  <li>사용범위 : 세션이 유지되는 동안</li>
+  <li>값을 저장할 때엔 <code class="language-plaintext highlighter-rouge">session.setAttribute("속성명", 값)</code> 메서드를 사용한다.</li>
+  <li>저장된 값을 꺼내올 때엔 <code class="language-plaintext highlighter-rouge">session.getAttribute("속성명")</code> 메서드를 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">session</code> 지속시간이 만료되거나 웹 브라우저가 종료되면 사라진다.</li>
+  <li>웹 브라우저의 탭 간에는 공유되기 때문에 각각의 탭에서 같은 세션 정보를 사용할 수 있다.</li>
+</ul>
+
+<h2 id="application">Application</h2>
+<ul>
+  <li>웹 어플리케이션이 시작되고 종료되는 동안 사용할 수 있다.</li>
+  <li>영역객체 : JSP 페이지) <code class="language-plaintext highlighter-rouge">application</code> / 서블릿) <code class="language-plaintext highlighter-rouge">getServletContext()</code> 메서드를 사용해 얻음</li>
+  <li>사용범위 : 웹 애플리케이션(서버)이 실행되는 동안</li>
+  <li>값을 저장할 때엔 <code class="language-plaintext highlighter-rouge">application.setAttribute("속성명", 값)</code> 메서드를 사용한다.</li>
+  <li>저장된 값을 꺼내올 때엔 <code class="language-plaintext highlighter-rouge">application.getAttribute("속성명")</code> 메서드를 사용한다.</li>
+  <li>모든 클라이언트가 공통으로 사용해야 할 값이 있을 때 사용한다. (클라이언트가 바뀌어도 누적된다)<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://zester7.tistory.com/46">Scope - Page, Request, Session, Application</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a><span class="sep">, </span>
+    
+      <a href="/tags/#scope" class="page__taxonomy-item p-category" rel="tag">Scope</a><span class="sep">, </span>
+    
+      <a href="/tags/#servlet" class="page__taxonomy-item p-category" rel="tag">Servlet</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#jsp" class="page__taxonomy-item p-category" rel="tag">JSP</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JSP+%26+Servlet%29+%EC%98%81%EC%97%AD%EA%B0%9D%EC%B2%B4%28Scope%29+-+Page%2C+Request%2C+Session%2C+Application+%EC%B0%A8%EC%9D%B4%20http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-servlet-scope%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-servlet-scope%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjsp%2FJSP-servlet-scope%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/uno%20mas/uno-mas-dev-log-02/" class="pagination--pager" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 2 - Spring Legacy 프로젝트를 위한 .gitignore 설정
+">이전</a>
+    
+    
+      <a href="/programmers/programmers-maintenance-wall/" class="pagination--pager" title="Python) 프로그래머스. 외벽 점검
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/errorlog/warning-log-06/" rel="permalink">에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">사용환경
+
+  MacBook Air (M1, 2020) 16GB
+  JDK 8
+  Spring Tool Suite 4.14.0
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-03/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.04.21
+  작성자 : 황유진
+  팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진
+  GitHub Repository : https://github.com/miro7923/Uno-Mas
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/spring/spring-mvc-01/" rel="permalink">Spring MVC Project) css, js 파일 경로 설정
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+  Spring MVC 프로젝트를 배우면서 기존에 사용하던 JAVA JSP 프로젝트와는 약간 달라져서 헷갈리는 것이 많았는데 그 중 하나가 css와 js 파일 경로 설정이었다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-maintenance-wall/" rel="permalink">Python) 프로그래머스. 외벽 점검
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://programmers.co.kr/learn/courses/30/lessons/60062
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
