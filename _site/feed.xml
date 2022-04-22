@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-21T23:21:57+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 외벽 점검</title><link href="http://localhost:4000/programmers/programmers-maintenance-wall/" rel="alternate" type="text/html" title="Python) 프로그래머스. 외벽 점검" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maintenance-wall</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maintenance-wall/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-22T11:08:33+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 거리두기 확인하기</title><link href="http://localhost:4000/programmers/programmers-social-distance/" rel="alternate" type="text/html" title="Python) 프로그래머스. 거리두기 확인하기" /><published>2022-04-22T00:00:00+09:00</published><updated>2022-04-22T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-social-distance</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-social-distance/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/60062">https://programmers.co.kr/learn/courses/30/lessons/60062</a><br /><br /></li>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/81302">https://programmers.co.kr/learn/courses/30/lessons/81302</a><br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
@@ -10,49 +10,70 @@
 
 <ul>
   <li>
-    <p>레스토랑을 운영하고 있는 “스카피”는 레스토랑 내부가 너무 낡아 친구들과 함께 직접 리모델링 하기로 했습니다. 레스토랑이 있는 곳은 스노우타운으로 매우 추운 지역이어서 내부 공사를 하는 도중에 주기적으로 외벽의 상태를 점검해야 할 필요가 있습니다.</p>
+    <p>개발자를 희망하는 죠르디가 카카오에 면접을 보러 왔습니다.</p>
   </li>
-  <li>
-    <p>레스토랑의 구조는 완전히 동그란 모양이고 외벽의 총 둘레는 n미터이며, 외벽의 몇몇 지점은 추위가 심할 경우 손상될 수도 있는 취약한 지점들이 있습니다. 따라서 내부 공사 도중에도 외벽의 취약 지점들이 손상되지 않았는 지, 주기적으로 친구들을 보내서 점검을 하기로 했습니다. 다만, 빠른 공사 진행을 위해 점검 시간을 1시간으로 제한했습니다. 친구들이 1시간 동안 이동할 수 있는 거리는 제각각이기 때문에, 최소한의 친구들을 투입해 취약 지점을 점검하고 나머지 친구들은 내부 공사를 돕도록 하려고 합니다. 편의 상 레스토랑의 정북 방향 지점을 0으로 나타내며, 취약 지점의 위치는 정북 방향 지점으로부터 시계 방향으로 떨어진 거리로 나타냅니다. 또, 친구들은 출발 지점부터 시계, 혹은 반시계 방향으로 외벽을 따라서만 이동합니다.</p>
-  </li>
-  <li>
-    <p>외벽의 길이 n, 취약 지점의 위치가 담긴 배열 weak, 각 친구가 1시간 동안 이동할 수 있는 거리가 담긴 배열 dist가 매개변수로 주어질 때, 취약 지점을 점검하기 위해 보내야 하는 친구 수의 최소값을 return 하도록 solution 함수를 완성해주세요.<br /><br /></p>
-  </li>
+  <li>코로나 바이러스 감염 예방을 위해 응시자들은 거리를 둬서 대기를 해야하는데 개발 직군 면접인 만큼</li>
+  <li>아래와 같은 규칙으로 대기실에 거리를 두고 앉도록 안내하고 있습니다.</li>
+</ul>
+
+<ol>
+  <li>대기실은 5개이며, 각 대기실은 5x5 크기입니다.</li>
+  <li>거리두기를 위하여 응시자들 끼리는 맨해튼 거리1가 2 이하로 앉지 말아 주세요.</li>
+  <li>단 응시자가 앉아있는 자리 사이가 파티션으로 막혀 있을 경우에는 허용합니다.</li>
+</ol>
+
+<ul>
+  <li>5개의 대기실을 본 죠르디는 각 대기실에서 응시자들이 거리두기를 잘 기키고 있는지 알고 싶어졌습니다. 자리에 앉아있는 응시자들의 정보와 대기실 구조를 대기실별로 담은 2차원 문자열 배열 places가 매개변수로 주어집니다. 각 대기실별로 거리두기를 지키고 있으면 1을, 한 명이라도 지키지 않고 있으면 0을 배열에 담아 return 하도록 solution 함수를 완성해 주세요.<br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
 <hr />
 
 <ul>
-  <li>n은 1 이상 200 이하인 자연수입니다.</li>
-  <li>weak의 길이는 1 이상 15 이하입니다.</li>
-  <li>서로 다른 두 취약점의 위치가 같은 경우는 주어지지 않습니다.</li>
-  <li>취약 지점의 위치는 오름차순으로 정렬되어 주어집니다.</li>
-  <li>weak의 원소는 0 이상 n - 1 이하인 정수입니다.</li>
-  <li>dist의 길이는 1 이상 8 이하입니다.</li>
-  <li>dist의 원소는 1 이상 100 이하인 자연수입니다.</li>
-  <li>친구들을 모두 투입해도 취약 지점을 전부 점검할 수 없는 경우에는 -1을 return 해주세요.<br /><br /><br /></li>
+  <li>places의 행 길이(대기실 개수) = 5</li>
+  <li>places의 각 행은 하나의 대기실 구조를 나타냅니다.</li>
+  <li>places의 열 길이(대기실 세로 길이) = 5</li>
+  <li>places의 원소는 P,O,X로 이루어진 문자열입니다.</li>
+  <li>places 원소의 길이(대기실 가로 길이) = 5</li>
+  <li>P는 응시자가 앉아있는 자리를 의미합니다.</li>
+  <li>O는 빈 테이블을 의미합니다.</li>
+  <li>X는 파티션을 의미합니다.</li>
+  <li>입력으로 주어지는 5개 대기실의 크기는 모두 5x5 입니다.</li>
+  <li>return 값 형식</li>
+  <li>1차원 정수 배열에 5개의 원소를 담아서 return 합니다.</li>
+  <li>places에 담겨 있는 5개 대기실의 순서대로, 거리두기 준수 여부를 차례대로 배열에 담습니다.</li>
+  <li>각 대기실 별로 모든 응시자가 거리두기를 지키고 있으면 1을, 한 명이라도 지키지 않고 있으면 0을 담습니다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
+<h2 id="1차-시도">1차 시도</h2>
 <ul>
-  <li>처음엔 수리지점 한 군데에서 시계방향과 반시계방향으로 돌았을 때 더 짧은 거리를 찾아서 거리배열에서 그 거리와 합이 같거나 커지는 원소들의 개수를 찾으려 했다. 하지만 2번 예제에서만 통하고 1번 예제에서는 통하지 않았음…</li>
-  <li>그리하여 참고한 해설은 일단 외벽 배열을 원형탐색할 수 있게 확장한 다음 거리배열의 순열을 구해서 각 경우마다 몇 명을 보내면 외벽 수리를 마칠 수 있는지 확인하는 것이다. 원형배열로 확장하는 부분에 대한 아이디어가 없어서 헤멨는데 이걸 알고 나니까 조금 이해가 수월했다.</li>
-  <li>순열을 구하는 함수는 재귀로 직접 구현한 함수와 <code class="language-plaintext highlighter-rouge">itertools</code>에서 제공되는 함수 둘 다 써 봤는데 이 문제에서는 재귀로 직접 구현한 함수가 더 빨랐다.<br /><br /></li>
+  <li>입력 배열에서 응시자들의 좌표를 따로 리스트에 저장한 뒤 응시자 한 명마다 다른 응시자들과의 거리를 구하려 했다.</li>
+  <li>그런데 거리는 구한다 해도 그 사이에 있는 파티션과 빈 칸의 좌표를 계산하는 것이 좀 복잡하게 느껴져서 다른 방법을 찾았다.</li>
+</ul>
+
+<h2 id="2차-시도">2차 시도</h2>
+<ul>
+  <li>문제를 계속 보다 보니 맵 크기가 그렇게 크지 않아서 전체를 스캔하면 되겠다는 생각이 들었다.</li>
+  <li>그래서 이중 for문으로 [i][j]번째 칸이 응시자일 때 주변에 뭐가 있는지 확인한 후 분기처리를 하려 했다.</li>
+  <li>그런데 경우를 하나하나 쓰다 보니 코드가 굉장히 지저분해지고 몇몇 테케는 통과가 되지 않음 🥲 (이때 82점 받음)</li>
+  <li>그래서 질문 게시판을 찾아봤다.</li>
+</ul>
+
+<h2 id="3차-시도">3차 시도</h2>
+<ul>
+  <li><a href="https://programmers.co.kr/questions/21304">생각보다 쉽게 접근해도 풀리긴 하네요..?</a></li>
+  <li>그런데 이렇게 쉽게 생각한 분이 있는 것이었다…!</li>
+  <li>그대로 구현하니까 100점으로 통과되었다.</li>
+  <li>오늘의 교훈은 문제의 조건을 최대한 단순화 시켜보자!<br /><br /></li>
 </ul>
 
 <h1 id="코드">코드</h1>
 <hr />
 
-<h2 id="재귀로-순열-함수-구현한-코드">재귀로 순열 함수 구현한 코드</h2>
-
-<script src="https://gist.github.com/miro7923/3dbb17400670abbf4d9e50fd8677bd44.js"></script>
-
-<h2 id="itertools의-순열-함수-사용한-코드">itertools의 순열 함수 사용한 코드</h2>
-
-<script src="https://gist.github.com/miro7923/31c1614750fc4544770808bd672fa477.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60062]]></summary></entry><entry><title type="html">JSP &amp;amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이</title><link href="http://localhost:4000/jsp/JSP-servlet-scope/" rel="alternate" type="text/html" title="JSP &amp;amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-servlet-scope</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-servlet-scope/"><![CDATA[<p><br /></p>
+<script src="https://gist.github.com/miro7923/e598c223daf5db06d057c9968f7be401.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/81302]]></summary></entry><entry><title type="html">JSP &amp;amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이</title><link href="http://localhost:4000/jsp/JSP-servlet-scope/" rel="alternate" type="text/html" title="JSP &amp;amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-servlet-scope</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-servlet-scope/"><![CDATA[<p><br /></p>
 <h1 id="-영역객체scope란">👀 영역객체(Scope)란?</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">JSP</code> 내장객체로 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체</li>
@@ -112,7 +133,106 @@
 <h1 id="참고">참고</h1>
 <ul>
   <li><a href="https://zester7.tistory.com/46">Scope - Page, Request, Session, Application</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="Servlet" /><category term="Scope" /><summary type="html"><![CDATA[👀 영역객체(Scope)란? JSP 내장객체로 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-03/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-03</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-03/"><![CDATA[<ul>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="Servlet" /><category term="Scope" /><summary type="html"><![CDATA[👀 영역객체(Scope)란? JSP 내장객체로 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체]]></summary></entry><entry><title type="html">Python) 프로그래머스. 외벽 점검</title><link href="http://localhost:4000/programmers/programmers-maintenance-wall/" rel="alternate" type="text/html" title="Python) 프로그래머스. 외벽 점검" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maintenance-wall</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maintenance-wall/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/60062">https://programmers.co.kr/learn/courses/30/lessons/60062</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>레스토랑을 운영하고 있는 “스카피”는 레스토랑 내부가 너무 낡아 친구들과 함께 직접 리모델링 하기로 했습니다. 레스토랑이 있는 곳은 스노우타운으로 매우 추운 지역이어서 내부 공사를 하는 도중에 주기적으로 외벽의 상태를 점검해야 할 필요가 있습니다.</p>
+  </li>
+  <li>
+    <p>레스토랑의 구조는 완전히 동그란 모양이고 외벽의 총 둘레는 n미터이며, 외벽의 몇몇 지점은 추위가 심할 경우 손상될 수도 있는 취약한 지점들이 있습니다. 따라서 내부 공사 도중에도 외벽의 취약 지점들이 손상되지 않았는 지, 주기적으로 친구들을 보내서 점검을 하기로 했습니다. 다만, 빠른 공사 진행을 위해 점검 시간을 1시간으로 제한했습니다. 친구들이 1시간 동안 이동할 수 있는 거리는 제각각이기 때문에, 최소한의 친구들을 투입해 취약 지점을 점검하고 나머지 친구들은 내부 공사를 돕도록 하려고 합니다. 편의 상 레스토랑의 정북 방향 지점을 0으로 나타내며, 취약 지점의 위치는 정북 방향 지점으로부터 시계 방향으로 떨어진 거리로 나타냅니다. 또, 친구들은 출발 지점부터 시계, 혹은 반시계 방향으로 외벽을 따라서만 이동합니다.</p>
+  </li>
+  <li>
+    <p>외벽의 길이 n, 취약 지점의 위치가 담긴 배열 weak, 각 친구가 1시간 동안 이동할 수 있는 거리가 담긴 배열 dist가 매개변수로 주어질 때, 취약 지점을 점검하기 위해 보내야 하는 친구 수의 최소값을 return 하도록 solution 함수를 완성해주세요.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>n은 1 이상 200 이하인 자연수입니다.</li>
+  <li>weak의 길이는 1 이상 15 이하입니다.</li>
+  <li>서로 다른 두 취약점의 위치가 같은 경우는 주어지지 않습니다.</li>
+  <li>취약 지점의 위치는 오름차순으로 정렬되어 주어집니다.</li>
+  <li>weak의 원소는 0 이상 n - 1 이하인 정수입니다.</li>
+  <li>dist의 길이는 1 이상 8 이하입니다.</li>
+  <li>dist의 원소는 1 이상 100 이하인 자연수입니다.</li>
+  <li>친구들을 모두 투입해도 취약 지점을 전부 점검할 수 없는 경우에는 -1을 return 해주세요.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음엔 수리지점 한 군데에서 시계방향과 반시계방향으로 돌았을 때 더 짧은 거리를 찾아서 거리배열에서 그 거리와 합이 같거나 커지는 원소들의 개수를 찾으려 했다. 하지만 2번 예제에서만 통하고 1번 예제에서는 통하지 않았음…</li>
+  <li>그리하여 참고한 해설은 일단 외벽 배열을 원형탐색할 수 있게 확장한 다음 거리배열의 순열을 구해서 각 경우마다 몇 명을 보내면 외벽 수리를 마칠 수 있는지 확인하는 것이다. 원형배열로 확장하는 부분에 대한 아이디어가 없어서 헤멨는데 이걸 알고 나니까 조금 이해가 수월했다.</li>
+  <li>순열을 구하는 함수는 재귀로 직접 구현한 함수와 <code class="language-plaintext highlighter-rouge">itertools</code>에서 제공되는 함수 둘 다 써 봤는데 이 문제에서는 재귀로 직접 구현한 함수가 더 빨랐다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<h2 id="재귀로-순열-함수-구현한-코드">재귀로 순열 함수 구현한 코드</h2>
+
+<script src="https://gist.github.com/miro7923/3dbb17400670abbf4d9e50fd8677bd44.js"></script>
+
+<h2 id="itertools의-순열-함수-사용한-코드">itertools의 순열 함수 사용한 코드</h2>
+
+<script src="https://gist.github.com/miro7923/31c1614750fc4544770808bd672fa477.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60062]]></summary></entry><entry><title type="html">에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet</title><link href="http://localhost:4000/errorlog/warning-log-06/" rel="alternate" type="text/html" title="에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-06</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-06/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+
+<p align="center"><img src="../../assets/images/javaCompilerError1.png" width="700" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Spring framework</code>를 배우기 시작하면서 <code class="language-plaintext highlighter-rouge">Spring Legacy Project</code>로 진행하고 있는데 프로젝트의 자바 컴파일러 버전을 맞춰 주었는데도 저 에러 메시지가 계속 뜨는 것이었다. 실행하는데 문제가 없긴 했지만 신경쓰였다… 알고보니 컴파일러 뿐만 아니라 <code class="language-plaintext highlighter-rouge">Project facets</code>의 자바 버전도 맞춰 주어야 했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<p align="center"><img src="../../assets/images/javaCompilerError2.png" width="400" /></p>
+
+<ul>
+  <li>프로젝트 이름 위에서 마우스 우클릭하면 위와 같은 메뉴를 볼 수 있다. 맨 아래에 있는 <code class="language-plaintext highlighter-rouge">Properties</code>를 선택한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/javaCompilerError3.png" width="600" /></p>
+
+<ul>
+  <li>메뉴 중에서 <code class="language-plaintext highlighter-rouge">Project Facets</code>라는 메뉴를 선택한다. 그러면 옆에 현재 프로젝트에 설정되어 있는 자바 버전을 볼 수 있다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/javaCompilerError4.png" width="600" /></p>
+
+<ul>
+  <li>현재 사용하고 있는 자바 컴파일러 버전과 맞춰 준다. 난 8 버전을 사용하고 있어서 1.8로 맞춰주었다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/javaCompilerError5.png" width="600" /></p>
+
+<ul>
+  <li>에러 해결! 👏<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://myblog.opendocs.co.kr/archives/1566">[문제해결] Java compiler level does not match the version of the installed Java project facet.</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-03/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-03</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-03/"><![CDATA[<ul>
   <li>작성일 : 2022.04.21</li>
   <li>작성자 : 황유진</li>
   <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
@@ -284,52 +404,7 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-29</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.21 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet</title><link href="http://localhost:4000/errorlog/warning-log-06/" rel="alternate" type="text/html" title="에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-06</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-06/"><![CDATA[<h1 id="사용환경">사용환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020) 16GB</li>
-  <li>JDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="에러의-발생">에러의 발생</h1>
-
-<p align="center"><img src="../../assets/images/javaCompilerError1.png" width="700" /></p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Spring framework</code>를 배우기 시작하면서 <code class="language-plaintext highlighter-rouge">Spring Legacy Project</code>로 진행하고 있는데 프로젝트의 자바 컴파일러 버전을 맞춰 주었는데도 저 에러 메시지가 계속 뜨는 것이었다. 실행하는데 문제가 없긴 했지만 신경쓰였다… 알고보니 컴파일러 뿐만 아니라 <code class="language-plaintext highlighter-rouge">Project facets</code>의 자바 버전도 맞춰 주어야 했다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결">문제 해결</h1>
-
-<p align="center"><img src="../../assets/images/javaCompilerError2.png" width="400" /></p>
-
-<ul>
-  <li>프로젝트 이름 위에서 마우스 우클릭하면 위와 같은 메뉴를 볼 수 있다. 맨 아래에 있는 <code class="language-plaintext highlighter-rouge">Properties</code>를 선택한다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/javaCompilerError3.png" width="600" /></p>
-
-<ul>
-  <li>메뉴 중에서 <code class="language-plaintext highlighter-rouge">Project Facets</code>라는 메뉴를 선택한다. 그러면 옆에 현재 프로젝트에 설정되어 있는 자바 버전을 볼 수 있다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/javaCompilerError4.png" width="600" /></p>
-
-<ul>
-  <li>현재 사용하고 있는 자바 컴파일러 버전과 맞춰 준다. 난 8 버전을 사용하고 있어서 1.8로 맞춰주었다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/javaCompilerError5.png" width="600" /></p>
-
-<ul>
-  <li>에러 해결! 👏<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://myblog.opendocs.co.kr/archives/1566">[문제해결] Java compiler level does not match the version of the installed Java project facet.</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">Spring MVC Project) css, js 파일 경로 설정</title><link href="http://localhost:4000/spring/spring-mvc-01/" rel="alternate" type="text/html" title="Spring MVC Project) css, js 파일 경로 설정" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/spring/spring-mvc-01</id><content type="html" xml:base="http://localhost:4000/spring/spring-mvc-01/"><![CDATA[<p><br /></p>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.21 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Spring MVC Project) css, js 파일 경로 설정</title><link href="http://localhost:4000/spring/spring-mvc-01/" rel="alternate" type="text/html" title="Spring MVC Project) css, js 파일 경로 설정" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/spring/spring-mvc-01</id><content type="html" xml:base="http://localhost:4000/spring/spring-mvc-01/"><![CDATA[<p><br /></p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Spring MVC</code> 프로젝트를 배우면서 기존에 사용하던 <code class="language-plaintext highlighter-rouge">JAVA JSP</code> 프로젝트와는 약간 달라져서 헷갈리는 것이 많았는데 그 중 하나가 <code class="language-plaintext highlighter-rouge">css</code>와 <code class="language-plaintext highlighter-rouge">js</code> 파일 경로 설정이었다.<br /><br /><br /></li>
 </ul>
@@ -1085,84 +1160,4 @@ git commit -m "[yujin] README 수정"  // 방금 추가한 파일들 업로드 �
   <li><a href="https://velog.io/@johnny/pintOS-github">[pintOS] github으로 팀프로젝트 관리하기 (pintOS 팀플 맞춤)</a></li>
   <li><a href="https://hyoje420.tistory.com/41">[Git]GitHub Collaborator 추가하기</a></li>
   <li><a href="https://gmlwjd9405.github.io/2017/10/27/how-to-collaborate-on-GitHub-1.html">Feature Branch Workflow</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Log" /><category term="Project" /><category term="UnoMas" /><summary type="html"><![CDATA[작성자 : 황유진 글 작성 도움 : 오은현]]></summary></entry><entry><title type="html">Python) BOJ 3190. 뱀</title><link href="http://localhost:4000/boj/boj3190-py/" rel="alternate" type="text/html" title="Python) BOJ 3190. 뱀" /><published>2022-04-17T00:00:00+09:00</published><updated>2022-04-17T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj3190-py</id><content type="html" xml:base="http://localhost:4000/boj/boj3190-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/3190">https://www.acmicpc.net/problem/3190</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 128 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>‘Dummy’ 라는 도스게임이 있다. 이 게임에는 뱀이 나와서 기어다니는데, 사과를 먹으면 뱀 길이가 늘어난다. 뱀이 이리저리 기어다니다가 벽 또는 자기자신의 몸과 부딪히면 게임이 끝난다.</p>
-  </li>
-  <li>
-    <p>게임은 NxN 정사각 보드위에서 진행되고, 몇몇 칸에는 사과가 놓여져 있다. 보드의 상하좌우 끝에 벽이 있다. 게임이 시작할때 뱀은 맨위 맨좌측에 위치하고 뱀의 길이는 1 이다. 뱀은 처음에 오른쪽을 향한다.</p>
-  </li>
-  <li>
-    <p>뱀은 매 초마다 이동을 하는데 다음과 같은 규칙을 따른다.</p>
-  </li>
-  <li>먼저 뱀은 몸길이를 늘려 머리를 다음칸에 위치시킨다.</li>
-  <li>만약 이동한 칸에 사과가 있다면, 그 칸에 있던 사과가 없어지고 꼬리는 움직이지 않는다.</li>
-  <li>만약 이동한 칸에 사과가 없다면, 몸길이를 줄여서 꼬리가 위치한 칸을 비워준다. 즉, 몸길이는 변하지 않는다.</li>
-  <li>사과의 위치와 뱀의 이동경로가 주어질 때 이 게임이 몇 초에 끝나는지 계산하라.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>첫째 줄에 보드의 크기 N이 주어진다. (2 ≤ N ≤ 100) 다음 줄에 사과의 개수 K가 주어진다. (0 ≤ K ≤ 100)</p>
-  </li>
-  <li>
-    <p>다음 K개의 줄에는 사과의 위치가 주어지는데, 첫 번째 정수는 행, 두 번째 정수는 열 위치를 의미한다. 사과의 위치는 모두 다르며, 맨 위 맨 좌측 (1행 1열) 에는 사과가 없다.</p>
-  </li>
-  <li>
-    <p>다음 줄에는 뱀의 방향 변환 횟수 L 이 주어진다. (1 ≤ L ≤ 100)</p>
-  </li>
-  <li>
-    <p>다음 L개의 줄에는 뱀의 방향 변환 정보가 주어지는데,  정수 X와 문자 C로 이루어져 있으며. 게임 시작 시간으로부터 X초가 끝난 뒤에 왼쪽(C가 ‘L’) 또는 오른쪽(C가 ‘D’)로 90도 방향을 회전시킨다는 뜻이다. X는 10,000 이하의 양의 정수이며, 방향 전환 정보는 X가 증가하는 순으로 주어진다.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 게임이 몇 초에 끝나는지 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>풀이 과정에서 여러 시행착오를 겪었는데, 가장 큰 것은 문제 이해를 잘못 한 것이었다.</li>
-  <li>게임은 뱀이 벽에 부딪힐 때나 몸에 부딪혔을 때 끝나고 입력으로 주어지는 방향 정보는 방향을 전환한 시간과 방향값만 주어지지 언제 벽에 부딪혔다는 정보는 주지 않는다. 즉 방향 정보가 끝나도 뱀은 계속 이동하고 있어야 한다. 하지만 처음에는 방향 정보 개수 L만큼만 반복문을 돌렸기 때문에 항상 방향 정보로 주어지는 시간의 최대값 안에서 끝이 났다. 이것 때문에 시간을 많이 썼다.🥲</li>
-  <li>그렇기 때문에 뱀은 무한루프 속에서 이동해야 하며 종료 조건일 때에만 반복문을 탈출하도록 해야 한다.</li>
-  <li>플레이 중에는 방향을 전환하는 시간 전 까지는 같은 방향으로 이동하면서 뱀을 이동시켜 주고 방향을 전환하는 시간이 되면 방향을 바꾼 후 이동을 반복한다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 76 ms</li>
-  <li>메모리 : 30840 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/aa45bd78334e8ccf535592895bad133a.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No3190" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/3190 제한 시간 제한 : 1 초 메모리 제한 : 128 MB]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Log" /><category term="Project" /><category term="UnoMas" /><summary type="html"><![CDATA[작성자 : 황유진 글 작성 도움 : 오은현]]></summary></entry></feed>
