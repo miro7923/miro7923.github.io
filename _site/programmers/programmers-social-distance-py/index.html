@@ -1,0 +1,768 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Python) 프로그래머스. 거리두기 확인하기 | Yujin Dev Log</title>
+<meta name="description" content="문제 링크      https://programmers.co.kr/learn/courses/30/lessons/81302">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="Python) 프로그래머스. 거리두기 확인하기">
+<meta property="og:url" content="http://localhost:4000/programmers/programmers-social-distance-py/">
+
+
+  <meta property="og:description" content="문제 링크      https://programmers.co.kr/learn/courses/30/lessons/81302">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-04-22T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/programmers/programmers-social-distance-py/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#programmers" itemprop="item"><span itemprop="name">Programmers</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Python) 프로그래머스. 거리두기 확인하기</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업에 자신있는 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Python) 프로그래머스. 거리두기 확인하기">
+    <meta itemprop="description" content="문제 링크  https://programmers.co.kr/learn/courses/30/lessons/81302">
+    <meta itemprop="datePublished" content="2022-04-22T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/programmers/programmers-social-distance-py/" class="u-url" itemprop="url">Python) 프로그래머스. 거리두기 확인하기
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-22T00:00:00+09:00">April 22, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#문제-링크">문제 링크</a></li><li><a href="#문제">문제</a></li><li><a href="#제한">제한</a></li><li><a href="#-풀이">👀 풀이</a><ul><li><a href="#1차-시도">1차 시도</a></li><li><a href="#2차-시도">2차 시도</a></li><li><a href="#3차-시도">3차 시도</a></li></ul></li><li><a href="#코드">코드</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/81302">https://programmers.co.kr/learn/courses/30/lessons/81302</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>개발자를 희망하는 죠르디가 카카오에 면접을 보러 왔습니다.</p>
+  </li>
+  <li>코로나 바이러스 감염 예방을 위해 응시자들은 거리를 둬서 대기를 해야하는데 개발 직군 면접인 만큼</li>
+  <li>아래와 같은 규칙으로 대기실에 거리를 두고 앉도록 안내하고 있습니다.</li>
+</ul>
+
+<ol>
+  <li>대기실은 5개이며, 각 대기실은 5x5 크기입니다.</li>
+  <li>거리두기를 위하여 응시자들 끼리는 맨해튼 거리1가 2 이하로 앉지 말아 주세요.</li>
+  <li>단 응시자가 앉아있는 자리 사이가 파티션으로 막혀 있을 경우에는 허용합니다.</li>
+</ol>
+
+<ul>
+  <li>5개의 대기실을 본 죠르디는 각 대기실에서 응시자들이 거리두기를 잘 기키고 있는지 알고 싶어졌습니다. 자리에 앉아있는 응시자들의 정보와 대기실 구조를 대기실별로 담은 2차원 문자열 배열 places가 매개변수로 주어집니다. 각 대기실별로 거리두기를 지키고 있으면 1을, 한 명이라도 지키지 않고 있으면 0을 배열에 담아 return 하도록 solution 함수를 완성해 주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>places의 행 길이(대기실 개수) = 5</li>
+  <li>places의 각 행은 하나의 대기실 구조를 나타냅니다.</li>
+  <li>places의 열 길이(대기실 세로 길이) = 5</li>
+  <li>places의 원소는 P,O,X로 이루어진 문자열입니다.</li>
+  <li>places 원소의 길이(대기실 가로 길이) = 5</li>
+  <li>P는 응시자가 앉아있는 자리를 의미합니다.</li>
+  <li>O는 빈 테이블을 의미합니다.</li>
+  <li>X는 파티션을 의미합니다.</li>
+  <li>입력으로 주어지는 5개 대기실의 크기는 모두 5x5 입니다.</li>
+  <li>return 값 형식</li>
+  <li>1차원 정수 배열에 5개의 원소를 담아서 return 합니다.</li>
+  <li>places에 담겨 있는 5개 대기실의 순서대로, 거리두기 준수 여부를 차례대로 배열에 담습니다.</li>
+  <li>각 대기실 별로 모든 응시자가 거리두기를 지키고 있으면 1을, 한 명이라도 지키지 않고 있으면 0을 담습니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<h2 id="1차-시도">1차 시도</h2>
+<ul>
+  <li>입력 배열에서 응시자들의 좌표를 따로 리스트에 저장한 뒤 응시자 한 명마다 다른 응시자들과의 거리를 구하려 했다.</li>
+  <li>그런데 거리는 구한다 해도 그 사이에 있는 파티션과 빈 칸의 좌표를 계산하는 것이 좀 복잡하게 느껴져서 다른 방법을 찾았다.</li>
+</ul>
+
+<h2 id="2차-시도">2차 시도</h2>
+<ul>
+  <li>문제를 계속 보다 보니 맵 크기가 그렇게 크지 않아서 전체를 스캔하면 되겠다는 생각이 들었다.</li>
+  <li>그래서 이중 for문으로 [i][j]번째 칸이 응시자일 때 주변에 뭐가 있는지 확인한 후 분기처리를 하려 했다.</li>
+  <li>그런데 경우를 하나하나 쓰다 보니 코드가 굉장히 지저분해지고 몇몇 테케는 통과가 되지 않음 🥲 (이때 82점 받음)</li>
+  <li>그래서 질문 게시판을 찾아봤다.</li>
+</ul>
+
+<h2 id="3차-시도">3차 시도</h2>
+<ul>
+  <li><a href="https://programmers.co.kr/questions/21304">생각보다 쉽게 접근해도 풀리긴 하네요..?</a></li>
+  <li>그런데 이렇게 쉽게 생각한 분이 있는 것이었다…!</li>
+  <li>그대로 구현하니까 100점으로 통과되었다.</li>
+  <li>오늘의 교훈은 문제의 조건을 최대한 단순화 시켜보자!<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/e598c223daf5db06d057c9968f7be401.js"></script>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a><span class="sep">, </span>
+    
+      <a href="/tags/#implementation" class="page__taxonomy-item p-category" rel="tag">Implementation</a><span class="sep">, </span>
+    
+      <a href="/tags/#programmers" class="page__taxonomy-item p-category" rel="tag">Programmers</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">Python</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#programmers" class="page__taxonomy-item p-category" rel="tag">Programmers</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-04-22T00:00:00+09:00">April 22, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Python%29+%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4.+%EA%B1%B0%EB%A6%AC%EB%91%90%EA%B8%B0+%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-social-distance-py%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-social-distance-py%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-social-distance-py%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/errorlog/warning-log-06/" class="pagination--pager" title="에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet
+">이전</a>
+    
+    
+      <a href="/programmers/programmers-edit-table-py/" class="pagination--pager" title="Python) 프로그래머스. 표 편집
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-edit-table-py/" rel="permalink">Python) 프로그래머스. 표 편집
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-23T00:00:00+09:00">April 23, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://programmers.co.kr/learn/courses/30/lessons/81303
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/errorlog/warning-log-06/" rel="permalink">에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">사용환경
+
+  MacBook Air (M1, 2020) 16GB
+  JDK 8
+  Spring Tool Suite 4.14.0
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-03/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.04.21
+  작성자 : 황유진
+  팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진
+  GitHub Repository : https://github.com/miro7923/Uno-Mas
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/spring/spring-mvc-01/" rel="permalink">Spring MVC Project) css, js 파일 경로 설정
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-21T00:00:00+09:00">April 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+  Spring MVC 프로젝트를 배우면서 기존에 사용하던 JAVA JSP 프로젝트와는 약간 달라져서 헷갈리는 것이 많았는데 그 중 하나가 css와 js 파일 경로 설정이었다.
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
