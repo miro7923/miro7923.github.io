@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-25T11:23:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 수식 최대화</title><link href="http://localhost:4000/programmers/programmers-maximize-calc-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 수식 최대화" /><published>2022-04-23T00:00:00+09:00</published><updated>2022-04-23T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maximize-calc-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maximize-calc-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-25T15:51:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 수식 최대화</title><link href="http://localhost:4000/programmers/programmers-maximize-calc-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 수식 최대화" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maximize-calc-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maximize-calc-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -74,7 +74,380 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/c4f27f01afbaf0beb610650ab9f35825.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Stack" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/67257]]></summary></entry><entry><title type="html">Python) 프로그래머스. 표 편집</title><link href="http://localhost:4000/programmers/programmers-edit-table-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 표 편집" /><published>2022-04-23T00:00:00+09:00</published><updated>2022-04-23T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-edit-table-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-edit-table-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/c4f27f01afbaf0beb610650ab9f35825.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Stack" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/67257]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 4 - 상품 상세 페이지, 리뷰 작성 페이지, 문의 작성 페이지 제작</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-04/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 4 - 상품 상세 페이지, 리뷰 작성 페이지, 문의 작성 페이지 제작" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-04</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-04/"><![CDATA[<ul>
+  <li>작성일 : 2022.04.25</li>
+  <li>작성자 : 황유진</li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
+  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1---상품-상세-페이지-frontend">진행상황 1 - 상품 상세 페이지 frontend</h1>
+<h2 id="productdetailjsp">productDetail.jsp</h2>
+<ul>
+  <li>메인으로 사용하기로 한 템플릿을 약간 수정해서 상품 상세 정보를 보여주는 페이지를 만들었다.</li>
+</ul>
+
+<h3 id="메인-이미지와-요약-정보-출력-부분">메인 이미지와 요약 정보 출력 부분</h3>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"product-shop spad page-details"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-6"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-pic-zoom"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"product-big-img"</span>
+                                <span class="na">src=</span><span class="s">"${path}/resources/img/product-single/product_vegi01.jpeg"</span>
+									<span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-6"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-details"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pd-title"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;h3&gt;</span>청경채<span class="nt">&lt;/h3&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pd-desc"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;p&gt;</span>아삭하고 부드러운<span class="nt">&lt;/p&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pd-desc"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"priceText top"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"price"</span><span class="nt">&gt;</span>2,190<span class="nt">&lt;/span&gt;</span> 원
+                                <span class="nt">&lt;/h5&gt;</span>
+                                <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"memberInfo"</span><span class="nt">&gt;</span>로그인 후, 적립혜택이 제공됩니다.<span class="nt">&lt;/p&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pd-tags"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">"list first"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>판매단위<span class="nt">&lt;/dt&gt;</span>
+                                    <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>1팩<span class="nt">&lt;/dd&gt;</span>
+                                <span class="nt">&lt;/dl&gt;</span>
+                                <span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">"list"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>중량/용량<span class="nt">&lt;/dt&gt;</span>
+                                    <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>300g<span class="nt">&lt;/dd&gt;</span>
+                                <span class="nt">&lt;/dl&gt;</span>
+                                <span class="nt">&lt;hr&gt;</span>
+                                <span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">"list"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>배송구분<span class="nt">&lt;/dt&gt;</span>
+                                    <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>택배배송<span class="nt">&lt;/dd&gt;</span>
+                                <span class="nt">&lt;/dl&gt;</span>
+                                <span class="nt">&lt;hr&gt;</span>
+                                <span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">"list"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>원산지<span class="nt">&lt;/dt&gt;</span>
+                                    <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>국산<span class="nt">&lt;/dd&gt;</span>
+                                <span class="nt">&lt;/dl&gt;</span>
+                                <span class="nt">&lt;hr&gt;</span>
+                                <span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">"list"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>포장타입<span class="nt">&lt;/dt&gt;</span>
+                                    <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>냉장/스티로품<span class="nt">&lt;/dd&gt;</span>
+                                <span class="nt">&lt;/dl&gt;</span>
+                                <span class="nt">&lt;hr&gt;</span>
+                                <span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">"list"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"quantity"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>구매수량<span class="nt">&lt;/dt&gt;</span>
+                                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pro-qty"</span><span class="nt">&gt;</span>
+                                            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;/div&gt;</span>
+                                        <span class="nt">&lt;br&gt;</span>
+                                    <span class="nt">&lt;/div&gt;</span>
+                                <span class="nt">&lt;/dl&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pd-desc"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"priceText"</span><span class="nt">&gt;</span>
+                                    총 상품금액 : <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"price"</span><span class="nt">&gt;</span>2,190<span class="nt">&lt;/span&gt;</span> 원
+                                <span class="nt">&lt;/h5&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"quantity"</span><span class="nt">&gt;</span>
+                                <span class="c">&lt;!-- 회원의 위시리스트에 이 상품번호가 추가되어 있으면 까만 하트가 기본값 --&gt;</span>
+                                <span class="c">&lt;!-- @@ 클릭시 ajax로 DB 통신해서 위시리스트 추가하고 알림창 띄운 뒤 화면 새로고침 @@ --&gt;</span>
+                                <span class="nt">&lt;%</span><span class="k">if</span> <span class="o">(</span><span class="n">isInWishlist</span><span class="o">)</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+                                    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"icon_heart"</span> <span class="na">id=</span><span class="s">"wishlistBtnFull"</span> 
+                                        <span class="na">onclick=</span><span class="s">"toggleWishlistBtn();"</span><span class="nt">&gt;&lt;/button&gt;</span>
+                                <span class="nt">&lt;%</span> <span class="o">}</span>
+                                    <span class="k">else</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+                                    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"icon_heart_alt"</span> <span class="na">id=</span><span class="s">"wishlistBtnEmpty"</span> 
+                                        <span class="na">onclick=</span><span class="s">"toggleWishlistBtn();"</span><span class="nt">&gt;&lt;/button&gt;</span>
+                                <span class="nt">&lt;%</span> <span class="o">}</span> <span class="nt">%&gt;</span>
+                                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"shopping-cart"</span> <span class="na">class=</span><span class="s">"primary-btn pd-cart"</span><span class="nt">&gt;</span>장바구니 담기<span class="nt">&lt;/a&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>전체적인 디자인은 마켓컬리의 상품 상세 페이지 디자인을 참고했다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/prodDetailMain.png" width="800" /></p>
+
+<h3 id="상품-설명-출력-부분">상품 설명 출력 부분</h3>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-tab"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">"active"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#tab-1"</span>
+                   <span class="na">role=</span><span class="s">"tab"</span><span class="nt">&gt;</span>상품설명<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#tab-2"</span> <span class="na">role=</span><span class="s">"tab"</span><span class="nt">&gt;</span>상세정보<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="c">&lt;!-- @@ 후기 개수에 따라 () 안에 숫자 출력하기 @@ --&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#tab-3"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">onclick=</span><span class="s">"toggleReview(0);"</span><span class="nt">&gt;</span>후기(02)<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#tab-4"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">onclick=</span><span class="s">"toggleQna(0);"</span><span class="nt">&gt;</span>문의<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-item-content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade-in active"</span> <span class="na">id=</span><span class="s">"tab-1"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-content"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"${path}/resources/img/product-single/product_vegi02.webp"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;br&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-center col-lg-12"</span><span class="nt">&gt;</span>
+                            <span class="c">&lt;!-- id 선택자 지정된 부분만 디비에서 불러와서 채우면 됨 --&gt;</span>
+                            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"detailSubTitle"</span> <span class="na">id=</span><span class="s">"detailSubTitle"</span><span class="nt">&gt;</span>아삭하고 부드러운<span class="nt">&lt;/h3&gt;</span>
+                            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"detailTitle"</span> <span class="na">id=</span><span class="s">"detailTitle"</span><span class="nt">&gt;</span>청경채<span class="nt">&lt;/h1&gt;</span>
+                            <span class="nt">&lt;br&gt;</span>
+                            <span class="nt">&lt;hr&gt;</span>
+                            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"detailMainContent"</span> <span class="na">id=</span><span class="s">"detailMainContent"</span><span class="nt">&gt;</span>청경채는 잎과 줄기가 붙어 자라는 한 포기 쌈채소에요. 아삭하면서도 싱그러운 식감이 매력적이지만, 살짝 데치거나 볶아주면 새로운 풍미를 선사해요. 신선한 청경채를 Uno más를 통해 만나보세요.<span class="nt">&lt;/p&gt;</span>
+                            <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;br&gt;</span>
+                            <span class="nt">&lt;hr&gt;</span>
+                            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"detailOtherTitle"</span><span class="nt">&gt;</span>재료와 성분<span class="nt">&lt;/h3&gt;</span>
+                            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"detailOtherContent"</span> <span class="na">id=</span><span class="s">"ingredient"</span><span class="nt">&gt;</span>비타민 C, 칼륨, 칼슘 풍부<span class="nt">&lt;/p&gt;</span>
+                            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"detailOtherTitle"</span><span class="nt">&gt;</span>활용법<span class="nt">&lt;/h3&gt;</span>
+                            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"recomendation"</span><span class="nt">&gt;</span>
+                                <span class="c">&lt;!-- 추후 DB에서 불러와 상품별로 다르게 출력 --&gt;</span>
+                                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"detailOtherContent"</span> <span class="na">id=</span><span class="s">"recomendation1"</span><span class="nt">&gt;</span>중화풍 요리, 샤브샤브 재료로 활용<span class="nt">&lt;/li&gt;</span>
+                                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"detailOtherContent"</span> <span class="na">id=</span><span class="s">"recomendation2"</span><span class="nt">&gt;</span>다양한 볶음, 무침으로 만들어도 OK<span class="nt">&lt;/li&gt;</span>
+                                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"detailOtherContent"</span> <span class="na">id=</span><span class="s">"recomendation3"</span><span class="nt">&gt;</span>1인 가구도 부담없이 사용하기 좋은 양<span class="nt">&lt;/li&gt;</span>
+                            <span class="nt">&lt;/ul&gt;</span>
+                            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"detailOtherTitle"</span><span class="nt">&gt;</span>보관법<span class="nt">&lt;/h3&gt;</span>
+                            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"detailOtherContent"</span> <span class="na">id=</span><span class="s">"ingredient"</span><span class="nt">&gt;</span>세척하지 않은 상태로 비닐 팩에 담은 뒤, 냉장고 채소칸에 보관하세요.<span class="nt">&lt;/p&gt;</span>
+                            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"detailOtherTitle"</span><span class="nt">&gt;</span>세척법<span class="nt">&lt;/h3&gt;</span>
+                            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"detailOtherContent"</span> <span class="na">id=</span><span class="s">"ingredient"</span><span class="nt">&gt;</span>사용할 만큼만 꺼내 흐르는 물로 깨끗이 세척하세요.<span class="nt">&lt;/p&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;br&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>상세 설명란은 기본 템플릿이 탭 형식으로 제작되어 있었기 때문에 그대로 활용했다.</li>
+</ul>
+
+<h3 id="리뷰-게시판">리뷰 게시판</h3>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"tab-3"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"customer-review-option"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h4&gt;</span>PRODUCT REVIEW<span class="nt">&lt;/h4&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"productReivewTitle"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;span</span> <span class="na">data-icon=</span><span class="s">"&amp;#x5e"</span><span class="nt">&gt;&lt;/span&gt;</span> 상품에 대한 후기를 남기는
+                    공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;span</span> <span class="na">data-icon=</span><span class="s">"&amp;#x5e"</span><span class="nt">&gt;&lt;/span&gt;</span> 배송관련, 주문(취소/교환/환불)관련
+                    문의 및 요청사항은 마이페이지 내 <span class="c">&lt;!-- @@ 1:1 문의글 작성 페이지 링크로 수정 @@ --&gt;</span> <span class="nt">&lt;span</span>
+                                <span class="na">onclick=</span><span class="s">"window.parent.location.href = '/mypage/my_QnA'"</span>
+                                <span class="na">class=</span><span class="s">"personalInquiry"</span><span class="nt">&gt;</span>1:1 문의<span class="nt">&lt;/span&gt;</span>에 남겨주세요.<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"comment-option"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"reviewTable"</span> <span class="na">width=</span><span class="s">"100%"</span> <span class="na">border=</span><span class="s">"0"</span> <span class="na">cellpadding=</span><span class="s">"0"</span> <span class="na">cellspacing=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;caption</span> <span class="na">style=</span><span class="s">"display: none"</span><span class="nt">&gt;</span>구매후기 제목<span class="nt">&lt;/caption&gt;</span>
+                <span class="nt">&lt;colgroup&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 110px;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: auto;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 77px;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 100px;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 50px;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 80px;"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;/colgroup&gt;</span>
+                <span class="nt">&lt;tbody&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>번호<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>제목<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">align=</span><span class="s">"left"</span><span class="nt">&gt;</span>작성자<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>작성일<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>좋아요<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>조회<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;/tbody&gt;</span>
+            <span class="nt">&lt;/table&gt;</span>
+            <span class="c">&lt;!-- 반복문으로 리뷰글 출력 부분 --&gt;</span>
+            <span class="nt">&lt;%</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nt">%&gt;</span>
+            <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"reviewTable"</span> <span class="na">width=</span><span class="s">"100%"</span> <span class="na">border=</span><span class="s">"0"</span> <span class="na">cellpadding=</span><span class="s">"0"</span> <span class="na">cellspacing=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;caption</span> <span class="na">style=</span><span class="s">"display: none"</span><span class="nt">&gt;</span>구매후기 제목<span class="nt">&lt;/caption&gt;</span>
+                <span class="nt">&lt;colgroup&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 110px;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: auto;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 77px;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 100px;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 50px;"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 80px;"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;/colgroup&gt;</span>
+                <span class="nt">&lt;tbody&gt;</span>
+                    <span class="nt">&lt;tr</span> <span class="na">onmouseover=</span><span class="s">"this.style.background='#f0f0f0'"</span>
+                        <span class="na">onmouseout=</span><span class="s">"this.style.background='white'"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;td&gt;&lt;%=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="nt">%&gt;&lt;/td&gt;</span>
+                        <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">"left"</span> <span class="na">class=</span><span class="s">"reviewTitle"</span>
+                            <span class="na">onclick=</span><span class="s">"toggleReview(</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;</span>리뷰 <span class="nt">&lt;%=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="nt">%&gt;&lt;/td&gt;</span>
+                        <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">"left"</span><span class="nt">&gt;</span>UnoMas<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>2022-04-22<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;/tbody&gt;</span>
+            <span class="nt">&lt;/table&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"reviewContent"</span> <span class="na">id=</span><span class="s">"reviewContent</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;p&gt;</span>평점 : <span class="nt">&lt;span&gt;&lt;%=</span><span class="n">scores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="nt">%&gt;</span> / 5.0<span class="nt">&lt;/span&gt;&lt;/p&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;%</span>
+                <span class="o">}</span>
+            <span class="nt">%&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12 reviewBtnArea"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"site-btn"</span> <span class="na">onclick=</span><span class="s">"location.href='review_writing_form';"</span><span class="nt">&gt;</span>
+                    후기쓰기
+                <span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>리뷰 게시판과 문의 게시판은 이런 형식으로 만들었다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/reviewBoard.png" width="800" /></p>
+
+<ul>
+  <li>아직 DB 테이블을 생성하지 않았기 때문에 나중에 연결 후 게시글 목록을 불러오면 그것을 바탕으로 출력하도록 반복문 형태만 만들어 놓았다. 추후 DB 테이블 생성 후 백엔드 작업에 들어가면 수정할 예정이다.<br /><br /></li>
+</ul>
+
+<h1 id="진행상황-2---리뷰-작성-페이지">진행상황 2 - 리뷰 작성 페이지</h1>
+<ul>
+  <li>처음에 계획을 짤 때엔 리뷰 작성 페이지를 생각하지 못 했는데 상품 상세 페이지를 만들다 보니 필요함을 깨달았다.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span>
+<span class="c1">// @@ 상품번호를 파라메터로 받아와서 상단에 해당 상품명 노출하기 @@</span>
+<span class="nc">String</span> <span class="n">prodName</span> <span class="o">=</span> <span class="s">"청경채"</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">prodNum</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="nt">%&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- Header Section Begin --&gt;</span>
+    <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"../inc/header.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
+    <span class="c">&lt;!-- Header End --&gt;</span>
+
+    <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"product-shop spad page-details"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"customer-review-option"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"comment-option"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"leave-comment"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;h4&gt;</span>후기쓰기<span class="nt">&lt;/h4&gt;</span>
+              <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"comment-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+                    <span class="c">&lt;!-- @@ DB 전송시 파라미터로 넘겨줘서 해당 번호 상품에 등록되도록 하기 --&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"</span><span class="nt">&lt;%=</span><span class="n">prodNum</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">name=</span><span class="s">"prodNum"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"productName"</span><span class="nt">&gt;</span>
+                      상품명 : <span class="nt">&lt;%=</span><span class="n">prodName</span><span class="nt">%&gt;&lt;/p&gt;</span>
+                  <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-2"</span><span class="nt">&gt;</span>제목<span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-10"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"title"</span> <span class="na">placeholder=</span><span class="s">"제목을 입력해주세요."</span> <span class="na">maxlength=</span><span class="s">"40"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                  <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-2"</span><span class="nt">&gt;</span>내용<span class="nt">&lt;/div&gt;</span>
+                  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-10"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"reviewTextarea"</span>
+                      <span class="na">placeholder=</span><span class="s">"자세한 후기는 다른 고객의 구매에 많은 도움이 되며, 일반식품의 효능이나 효과 등에 오해의 소지가 있는 내용을 작성시 검토 후 비공개 조치될 수 있습니다.
+반품/환불 문의는 1:1문의로 가능합니다."</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+                  <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;br&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-2"</span><span class="nt">&gt;</span>사진등록<span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-10"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"uploadImgName"</span> <span class="na">id=</span><span class="s">"uploadImgName"</span> <span class="na">value=</span><span class="s">"이미지 선택"</span> <span class="na">disabled=</span><span class="s">"disabled"</span><span class="nt">&gt;</span> 
+                      <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"site-btn"</span> <span class="na">for=</span><span class="s">"uploadImg"</span> <span class="na">id=</span><span class="s">"uploadBtn"</span><span class="nt">&gt;</span>업로드<span class="nt">&lt;/label&gt;</span>
+                      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"site-btn"</span> <span class="na">onclick=</span><span class="s">"removeImg();"</span><span class="nt">&gt;</span>삭제<span class="nt">&lt;/button&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"uploadImg"</span> <span class="na">oninput=</span><span class="s">"checkFileName();"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;p&gt;</span>구매한 상품이 아니거나 캡쳐 사진을 첨부할 경우, 통보없이 삭제 및 적립 혜택이 취소됩니다.<span class="nt">&lt;/p&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                  <span class="nt">&lt;/div&gt;</span>
+                  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"site-btn"</span> <span class="na">id=</span><span class="s">"writeBtn"</span> <span class="na">onclick=</span><span class="s">"history.back();"</span><span class="nt">&gt;</span>취소<span class="nt">&lt;/button&gt;</span>
+                      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"site-btn"</span> <span class="na">id=</span><span class="s">"writeBtn"</span><span class="nt">&gt;</span>등록<span class="nt">&lt;/button&gt;</span>
+                  <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>리뷰 작성 페이지에서는 제목과 텍스트, 이미지 파일 하나를 첨부할 수 있게 했다.</li>
+  <li>어떤 상품에 대한 리뷰를 쓰고 있는지 확인할 수 있도록 상단에는 해당 상품명을 노출하도록 했다. 이것 또한 추후 DB를 연결하면 정보를 받아와서 출력하는 방식으로 수정할 것이다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/writeReviewPage.png" width="800" /></p>
+
+<ul>
+  <li>전체적인 디자인 틀은 부트스트랩을 이용해 잡았다.</li>
+  <li>문의글 작성 페이지도 동일하게 만들었으며 이미지 업로드란만 제거했다.<br /><br /></li>
+</ul>
+
+<h1 id="작업-중-새로-알게-된-점과-어려웠던-점">작업 중 새로 알게 된 점과 어려웠던 점</h1>
+<ul>
+  <li>세 페이지들을 작업하면서 새로 배운 부분은 <code class="language-plaintext highlighter-rouge">input</code> 태그의 <code class="language-plaintext highlighter-rouge">file</code> 타입의 <code class="language-plaintext highlighter-rouge">UI</code>를 바꾸는 것이었다.</li>
+  <li>처음엔 다른 태그들과 마찬가지로 <code class="language-plaintext highlighter-rouge">css</code>로 쉽게 바꿀 수 있는 것인 줄 알았다.</li>
+  <li>하지만 알고 보니 브라우저 고유 <code class="language-plaintext highlighter-rouge">UI</code>로 고정되어 있어 변경 불가였다. 그래서 구글링을 해 보니 우회해서 변경하는 방안들이 제시되고 있었다.</li>
+  <li>
+    <p>그 중에서도 <a href="https://webdir.tistory.com/435">폼 필드(input type=”file”) 디자인 #4</a> 이 글을 참고해서 만들었다.</p>
+  </li>
+  <li>그리고 이 세 개의 페이지들을 작업하는 내내 날 괴롭혔던 것이 <code class="language-plaintext highlighter-rouge">margin</code>이었는데… 처음부터 내가 만든 것이 아닌, 만들어져 있는 템플릿을 가져다 쓰다 보니 기본 <code class="language-plaintext highlighter-rouge">css</code>파일에 설정된 여백 정보가 참 많았다.</li>
+  <li>처음엔 템플릿에 익숙하지 않으니까 원치 않는 여백이 잡혀 있는데 무엇 때문인지 찾는 것이 쉽지 않았다. 한 번은 테이블 <code class="language-plaintext highlighter-rouge">&lt;td&gt;</code> 태그에 생겨 있는 여백 원인 찾느라고 한 시간 넘게 썼던 것 같다…</li>
+  <li>의도치 않은 여백의 대부분은 기본 <code class="language-plaintext highlighter-rouge">css</code> 파일에서 설정되어 있었는데 저 파일이 모든 뷰 페이지에서 공유되고 있었기 때문에 막 수정하면 다른 페이지에도 영향을 미쳐서 다른 사람들의 작업물에 혼동을 줄 것 같았다. 그래서 내가 작업하는 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지별로 <code class="language-plaintext highlighter-rouge">CSS</code> 파일을 따로 만들어서 수정된 스타일을 적용했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://webdir.tistory.com/435">폼 필드(input type=”file”) 디자인 #4</a> <br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-25</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.25 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 표 편집</title><link href="http://localhost:4000/programmers/programmers-edit-table-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 표 편집" /><published>2022-04-23T00:00:00+09:00</published><updated>2022-04-23T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-edit-table-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-edit-table-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -824,135 +1197,4 @@ $RECYCLE.BIN/
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-30</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.20 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) BOJ 15686. 치킨 배달</title><link href="http://localhost:4000/boj/boj15686-py/" rel="alternate" type="text/html" title="Python) BOJ 15686. 치킨 배달" /><published>2022-04-19T00:00:00+09:00</published><updated>2022-04-19T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj15686-py</id><content type="html" xml:base="http://localhost:4000/boj/boj15686-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/15686">https://www.acmicpc.net/problem/15686</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 1 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>크기가 N×N인 도시가 있다. 도시는 1×1크기의 칸으로 나누어져 있다. 도시의 각 칸은 빈 칸, 치킨집, 집 중 하나이다. 도시의 칸은 (r, c)와 같은 형태로 나타내고, r행 c열 또는 위에서부터 r번째 칸, 왼쪽에서부터 c번째 칸을 의미한다. r과 c는 1부터 시작한다.</p>
-  </li>
-  <li>
-    <p>이 도시에 사는 사람들은 치킨을 매우 좋아한다. 따라서, 사람들은 “치킨 거리”라는 말을 주로 사용한다. 치킨 거리는 집과 가장 가까운 치킨집 사이의 거리이다. 즉, 치킨 거리는 집을 기준으로 정해지며, 각각의 집은 치킨 거리를 가지고 있다. 도시의 치킨 거리는 모든 집의 치킨 거리의 합이다.</p>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>임의의 두 칸 (r1, c1)과 (r2, c2) 사이의 거리는</td>
-          <td>r1-r2</td>
-          <td>+</td>
-          <td>c1-c2</td>
-          <td>로 구한다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <p>예를 들어, 아래와 같은 지도를 갖는 도시를 살펴보자.</p>
-  </li>
-  <li>0 2 0 1 0</li>
-  <li>1 0 1 0 0</li>
-  <li>0 0 0 0 0</li>
-  <li>0 0 0 1 1</li>
-  <li>0 0 0 1 2</li>
-  <li>
-    <p>0은 빈 칸, 1은 집, 2는 치킨집이다.</p>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>(2, 1)에 있는 집과 (1, 2)에 있는 치킨집과의 거리는</td>
-          <td>2-1</td>
-          <td>+</td>
-          <td>1-2</td>
-          <td>= 2, (5, 5)에 있는 치킨집과의 거리는</td>
-          <td>2-5</td>
-          <td>+</td>
-          <td>1-5</td>
-          <td>= 7이다. 따라서, (2, 1)에 있는 집의 치킨 거리는 2이다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>(5, 4)에 있는 집과 (1, 2)에 있는 치킨집과의 거리는</td>
-          <td>5-1</td>
-          <td>+</td>
-          <td>4-2</td>
-          <td>= 6, (5, 5)에 있는 치킨집과의 거리는</td>
-          <td>5-5</td>
-          <td>+</td>
-          <td>4-5</td>
-          <td>= 1이다. 따라서, (5, 4)에 있는 집의 치킨 거리는 1이다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <p>이 도시에 있는 치킨집은 모두 같은 프랜차이즈이다. 프렌차이즈 본사에서는 수익을 증가시키기 위해 일부 치킨집을 폐업시키려고 한다. 오랜 연구 끝에 이 도시에서 가장 수익을 많이 낼 수 있는  치킨집의 개수는 최대 M개라는 사실을 알아내었다.</p>
-  </li>
-  <li>도시에 있는 치킨집 중에서 최대 M개를 고르고, 나머지 치킨집은 모두 폐업시켜야 한다. 어떻게 고르면, 도시의 치킨 거리가 가장 작게 될지 구하는 프로그램을 작성하시오.<br /><br /></li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>첫째 줄에 N(2 ≤ N ≤ 50)과 M(1 ≤ M ≤ 13)이 주어진다.</p>
-  </li>
-  <li>
-    <p>둘째 줄부터 N개의 줄에는 도시의 정보가 주어진다.</p>
-  </li>
-  <li>
-    <p>도시의 정보는 0, 1, 2로 이루어져 있고, 0은 빈 칸, 1은 집, 2는 치킨집을 의미한다. 집의 개수는 2N개를 넘지 않으며, 적어도 1개는 존재한다. 치킨집의 개수는 M보다 크거나 같고, 13보다 작거나 같다.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 폐업시키지 않을 치킨집을 최대 M개를 골랐을 때, 도시의 치킨 거리의 최솟값을 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>치킨집을 최대 M개를 선택하다는 말 때문에 1개 이상 M개까지 선택할 수 있다는 말인 줄 알고(최종적으로 선택 가능한 치킨집의 개수가 변하는 것…) 그걸 다 어떻게 처리하느냐는 고민에 빠졌었다. 알고보니 쓸데 없는 고민이었다…</li>
-  <li>전체 치킨집 중에서 그냥 M개를 선택하는 것으로 X개의 치킨집 중에서 M개의 치킨을 고르는 경우의 수를 구하는 것이었다. 즉 xCr 조합을 구하면 되는 것이었다.</li>
-  <li>그 다음엔 조합들을 대상으로 각 집들의 치킨거리를 구해 치킨거리의 합을 구한다. 그 중에서 최솟값을 출력하면 정답이다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 440 ms</li>
-  <li>메모리 : 30840 KB<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/8a6a9b16d3b5de4b28503903d89e3c38.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No15686" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/15686 제한 시간 제한 : 1 초 메모리 제한 : 512 MB]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.20 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry></feed>
