@@ -1,0 +1,183 @@
+I"�I<ul>
+  <li>작성일 : 2022.04.26</li>
+  <li>작성자 : 황유진</li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
+  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황-1---상품-목록-페이지-frontend">진행상황 1 - 상품 목록 페이지 frontend</h1>
+<h2 id="productlistjsp">productList.jsp</h2>
+<ul>
+  <li>사용자 입장에서 전체 상품 목록을 볼 수 있는 페이지를 만들었다.</li>
+</ul>
+
+<h3 id="상단-카테고리-노출">상단 카테고리 노출</h3>
+
+<p align="center"><img src="../../assets/images/productListCategory.png" width="800" /></p>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"categoryBox"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;&lt;%=</span><span class="n">category</span><span class="nt">%&gt;&lt;/h3&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"categoryList"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;%</span> <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">subCategory</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">"category"</span> <span class="na">id=</span><span class="s">"category</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">onclick=</span><span class="s">"changeSort(</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">subCategory</span><span class="o">.</span><span class="na">length</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;</span> <span class="nt">&lt;%=</span><span class="n">subCategory</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="nt">%&gt;&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;%</span> <span class="o">}</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-show-option"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12 col-md-12 text-right"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p&gt;</span>총 <span class="nt">&lt;%=</span><span class="n">cnt</span><span class="nt">%&gt;</span>개<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>마켓컬리의 상품 목록 페이지를 참고해서 만들었다.</li>
+  <li>페이지의 상단에서는 카테고리별로 분류해서 볼 수 있도록 했다.</li>
+  <li>페이지 하나로 여러 카테고리에 돌려쓸 수 있게 상품 카테고리에 따라 페이지 제목을 다르게 출력하도록 틀을 만들었다. 추후 이전 페이지에서 받아온 파라미터로 DB에서 카테고리 정보를 조회해 와서 출력할 것이다.</li>
+</ul>
+
+<h3 id="productlistjs">productList.js</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#category0</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">#dea234</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#category0</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">font-weight</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bold</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#page1</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">font-weight</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bold</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">changeSort</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">maxNum</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">#category</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">;</span>
+    
+    <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">#dea234</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">font-weight</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bold</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">maxNum</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">==</span> <span class="nx">i</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+        
+        <span class="nx">id</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">#category</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">#212529</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">font-weight</span><span class="dl">'</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>카테고리 클릭시 강조 표시가 바뀌는 것은 자바스크립트로 제어했다.</li>
+  <li>현재 선택된 id만 강조시키고 그렇지 않은 것들은 강조 표시를 해제하도록 했다.</li>
+</ul>
+
+<h3 id="상품-목록-노출">상품 목록 노출</h3>
+
+<p align="center"><img src="../../assets/images/productListBody.png" width="800" /></p>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-list"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;%</span> <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-4 col-sm-6"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-item"</span> <span class="na">id=</span><span class="s">"productItem"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-pic"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"product_detail"</span><span class="nt">&gt;</span> <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"${path}/resources/img/product-single/product_vegi01.jpeg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/a&gt;</span>
+                <span class="nt">&lt;ul&gt;</span>
+                    <span class="c">&lt;!-- 카트담기 버튼 --&gt;</span>
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"w-icon active"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon_bag_alt"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;</span>
+                    <span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-text"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h5&gt;</span>청경채<span class="nt">&lt;/h5&gt;</span>
+                <span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-price"</span><span class="nt">&gt;</span>
+                    2,190원
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"productSubTitle"</span><span class="nt">&gt;</span>
+                    아삭하고 부드러운
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;%</span> <span class="o">}</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>한 줄에 3개씩 3줄 출력하도록 했다.</li>
+  <li>상품 사진 위에 마우스 오버하면 장바구니 버튼이 노출되는데 이건 템플릿에 있는 것을 그대로 썼다.</li>
+</ul>
+
+<h3 id="하단-페이지-버튼">하단 페이지 버튼</h3>
+
+<p align="center"><img src="../../assets/images/productListPageBtn.png" width="300" /></p>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span> <span class="na">id=</span><span class="s">"pagediv"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12 text-center"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;%</span> <span class="k">if</span> <span class="o">(</span><span class="n">startBlock</span> <span class="err">&gt;</span> <span class="n">pageBlockCnt</span><span class="o">)</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"arrow_carrot-2left_alt pagingBtn"</span> <span class="na">id=</span><span class="s">"toFirst"</span><span class="nt">&gt;&lt;/a&gt;</span> 
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"arrow_carrot-left_alt pagingBtn"</span> <span class="na">id=</span><span class="s">"prev"</span><span class="nt">&gt;&lt;/a&gt;</span> 
+        <span class="nt">&lt;%</span> <span class="o">}</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">startBlock</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">endBlock</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="nt">%&gt;</span>
+        <span class="nt">&lt;span&gt;</span>
+        <span class="c">&lt;!----&gt;</span> <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"pagingBtn"</span> <span class="na">id=</span><span class="s">"page</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="nt">%&gt;</span><span class="s">"</span> <span class="na">onclick=</span><span class="s">"changePageNum(</span><span class="nt">&lt;%=</span><span class="n">i</span><span class="nt">%&gt;</span><span class="s">, </span><span class="nt">&lt;%=</span><span class="n">endBlock</span><span class="nt">%&gt;</span><span class="s">);"</span><span class="nt">&gt;&lt;%=</span><span class="n">i</span> <span class="nt">%&gt;</span> <span class="c">&lt;!----&gt;</span><span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/span&gt;</span> 
+        <span class="nt">&lt;%</span> <span class="o">}</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">endBlock</span> <span class="o">&lt;</span> <span class="n">pageBlockCnt</span><span class="o">)</span> <span class="o">{</span> <span class="nt">%&gt;</span> 
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"arrow_carrot-right_alt pagingBtn"</span> <span class="na">id=</span><span class="s">"next"</span><span class="nt">&gt;&lt;/a&gt;</span> 
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"arrow_carrot-2right_alt pagingBtn"</span> <span class="na">id=</span><span class="s">"toLast"</span><span class="nt">&gt;&lt;/a&gt;</span>
+        <span class="nt">&lt;%</span> <span class="o">}</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>전체 글 개수에 따라 페이지 버튼이 생성되고 누르면 해당 페이지로 이동할 수 있는 틀을 만들었다.</li>
+  <li>DB 연결되면 추가 수정할 예정</li>
+  <li>페이지 버튼 또한 클릭하면 강조 표시가 되게 만들었는데 위에서 카테고리를 선택하면 강조 표시가 되는 것과 동일한 로직으로 만들었다.<br /><br /></li>
+</ul>
+
+<h1 id="진행상황-2---신상품-목록-페이지">진행상황 2 - 신상품 목록 페이지</h1>
+
+<p align="center"><img src="../../assets/images/newProductListPage.png" width="800" /></p>
+
+<ul>
+  <li>신상품 목록 페이지는 상품 목록 페이지를 복사해서 만들었다. 거기서 상단의 카테고리 출력란만 없앴다.<br /><br /></li>
+</ul>
+
+<h1 id="진행상황-3---특가-상품-목록-페이지">진행상황 3 - 특가 상품 목록 페이지</h1>
+
+<p align="center"><img src="../../assets/images/saleProductListPage.png" width="800" /></p>
+
+<ul>
+  <li>특가 상품 목록 페이지는 신상품 목록 페이지를 복사해서 만들었다. 할인하는 상품을 보여주는 페이지이기 때문에 할인율과 가격이 출력되도록 했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-24</code></li>
+</ul>
+:ET
