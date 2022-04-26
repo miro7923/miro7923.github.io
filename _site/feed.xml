@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-25T15:51:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 수식 최대화</title><link href="http://localhost:4000/programmers/programmers-maximize-calc-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 수식 최대화" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maximize-calc-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maximize-calc-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-26T09:05:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 보석 쇼핑</title><link href="http://localhost:4000/programmers/programmers-jewel-shopping-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 보석 쇼핑" /><published>2022-04-26T00:00:00+09:00</published><updated>2022-04-26T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-jewel-shopping-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-jewel-shopping-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/67258">https://programmers.co.kr/learn/courses/30/lessons/67258</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>[본 문제는 정확성과 효율성 테스트 각각 점수가 있는 문제입니다.]</p>
+  </li>
+  <li>개발자 출신으로 세계 최고의 갑부가 된 어피치는 스트레스를 받을 때면 이를 풀기 위해 오프라인 매장에 쇼핑을 하러 가곤 합니다.</li>
+  <li>어피치는 쇼핑을 할 때면 매장 진열대의 특정 범위의 물건들을 모두 싹쓸이 구매하는 습관이 있습니다.</li>
+  <li>어느 날 스트레스를 풀기 위해 보석 매장에 쇼핑을 하러 간 어피치는 이전처럼 진열대의 특정 범위의 보석을 모두 구매하되 특별히 아래 목적을 달성하고 싶었습니다.</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">진열된 모든 종류의 보석을 적어도 1개 이상 포함하는 가장 짧은 구간을 찾아서 구매</code></p>
+  </li>
+  <li>진열대 번호 순서대로 보석들의 이름이 저장된 배열 gems가 매개변수로 주어집니다. 이때 모든 보석을 하나 이상 포함하는 가장 짧은 구간을 찾아서 return 하도록 solution 함수를 완성해주세요.</li>
+  <li>가장 짧은 구간의 시작 진열대 번호와 끝 진열대 번호를 차례대로 배열에 담아서 return 하도록 하며, 만약 가장 짧은 구간이 여러 개라면 시작 진열대 번호가 가장 작은 구간을 return 합니다.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>gems 배열의 크기는 1 이상 100,000 이하입니다.
+    <ul>
+      <li>gems 배열의 각 원소는 진열대에 나열된 보석을 나타냅니다.</li>
+      <li>gems 배열에는 1번 진열대부터 진열대 번호 순서대로 보석이름이 차례대로 저장되어 있습니다.</li>
+      <li>gems 배열의 각 원소는 길이가 1 이상 10 이하인 알파벳 대문자로만 구성된 문자열입니다.<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음 문제를 봤을 때엔 이분탐색을 하는건가? 근데 뭘 기준으로 가야하는 거지? 와 같은 고민을 하다가 카카오 공식 해설을 참고했다.(코드 없이 말로만 설명된 해설 보고 그대로 구현해서 통과하기는 처음이다…)</li>
+</ul>
+
+<ol>
+  <li>전체 보석의 가짓수를 알 수 있게 <code class="language-plaintext highlighter-rouge">gems</code> 배열을 <code class="language-plaintext highlighter-rouge">set</code>으로 바꾼 배열을 임시 변수에 저장한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">{보석 : 등장횟수}</code> 페어로 딕셔너리를 생성한다. 현재 범위 내의 보석의 가짓수와 개수를 셀 것이다.</li>
+  <li>시작 포인터 <code class="language-plaintext highlighter-rouge">l</code>과 끝 포인터 <code class="language-plaintext highlighter-rouge">r</code>을 1번 진열대에 위치시킨다.</li>
+  <li>무한루프를 돌리는데 <code class="language-plaintext highlighter-rouge">l</code>과 <code class="language-plaintext highlighter-rouge">r</code>의 범위가 <code class="language-plaintext highlighter-rouge">gems</code> 배열 범위를 벗어나면 중단하고 무한루프를 탈출한다.</li>
+  <li>5-1. 2에서 만든 딕셔너리의 길이가 1에서 만든 <code class="language-plaintext highlighter-rouge">set</code>의 길이보다 짧으면 <code class="language-plaintext highlighter-rouge">r</code>을 1 증가시키고 현재 범위 내의 보석에 <code class="language-plaintext highlighter-rouge">r</code>번째 보석이 있으면 개수를 1 증가시키고 없으면 <code class="language-plaintext highlighter-rouge">key</code>를 새로 생성하고 <code class="language-plaintext highlighter-rouge">value</code>는 1을 할당한다.<br />
+5-2. 2에서 만든 딕셔너리의 길이가 1에서 만든 <code class="language-plaintext highlighter-rouge">set</code>의 길이와 같아지면 정답 조건에 가까운지 검사한다. 검사해서 더 가까운 값을 정답 배열에 저장했다면 <code class="language-plaintext highlighter-rouge">l</code>을 1 증가시킨다. 그리고 딕셔너리에서 <code class="language-plaintext highlighter-rouge">l-1</code>번째에 있는 보석의 개수를 1 줄인다. 만약 개수가 0이 된다면 해당 <code class="language-plaintext highlighter-rouge">key</code>를 삭제한다.</li>
+</ol>
+
+<ul>
+  <li>위 과정을 반복하다 보면 양쪽 포인터가 <code class="language-plaintext highlighter-rouge">gems</code> 배열 범위를 벗어나면서 반복문을 탈출하게 된다. 그리고 정답을 구할 수 있다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/1b27d57c9067f5ffab7c17eb74ca6195.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="TwoPointer" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/67258]]></summary></entry><entry><title type="html">Python) 프로그래머스. 수식 최대화</title><link href="http://localhost:4000/programmers/programmers-maximize-calc-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 수식 최대화" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maximize-calc-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maximize-calc-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -963,238 +1023,4 @@
 
 <h2 id="itertools의-순열-함수-사용한-코드">itertools의 순열 함수 사용한 코드</h2>
 
-<script src="https://gist.github.com/miro7923/31c1614750fc4544770808bd672fa477.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60062]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 2 - Spring Legacy 프로젝트를 위한 .gitignore 설정</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-02/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 2 - Spring Legacy 프로젝트를 위한 .gitignore 설정" /><published>2022-04-20T00:00:00+09:00</published><updated>2022-04-20T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-02</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-02/"><![CDATA[<ul>
-  <li>작성일 : 2022.04.20</li>
-  <li>작성자 : 황유진</li>
-  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
-  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>Spring framework 4.3.1.RELEASE</li>
-  <li>Tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
-
-<h1 id="기간">기간</h1>
-<ul>
-  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
-  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
-  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황">진행상황</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Spring Legacy Project</code>로 프로젝트를 진행하게 됨에 따라 <code class="language-plaintext highlighter-rouge">GitHub</code> 원격저장소에서 파일을 공유할 때 시스템 환경설정 파일은 함께 공유 되지 않아야 할 필요가 있었다.</li>
-  <li>하지만 아무 처리를 하지 않으면 각종 시스템 환경설정파일이 함께 업로드 되기 때문에 <code class="language-plaintext highlighter-rouge">.gitignore</code> 설정을 해줘야 했는데 유명한 <code class="language-plaintext highlighter-rouge">.gitignore</code>를 만들어주는 사이트에서 만드는 버전으로는 좀 한계가 있었다. <code class="language-plaintext highlighter-rouge">STS</code>에서 커밋을 하려고 할 때 <code class="language-plaintext highlighter-rouge">.classpath</code>같은 파일들이 제외되지 않았기 때문이다.</li>
-</ul>
-
-<h2 id="gitignore-1차-설정">.gitignore 1차 설정</h2>
-<ul>
-  <li><a href="https://lsjsj92.tistory.com/566">https://lsjsj92.tistory.com/566</a></li>
-  <li>처음엔 위 글을 참고하여 <a href="https://www.toptal.com/developers/gitignore">https://www.toptal.com/developers/gitignore</a> 이 사이트에서 만들었는데 좀 부족했다.</li>
-  <li><code class="language-plaintext highlighter-rouge">STS</code>에서 커밋을 하려고 하니 <code class="language-plaintext highlighter-rouge">.classpath</code>, <code class="language-plaintext highlighter-rouge">MINIFEST.MF</code>와 같은 파일들이 제외되지 않았기 때문이다. 나 혼자 하는 프로젝트면 알아서 걸러내고 하면 되겠지만 팀으로 하는 프로젝트이기 때문에 누군가는 저 파일들을 실수로 업로드를 할 것이다. 그렇기 때문에 저것들이 처음부터 제외되도록 <code class="language-plaintext highlighter-rouge">.gitignore</code>를 수정해야 했다.</li>
-</ul>
-
-<h2 id="gitignore-2차-설정">.gitignore 2차 설정</h2>
-<ul>
-  <li><a href="https://jazzodevlab.tistory.com/50">Spring Legacy 프로젝트에서 사용한 .gitignore 파일</a></li>
-  <li>위 글을 참고하여 <code class="language-plaintext highlighter-rouge">gitignore</code>를 다시 한 번 설정했다.</li>
-  <li>나는 맥 OS를 쓰지만 나머지 팀원들은 모두 윈도우 OS를 사용하기 때문에 각각 운영체제의 환경설정 파일도 제외하는 코드를 추가했다.</li>
-</ul>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Created by https://www.toptal.com/developers/gitignore/api/windows,macos,eclipse,java
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,eclipse,java
-
-mybatis-config.xml
-log4j.xml
-
-lecture
-target
-pom.properties
-.classpath
-MANIFEST.MF
-
-### Eclipse ###
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.settings/
-.loadpath
-.recommenders
-
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# PyDev specific (Python IDE for Eclipse)
-*.pydevproject
-
-# CDT-specific (C/C++ Development Tooling)
-.cproject
-
-# CDT- autotools
-.autotools
-
-# Java annotation processor (APT)
-.factorypath
-
-# PDT-specific (PHP Development Tools)
-.buildpath
-
-# sbteclipse plugin
-.target
-
-# Tern plugin
-.tern-project
-
-# TeXlipse plugin
-.texlipse
-
-# STS (Spring Tool Suite)
-.springBeans
-
-# Code Recommenders
-.recommenders/
-
-# Annotation Processing
-.apt_generated/
-.apt_generated_test/
-
-# Scala IDE specific (Scala <span class="err">&amp;</span> Java development for Eclipse)
-.cache-main
-.scala_dependencies
-.worksheet
-
-# Uncomment this line if you wish to ignore the project description file.
-# Typically, this file would be tracked if it contains build/dependency configurations:
-#.project
-
-### Eclipse Patch ###
-# Spring Boot Tooling
-.sts4-cache/
-
-# Eclipse Core
-.project
-
-# IDT-specific (Eclipse Java Development Tools)
-.classpath
-
-### Java ###
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
-
-### macOS ###
-# General
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-### macOS Patch ###
-# iCloud generated files
-*.icloud
-
-### Windows ###
-# Windows thumbnail cache files
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
-
-# Dump file
-*.stackdump
-
-# Folder config file
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/windows,macos,eclipse,java
-</code></pre></div></div>
-
-<ul>
-  <li>이렇게 수정하고 <code class="language-plaintext highlighter-rouge">STS</code>에서 다시 커밋을 시도해 보니까 소스파일만 깔끔하게 <code class="language-plaintext highlighter-rouge">Staging</code> 목록에 나타난다. <br /><br /><br /></li>
-</ul>
-
-<h1 id="출처">출처</h1>
-<ul>
-  <li><a href="https://lsjsj92.tistory.com/566">https://lsjsj92.tistory.com/566</a></li>
-  <li><a href="https://jazzodevlab.tistory.com/50">Spring Legacy 프로젝트에서 사용한 .gitignore 파일</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-30</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.20 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/31c1614750fc4544770808bd672fa477.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60062]]></summary></entry></feed>

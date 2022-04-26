@@ -1,0 +1,63 @@
+I"�<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/67258">https://programmers.co.kr/learn/courses/30/lessons/67258</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>[본 문제는 정확성과 효율성 테스트 각각 점수가 있는 문제입니다.]</p>
+  </li>
+  <li>개발자 출신으로 세계 최고의 갑부가 된 어피치는 스트레스를 받을 때면 이를 풀기 위해 오프라인 매장에 쇼핑을 하러 가곤 합니다.</li>
+  <li>어피치는 쇼핑을 할 때면 매장 진열대의 특정 범위의 물건들을 모두 싹쓸이 구매하는 습관이 있습니다.</li>
+  <li>어느 날 스트레스를 풀기 위해 보석 매장에 쇼핑을 하러 간 어피치는 이전처럼 진열대의 특정 범위의 보석을 모두 구매하되 특별히 아래 목적을 달성하고 싶었습니다.</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">진열된 모든 종류의 보석을 적어도 1개 이상 포함하는 가장 짧은 구간을 찾아서 구매</code></p>
+  </li>
+  <li>진열대 번호 순서대로 보석들의 이름이 저장된 배열 gems가 매개변수로 주어집니다. 이때 모든 보석을 하나 이상 포함하는 가장 짧은 구간을 찾아서 return 하도록 solution 함수를 완성해주세요.</li>
+  <li>가장 짧은 구간의 시작 진열대 번호와 끝 진열대 번호를 차례대로 배열에 담아서 return 하도록 하며, 만약 가장 짧은 구간이 여러 개라면 시작 진열대 번호가 가장 작은 구간을 return 합니다.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>gems 배열의 크기는 1 이상 100,000 이하입니다.
+    <ul>
+      <li>gems 배열의 각 원소는 진열대에 나열된 보석을 나타냅니다.</li>
+      <li>gems 배열에는 1번 진열대부터 진열대 번호 순서대로 보석이름이 차례대로 저장되어 있습니다.</li>
+      <li>gems 배열의 각 원소는 길이가 1 이상 10 이하인 알파벳 대문자로만 구성된 문자열입니다.<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>처음 문제를 봤을 때엔 이분탐색을 하는건가? 근데 뭘 기준으로 가야하는 거지? 와 같은 고민을 하다가 카카오 공식 해설을 참고했다.(코드 없이 말로만 설명된 해설 보고 그대로 구현해서 통과하기는 처음이다…)</li>
+</ul>
+
+<ol>
+  <li>전체 보석의 가짓수를 알 수 있게 <code class="language-plaintext highlighter-rouge">gems</code> 배열을 <code class="language-plaintext highlighter-rouge">set</code>으로 바꾼 배열을 임시 변수에 저장한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">{보석 : 등장횟수}</code> 페어로 딕셔너리를 생성한다. 현재 범위 내의 보석의 가짓수와 개수를 셀 것이다.</li>
+  <li>시작 포인터 <code class="language-plaintext highlighter-rouge">l</code>과 끝 포인터 <code class="language-plaintext highlighter-rouge">r</code>을 1번 진열대에 위치시킨다.</li>
+  <li>무한루프를 돌리는데 <code class="language-plaintext highlighter-rouge">l</code>과 <code class="language-plaintext highlighter-rouge">r</code>의 범위가 <code class="language-plaintext highlighter-rouge">gems</code> 배열 범위를 벗어나면 중단하고 무한루프를 탈출한다.</li>
+  <li>5-1. 2에서 만든 딕셔너리의 길이가 1에서 만든 <code class="language-plaintext highlighter-rouge">set</code>의 길이보다 짧으면 <code class="language-plaintext highlighter-rouge">r</code>을 1 증가시키고 현재 범위 내의 보석에 <code class="language-plaintext highlighter-rouge">r</code>번째 보석이 있으면 개수를 1 증가시키고 없으면 <code class="language-plaintext highlighter-rouge">key</code>를 새로 생성하고 <code class="language-plaintext highlighter-rouge">value</code>는 1을 할당한다.<br />
+5-2. 2에서 만든 딕셔너리의 길이가 1에서 만든 <code class="language-plaintext highlighter-rouge">set</code>의 길이와 같아지면 정답 조건에 가까운지 검사한다. 검사해서 더 가까운 값을 정답 배열에 저장했다면 <code class="language-plaintext highlighter-rouge">l</code>을 1 증가시킨다. 그리고 딕셔너리에서 <code class="language-plaintext highlighter-rouge">l-1</code>번째에 있는 보석의 개수를 1 줄인다. 만약 개수가 0이 된다면 해당 <code class="language-plaintext highlighter-rouge">key</code>를 삭제한다.</li>
+</ol>
+
+<ul>
+  <li>위 과정을 반복하다 보면 양쪽 포인터가 <code class="language-plaintext highlighter-rouge">gems</code> 배열 범위를 벗어나면서 반복문을 탈출하게 된다. 그리고 정답을 구할 수 있다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/1b27d57c9067f5ffab7c17eb74ca6195.js"></script>
+
+:ET
