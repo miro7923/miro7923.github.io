@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-26T16:08:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 보석 쇼핑</title><link href="http://localhost:4000/programmers/programmers-jewel-shopping-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 보석 쇼핑" /><published>2022-04-26T00:00:00+09:00</published><updated>2022-04-26T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-jewel-shopping-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-jewel-shopping-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-27T16:31:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 경주로 건설</title><link href="http://localhost:4000/programmers/programmers-build-road-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 경주로 건설" /><published>2022-04-27T00:00:00+09:00</published><updated>2022-04-27T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-build-road-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-build-road-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/67259">https://programmers.co.kr/learn/courses/30/lessons/67259</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>건설회사의 설계사인 죠르디는 고객사로부터 자동차 경주로 건설에 필요한 견적을 의뢰받았습니다.</li>
+  <li>제공된 경주로 설계 도면에 따르면 경주로 부지는 N x N 크기의 정사각형 격자 형태이며 각 격자는 1 x 1 크기입니다.</li>
+  <li>설계 도면에는 각 격자의 칸은 0 또는 1 로 채워져 있으며, 0은 칸이 비어 있음을 1은 해당 칸이 벽으로 채워져 있음을 나타냅니다.</li>
+  <li>경주로의 출발점은 (0, 0) 칸(좌측 상단)이며, 도착점은 (N-1, N-1) 칸(우측 하단)입니다. 죠르디는 출발점인 (0, 0) 칸에서 출발한 자동차가 도착점인 (N-1, N-1) 칸까지 무사히 도달할 수 있게 중간에 끊기지 않도록 경주로를 건설해야 합니다.</li>
+  <li>경주로는 상, 하, 좌, 우로 인접한 두 빈 칸을 연결하여 건설할 수 있으며, 벽이 있는 칸에는 경주로를 건설할 수 없습니다.</li>
+  <li>이때, 인접한 두 빈 칸을 상하 또는 좌우로 연결한 경주로를 직선 도로 라고 합니다.</li>
+  <li>또한 두 직선 도로가 서로 직각으로 만나는 지점을 코너 라고 부릅니다.</li>
+  <li>건설 비용을 계산해 보니 직선 도로 하나를 만들 때는 100원이 소요되며, 코너를 하나 만들 때는 500원이 추가로 듭니다.</li>
+  <li>
+    <p>죠르디는 견적서 작성을 위해 경주로를 건설하는 데 필요한 최소 비용을 계산해야 합니다.</p>
+  </li>
+  <li>도면의 상태(0은 비어 있음, 1은 벽)을 나타내는 2차원 배열 board가 매개변수로 주어질 때, 경주로를 건설하는데 필요한 최소 비용을 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>board는 2차원 정사각 배열로 배열의 크기는 3 이상 25 이하입니다.</li>
+  <li>board 배열의 각 원소의 값은 0 또는 1 입니다.</li>
+  <li>도면의 가장 왼쪽 상단 좌표는 (0, 0)이며, 가장 우측 하단 좌표는 (N-1, N-1) 입니다.</li>
+  <li>원소의 값 0은 칸이 비어 있어 도로 연결이 가능함을 1은 칸이 벽으로 채워져 있어 도로 연결이 불가능함을 나타냅니다.</li>
+  <li>board는 항상 출발점에서 도착점까지 경주로를 건설할 수 있는 형태로 주어집니다.</li>
+  <li>출발점과 도착점 칸의 원소의 값은 항상 0으로 주어집니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">BSF</code>로 풀 수 있을거 같은데 방향을 어떻게 해야 하는 건가 고민하다가 질문 게시판을 참고했다.</li>
+</ul>
+
+<ol>
+  <li>비용을 저장할 테이블, <code class="language-plaintext highlighter-rouge">dp</code> 배열을 3차원 배열로 만들면서 무한대(<code class="language-plaintext highlighter-rouge">1e9</code>)로 초기화한다. <code class="language-plaintext highlighter-rouge">dp[방향][y][x]</code></li>
+  <li>시작 지점은 비용이 0이니까 각 방향 인덱스별 시작지점만 0으로 초기화 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">BFS</code>에서 사용할 큐를 만든다.(덱 사용)
+    <ul>
+      <li>큐에 들어갈 값은 <code class="language-plaintext highlighter-rouge">(y, x, 비용, 방향)</code></li>
+    </ul>
+  </li>
+  <li>시작 지점에서 오른쪽과 아래로 가는 비용은 100원, 방향은 각각 오른쪽과 아래로 정해져 있다. 두 위치에 벽이 없으면 각각의 비용과 방향을 큐에 추가한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">BFS</code>로 상하좌우 방향을 탐색하면서 최저 비용으로 갱신한다.</li>
+  <li>5번 과정이 끝나면 4방향 인덱스를 순회하면서 [n-1][n-1]번째 인덱스의 값 중 가장 작은 값을 구한다.<br /><br /></li>
+</ol>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/95edf60606e75502fb32acad091dae20.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="BFS" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/67259]]></summary></entry><entry><title type="html">Python) 프로그래머스. 보석 쇼핑</title><link href="http://localhost:4000/programmers/programmers-jewel-shopping-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 보석 쇼핑" /><published>2022-04-26T00:00:00+09:00</published><updated>2022-04-26T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-jewel-shopping-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-jewel-shopping-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1003,7 +1063,52 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-29</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.21 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 외벽 점검</title><link href="http://localhost:4000/programmers/programmers-maintenance-wall/" rel="alternate" type="text/html" title="Python) 프로그래머스. 외벽 점검" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maintenance-wall</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maintenance-wall/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.21 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet</title><link href="http://localhost:4000/errorlog/warning-log-06/" rel="alternate" type="text/html" title="에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-06</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-06/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+
+<p align="center"><img src="../../assets/images/javaCompilerError1.png" width="700" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Spring framework</code>를 배우기 시작하면서 <code class="language-plaintext highlighter-rouge">Spring Legacy Project</code>로 진행하고 있는데 프로젝트의 자바 컴파일러 버전을 맞춰 주었는데도 저 에러 메시지가 계속 뜨는 것이었다. 실행하는데 문제가 없긴 했지만 신경쓰였다… 알고보니 컴파일러 뿐만 아니라 <code class="language-plaintext highlighter-rouge">Project facets</code>의 자바 버전도 맞춰 주어야 했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<p align="center"><img src="../../assets/images/javaCompilerError2.png" width="400" /></p>
+
+<ul>
+  <li>프로젝트 이름 위에서 마우스 우클릭하면 위와 같은 메뉴를 볼 수 있다. 맨 아래에 있는 <code class="language-plaintext highlighter-rouge">Properties</code>를 선택한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/javaCompilerError3.png" width="600" /></p>
+
+<ul>
+  <li>메뉴 중에서 <code class="language-plaintext highlighter-rouge">Project Facets</code>라는 메뉴를 선택한다. 그러면 옆에 현재 프로젝트에 설정되어 있는 자바 버전을 볼 수 있다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/javaCompilerError4.png" width="600" /></p>
+
+<ul>
+  <li>현재 사용하고 있는 자바 컴파일러 버전과 맞춰 준다. 난 8 버전을 사용하고 있어서 1.8로 맞춰주었다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/javaCompilerError5.png" width="600" /></p>
+
+<ul>
+  <li>에러 해결! 👏<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://myblog.opendocs.co.kr/archives/1566">[문제해결] Java compiler level does not match the version of the installed Java project facet.</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">Python) 프로그래머스. 외벽 점검</title><link href="http://localhost:4000/programmers/programmers-maintenance-wall/" rel="alternate" type="text/html" title="Python) 프로그래머스. 외벽 점검" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maintenance-wall</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maintenance-wall/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1057,109 +1162,4 @@
 
 <h2 id="itertools의-순열-함수-사용한-코드">itertools의 순열 함수 사용한 코드</h2>
 
-<script src="https://gist.github.com/miro7923/31c1614750fc4544770808bd672fa477.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60062]]></summary></entry><entry><title type="html">에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet</title><link href="http://localhost:4000/errorlog/warning-log-06/" rel="alternate" type="text/html" title="에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-06</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-06/"><![CDATA[<h1 id="사용환경">사용환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020) 16GB</li>
-  <li>JDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="에러의-발생">에러의 발생</h1>
-
-<p align="center"><img src="../../assets/images/javaCompilerError1.png" width="700" /></p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Spring framework</code>를 배우기 시작하면서 <code class="language-plaintext highlighter-rouge">Spring Legacy Project</code>로 진행하고 있는데 프로젝트의 자바 컴파일러 버전을 맞춰 주었는데도 저 에러 메시지가 계속 뜨는 것이었다. 실행하는데 문제가 없긴 했지만 신경쓰였다… 알고보니 컴파일러 뿐만 아니라 <code class="language-plaintext highlighter-rouge">Project facets</code>의 자바 버전도 맞춰 주어야 했다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결">문제 해결</h1>
-
-<p align="center"><img src="../../assets/images/javaCompilerError2.png" width="400" /></p>
-
-<ul>
-  <li>프로젝트 이름 위에서 마우스 우클릭하면 위와 같은 메뉴를 볼 수 있다. 맨 아래에 있는 <code class="language-plaintext highlighter-rouge">Properties</code>를 선택한다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/javaCompilerError3.png" width="600" /></p>
-
-<ul>
-  <li>메뉴 중에서 <code class="language-plaintext highlighter-rouge">Project Facets</code>라는 메뉴를 선택한다. 그러면 옆에 현재 프로젝트에 설정되어 있는 자바 버전을 볼 수 있다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/javaCompilerError4.png" width="600" /></p>
-
-<ul>
-  <li>현재 사용하고 있는 자바 컴파일러 버전과 맞춰 준다. 난 8 버전을 사용하고 있어서 1.8로 맞춰주었다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/javaCompilerError5.png" width="600" /></p>
-
-<ul>
-  <li>에러 해결! 👏<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://myblog.opendocs.co.kr/archives/1566">[문제해결] Java compiler level does not match the version of the installed Java project facet.</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">JSP &amp;amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이</title><link href="http://localhost:4000/jsp/JSP-servlet-scope/" rel="alternate" type="text/html" title="JSP &amp;amp; Servlet) 영역객체(Scope) - Page, Request, Session, Application 차이" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/jsp/JSP-servlet-scope</id><content type="html" xml:base="http://localhost:4000/jsp/JSP-servlet-scope/"><![CDATA[<p><br /></p>
-<h1 id="-영역객체scope란">👀 영역객체(Scope)란?</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">JSP</code> 내장객체로 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체</li>
-</ul>
-
-<p align="center"><img src="https://t1.daumcdn.net/cfile/tistory/99E89A3C5C6D04451B" width="600" /></p>
-<p><br /><br /><br /></p>
-
-<h1 id="4가지-영역별-차이">4가지 영역별 차이</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Page</code> : 페이지 내에서만 지역 변수처럼 사용할 수 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Request</code> : 한 페이지에서 다른 페이지로 전달해서 사용할 수 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Session</code> : 웹 브라우저의 상태가 유지되는 동안 사용 가능하다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Application</code> : 웹 어플리케이션에 있는 모든 대상이 사용 가능하다.</li>
-</ul>
-
-<h2 id="page">Page</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Page</code> 영역 안에서만 사용 가능. 지역 변수 개념</li>
-  <li>영역객체 : <code class="language-plaintext highlighter-rouge">pageContext</code></li>
-  <li>사용범위 : 해당 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지 (다른 페이지로 넘겨줄 수 없다)</li>
-  <li><code class="language-plaintext highlighter-rouge">JSP</code>에서 <code class="language-plaintext highlighter-rouge">pageScope</code>에 값을 저장한 후 해당 값을 <code class="language-plaintext highlighter-rouge">EL표기법</code>, <code class="language-plaintext highlighter-rouge">JSTL</code>에서 사용할 때 사용된다.</li>
-</ul>
-
-<h2 id="request">Request</h2>
-<ul>
-  <li>어떤 페이지에 있는 값을 서블릿이나 다른 페이지로 넘겨주고 싶을 때 사용할 수 있다.</li>
-  <li>영역객체 : JSP 페이지) <code class="language-plaintext highlighter-rouge">request</code> / 서블릿) <code class="language-plaintext highlighter-rouge">HttpServletRequest</code></li>
-  <li>사용범위 : 클라이언트 요청이 처리되는 페이지</li>
-  <li>값을 저장할 때엔 <code class="language-plaintext highlighter-rouge">request.setAttribute("속성명", 값)</code> 메서드를 사용한다.</li>
-  <li>저장된 값을 꺼내올 때엔 <code class="language-plaintext highlighter-rouge">request.getAttribute("속성명")</code> 메서드를 사용한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">GET/POST</code> 방식으로 날아온 데이터를 가져올 때엔 <code class="language-plaintext highlighter-rouge">getParameter("파라미터 이름")</code> 메서드를 사용한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">forward</code>시 값을 유지하고자 사용한다.</li>
-</ul>
-
-<h2 id="session">Session</h2>
-<ul>
-  <li>로그인 한 회원의 상태유지와 같이 웹 브라우저에서 상태가 지속적으로 유지되어야 할 필요가 있을 때 사용한다.</li>
-  <li>영역객체 : JSP 페이지) <code class="language-plaintext highlighter-rouge">session</code> / 서블릿) <code class="language-plaintext highlighter-rouge">HttpServletRequest</code>의 <code class="language-plaintext highlighter-rouge">getSession()</code> 메서드를 사용해 얻음</li>
-  <li>사용범위 : 세션이 유지되는 동안</li>
-  <li>값을 저장할 때엔 <code class="language-plaintext highlighter-rouge">session.setAttribute("속성명", 값)</code> 메서드를 사용한다.</li>
-  <li>저장된 값을 꺼내올 때엔 <code class="language-plaintext highlighter-rouge">session.getAttribute("속성명")</code> 메서드를 사용한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">session</code> 지속시간이 만료되거나 웹 브라우저가 종료되면 사라진다.</li>
-  <li>웹 브라우저의 탭 간에는 공유되기 때문에 각각의 탭에서 같은 세션 정보를 사용할 수 있다.</li>
-</ul>
-
-<h2 id="application">Application</h2>
-<ul>
-  <li>웹 어플리케이션이 시작되고 종료되는 동안 사용할 수 있다.</li>
-  <li>영역객체 : JSP 페이지) <code class="language-plaintext highlighter-rouge">application</code> / 서블릿) <code class="language-plaintext highlighter-rouge">getServletContext()</code> 메서드를 사용해 얻음</li>
-  <li>사용범위 : 웹 애플리케이션(서버)이 실행되는 동안</li>
-  <li>값을 저장할 때엔 <code class="language-plaintext highlighter-rouge">application.setAttribute("속성명", 값)</code> 메서드를 사용한다.</li>
-  <li>저장된 값을 꺼내올 때엔 <code class="language-plaintext highlighter-rouge">application.getAttribute("속성명")</code> 메서드를 사용한다.</li>
-  <li>모든 클라이언트가 공통으로 사용해야 할 값이 있을 때 사용한다. (클라이언트가 바뀌어도 누적된다)<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://zester7.tistory.com/46">Scope - Page, Request, Session, Application</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="JSP" /><category term="JSP" /><category term="Servlet" /><category term="Scope" /><summary type="html"><![CDATA[👀 영역객체(Scope)란? JSP 내장객체로 특정 공간(Scope)에 정보를 저장하고, 저장된 정보(Attribute)를 공유할 수 있는 객체]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/31c1614750fc4544770808bd672fa477.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/60062]]></summary></entry></feed>
