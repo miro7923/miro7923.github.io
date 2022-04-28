@@ -1,4 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-27T16:31:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 경주로 건설</title><link href="http://localhost:4000/programmers/programmers-build-road-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 경주로 건설" /><published>2022-04-27T00:00:00+09:00</published><updated>2022-04-27T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-build-road-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-build-road-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-28T11:02:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 신고 결과 받기</title><link href="http://localhost:4000/programmers/programmers-report-result-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 신고 결과 받기" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-report-result-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-report-result-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92334">https://programmers.co.kr/learn/courses/30/lessons/92334</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>신입사원 무지는 게시판 불량 이용자를 신고하고 처리 결과를 메일로 발송하는 시스템을 개발하려 합니다. 무지가 개발하려는 시스템은 다음과 같습니다.</p>
+  </li>
+  <li>각 유저는 한 번에 한 명의 유저를 신고할 수 있습니다.</li>
+  <li>신고 횟수에 제한은 없습니다. 서로 다른 유저를 계속해서 신고할 수 있습니다.</li>
+  <li>한 유저를 여러 번 신고할 수도 있지만, 동일한 유저에 대한 신고 횟수는 1회로 처리됩니다.</li>
+  <li>k번 이상 신고된 유저는 게시판 이용이 정지되며, 해당 유저를 신고한 모든 유저에게 정지 사실을 메일로 발송합니다.</li>
+  <li>
+    <p>유저가 신고한 모든 내용을 취합하여 마지막에 한꺼번에 게시판 이용 정지를 시키면서 정지 메일을 발송합니다.</p>
+  </li>
+  <li>이용자의 ID가 담긴 문자열 배열 id_list, 각 이용자가 신고한 이용자의 ID 정보가 담긴 문자열 배열 report, 정지 기준이 되는 신고 횟수 k가 매개변수로 주어질 때, 각 유저별로 처리 결과 메일을 받은 횟수를 배열에 담아 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>2 ≤ id_list의 길이 ≤ 1,000
+    <ul>
+      <li>1 ≤ id_list의 원소 길이 ≤ 10</li>
+      <li>id_list의 원소는 이용자의 id를 나타내는 문자열이며 알파벳 소문자로만 이루어져 있습니다.</li>
+      <li>id_list에는 같은 아이디가 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>1 ≤ report의 길이 ≤ 200,000
+    <ul>
+      <li>3 ≤ report의 원소 길이 ≤ 21</li>
+      <li>report의 원소는 “이용자id 신고한id”형태의 문자열입니다.</li>
+      <li>예를 들어 “muzi frodo”의 경우 “muzi”가 “frodo”를 신고했다는 의미입니다.</li>
+      <li>id는 알파벳 소문자로만 이루어져 있습니다.</li>
+      <li>이용자id와 신고한id는 공백(스페이스)하나로 구분되어 있습니다.</li>
+      <li>자기 자신을 신고하는 경우는 없습니다.</li>
+    </ul>
+  </li>
+  <li>1 ≤ k ≤ 200, k는 자연수입니다.</li>
+  <li>return 하는 배열은 id_list에 담긴 id 순서대로 각 유저가 받은 결과 메일 수를 담으면 됩니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>딕셔너리를 사용해서 풀었다.</li>
+  <li>이 문제에서 관리되어야 하는 것은 <code class="language-plaintext highlighter-rouge">id_list</code>의 원소별로 신고한 id, 각 id별 신고횟수이다.</li>
+</ul>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">usersReport = {신고자 id : [신고된 id 리스트]}</code>와 <code class="language-plaintext highlighter-rouge">reportCnt = {신고된 id : 횟수}</code> 형태의 딕셔너리를 만든다.<br />
+ 1-1. <code class="language-plaintext highlighter-rouge">report</code>를 순회하면서 <code class="language-plaintext highlighter-rouge">usersReport</code>에 각 유저별로 신고한 id를 담는다.<br />
+ 1-2. <code class="language-plaintext highlighter-rouge">reportCnt</code>에 각 유저별로 신고된 횟수를 저장한다.<br />
+ 1-3. 이때 같은 유저가 동일한 아이디를 여러번 신고하지 않도록 예외처리를 해 주어야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 추출한 리스트 <code class="language-plaintext highlighter-rouge">stop = [k번 이상 신고된 id]</code>를 만든다.<br />
+ 2-1. <code class="language-plaintext highlighter-rouge">reportCnt</code>를 순회하며 <code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 <code class="language-plaintext highlighter-rouge">stop</code>에 담는다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">id_list</code>를 순회하며 각 유저별 메일을 받은 횟수를 <code class="language-plaintext highlighter-rouge">answer</code>에 담는다.<br /><br /></li>
+</ol>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/0c297eece0eed5c168f5daf229ddb58e.js"></script>
+<p><br /><br /></p>
+
+<ul>
+  <li>그런데 이렇게 구구절절 써서 통과하고 보니까 아주 짧은 코드로 통과한 분이 계셨다…</li>
+</ul>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3">https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3</a></p>
+
+<ul>
+  <li>믓지다…😦 <code class="language-plaintext highlighter-rouge">set</code>이 순간 떠오르긴 했으나 어떻게 활용할 지 몰라서 그냥 구구절절 코드를 썼는데 덕분에 하나 배울 수 있었다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92334]]></summary></entry><entry><title type="html">Python) 프로그래머스. 경주로 건설</title><link href="http://localhost:4000/programmers/programmers-build-road-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 경주로 건설" /><published>2022-04-27T00:00:00+09:00</published><updated>2022-04-27T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-build-road-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-build-road-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -299,83 +380,7 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-24</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.26 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 수식 최대화</title><link href="http://localhost:4000/programmers/programmers-maximize-calc-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 수식 최대화" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maximize-calc-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maximize-calc-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/67257">https://programmers.co.kr/learn/courses/30/lessons/67257</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>IT 벤처 회사를 운영하고 있는 라이언은 매년 사내 해커톤 대회를 개최하여 우승자에게 상금을 지급하고 있습니다.</li>
-  <li>이번 대회에서는 우승자에게 지급되는 상금을 이전 대회와는 다르게 다음과 같은 방식으로 결정하려고 합니다.</li>
-  <li>해커톤 대회에 참가하는 모든 참가자들에게는 숫자들과 3가지의 연산문자(+, -, *) 만으로 이루어진 연산 수식이 전달되며, 참가자의 미션은 전달받은 수식에 포함된 연산자의 우선순위를 자유롭게 재정의하여 만들 수 있는 가장 큰 숫자를 제출하는 것입니다.</li>
-  <li>단, 연산자의 우선순위를 새로 정의할 때, 같은 순위의 연산자는 없어야 합니다. 즉, + &gt; - &gt; * 또는 - &gt; * &gt; + 등과 같이 연산자 우선순위를 정의할 수 있으나 +,* &gt; - 또는 * &gt; +,-처럼 2개 이상의 연산자가 동일한 순위를 가지도록 연산자 우선순위를 정의할 수는 없습니다. 수식에 포함된 연산자가 2개라면 정의할 수 있는 연산자 우선순위 조합은 2! = 2가지이며, 연산자가 3개라면 3! = 6가지 조합이 가능합니다.</li>
-  <li>
-    <p>만약 계산된 결과가 음수라면 해당 숫자의 절댓값으로 변환하여 제출하며 제출한 숫자가 가장 큰 참가자를 우승자로 선정하며, 우승자가 제출한 숫자를 우승상금으로 지급하게 됩니다.</p>
-  </li>
-  <li>
-    <p>예를 들어, 참가자 중 네오가 아래와 같은 수식을 전달받았다고 가정합니다.</p>
-  </li>
-  <li>
-    <p>“100-200*300-500+20”</p>
-  </li>
-  <li>일반적으로 수학 및 전산학에서 약속된 연산자 우선순위에 따르면 더하기와 빼기는 서로 동등하며 곱하기는 더하기, 빼기에 비해 우선순위가 높아 * &gt; +,- 로 우선순위가 정의되어 있습니다.</li>
-  <li>대회 규칙에 따라 + &gt; - &gt; * 또는 - &gt; * &gt; + 등과 같이 연산자 우선순위를 정의할 수 있으나 +,* &gt; - 또는 * &gt; +,- 처럼 2개 이상의 연산자가 동일한 순위를 가지도록 연산자 우선순위를 정의할 수는 없습니다.</li>
-  <li>수식에 연산자가 3개 주어졌으므로 가능한 연산자 우선순위 조합은 3! = 6가지이며, 그 중 + &gt; - &gt; * 로 연산자 우선순위를 정한다면 결괏값은 22,000원이 됩니다.</li>
-  <li>
-    <p>반면에 * &gt; + &gt; - 로 연산자 우선순위를 정한다면 수식의 결괏값은 -60,420 이지만, 규칙에 따라 우승 시 상금은 절댓값인 60,420원이 됩니다.</p>
-  </li>
-  <li>참가자에게 주어진 연산 수식이 담긴 문자열 expression이 매개변수로 주어질 때, 우승 시 받을 수 있는 가장 큰 상금 금액을 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>expression은 길이가 3 이상 100 이하인 문자열입니다.</li>
-  <li>expression은 공백문자, 괄호문자 없이 오로지 숫자와 3가지의 연산자(+, -, *) 만으로 이루어진 올바른 중위표기법(연산의 두 대상 사이에 연산기호를 사용하는 방식)으로 표현된 연산식입니다. 잘못된 연산식은 입력으로 주어지지 않습니다.</li>
-  <li>즉, “402+-561*“처럼 잘못된 수식은 올바른 중위표기법이 아니므로 주어지지 않습니다.</li>
-  <li>expression의 피연산자(operand)는 0 이상 999 이하의 숫자입니다.</li>
-  <li>즉, “100-2145*458+12”처럼 999를 초과하는 피연산자가 포함된 수식은 입력으로 주어지지 않습니다.</li>
-  <li>“-56+100”처럼 피연산자가 음수인 수식도 입력으로 주어지지 않습니다.</li>
-  <li>expression은 적어도 1개 이상의 연산자를 포함하고 있습니다.</li>
-  <li>연산자 우선순위를 어떻게 적용하더라도, expression의 중간 계산값과 최종 결괏값은 절댓값이 263 - 1 이하가 되도록 입력이 주어집니다.</li>
-  <li>같은 연산자끼리는 앞에 있는 것의 우선순위가 더 높습니다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>아이디어가 떠오르지 않아서 질문 게시판을 참고했다.
-    <ol>
-      <li>숫자와 연산자를 각각 분리한다.
-1-1. 숫자 분리시 <code class="language-plaintext highlighter-rouge">replace()</code> 메서드를 사용해 연산자들을 동일한 문자로 바꾼 뒤 최종적으로 <code class="language-plaintext highlighter-rouge">split()</code>을 사용해 분리한 리스트를 저장한다.
-1-2. 연산자 분리시 <code class="language-plaintext highlighter-rouge">expression</code> 문자열의 원소들을 순회하며 <code class="language-plaintext highlighter-rouge">isdecimal()</code> 메서드로 숫자가 아닌 것만 리스트에 저장하면 된다.</li>
-    </ol>
-  </li>
-</ul>
-
-<ol>
-  <li>
-    <p>연산자가 3개 뿐이기 때문에 총 6개의 경우의 수가 나온다. 6가지 경우의 조합을 만들어서 각 경우에 따른 우선순위대로 계산을 시작하면 되는데 나는 <code class="language-plaintext highlighter-rouge">itertools</code>의 순열 메서드로 순열을 만들어 사용했다. 최대 경우의 수가 6이라서 하나씩 손으로 써서 사용한 사람도 많았다.</p>
-  </li>
-  <li>
-    <p>2에서 구한 각 우선순위 케이스를 이용해 계산을 시작하면 되는데 이 때 스택을 사용한다. 숫자 스택과 연산자 스택 두 개를 만든 다음 1에서 구한 숫자와 연산자 리스트에서 숫자와 연산자를 하나씩 뽑아서 각각 스택에 저장한다. 방금 저장한 연산자가 현재 우선적으로 사용해야 하는 연산자라면 스택에서 꺼내고 연산에 사용할 숫자 2개도 스택에서 꺼내서 연산한 다음 숫자 스택에 다시 넣는다. 이것을 1에서 구한 연산자 분리 리스트의 길이만큼 반복한다.</p>
-  </li>
-  <li>
-    <p>3에서 구한 결과값의 절대값을 정답에 저장된 값과 대조하여 최대값을 찾는다. 2에서 구한 케이스가 모두 끝날 때까지 반복한다.<br /><br /></p>
-  </li>
-</ol>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/c4f27f01afbaf0beb610650ab9f35825.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Stack" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/67257]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 4 - 상품 상세 페이지, 리뷰 작성 페이지, 문의 작성 페이지 제작</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-04/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 4 - 상품 상세 페이지, 리뷰 작성 페이지, 문의 작성 페이지 제작" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-04</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-04/"><![CDATA[<ul>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.26 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 4 - 상품 상세 페이지, 리뷰 작성 페이지, 문의 작성 페이지 제작</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-04/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 4 - 상품 상세 페이지, 리뷰 작성 페이지, 문의 작성 페이지 제작" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-04</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-04/"><![CDATA[<ul>
   <li>작성일 : 2022.04.25</li>
   <li>작성자 : 황유진</li>
   <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
@@ -748,7 +753,83 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-25</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.25 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 표 편집</title><link href="http://localhost:4000/programmers/programmers-edit-table-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 표 편집" /><published>2022-04-23T00:00:00+09:00</published><updated>2022-04-23T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-edit-table-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-edit-table-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.25 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 수식 최대화</title><link href="http://localhost:4000/programmers/programmers-maximize-calc-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 수식 최대화" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maximize-calc-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maximize-calc-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/67257">https://programmers.co.kr/learn/courses/30/lessons/67257</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>IT 벤처 회사를 운영하고 있는 라이언은 매년 사내 해커톤 대회를 개최하여 우승자에게 상금을 지급하고 있습니다.</li>
+  <li>이번 대회에서는 우승자에게 지급되는 상금을 이전 대회와는 다르게 다음과 같은 방식으로 결정하려고 합니다.</li>
+  <li>해커톤 대회에 참가하는 모든 참가자들에게는 숫자들과 3가지의 연산문자(+, -, *) 만으로 이루어진 연산 수식이 전달되며, 참가자의 미션은 전달받은 수식에 포함된 연산자의 우선순위를 자유롭게 재정의하여 만들 수 있는 가장 큰 숫자를 제출하는 것입니다.</li>
+  <li>단, 연산자의 우선순위를 새로 정의할 때, 같은 순위의 연산자는 없어야 합니다. 즉, + &gt; - &gt; * 또는 - &gt; * &gt; + 등과 같이 연산자 우선순위를 정의할 수 있으나 +,* &gt; - 또는 * &gt; +,-처럼 2개 이상의 연산자가 동일한 순위를 가지도록 연산자 우선순위를 정의할 수는 없습니다. 수식에 포함된 연산자가 2개라면 정의할 수 있는 연산자 우선순위 조합은 2! = 2가지이며, 연산자가 3개라면 3! = 6가지 조합이 가능합니다.</li>
+  <li>
+    <p>만약 계산된 결과가 음수라면 해당 숫자의 절댓값으로 변환하여 제출하며 제출한 숫자가 가장 큰 참가자를 우승자로 선정하며, 우승자가 제출한 숫자를 우승상금으로 지급하게 됩니다.</p>
+  </li>
+  <li>
+    <p>예를 들어, 참가자 중 네오가 아래와 같은 수식을 전달받았다고 가정합니다.</p>
+  </li>
+  <li>
+    <p>“100-200*300-500+20”</p>
+  </li>
+  <li>일반적으로 수학 및 전산학에서 약속된 연산자 우선순위에 따르면 더하기와 빼기는 서로 동등하며 곱하기는 더하기, 빼기에 비해 우선순위가 높아 * &gt; +,- 로 우선순위가 정의되어 있습니다.</li>
+  <li>대회 규칙에 따라 + &gt; - &gt; * 또는 - &gt; * &gt; + 등과 같이 연산자 우선순위를 정의할 수 있으나 +,* &gt; - 또는 * &gt; +,- 처럼 2개 이상의 연산자가 동일한 순위를 가지도록 연산자 우선순위를 정의할 수는 없습니다.</li>
+  <li>수식에 연산자가 3개 주어졌으므로 가능한 연산자 우선순위 조합은 3! = 6가지이며, 그 중 + &gt; - &gt; * 로 연산자 우선순위를 정한다면 결괏값은 22,000원이 됩니다.</li>
+  <li>
+    <p>반면에 * &gt; + &gt; - 로 연산자 우선순위를 정한다면 수식의 결괏값은 -60,420 이지만, 규칙에 따라 우승 시 상금은 절댓값인 60,420원이 됩니다.</p>
+  </li>
+  <li>참가자에게 주어진 연산 수식이 담긴 문자열 expression이 매개변수로 주어질 때, 우승 시 받을 수 있는 가장 큰 상금 금액을 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>expression은 길이가 3 이상 100 이하인 문자열입니다.</li>
+  <li>expression은 공백문자, 괄호문자 없이 오로지 숫자와 3가지의 연산자(+, -, *) 만으로 이루어진 올바른 중위표기법(연산의 두 대상 사이에 연산기호를 사용하는 방식)으로 표현된 연산식입니다. 잘못된 연산식은 입력으로 주어지지 않습니다.</li>
+  <li>즉, “402+-561*“처럼 잘못된 수식은 올바른 중위표기법이 아니므로 주어지지 않습니다.</li>
+  <li>expression의 피연산자(operand)는 0 이상 999 이하의 숫자입니다.</li>
+  <li>즉, “100-2145*458+12”처럼 999를 초과하는 피연산자가 포함된 수식은 입력으로 주어지지 않습니다.</li>
+  <li>“-56+100”처럼 피연산자가 음수인 수식도 입력으로 주어지지 않습니다.</li>
+  <li>expression은 적어도 1개 이상의 연산자를 포함하고 있습니다.</li>
+  <li>연산자 우선순위를 어떻게 적용하더라도, expression의 중간 계산값과 최종 결괏값은 절댓값이 263 - 1 이하가 되도록 입력이 주어집니다.</li>
+  <li>같은 연산자끼리는 앞에 있는 것의 우선순위가 더 높습니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>아이디어가 떠오르지 않아서 질문 게시판을 참고했다.
+    <ol>
+      <li>숫자와 연산자를 각각 분리한다.
+1-1. 숫자 분리시 <code class="language-plaintext highlighter-rouge">replace()</code> 메서드를 사용해 연산자들을 동일한 문자로 바꾼 뒤 최종적으로 <code class="language-plaintext highlighter-rouge">split()</code>을 사용해 분리한 리스트를 저장한다.
+1-2. 연산자 분리시 <code class="language-plaintext highlighter-rouge">expression</code> 문자열의 원소들을 순회하며 <code class="language-plaintext highlighter-rouge">isdecimal()</code> 메서드로 숫자가 아닌 것만 리스트에 저장하면 된다.</li>
+    </ol>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>연산자가 3개 뿐이기 때문에 총 6개의 경우의 수가 나온다. 6가지 경우의 조합을 만들어서 각 경우에 따른 우선순위대로 계산을 시작하면 되는데 나는 <code class="language-plaintext highlighter-rouge">itertools</code>의 순열 메서드로 순열을 만들어 사용했다. 최대 경우의 수가 6이라서 하나씩 손으로 써서 사용한 사람도 많았다.</p>
+  </li>
+  <li>
+    <p>2에서 구한 각 우선순위 케이스를 이용해 계산을 시작하면 되는데 이 때 스택을 사용한다. 숫자 스택과 연산자 스택 두 개를 만든 다음 1에서 구한 숫자와 연산자 리스트에서 숫자와 연산자를 하나씩 뽑아서 각각 스택에 저장한다. 방금 저장한 연산자가 현재 우선적으로 사용해야 하는 연산자라면 스택에서 꺼내고 연산에 사용할 숫자 2개도 스택에서 꺼내서 연산한 다음 숫자 스택에 다시 넣는다. 이것을 1에서 구한 연산자 분리 리스트의 길이만큼 반복한다.</p>
+  </li>
+  <li>
+    <p>3에서 구한 결과값의 절대값을 정답에 저장된 값과 대조하여 최대값을 찾는다. 2에서 구한 케이스가 모두 끝날 때까지 반복한다.<br /><br /></p>
+  </li>
+</ol>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/c4f27f01afbaf0beb610650ab9f35825.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Stack" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/67257]]></summary></entry><entry><title type="html">Python) 프로그래머스. 표 편집</title><link href="http://localhost:4000/programmers/programmers-edit-table-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 표 편집" /><published>2022-04-23T00:00:00+09:00</published><updated>2022-04-23T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-edit-table-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-edit-table-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -891,224 +972,49 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/e598c223daf5db06d057c9968f7be401.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/81302]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-03/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 3 - Spring Legacy 프로젝트와 GitHub 원격저장소 연결하고 사이트 템플릿 초기설정" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-03</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-03/"><![CDATA[<ul>
-  <li>작성일 : 2022.04.21</li>
-  <li>작성자 : 황유진</li>
-  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
-  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+<script src="https://gist.github.com/miro7923/e598c223daf5db06d057c9968f7be401.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/81302]]></summary></entry><entry><title type="html">Spring MVC Project) css, js 파일 경로 설정</title><link href="http://localhost:4000/spring/spring-mvc-01/" rel="alternate" type="text/html" title="Spring MVC Project) css, js 파일 경로 설정" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/spring/spring-mvc-01</id><content type="html" xml:base="http://localhost:4000/spring/spring-mvc-01/"><![CDATA[<p><br /></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Spring MVC</code> 프로젝트를 배우면서 기존에 사용하던 <code class="language-plaintext highlighter-rouge">JAVA JSP</code> 프로젝트와는 약간 달라져서 헷갈리는 것이 많았는데 그 중 하나가 <code class="language-plaintext highlighter-rouge">css</code>와 <code class="language-plaintext highlighter-rouge">js</code> 파일 경로 설정이었다.<br /><br /><br /></li>
 </ul>
 
-<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>Spring framework 4.3.1.RELEASE</li>
-  <li>Tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
+<h1 id="overview">Overview</h1>
 
-<h1 id="기간">기간</h1>
-<ul>
-  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
-  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
-  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
-  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황-1">진행상황 1</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">.gitignore</code> 때문에 제법 많은 시간을 쓴 프로젝트와 GitHub 원격저장소 연결… 다음에 또 같은 상황을 맞이하게 되었을 때 참고하기 위해서 글을 작성했다.</li>
-</ul>
-
-<h2 id="github-원격저장소-초기화생성">GitHub 원격저장소 초기화(생성)</h2>
-<ul>
-  <li>아직 팀 프로젝트를 위한 원격저장소가 없다면 새로 생성하면 되는데 우리 팀 같은 경우에는 기존에 테스트용으로 만들었던 원격저장소가 있었는데 기존에 쓸모 없이 업로드 되어 있던 파일들이 좀 있었던 터라 그대로 쓰기에는 적절하지 않았다. 그래서 초기화 후 다시 진행하기로 했다.</li>
-  <li>초기화 하는 방법에는 <a href="https://airvw.github.io/git/2020-10-29-github-init/">git으로 github repository 초기화 하기</a> 이 글처럼 로컬 저장소에 숨김처리 되어 있는 <code class="language-plaintext highlighter-rouge">.git</code> 폴더를 삭제한 후 강제 리모트해서 푸시 하는 방법이 있는데 해 보니까 <code class="language-plaintext highlighter-rouge">merge</code> 내역이 엉켜서 그런 것인지 되지 않아서 그냥 로컬저장소에 추가 되었던 내용물을 삭제한 후 빈 폴더를 <code class="language-plaintext highlighter-rouge">origin</code>으로 <code class="language-plaintext highlighter-rouge">push</code>해서 원격저장소를 초기화 했다. 그리고 로컬저장소를 삭제한 다음 원격저장소에서 다시 클론했다.</li>
-</ul>
-
-<h2 id="gitignore-작성">.gitignore 작성</h2>
-<ul>
-  <li>그간은 혼자 GitHub 원격저장소를 사용했기 때문에 시스템 환경설정 버튼이 함께 업로드 되는 것을 신경쓰지 않고 살았는데 팀 프로젝트를 하면서 공유하게 되니까 저것들이 신경쓰였다. 그래서 업로드에 앞서 <code class="language-plaintext highlighter-rouge">.gitignore</code> 설정을 가장 먼저 했다.</li>
-  <li><a href="https://miro7923.github.io/uno%20mas/uno-mas-dev-log-02/">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 2 - Spring Legacy 프로젝트를 위한 .gitignore 설정</a></li>
-  <li>클릭하면 <code class="language-plaintext highlighter-rouge">.gitignore</code>작성문을 참고할 수 있다.</li>
-</ul>
-
-<h2 id="spring-legacy-project와-github-원격저장소-연결">Spring Legacy Project와 GitHub 원격저장소 연결</h2>
-<ul>
-  <li><a href="https://idiottech.tistory.com/12">[Git] 이클립스(STS)에서 깃허브 연동 방법 정리</a></li>
-  <li>전체적인 진행은 위 글을 참고했다.</li>
-  <li>로컬저장소는 새로 생성하지 않고 아까 클론했던 폴더를 사용했다. 여기까지는 순조로웠다.</li>
-  <li>그런데 커밋을 하려 하니까 <code class="language-plaintext highlighter-rouge">Unstating</code> 목록에서 <code class="language-plaintext highlighter-rouge">Staging</code> 목록으로 파일들이 옮겨지지 않았다. 무슨 일… 그래서 클론했던 로컬저장소 폴더를 삭제하고 다른 경로로 클론한 뒤 프로젝트의 로컬저장소 경로도 거기로 설정해 주니까 첫 번째 <code class="language-plaintext highlighter-rouge">commit</code>과 <code class="language-plaintext highlighter-rouge">push</code>까지는 정상 작동하긴 했다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/1stCommit.png" width="400" /></p>
+<p align="center"><img src="../../assets/images/springMvcProject1.png" width="400" /></p>
 
 <ul>
-  <li>그런데 원격저장소에 업로드가 잘 된 것을 확인했는데 <code class="language-plaintext highlighter-rouge">STS</code>상에서는 여전히 <code class="language-plaintext highlighter-rouge">commit</code>할 파일이 한가득이라고 뜨는 것이었다… 당시 캡쳐본이 없어서 글로 대신하지만 아까전에 <code class="language-plaintext highlighter-rouge">commit</code>했던 내역이 <code class="language-plaintext highlighter-rouge">Unstaged</code> 칸에 그대로 남아 있었다.</li>
-  <li>그래서 한 번 더 <code class="language-plaintext highlighter-rouge">commit &amp; push</code>를 시도했는데, 결과는 성공했는데 원격저장소의 프로젝트 파일이 모두 삭제된 것이었다. 환장….🥲 로컬 <code class="language-plaintext highlighter-rouge">STS</code>상에서는 커밋할 것이 있다는 표시도 나오지 않았다.</li>
-  <li>그래서 다시 한 번… 원격저장소의 클론부터 새 프로젝트 생성 및 원격저장소 연결까지 반복했다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/successToConnectToGithub.png" width="400" /></p>
-
-<ul>
-  <li>마지막 시도에서 드디어 커밋까지는 잘 되었는데 <code class="language-plaintext highlighter-rouge">push</code> 하는 과정에서 충돌이 생긴다며 <code class="language-plaintext highlighter-rouge">reject</code> 되었다.</li>
-  <li><a href="https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=sim4858&amp;logNo=220924984480">https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=sim4858&amp;logNo=220924984480</a></li>
-  <li>여기를 참고해서 해결할 수 있었다. 첫 번째 글을 작성했던 분이 마치 이 상황까지 예상한 듯이 게시글의 하단에 참고 링크를 올려 놓으셨다… 아마 레포지토리를 새로 생성한 직후가 아닌 기존에 사용하던 것을 재활용하다보니 병합 과정에서 충돌이 생긴 것 같았다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/unomasGithubMain.png" /></p>
-
-<ul>
-  <li>
-    <p>그리고 드디어 최종 업로드에 성공했다.</p>
-  </li>
-  <li>이 과정을 겪으며 알게 된 것은 <code class="language-plaintext highlighter-rouge">.gitignore</code>를 사전에 잘 만들어두고 시작해야 한다는 것과 <code class="language-plaintext highlighter-rouge">gitignore</code>가 꼭 원격저장소에 <code class="language-plaintext highlighter-rouge">push</code>되어 있지 않고 로컬저장소에만 있어도 적용이 된다는 것이었다.</li>
-  <li>왜냐면 처음엔 <code class="language-plaintext highlighter-rouge">.gitignore</code>가 원격저장소에 <code class="language-plaintext highlighter-rouge">push</code>되어 있어야만 적용이 되는 줄 알고 프로젝트 파일을 <code class="language-plaintext highlighter-rouge">push</code>하기 전에 <code class="language-plaintext highlighter-rouge">.gitignore</code>만 <code class="language-plaintext highlighter-rouge">push</code>하려다가 이상하게 꼬여서 <code class="language-plaintext highlighter-rouge">STS</code>에서 <code class="language-plaintext highlighter-rouge">commit</code>이 제대로 되지 않는 경우가 많이 생겨서 몇 번이나 처음부터 다시 시작해야 했기 때문이다…</li>
-  <li>그래도 이제 <code class="language-plaintext highlighter-rouge">GitHub</code>으로 팀 프로젝트를 어떻게 시작해야 할 지 조금 알 것 같다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황-2">진행상황 2</h1>
-<ul>
-  <li>홈페이지 디자인으로는 무료 템플릿을 수정해서 사용하기로 했기 때문에 각 <code class="language-plaintext highlighter-rouge">html</code> 파일의 소스코드를 수정할 필요가 있었다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/templateOriginHead.png" /></p>
-
-<ul>
-  <li>모든 헤더 부분이 이렇게 되어 있었기 때문에 헤더만 따로 파일을 만들어서 각 <code class="language-plaintext highlighter-rouge">html</code>페이지의 헤더 부분에 <code class="language-plaintext highlighter-rouge">include</code> 해 주어야 했다. 그렇게 하지 않으면 헤더에 변경사항 생기면 모든 페이지의 헤더 부분을 수정해줘야 하니까… 헤더 페이지 하나만 수정하면 다른 페이지에도 일괄 적용되게 하고 싶었다.</li>
-  <li>그렇게 하기 위해서는 <code class="language-plaintext highlighter-rouge">jsp 액션태그</code>를 사용해야 해서 모든 <code class="language-plaintext highlighter-rouge">html</code> 페이지를 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지로 바꿨다.</li>
-</ul>
-
-<h2 id="topjsp">top.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
-    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
-<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
-<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"path"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">pageContext</span><span class="o">.</span><span class="na">request</span><span class="o">.</span><span class="na">contextPath</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;&lt;/c:set&gt;</span>
-
-<span class="nt">&lt;head&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"Fashi Template"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"keywords"</span> <span class="na">content=</span><span class="s">"Fashi, unica, creative, html"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Uno más | Template<span class="nt">&lt;/title&gt;</span>
-
-    <span class="c">&lt;!-- Google Font --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
-
-    <span class="c">&lt;!-- Css Styles --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/bootstrap.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/font-awesome.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/themify-icons.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/elegant-icons.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/owl.carousel.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/nice-select.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/jquery-ui.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/slicknav.min.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/style.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/headerFooter.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>이런 식으로 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>태그에 들어갈 것만 따로 분리한 <code class="language-plaintext highlighter-rouge">jsp</code> 페이지를 만든 다음에</li>
-</ul>
-
-<h2 id="indexjsp">index.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
-    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
-<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
-<span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"path"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">pageContext</span><span class="o">.</span><span class="na">request</span><span class="o">.</span><span class="na">contextPath</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;&lt;/c:set&gt;</span>
-<span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="c">&lt;!-- Start header --&gt;</span>
-<span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"inc/top.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
-<span class="c">&lt;!-- Start header --&gt;</span>
-
-<span class="nt">&lt;body&gt;</span>
-    <span class="c">&lt;!-- Header Section Begin --&gt;</span>
-	<span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"inc/header.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
-    <span class="c">&lt;!-- Header End --&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>
-    <p>각 페이지의 상단에 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 태그가 들어가는 부분에는 <code class="language-plaintext highlighter-rouge">top.jsp</code> 파일을 <code class="language-plaintext highlighter-rouge">include</code>하고 헤더 부분에는 <code class="language-plaintext highlighter-rouge">header.jsp</code> 파일을 <code class="language-plaintext highlighter-rouge">include</code> 해 주었다.</p>
-  </li>
-  <li>각 페이지 하단 부분
-    <div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">&lt;!-- Footer Section Begin --&gt;</span>
-  <span class="nt">&lt;jsp:include </span><span class="na">page=</span><span class="s">"inc/bottom.jsp"</span><span class="nt">&gt;&lt;/jsp:include&gt;</span>
-  <span class="c">&lt;!-- Footer Section End --&gt;</span>
+  <li>한 줄 요약하자면 <code class="language-plaintext highlighter-rouge">css</code>와 <code class="language-plaintext highlighter-rouge">js</code> 같은 리소스 파일들은
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main/webapp/resources
 </code></pre></div>    </div>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">bottom.jsp</code> 파일을 만들어서 하단 부분에 <code class="language-plaintext highlighter-rouge">include</code> 해 주었다.</li>
-  <li>이제 헤더와 푸터 부분에서 수정사항이 생기면 <code class="language-plaintext highlighter-rouge">header.jsp</code>와 <code class="language-plaintext highlighter-rouge">bottom.jsp</code> 파일만 수정하면 된다.<br /><br /><br /></li>
+  <li>
+    <p>경로에 있어야 하고</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">html/jsp</code>와 같은 <code class="language-plaintext highlighter-rouge">view</code> 파일들은
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main/webapp/WEB-INF/views
+</code></pre></div>    </div>
+  </li>
+  <li>경로에 존재해야 한다.</li>
+</ul>
+
+<h2 id="servlet-contextxml">servlet-context.xml</h2>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory --&gt;</span>
+<span class="nt">&lt;resources</span> <span class="na">mapping=</span><span class="s">"/resources/**"</span> <span class="na">location=</span><span class="s">"/resources/"</span> <span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory --&gt;</span>
+<span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"prefix"</span> <span class="na">value=</span><span class="s">"/WEB-INF/views/"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"suffix"</span> <span class="na">value=</span><span class="s">".jsp"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans:bean&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>해당 내용은 <code class="language-plaintext highlighter-rouge">servlet-context.xml</code> 파일에서도 확인할 수 있었다. 경로 문제를 겪기 전엔 봐도 모르다가 겪고 나서 알게 되니까 그제서야 눈에 들어오는 매직… <br /><br /><br /></li>
 </ul>
 
 <h1 id="참고">참고</h1>
 <ul>
-  <li><a href="https://idiottech.tistory.com/12">[Git] 이클립스(STS)에서 깃허브 연동 방법 정리</a></li>
-  <li><a href="https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=sim4858&amp;logNo=220924984480">https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=sim4858&amp;logNo=220924984480</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-29</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.21 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet</title><link href="http://localhost:4000/errorlog/warning-log-06/" rel="alternate" type="text/html" title="에러해결 Log) Spring Tool Suite4 Java compiler level does not match the version of the installed Java project facet" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-06</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-06/"><![CDATA[<h1 id="사용환경">사용환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020) 16GB</li>
-  <li>JDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="에러의-발생">에러의 발생</h1>
-
-<p align="center"><img src="../../assets/images/javaCompilerError1.png" width="700" /></p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Spring framework</code>를 배우기 시작하면서 <code class="language-plaintext highlighter-rouge">Spring Legacy Project</code>로 진행하고 있는데 프로젝트의 자바 컴파일러 버전을 맞춰 주었는데도 저 에러 메시지가 계속 뜨는 것이었다. 실행하는데 문제가 없긴 했지만 신경쓰였다… 알고보니 컴파일러 뿐만 아니라 <code class="language-plaintext highlighter-rouge">Project facets</code>의 자바 버전도 맞춰 주어야 했다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결">문제 해결</h1>
-
-<p align="center"><img src="../../assets/images/javaCompilerError2.png" width="400" /></p>
-
-<ul>
-  <li>프로젝트 이름 위에서 마우스 우클릭하면 위와 같은 메뉴를 볼 수 있다. 맨 아래에 있는 <code class="language-plaintext highlighter-rouge">Properties</code>를 선택한다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/javaCompilerError3.png" width="600" /></p>
-
-<ul>
-  <li>메뉴 중에서 <code class="language-plaintext highlighter-rouge">Project Facets</code>라는 메뉴를 선택한다. 그러면 옆에 현재 프로젝트에 설정되어 있는 자바 버전을 볼 수 있다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/javaCompilerError4.png" width="600" /></p>
-
-<ul>
-  <li>현재 사용하고 있는 자바 컴파일러 버전과 맞춰 준다. 난 8 버전을 사용하고 있어서 1.8로 맞춰주었다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/javaCompilerError5.png" width="600" /></p>
-
-<ul>
-  <li>에러 해결! 👏<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://myblog.opendocs.co.kr/archives/1566">[문제해결] Java compiler level does not match the version of the installed Java project facet.</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">Python) 프로그래머스. 외벽 점검</title><link href="http://localhost:4000/programmers/programmers-maintenance-wall/" rel="alternate" type="text/html" title="Python) 프로그래머스. 외벽 점검" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maintenance-wall</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maintenance-wall/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+  <li><a href="https://k-develpoper.tistory.com/9">SpringMVC 자바스트립트, CSS 파일 적용하기</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Spring" /><category term="Spring" /><category term="Log" /><summary type="html"><![CDATA[Spring MVC 프로젝트를 배우면서 기존에 사용하던 JAVA JSP 프로젝트와는 약간 달라져서 헷갈리는 것이 많았는데 그 중 하나가 css와 js 파일 경로 설정이었다.]]></summary></entry><entry><title type="html">Python) 프로그래머스. 외벽 점검</title><link href="http://localhost:4000/programmers/programmers-maintenance-wall/" rel="alternate" type="text/html" title="Python) 프로그래머스. 외벽 점검" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-maintenance-wall</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-maintenance-wall/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
