@@ -1,4 +1,227 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-28T23:56:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 6 - 주문페이지와 주문완료페이지 제작</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-06/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 6 - 주문페이지와 주문완료페이지 제작" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-06</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-06/"><![CDATA[<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-29T14:58:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. k진수에서 소수 개수 구하기</title><link href="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. k진수에서 소수 개수 구하기" /><published>2022-04-29T00:00:00+09:00</published><updated>2022-04-29T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92335">https://programmers.co.kr/learn/courses/30/lessons/92335</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>양의 정수 n이 주어집니다. 이 숫자를 k진수로 바꿨을 때, 변환된 수 안에 아래 조건에 맞는 소수(Prime number)가 몇 개인지 알아보려 합니다.</p>
+  </li>
+  <li>0P0처럼 소수 양쪽에 0이 있는 경우</li>
+  <li>P0처럼 소수 오른쪽에만 0이 있고 왼쪽에는 아무것도 없는 경우</li>
+  <li>0P처럼 소수 왼쪽에만 0이 있고 오른쪽에는 아무것도 없는 경우</li>
+  <li>P처럼 소수 양쪽에 아무것도 없는 경우</li>
+  <li>단, P는 각 자릿수에 0을 포함하지 않는 소수입니다.</li>
+  <li>예를 들어, 101은 P가 될 수 없습니다.</li>
+  <li>
+    <p>예를 들어, 437674을 3진수로 바꾸면 211020101011입니다. 여기서 찾을 수 있는 조건에 맞는 소수는 왼쪽부터 순서대로 211, 2, 11이 있으며, 총 3개입니다. (211, 2, 11을 k진법으로 보았을 때가 아닌, 10진법으로 보았을 때 소수여야 한다는 점에 주의합니다.) 211은 P0 형태에서 찾을 수 있으며, 2는 0P0에서, 11은 0P에서 찾을 수 있습니다.</p>
+  </li>
+  <li>정수 n과 k가 매개변수로 주어집니다. n을 k진수로 바꿨을 때, 변환된 수 안에서 찾을 수 있는 위 조건에 맞는 소수의 개수를 return 하도록 solution 함수를 완성해 주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>1 ≤ n ≤ 1,000,000</li>
+  <li>3 ≤ k ≤ 10<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>오랜만에 큰 고민 없이 푼 문제… 다음과 같은 과정을 거쳐서 풀었다.
+    <ol>
+      <li>n을 k진수로 변환한다. 이때 string으로 변환</li>
+      <li>변환된 k진수를 ‘0’을 기준으로 split한다. 이 과정에서 ‘’ 빈 문자열이 생길 수 있다.</li>
+      <li>소수 판별 메서드를 만든다.</li>
+      <li>2에서 얻은 배열을 순회하면서 소수인지 아닌지 판단해서 카운트를 증가시킨다. 2에서 생길 수 있는 빈 문자열에 대한 예외처리를 해 주어야 함!!<br /><br /></li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/195a26379567836d730288d5e782ef38.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92335]]></summary></entry><entry><title type="html">깃허브로 Spring Legacy Project를 사용한 팀 프로젝트 진행시 내 컴퓨터에서 다른 사람 작업물 확인하기</title><link href="http://localhost:4000/uno%20mas/pull-req-guide/" rel="alternate" type="text/html" title="깃허브로 Spring Legacy Project를 사용한 팀 프로젝트 진행시 내 컴퓨터에서 다른 사람 작업물 확인하기" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/pull-req-guide</id><content type="html" xml:base="http://localhost:4000/uno%20mas/pull-req-guide/"><![CDATA[<ul>
+  <li>깃허브를 이용해 팀 프로젝트를 진행하는 중 다른 팀원의 작업물 확인 방법을 자주 잊어버리는 팀원들을 위해서 작성했다.</li>
+</ul>
+
+<h1 id="pull-request-가이드">Pull request 가이드</h1>
+<ol>
+  <li>본인 작업물 먼저 본인이 작업중인 브랜치에 커밋 &amp; 푸시하기 (master 브랜치에 하면 안됨!!!)</li>
+  <li>sts에서 프로젝트 이름 위에서 마우스 우클릭</li>
+  <li>Team - Switch to - master 브랜치 선택</li>
+  <li>master 브랜치로 바꿨으면 Team - pull 선택</li>
+</ol>
+
+<p align="center"><img src="../../assets/images/pullResultInSts.png" width="600" /></p>
+<p>￼</p>
+
+<ul>
+  <li>이렇게 뜨면 pull 완료된 것임 근데 브랜치 목록에 바로 보이지는 않아서 세팅 하나 더 필요함</li>
+</ul>
+
+<ol>
+  <li>Team - Switch to - Other
+￼</li>
+</ol>
+<p align="center"><img src="../../assets/images/chooseBranch.png" width="600" /></p>
+
+<ul>
+  <li>check out… 클릭하면 선택창이 하나 뜨는데</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/checkoutBranchInSts.png" width="600" /></p>
+<p>￼</p>
+<ul>
+  <li>일단 빨간 박스를 선택함</li>
+  <li>빨간 박스 안에 있는 check out commit을 누르면 내 로컬에는 이 브랜치를 생성하지 않고 보기만 하는 것이고(읽기 전용 모드 느낌)</li>
+  <li>파란 버튼인 check out as new local branch를 선택하면 내 로컬에도 이 브랜치를 생성하는 것임. 이렇게 하면 이 브랜치 내용을 수정해서 커밋/푸시하는 것이 가능함(근데 merge 완료되면 삭제할 브랜치라 로컬에 굳이 생성할 필요가 없어보여서 그냥 빨간 박스 선택 추천)</li>
+</ul>
+
+<ol>
+  <li>브랜치 변경이 완료되면 똑같이 서버 실행한 뒤 HomeController의 매핑 주소를 참고해서 주소창에 입력하면 작업한 페이지를 볼 수 있다.</li>
+  <li>다 봤으면 다시 본인 브랜치로 바꿔서 계속 작업하면 됨</li>
+  <li>수정했으면 하는 사항이 있으면 여기서 밑으로 쭉 내려보면 댓글 작성란이 있음. 작성하면 된다.</li>
+</ol>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[깃허브를 이용해 팀 프로젝트를 진행하는 중 다른 팀원의 작업물 확인 방법을 자주 잊어버리는 팀원들을 위해서 작성했다.]]></summary></entry><entry><title type="html">Python) 프로그래머스. 신고 결과 받기</title><link href="http://localhost:4000/programmers/programmers-report-result-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 신고 결과 받기" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-report-result-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-report-result-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92334">https://programmers.co.kr/learn/courses/30/lessons/92334</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>신입사원 무지는 게시판 불량 이용자를 신고하고 처리 결과를 메일로 발송하는 시스템을 개발하려 합니다. 무지가 개발하려는 시스템은 다음과 같습니다.</p>
+  </li>
+  <li>각 유저는 한 번에 한 명의 유저를 신고할 수 있습니다.</li>
+  <li>신고 횟수에 제한은 없습니다. 서로 다른 유저를 계속해서 신고할 수 있습니다.</li>
+  <li>한 유저를 여러 번 신고할 수도 있지만, 동일한 유저에 대한 신고 횟수는 1회로 처리됩니다.</li>
+  <li>k번 이상 신고된 유저는 게시판 이용이 정지되며, 해당 유저를 신고한 모든 유저에게 정지 사실을 메일로 발송합니다.</li>
+  <li>
+    <p>유저가 신고한 모든 내용을 취합하여 마지막에 한꺼번에 게시판 이용 정지를 시키면서 정지 메일을 발송합니다.</p>
+  </li>
+  <li>이용자의 ID가 담긴 문자열 배열 id_list, 각 이용자가 신고한 이용자의 ID 정보가 담긴 문자열 배열 report, 정지 기준이 되는 신고 횟수 k가 매개변수로 주어질 때, 각 유저별로 처리 결과 메일을 받은 횟수를 배열에 담아 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>2 ≤ id_list의 길이 ≤ 1,000
+    <ul>
+      <li>1 ≤ id_list의 원소 길이 ≤ 10</li>
+      <li>id_list의 원소는 이용자의 id를 나타내는 문자열이며 알파벳 소문자로만 이루어져 있습니다.</li>
+      <li>id_list에는 같은 아이디가 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>1 ≤ report의 길이 ≤ 200,000
+    <ul>
+      <li>3 ≤ report의 원소 길이 ≤ 21</li>
+      <li>report의 원소는 “이용자id 신고한id”형태의 문자열입니다.</li>
+      <li>예를 들어 “muzi frodo”의 경우 “muzi”가 “frodo”를 신고했다는 의미입니다.</li>
+      <li>id는 알파벳 소문자로만 이루어져 있습니다.</li>
+      <li>이용자id와 신고한id는 공백(스페이스)하나로 구분되어 있습니다.</li>
+      <li>자기 자신을 신고하는 경우는 없습니다.</li>
+    </ul>
+  </li>
+  <li>1 ≤ k ≤ 200, k는 자연수입니다.</li>
+  <li>return 하는 배열은 id_list에 담긴 id 순서대로 각 유저가 받은 결과 메일 수를 담으면 됩니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>딕셔너리를 사용해서 풀었다.</li>
+  <li>이 문제에서 관리되어야 하는 것은 <code class="language-plaintext highlighter-rouge">id_list</code>의 원소별로 신고한 id, 각 id별 신고횟수이다.</li>
+</ul>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">usersReport = {신고자 id : [신고된 id 리스트]}</code>와 <code class="language-plaintext highlighter-rouge">reportCnt = {신고된 id : 횟수}</code> 형태의 딕셔너리를 만든다.<br />
+ 1-1. <code class="language-plaintext highlighter-rouge">report</code>를 순회하면서 <code class="language-plaintext highlighter-rouge">usersReport</code>에 각 유저별로 신고한 id를 담는다.<br />
+ 1-2. <code class="language-plaintext highlighter-rouge">reportCnt</code>에 각 유저별로 신고된 횟수를 저장한다.<br />
+ 1-3. 이때 같은 유저가 동일한 아이디를 여러번 신고하지 않도록 예외처리를 해 주어야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 추출한 리스트 <code class="language-plaintext highlighter-rouge">stop = [k번 이상 신고된 id]</code>를 만든다.<br />
+ 2-1. <code class="language-plaintext highlighter-rouge">reportCnt</code>를 순회하며 <code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 <code class="language-plaintext highlighter-rouge">stop</code>에 담는다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">id_list</code>를 순회하며 각 유저별 메일을 받은 횟수를 <code class="language-plaintext highlighter-rouge">answer</code>에 담는다.<br /><br /></li>
+</ol>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/0c297eece0eed5c168f5daf229ddb58e.js"></script>
+<p><br /><br /></p>
+
+<ul>
+  <li>그런데 이렇게 구구절절 써서 통과하고 보니까 아주 짧은 코드로 통과한 분이 계셨다…</li>
+</ul>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3">https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3</a></p>
+
+<ul>
+  <li>믓지다…😦 <code class="language-plaintext highlighter-rouge">set</code>이 순간 떠오르긴 했으나 어떻게 활용할 지 몰라서 그냥 구구절절 코드를 썼는데 덕분에 하나 배울 수 있었다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92334]]></summary></entry><entry><title type="html">마이크로서비스 아키텍처(Microservices Architecture, MSA)</title><link href="http://localhost:4000/it/msa/" rel="alternate" type="text/html" title="마이크로서비스 아키텍처(Microservices Architecture, MSA)" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/it/msa</id><content type="html" xml:base="http://localhost:4000/it/msa/"><![CDATA[<h1 id="-마이크로서비스-아키텍처란">👀 마이크로서비스 아키텍처란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">마이크로서비스</code>는 하나의 큰 애플리케이션을 여러 개의 다른 역할을 수행하는 애플리케이션으로 분리하였을 때 각 애플리케이션을 말하며, 마이크로서비스를 분리하여 여러 개의 작은 애플리케이션으로 쪼개어 변경과 조합이 가능하도록 만든 아키텍처를 <code class="language-plaintext highlighter-rouge">마이크로서비스 아키텍처</code>라 한다.</li>
+  <li>대규모 소프트웨어 프로젝트를 마이크로 단위의 모듈로 분리하여 결합도를 낮추고(loosley-coupled) <code class="language-plaintext highlighter-rouge">API</code>를 통해 통신한다.</li>
+  <li>이렇게 만들면 기존에 개발했던 부분을 수정하거나 새로운 기능을 추가할 때 그 기능이 실패해도 전체 어플리케이션에 미치는 영향을 최소화 할 수 있다.</li>
+</ul>
+
+<h2 id="모놀리틱monolithic-아키텍처">모놀리틱(Monolithic) 아키텍처</h2>
+
+<p align="center"><img src="https://miro.medium.com/max/1280/0*1WjIRAQHhL-UR7WL.png" width="600" /></p>
+<ul>
+  <li>
+    <p>사진 출처 : <a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a</a></p>
+  </li>
+  <li>만약 <code class="language-plaintext highlighter-rouge">JAVA</code>를 사용하여 웹 어플리케이션을 개발한다면
+    <ul>
+      <li>사용자에게 보여줄 <code class="language-plaintext highlighter-rouge">view</code> 페이지를 구성</li>
+      <li>요청된 <code class="language-plaintext highlighter-rouge">URI</code>에 따라 각 <code class="language-plaintext highlighter-rouge">view</code> 페이지를 연결해 줄 <code class="language-plaintext highlighter-rouge">컨트롤러</code></li>
+      <li>도메인 정의 및 <code class="language-plaintext highlighter-rouge">DAO</code> 설계</li>
+      <li><code class="language-plaintext highlighter-rouge">컨트롤러</code>와 <code class="language-plaintext highlighter-rouge">DAO</code>간의 결합도를 낮추기 위해 서비스 계층 구성</li>
+    </ul>
+  </li>
+  <li>등 각 계층간 결합도를 낮추기 위한 설계를 하지만 최종 배포시에는 하나의 <code class="language-plaintext highlighter-rouge">war</code> 파일로 배포하게 된다. 즉 모두가 하나로 합쳐지게 되고 이는 유연한 리펙토링을 어렵게 만든다.</li>
+  <li>서비스의 규모가 작고 개발자의 수도 적다면 큰 문제가 되지 않지만 개발자의 수가 늘어나고 서비스의 규모가 커지면 간단한 기능을 추가할 때에도 수정할 코드가 많아지고 그 수정이 영향을 미치는 부분도 많아졌기 때문에 간단한 변화에도 대규모 통합 테스트가 필요해진다. 이를 <code class="language-plaintext highlighter-rouge">모놀리틱(Monolithic)</code> 아키텍처라 한다.</li>
+  <li>모놀리틱 아키텍처의 특성은 새로운 프레임워크를 사용할 필요가 생겨도 쉽사리 바꾸지 못한다는 점을 만들어 낸다. 왜냐하면 전체 어플리케이션이 하나로 묶여 있다면 그 동안 작성한 코드들을 새로운 언어 또는 프레임워크로 바꿔야 하는데 개발된 코드의 양이 많으면 많을수록 엄두가 안 날 것이다.</li>
+</ul>
+
+<h2 id="마이크로서비스microservice-아키텍처">마이크로서비스(Microservice) 아키텍처</h2>
+
+<p align="center"><img src="https://miro.medium.com/max/1214/0*6c95Zet-KhecGRKK.png" width="600" /></p>
+<ul>
+  <li>
+    <p>사진 출처 : <a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a</a></p>
+  </li>
+  <li>하지만 마이크로서비스 아키텍처는 서비스가 개별적으로 독립적인 단위의 어플리케이션이기 때문에 변경이 용이하고  그 변경이 다른 어플리케이션에 미치는 영향도 적다.</li>
+  <li>또한 개별 서비스 단위의 배포가 가능하기 때문에 하루에도 여러 번의 배포가 가능하다. 최근에 진행했던 <code class="language-plaintext highlighter-rouge">JAVA &amp; JSP</code> 프로젝트를 <code class="language-plaintext highlighter-rouge">AWS EC2</code>로 배포할 때 <code class="language-plaintext highlighter-rouge">war</code> 파일로 배포했기 때문에 배포 후 조그만 수정사항이 생겨도 <code class="language-plaintext highlighter-rouge">war</code> 파일을 다시 익스포트해야 했기 때문에 좀 불편했다. 프로젝트를 마이크로서비스 아키텍처로 설계하게 되면 그런 수고를 덜 수 있어 좀 더 유연하고 빠른 개발이 가능해 보인다.</li>
+  <li>하지만 그만큼 개발이 어렵다는 단점이 있다. 마이크로서비스 아키텍처를 적용해 개발하게 되면 <code class="language-plaintext highlighter-rouge">view</code> 페이지 하나에서 보여지는 여러 컨텐츠 중 특정 컨텐츠 하나만 제공하는 어플리케이션 단위로 쪼개어서 페이지 로드 시 각 어플리케이션에서 받아오게 된다. 이론적으로는 쉬워 보이지만 실제 구현시에는 각각 마이크로서비스의 호스트 정보 및 통신 프로토콜에 대해 처리해 주어야 하기 때문이라고 한다.</li>
+  <li>관련글 : <a href="http://guruble.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4microservice-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B7%B8%EA%B2%83%EC%9D%B4-%EB%AD%A3%EC%9D%B4-%EC%A4%91%ED%97%8C%EB%94%94/">마이크로서비스 아키텍처. 그것이 뭣이 중헌디?</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="결론">결론</h1>
+<ul>
+  <li>마이크로서비스 아키텍처의 장점들을 보면 무조건 마이크로서비스 아키텍처를 쓰는 것이 좋아보인다. 하지만 아직 서비스의 규모가 작고 마이크로서비스 아키텍처를 적용했을 때 모놀리틱 아키텍처에 비해 오히려 일이 더 늘어나고 생산성이 더 떨어진다면 마이크로서비스보다는 모놀리틱 아키텍처를 적용해 개발하는 것이 더 좋을 수 있다는 결론을 얻을 수 있었다. 나보다 더 전문가이신 분들이 쓴 글에서 깊은 인사이트를 얻을 수 있었기에 공부에 참고했던 링크를 남긴다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="http://guruble.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4microservice-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B7%B8%EA%B2%83%EC%9D%B4-%EB%AD%A3%EC%9D%B4-%EC%A4%91%ED%97%8C%EB%94%94/">마이크로서비스 아키텍처. 그것이 뭣이 중헌디?</a></li>
+  <li><a href="https://www.samsungsds.com/kr/insights/msa.html">Do Not Use MSA - 마이크로서비스 아키텍처가 꼭 필요한가요?</a></li>
+  <li><a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">마이크로서비스 아키텍처(Microservices Architecture)의 장점과 단점</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="IT" /><category term="CS" /><category term="Architecture" /><category term="MSA" /><summary type="html"><![CDATA[👀 마이크로서비스 아키텍처란? 마이크로서비스는 하나의 큰 애플리케이션을 여러 개의 다른 역할을 수행하는 애플리케이션으로 분리하였을 때 각 애플리케이션을 말하며, 마이크로서비스를 분리하여 여러 개의 작은 애플리케이션으로 쪼개어 변경과 조합이 가능하도록 만든 아키텍처를 마이크로서비스 아키텍처라 한다. 대규모 소프트웨어 프로젝트를 마이크로 단위의 모듈로 분리하여 결합도를 낮추고(loosley-coupled) API를 통해 통신한다. 이렇게 만들면 기존에 개발했던 부분을 수정하거나 새로운 기능을 추가할 때 그 기능이 실패해도 전체 어플리케이션에 미치는 영향을 최소화 할 수 있다.]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 6 - 주문페이지와 주문완료페이지 제작</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-06/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 6 - 주문페이지와 주문완료페이지 제작" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-06</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-06/"><![CDATA[<ul>
   <li>작성일 : 2022.04.28</li>
   <li>작성자 : 황유진</li>
   <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
@@ -225,179 +448,7 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-22</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.28 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 신고 결과 받기</title><link href="http://localhost:4000/programmers/programmers-report-result-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 신고 결과 받기" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-report-result-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-report-result-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92334">https://programmers.co.kr/learn/courses/30/lessons/92334</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>신입사원 무지는 게시판 불량 이용자를 신고하고 처리 결과를 메일로 발송하는 시스템을 개발하려 합니다. 무지가 개발하려는 시스템은 다음과 같습니다.</p>
-  </li>
-  <li>각 유저는 한 번에 한 명의 유저를 신고할 수 있습니다.</li>
-  <li>신고 횟수에 제한은 없습니다. 서로 다른 유저를 계속해서 신고할 수 있습니다.</li>
-  <li>한 유저를 여러 번 신고할 수도 있지만, 동일한 유저에 대한 신고 횟수는 1회로 처리됩니다.</li>
-  <li>k번 이상 신고된 유저는 게시판 이용이 정지되며, 해당 유저를 신고한 모든 유저에게 정지 사실을 메일로 발송합니다.</li>
-  <li>
-    <p>유저가 신고한 모든 내용을 취합하여 마지막에 한꺼번에 게시판 이용 정지를 시키면서 정지 메일을 발송합니다.</p>
-  </li>
-  <li>이용자의 ID가 담긴 문자열 배열 id_list, 각 이용자가 신고한 이용자의 ID 정보가 담긴 문자열 배열 report, 정지 기준이 되는 신고 횟수 k가 매개변수로 주어질 때, 각 유저별로 처리 결과 메일을 받은 횟수를 배열에 담아 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>2 ≤ id_list의 길이 ≤ 1,000
-    <ul>
-      <li>1 ≤ id_list의 원소 길이 ≤ 10</li>
-      <li>id_list의 원소는 이용자의 id를 나타내는 문자열이며 알파벳 소문자로만 이루어져 있습니다.</li>
-      <li>id_list에는 같은 아이디가 중복해서 들어있지 않습니다.</li>
-    </ul>
-  </li>
-  <li>1 ≤ report의 길이 ≤ 200,000
-    <ul>
-      <li>3 ≤ report의 원소 길이 ≤ 21</li>
-      <li>report의 원소는 “이용자id 신고한id”형태의 문자열입니다.</li>
-      <li>예를 들어 “muzi frodo”의 경우 “muzi”가 “frodo”를 신고했다는 의미입니다.</li>
-      <li>id는 알파벳 소문자로만 이루어져 있습니다.</li>
-      <li>이용자id와 신고한id는 공백(스페이스)하나로 구분되어 있습니다.</li>
-      <li>자기 자신을 신고하는 경우는 없습니다.</li>
-    </ul>
-  </li>
-  <li>1 ≤ k ≤ 200, k는 자연수입니다.</li>
-  <li>return 하는 배열은 id_list에 담긴 id 순서대로 각 유저가 받은 결과 메일 수를 담으면 됩니다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>딕셔너리를 사용해서 풀었다.</li>
-  <li>이 문제에서 관리되어야 하는 것은 <code class="language-plaintext highlighter-rouge">id_list</code>의 원소별로 신고한 id, 각 id별 신고횟수이다.</li>
-</ul>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">usersReport = {신고자 id : [신고된 id 리스트]}</code>와 <code class="language-plaintext highlighter-rouge">reportCnt = {신고된 id : 횟수}</code> 형태의 딕셔너리를 만든다.<br />
- 1-1. <code class="language-plaintext highlighter-rouge">report</code>를 순회하면서 <code class="language-plaintext highlighter-rouge">usersReport</code>에 각 유저별로 신고한 id를 담는다.<br />
- 1-2. <code class="language-plaintext highlighter-rouge">reportCnt</code>에 각 유저별로 신고된 횟수를 저장한다.<br />
- 1-3. 이때 같은 유저가 동일한 아이디를 여러번 신고하지 않도록 예외처리를 해 주어야 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 추출한 리스트 <code class="language-plaintext highlighter-rouge">stop = [k번 이상 신고된 id]</code>를 만든다.<br />
- 2-1. <code class="language-plaintext highlighter-rouge">reportCnt</code>를 순회하며 <code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 <code class="language-plaintext highlighter-rouge">stop</code>에 담는다.<br /></li>
-  <li><code class="language-plaintext highlighter-rouge">id_list</code>를 순회하며 각 유저별 메일을 받은 횟수를 <code class="language-plaintext highlighter-rouge">answer</code>에 담는다.<br /><br /></li>
-</ol>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/0c297eece0eed5c168f5daf229ddb58e.js"></script>
-<p><br /><br /></p>
-
-<ul>
-  <li>그런데 이렇게 구구절절 써서 통과하고 보니까 아주 짧은 코드로 통과한 분이 계셨다…</li>
-</ul>
-
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3">https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3</a></p>
-
-<ul>
-  <li>믓지다…😦 <code class="language-plaintext highlighter-rouge">set</code>이 순간 떠오르긴 했으나 어떻게 활용할 지 몰라서 그냥 구구절절 코드를 썼는데 덕분에 하나 배울 수 있었다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92334]]></summary></entry><entry><title type="html">마이크로서비스 아키텍처(Microservices Architecture, MSA)</title><link href="http://localhost:4000/it/msa/" rel="alternate" type="text/html" title="마이크로서비스 아키텍처(Microservices Architecture, MSA)" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/it/msa</id><content type="html" xml:base="http://localhost:4000/it/msa/"><![CDATA[<h1 id="-마이크로서비스-아키텍처란">👀 마이크로서비스 아키텍처란?</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">마이크로서비스</code>는 하나의 큰 애플리케이션을 여러 개의 다른 역할을 수행하는 애플리케이션으로 분리하였을 때 각 애플리케이션을 말하며, 마이크로서비스를 분리하여 여러 개의 작은 애플리케이션으로 쪼개어 변경과 조합이 가능하도록 만든 아키텍처를 <code class="language-plaintext highlighter-rouge">마이크로서비스 아키텍처</code>라 한다.</li>
-  <li>대규모 소프트웨어 프로젝트를 마이크로 단위의 모듈로 분리하여 결합도를 낮추고(loosley-coupled) <code class="language-plaintext highlighter-rouge">API</code>를 통해 통신한다.</li>
-  <li>이렇게 만들면 기존에 개발했던 부분을 수정하거나 새로운 기능을 추가할 때 그 기능이 실패해도 전체 어플리케이션에 미치는 영향을 최소화 할 수 있다.</li>
-</ul>
-
-<h2 id="모놀리틱monolithic-아키텍처">모놀리틱(Monolithic) 아키텍처</h2>
-
-<p align="center"><img src="https://miro.medium.com/max/1280/0*1WjIRAQHhL-UR7WL.png" width="600" /></p>
-<ul>
-  <li>
-    <p>사진 출처 : <a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a</a></p>
-  </li>
-  <li>만약 <code class="language-plaintext highlighter-rouge">JAVA</code>를 사용하여 웹 어플리케이션을 개발한다면
-    <ul>
-      <li>사용자에게 보여줄 <code class="language-plaintext highlighter-rouge">view</code> 페이지를 구성</li>
-      <li>요청된 <code class="language-plaintext highlighter-rouge">URI</code>에 따라 각 <code class="language-plaintext highlighter-rouge">view</code> 페이지를 연결해 줄 <code class="language-plaintext highlighter-rouge">컨트롤러</code></li>
-      <li>도메인 정의 및 <code class="language-plaintext highlighter-rouge">DAO</code> 설계</li>
-      <li><code class="language-plaintext highlighter-rouge">컨트롤러</code>와 <code class="language-plaintext highlighter-rouge">DAO</code>간의 결합도를 낮추기 위해 서비스 계층 구성</li>
-    </ul>
-  </li>
-  <li>등 각 계층간 결합도를 낮추기 위한 설계를 하지만 최종 배포시에는 하나의 <code class="language-plaintext highlighter-rouge">war</code> 파일로 배포하게 된다. 즉 모두가 하나로 합쳐지게 되고 이는 유연한 리펙토링을 어렵게 만든다.</li>
-  <li>서비스의 규모가 작고 개발자의 수도 적다면 큰 문제가 되지 않지만 개발자의 수가 늘어나고 서비스의 규모가 커지면 간단한 기능을 추가할 때에도 수정할 코드가 많아지고 그 수정이 영향을 미치는 부분도 많아졌기 때문에 간단한 변화에도 대규모 통합 테스트가 필요해진다. 이를 <code class="language-plaintext highlighter-rouge">모놀리틱(Monolithic)</code> 아키텍처라 한다.</li>
-  <li>모놀리틱 아키텍처의 특성은 새로운 프레임워크를 사용할 필요가 생겨도 쉽사리 바꾸지 못한다는 점을 만들어 낸다. 왜냐하면 전체 어플리케이션이 하나로 묶여 있다면 그 동안 작성한 코드들을 새로운 언어 또는 프레임워크로 바꿔야 하는데 개발된 코드의 양이 많으면 많을수록 엄두가 안 날 것이다.</li>
-</ul>
-
-<h2 id="마이크로서비스microservice-아키텍처">마이크로서비스(Microservice) 아키텍처</h2>
-
-<p align="center"><img src="https://miro.medium.com/max/1214/0*6c95Zet-KhecGRKK.png" width="600" /></p>
-<ul>
-  <li>
-    <p>사진 출처 : <a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a</a></p>
-  </li>
-  <li>하지만 마이크로서비스 아키텍처는 서비스가 개별적으로 독립적인 단위의 어플리케이션이기 때문에 변경이 용이하고  그 변경이 다른 어플리케이션에 미치는 영향도 적다.</li>
-  <li>또한 개별 서비스 단위의 배포가 가능하기 때문에 하루에도 여러 번의 배포가 가능하다. 최근에 진행했던 <code class="language-plaintext highlighter-rouge">JAVA &amp; JSP</code> 프로젝트를 <code class="language-plaintext highlighter-rouge">AWS EC2</code>로 배포할 때 <code class="language-plaintext highlighter-rouge">war</code> 파일로 배포했기 때문에 배포 후 조그만 수정사항이 생겨도 <code class="language-plaintext highlighter-rouge">war</code> 파일을 다시 익스포트해야 했기 때문에 좀 불편했다. 프로젝트를 마이크로서비스 아키텍처로 설계하게 되면 그런 수고를 덜 수 있어 좀 더 유연하고 빠른 개발이 가능해 보인다.</li>
-  <li>하지만 그만큼 개발이 어렵다는 단점이 있다. 마이크로서비스 아키텍처를 적용해 개발하게 되면 <code class="language-plaintext highlighter-rouge">view</code> 페이지 하나에서 보여지는 여러 컨텐츠 중 특정 컨텐츠 하나만 제공하는 어플리케이션 단위로 쪼개어서 페이지 로드 시 각 어플리케이션에서 받아오게 된다. 이론적으로는 쉬워 보이지만 실제 구현시에는 각각 마이크로서비스의 호스트 정보 및 통신 프로토콜에 대해 처리해 주어야 하기 때문이라고 한다.</li>
-  <li>관련글 : <a href="http://guruble.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4microservice-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B7%B8%EA%B2%83%EC%9D%B4-%EB%AD%A3%EC%9D%B4-%EC%A4%91%ED%97%8C%EB%94%94/">마이크로서비스 아키텍처. 그것이 뭣이 중헌디?</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="결론">결론</h1>
-<ul>
-  <li>마이크로서비스 아키텍처의 장점들을 보면 무조건 마이크로서비스 아키텍처를 쓰는 것이 좋아보인다. 하지만 아직 서비스의 규모가 작고 마이크로서비스 아키텍처를 적용했을 때 모놀리틱 아키텍처에 비해 오히려 일이 더 늘어나고 생산성이 더 떨어진다면 마이크로서비스보다는 모놀리틱 아키텍처를 적용해 개발하는 것이 더 좋을 수 있다는 결론을 얻을 수 있었다. 나보다 더 전문가이신 분들이 쓴 글에서 깊은 인사이트를 얻을 수 있었기에 공부에 참고했던 링크를 남긴다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="http://guruble.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4microservice-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B7%B8%EA%B2%83%EC%9D%B4-%EB%AD%A3%EC%9D%B4-%EC%A4%91%ED%97%8C%EB%94%94/">마이크로서비스 아키텍처. 그것이 뭣이 중헌디?</a></li>
-  <li><a href="https://www.samsungsds.com/kr/insights/msa.html">Do Not Use MSA - 마이크로서비스 아키텍처가 꼭 필요한가요?</a></li>
-  <li><a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">마이크로서비스 아키텍처(Microservices Architecture)의 장점과 단점</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="IT" /><category term="CS" /><category term="Architecture" /><category term="MSA" /><summary type="html"><![CDATA[👀 마이크로서비스 아키텍처란? 마이크로서비스는 하나의 큰 애플리케이션을 여러 개의 다른 역할을 수행하는 애플리케이션으로 분리하였을 때 각 애플리케이션을 말하며, 마이크로서비스를 분리하여 여러 개의 작은 애플리케이션으로 쪼개어 변경과 조합이 가능하도록 만든 아키텍처를 마이크로서비스 아키텍처라 한다. 대규모 소프트웨어 프로젝트를 마이크로 단위의 모듈로 분리하여 결합도를 낮추고(loosley-coupled) API를 통해 통신한다. 이렇게 만들면 기존에 개발했던 부분을 수정하거나 새로운 기능을 추가할 때 그 기능이 실패해도 전체 어플리케이션에 미치는 영향을 최소화 할 수 있다.]]></summary></entry><entry><title type="html">깃허브로 Spring Legacy Project를 사용한 팀 프로젝트 진행시 내 컴퓨터에서 다른 사람 작업물 확인하기</title><link href="http://localhost:4000/uno%20mas/pull-req-guide/" rel="alternate" type="text/html" title="깃허브로 Spring Legacy Project를 사용한 팀 프로젝트 진행시 내 컴퓨터에서 다른 사람 작업물 확인하기" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/pull-req-guide</id><content type="html" xml:base="http://localhost:4000/uno%20mas/pull-req-guide/"><![CDATA[<ul>
-  <li>깃허브를 이용해 팀 프로젝트를 진행하는 중 다른 팀원의 작업물 확인 방법을 자주 잊어버리는 팀원들을 위해서 작성했다.</li>
-</ul>
-
-<h1 id="pull-request-가이드">Pull request 가이드</h1>
-<ol>
-  <li>본인 작업물 먼저 본인이 작업중인 브랜치에 커밋 &amp; 푸시하기 (master 브랜치에 하면 안됨!!!)</li>
-  <li>sts에서 프로젝트 이름 위에서 마우스 우클릭</li>
-  <li>Team - Switch to - master 브랜치 선택</li>
-  <li>master 브랜치로 바꿨으면 Team - pull 선택</li>
-</ol>
-
-<p align="center"><img src="../../assets/images/pullResultInSts.png" width="600" /></p>
-<p>￼</p>
-
-<ul>
-  <li>이렇게 뜨면 pull 완료된 것임 근데 브랜치 목록에 바로 보이지는 않아서 세팅 하나 더 필요함</li>
-</ul>
-
-<ol>
-  <li>Team - Switch to - Other
-￼</li>
-</ol>
-<p align="center"><img src="../../assets/images/chooseBranch.png" width="600" /></p>
-
-<ul>
-  <li>check out… 클릭하면 선택창이 하나 뜨는데</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/checkoutBranchInSts.png" width="600" /></p>
-<p>￼</p>
-<ul>
-  <li>일단 빨간 박스를 선택함</li>
-  <li>빨간 박스 안에 있는 check out commit을 누르면 내 로컬에는 이 브랜치를 생성하지 않고 보기만 하는 것이고(읽기 전용 모드 느낌)</li>
-  <li>파란 버튼인 check out as new local branch를 선택하면 내 로컬에도 이 브랜치를 생성하는 것임. 이렇게 하면 이 브랜치 내용을 수정해서 커밋/푸시하는 것이 가능함(근데 merge 완료되면 삭제할 브랜치라 로컬에 굳이 생성할 필요가 없어보여서 그냥 빨간 박스 선택 추천)</li>
-</ul>
-
-<ol>
-  <li>브랜치 변경이 완료되면 똑같이 서버 실행한 뒤 HomeController의 매핑 주소를 참고해서 주소창에 입력하면 작업한 페이지를 볼 수 있다.</li>
-  <li>다 봤으면 다시 본인 브랜치로 바꿔서 계속 작업하면 됨</li>
-  <li>수정했으면 하는 사항이 있으면 여기서 밑으로 쭉 내려보면 댓글 작성란이 있음. 작성하면 된다.</li>
-</ol>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[깃허브를 이용해 팀 프로젝트를 진행하는 중 다른 팀원의 작업물 확인 방법을 자주 잊어버리는 팀원들을 위해서 작성했다.]]></summary></entry><entry><title type="html">Python) 프로그래머스. 경주로 건설</title><link href="http://localhost:4000/programmers/programmers-build-road-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 경주로 건설" /><published>2022-04-27T00:00:00+09:00</published><updated>2022-04-27T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-build-road-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-build-road-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.28 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 경주로 건설</title><link href="http://localhost:4000/programmers/programmers-build-road-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 경주로 건설" /><published>2022-04-27T00:00:00+09:00</published><updated>2022-04-27T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-build-road-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-build-road-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1147,72 +1198,4 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/c4f27f01afbaf0beb610650ab9f35825.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Stack" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/67257]]></summary></entry><entry><title type="html">Python) 프로그래머스. 표 편집</title><link href="http://localhost:4000/programmers/programmers-edit-table-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 표 편집" /><published>2022-04-23T00:00:00+09:00</published><updated>2022-04-23T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-edit-table-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-edit-table-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/81303">https://programmers.co.kr/learn/courses/30/lessons/81303</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>[본 문제는 정확성과 효율성 테스트 각각 점수가 있는 문제입니다.]</p>
-  </li>
-  <li>
-    <p>업무용 소프트웨어를 개발하는 니니즈웍스의 인턴인 앙몬드는 명령어 기반으로 표의 행을 선택, 삭제, 복구하는 프로그램을 작성하는 과제를 맡았습니다. 세부 요구 사항은 다음과 같습니다</p>
-  </li>
-  <li>
-    <p>한 번에 한 행만 선택할 수 있으며, 표의 범위(0행 ~ 마지막 행)를 벗어날 수 없습니다. 이때, 다음과 같은 명령어를 이용하여 표를 편집합니다.</p>
-  </li>
-  <li>“U X”: 현재 선택된 행에서 X칸 위에 있는 행을 선택합니다.</li>
-  <li>“D X”: 현재 선택된 행에서 X칸 아래에 있는 행을 선택합니다.</li>
-  <li>“C” : 현재 선택된 행을 삭제한 후, 바로 아래 행을 선택합니다. 단, 삭제된 행이 가장 마지막 행인 경우 바로 윗 행을 선택합니다.</li>
-  <li>
-    <p>“Z” : 가장 최근에 삭제된 행을 원래대로 복구합니다. 단, 현재 선택된 행은 바뀌지 않습니다.</p>
-  </li>
-  <li>처음 표의 행 개수를 나타내는 정수 n, 처음에 선택된 행의 위치를 나타내는 정수 k, 수행한 명령어들이 담긴 문자열 배열 cmd가 매개변수로 주어질 때, 모든 명령어를 수행한 후 표의 상태와 처음 주어진 표의 상태를 비교하여 삭제되지 않은 행은 O, 삭제된 행은 X로 표시하여 문자열 형태로 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>5 ≤ n ≤ 1,000,000</li>
-  <li>0 ≤ k &lt; n</li>
-  <li>1 ≤ cmd의 원소 개수 ≤ 200,000</li>
-  <li>cmd의 각 원소는 “U X”, “D X”, “C”, “Z” 중 하나입니다.</li>
-  <li>X는 1 이상 300,000 이하인 자연수이며 0으로 시작하지 않습니다.</li>
-  <li>X가 나타내는 자연수에 ‘,’ 는 주어지지 않습니다. 예를 들어 123,456의 경우 123456으로 주어집니다.</li>
-  <li>cmd에 등장하는 모든 X들의 값을 합친 결과가 1,000,000 이하인 경우만 입력으로 주어집니다.</li>
-  <li>표의 모든 행을 제거하여, 행이 하나도 남지 않는 경우는 입력으로 주어지지 않습니다.</li>
-  <li>본문에서 각 행이 제거되고 복구되는 과정을 보다 자연스럽게 보이기 위해 “이름” 열을 사용하였으나, “이름”열의 내용이 실제 문제를 푸는 과정에 필요하지는 않습니다. “이름”열에는 서로 다른 이름들이 중복없이 채워져 있다고 가정하고 문제를 해결해 주세요.</li>
-  <li>표의 범위를 벗어나는 이동은 입력으로 주어지지 않습니다.</li>
-  <li>원래대로 복구할 행이 없을 때(즉, 삭제된 행이 없을 때) “Z”가 명령어로 주어지는 경우는 없습니다.</li>
-  <li>정답은 표의 0행부터 n - 1행까지에 해당되는 O, X를 순서대로 이어붙인 문자열 형태로 return 해주세요.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<h2 id="1차-시도">1차 시도</h2>
-<ul>
-  <li>파이썬의 리스트가 링크드 리스트와 같다고 오해하고 있었다. 그래서 배열의 중간 삽입/삭제 연산을 수행하는 데 시간이 오래 걸리지 않을 것이라 생각하고 실제 <code class="language-plaintext highlighter-rouge">remove</code>와 <code class="language-plaintext highlighter-rouge">insert</code>가 이루어지도록 코드를 짰다.</li>
-  <li>정확성 테스트는 통과했지만 효율성 테스트를 통과하지 못 했다.</li>
-</ul>
-
-<h2 id="2차-시도">2차 시도</h2>
-<ul>
-  <li>효율성 테스트에서 계속 시간초과가 나서 구글링 해 보니까 리스트를 사용해서 푸는 것이 아니었다… 내가 파이썬의 리스트를 오해하고 있었던 것이었다… 링크드 리스트를 만들어야 했다.</li>
-  <li>그런데 해설 중에 <code class="language-plaintext highlighter-rouge">dictionary</code>로 링크드 리스트를 구현해 푼 분이 계셨다.</li>
-  <li><a href="https://kjhoon0330.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%ED%91%9C-%ED%8E%B8%EC%A7%91-Python">https://kjhoon0330.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%ED%91%9C-%ED%8E%B8%EC%A7%91-Python</a></li>
-  <li>이 풀이를 참고해서 삭제/삽입 연산을 수정하니까 효율성 테스트도 통과할 수 있었다.</li>
-  <li>언어별 배열의 특정을 잘 파악하고 적절한 자료구조를 사용하고 구현할 수 있게 하자!<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/351dbcbf068aa21410b299b1f487fdfb.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="LinkedList" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/81303]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/c4f27f01afbaf0beb610650ab9f35825.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Stack" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/67257]]></summary></entry></feed>
