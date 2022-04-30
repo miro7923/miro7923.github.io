@@ -37,7 +37,7 @@ tags:
 
 <p align="center"><img src="../../assets/images/workbenchEer5.png" width="600"></p>￼
 
-* 파일 선택하고 `Open`
+* `/Uno-Mas/unomasdb/unomasTable.mwb` 경로에 있는 파일 선택하고 `Open`
 
 <p align="center"><img src="../../assets/images/workbenchEer6.png" width="800"></p>￼
 
