@@ -63,7 +63,29 @@ tags:
 
 <p align="center"><img src="../../assets/images/workbenchEer11.png" width="800"></p>￼
 
-* 컬럼을 클릭하면 주석문 확인이 가능하다. 존재가 이해 안 되는 컬럼은 여기를 추가하고 본인이 필요하면 아래에 주석문 추가 가능 <br><br><br>
+* 컬럼을 클릭하면 주석문 확인이 가능하다. 존재가 이해 안 되는 컬럼은 여기를 추가하고 본인이 필요하면 아래에 주석문 추가 가능 <br><br>
+
+# 공유받은 SQL Script로 테이블 생성하기
+
+<p align="center"><img src="../../assets/images/workbenchEer12.png" width="600"></p>￼
+
+* 스키마 생성한 후 사진상 메뉴로 들어감
+
+<p align="center"><img src="../../assets/images/workbenchEer13.png" width="800"></p>￼
+
+* `/Uno-Mas/unomasdb/unomasDbTable.sql` 경로에 있는 파일 선택
+
+<p align="center"><img src="../../assets/images/workbenchEer14.png" width="800"></p>￼
+
+* 전체실행 버튼 눌러서 실행하면 테이블 생성됨. 
+
+<p align="center"><img src="../../assets/images/workbenchEer15.png" width="800"></p>￼
+
+* 하단 로그창에 성공적으로 생성됐다는 메시지 뜨면 다 생성된 것임. 안 보이면 테이블 목록 새로고침하면 보일 것임
+
+<p align="center"><img src="../../assets/images/workbenchEer16.png" width="200"></p>￼
+
+<br><br><br>
 
 # 참고
 * [MySQL Workbench 로 DB 설계하기](https://litiblue.com/post/mysql-workbench-db/)
