@@ -1324,4 +1324,10 @@ var store = [{
         "tags": ["Algorithm","Programmers","Math","Python"],
         "url": "/programmers/programmers-get-prime-num-in-kNum-py/",
         "teaser": null
+      },{
+        "title": "MySQL Workbench에서 EER Diagram model & SQL Script import Guide",
+        "excerpt":"   MySQL Workbench에 내장되어 있는 EER 다이어그램 제작툴의 사용법과 SQL 스크립트를 불러와서 테이블 생성하는 법 가이드     EER 다이어그램 모델 불러오기     master 브랜치를 pull한다.   MySQL Workbench 실행     ￼      빨간 박스 선택     ￼      + 눌러서 모델 추가함     ￼      이런 창이 나올 것임. 여기에서 File 메뉴 클릭     ￼      Open Model 클릭     ￼      파일 선택하고 Open     ￼      그럼 만들어진 다이어그램 모델 확인 가능!     다이어그램 세부사항 확인     ￼      테이블 사이 관계선 위에 마우스오버하면 외래키로 연결된 컬럼을 표시해 준다.     ￼      테이블 이름이 있는 영역에 마우스오버하면 이 테이블과 관계를 맺고 있는 테이블들을 표시해준다.     ￼      테이블명을 더블클릭하면 세부사항을 확인할 수 있다.     ￼      각 테이블별로 설명도 써 놨으니까 참고하거나 본인이 더 필요하다고 생각되는 메모가 있으면 추가할 수 있다.     ￼      컬럼을 클릭하면 주석문 확인이 가능하다. 존재가 이해 안 되는 컬럼은 여기를 추가하고 본인이 필요하면 아래에 주석문 추가 가능       참고     MySQL Workbench 로 DB 설계하기  ","categories": ["Uno mas"],
+        "tags": ["Project","UnoMas","MySQLWorkbench","Log"],
+        "url": "/uno%20mas/db-import-guide/",
+        "teaser": null
       }]
