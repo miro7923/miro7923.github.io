@@ -63,7 +63,11 @@ tags:
 
 <p align="center"><img src="../../assets/images/workbenchEer11.png" width="800"></p>￼
 
-* 컬럼을 클릭하면 주석문 확인이 가능하다. 존재가 이해 안 되는 컬럼은 여기를 참고하고 본인이 필요하면 아래에 주석문 추가 가능 <br><br>
+* 컬럼을 클릭하면 주석문 확인이 가능하다. 존재가 이해 안 되는 컬럼은 여기를 참고하고 본인이 필요하면 아래에 주석문 추가 가능 
+
+<p align="center"><img src="../../assets/images/workbenchEer17.png" width="800"></p>￼
+
+* 카테고리와 같은 일부 컬럼은 `Trigger`에 제약조건을 걸어놨음. 관련해서 작업하는 사람들은 참고<br><br>
 
 # 공유받은 SQL Script로 테이블 생성하기
 
