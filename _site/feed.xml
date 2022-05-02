@@ -1,4 +1,331 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-02T15:58:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 8 - (TDD) Junit4를 사용한 DB 연결 테스트 코드 작성</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-08/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 8 - (TDD) Junit4를 사용한 DB 연결 테스트 코드 작성" /><published>2022-05-02T00:00:00+09:00</published><updated>2022-05-02T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-08</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-08/"><![CDATA[<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-03T01:36:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 9 - 카테고리별로 해당되는 상품 목록 출력하기</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-09/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 9 - 카테고리별로 해당되는 상품 목록 출력하기" /><published>2022-05-03T00:00:00+09:00</published><updated>2022-05-03T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-09</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-09/"><![CDATA[<ul>
+  <li>작성일 : 2022.05.03</li>
+  <li>
+    <p>작성자 : 황유진</p>
+  </li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
+  <li>팀장 : 황유진</li>
+  <li>부팀장 : 오성은</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
+  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+<ul>
+  <li>상품 목록페이지를 카테고리별로 상품을 분류해 보여줄 수 있도록 만들었다.</li>
+</ul>
+
+<h2 id="productdaojava">ProductDAO.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas.persistence</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.april.unomas.domain.ProductVO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+
+    <span class="c1">// 상품 상위 카테고리 이름 가져오기</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getTopCateName</span><span class="o">(</span><span class="kt">int</span> <span class="n">topcate_num</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>먼저 <code class="language-plaintext highlighter-rouge">DAO</code> 객체를 만드는데 결합도를 낮추기 위해 인터페이스를 만든 다음에 이를 구현하는 클래스를 만들었다.</li>
+</ul>
+
+<h2 id="productdaoimpljava">ProductDAOImpl.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas.persistence</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.inject.Inject</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.session.SqlSession</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Repository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.april.unomas.domain.ProductVO</span><span class="o">;</span>
+
+<span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOImpl</span> <span class="kd">implements</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAMESPACE</span> <span class="o">=</span> <span class="s">"com.unomas.mapper.ProductMapper"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOImpl</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getTopCateName</span><span class="o">(</span><span class="kt">int</span> <span class="n">topcate_num</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectOne</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getTopCateName"</span><span class="o">,</span> <span class="n">topcate_num</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>아까 만든 인터페이스를 구현하는 클래스에서 세부 동작을 구현한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">SqlSession</code> 생성 테스트는 저번 포스트에서 진행한 결과 성공적이었기 때문에 이를 이용해 DB에 접근하는 동작을 구현한다.</li>
+  <li>먼저 상품 목록 페이지의 상단에 출력할 대분류 이름을 테이블에서 가져온다.</li>
+</ul>
+
+<h2 id="productmapperxml">ProductMapper.xml</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
+  
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"com.unomas.mapper.ProductMapper"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- 상품 상위 카테고리 이름 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getTopCateName"</span> <span class="na">resultType=</span><span class="s">"String"</span><span class="nt">&gt;</span>
+        SELECT topcate_name 
+        FROM top_category  
+        WHERE topcate_num = #{topcate_num}
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>매퍼로 이동해서 <code class="language-plaintext highlighter-rouge">SQL</code> 쿼리문을 작성한다.</li>
+</ul>
+
+<h2 id="productdaotestjava---실제-구현-전에-dao가-제대로-동작하는-지-테스트">ProductDAOTest.java - 실제 구현 전에 DAO가 제대로 동작하는 지 테스트!</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.inject.Inject</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.ContextConfiguration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.junit4.SpringJUnit4ClassRunner</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.april.unomas.persistence.ProductDAO</span><span class="o">;</span>
+
+<span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ContextConfiguration</span><span class="o">(</span>
+        <span class="n">locations</span> <span class="o">=</span> <span class="o">{</span><span class="s">"file:src/main/webapp/WEB-INF/spring/root-context.xml"</span><span class="o">}</span>
+        <span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOTest</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductDAO</span> <span class="n">dao</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOTest</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nc">DAO생성테스트</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"dao : "</span> <span class="o">+</span> <span class="n">dao</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">상위카테고리출력테스트</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getTopCateName</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>테스트 클래스를 생성해서 아까 만든 <code class="language-plaintext highlighter-rouge">DAO</code>의 동작여부를 테스트한다.</li>
+  <li>결과는 성공적!</li>
+</ul>
+
+<h2 id="productservicejava">ProductService.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas.service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.april.unomas.domain.ProductVO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductService</span> <span class="o">{</span>
+
+    <span class="c1">// 상위 카테고리 이름 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getTopCateName</span><span class="o">(</span><span class="kt">int</span> <span class="n">topcate_num</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>컨트롤러와 DBMS의 결합도를 낮춰줄 서비스 계층을 만든다. 이것 또한 인터페이스를 만든 다음 구현하는 클래스를 만든다.</li>
+</ul>
+
+<h2 id="productserviceimpljava">ProductServiceImpl.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas.service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.inject.Inject</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.april.unomas.domain.ProductVO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.april.unomas.persistence.ProductDAO</span><span class="o">;</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductServiceImpl</span> <span class="kd">implements</span> <span class="nc">ProductService</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductDAO</span> <span class="n">dao</span><span class="o">;</span>
+	
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductServiceImpl</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getTopCateName</span><span class="o">(</span><span class="kt">int</span> <span class="n">topcate_num</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getTopCateName</span><span class="o">(</span><span class="n">topcate_num</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>아까 <code class="language-plaintext highlighter-rouge">DAO</code>에서 만들었던 메서드를 호출해 결과값을 리턴한다.</li>
+</ul>
+
+<h2 id="productservicetestjava">ProductServiceTest.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.inject.Inject</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.ContextConfiguration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.junit4.SpringJUnit4ClassRunner</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.april.unomas.service.ProductService</span><span class="o">;</span>
+
+<span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ContextConfiguration</span><span class="o">(</span>
+        <span class="n">locations</span> <span class="o">=</span> <span class="o">{</span><span class="s">"file:src/main/webapp/WEB-INF/spring/root-context.xml"</span><span class="o">}</span>
+        <span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductServiceTest</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductService</span> <span class="n">service</span><span class="o">;</span>
+	
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductServiceTest</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">상품상위카테고리이름</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">service</span><span class="o">.</span><span class="na">getTopCateName</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서비스 클래스 또한 테스트를 진행했다. 동작 잘 됨!</li>
+</ul>
+
+<h2 id="productcontrollerjava">ProductController.java</h2>
+
+<ul>
+  <li>DB에 접근하는 동작의 테스트가 끝났으니까 이제 컨트롤러에서 뷰 페이지로 연결시켜 준다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.inject.Inject</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.ui.Model</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMethod</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestParam</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.april.unomas.service.ProductService</span><span class="o">;</span>
+
+
+<span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductController</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductService</span> <span class="n">service</span><span class="o">;</span>
+	
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/product_list"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span> <span class="c1">// /shop -&gt; /product_list</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">shopGET</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"topcate_num"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">topcate_num</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="c1">// 해당 카테고리의 상품 전체 목록 </span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"productList"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getProductList</span><span class="o">());</span>
+        
+        <span class="c1">// 대분류 이름</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"topcate"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getTopCateName</span><span class="o">(</span><span class="n">topcate_num</span><span class="o">));</span>
+        
+        <span class="c1">// 소분류 이름 리스트</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"dcateList"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getDcateNames</span><span class="o">(</span><span class="n">topcate_num</span><span class="o">));</span>
+		
+        <span class="k">return</span> <span class="s">"product/productList"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>DB에서 가져온 정보를 뷰 페이지에 출력하기 위해 컨트롤러에서 이동 전에 <code class="language-plaintext highlighter-rouge">Model</code> 객체에 저장한다.</li>
+  <li>해당 카테고리의 전체 상품을 가져오는 메서드와 소분류 이름 리스트를 가져오는 메서드도 만들었는데 위에서 작성한 것과 같은 과정을 거쳐 만들었기 때문에 생략했다. (글이 너무 길어져서…)</li>
+  <li><code class="language-plaintext highlighter-rouge">topcate_num</code> 파라미터값으로 대분류를 불러온 다음 그에 해당하는 소분류와 상품들을 출력할 것이다.</li>
+</ul>
+
+<h2 id="productlistjsp">ProductList.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"categoryBox"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>${topcate }<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"categoryList"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">"category"</span> <span class="na">id=</span><span class="s">"category0"</span> 
+            <span class="na">onclick=</span><span class="s">"changeSort(0, ${fn:length(dcateList) });"</span><span class="nt">&gt;</span> 전체보기<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"cate"</span><span class="na"> items=</span><span class="s">"</span><span class="si">${</span><span class="n">dcateList</span> <span class="si">}</span><span class="s">"</span><span class="na"> varStatus=</span><span class="s">"it"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">"category"</span> <span class="na">id=</span><span class="s">"category${it.index + 1 }"</span>
+                <span class="na">onclick=</span><span class="s">"changeSort(${it.index + 1 }, ${fn:length(dcateList) });"</span><span class="nt">&gt;</span> ${cate }<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;/c:forEach&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>뷰 페이지에서는 <code class="language-plaintext highlighter-rouge">EL</code> 표현식을 사용해 출력한다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/unomas_prodListAddDb.png" /></p>
+
+<ul>
+  <li>그러면 이제 손으로 일일이 타이핑하지 않아도 DB 정보에 맞춰 출력된다! 뿌-듯 😄</li>
+  <li>이제 다음에 해야할 것은 헤더에 있는 메뉴에서 상품 목록 페이지를 호출했을 때 각 대분류별로 보여지게 하는 것과 상품 하나를 클릭하면 상세 페이지로 연결되는 것을 구현하는 것이다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-17</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.03 작성자 : 황유진]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 8 - (TDD) Junit4를 사용한 DB 연결 테스트 코드 작성</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-08/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 8 - (TDD) Junit4를 사용한 DB 연결 테스트 코드 작성" /><published>2022-05-02T00:00:00+09:00</published><updated>2022-05-02T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-08</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-08/"><![CDATA[<ul>
   <li>작성일 : 2022.05.02</li>
   <li>
     <p>작성자 : 황유진</p>
@@ -561,96 +888,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/db80617186ced5c788e567a2b15970f1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="DFS" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92342]]></summary></entry><entry><title type="html">Python) 프로그래머스. 주차 요금 계산</title><link href="http://localhost:4000/programmers/programmers-parking-fee-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 주차 요금 계산" /><published>2022-04-30T00:00:00+09:00</published><updated>2022-04-30T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-parking-fee-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-parking-fee-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92341">https://programmers.co.kr/learn/courses/30/lessons/92341</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>주차장의 요금표와 차량이 들어오고(입차) 나간(출차) 기록이 주어졌을 때, 차량별로 주차 요금을 계산하려고 합니다.</p>
-  </li>
-  <li>어떤 차량이 입차된 후에 출차된 내역이 없다면, 23:59에 출차된 것으로 간주합니다.</li>
-  <li>00:00부터 23:59까지의 입/출차 내역을 바탕으로 차량별 누적 주차 시간을 계산하여 요금을 일괄로 정산합니다.</li>
-  <li>누적 주차 시간이 기본 시간이하라면, 기본 요금을 청구합니다.</li>
-  <li>누적 주차 시간이 기본 시간을 초과하면, 기본 요금에 더해서, 초과한 시간에 대해서 단위 시간 마다 단위 요금을 청구합니다.
-    <ul>
-      <li>초과한 시간이 단위 시간으로 나누어 떨어지지 않으면, 올림합니다.</li>
-      <li>⌈a⌉ : a보다 작지 않은 최소의 정수를 의미합니다. 즉, 올림을 의미합니다.</li>
-    </ul>
-  </li>
-  <li>주차 요금을 나타내는 정수 배열 fees, 자동차의 입/출차 내역을 나타내는 문자열 배열 records가 매개변수로 주어집니다. 차량 번호가 작은 자동차부터 청구할 주차 요금을 차례대로 정수 배열에 담아서 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>fees의 길이 = 4</p>
-  </li>
-  <li>fees[0] = 기본 시간(분)
-    <ul>
-      <li>1 ≤ fees[0] ≤ 1,439</li>
-      <li>fees[1] = 기본 요금(원)</li>
-      <li>0 ≤ fees[1] ≤ 100,000</li>
-      <li>fees[2] = 단위 시간(분)</li>
-      <li>1 ≤ fees[2] ≤ 1,439</li>
-      <li>fees[3] = 단위 요금(원)</li>
-      <li>1 ≤ fees[3] ≤ 10,000</li>
-    </ul>
-  </li>
-  <li>1 ≤ records의 길이 ≤ 1,000
-    <ul>
-      <li>records의 각 원소는 “시각 차량번호 내역” 형식의 문자열입니다.</li>
-      <li>시각, 차량번호, 내역은 하나의 공백으로 구분되어 있습니다.</li>
-      <li>시각은 차량이 입차되거나 출차된 시각을 나타내며, HH:MM 형식의 길이 5인 문자열입니다.</li>
-      <li>HH:MM은 00:00부터 23:59까지 주어집니다.</li>
-      <li>잘못된 시각(“25:22”, “09:65” 등)은 입력으로 주어지지 않습니다.</li>
-      <li>차량번호는 자동차를 구분하기 위한, `0’~’9’로 구성된 길이 4인 문자열입니다.</li>
-      <li>내역은 길이 2 또는 3인 문자열로, IN 또는 OUT입니다. IN은 입차를, OUT은 출차를 의미합니다.</li>
-      <li>records의 원소들은 시각을 기준으로 오름차순으로 정렬되어 주어집니다.</li>
-      <li>records는 하루 동안의 입/출차된 기록만 담고 있으며, 입차된 차량이 다음날 출차되는 경우는 입력으로 주어지지 않습니다.</li>
-      <li>같은 시각에, 같은 차량번호의 내역이 2번 이상 나타내지 않습니다.</li>
-      <li>마지막 시각(23:59)에 입차되는 경우는 입력으로 주어지지 않습니다.</li>
-      <li>아래의 예를 포함하여, 잘못된 입력은 주어지지 않습니다.
-        <ul>
-          <li>주차장에 없는 차량이 출차되는 경우</li>
-          <li>주차장에 이미 있는 차량(차량번호가 같은 차량)이 다시 입차되는 경우<br /><br /><br /></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>간단하게 생각하고 접근했는데 파이썬 자료형에 익숙치 않고 예외 처리를 제대로 해주지 않아서 생각보다 시간이 걸렸다. 파이참 없었으면 못 풀었겠는걸…ㅎ</li>
-</ul>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">cars = {차량번호 : [누적시간, 입차시간]}</code> 딕셔너리를 만든다.</li>
-  <li><code class="language-plaintext highlighter-rouge">records</code> 배열을 순회하며 현재 시간을 분 단위로 환산한다.</li>
-  <li>딕셔너리에 차량번호가 key로 없으면 새로 만든다. <code class="language-plaintext highlighter-rouge">value</code>는 <code class="language-plaintext highlighter-rouge">[0, 분으로 환산한 입차시간]</code><br />
- 3-1. key가 있고 <code class="language-plaintext highlighter-rouge">IN</code>이라면 입차시간만 현재시간으로 바꿔준다.<br />
- 3-2. key가 있고 <code class="language-plaintext highlighter-rouge">OUT</code>이라면 <code class="language-plaintext highlighter-rouge">2에서 구한 시간 - key에 저장된 입차시간</code>을 누적시간에 더해준다. 이때 출차했다는 표시로 입차시간을 -1로 바꾼다.</li>
-  <li>차량번호 오름차순으로 저장할 최소힙을 만든다. <code class="language-plaintext highlighter-rouge">heap = [차량번호, 누적시간]</code> 차량번호 기준으로 정렬할 수 있게 차량번호를 앞에 위치시킨다.</li>
-  <li><code class="language-plaintext highlighter-rouge">cars</code>를 순회하며 출차하지 않은 차가 있으면 마감시간인 <code class="language-plaintext highlighter-rouge">23:59</code>까지의 누적시간을 구해서 더해준다.<br />
- 5-1. 모든 차량의 번호와 누적시간을 4에서 만든 최소힙에 저장한다.</li>
-  <li>최소힙이 빌 때까지 하나씩 <code class="language-plaintext highlighter-rouge">pop</code> 해서 요금을 계산한 뒤 정답배열에 저장한다.<br /><br /></li>
-</ol>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/e8665a951cb4ebb1c405b87b4590ada0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92341]]></summary></entry><entry><title type="html">MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide</title><link href="http://localhost:4000/uno%20mas/db-import-guide/" rel="alternate" type="text/html" title="MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide" /><published>2022-04-30T00:00:00+09:00</published><updated>2022-04-30T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/db-import-guide</id><content type="html" xml:base="http://localhost:4000/uno%20mas/db-import-guide/"><![CDATA[<ul>
+<script src="https://gist.github.com/miro7923/db80617186ced5c788e567a2b15970f1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="DFS" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92342]]></summary></entry><entry><title type="html">MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide</title><link href="http://localhost:4000/uno%20mas/db-import-guide/" rel="alternate" type="text/html" title="MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide" /><published>2022-04-30T00:00:00+09:00</published><updated>2022-04-30T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/db-import-guide</id><content type="html" xml:base="http://localhost:4000/uno%20mas/db-import-guide/"><![CDATA[<ul>
   <li><code class="language-plaintext highlighter-rouge">MySQL Workbench</code>에 내장되어 있는 <code class="language-plaintext highlighter-rouge">EER</code> 다이어그램 제작툴의 사용법과 <code class="language-plaintext highlighter-rouge">SQL</code> 스크립트를 불러와서 테이블 생성하는 법 가이드<br /><br /></li>
 </ul>
 
@@ -784,7 +1022,96 @@
 <h1 id="참고">참고</h1>
 <ul>
   <li><a href="https://litiblue.com/post/mysql-workbench-db/">MySQL Workbench 로 DB 설계하기</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="MySQLWorkbench" /><category term="Log" /><summary type="html"><![CDATA[MySQL Workbench에 내장되어 있는 EER 다이어그램 제작툴의 사용법과 SQL 스크립트를 불러와서 테이블 생성하는 법 가이드]]></summary></entry><entry><title type="html">Python) 프로그래머스. k진수에서 소수 개수 구하기</title><link href="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. k진수에서 소수 개수 구하기" /><published>2022-04-29T00:00:00+09:00</published><updated>2022-04-29T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="MySQLWorkbench" /><category term="Log" /><summary type="html"><![CDATA[MySQL Workbench에 내장되어 있는 EER 다이어그램 제작툴의 사용법과 SQL 스크립트를 불러와서 테이블 생성하는 법 가이드]]></summary></entry><entry><title type="html">Python) 프로그래머스. 주차 요금 계산</title><link href="http://localhost:4000/programmers/programmers-parking-fee-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 주차 요금 계산" /><published>2022-04-30T00:00:00+09:00</published><updated>2022-04-30T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-parking-fee-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-parking-fee-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92341">https://programmers.co.kr/learn/courses/30/lessons/92341</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>주차장의 요금표와 차량이 들어오고(입차) 나간(출차) 기록이 주어졌을 때, 차량별로 주차 요금을 계산하려고 합니다.</p>
+  </li>
+  <li>어떤 차량이 입차된 후에 출차된 내역이 없다면, 23:59에 출차된 것으로 간주합니다.</li>
+  <li>00:00부터 23:59까지의 입/출차 내역을 바탕으로 차량별 누적 주차 시간을 계산하여 요금을 일괄로 정산합니다.</li>
+  <li>누적 주차 시간이 기본 시간이하라면, 기본 요금을 청구합니다.</li>
+  <li>누적 주차 시간이 기본 시간을 초과하면, 기본 요금에 더해서, 초과한 시간에 대해서 단위 시간 마다 단위 요금을 청구합니다.
+    <ul>
+      <li>초과한 시간이 단위 시간으로 나누어 떨어지지 않으면, 올림합니다.</li>
+      <li>⌈a⌉ : a보다 작지 않은 최소의 정수를 의미합니다. 즉, 올림을 의미합니다.</li>
+    </ul>
+  </li>
+  <li>주차 요금을 나타내는 정수 배열 fees, 자동차의 입/출차 내역을 나타내는 문자열 배열 records가 매개변수로 주어집니다. 차량 번호가 작은 자동차부터 청구할 주차 요금을 차례대로 정수 배열에 담아서 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>fees의 길이 = 4</p>
+  </li>
+  <li>fees[0] = 기본 시간(분)
+    <ul>
+      <li>1 ≤ fees[0] ≤ 1,439</li>
+      <li>fees[1] = 기본 요금(원)</li>
+      <li>0 ≤ fees[1] ≤ 100,000</li>
+      <li>fees[2] = 단위 시간(분)</li>
+      <li>1 ≤ fees[2] ≤ 1,439</li>
+      <li>fees[3] = 단위 요금(원)</li>
+      <li>1 ≤ fees[3] ≤ 10,000</li>
+    </ul>
+  </li>
+  <li>1 ≤ records의 길이 ≤ 1,000
+    <ul>
+      <li>records의 각 원소는 “시각 차량번호 내역” 형식의 문자열입니다.</li>
+      <li>시각, 차량번호, 내역은 하나의 공백으로 구분되어 있습니다.</li>
+      <li>시각은 차량이 입차되거나 출차된 시각을 나타내며, HH:MM 형식의 길이 5인 문자열입니다.</li>
+      <li>HH:MM은 00:00부터 23:59까지 주어집니다.</li>
+      <li>잘못된 시각(“25:22”, “09:65” 등)은 입력으로 주어지지 않습니다.</li>
+      <li>차량번호는 자동차를 구분하기 위한, `0’~’9’로 구성된 길이 4인 문자열입니다.</li>
+      <li>내역은 길이 2 또는 3인 문자열로, IN 또는 OUT입니다. IN은 입차를, OUT은 출차를 의미합니다.</li>
+      <li>records의 원소들은 시각을 기준으로 오름차순으로 정렬되어 주어집니다.</li>
+      <li>records는 하루 동안의 입/출차된 기록만 담고 있으며, 입차된 차량이 다음날 출차되는 경우는 입력으로 주어지지 않습니다.</li>
+      <li>같은 시각에, 같은 차량번호의 내역이 2번 이상 나타내지 않습니다.</li>
+      <li>마지막 시각(23:59)에 입차되는 경우는 입력으로 주어지지 않습니다.</li>
+      <li>아래의 예를 포함하여, 잘못된 입력은 주어지지 않습니다.
+        <ul>
+          <li>주차장에 없는 차량이 출차되는 경우</li>
+          <li>주차장에 이미 있는 차량(차량번호가 같은 차량)이 다시 입차되는 경우<br /><br /><br /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>간단하게 생각하고 접근했는데 파이썬 자료형에 익숙치 않고 예외 처리를 제대로 해주지 않아서 생각보다 시간이 걸렸다. 파이참 없었으면 못 풀었겠는걸…ㅎ</li>
+</ul>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">cars = {차량번호 : [누적시간, 입차시간]}</code> 딕셔너리를 만든다.</li>
+  <li><code class="language-plaintext highlighter-rouge">records</code> 배열을 순회하며 현재 시간을 분 단위로 환산한다.</li>
+  <li>딕셔너리에 차량번호가 key로 없으면 새로 만든다. <code class="language-plaintext highlighter-rouge">value</code>는 <code class="language-plaintext highlighter-rouge">[0, 분으로 환산한 입차시간]</code><br />
+ 3-1. key가 있고 <code class="language-plaintext highlighter-rouge">IN</code>이라면 입차시간만 현재시간으로 바꿔준다.<br />
+ 3-2. key가 있고 <code class="language-plaintext highlighter-rouge">OUT</code>이라면 <code class="language-plaintext highlighter-rouge">2에서 구한 시간 - key에 저장된 입차시간</code>을 누적시간에 더해준다. 이때 출차했다는 표시로 입차시간을 -1로 바꾼다.</li>
+  <li>차량번호 오름차순으로 저장할 최소힙을 만든다. <code class="language-plaintext highlighter-rouge">heap = [차량번호, 누적시간]</code> 차량번호 기준으로 정렬할 수 있게 차량번호를 앞에 위치시킨다.</li>
+  <li><code class="language-plaintext highlighter-rouge">cars</code>를 순회하며 출차하지 않은 차가 있으면 마감시간인 <code class="language-plaintext highlighter-rouge">23:59</code>까지의 누적시간을 구해서 더해준다.<br />
+ 5-1. 모든 차량의 번호와 누적시간을 4에서 만든 최소힙에 저장한다.</li>
+  <li>최소힙이 빌 때까지 하나씩 <code class="language-plaintext highlighter-rouge">pop</code> 해서 요금을 계산한 뒤 정답배열에 저장한다.<br /><br /></li>
+</ol>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/e8665a951cb4ebb1c405b87b4590ada0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92341]]></summary></entry><entry><title type="html">Python) 프로그래머스. k진수에서 소수 개수 구하기</title><link href="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. k진수에서 소수 개수 구하기" /><published>2022-04-29T00:00:00+09:00</published><updated>2022-04-29T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -835,179 +1162,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/195a26379567836d730288d5e782ef38.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92335]]></summary></entry><entry><title type="html">깃허브로 Spring Legacy Project를 사용한 팀 프로젝트 진행시 내 컴퓨터에서 다른 사람 작업물 확인하기</title><link href="http://localhost:4000/uno%20mas/pull-req-guide/" rel="alternate" type="text/html" title="깃허브로 Spring Legacy Project를 사용한 팀 프로젝트 진행시 내 컴퓨터에서 다른 사람 작업물 확인하기" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/pull-req-guide</id><content type="html" xml:base="http://localhost:4000/uno%20mas/pull-req-guide/"><![CDATA[<ul>
-  <li>깃허브를 이용해 팀 프로젝트를 진행하는 중 다른 팀원의 작업물 확인 방법을 자주 잊어버리는 팀원들을 위해서 작성했다.</li>
-</ul>
-
-<h1 id="pull-request-가이드">Pull request 가이드</h1>
-<ol>
-  <li>본인 작업물 먼저 본인이 작업중인 브랜치에 커밋 &amp; 푸시하기 (master 브랜치에 하면 안됨!!!)</li>
-  <li>sts에서 프로젝트 이름 위에서 마우스 우클릭</li>
-  <li>Team - Switch to - master 브랜치 선택</li>
-  <li>master 브랜치로 바꿨으면 Team - pull 선택</li>
-</ol>
-
-<p align="center"><img src="../../assets/images/pullResultInSts.png" width="600" /></p>
-<p>￼</p>
-
-<ul>
-  <li>이렇게 뜨면 pull 완료된 것임 근데 브랜치 목록에 바로 보이지는 않아서 세팅 하나 더 필요함</li>
-</ul>
-
-<ol>
-  <li>Team - Switch to - Other
-￼</li>
-</ol>
-<p align="center"><img src="../../assets/images/chooseBranch.png" width="600" /></p>
-
-<ul>
-  <li>check out… 클릭하면 선택창이 하나 뜨는데</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/checkoutBranchInSts.png" width="600" /></p>
-<p>￼</p>
-<ul>
-  <li>일단 빨간 박스를 선택함</li>
-  <li>빨간 박스 안에 있는 check out commit을 누르면 내 로컬에는 이 브랜치를 생성하지 않고 보기만 하는 것이고(읽기 전용 모드 느낌)</li>
-  <li>파란 버튼인 check out as new local branch를 선택하면 내 로컬에도 이 브랜치를 생성하는 것임. 이렇게 하면 이 브랜치 내용을 수정해서 커밋/푸시하는 것이 가능함(근데 merge 완료되면 삭제할 브랜치라 로컬에 굳이 생성할 필요가 없어보여서 그냥 빨간 박스 선택 추천)</li>
-</ul>
-
-<ol>
-  <li>브랜치 변경이 완료되면 똑같이 서버 실행한 뒤 HomeController의 매핑 주소를 참고해서 주소창에 입력하면 작업한 페이지를 볼 수 있다.</li>
-  <li>다 봤으면 다시 본인 브랜치로 바꿔서 계속 작업하면 됨</li>
-  <li>수정했으면 하는 사항이 있으면 여기서 밑으로 쭉 내려보면 댓글 작성란이 있음. 작성하면 된다.</li>
-</ol>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[깃허브를 이용해 팀 프로젝트를 진행하는 중 다른 팀원의 작업물 확인 방법을 자주 잊어버리는 팀원들을 위해서 작성했다.]]></summary></entry><entry><title type="html">Python) 프로그래머스. 신고 결과 받기</title><link href="http://localhost:4000/programmers/programmers-report-result-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 신고 결과 받기" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-report-result-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-report-result-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92334">https://programmers.co.kr/learn/courses/30/lessons/92334</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>신입사원 무지는 게시판 불량 이용자를 신고하고 처리 결과를 메일로 발송하는 시스템을 개발하려 합니다. 무지가 개발하려는 시스템은 다음과 같습니다.</p>
-  </li>
-  <li>각 유저는 한 번에 한 명의 유저를 신고할 수 있습니다.</li>
-  <li>신고 횟수에 제한은 없습니다. 서로 다른 유저를 계속해서 신고할 수 있습니다.</li>
-  <li>한 유저를 여러 번 신고할 수도 있지만, 동일한 유저에 대한 신고 횟수는 1회로 처리됩니다.</li>
-  <li>k번 이상 신고된 유저는 게시판 이용이 정지되며, 해당 유저를 신고한 모든 유저에게 정지 사실을 메일로 발송합니다.</li>
-  <li>
-    <p>유저가 신고한 모든 내용을 취합하여 마지막에 한꺼번에 게시판 이용 정지를 시키면서 정지 메일을 발송합니다.</p>
-  </li>
-  <li>이용자의 ID가 담긴 문자열 배열 id_list, 각 이용자가 신고한 이용자의 ID 정보가 담긴 문자열 배열 report, 정지 기준이 되는 신고 횟수 k가 매개변수로 주어질 때, 각 유저별로 처리 결과 메일을 받은 횟수를 배열에 담아 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>2 ≤ id_list의 길이 ≤ 1,000
-    <ul>
-      <li>1 ≤ id_list의 원소 길이 ≤ 10</li>
-      <li>id_list의 원소는 이용자의 id를 나타내는 문자열이며 알파벳 소문자로만 이루어져 있습니다.</li>
-      <li>id_list에는 같은 아이디가 중복해서 들어있지 않습니다.</li>
-    </ul>
-  </li>
-  <li>1 ≤ report의 길이 ≤ 200,000
-    <ul>
-      <li>3 ≤ report의 원소 길이 ≤ 21</li>
-      <li>report의 원소는 “이용자id 신고한id”형태의 문자열입니다.</li>
-      <li>예를 들어 “muzi frodo”의 경우 “muzi”가 “frodo”를 신고했다는 의미입니다.</li>
-      <li>id는 알파벳 소문자로만 이루어져 있습니다.</li>
-      <li>이용자id와 신고한id는 공백(스페이스)하나로 구분되어 있습니다.</li>
-      <li>자기 자신을 신고하는 경우는 없습니다.</li>
-    </ul>
-  </li>
-  <li>1 ≤ k ≤ 200, k는 자연수입니다.</li>
-  <li>return 하는 배열은 id_list에 담긴 id 순서대로 각 유저가 받은 결과 메일 수를 담으면 됩니다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>딕셔너리를 사용해서 풀었다.</li>
-  <li>이 문제에서 관리되어야 하는 것은 <code class="language-plaintext highlighter-rouge">id_list</code>의 원소별로 신고한 id, 각 id별 신고횟수이다.</li>
-</ul>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">usersReport = {신고자 id : [신고된 id 리스트]}</code>와 <code class="language-plaintext highlighter-rouge">reportCnt = {신고된 id : 횟수}</code> 형태의 딕셔너리를 만든다.<br />
- 1-1. <code class="language-plaintext highlighter-rouge">report</code>를 순회하면서 <code class="language-plaintext highlighter-rouge">usersReport</code>에 각 유저별로 신고한 id를 담는다.<br />
- 1-2. <code class="language-plaintext highlighter-rouge">reportCnt</code>에 각 유저별로 신고된 횟수를 저장한다.<br />
- 1-3. 이때 같은 유저가 동일한 아이디를 여러번 신고하지 않도록 예외처리를 해 주어야 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 추출한 리스트 <code class="language-plaintext highlighter-rouge">stop = [k번 이상 신고된 id]</code>를 만든다.<br />
- 2-1. <code class="language-plaintext highlighter-rouge">reportCnt</code>를 순회하며 <code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 <code class="language-plaintext highlighter-rouge">stop</code>에 담는다.<br /></li>
-  <li><code class="language-plaintext highlighter-rouge">id_list</code>를 순회하며 각 유저별 메일을 받은 횟수를 <code class="language-plaintext highlighter-rouge">answer</code>에 담는다.<br /><br /></li>
-</ol>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/0c297eece0eed5c168f5daf229ddb58e.js"></script>
-<p><br /><br /></p>
-
-<ul>
-  <li>그런데 이렇게 구구절절 써서 통과하고 보니까 아주 짧은 코드로 통과한 분이 계셨다…</li>
-</ul>
-
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3">https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3</a></p>
-
-<ul>
-  <li>믓지다…😦 <code class="language-plaintext highlighter-rouge">set</code>이 순간 떠오르긴 했으나 어떻게 활용할 지 몰라서 그냥 구구절절 코드를 썼는데 덕분에 하나 배울 수 있었다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92334]]></summary></entry><entry><title type="html">마이크로서비스 아키텍처(Microservices Architecture, MSA)</title><link href="http://localhost:4000/it/msa/" rel="alternate" type="text/html" title="마이크로서비스 아키텍처(Microservices Architecture, MSA)" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/it/msa</id><content type="html" xml:base="http://localhost:4000/it/msa/"><![CDATA[<h1 id="-마이크로서비스-아키텍처란">👀 마이크로서비스 아키텍처란?</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">마이크로서비스</code>는 하나의 큰 애플리케이션을 여러 개의 다른 역할을 수행하는 애플리케이션으로 분리하였을 때 각 애플리케이션을 말하며, 마이크로서비스를 분리하여 여러 개의 작은 애플리케이션으로 쪼개어 변경과 조합이 가능하도록 만든 아키텍처를 <code class="language-plaintext highlighter-rouge">마이크로서비스 아키텍처</code>라 한다.</li>
-  <li>대규모 소프트웨어 프로젝트를 마이크로 단위의 모듈로 분리하여 결합도를 낮추고(loosley-coupled) <code class="language-plaintext highlighter-rouge">API</code>를 통해 통신한다.</li>
-  <li>이렇게 만들면 기존에 개발했던 부분을 수정하거나 새로운 기능을 추가할 때 그 기능이 실패해도 전체 어플리케이션에 미치는 영향을 최소화 할 수 있다.</li>
-</ul>
-
-<h2 id="모놀리틱monolithic-아키텍처">모놀리틱(Monolithic) 아키텍처</h2>
-
-<p align="center"><img src="https://miro.medium.com/max/1280/0*1WjIRAQHhL-UR7WL.png" width="600" /></p>
-<ul>
-  <li>
-    <p>사진 출처 : <a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a</a></p>
-  </li>
-  <li>만약 <code class="language-plaintext highlighter-rouge">JAVA</code>를 사용하여 웹 어플리케이션을 개발한다면
-    <ul>
-      <li>사용자에게 보여줄 <code class="language-plaintext highlighter-rouge">view</code> 페이지를 구성</li>
-      <li>요청된 <code class="language-plaintext highlighter-rouge">URI</code>에 따라 각 <code class="language-plaintext highlighter-rouge">view</code> 페이지를 연결해 줄 <code class="language-plaintext highlighter-rouge">컨트롤러</code></li>
-      <li>도메인 정의 및 <code class="language-plaintext highlighter-rouge">DAO</code> 설계</li>
-      <li><code class="language-plaintext highlighter-rouge">컨트롤러</code>와 <code class="language-plaintext highlighter-rouge">DAO</code>간의 결합도를 낮추기 위해 서비스 계층 구성</li>
-    </ul>
-  </li>
-  <li>등 각 계층간 결합도를 낮추기 위한 설계를 하지만 최종 배포시에는 하나의 <code class="language-plaintext highlighter-rouge">war</code> 파일로 배포하게 된다. 즉 모두가 하나로 합쳐지게 되고 이는 유연한 리펙토링을 어렵게 만든다.</li>
-  <li>서비스의 규모가 작고 개발자의 수도 적다면 큰 문제가 되지 않지만 개발자의 수가 늘어나고 서비스의 규모가 커지면 간단한 기능을 추가할 때에도 수정할 코드가 많아지고 그 수정이 영향을 미치는 부분도 많아졌기 때문에 간단한 변화에도 대규모 통합 테스트가 필요해진다. 이를 <code class="language-plaintext highlighter-rouge">모놀리틱(Monolithic)</code> 아키텍처라 한다.</li>
-  <li>모놀리틱 아키텍처의 특성은 새로운 프레임워크를 사용할 필요가 생겨도 쉽사리 바꾸지 못한다는 점을 만들어 낸다. 왜냐하면 전체 어플리케이션이 하나로 묶여 있다면 그 동안 작성한 코드들을 새로운 언어 또는 프레임워크로 바꿔야 하는데 개발된 코드의 양이 많으면 많을수록 엄두가 안 날 것이다.</li>
-</ul>
-
-<h2 id="마이크로서비스microservice-아키텍처">마이크로서비스(Microservice) 아키텍처</h2>
-
-<p align="center"><img src="https://miro.medium.com/max/1214/0*6c95Zet-KhecGRKK.png" width="600" /></p>
-<ul>
-  <li>
-    <p>사진 출처 : <a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a</a></p>
-  </li>
-  <li>하지만 마이크로서비스 아키텍처는 서비스가 개별적으로 독립적인 단위의 어플리케이션이기 때문에 변경이 용이하고  그 변경이 다른 어플리케이션에 미치는 영향도 적다.</li>
-  <li>또한 개별 서비스 단위의 배포가 가능하기 때문에 하루에도 여러 번의 배포가 가능하다. 최근에 진행했던 <code class="language-plaintext highlighter-rouge">JAVA &amp; JSP</code> 프로젝트를 <code class="language-plaintext highlighter-rouge">AWS EC2</code>로 배포할 때 <code class="language-plaintext highlighter-rouge">war</code> 파일로 배포했기 때문에 배포 후 조그만 수정사항이 생겨도 <code class="language-plaintext highlighter-rouge">war</code> 파일을 다시 익스포트해야 했기 때문에 좀 불편했다. 프로젝트를 마이크로서비스 아키텍처로 설계하게 되면 그런 수고를 덜 수 있어 좀 더 유연하고 빠른 개발이 가능해 보인다.</li>
-  <li>하지만 그만큼 개발이 어렵다는 단점이 있다. 마이크로서비스 아키텍처를 적용해 개발하게 되면 <code class="language-plaintext highlighter-rouge">view</code> 페이지 하나에서 보여지는 여러 컨텐츠 중 특정 컨텐츠 하나만 제공하는 어플리케이션 단위로 쪼개어서 페이지 로드 시 각 어플리케이션에서 받아오게 된다. 이론적으로는 쉬워 보이지만 실제 구현시에는 각각 마이크로서비스의 호스트 정보 및 통신 프로토콜에 대해 처리해 주어야 하기 때문이라고 한다.</li>
-  <li>관련글 : <a href="http://guruble.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4microservice-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B7%B8%EA%B2%83%EC%9D%B4-%EB%AD%A3%EC%9D%B4-%EC%A4%91%ED%97%8C%EB%94%94/">마이크로서비스 아키텍처. 그것이 뭣이 중헌디?</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="결론">결론</h1>
-<ul>
-  <li>마이크로서비스 아키텍처의 장점들을 보면 무조건 마이크로서비스 아키텍처를 쓰는 것이 좋아보인다. 하지만 아직 서비스의 규모가 작고 마이크로서비스 아키텍처를 적용했을 때 모놀리틱 아키텍처에 비해 오히려 일이 더 늘어나고 생산성이 더 떨어진다면 마이크로서비스보다는 모놀리틱 아키텍처를 적용해 개발하는 것이 더 좋을 수 있다는 결론을 얻을 수 있었다. 나보다 더 전문가이신 분들이 쓴 글에서 깊은 인사이트를 얻을 수 있었기에 공부에 참고했던 링크를 남긴다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="http://guruble.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4microservice-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B7%B8%EA%B2%83%EC%9D%B4-%EB%AD%A3%EC%9D%B4-%EC%A4%91%ED%97%8C%EB%94%94/">마이크로서비스 아키텍처. 그것이 뭣이 중헌디?</a></li>
-  <li><a href="https://www.samsungsds.com/kr/insights/msa.html">Do Not Use MSA - 마이크로서비스 아키텍처가 꼭 필요한가요?</a></li>
-  <li><a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">마이크로서비스 아키텍처(Microservices Architecture)의 장점과 단점</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="IT" /><category term="CS" /><category term="Architecture" /><category term="MSA" /><summary type="html"><![CDATA[👀 마이크로서비스 아키텍처란? 마이크로서비스는 하나의 큰 애플리케이션을 여러 개의 다른 역할을 수행하는 애플리케이션으로 분리하였을 때 각 애플리케이션을 말하며, 마이크로서비스를 분리하여 여러 개의 작은 애플리케이션으로 쪼개어 변경과 조합이 가능하도록 만든 아키텍처를 마이크로서비스 아키텍처라 한다. 대규모 소프트웨어 프로젝트를 마이크로 단위의 모듈로 분리하여 결합도를 낮추고(loosley-coupled) API를 통해 통신한다. 이렇게 만들면 기존에 개발했던 부분을 수정하거나 새로운 기능을 추가할 때 그 기능이 실패해도 전체 어플리케이션에 미치는 영향을 최소화 할 수 있다.]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 6 - 주문페이지와 주문완료페이지 제작</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-06/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 6 - 주문페이지와 주문완료페이지 제작" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-06</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-06/"><![CDATA[<ul>
+<script src="https://gist.github.com/miro7923/195a26379567836d730288d5e782ef38.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92335]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 6 - 주문페이지와 주문완료페이지 제작</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-06/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 6 - 주문페이지와 주문완료페이지 제작" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-06</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-06/"><![CDATA[<ul>
   <li>작성일 : 2022.04.28</li>
   <li>작성자 : 황유진</li>
   <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
@@ -1234,4 +1389,135 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-22</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.28 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.04.28 작성자 : 황유진 팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진 GitHub Repository : https://github.com/miro7923/Uno-Mas]]></summary></entry><entry><title type="html">Python) 프로그래머스. 신고 결과 받기</title><link href="http://localhost:4000/programmers/programmers-report-result-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 신고 결과 받기" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-report-result-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-report-result-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92334">https://programmers.co.kr/learn/courses/30/lessons/92334</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>신입사원 무지는 게시판 불량 이용자를 신고하고 처리 결과를 메일로 발송하는 시스템을 개발하려 합니다. 무지가 개발하려는 시스템은 다음과 같습니다.</p>
+  </li>
+  <li>각 유저는 한 번에 한 명의 유저를 신고할 수 있습니다.</li>
+  <li>신고 횟수에 제한은 없습니다. 서로 다른 유저를 계속해서 신고할 수 있습니다.</li>
+  <li>한 유저를 여러 번 신고할 수도 있지만, 동일한 유저에 대한 신고 횟수는 1회로 처리됩니다.</li>
+  <li>k번 이상 신고된 유저는 게시판 이용이 정지되며, 해당 유저를 신고한 모든 유저에게 정지 사실을 메일로 발송합니다.</li>
+  <li>
+    <p>유저가 신고한 모든 내용을 취합하여 마지막에 한꺼번에 게시판 이용 정지를 시키면서 정지 메일을 발송합니다.</p>
+  </li>
+  <li>이용자의 ID가 담긴 문자열 배열 id_list, 각 이용자가 신고한 이용자의 ID 정보가 담긴 문자열 배열 report, 정지 기준이 되는 신고 횟수 k가 매개변수로 주어질 때, 각 유저별로 처리 결과 메일을 받은 횟수를 배열에 담아 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>2 ≤ id_list의 길이 ≤ 1,000
+    <ul>
+      <li>1 ≤ id_list의 원소 길이 ≤ 10</li>
+      <li>id_list의 원소는 이용자의 id를 나타내는 문자열이며 알파벳 소문자로만 이루어져 있습니다.</li>
+      <li>id_list에는 같은 아이디가 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>1 ≤ report의 길이 ≤ 200,000
+    <ul>
+      <li>3 ≤ report의 원소 길이 ≤ 21</li>
+      <li>report의 원소는 “이용자id 신고한id”형태의 문자열입니다.</li>
+      <li>예를 들어 “muzi frodo”의 경우 “muzi”가 “frodo”를 신고했다는 의미입니다.</li>
+      <li>id는 알파벳 소문자로만 이루어져 있습니다.</li>
+      <li>이용자id와 신고한id는 공백(스페이스)하나로 구분되어 있습니다.</li>
+      <li>자기 자신을 신고하는 경우는 없습니다.</li>
+    </ul>
+  </li>
+  <li>1 ≤ k ≤ 200, k는 자연수입니다.</li>
+  <li>return 하는 배열은 id_list에 담긴 id 순서대로 각 유저가 받은 결과 메일 수를 담으면 됩니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>딕셔너리를 사용해서 풀었다.</li>
+  <li>이 문제에서 관리되어야 하는 것은 <code class="language-plaintext highlighter-rouge">id_list</code>의 원소별로 신고한 id, 각 id별 신고횟수이다.</li>
+</ul>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">usersReport = {신고자 id : [신고된 id 리스트]}</code>와 <code class="language-plaintext highlighter-rouge">reportCnt = {신고된 id : 횟수}</code> 형태의 딕셔너리를 만든다.<br />
+ 1-1. <code class="language-plaintext highlighter-rouge">report</code>를 순회하면서 <code class="language-plaintext highlighter-rouge">usersReport</code>에 각 유저별로 신고한 id를 담는다.<br />
+ 1-2. <code class="language-plaintext highlighter-rouge">reportCnt</code>에 각 유저별로 신고된 횟수를 저장한다.<br />
+ 1-3. 이때 같은 유저가 동일한 아이디를 여러번 신고하지 않도록 예외처리를 해 주어야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 추출한 리스트 <code class="language-plaintext highlighter-rouge">stop = [k번 이상 신고된 id]</code>를 만든다.<br />
+ 2-1. <code class="language-plaintext highlighter-rouge">reportCnt</code>를 순회하며 <code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 <code class="language-plaintext highlighter-rouge">stop</code>에 담는다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">id_list</code>를 순회하며 각 유저별 메일을 받은 횟수를 <code class="language-plaintext highlighter-rouge">answer</code>에 담는다.<br /><br /></li>
+</ol>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/0c297eece0eed5c168f5daf229ddb58e.js"></script>
+<p><br /><br /></p>
+
+<ul>
+  <li>그런데 이렇게 구구절절 써서 통과하고 보니까 아주 짧은 코드로 통과한 분이 계셨다…</li>
+</ul>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3">https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3</a></p>
+
+<ul>
+  <li>믓지다…😦 <code class="language-plaintext highlighter-rouge">set</code>이 순간 떠오르긴 했으나 어떻게 활용할 지 몰라서 그냥 구구절절 코드를 썼는데 덕분에 하나 배울 수 있었다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92334]]></summary></entry><entry><title type="html">마이크로서비스 아키텍처(Microservices Architecture, MSA)</title><link href="http://localhost:4000/it/msa/" rel="alternate" type="text/html" title="마이크로서비스 아키텍처(Microservices Architecture, MSA)" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/it/msa</id><content type="html" xml:base="http://localhost:4000/it/msa/"><![CDATA[<h1 id="-마이크로서비스-아키텍처란">👀 마이크로서비스 아키텍처란?</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">마이크로서비스</code>는 하나의 큰 애플리케이션을 여러 개의 다른 역할을 수행하는 애플리케이션으로 분리하였을 때 각 애플리케이션을 말하며, 마이크로서비스를 분리하여 여러 개의 작은 애플리케이션으로 쪼개어 변경과 조합이 가능하도록 만든 아키텍처를 <code class="language-plaintext highlighter-rouge">마이크로서비스 아키텍처</code>라 한다.</li>
+  <li>대규모 소프트웨어 프로젝트를 마이크로 단위의 모듈로 분리하여 결합도를 낮추고(loosley-coupled) <code class="language-plaintext highlighter-rouge">API</code>를 통해 통신한다.</li>
+  <li>이렇게 만들면 기존에 개발했던 부분을 수정하거나 새로운 기능을 추가할 때 그 기능이 실패해도 전체 어플리케이션에 미치는 영향을 최소화 할 수 있다.</li>
+</ul>
+
+<h2 id="모놀리틱monolithic-아키텍처">모놀리틱(Monolithic) 아키텍처</h2>
+
+<p align="center"><img src="https://miro.medium.com/max/1280/0*1WjIRAQHhL-UR7WL.png" width="600" /></p>
+<ul>
+  <li>
+    <p>사진 출처 : <a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a</a></p>
+  </li>
+  <li>만약 <code class="language-plaintext highlighter-rouge">JAVA</code>를 사용하여 웹 어플리케이션을 개발한다면
+    <ul>
+      <li>사용자에게 보여줄 <code class="language-plaintext highlighter-rouge">view</code> 페이지를 구성</li>
+      <li>요청된 <code class="language-plaintext highlighter-rouge">URI</code>에 따라 각 <code class="language-plaintext highlighter-rouge">view</code> 페이지를 연결해 줄 <code class="language-plaintext highlighter-rouge">컨트롤러</code></li>
+      <li>도메인 정의 및 <code class="language-plaintext highlighter-rouge">DAO</code> 설계</li>
+      <li><code class="language-plaintext highlighter-rouge">컨트롤러</code>와 <code class="language-plaintext highlighter-rouge">DAO</code>간의 결합도를 낮추기 위해 서비스 계층 구성</li>
+    </ul>
+  </li>
+  <li>등 각 계층간 결합도를 낮추기 위한 설계를 하지만 최종 배포시에는 하나의 <code class="language-plaintext highlighter-rouge">war</code> 파일로 배포하게 된다. 즉 모두가 하나로 합쳐지게 되고 이는 유연한 리펙토링을 어렵게 만든다.</li>
+  <li>서비스의 규모가 작고 개발자의 수도 적다면 큰 문제가 되지 않지만 개발자의 수가 늘어나고 서비스의 규모가 커지면 간단한 기능을 추가할 때에도 수정할 코드가 많아지고 그 수정이 영향을 미치는 부분도 많아졌기 때문에 간단한 변화에도 대규모 통합 테스트가 필요해진다. 이를 <code class="language-plaintext highlighter-rouge">모놀리틱(Monolithic)</code> 아키텍처라 한다.</li>
+  <li>모놀리틱 아키텍처의 특성은 새로운 프레임워크를 사용할 필요가 생겨도 쉽사리 바꾸지 못한다는 점을 만들어 낸다. 왜냐하면 전체 어플리케이션이 하나로 묶여 있다면 그 동안 작성한 코드들을 새로운 언어 또는 프레임워크로 바꿔야 하는데 개발된 코드의 양이 많으면 많을수록 엄두가 안 날 것이다.</li>
+</ul>
+
+<h2 id="마이크로서비스microservice-아키텍처">마이크로서비스(Microservice) 아키텍처</h2>
+
+<p align="center"><img src="https://miro.medium.com/max/1214/0*6c95Zet-KhecGRKK.png" width="600" /></p>
+<ul>
+  <li>
+    <p>사진 출처 : <a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a</a></p>
+  </li>
+  <li>하지만 마이크로서비스 아키텍처는 서비스가 개별적으로 독립적인 단위의 어플리케이션이기 때문에 변경이 용이하고  그 변경이 다른 어플리케이션에 미치는 영향도 적다.</li>
+  <li>또한 개별 서비스 단위의 배포가 가능하기 때문에 하루에도 여러 번의 배포가 가능하다. 최근에 진행했던 <code class="language-plaintext highlighter-rouge">JAVA &amp; JSP</code> 프로젝트를 <code class="language-plaintext highlighter-rouge">AWS EC2</code>로 배포할 때 <code class="language-plaintext highlighter-rouge">war</code> 파일로 배포했기 때문에 배포 후 조그만 수정사항이 생겨도 <code class="language-plaintext highlighter-rouge">war</code> 파일을 다시 익스포트해야 했기 때문에 좀 불편했다. 프로젝트를 마이크로서비스 아키텍처로 설계하게 되면 그런 수고를 덜 수 있어 좀 더 유연하고 빠른 개발이 가능해 보인다.</li>
+  <li>하지만 그만큼 개발이 어렵다는 단점이 있다. 마이크로서비스 아키텍처를 적용해 개발하게 되면 <code class="language-plaintext highlighter-rouge">view</code> 페이지 하나에서 보여지는 여러 컨텐츠 중 특정 컨텐츠 하나만 제공하는 어플리케이션 단위로 쪼개어서 페이지 로드 시 각 어플리케이션에서 받아오게 된다. 이론적으로는 쉬워 보이지만 실제 구현시에는 각각 마이크로서비스의 호스트 정보 및 통신 프로토콜에 대해 처리해 주어야 하기 때문이라고 한다.</li>
+  <li>관련글 : <a href="http://guruble.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4microservice-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B7%B8%EA%B2%83%EC%9D%B4-%EB%AD%A3%EC%9D%B4-%EC%A4%91%ED%97%8C%EB%94%94/">마이크로서비스 아키텍처. 그것이 뭣이 중헌디?</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="결론">결론</h1>
+<ul>
+  <li>마이크로서비스 아키텍처의 장점들을 보면 무조건 마이크로서비스 아키텍처를 쓰는 것이 좋아보인다. 하지만 아직 서비스의 규모가 작고 마이크로서비스 아키텍처를 적용했을 때 모놀리틱 아키텍처에 비해 오히려 일이 더 늘어나고 생산성이 더 떨어진다면 마이크로서비스보다는 모놀리틱 아키텍처를 적용해 개발하는 것이 더 좋을 수 있다는 결론을 얻을 수 있었다. 나보다 더 전문가이신 분들이 쓴 글에서 깊은 인사이트를 얻을 수 있었기에 공부에 참고했던 링크를 남긴다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="http://guruble.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4microservice-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B7%B8%EA%B2%83%EC%9D%B4-%EB%AD%A3%EC%9D%B4-%EC%A4%91%ED%97%8C%EB%94%94/">마이크로서비스 아키텍처. 그것이 뭣이 중헌디?</a></li>
+  <li><a href="https://www.samsungsds.com/kr/insights/msa.html">Do Not Use MSA - 마이크로서비스 아키텍처가 꼭 필요한가요?</a></li>
+  <li><a href="https://giljae.medium.com/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-microservices-architecture-%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90-7c45615cfe1a">마이크로서비스 아키텍처(Microservices Architecture)의 장점과 단점</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="IT" /><category term="CS" /><category term="Architecture" /><category term="MSA" /><summary type="html"><![CDATA[👀 마이크로서비스 아키텍처란? 마이크로서비스는 하나의 큰 애플리케이션을 여러 개의 다른 역할을 수행하는 애플리케이션으로 분리하였을 때 각 애플리케이션을 말하며, 마이크로서비스를 분리하여 여러 개의 작은 애플리케이션으로 쪼개어 변경과 조합이 가능하도록 만든 아키텍처를 마이크로서비스 아키텍처라 한다. 대규모 소프트웨어 프로젝트를 마이크로 단위의 모듈로 분리하여 결합도를 낮추고(loosley-coupled) API를 통해 통신한다. 이렇게 만들면 기존에 개발했던 부분을 수정하거나 새로운 기능을 추가할 때 그 기능이 실패해도 전체 어플리케이션에 미치는 영향을 최소화 할 수 있다.]]></summary></entry></feed>
