@@ -1,321 +1,187 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-03T17:16:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 10 - 상품목록 페이징 처리</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-10/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 10 - 상품목록 페이징 처리" /><published>2022-05-03T00:00:00+09:00</published><updated>2022-05-03T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-10</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-10/"><![CDATA[<ul>
-  <li>작성일 : 2022.05.03</li>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-04T23:26:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) BOJ 18352. 특정 거리의 도시 찾기</title><link href="http://localhost:4000/boj/boj18352-py/" rel="alternate" type="text/html" title="Python) BOJ 18352. 특정 거리의 도시 찾기" /><published>2022-05-04T00:00:00+09:00</published><updated>2022-05-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18352-py</id><content type="html" xml:base="http://localhost:4000/boj/boj18352-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/18352">https://www.acmicpc.net/problem/18352</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
   <li>
-    <p>작성자 : 황유진</p>
+    <p>어떤 나라에는 1번부터 N번까지의 도시와 M개의 단방향 도로가 존재한다. 모든 도로의 거리는 1이다.</p>
   </li>
-  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
-  <li>팀장 : 황유진</li>
-  <li>부팀장 : 오성은</li>
-  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>Spring framework 4.3.1.RELEASE</li>
-  <li>Tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
-
-<h1 id="기간">기간</h1>
-<ul>
-  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
-  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
-  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
-  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황">진행상황</h1>
-
-<p align="center"><img src="../../assets/images/unomas_prodListPaging1.png" width="900" /></p>
-
-<ul>
-  <li>상품목록페이지에서 한 페이지에 일정 개수의 상품들을 보여주고, 더 많은 상품은 다음 페이지에서 보여줄 수 있게 하는 페이징처리를 구현했다.</li>
-</ul>
-
-<h2 id="productmapperxml">productMapper.xml</h2>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="cp">&lt;!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
-  
-<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"com.unomas.mapper.ProductMapper"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- 대분류별 상품 개수 가져오기 --&gt;</span>
-    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getProdCnt"</span> <span class="na">resultType=</span><span class="s">"Integer"</span><span class="nt">&gt;</span>
-        SELECT count(*) 
-        FROM products AS p 
-        JOIN detail_category AS d ON p.prod_category = d.dcate_num 
-        JOIN top_category AS t ON d.dcate_num = t.topcate_num 
-        WHERE p.prod_category BETWEEN #{cateStart} AND #{cateEnd}
-    <span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;/mapper&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>대분류별 상품 개수를 가져오는 쿼리문이다.</li>
-  <li>하나의 대분류에는 여러 개의 소분류가 있고 이들은 각자의 테이블에서 관리된다. 소분류는 대분류의 <code class="language-plaintext highlighter-rouge">PK</code>인 인덱스 번호를 참조한다. 그리고 각 상품은 소분류 테이블의 <code class="language-plaintext highlighter-rouge">PK</code>인 인덱스 번호를 참조한다. 그래서 각 대분류별로 소분류의 인덱스 범위를 지정해 준 다음에 그걸 기준으로 상품 테이블에서 해당 상품들을 찾아오도록 했다.</li>
-</ul>
-
-<h2 id="productdaojava">ProductDAO.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
-
-    <span class="c1">// 대분류별 상품 개수 가져오기</span>
-    <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getProductCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="productdaoimpljava">ProductDAOImpl.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Repository</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOImpl</span> <span class="kd">implements</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
-
-    <span class="nd">@Inject</span>
-    <span class="kd">private</span> <span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAMESPACE</span> <span class="o">=</span> <span class="s">"com.unomas.mapper.ProductMapper"</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOImpl</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getProductCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">paramMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;();</span>
-		
-        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">,</span> <span class="n">cateStart</span><span class="o">);</span>
-        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
-		
-        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectOne</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getProdCnt"</span><span class="o">,</span> <span class="n">paramMap</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>먼저 대분류별 전체 상품의 개수를 구해온다.</li>
-</ul>
-
-<h2 id="productdaotestjava">ProductDAOTest.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
-<span class="nd">@ContextConfiguration</span><span class="o">(</span>
-        <span class="n">locations</span> <span class="o">=</span> <span class="o">{</span><span class="s">"file:src/main/webapp/WEB-INF/spring/root-context.xml"</span><span class="o">}</span>
-        <span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOTest</span> <span class="o">{</span>
-
-    <span class="nd">@Inject</span>
-    <span class="kd">private</span> <span class="nc">ProductDAO</span> <span class="n">dao</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOTest</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-    
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">대분류별상품개수가져오기</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getProductCnt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">)+</span><span class="s">""</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>서비스 코드에 넣기 전 테스트를 진행했다. 결과가 잘 나왔기 때문에 다음 단계로 넘어간다.</li>
-</ul>
-
-<h2 id="productmapperxml-1">productMapper.xml</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">mapper</span> <span class="n">namespace</span><span class="o">=</span><span class="s">"com.unomas.mapper.ProductMapper"</span><span class="o">&gt;</span>
-    <span class="o">&lt;!--</span> <span class="n">상위</span> <span class="n">카테고리별</span> <span class="n">한</span> <span class="n">페이지에</span> <span class="n">표시할</span> <span class="n">만큼만</span> <span class="n">가져오기</span> <span class="o">--&gt;</span>
-    <span class="o">&lt;</span><span class="n">select</span> <span class="n">id</span><span class="o">=</span><span class="s">"getListOnPage"</span> <span class="n">resultType</span><span class="o">=</span><span class="s">"ProductVO"</span><span class="o">&gt;</span>
-        <span class="no">SELECT</span> <span class="o">*</span> 
-        <span class="no">FROM</span> <span class="n">products</span> <span class="no">AS</span> <span class="n">p</span> 
-        <span class="no">JOIN</span> <span class="n">detail_category</span> <span class="no">AS</span> <span class="n">d</span> <span class="no">ON</span> <span class="n">p</span><span class="o">.</span><span class="na">prod_category</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="na">dcate_num</span> 
-        <span class="no">JOIN</span> <span class="n">top_category</span> <span class="no">AS</span> <span class="n">t</span> <span class="no">ON</span> <span class="n">d</span><span class="o">.</span><span class="na">dcate_num</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="na">topcate_num</span> 
-        <span class="no">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="na">prod_category</span> <span class="no">BETWEEN</span> <span class="err">#</span><span class="o">{</span><span class="n">cateStart</span><span class="o">}</span> <span class="no">AND</span> <span class="err">#</span><span class="o">{</span><span class="n">cateEnd</span><span class="o">}</span> 
-        <span class="no">ORDER</span> <span class="no">BY</span> <span class="n">p</span><span class="o">.</span><span class="na">prod_regdate</span> <span class="n">desc</span> <span class="no">LIMIT</span> <span class="err">#</span><span class="o">{</span><span class="n">startRow</span><span class="o">},</span> <span class="err">#</span><span class="o">{</span><span class="n">pageSize</span><span class="o">}</span>
-    <span class="o">&lt;/</span><span class="n">select</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">mapper</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>다음으로는 한 페이지에 표시할 만큼만 상품 목록을 가져온다.</li>
-  <li>지정된 소분류 인덱스 범위 내에서 페이지 하나에 표시할 개수만큼만 가져오는 쿼리문을 작성했다.</li>
-</ul>
-
-<h2 id="productdaojava-1">ProductDAO.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
-
-    <span class="c1">// 상위 카테고리별 한 페이지에 표시할 만큼만 상품 목록 불러오기</span>
-    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getProductList</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startRow</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="productdaoimpljava-1">ProductDAOImpl.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Repository</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOImpl</span> <span class="kd">implements</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
-
-    <span class="nd">@Inject</span>
-    <span class="kd">private</span> <span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAMESPACE</span> <span class="o">=</span> <span class="s">"com.unomas.mapper.ProductMapper"</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOImpl</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getProductList</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startRow</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">paramMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;();</span>
-		
-        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">,</span> <span class="n">cateStart</span><span class="o">);</span>
-        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
-        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startRow"</span><span class="o">,</span> <span class="n">startRow</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
-        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageSize"</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">);</span>
-		
-        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getListOnPage"</span><span class="o">,</span> <span class="n">paramMap</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>쿼리문이 다소 복잡했으므로 이것 또한 잘 되는지 테스트를 진행했다.</li>
-</ul>
-
-<h2 id="productdaotestjava-1">ProductDAOTest.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
-<span class="nd">@ContextConfiguration</span><span class="o">(</span>
-        <span class="n">locations</span> <span class="o">=</span> <span class="o">{</span><span class="s">"file:src/main/webapp/WEB-INF/spring/root-context.xml"</span><span class="o">}</span>
-        <span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOTest</span> <span class="o">{</span>
-
-    <span class="nd">@Inject</span>
-    <span class="kd">private</span> <span class="nc">ProductDAO</span> <span class="n">dao</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOTest</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-	
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">페이지개수만큼가져오기테스트</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getProductList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">9</span><span class="o">)</span> <span class="o">+</span> <span class="s">""</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p align="center"><img src="../../assets/images/unomas_prodListPaging2.png" width="800" /></p>
-
-<ul>
-  <li>의도 했던대로 잘 가져오니까 다음 단계로 진행한다.</li>
-</ul>
-
-<h2 id="productservicejava">ProductService.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductService</span> <span class="o">{</span>
-
-	<span class="c1">// 상위 카테고리별 한 페이지에 표시할 만큼만 상품 목록 불러오기</span>
-	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getProductList</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startRow</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-	
-	<span class="c1">// 대분류별 상품 개수 가져오기</span>
-	<span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getProductCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="productserviceimpljava">ProductServiceImpl.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductServiceImpl</span> <span class="kd">implements</span> <span class="nc">ProductService</span> <span class="o">{</span>
-
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getProductList</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startRow</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getProductList</span><span class="o">(</span><span class="n">cateStart</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="n">startRow</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getProductCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getProductCnt</span><span class="o">(</span><span class="n">cateStart</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>서비스 클래스도 연결해 준다. 혹시나 해서 이 부분도 테스트를 진행해 봤는데 잘 된다.</li>
-</ul>
-
-<h2 id="productcontrollerjava">ProductController.java</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductController</span> <span class="o">{</span>
-
-    <span class="nd">@Inject</span>
-    <span class="kd">private</span> <span class="nc">ProductService</span> <span class="n">service</span><span class="o">;</span>
-	
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-    
-    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"product/product_list"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span> <span class="c1">// /shop -&gt; /product_list</span>
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">shopGET</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"topcate_num"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">topcate_num</span><span class="o">,</span> 
-            <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> 
-            <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">pageNum</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-        <span class="c1">// 페이징 처리 작업</span>
-        <span class="kt">int</span> <span class="n">pageSize</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
-		
-        <span class="kt">int</span> <span class="n">curPage</span> <span class="o">=</span> <span class="n">pageNum</span><span class="o">;</span>
-		
-        <span class="c1">// 현재 페이지정보를 이용해서 시작 행 정보 계산</span>
-        <span class="kt">int</span> <span class="n">startRow</span> <span class="o">=</span> <span class="o">(</span><span class="n">curPage</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">pageSize</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
-		
-        <span class="c1">// 하단 페이징 처리 //////</span>
-        <span class="c1">// 현재 대분류의 전체 상품 개수 얻기</span>
-        <span class="kt">int</span> <span class="n">postCnt</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">getProductCnt</span><span class="o">(</span><span class="n">cateStart</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
-		
-        <span class="c1">// 페이지 전체 블록 개수 계산</span>
-        <span class="kt">int</span> <span class="n">pageCnt</span> <span class="o">=</span> <span class="n">postCnt</span> <span class="o">/</span> <span class="n">pageSize</span> <span class="o">+</span> <span class="o">((</span><span class="n">postCnt</span> <span class="o">%</span> <span class="n">pageSize</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="mi">1</span><span class="o">);</span>
-		
-        <span class="c1">// 한 번에 보여줄 페이지 블록 개수</span>
-        <span class="kt">int</span> <span class="n">pageBlockCnt</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-		
-        <span class="c1">// 시작 페이지 번호 구하기</span>
-        <span class="kt">int</span> <span class="n">startBlock</span> <span class="o">=</span> <span class="o">((</span><span class="n">curPage</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">pageBlockCnt</span><span class="o">)</span> <span class="o">*</span> <span class="n">pageBlockCnt</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
-		
-        <span class="c1">// 끝 페이지 블록 번호 구하기</span>
-        <span class="kt">int</span> <span class="n">endBlock</span> <span class="o">=</span> <span class="n">startBlock</span> <span class="o">+</span> <span class="n">pageBlockCnt</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">endBlock</span> <span class="o">&gt;</span> <span class="n">pageCnt</span><span class="o">)</span>
-            <span class="n">endBlock</span> <span class="o">=</span> <span class="n">pageCnt</span><span class="o">;</span>
-		
-		
-        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;();</span>
-		
-        <span class="c1">// 글 목록 정보 저장</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"productList"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getProductList</span><span class="o">(</span><span class="n">cateStart</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="n">startRow</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">));</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">,</span> <span class="n">cateStart</span><span class="o">);</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"topcate_num"</span><span class="o">,</span> <span class="n">topcate_num</span><span class="o">);</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"topcate"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getTopCateName</span><span class="o">(</span><span class="n">topcate_num</span><span class="o">));</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"dcateList"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getDcateNames</span><span class="o">(</span><span class="n">topcate_num</span><span class="o">));</span>
-    
-        <span class="c1">// 페이징 처리 정보 저장</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"postCnt"</span><span class="o">,</span> <span class="n">postCnt</span><span class="o">);</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">);</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageCnt"</span><span class="o">,</span> <span class="n">pageCnt</span><span class="o">);</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageBlockCnt"</span><span class="o">,</span> <span class="n">pageBlockCnt</span><span class="o">);</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startBlock"</span><span class="o">,</span> <span class="n">startBlock</span><span class="o">);</span>
-        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endBlock"</span><span class="o">,</span> <span class="n">endBlock</span><span class="o">);</span>
-		
-        <span class="n">model</span><span class="o">.</span><span class="na">addAllAttributes</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
-		
-        <span class="k">return</span> <span class="s">"product/productList"</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>이제 컨트롤러로 와서 아까 작업했던 것들을 연결시켜 준다.</li>
-  <li>파라미터로 받은 페이지 정보를 이용해서 현재 페이지에 표시되어야 할 상품 목록을 구해 <code class="language-plaintext highlighter-rouge">Model</code>에 저장한다.</li>
   <li>
-    <p>뷰 페이지에서 페이지 번호를 눌렀을 때 이동해서 새로운 상품 목록을 보여줄 수 있도록 페이징 처리 정보도 저장해서 넘겨준다.</p>
+    <p>이 때 특정한 도시 X로부터 출발하여 도달할 수 있는 모든 도시 중에서, 최단 거리가 정확히 K인 모든 도시들의 번호를 출력하는 프로그램을 작성하시오. 또한 출발 도시 X에서 출발 도시 X로 가는 최단 거리는 항상 0이라고 가정한다.</p>
   </li>
-  <li>뷰 페이지를 실행해서 동작시켜보면 한 페이지당 9개씩 보여주고 9개가 넘어가면 새로운 페이지를 생성한다. 다음 페이지로 넘어가면 앞 페이지에서 출력했던 상품들을 제외한 나머지를 출력한다.<br /><br /><br /></li>
+  <li>
+    <p>예를 들어 N=4, K=2, X=1일 때 다음과 같이 그래프가 구성되어 있다고 가정하자.</p>
+  </li>
 </ul>
 
-<h1 id="마감까지">마감까지</h1>
+<p align="center"><img src="https://upload.acmicpc.net/a5e311d7-7ce4-4638-88a5-3665fb4459e5/-/preview/" width="400" /></p>
+
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">D-17</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.03 작성자 : 황유진]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 9 - 카테고리별로 해당되는 상품 목록 출력하기</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-09/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 9 - 카테고리별로 해당되는 상품 목록 출력하기" /><published>2022-05-03T00:00:00+09:00</published><updated>2022-05-03T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-09</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-09/"><![CDATA[<ul>
+  <li>이 때 1번 도시에서 출발하여 도달할 수 있는 도시 중에서, 최단 거리가 2인 도시는 4번 도시 뿐이다.  2번과 3번 도시의 경우, 최단 거리가 1이기 때문에 출력하지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 도시의 개수 N, 도로의 개수 M, 거리 정보 K, 출발 도시의 번호 X가 주어진다. (2 ≤ N ≤ 300,000, 1 ≤ M ≤ 1,000,000, 1 ≤ K ≤ 300,000, 1 ≤ X ≤ N) 둘째 줄부터 M개의 줄에 걸쳐서 두 개의 자연수 A, B가 공백을 기준으로 구분되어 주어진다. 이는 A번 도시에서 B번 도시로 이동하는 단방향 도로가 존재한다는 의미다. (1 ≤ A, B ≤ N) 단, A와 B는 서로 다른 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>X로부터 출발하여 도달할 수 있는 도시 중에서, 최단 거리가 K인 모든 도시의 번호를 한 줄에 하나씩 오름차순으로 출력한다.</p>
+  </li>
+  <li>
+    <p>이 때 도달할 수 있는 도시 중에서, 최단 거리가 K인 도시가 하나도 존재하지 않으면 -1을 출력한다.<br /><br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>다익스트라 알고리즘을 이용해 출발점에서 각 도시까지의 최단거리를 구한 뒤 최단거리가 k와 같은 도시를 차례대로 출력했다.<br /><br /></li>
+</ul>
+
+<h1 id="전체-코드">전체 코드</h1>
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">heapq</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
+<span class="n">INF</span> <span class="o">=</span> <span class="mf">1e9</span>
+
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+    <span class="n">graph</span><span class="p">[</span><span class="n">a</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># 최단거리를 저장할 테이블
+# 처음에는 모든 도시의 거리를 무한대로 초기화한다.
+</span><span class="n">distance</span> <span class="o">=</span> <span class="p">[</span><span class="n">INF</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span><span class="p">))</span>
+    <span class="n">distance</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+        <span class="n">dist</span><span class="p">,</span> <span class="n">now</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="n">now</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">now</span><span class="p">]:</span>
+            <span class="n">cost</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost</span>
+                <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+
+<span class="n">dijkstra</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">ans</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="코드-분석">코드 분석</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">heapq</span>
+
+<span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span><span class="p">))</span> <span class="c1"># (거리, 정점)
+</span>    <span class="n">distance</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<ul>
+  <li>우선순위 큐를 사용해 현위치에서 최단거리가 가장 짧은 노드를 찾을 것이라서 <code class="language-plaintext highlighter-rouge">heapq</code>를 임포트한다.</li>
+  <li>우선순위 큐에는 거리를 기준으로 오름차순 정렬을 할 수 있게 거리가 맨 앞으로 오는 튜플을 만들어 저장한다.</li>
+  <li>시작점과의 거리는 0으로 저장한 후 최단거리를 기록하는 테이블의 시작점 인덱스에도 0을 기록해준다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+        <span class="n">dist</span><span class="p">,</span> <span class="n">now</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+        <span class="c1"># 이미 처리된 정점이면 pass
+</span>        <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="n">now</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># 현재 정점과 연결된 정점들을 탐색한다.
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">now</span><span class="p">]:</span>
+            <span class="n">cost</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost</span>
+                <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+</code></pre></div></div>
+
+<ul>
+  <li>큐의 원소를 하나씩 꺼내서 최단거리를 계산하는 작업을 시작한다.</li>
+  <li>만약 최단거리 테이블에 저장된 현재 노드까지의 거리가 방금 큐에서 꺼낸 거리보다 짧으면 이미 최단거리를 찾은 것이니까 더 확인해 볼 필요가 없다.</li>
+  <li>그렇지 않고 최단거리를 갱신해주어야 할 필요가 있는 정점이라면 현재 정점과 연결된 정점까지의 거리를 탐색한다.</li>
+  <li>이 문제에서 모든 정점간의 거리는 1이니까 현재 정점에서 다음 정점까지의 거리를 구하려면 시작점에서 현재 정점까지의 거리 <code class="language-plaintext highlighter-rouge">dist</code>에 1을 더해주면 된다.</li>
+  <li>만약 새로 구한 거리가 최단거리 테이블에 있는 값보다 적으면 갱신한 후 우선순위 큐에 삽입한다.</li>
+  <li>이 과정을 큐가 빌 때까지 반복한다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dijkstra</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>다익스트라 메서드를 호출해서 <code class="language-plaintext highlighter-rouge">x</code>에서부터 모든 도시까지의 최단거리를 구한다.</li>
+  <li>우선순위 큐 <code class="language-plaintext highlighter-rouge">ans</code>를 만들어 최단거리가 <code class="language-plaintext highlighter-rouge">k</code>와 같은 정점 목록을 저장한다.</li>
+  <li>문제에서 도시 번호가 작은 순서대로 출력하라고 했기 때문에 최소힙으로 만들었다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="ow">not</span> <span class="n">ans</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>만약 <code class="language-plaintext highlighter-rouge">ans</code>가 비어 있으면 최단거리가 <code class="language-plaintext highlighter-rouge">k</code>인 도시가 존재하지 않는 것이니까 <code class="language-plaintext highlighter-rouge">-1</code>을 리턴한다.</li>
+  <li>그렇지 않으면 <code class="language-plaintext highlighter-rouge">ans</code>를 순회하면서 한 줄에 하나씩 출력하면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 2784 ms</li>
+  <li>메모리 : 107284 KB<br /><br /></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No18352" /><category term="Dijkstra" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/18352 제한 시간 제한 : 2 초 메모리 제한 : 256 MB]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 9 - 카테고리별로 해당되는 상품 목록 출력하기</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-09/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 9 - 카테고리별로 해당되는 상품 목록 출력하기" /><published>2022-05-03T00:00:00+09:00</published><updated>2022-05-03T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-09</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-09/"><![CDATA[<ul>
   <li>작성일 : 2022.05.03</li>
   <li>
     <p>작성자 : 황유진</p>
@@ -637,6 +503,323 @@
 <ul>
   <li>그러면 이제 손으로 일일이 타이핑하지 않아도 DB 정보에 맞춰 출력된다! 뿌-듯 😄</li>
   <li>이제 다음에 해야할 것은 헤더에 있는 메뉴에서 상품 목록 페이지를 호출했을 때 각 대분류별로 보여지게 하는 것과 상품 하나를 클릭하면 상세 페이지로 연결되는 것을 구현하는 것이다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-17</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.03 작성자 : 황유진]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 10 - 상품목록 페이징 처리</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-10/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 10 - 상품목록 페이징 처리" /><published>2022-05-03T00:00:00+09:00</published><updated>2022-05-03T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-10</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-10/"><![CDATA[<ul>
+  <li>작성일 : 2022.05.03</li>
+  <li>
+    <p>작성자 : 황유진</p>
+  </li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
+  <li>팀장 : 황유진</li>
+  <li>부팀장 : 오성은</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
+  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+
+<p align="center"><img src="../../assets/images/unomas_prodListPaging1.png" width="900" /></p>
+
+<ul>
+  <li>상품목록페이지에서 한 페이지에 일정 개수의 상품들을 보여주고, 더 많은 상품은 다음 페이지에서 보여줄 수 있게 하는 페이징처리를 구현했다.</li>
+</ul>
+
+<h2 id="productmapperxml">productMapper.xml</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
+  
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"com.unomas.mapper.ProductMapper"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- 대분류별 상품 개수 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getProdCnt"</span> <span class="na">resultType=</span><span class="s">"Integer"</span><span class="nt">&gt;</span>
+        SELECT count(*) 
+        FROM products AS p 
+        JOIN detail_category AS d ON p.prod_category = d.dcate_num 
+        JOIN top_category AS t ON d.dcate_num = t.topcate_num 
+        WHERE p.prod_category BETWEEN #{cateStart} AND #{cateEnd}
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>대분류별 상품 개수를 가져오는 쿼리문이다.</li>
+  <li>하나의 대분류에는 여러 개의 소분류가 있고 이들은 각자의 테이블에서 관리된다. 소분류는 대분류의 <code class="language-plaintext highlighter-rouge">PK</code>인 인덱스 번호를 참조한다. 그리고 각 상품은 소분류 테이블의 <code class="language-plaintext highlighter-rouge">PK</code>인 인덱스 번호를 참조한다. 그래서 각 대분류별로 소분류의 인덱스 범위를 지정해 준 다음에 그걸 기준으로 상품 테이블에서 해당 상품들을 찾아오도록 했다.</li>
+</ul>
+
+<h2 id="productdaojava">ProductDAO.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+
+    <span class="c1">// 대분류별 상품 개수 가져오기</span>
+    <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getProductCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="productdaoimpljava">ProductDAOImpl.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOImpl</span> <span class="kd">implements</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAMESPACE</span> <span class="o">=</span> <span class="s">"com.unomas.mapper.ProductMapper"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOImpl</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getProductCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">paramMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;();</span>
+		
+        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">,</span> <span class="n">cateStart</span><span class="o">);</span>
+        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectOne</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getProdCnt"</span><span class="o">,</span> <span class="n">paramMap</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>먼저 대분류별 전체 상품의 개수를 구해온다.</li>
+</ul>
+
+<h2 id="productdaotestjava">ProductDAOTest.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ContextConfiguration</span><span class="o">(</span>
+        <span class="n">locations</span> <span class="o">=</span> <span class="o">{</span><span class="s">"file:src/main/webapp/WEB-INF/spring/root-context.xml"</span><span class="o">}</span>
+        <span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOTest</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductDAO</span> <span class="n">dao</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOTest</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">대분류별상품개수가져오기</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getProductCnt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">)+</span><span class="s">""</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서비스 코드에 넣기 전 테스트를 진행했다. 결과가 잘 나왔기 때문에 다음 단계로 넘어간다.</li>
+</ul>
+
+<h2 id="productmapperxml-1">productMapper.xml</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">mapper</span> <span class="n">namespace</span><span class="o">=</span><span class="s">"com.unomas.mapper.ProductMapper"</span><span class="o">&gt;</span>
+    <span class="o">&lt;!--</span> <span class="n">상위</span> <span class="n">카테고리별</span> <span class="n">한</span> <span class="n">페이지에</span> <span class="n">표시할</span> <span class="n">만큼만</span> <span class="n">가져오기</span> <span class="o">--&gt;</span>
+    <span class="o">&lt;</span><span class="n">select</span> <span class="n">id</span><span class="o">=</span><span class="s">"getListOnPage"</span> <span class="n">resultType</span><span class="o">=</span><span class="s">"ProductVO"</span><span class="o">&gt;</span>
+        <span class="no">SELECT</span> <span class="o">*</span> 
+        <span class="no">FROM</span> <span class="n">products</span> <span class="no">AS</span> <span class="n">p</span> 
+        <span class="no">JOIN</span> <span class="n">detail_category</span> <span class="no">AS</span> <span class="n">d</span> <span class="no">ON</span> <span class="n">p</span><span class="o">.</span><span class="na">prod_category</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="na">dcate_num</span> 
+        <span class="no">JOIN</span> <span class="n">top_category</span> <span class="no">AS</span> <span class="n">t</span> <span class="no">ON</span> <span class="n">d</span><span class="o">.</span><span class="na">dcate_num</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="na">topcate_num</span> 
+        <span class="no">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="na">prod_category</span> <span class="no">BETWEEN</span> <span class="err">#</span><span class="o">{</span><span class="n">cateStart</span><span class="o">}</span> <span class="no">AND</span> <span class="err">#</span><span class="o">{</span><span class="n">cateEnd</span><span class="o">}</span> 
+        <span class="no">ORDER</span> <span class="no">BY</span> <span class="n">p</span><span class="o">.</span><span class="na">prod_regdate</span> <span class="n">desc</span> <span class="no">LIMIT</span> <span class="err">#</span><span class="o">{</span><span class="n">startRow</span><span class="o">},</span> <span class="err">#</span><span class="o">{</span><span class="n">pageSize</span><span class="o">}</span>
+    <span class="o">&lt;/</span><span class="n">select</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">mapper</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>다음으로는 한 페이지에 표시할 만큼만 상품 목록을 가져온다.</li>
+  <li>지정된 소분류 인덱스 범위 내에서 페이지 하나에 표시할 개수만큼만 가져오는 쿼리문을 작성했다.</li>
+</ul>
+
+<h2 id="productdaojava-1">ProductDAO.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+
+    <span class="c1">// 상위 카테고리별 한 페이지에 표시할 만큼만 상품 목록 불러오기</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getProductList</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startRow</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="productdaoimpljava-1">ProductDAOImpl.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOImpl</span> <span class="kd">implements</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAMESPACE</span> <span class="o">=</span> <span class="s">"com.unomas.mapper.ProductMapper"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOImpl</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getProductList</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startRow</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">paramMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;();</span>
+		
+        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">,</span> <span class="n">cateStart</span><span class="o">);</span>
+        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
+        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startRow"</span><span class="o">,</span> <span class="n">startRow</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">paramMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageSize"</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getListOnPage"</span><span class="o">,</span> <span class="n">paramMap</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>쿼리문이 다소 복잡했으므로 이것 또한 잘 되는지 테스트를 진행했다.</li>
+</ul>
+
+<h2 id="productdaotestjava-1">ProductDAOTest.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ContextConfiguration</span><span class="o">(</span>
+        <span class="n">locations</span> <span class="o">=</span> <span class="o">{</span><span class="s">"file:src/main/webapp/WEB-INF/spring/root-context.xml"</span><span class="o">}</span>
+        <span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOTest</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductDAO</span> <span class="n">dao</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOTest</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">페이지개수만큼가져오기테스트</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getProductList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">9</span><span class="o">)</span> <span class="o">+</span> <span class="s">""</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p align="center"><img src="../../assets/images/unomas_prodListPaging2.png" width="800" /></p>
+
+<ul>
+  <li>의도 했던대로 잘 가져오니까 다음 단계로 진행한다.</li>
+</ul>
+
+<h2 id="productservicejava">ProductService.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductService</span> <span class="o">{</span>
+
+	<span class="c1">// 상위 카테고리별 한 페이지에 표시할 만큼만 상품 목록 불러오기</span>
+	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getProductList</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startRow</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+	<span class="c1">// 대분류별 상품 개수 가져오기</span>
+	<span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getProductCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="productserviceimpljava">ProductServiceImpl.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductServiceImpl</span> <span class="kd">implements</span> <span class="nc">ProductService</span> <span class="o">{</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getProductList</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startRow</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getProductList</span><span class="o">(</span><span class="n">cateStart</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="n">startRow</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getProductCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getProductCnt</span><span class="o">(</span><span class="n">cateStart</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서비스 클래스도 연결해 준다. 혹시나 해서 이 부분도 테스트를 진행해 봤는데 잘 된다.</li>
+</ul>
+
+<h2 id="productcontrollerjava">ProductController.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductController</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductService</span> <span class="n">service</span><span class="o">;</span>
+	
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"product/product_list"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span> <span class="c1">// /shop -&gt; /product_list</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">shopGET</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"topcate_num"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">topcate_num</span><span class="o">,</span> 
+            <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> 
+            <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">pageNum</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="c1">// 페이징 처리 작업</span>
+        <span class="kt">int</span> <span class="n">pageSize</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+		
+        <span class="kt">int</span> <span class="n">curPage</span> <span class="o">=</span> <span class="n">pageNum</span><span class="o">;</span>
+		
+        <span class="c1">// 현재 페이지정보를 이용해서 시작 행 정보 계산</span>
+        <span class="kt">int</span> <span class="n">startRow</span> <span class="o">=</span> <span class="o">(</span><span class="n">curPage</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">pageSize</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+		
+        <span class="c1">// 하단 페이징 처리 //////</span>
+        <span class="c1">// 현재 대분류의 전체 상품 개수 얻기</span>
+        <span class="kt">int</span> <span class="n">postCnt</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">getProductCnt</span><span class="o">(</span><span class="n">cateStart</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
+		
+        <span class="c1">// 페이지 전체 블록 개수 계산</span>
+        <span class="kt">int</span> <span class="n">pageCnt</span> <span class="o">=</span> <span class="n">postCnt</span> <span class="o">/</span> <span class="n">pageSize</span> <span class="o">+</span> <span class="o">((</span><span class="n">postCnt</span> <span class="o">%</span> <span class="n">pageSize</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="mi">1</span><span class="o">);</span>
+		
+        <span class="c1">// 한 번에 보여줄 페이지 블록 개수</span>
+        <span class="kt">int</span> <span class="n">pageBlockCnt</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+		
+        <span class="c1">// 시작 페이지 번호 구하기</span>
+        <span class="kt">int</span> <span class="n">startBlock</span> <span class="o">=</span> <span class="o">((</span><span class="n">curPage</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">pageBlockCnt</span><span class="o">)</span> <span class="o">*</span> <span class="n">pageBlockCnt</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+		
+        <span class="c1">// 끝 페이지 블록 번호 구하기</span>
+        <span class="kt">int</span> <span class="n">endBlock</span> <span class="o">=</span> <span class="n">startBlock</span> <span class="o">+</span> <span class="n">pageBlockCnt</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">endBlock</span> <span class="o">&gt;</span> <span class="n">pageCnt</span><span class="o">)</span>
+            <span class="n">endBlock</span> <span class="o">=</span> <span class="n">pageCnt</span><span class="o">;</span>
+		
+		
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;();</span>
+		
+        <span class="c1">// 글 목록 정보 저장</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"productList"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getProductList</span><span class="o">(</span><span class="n">cateStart</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">,</span> <span class="n">startRow</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">));</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">,</span> <span class="n">cateStart</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"topcate_num"</span><span class="o">,</span> <span class="n">topcate_num</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"topcate"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getTopCateName</span><span class="o">(</span><span class="n">topcate_num</span><span class="o">));</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"dcateList"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getDcateNames</span><span class="o">(</span><span class="n">topcate_num</span><span class="o">));</span>
+    
+        <span class="c1">// 페이징 처리 정보 저장</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"postCnt"</span><span class="o">,</span> <span class="n">postCnt</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageCnt"</span><span class="o">,</span> <span class="n">pageCnt</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageBlockCnt"</span><span class="o">,</span> <span class="n">pageBlockCnt</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startBlock"</span><span class="o">,</span> <span class="n">startBlock</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endBlock"</span><span class="o">,</span> <span class="n">endBlock</span><span class="o">);</span>
+		
+        <span class="n">model</span><span class="o">.</span><span class="na">addAllAttributes</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="s">"product/productList"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이제 컨트롤러로 와서 아까 작업했던 것들을 연결시켜 준다.</li>
+  <li>파라미터로 받은 페이지 정보를 이용해서 현재 페이지에 표시되어야 할 상품 목록을 구해 <code class="language-plaintext highlighter-rouge">Model</code>에 저장한다.</li>
+  <li>
+    <p>뷰 페이지에서 페이지 번호를 눌렀을 때 이동해서 새로운 상품 목록을 보여줄 수 있도록 페이징 처리 정보도 저장해서 넘겨준다.</p>
+  </li>
+  <li>뷰 페이지를 실행해서 동작시켜보면 한 페이지당 9개씩 보여주고 9개가 넘어가면 새로운 페이지를 생성한다. 다음 페이지로 넘어가면 앞 페이지에서 출력했던 상품들을 제외한 나머지를 출력한다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -1205,7 +1388,96 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/db80617186ced5c788e567a2b15970f1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="DFS" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92342]]></summary></entry><entry><title type="html">MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide</title><link href="http://localhost:4000/uno%20mas/db-import-guide/" rel="alternate" type="text/html" title="MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide" /><published>2022-04-30T00:00:00+09:00</published><updated>2022-04-30T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/db-import-guide</id><content type="html" xml:base="http://localhost:4000/uno%20mas/db-import-guide/"><![CDATA[<ul>
+<script src="https://gist.github.com/miro7923/db80617186ced5c788e567a2b15970f1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="DFS" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92342]]></summary></entry><entry><title type="html">Python) 프로그래머스. 주차 요금 계산</title><link href="http://localhost:4000/programmers/programmers-parking-fee-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 주차 요금 계산" /><published>2022-04-30T00:00:00+09:00</published><updated>2022-04-30T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-parking-fee-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-parking-fee-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92341">https://programmers.co.kr/learn/courses/30/lessons/92341</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>주차장의 요금표와 차량이 들어오고(입차) 나간(출차) 기록이 주어졌을 때, 차량별로 주차 요금을 계산하려고 합니다.</p>
+  </li>
+  <li>어떤 차량이 입차된 후에 출차된 내역이 없다면, 23:59에 출차된 것으로 간주합니다.</li>
+  <li>00:00부터 23:59까지의 입/출차 내역을 바탕으로 차량별 누적 주차 시간을 계산하여 요금을 일괄로 정산합니다.</li>
+  <li>누적 주차 시간이 기본 시간이하라면, 기본 요금을 청구합니다.</li>
+  <li>누적 주차 시간이 기본 시간을 초과하면, 기본 요금에 더해서, 초과한 시간에 대해서 단위 시간 마다 단위 요금을 청구합니다.
+    <ul>
+      <li>초과한 시간이 단위 시간으로 나누어 떨어지지 않으면, 올림합니다.</li>
+      <li>⌈a⌉ : a보다 작지 않은 최소의 정수를 의미합니다. 즉, 올림을 의미합니다.</li>
+    </ul>
+  </li>
+  <li>주차 요금을 나타내는 정수 배열 fees, 자동차의 입/출차 내역을 나타내는 문자열 배열 records가 매개변수로 주어집니다. 차량 번호가 작은 자동차부터 청구할 주차 요금을 차례대로 정수 배열에 담아서 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>fees의 길이 = 4</p>
+  </li>
+  <li>fees[0] = 기본 시간(분)
+    <ul>
+      <li>1 ≤ fees[0] ≤ 1,439</li>
+      <li>fees[1] = 기본 요금(원)</li>
+      <li>0 ≤ fees[1] ≤ 100,000</li>
+      <li>fees[2] = 단위 시간(분)</li>
+      <li>1 ≤ fees[2] ≤ 1,439</li>
+      <li>fees[3] = 단위 요금(원)</li>
+      <li>1 ≤ fees[3] ≤ 10,000</li>
+    </ul>
+  </li>
+  <li>1 ≤ records의 길이 ≤ 1,000
+    <ul>
+      <li>records의 각 원소는 “시각 차량번호 내역” 형식의 문자열입니다.</li>
+      <li>시각, 차량번호, 내역은 하나의 공백으로 구분되어 있습니다.</li>
+      <li>시각은 차량이 입차되거나 출차된 시각을 나타내며, HH:MM 형식의 길이 5인 문자열입니다.</li>
+      <li>HH:MM은 00:00부터 23:59까지 주어집니다.</li>
+      <li>잘못된 시각(“25:22”, “09:65” 등)은 입력으로 주어지지 않습니다.</li>
+      <li>차량번호는 자동차를 구분하기 위한, `0’~’9’로 구성된 길이 4인 문자열입니다.</li>
+      <li>내역은 길이 2 또는 3인 문자열로, IN 또는 OUT입니다. IN은 입차를, OUT은 출차를 의미합니다.</li>
+      <li>records의 원소들은 시각을 기준으로 오름차순으로 정렬되어 주어집니다.</li>
+      <li>records는 하루 동안의 입/출차된 기록만 담고 있으며, 입차된 차량이 다음날 출차되는 경우는 입력으로 주어지지 않습니다.</li>
+      <li>같은 시각에, 같은 차량번호의 내역이 2번 이상 나타내지 않습니다.</li>
+      <li>마지막 시각(23:59)에 입차되는 경우는 입력으로 주어지지 않습니다.</li>
+      <li>아래의 예를 포함하여, 잘못된 입력은 주어지지 않습니다.
+        <ul>
+          <li>주차장에 없는 차량이 출차되는 경우</li>
+          <li>주차장에 이미 있는 차량(차량번호가 같은 차량)이 다시 입차되는 경우<br /><br /><br /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>간단하게 생각하고 접근했는데 파이썬 자료형에 익숙치 않고 예외 처리를 제대로 해주지 않아서 생각보다 시간이 걸렸다. 파이참 없었으면 못 풀었겠는걸…ㅎ</li>
+</ul>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">cars = {차량번호 : [누적시간, 입차시간]}</code> 딕셔너리를 만든다.</li>
+  <li><code class="language-plaintext highlighter-rouge">records</code> 배열을 순회하며 현재 시간을 분 단위로 환산한다.</li>
+  <li>딕셔너리에 차량번호가 key로 없으면 새로 만든다. <code class="language-plaintext highlighter-rouge">value</code>는 <code class="language-plaintext highlighter-rouge">[0, 분으로 환산한 입차시간]</code><br />
+ 3-1. key가 있고 <code class="language-plaintext highlighter-rouge">IN</code>이라면 입차시간만 현재시간으로 바꿔준다.<br />
+ 3-2. key가 있고 <code class="language-plaintext highlighter-rouge">OUT</code>이라면 <code class="language-plaintext highlighter-rouge">2에서 구한 시간 - key에 저장된 입차시간</code>을 누적시간에 더해준다. 이때 출차했다는 표시로 입차시간을 -1로 바꾼다.</li>
+  <li>차량번호 오름차순으로 저장할 최소힙을 만든다. <code class="language-plaintext highlighter-rouge">heap = [차량번호, 누적시간]</code> 차량번호 기준으로 정렬할 수 있게 차량번호를 앞에 위치시킨다.</li>
+  <li><code class="language-plaintext highlighter-rouge">cars</code>를 순회하며 출차하지 않은 차가 있으면 마감시간인 <code class="language-plaintext highlighter-rouge">23:59</code>까지의 누적시간을 구해서 더해준다.<br />
+ 5-1. 모든 차량의 번호와 누적시간을 4에서 만든 최소힙에 저장한다.</li>
+  <li>최소힙이 빌 때까지 하나씩 <code class="language-plaintext highlighter-rouge">pop</code> 해서 요금을 계산한 뒤 정답배열에 저장한다.<br /><br /></li>
+</ol>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/e8665a951cb4ebb1c405b87b4590ada0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92341]]></summary></entry><entry><title type="html">MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide</title><link href="http://localhost:4000/uno%20mas/db-import-guide/" rel="alternate" type="text/html" title="MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide" /><published>2022-04-30T00:00:00+09:00</published><updated>2022-04-30T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/db-import-guide</id><content type="html" xml:base="http://localhost:4000/uno%20mas/db-import-guide/"><![CDATA[<ul>
   <li><code class="language-plaintext highlighter-rouge">MySQL Workbench</code>에 내장되어 있는 <code class="language-plaintext highlighter-rouge">EER</code> 다이어그램 제작툴의 사용법과 <code class="language-plaintext highlighter-rouge">SQL</code> 스크립트를 불러와서 테이블 생성하는 법 가이드<br /><br /></li>
 </ul>
 
@@ -1339,96 +1611,7 @@
 <h1 id="참고">참고</h1>
 <ul>
   <li><a href="https://litiblue.com/post/mysql-workbench-db/">MySQL Workbench 로 DB 설계하기</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="MySQLWorkbench" /><category term="Log" /><summary type="html"><![CDATA[MySQL Workbench에 내장되어 있는 EER 다이어그램 제작툴의 사용법과 SQL 스크립트를 불러와서 테이블 생성하는 법 가이드]]></summary></entry><entry><title type="html">Python) 프로그래머스. 주차 요금 계산</title><link href="http://localhost:4000/programmers/programmers-parking-fee-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 주차 요금 계산" /><published>2022-04-30T00:00:00+09:00</published><updated>2022-04-30T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-parking-fee-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-parking-fee-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92341">https://programmers.co.kr/learn/courses/30/lessons/92341</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>주차장의 요금표와 차량이 들어오고(입차) 나간(출차) 기록이 주어졌을 때, 차량별로 주차 요금을 계산하려고 합니다.</p>
-  </li>
-  <li>어떤 차량이 입차된 후에 출차된 내역이 없다면, 23:59에 출차된 것으로 간주합니다.</li>
-  <li>00:00부터 23:59까지의 입/출차 내역을 바탕으로 차량별 누적 주차 시간을 계산하여 요금을 일괄로 정산합니다.</li>
-  <li>누적 주차 시간이 기본 시간이하라면, 기본 요금을 청구합니다.</li>
-  <li>누적 주차 시간이 기본 시간을 초과하면, 기본 요금에 더해서, 초과한 시간에 대해서 단위 시간 마다 단위 요금을 청구합니다.
-    <ul>
-      <li>초과한 시간이 단위 시간으로 나누어 떨어지지 않으면, 올림합니다.</li>
-      <li>⌈a⌉ : a보다 작지 않은 최소의 정수를 의미합니다. 즉, 올림을 의미합니다.</li>
-    </ul>
-  </li>
-  <li>주차 요금을 나타내는 정수 배열 fees, 자동차의 입/출차 내역을 나타내는 문자열 배열 records가 매개변수로 주어집니다. 차량 번호가 작은 자동차부터 청구할 주차 요금을 차례대로 정수 배열에 담아서 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>fees의 길이 = 4</p>
-  </li>
-  <li>fees[0] = 기본 시간(분)
-    <ul>
-      <li>1 ≤ fees[0] ≤ 1,439</li>
-      <li>fees[1] = 기본 요금(원)</li>
-      <li>0 ≤ fees[1] ≤ 100,000</li>
-      <li>fees[2] = 단위 시간(분)</li>
-      <li>1 ≤ fees[2] ≤ 1,439</li>
-      <li>fees[3] = 단위 요금(원)</li>
-      <li>1 ≤ fees[3] ≤ 10,000</li>
-    </ul>
-  </li>
-  <li>1 ≤ records의 길이 ≤ 1,000
-    <ul>
-      <li>records의 각 원소는 “시각 차량번호 내역” 형식의 문자열입니다.</li>
-      <li>시각, 차량번호, 내역은 하나의 공백으로 구분되어 있습니다.</li>
-      <li>시각은 차량이 입차되거나 출차된 시각을 나타내며, HH:MM 형식의 길이 5인 문자열입니다.</li>
-      <li>HH:MM은 00:00부터 23:59까지 주어집니다.</li>
-      <li>잘못된 시각(“25:22”, “09:65” 등)은 입력으로 주어지지 않습니다.</li>
-      <li>차량번호는 자동차를 구분하기 위한, `0’~’9’로 구성된 길이 4인 문자열입니다.</li>
-      <li>내역은 길이 2 또는 3인 문자열로, IN 또는 OUT입니다. IN은 입차를, OUT은 출차를 의미합니다.</li>
-      <li>records의 원소들은 시각을 기준으로 오름차순으로 정렬되어 주어집니다.</li>
-      <li>records는 하루 동안의 입/출차된 기록만 담고 있으며, 입차된 차량이 다음날 출차되는 경우는 입력으로 주어지지 않습니다.</li>
-      <li>같은 시각에, 같은 차량번호의 내역이 2번 이상 나타내지 않습니다.</li>
-      <li>마지막 시각(23:59)에 입차되는 경우는 입력으로 주어지지 않습니다.</li>
-      <li>아래의 예를 포함하여, 잘못된 입력은 주어지지 않습니다.
-        <ul>
-          <li>주차장에 없는 차량이 출차되는 경우</li>
-          <li>주차장에 이미 있는 차량(차량번호가 같은 차량)이 다시 입차되는 경우<br /><br /><br /></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>간단하게 생각하고 접근했는데 파이썬 자료형에 익숙치 않고 예외 처리를 제대로 해주지 않아서 생각보다 시간이 걸렸다. 파이참 없었으면 못 풀었겠는걸…ㅎ</li>
-</ul>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">cars = {차량번호 : [누적시간, 입차시간]}</code> 딕셔너리를 만든다.</li>
-  <li><code class="language-plaintext highlighter-rouge">records</code> 배열을 순회하며 현재 시간을 분 단위로 환산한다.</li>
-  <li>딕셔너리에 차량번호가 key로 없으면 새로 만든다. <code class="language-plaintext highlighter-rouge">value</code>는 <code class="language-plaintext highlighter-rouge">[0, 분으로 환산한 입차시간]</code><br />
- 3-1. key가 있고 <code class="language-plaintext highlighter-rouge">IN</code>이라면 입차시간만 현재시간으로 바꿔준다.<br />
- 3-2. key가 있고 <code class="language-plaintext highlighter-rouge">OUT</code>이라면 <code class="language-plaintext highlighter-rouge">2에서 구한 시간 - key에 저장된 입차시간</code>을 누적시간에 더해준다. 이때 출차했다는 표시로 입차시간을 -1로 바꾼다.</li>
-  <li>차량번호 오름차순으로 저장할 최소힙을 만든다. <code class="language-plaintext highlighter-rouge">heap = [차량번호, 누적시간]</code> 차량번호 기준으로 정렬할 수 있게 차량번호를 앞에 위치시킨다.</li>
-  <li><code class="language-plaintext highlighter-rouge">cars</code>를 순회하며 출차하지 않은 차가 있으면 마감시간인 <code class="language-plaintext highlighter-rouge">23:59</code>까지의 누적시간을 구해서 더해준다.<br />
- 5-1. 모든 차량의 번호와 누적시간을 4에서 만든 최소힙에 저장한다.</li>
-  <li>최소힙이 빌 때까지 하나씩 <code class="language-plaintext highlighter-rouge">pop</code> 해서 요금을 계산한 뒤 정답배열에 저장한다.<br /><br /></li>
-</ol>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/e8665a951cb4ebb1c405b87b4590ada0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92341]]></summary></entry><entry><title type="html">Python) 프로그래머스. k진수에서 소수 개수 구하기</title><link href="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. k진수에서 소수 개수 구하기" /><published>2022-04-29T00:00:00+09:00</published><updated>2022-04-29T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="MySQLWorkbench" /><category term="Log" /><summary type="html"><![CDATA[MySQL Workbench에 내장되어 있는 EER 다이어그램 제작툴의 사용법과 SQL 스크립트를 불러와서 테이블 생성하는 법 가이드]]></summary></entry><entry><title type="html">Python) 프로그래머스. k진수에서 소수 개수 구하기</title><link href="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. k진수에서 소수 개수 구하기" /><published>2022-04-29T00:00:00+09:00</published><updated>2022-04-29T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-get-prime-num-in-kNum-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1520,85 +1703,4 @@
   <li>브랜치 변경이 완료되면 똑같이 서버 실행한 뒤 HomeController의 매핑 주소를 참고해서 주소창에 입력하면 작업한 페이지를 볼 수 있다.</li>
   <li>다 봤으면 다시 본인 브랜치로 바꿔서 계속 작업하면 됨</li>
   <li>수정했으면 하는 사항이 있으면 여기서 밑으로 쭉 내려보면 댓글 작성란이 있음. 작성하면 된다.</li>
-</ol>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[깃허브를 이용해 팀 프로젝트를 진행하는 중 다른 팀원의 작업물 확인 방법을 자주 잊어버리는 팀원들을 위해서 작성했다.]]></summary></entry><entry><title type="html">Python) 프로그래머스. 신고 결과 받기</title><link href="http://localhost:4000/programmers/programmers-report-result-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 신고 결과 받기" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-report-result-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-report-result-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92334">https://programmers.co.kr/learn/courses/30/lessons/92334</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>신입사원 무지는 게시판 불량 이용자를 신고하고 처리 결과를 메일로 발송하는 시스템을 개발하려 합니다. 무지가 개발하려는 시스템은 다음과 같습니다.</p>
-  </li>
-  <li>각 유저는 한 번에 한 명의 유저를 신고할 수 있습니다.</li>
-  <li>신고 횟수에 제한은 없습니다. 서로 다른 유저를 계속해서 신고할 수 있습니다.</li>
-  <li>한 유저를 여러 번 신고할 수도 있지만, 동일한 유저에 대한 신고 횟수는 1회로 처리됩니다.</li>
-  <li>k번 이상 신고된 유저는 게시판 이용이 정지되며, 해당 유저를 신고한 모든 유저에게 정지 사실을 메일로 발송합니다.</li>
-  <li>
-    <p>유저가 신고한 모든 내용을 취합하여 마지막에 한꺼번에 게시판 이용 정지를 시키면서 정지 메일을 발송합니다.</p>
-  </li>
-  <li>이용자의 ID가 담긴 문자열 배열 id_list, 각 이용자가 신고한 이용자의 ID 정보가 담긴 문자열 배열 report, 정지 기준이 되는 신고 횟수 k가 매개변수로 주어질 때, 각 유저별로 처리 결과 메일을 받은 횟수를 배열에 담아 return 하도록 solution 함수를 완성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>2 ≤ id_list의 길이 ≤ 1,000
-    <ul>
-      <li>1 ≤ id_list의 원소 길이 ≤ 10</li>
-      <li>id_list의 원소는 이용자의 id를 나타내는 문자열이며 알파벳 소문자로만 이루어져 있습니다.</li>
-      <li>id_list에는 같은 아이디가 중복해서 들어있지 않습니다.</li>
-    </ul>
-  </li>
-  <li>1 ≤ report의 길이 ≤ 200,000
-    <ul>
-      <li>3 ≤ report의 원소 길이 ≤ 21</li>
-      <li>report의 원소는 “이용자id 신고한id”형태의 문자열입니다.</li>
-      <li>예를 들어 “muzi frodo”의 경우 “muzi”가 “frodo”를 신고했다는 의미입니다.</li>
-      <li>id는 알파벳 소문자로만 이루어져 있습니다.</li>
-      <li>이용자id와 신고한id는 공백(스페이스)하나로 구분되어 있습니다.</li>
-      <li>자기 자신을 신고하는 경우는 없습니다.</li>
-    </ul>
-  </li>
-  <li>1 ≤ k ≤ 200, k는 자연수입니다.</li>
-  <li>return 하는 배열은 id_list에 담긴 id 순서대로 각 유저가 받은 결과 메일 수를 담으면 됩니다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>딕셔너리를 사용해서 풀었다.</li>
-  <li>이 문제에서 관리되어야 하는 것은 <code class="language-plaintext highlighter-rouge">id_list</code>의 원소별로 신고한 id, 각 id별 신고횟수이다.</li>
-</ul>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">usersReport = {신고자 id : [신고된 id 리스트]}</code>와 <code class="language-plaintext highlighter-rouge">reportCnt = {신고된 id : 횟수}</code> 형태의 딕셔너리를 만든다.<br />
- 1-1. <code class="language-plaintext highlighter-rouge">report</code>를 순회하면서 <code class="language-plaintext highlighter-rouge">usersReport</code>에 각 유저별로 신고한 id를 담는다.<br />
- 1-2. <code class="language-plaintext highlighter-rouge">reportCnt</code>에 각 유저별로 신고된 횟수를 저장한다.<br />
- 1-3. 이때 같은 유저가 동일한 아이디를 여러번 신고하지 않도록 예외처리를 해 주어야 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 추출한 리스트 <code class="language-plaintext highlighter-rouge">stop = [k번 이상 신고된 id]</code>를 만든다.<br />
- 2-1. <code class="language-plaintext highlighter-rouge">reportCnt</code>를 순회하며 <code class="language-plaintext highlighter-rouge">k</code>번 이상 신고된 아이디를 <code class="language-plaintext highlighter-rouge">stop</code>에 담는다.<br /></li>
-  <li><code class="language-plaintext highlighter-rouge">id_list</code>를 순회하며 각 유저별 메일을 받은 횟수를 <code class="language-plaintext highlighter-rouge">answer</code>에 담는다.<br /><br /></li>
-</ol>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/0c297eece0eed5c168f5daf229ddb58e.js"></script>
-<p><br /><br /></p>
-
-<ul>
-  <li>그런데 이렇게 구구절절 써서 통과하고 보니까 아주 짧은 코드로 통과한 분이 계셨다…</li>
-</ul>
-
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3">https://programmers.co.kr/learn/courses/30/lessons/92334/solution_groups?language=python3</a></p>
-
-<ul>
-  <li>믓지다…😦 <code class="language-plaintext highlighter-rouge">set</code>이 순간 떠오르긴 했으나 어떻게 활용할 지 몰라서 그냥 구구절절 코드를 썼는데 덕분에 하나 배울 수 있었다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Implementation" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92334]]></summary></entry></feed>
+</ol>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[깃허브를 이용해 팀 프로젝트를 진행하는 중 다른 팀원의 작업물 확인 방법을 자주 잊어버리는 팀원들을 위해서 작성했다.]]></summary></entry></feed>

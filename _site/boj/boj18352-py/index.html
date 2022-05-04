@@ -1,0 +1,871 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Python) BOJ 18352. 특정 거리의 도시 찾기 | Yujin Dev Log</title>
+<meta name="description" content="문제 링크      https://www.acmicpc.net/problem/18352   제한      시간 제한 : 2 초   메모리 제한 : 256 MB">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="Python) BOJ 18352. 특정 거리의 도시 찾기">
+<meta property="og:url" content="http://localhost:4000/boj/boj18352-py/">
+
+
+  <meta property="og:description" content="문제 링크      https://www.acmicpc.net/problem/18352   제한      시간 제한 : 2 초   메모리 제한 : 256 MB">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-05-04T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/boj/boj18352-py/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#boj" itemprop="item"><span itemprop="name">Boj</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Python) BOJ 18352. 특정 거리의 도시 찾기</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업에 능숙한 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Python) BOJ 18352. 특정 거리의 도시 찾기">
+    <meta itemprop="description" content="문제 링크  https://www.acmicpc.net/problem/18352제한  시간 제한 : 2 초  메모리 제한 : 256 MB">
+    <meta itemprop="datePublished" content="2022-05-04T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/boj/boj18352-py/" class="u-url" itemprop="url">Python) BOJ 18352. 특정 거리의 도시 찾기
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-04T00:00:00+09:00">May 4, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#문제-링크">문제 링크</a></li><li><a href="#제한">제한</a></li><li><a href="#문제">문제</a></li><li><a href="#입력">입력</a></li><li><a href="#출력">출력</a></li><li><a href="#-풀이">👀 풀이</a></li><li><a href="#전체-코드">전체 코드</a></li><li><a href="#코드-분석">코드 분석</a></li><li><a href="#결과">결과</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/18352">https://www.acmicpc.net/problem/18352</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 256 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>어떤 나라에는 1번부터 N번까지의 도시와 M개의 단방향 도로가 존재한다. 모든 도로의 거리는 1이다.</p>
+  </li>
+  <li>
+    <p>이 때 특정한 도시 X로부터 출발하여 도달할 수 있는 모든 도시 중에서, 최단 거리가 정확히 K인 모든 도시들의 번호를 출력하는 프로그램을 작성하시오. 또한 출발 도시 X에서 출발 도시 X로 가는 최단 거리는 항상 0이라고 가정한다.</p>
+  </li>
+  <li>
+    <p>예를 들어 N=4, K=2, X=1일 때 다음과 같이 그래프가 구성되어 있다고 가정하자.</p>
+  </li>
+</ul>
+
+<p align="center"><img src="https://upload.acmicpc.net/a5e311d7-7ce4-4638-88a5-3665fb4459e5/-/preview/" width="400" /></p>
+
+<ul>
+  <li>이 때 1번 도시에서 출발하여 도달할 수 있는 도시 중에서, 최단 거리가 2인 도시는 4번 도시 뿐이다.  2번과 3번 도시의 경우, 최단 거리가 1이기 때문에 출력하지 않는다.<br /><br /></li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 도시의 개수 N, 도로의 개수 M, 거리 정보 K, 출발 도시의 번호 X가 주어진다. (2 ≤ N ≤ 300,000, 1 ≤ M ≤ 1,000,000, 1 ≤ K ≤ 300,000, 1 ≤ X ≤ N) 둘째 줄부터 M개의 줄에 걸쳐서 두 개의 자연수 A, B가 공백을 기준으로 구분되어 주어진다. 이는 A번 도시에서 B번 도시로 이동하는 단방향 도로가 존재한다는 의미다. (1 ≤ A, B ≤ N) 단, A와 B는 서로 다른 자연수이다.<br /><br /></li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>X로부터 출발하여 도달할 수 있는 도시 중에서, 최단 거리가 K인 모든 도시의 번호를 한 줄에 하나씩 오름차순으로 출력한다.</p>
+  </li>
+  <li>
+    <p>이 때 도달할 수 있는 도시 중에서, 최단 거리가 K인 도시가 하나도 존재하지 않으면 -1을 출력한다.<br /><br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>다익스트라 알고리즘을 이용해 출발점에서 각 도시까지의 최단거리를 구한 뒤 최단거리가 k와 같은 도시를 차례대로 출력했다.<br /><br /></li>
+</ul>
+
+<h1 id="전체-코드">전체 코드</h1>
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">heapq</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
+<span class="n">INF</span> <span class="o">=</span> <span class="mf">1e9</span>
+
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+    <span class="n">graph</span><span class="p">[</span><span class="n">a</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># 최단거리를 저장할 테이블
+# 처음에는 모든 도시의 거리를 무한대로 초기화한다.
+</span><span class="n">distance</span> <span class="o">=</span> <span class="p">[</span><span class="n">INF</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span><span class="p">))</span>
+    <span class="n">distance</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+        <span class="n">dist</span><span class="p">,</span> <span class="n">now</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="n">now</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">now</span><span class="p">]:</span>
+            <span class="n">cost</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost</span>
+                <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+
+<span class="n">dijkstra</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">ans</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="코드-분석">코드 분석</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">heapq</span>
+
+<span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span><span class="p">))</span> <span class="c1"># (거리, 정점)
+</span>    <span class="n">distance</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<ul>
+  <li>우선순위 큐를 사용해 현위치에서 최단거리가 가장 짧은 노드를 찾을 것이라서 <code class="language-plaintext highlighter-rouge">heapq</code>를 임포트한다.</li>
+  <li>우선순위 큐에는 거리를 기준으로 오름차순 정렬을 할 수 있게 거리가 맨 앞으로 오는 튜플을 만들어 저장한다.</li>
+  <li>시작점과의 거리는 0으로 저장한 후 최단거리를 기록하는 테이블의 시작점 인덱스에도 0을 기록해준다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+        <span class="n">dist</span><span class="p">,</span> <span class="n">now</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+        <span class="c1"># 이미 처리된 정점이면 pass
+</span>        <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="n">now</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># 현재 정점과 연결된 정점들을 탐색한다.
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">now</span><span class="p">]:</span>
+            <span class="n">cost</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost</span>
+                <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+</code></pre></div></div>
+
+<ul>
+  <li>큐의 원소를 하나씩 꺼내서 최단거리를 계산하는 작업을 시작한다.</li>
+  <li>만약 최단거리 테이블에 저장된 현재 노드까지의 거리가 방금 큐에서 꺼낸 거리보다 짧으면 이미 최단거리를 찾은 것이니까 더 확인해 볼 필요가 없다.</li>
+  <li>그렇지 않고 최단거리를 갱신해주어야 할 필요가 있는 정점이라면 현재 정점과 연결된 정점까지의 거리를 탐색한다.</li>
+  <li>이 문제에서 모든 정점간의 거리는 1이니까 현재 정점에서 다음 정점까지의 거리를 구하려면 시작점에서 현재 정점까지의 거리 <code class="language-plaintext highlighter-rouge">dist</code>에 1을 더해주면 된다.</li>
+  <li>만약 새로 구한 거리가 최단거리 테이블에 있는 값보다 적으면 갱신한 후 우선순위 큐에 삽입한다.</li>
+  <li>이 과정을 큐가 빌 때까지 반복한다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dijkstra</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>다익스트라 메서드를 호출해서 <code class="language-plaintext highlighter-rouge">x</code>에서부터 모든 도시까지의 최단거리를 구한다.</li>
+  <li>우선순위 큐 <code class="language-plaintext highlighter-rouge">ans</code>를 만들어 최단거리가 <code class="language-plaintext highlighter-rouge">k</code>와 같은 정점 목록을 저장한다.</li>
+  <li>문제에서 도시 번호가 작은 순서대로 출력하라고 했기 때문에 최소힙으로 만들었다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="ow">not</span> <span class="n">ans</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>만약 <code class="language-plaintext highlighter-rouge">ans</code>가 비어 있으면 최단거리가 <code class="language-plaintext highlighter-rouge">k</code>인 도시가 존재하지 않는 것이니까 <code class="language-plaintext highlighter-rouge">-1</code>을 리턴한다.</li>
+  <li>그렇지 않으면 <code class="language-plaintext highlighter-rouge">ans</code>를 순회하면서 한 줄에 하나씩 출력하면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 2784 ms</li>
+  <li>메모리 : 107284 KB<br /><br /></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a><span class="sep">, </span>
+    
+      <a href="/tags/#boj" class="page__taxonomy-item p-category" rel="tag">BOJ</a><span class="sep">, </span>
+    
+      <a href="/tags/#dijkstra" class="page__taxonomy-item p-category" rel="tag">Dijkstra</a><span class="sep">, </span>
+    
+      <a href="/tags/#graph" class="page__taxonomy-item p-category" rel="tag">Graph</a><span class="sep">, </span>
+    
+      <a href="/tags/#no18352" class="page__taxonomy-item p-category" rel="tag">No18352</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">Python</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#boj" class="page__taxonomy-item p-category" rel="tag">BOJ</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-05-04T00:00:00+09:00">May 4, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Python%29+BOJ+18352.+%ED%8A%B9%EC%A0%95+%EA%B1%B0%EB%A6%AC%EC%9D%98+%EB%8F%84%EC%8B%9C+%EC%B0%BE%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj18352-py%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj18352-py%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj18352-py%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/uno%20mas/uno-mas-dev-log-10/" class="pagination--pager" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 10 - 상품목록 페이징 처리
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-10/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 10 - 상품목록 페이징 처리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-03T00:00:00+09:00">May 3, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.05.03
+  작성자 : 황유진
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-09/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 9 - 카테고리별로 해당되는 상품 목록 출력하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-03T00:00:00+09:00">May 3, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.05.03
+  작성자 : 황유진
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-08/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 8 - (TDD) Junit4를 사용한 DB 연결 테스트 코드 작성
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-02T00:00:00+09:00">May 2, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.05.02
+  작성자 : 황유진
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-07/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 7 - 쇼핑몰 RDBMS 설계 및 생성
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-01T00:00:00+09:00">May 1, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.05.01
+  작성자 : 황유진
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
