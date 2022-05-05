@@ -291,12 +291,30 @@ public class ProductController {
 * 마켓컬리는 비동기 방식, 쿠팡은 동기 방식이었는데 처음엔 마켓컬리처럼 비동기 방식으로 소분류를 보여주고 싶었지만 그러려면 지금 내가 알고 있는 기술 중에서는 `ajax`를 써야 했다. 
 
 ```jsp
-<c:forEach var="block" varStatus="it" begin="${startBlock }" end="${endBlock }" step="1">
-    <span>
-    <!----> <a href="/product/product_list?cateStart=${cateStart }&cateEnd=${cateEnd }&topcate_num=${topcate_num }&pageNum=${it.index}&dcate_num=${dcate_num}" 
-                class="pagingBtn" id="page${it.index }" style="color: black;"
-                onclick="changePageNum(${it.index }, ${endBlock });">${it.index } <!----></a>
-    </span> 
+<c:forEach var="vo" items="${productList }" varStatus="it">
+    <div class="col-lg-4 col-sm-6">
+        <div class="product-item" id="productItem">
+            <div class="pi-pic">
+                <a href="product_detail"> 
+                    <img src="${path}/resources/img/product-single/product_vegi01.jpeg" alt="">
+                </a>
+                <ul>
+                    <!-- 카트담기 버튼 -->
+                    <li class="w-icon active"><a href="#">
+                        <i class="icon_bag_alt"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pi-text">
+                <a href="#">
+                    <h5>${vo.prod_name }</h5>
+                </a>
+                <div class="product-price" id="prod${it.index }">
+                    ${vo.prod_price }원
+                </div>
+            </div>
+        </div>
+    </div>
 </c:forEach>
 ```
 
