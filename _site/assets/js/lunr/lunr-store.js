@@ -1390,4 +1390,10 @@ var store = [{
         "tags": ["CS","OS","VirtualMemory"],
         "url": "/operating%20system/OS-09-Virtual-Memory/",
         "teaser": null
+      },{
+        "title": "에러해결 Log) The prefix \"tx\" for element \"tx:annotation-driven\" is not bound.",
+        "excerpt":"사용환경     MacBook Air (M1, 2020) 16GB   JDK 8   Spring Tool Suite 4.14.0   tomcat 8.5      에러의 발생 1         DB에 데이터를 삽입하는 테스트를 진행할 때 데이터는 들어갔지만 예외가 발생해 결과적으로는 실패인 상황에도 DB에는 이미 해당 데이터가 있기 때문에 그 데이터를 삭제하든지 이클립스상에서 삽입할 데이터를 바꾸든지 해야 했다.   이것은 상당히 귀찮은 작업이었기 때문에… 예외 발생시에는 롤백을 시키려고 @Transactional을 써 보려고 root-context.xml에 위의 태그를 추가했다. 그리고 마주한 빨간줄…         에러 내용을 보니까 접두사 선언이 되어 있지 않은 것이 문제였다.      문제 해결 1         그래서 스택오버플로우를 통해 접두사 선언을 해 주었다.   xmlns:tx=\"http://www.springframework.org/schema/tx\"       에러의 발생 2         하지만 여전히 에러는 사라지지 않았고 새로운 메시지가 나왔다. 여전히 관련된 선언을 찾을 수 없다는 내용…ㅠ 해당 메시지로 한 번 더 구글링했다.      문제 해결 2         역시 스택오버플로우에서 해당 문제에 대한 해답을 찾을 수 있었다. 접두사 tx와 관련해 스키마 로케이션을 더 추가해 주어야 했던 것이었다…   http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-2.5.xsd\"         여기까지 하고 나니까 더 이상의 에러가 없는, 클린한 root-context.xml을 볼 수 있었다.      참고     Spring “The prefix “tx” for element “tx:annotation-driven” is not bound.”   cvc-complex-type.2.4.c: The matching wildcard is strict, but no declaration can be found for element ‘tx:annotation-driven’  ","categories": ["ErrorLog"],
+        "tags": ["Error","Solve","Log"],
+        "url": "/errorlog/warning-log-07/",
+        "teaser": null
       }]

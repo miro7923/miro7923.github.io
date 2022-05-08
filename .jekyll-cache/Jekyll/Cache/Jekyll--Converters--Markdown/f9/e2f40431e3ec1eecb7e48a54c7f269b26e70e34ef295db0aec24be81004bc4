@@ -1,0 +1,66 @@
+I"�<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생-1">에러의 발생 1</h1>
+
+<p align="center"><img src="../../assets/images/tranError1.png" width="700" /></p>
+
+<ul>
+  <li>DB에 데이터를 삽입하는 테스트를 진행할 때 데이터는 들어갔지만 예외가 발생해 결과적으로는 실패인 상황에도 DB에는 이미 해당 데이터가 있기 때문에 그 데이터를 삭제하든지 이클립스상에서 삽입할 데이터를 바꾸든지 해야 했다.</li>
+  <li>이것은 상당히 귀찮은 작업이었기 때문에… 예외 발생시에는 롤백을 시키려고 <code class="language-plaintext highlighter-rouge">@Transactional</code>을 써 보려고 <code class="language-plaintext highlighter-rouge">root-context.xml</code>에 위의 태그를 추가했다. 그리고 마주한 빨간줄…</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/tranError2.png" width="700" /></p>
+
+<ul>
+  <li>에러 내용을 보니까 접두사 선언이 되어 있지 않은 것이 문제였다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결-1">문제 해결 1</h1>
+
+<p align="center"><img src="../../assets/images/tranError3.png" width="600" /></p>
+
+<ul>
+  <li>그래서 스택오버플로우를 통해 접두사 선언을 해 주었다.</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xmlns:tx="http://www.springframework.org/schema/tx"
+</code></pre></div></div>
+
+<h1 id="에러의-발생-2">에러의 발생 2</h1>
+
+<p align="center"><img src="../../assets/images/tranError4.png" width="600" /></p>
+
+<ul>
+  <li>하지만 여전히 에러는 사라지지 않았고 새로운 메시지가 나왔다. 여전히 관련된 선언을 찾을 수 없다는 내용…ㅠ 해당 메시지로 한 번 더 구글링했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결-2">문제 해결 2</h1>
+
+<p align="center"><img src="../../assets/images/tranError5.png" width="600" /></p>
+
+<ul>
+  <li>역시 스택오버플로우에서 해당 문제에 대한 해답을 찾을 수 있었다. 접두사 <code class="language-plaintext highlighter-rouge">tx</code>와 관련해 스키마 로케이션을 더 추가해 주어야 했던 것이었다…</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+</code></pre></div></div>
+
+<p align="center"><img src="../../assets/images/tranError6.png" width="600" /></p>
+
+<ul>
+  <li>여기까지 하고 나니까 더 이상의 에러가 없는, 클린한 <code class="language-plaintext highlighter-rouge">root-context.xml</code>을 볼 수 있었다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://stackoverflow.com/questions/10373222/spring-the-prefix-tx-for-element-txannotation-driven-is-not-bound">Spring “The prefix “tx” for element “tx:annotation-driven” is not bound.”</a></li>
+  <li><a href="https://stackoverflow.com/questions/17566391/cvc-complex-type-2-4-c-the-matching-wildcard-is-strict-but-no-declaration-can">cvc-complex-type.2.4.c: The matching wildcard is strict, but no declaration can be found for element ‘tx:annotation-driven’</a></li>
+</ul>
+:ET
