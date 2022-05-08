@@ -1,4 +1,383 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-05T20:27:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-13/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-13</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-13/"><![CDATA[<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-08T21:34:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">OS) Virtual Memory</title><link href="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/" rel="alternate" type="text/html" title="OS) Virtual Memory" /><published>2022-05-08T00:00:00+09:00</published><updated>2022-05-08T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-09-Virtual-Memory</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/"><![CDATA[<h1 id="-demain-paging">👀 Demain Paging</h1>
+<ul>
+  <li>실제로 필요할 때 <code class="language-plaintext highlighter-rouge">page</code>를 메모리에 올리는 것</li>
+  <li>왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다.</li>
+  <li>그래서 프로세스 동작에 실제로 필요한 <code class="language-plaintext highlighter-rouge">page</code>만 메모리에 올리는 것이 효율적이다.</li>
+  <li>장점
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">I/O</code> 양의 감소</li>
+      <li>메모리 사용량 감소</li>
+      <li>빠른 응답 시간</li>
+      <li>더 많은 사용자 수용
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>물리적 메모리에 <code class="language-plaintext highlighter-rouge">page</code>가 올려질 <code class="language-plaintext highlighter-rouge">page entry</code>에서 <code class="language-plaintext highlighter-rouge">Valid/Invalid bit</code>를 사용해 현재 메모리에 <code class="language-plaintext highlighter-rouge">page</code>가 올려져 확인한다. 만약 어떤 메모리 주소에 접근했을 때 해당 위치가 <code class="language-plaintext highlighter-rouge">Invalid bit</code>로 세팅되어 있으면 <code class="language-plaintext highlighter-rouge">page fault</code>가 일어났다고 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">page fault</code>가 일어나면 디스크에 직접 접근해서 해당 페이지를 가져와야 하는데 이는 메모리에 접근해서 가져오는 것에 비해 시간이 아주 많이 걸린다.<br /><br /></li>
+</ul>
+
+<h1 id="replacement-algorithm">Replacement Algorithm</h1>
+<h2 id="page-replacement">Page replacement</h2>
+<ul>
+  <li>새로운 페이지를 올릴 공간이 없으면 올려져 있는 페이지 중 어떤 것을 쫓아낼 지 결정해야 한다.</li>
+  <li>이를 위한 여러 알고리즘이 있는데 대체로 <code class="language-plaintext highlighter-rouge">page fault</code>를 최소화하기 위해 곧바로 사용되지 않을 페이지를 쫓아내는 형태로 구현되어 있다.</li>
+</ul>
+
+<h2 id="optimal-algorithm">Optimal Algorithm</h2>
+<ul>
+  <li>가장 먼 미래에 사용될(당장 사용되지 않을) 페이지를 쫓아내는 알고리즘</li>
+  <li>미래에 참조될 페이지를 미리 예측할 수 있다는 가정하에 사용할 수 있는 알고리즘이다. 하지만 미래를 아는 것은 불가능하기 때문에 실제 시스템에 사용은 불가능하다.</li>
+</ul>
+
+<h2 id="fifo-first-in-first-out-algorithm">FIFO (First In First Out) Algorithm</h2>
+<ul>
+  <li>먼저 들어온 것을 먼저 내쫓는 알고리즘</li>
+  <li>실제 시스템에 사용되는 알고리즘이다.</li>
+  <li>먼저 들어온 것을 내쫓는 과정에서 페이지 프레임 크기를 늘렸는데 오히려 <code class="language-plaintext highlighter-rouge">page fault</code>가 늘어나 성능이 하락하는 경우가 생길 수 있다.</li>
+</ul>
+
+<h2 id="lru-least-recently-used-algorithm">LRU (Least Recently Used) Algorithm</h2>
+<ul>
+  <li>가장 오래 전에 참조된 것을 지우는 알고리즘</li>
+  <li>실제 시스템에서 많이 사용된다.</li>
+  <li>어떤 페이지가 참조되면 그것의 순서를 맨 앞으로 바꿔주기만 하면 되기 때문에 링크드 리스트(Linked list) 형태로 구현한다. 시간복잡도는 <code class="language-plaintext highlighter-rouge">O(1)</code></li>
+</ul>
+
+<h2 id="lfu-least-frequently-used-algorithm">LFU (Least Frequently Used) Algorithm</h2>
+<ul>
+  <li>참조 횟수(reference count)가 가장 적은 페이지를 지우는 알고리즘
+    <ul>
+      <li>최저 참조 횟수 페이지가 여러 개 있는 경우
+        <ul>
+          <li>내쫓을 페이지를 임의로 선정한다.</li>
+          <li>성능 향상을 위해 가장 오래 전에 참조된 페이지를 지우게 구현할 수도 있다.</li>
+        </ul>
+      </li>
+      <li>장단점
+        <ul>
+          <li>LRU처럼 직전 참조 시점만 보는 것이 아니라 장기적인 시간 규모를 보기 때문에 페이지의 인기도를 좀 더 정확히 반영할 수 있다.</li>
+          <li>참조 시점의 최근성을 반영하지 못 한다.(만약 1초 전에 처음으로 참조 되었다면 인기도가 낮은 것으로 간주하고 내쫓게 된다)</li>
+          <li>LRU보다 구현이 복잡하다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>어떤 페이지가 참조되면 이전에 참조된 페이지들의 참조 횟수와 하나씩 비교해서 순서를 정해줘야 한다. 그래서 LRU처럼 링크드 리스트 형태로 구현하면 순서를 재설정 하는 데 너무 오래 걸린다. 그래서 최소힙(Min heap) 형태로 구현한다. 참조 횟수가 가장 적은 페이지가 힙의 최상단에 있는 것이다. 시간복잡도는 <code class="language-plaintext highlighter-rouge">O(log n)</code><br /><br /></li>
+</ul>
+
+<h1 id="캐슁-기법">캐슁 기법</h1>
+<ul>
+  <li>한정된 빠른 공간(=캐쉬)에 요청된 데이터를 저장해 두었다가 후속 요청시 캐쉬로부터 직접 서비스하는 방식</li>
+  <li><code class="language-plaintext highlighter-rouge">paging system</code> 외에도 <code class="language-plaintext highlighter-rouge">cache memory</code>, <code class="language-plaintext highlighter-rouge">buffer caching</code>, <code class="language-plaintext highlighter-rouge">Web caching</code> 등 다양한 분야에서 사용된다.</li>
+  <li>그런데 <code class="language-plaintext highlighter-rouge">paging system</code>에서는 <code class="language-plaintext highlighter-rouge">page fault</code>가 생겨서 디스크에서 페이지를 가져와야 할 때에만 <code class="language-plaintext highlighter-rouge">OS</code>가 관여하고 페이지가 메모리에 있어서 디스크까지 갈 필요가 없을 때엔 <code class="language-plaintext highlighter-rouge">OS</code>가 관여하지 않는다. 그래서 <code class="language-plaintext highlighter-rouge">OS</code>는 페이지의 메모리 입장 시간 정도만 알고 있지 메모리에 올라간 이후의 참조 시간과 빈도 같은 것을 알 수 없다. 그래서 사실 위에서 설명했던 LRU와 LFU 같은 알고리즘들은 <code class="language-plaintext highlighter-rouge">OS</code>의 <code class="language-plaintext highlighter-rouge">paging system</code>에서는 사용할 수 없다.</li>
+</ul>
+
+<h2 id="clock-algorithm">Clock Algorithm</h2>
+<ul>
+  <li>그 대신 비슷한 효과를 낼 수 있는 <code class="language-plaintext highlighter-rouge">Clock Algorithm</code>을 사용한다.</li>
+  <li>시계에서 초침이 돌아가는 것처럼 포인터가 <code class="language-plaintext highlighter-rouge">page entry</code>를 돌면서 교체할 페이지를 선정하는 것이다.</li>
+  <li>한 바퀴 돌면서 <code class="language-plaintext highlighter-rouge">Reference bit</code>가 1이면 그동안 사용된 것으로 보고 0으로 바꾸고 넘어가고 0이면 그동안 사용하지 않은 것으로 간주해 쫓아낸다.<br /><br /></li>
+</ul>
+
+<h1 id="page-frame의-allocation">Page Frame의 Allocation</h1>
+<ul>
+  <li>메모리 참조 명령어 수행시 명령어, 데이터 등 여러 페이지를 동시에 참조해야 하는 경우가 생길 수 있다. 이때 명령어 수행을 위해 최소한 할당되어야 하는 프레임의 수가 있는데 이 동작 <code class="language-plaintext highlighter-rouge">Loop</code>를 구성하는 페이지들은 한꺼번에 <code class="language-plaintext highlighter-rouge">allocate</code>되는 것이 유리하다. 만약 하지 않으면 매 <code class="language-plaintext highlighter-rouge">Loop</code>마다 <code class="language-plaintext highlighter-rouge">page fault</code>가 생겨 매번 디스크에 페이지를 찾으러 가야 하기 때문에 비효율적이고 성능이 떨어질 것이다.</li>
+</ul>
+
+<h2 id="allocation-scheme">Allocation Scheme</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Equal allocation</code> : 모든 프로세스에 똑같은 개수 할당</li>
+  <li><code class="language-plaintext highlighter-rouge">Proportional allocation</code> : 프로세스 크기에 비례하여 할당</li>
+  <li><code class="language-plaintext highlighter-rouge">Priority allocation</code> : 프로세스의 우선순위에 따라 다르게 할당</li>
+</ul>
+
+<h2 id="global-replacement">Global replacement</h2>
+<ul>
+  <li>프레임을 얻기 위해 경쟁하는 형태라 할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">replace</code>시 다른 프로세스에 할당된 프레임을 빼앗아 올 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">FIFO</code>, <code class="language-plaintext highlighter-rouge">LRU</code>, <code class="language-plaintext highlighter-rouge">LFU</code> 등의 알고리즘을 <code class="language-plaintext highlighter-rouge">global replacement</code>로 사용시에 해당</li>
+  <li><code class="language-plaintext highlighter-rouge">Working set</code>, <code class="language-plaintext highlighter-rouge">PFF</code> 알고리즘 사용</li>
+</ul>
+
+<h2 id="local-replacement">Local replacement</h2>
+<ul>
+  <li>미리 할당해 놓는 형태이다.</li>
+  <li>자신에게 할당된 프레임 내에서만 교체</li>
+  <li><code class="language-plaintext highlighter-rouge">FIFO</code>, <code class="language-plaintext highlighter-rouge">LRU</code>, <code class="language-plaintext highlighter-rouge">LFU</code> 등의 알고리즘을 프로세스별로 운영시 해당 <br /><br /></li>
+</ul>
+
+<h1 id="thrashing">Thrashing</h1>
+<ul>
+  <li>프로세스의 원활한 수행에 필요한 최소한의 <code class="language-plaintext highlighter-rouge">page frame</code>수를 할당 받지 못한 경우 발생</li>
+  <li><code class="language-plaintext highlighter-rouge">page fault rate</code>이 매우 높아진다.</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code> 사용률이 낮아짐</li>
+  <li><code class="language-plaintext highlighter-rouge">OS</code>는 <code class="language-plaintext highlighter-rouge">MPD (Multiprogramming degree)</code>를 높여야 한다고 판단</li>
+  <li>또 다른 프로세스가 시스템에 추가됨(higher MPD)</li>
+  <li>프로세스 당 할당된 프레임 수가 더욱 감소된다.</li>
+  <li>프로세스는 페이지의 <code class="language-plaintext highlighter-rouge">swap in / swap out</code>으로 바쁘다. 그래서 멈춰 있는 것처럼 보인다. (정상적인 동작 불가)</li>
+  <li>그래서 대부분의 시간에 <code class="language-plaintext highlighter-rouge">CPU</code>는 한가하다.(log throughput)</li>
+  <li>동시에 메모리에 올라가 있는 프로그램의 수 조절이 필요하다. 이를 위해 사용되는 것이 <code class="language-plaintext highlighter-rouge">Working-set model</code>이다.</li>
+</ul>
+
+<h2 id="working-set-model">Working-Set Model</h2>
+<ul>
+  <li>프로세스는 특정 시간 동안 일정 장소만을 집중적으로 참조한다.</li>
+  <li>집중적으로 참조되는 해당 페이지들의 집합을 <code class="language-plaintext highlighter-rouge">localityy set</code>이라 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">locality</code>에 기반하여 프로세스가 일정 시간 동안 원활하게 수행되기 위해 한꺼번에 메모리에 올라와 있어야 하는 페이지들의 집합을 <code class="language-plaintext highlighter-rouge">Working Set</code>이라 정의한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Working Set</code> 모델에서는 프로세스의 <code class="language-plaintext highlighter-rouge">Working Set</code> 전체가 메모리에 올라와 있어야 수행되고 그렇지 않고 부분적으로 있으면 가지고 있던 프레임도 모두 반납 후 <code class="language-plaintext highlighter-rouge">swap out(suspend)</code>된다. 이를 통해 <code class="language-plaintext highlighter-rouge">thrashing</code>을 어느 정도 방지할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Working Set</code>을 제대로 탐지하기 위해서는 <code class="language-plaintext highlighter-rouge">window size</code>를 잘 결정해야 한다. 너무 작으면 <code class="language-plaintext highlighter-rouge">localiry set</code>을 모두 수용하지 못할 수 있고, 너무 크면 여러 규모의 <code class="language-plaintext highlighter-rouge">locality set</code>을 수용하게 될 것이다.</li>
+</ul>
+
+<h2 id="pff-page-fault-frequency-scheme">PFF (Page-Fault Frequency) Scheme</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page fault rate</code>의 상한값과 하한값을 둔다.</li>
+  <li><code class="language-plaintext highlighter-rouge">page fault</code>가 많을수록 많은 페이지 프레임을 할당하고 그렇지 않으면 할당된 프레임 수를 줄인다.</li>
+  <li>빈 프레임이 없으면 일부 프로세스를 <code class="language-plaintext highlighter-rouge">swap out</code> 시킨다.<br /><br /></li>
+</ul>
+
+<h1 id="page-size의-결정">Page Size의 결정</h1>
+<ul>
+  <li>페이지의 크기가 너무 작으면 페이지 수가 증가하게 되어 페이지 테이블의 크기가 증가할 것이다.</li>
+  <li>작게 쪼개진만큼 너무 필요한 정보만 메모리에 올라와 있게 되어 <code class="language-plaintext highlighter-rouge">page fault</code>의 빈도수가 늘어나 디스크에 접근해야 하는 시간이 늘어날 것이다. 이런 측면에서 볼 때 메모리 이용은 효율적이지만 <code class="language-plaintext highlighter-rouge">locality</code> 활용 측면에서는 좋지 않다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
+  <li><a href="https://straw961030.tistory.com/155">스레싱(thrashing)이란 무엇인가</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="VirtualMemory" /><summary type="html"><![CDATA[👀 Demain Paging 실제로 필요할 때 page를 메모리에 올리는 것 왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다. 그래서 프로세스 동작에 실제로 필요한 page만 메모리에 올리는 것이 효율적이다. 장점 I/O 양의 감소 메모리 사용량 감소 빠른 응답 시간 더 많은 사용자 수용]]></summary></entry><entry><title type="html">Python) BOJ 14502. 연구소</title><link href="http://localhost:4000/boj/boj14502-py/" rel="alternate" type="text/html" title="Python) BOJ 14502. 연구소" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj14502-py</id><content type="html" xml:base="http://localhost:4000/boj/boj14502-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/14502">https://www.acmicpc.net/problem/14502</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 512 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>인체에 치명적인 바이러스를 연구하던 연구소에서 바이러스가 유출되었다. 다행히 바이러스는 아직 퍼지지 않았고, 바이러스의 확산을 막기 위해서 연구소에 벽을 세우려고 한다.</p>
+  </li>
+  <li>
+    <p>연구소는 크기가 N×M인 직사각형으로 나타낼 수 있으며, 직사각형은 1×1 크기의 정사각형으로 나누어져 있다. 연구소는 빈 칸, 벽으로 이루어져 있으며, 벽은 칸 하나를 가득 차지한다.</p>
+  </li>
+  <li>
+    <p>일부 칸은 바이러스가 존재하며, 이 바이러스는 상하좌우로 인접한 빈 칸으로 모두 퍼져나갈 수 있다. 새로 세울 수 있는 벽의 개수는 3개이며, 꼭 3개를 세워야 한다.</p>
+  </li>
+  <li>
+    <p>벽을 3개 세운 뒤, 바이러스가 퍼질 수 없는 곳을 안전 영역이라고 한다. 위의 지도에서 안전 영역의 크기는 27이다.</p>
+  </li>
+  <li>
+    <p>연구소의 지도가 주어졌을 때 얻을 수 있는 안전 영역 크기의 최댓값을 구하는 프로그램을 작성하시오.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>첫째 줄에 지도의 세로 크기 N과 가로 크기 M이 주어진다. (3 ≤ N, M ≤ 8)</p>
+  </li>
+  <li>
+    <p>둘째 줄부터 N개의 줄에 지도의 모양이 주어진다. 0은 빈 칸, 1은 벽, 2는 바이러스가 있는 위치이다. 2의 개수는 2보다 크거나 같고, 10보다 작거나 같은 자연수이다.</p>
+  </li>
+  <li>
+    <p>빈 칸의 개수는 3개 이상이다.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 얻을 수 있는 안전 영역의 최대 크기를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>‘이것이 취업을 위한 코딩테스트다 with 파이썬’을 참고해서 <code class="language-plaintext highlighter-rouge">DFS</code>로 임의의 위치에 벽을 3개 세웠을 때 안전영역 넓이의 최대값을 구하는 방식으로 풀었다.</li>
+  <li>이 문제를 풀기 위한 키포인트는 벽을 3개 세웠을 때의 경우의 수를 모두 탐색하는 것이다. 벽의 위치에 따라 안전영역의 넓이가 달라질텐데, 그 때마다 안전영역의 넓이를 계산해 최대값을 찾아야 한다. 이를 위해 <code class="language-plaintext highlighter-rouge">DFS</code>로 완전탐색을 실시한다.<br /><br /></li>
+</ul>
+
+<h1 id="전체-코드">전체 코드</h1>
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
+
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
+
+<span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">virus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="n">virus</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">getScore</span><span class="p">():</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">score</span>
+
+<span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">result</span>
+    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="c1"># 울타리가 3개 설치된 경우 임시배열에 복사
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+
+        <span class="c1"># 각 바이러스 위치에서 바이러스 전파
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">virus</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">getScore</span><span class="p">())</span>
+        <span class="k">return</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">cnt</span> <span class="o">-=</span> <span class="mi">1</span>
+
+<span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h1 id="코드-분석">코드 분석</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
+
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># tmp: 벽 설치 후 바이러스가 퍼진 것을 시뮬레이션 할 배열 
+</span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
+
+<span class="c1"># 상하좌우 방향 
+</span><span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 결과값 
+</span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<ul>
+  <li>문제 풀이에 필요한 입력을 받는 부분이다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">virus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="n">virus</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DFS</code>로 바이러스를 퍼뜨리는 메서드이다.</li>
+  <li>상하좌우 주변에 바이러스를 퍼뜨릴 수 있으면 퍼뜨린 후 자기자신을 재귀호출한다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">getScore</span><span class="p">():</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">score</span>
+</code></pre></div></div>
+
+<ul>
+  <li>안전영역의 넓이를 구하는 메서드이다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">result</span>
+    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="c1"># 울타리가 3개 설치된 경우 임시배열에 복사
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+
+        <span class="c1"># 각 바이러스 위치에서 바이러스 전파
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">virus</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+        <span class="c1"># 안전영역의 최대값 구하기 
+</span>        <span class="n">result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">getScore</span><span class="p">())</span>
+        <span class="k">return</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># 울타리가 설치 가능하면 설치한 후 재귀호출한다.
+</span>                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+                <span class="c1"># 울타리를 3개 모두 설치한 경우의 안전영역을 계산하고 나왔으면
+</span>                <span class="c1"># 다음 탐색을 위해 현재위치의 울타리를 없앤다.
+</span>                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">cnt</span> <span class="o">-=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<ul>
+  <li>울타리를 3개 설치해 보고 각 경우마다 바이러스를 퍼뜨려본다. 그 다음 안전영역의 넓이를 구해서 최대값으로 갱신한다.</li>
+  <li>재귀함수이기 때문에 무한루프에 빠지지 않도록 조건을 걸어주어야 한다. 벽(cnt)의 개수가 3개가 되면 문제의 조건대로 벽을 모두 세운 것이기 때문에 이 상태에서 바이러스를 퍼뜨려 본 다음에 안전영역의 넓이를 구한다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 3584 ms</li>
+  <li>메모리 : 142352 KB<br /><br /></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No14502" /><category term="DFS" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/14502 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-13/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-13</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-13/"><![CDATA[<ul>
   <li>작성일 : 2022.05.05</li>
   <li>
     <p>작성자 : 황유진</p>
@@ -293,12 +672,30 @@
   <li>마켓컬리는 비동기 방식, 쿠팡은 동기 방식이었는데 처음엔 마켓컬리처럼 비동기 방식으로 소분류를 보여주고 싶었지만 그러려면 지금 내가 알고 있는 기술 중에서는 <code class="language-plaintext highlighter-rouge">ajax</code>를 써야 했다.</li>
 </ul>
 
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"block"</span><span class="na"> varStatus=</span><span class="s">"it"</span><span class="na"> begin=</span><span class="s">"</span><span class="si">${</span><span class="n">startBlock</span> <span class="si">}</span><span class="s">"</span><span class="na"> end=</span><span class="s">"</span><span class="si">${</span><span class="n">endBlock</span> <span class="si">}</span><span class="s">"</span><span class="na"> step=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span&gt;</span>
-    <span class="c">&lt;!----&gt;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/product/product_list?cateStart=${cateStart }&amp;cateEnd=${cateEnd }&amp;topcate_num=${topcate_num }&amp;pageNum=${it.index}&amp;dcate_num=${dcate_num}"</span> 
-                <span class="na">class=</span><span class="s">"pagingBtn"</span> <span class="na">id=</span><span class="s">"page${it.index }"</span> <span class="na">style=</span><span class="s">"color: black;"</span>
-                <span class="na">onclick=</span><span class="s">"changePageNum(${it.index }, ${endBlock });"</span><span class="nt">&gt;</span>${it.index } <span class="c">&lt;!----&gt;</span><span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/span&gt;</span> 
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"vo"</span><span class="na"> items=</span><span class="s">"</span><span class="si">${</span><span class="n">productList</span> <span class="si">}</span><span class="s">"</span><span class="na"> varStatus=</span><span class="s">"it"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-4 col-sm-6"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-item"</span> <span class="na">id=</span><span class="s">"productItem"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-pic"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"product_detail"</span><span class="nt">&gt;</span> 
+                    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"${path}/resources/img/product-single/product_vegi01.jpeg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;ul&gt;</span>
+                    <span class="c">&lt;!-- 카트담기 버튼 --&gt;</span>
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"w-icon active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon_bag_alt"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;</span>
+                    <span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-text"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h5&gt;</span>${vo.prod_name }<span class="nt">&lt;/h5&gt;</span>
+                <span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-price"</span> <span class="na">id=</span><span class="s">"prod${it.index }"</span><span class="nt">&gt;</span>
+                    ${vo.prod_price }원
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/c:forEach&gt;</span>
 </code></pre></div></div>
 
@@ -310,239 +707,7 @@
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-15</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.05 작성자 : 황유진]]></summary></entry><entry><title type="html">Python) BOJ 14502. 연구소</title><link href="http://localhost:4000/boj/boj14502-py/" rel="alternate" type="text/html" title="Python) BOJ 14502. 연구소" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj14502-py</id><content type="html" xml:base="http://localhost:4000/boj/boj14502-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/14502">https://www.acmicpc.net/problem/14502</a><br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>인체에 치명적인 바이러스를 연구하던 연구소에서 바이러스가 유출되었다. 다행히 바이러스는 아직 퍼지지 않았고, 바이러스의 확산을 막기 위해서 연구소에 벽을 세우려고 한다.</p>
-  </li>
-  <li>
-    <p>연구소는 크기가 N×M인 직사각형으로 나타낼 수 있으며, 직사각형은 1×1 크기의 정사각형으로 나누어져 있다. 연구소는 빈 칸, 벽으로 이루어져 있으며, 벽은 칸 하나를 가득 차지한다.</p>
-  </li>
-  <li>
-    <p>일부 칸은 바이러스가 존재하며, 이 바이러스는 상하좌우로 인접한 빈 칸으로 모두 퍼져나갈 수 있다. 새로 세울 수 있는 벽의 개수는 3개이며, 꼭 3개를 세워야 한다.</p>
-  </li>
-  <li>
-    <p>벽을 3개 세운 뒤, 바이러스가 퍼질 수 없는 곳을 안전 영역이라고 한다. 위의 지도에서 안전 영역의 크기는 27이다.</p>
-  </li>
-  <li>
-    <p>연구소의 지도가 주어졌을 때 얻을 수 있는 안전 영역 크기의 최댓값을 구하는 프로그램을 작성하시오.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="입력">입력</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>첫째 줄에 지도의 세로 크기 N과 가로 크기 M이 주어진다. (3 ≤ N, M ≤ 8)</p>
-  </li>
-  <li>
-    <p>둘째 줄부터 N개의 줄에 지도의 모양이 주어진다. 0은 빈 칸, 1은 벽, 2는 바이러스가 있는 위치이다. 2의 개수는 2보다 크거나 같고, 10보다 작거나 같은 자연수이다.</p>
-  </li>
-  <li>
-    <p>빈 칸의 개수는 3개 이상이다.<br /><br /></p>
-  </li>
-</ul>
-
-<h1 id="출력">출력</h1>
-<hr />
-
-<ul>
-  <li>첫째 줄에 얻을 수 있는 안전 영역의 최대 크기를 출력한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>‘이것이 취업을 위한 코딩테스트다 with 파이썬’을 참고해서 <code class="language-plaintext highlighter-rouge">DFS</code>로 임의의 위치에 벽을 3개 세웠을 때 안전영역 넓이의 최대값을 구하는 방식으로 풀었다.</li>
-  <li>이 문제를 풀기 위한 키포인트는 벽을 3개 세웠을 때의 경우의 수를 모두 탐색하는 것이다. 벽의 위치에 따라 안전영역의 넓이가 달라질텐데, 그 때마다 안전영역의 넓이를 계산해 최대값을 찾아야 한다. 이를 위해 <code class="language-plaintext highlighter-rouge">DFS</code>로 완전탐색을 실시한다.<br /><br /></li>
-</ul>
-
-<h1 id="전체-코드">전체 코드</h1>
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
-
-<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">tmp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
-
-<span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">def</span> <span class="nf">virus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-        <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-                <span class="n">virus</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">getScore</span><span class="p">():</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">score</span>
-
-<span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">result</span>
-    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="c1"># 울타리가 3개 설치된 경우 임시배열에 복사
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-                <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
-
-        <span class="c1"># 각 바이러스 위치에서 바이러스 전파
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="n">virus</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-
-        <span class="n">result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">getScore</span><span class="p">())</span>
-        <span class="k">return</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="n">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
-                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="n">cnt</span> <span class="o">-=</span> <span class="mi">1</span>
-
-<span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-</code></pre></div></div>
-
-<h1 id="코드-분석">코드 분석</h1>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
-
-<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1"># tmp: 벽 설치 후 바이러스가 퍼진 것을 시뮬레이션 할 배열 
-</span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
-
-<span class="c1"># 상하좌우 방향 
-</span><span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># 결과값 
-</span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-</code></pre></div></div>
-
-<ul>
-  <li>문제 풀이에 필요한 입력을 받는 부분이다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">virus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-        <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-                <span class="n">virus</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">DFS</code>로 바이러스를 퍼뜨리는 메서드이다.</li>
-  <li>상하좌우 주변에 바이러스를 퍼뜨릴 수 있으면 퍼뜨린 후 자기자신을 재귀호출한다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">getScore</span><span class="p">():</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">score</span>
-</code></pre></div></div>
-
-<ul>
-  <li>안전영역의 넓이를 구하는 메서드이다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">result</span>
-    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="c1"># 울타리가 3개 설치된 경우 임시배열에 복사
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-                <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
-
-        <span class="c1"># 각 바이러스 위치에서 바이러스 전파
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="n">virus</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-
-        <span class="c1"># 안전영역의 최대값 구하기 
-</span>        <span class="n">result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">getScore</span><span class="p">())</span>
-        <span class="k">return</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="c1"># 울타리가 설치 가능하면 설치한 후 재귀호출한다.
-</span>                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="n">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
-                <span class="c1"># 울타리를 3개 모두 설치한 경우의 안전영역을 계산하고 나왔으면
-</span>                <span class="c1"># 다음 탐색을 위해 현재위치의 울타리를 없앤다.
-</span>                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="n">cnt</span> <span class="o">-=</span> <span class="mi">1</span>
-</code></pre></div></div>
-
-<ul>
-  <li>울타리를 3개 설치해 보고 각 경우마다 바이러스를 퍼뜨려본다. 그 다음 안전영역의 넓이를 구해서 최대값으로 갱신한다.</li>
-  <li>재귀함수이기 때문에 무한루프에 빠지지 않도록 조건을 걸어주어야 한다. 벽(cnt)의 개수가 3개가 되면 문제의 조건대로 벽을 모두 세운 것이기 때문에 이 상태에서 바이러스를 퍼뜨려 본 다음에 안전영역의 넓이를 구한다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 3584 ms</li>
-  <li>메모리 : 142352 KB<br /><br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No14502" /><category term="DFS" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/14502 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Python) BOJ 18352. 특정 거리의 도시 찾기</title><link href="http://localhost:4000/boj/boj18352-py/" rel="alternate" type="text/html" title="Python) BOJ 18352. 특정 거리의 도시 찾기" /><published>2022-05-04T00:00:00+09:00</published><updated>2022-05-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18352-py</id><content type="html" xml:base="http://localhost:4000/boj/boj18352-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.05 작성자 : 황유진]]></summary></entry><entry><title type="html">Python) BOJ 18352. 특정 거리의 도시 찾기</title><link href="http://localhost:4000/boj/boj18352-py/" rel="alternate" type="text/html" title="Python) BOJ 18352. 특정 거리의 도시 찾기" /><published>2022-05-04T00:00:00+09:00</published><updated>2022-05-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18352-py</id><content type="html" xml:base="http://localhost:4000/boj/boj18352-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -2021,138 +2186,4 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/e8665a951cb4ebb1c405b87b4590ada0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92341]]></summary></entry><entry><title type="html">MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide</title><link href="http://localhost:4000/uno%20mas/db-import-guide/" rel="alternate" type="text/html" title="MySQL Workbench에서 EER Diagram model &amp;amp; SQL Script import Guide" /><published>2022-04-30T00:00:00+09:00</published><updated>2022-04-30T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/db-import-guide</id><content type="html" xml:base="http://localhost:4000/uno%20mas/db-import-guide/"><![CDATA[<ul>
-  <li><code class="language-plaintext highlighter-rouge">MySQL Workbench</code>에 내장되어 있는 <code class="language-plaintext highlighter-rouge">EER</code> 다이어그램 제작툴의 사용법과 <code class="language-plaintext highlighter-rouge">SQL</code> 스크립트를 불러와서 테이블 생성하는 법 가이드<br /><br /></li>
-</ul>
-
-<h1 id="eer-다이어그램-모델-불러오기">EER 다이어그램 모델 불러오기</h1>
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">master</code> 브랜치를 <code class="language-plaintext highlighter-rouge">pull</code>한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">MySQL Workbench</code> 실행</li>
-</ol>
-
-<p align="center"><img src="../../assets/images/workbenchEer1.png" width="600" /></p>
-<p>￼</p>
-
-<ul>
-  <li>빨간 박스 선택</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer2.png" width="600" /></p>
-<p>￼</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">+</code> 눌러서 모델 추가함</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer3.png" width="800" /></p>
-<p>￼</p>
-
-<ul>
-  <li>이런 창이 나올 것임. 여기에서 <code class="language-plaintext highlighter-rouge">File</code> 메뉴 클릭</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer4.png" width="600" /></p>
-<p>￼</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Open Model</code> 클릭</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer5.png" width="600" /></p>
-<p>￼</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">/Uno-Mas/unomasdb/unomasTable.mwb</code> 경로에 있는 파일 선택하고 <code class="language-plaintext highlighter-rouge">Open</code></li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer6.png" width="800" /></p>
-<p>￼</p>
-
-<ul>
-  <li>그럼 만들어진 다이어그램 모델 확인 가능!<br /><br /></li>
-</ul>
-
-<h1 id="다이어그램-세부사항-확인">다이어그램 세부사항 확인</h1>
-
-<p align="center"><img src="../../assets/images/workbenchEer7.png" width="600" /></p>
-<p>￼</p>
-
-<ul>
-  <li>테이블 사이 관계선 위에 마우스오버하면 외래키로 연결된 컬럼을 표시해 준다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer8.png" width="600" /></p>
-<p>￼</p>
-
-<ul>
-  <li>테이블 이름이 있는 영역에 마우스오버하면 이 테이블과 관계를 맺고 있는 테이블들을 표시해준다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer9.png" width="800" /></p>
-<p>￼</p>
-
-<ul>
-  <li>테이블명을 더블클릭하면 세부사항을 확인할 수 있다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer10.png" width="800" /></p>
-<p>￼</p>
-
-<ul>
-  <li>각 테이블별로 설명도 써 놨으니까 참고하거나 본인이 더 필요하다고 생각되는 메모가 있으면 추가할 수 있다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer11.png" width="800" /></p>
-<p>￼</p>
-
-<ul>
-  <li>컬럼을 클릭하면 주석문 확인이 가능하다. 존재가 이해 안 되는 컬럼은 여기를 참고하고 본인이 필요하면 아래에 주석문 추가 가능</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer17.png" width="800" /></p>
-<p>￼</p>
-
-<ul>
-  <li>카테고리와 같은 일부 컬럼은 <code class="language-plaintext highlighter-rouge">Trigger</code>에 제약조건을 걸어놨음. 관련해서 작업하는 사람들은 참고<br /><br /></li>
-</ul>
-
-<h1 id="공유받은-sql-script로-테이블-생성하기">공유받은 SQL Script로 테이블 생성하기</h1>
-
-<p align="center"><img src="../../assets/images/workbenchEer12.png" width="600" /></p>
-<p>￼</p>
-
-<ul>
-  <li>스키마 생성한 후 사진상 메뉴로 들어감</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer13.png" width="800" /></p>
-<p>￼</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">/Uno-Mas/unomasdb/unomasDbTable.sql</code> 경로에 있는 파일 선택</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer14.png" width="800" /></p>
-<p>￼</p>
-
-<ul>
-  <li>전체실행 버튼 눌러서 실행하면 테이블 생성됨.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer15.png" width="800" /></p>
-<p>￼</p>
-
-<ul>
-  <li>하단 로그창에 성공적으로 생성됐다는 메시지 뜨면 다 생성된 것임. 안 보이면 테이블 목록 새로고침하면 보일 것임</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/workbenchEer16.png" width="200" /></p>
-<p>￼</p>
-
-<p><br /><br /><br /></p>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://litiblue.com/post/mysql-workbench-db/">MySQL Workbench 로 DB 설계하기</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="MySQLWorkbench" /><category term="Log" /><summary type="html"><![CDATA[MySQL Workbench에 내장되어 있는 EER 다이어그램 제작툴의 사용법과 SQL 스크립트를 불러와서 테이블 생성하는 법 가이드]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/e8665a951cb4ebb1c405b87b4590ada0.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92341]]></summary></entry></feed>

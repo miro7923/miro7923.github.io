@@ -1,0 +1,849 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>OS) Virtual Memory | Yujin Dev Log</title>
+<meta name="description" content="👀 Demain Paging    실제로 필요할 때 page를 메모리에 올리는 것   왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다.   그래서 프로세스 동작에 실제로 필요한 page만 메모리에 올리는 것이 효율적이다.   장점            I/O 양의 감소       메모리 사용량 감소       빠른 응답 시간       더 많은 사용자 수용">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="OS) Virtual Memory">
+<meta property="og:url" content="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/">
+
+
+  <meta property="og:description" content="👀 Demain Paging    실제로 필요할 때 page를 메모리에 올리는 것   왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다.   그래서 프로세스 동작에 실제로 필요한 page만 메모리에 올리는 것이 효율적이다.   장점            I/O 양의 감소       메모리 사용량 감소       빠른 응답 시간       더 많은 사용자 수용">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-05-08T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#operating-system" itemprop="item"><span itemprop="name">Operating system</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">OS) Virtual Memory</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업에 능숙한 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="OS) Virtual Memory">
+    <meta itemprop="description" content="👀 Demain Paging  실제로 필요할 때 page를 메모리에 올리는 것  왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다.  그래서 프로세스 동작에 실제로 필요한 page만 메모리에 올리는 것이 효율적이다.  장점          I/O 양의 감소      메모리 사용량 감소      빠른 응답 시간      더 많은 사용자 수용      ">
+    <meta itemprop="datePublished" content="2022-05-08T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/" class="u-url" itemprop="url">OS) Virtual Memory
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-08T00:00:00+09:00">May 8, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#-demain-paging">👀 Demain Paging</a></li><li><a href="#replacement-algorithm">Replacement Algorithm</a><ul><li><a href="#page-replacement">Page replacement</a></li><li><a href="#optimal-algorithm">Optimal Algorithm</a></li><li><a href="#fifo-first-in-first-out-algorithm">FIFO (First In First Out) Algorithm</a></li><li><a href="#lru-least-recently-used-algorithm">LRU (Least Recently Used) Algorithm</a></li><li><a href="#lfu-least-frequently-used-algorithm">LFU (Least Frequently Used) Algorithm</a></li></ul></li><li><a href="#캐슁-기법">캐슁 기법</a><ul><li><a href="#clock-algorithm">Clock Algorithm</a></li></ul></li><li><a href="#page-frame의-allocation">Page Frame의 Allocation</a><ul><li><a href="#allocation-scheme">Allocation Scheme</a></li><li><a href="#global-replacement">Global replacement</a></li><li><a href="#local-replacement">Local replacement</a></li></ul></li><li><a href="#thrashing">Thrashing</a><ul><li><a href="#working-set-model">Working-Set Model</a></li><li><a href="#pff-page-fault-frequency-scheme">PFF (Page-Fault Frequency) Scheme</a></li></ul></li><li><a href="#page-size의-결정">Page Size의 결정</a></li><li><a href="#출처">출처</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="-demain-paging">👀 Demain Paging</h1>
+<ul>
+  <li>실제로 필요할 때 <code class="language-plaintext highlighter-rouge">page</code>를 메모리에 올리는 것</li>
+  <li>왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다.</li>
+  <li>그래서 프로세스 동작에 실제로 필요한 <code class="language-plaintext highlighter-rouge">page</code>만 메모리에 올리는 것이 효율적이다.</li>
+  <li>장점
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">I/O</code> 양의 감소</li>
+      <li>메모리 사용량 감소</li>
+      <li>빠른 응답 시간</li>
+      <li>더 많은 사용자 수용
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>물리적 메모리에 <code class="language-plaintext highlighter-rouge">page</code>가 올려질 <code class="language-plaintext highlighter-rouge">page entry</code>에서 <code class="language-plaintext highlighter-rouge">Valid/Invalid bit</code>를 사용해 현재 메모리에 <code class="language-plaintext highlighter-rouge">page</code>가 올려져 확인한다. 만약 어떤 메모리 주소에 접근했을 때 해당 위치가 <code class="language-plaintext highlighter-rouge">Invalid bit</code>로 세팅되어 있으면 <code class="language-plaintext highlighter-rouge">page fault</code>가 일어났다고 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">page fault</code>가 일어나면 디스크에 직접 접근해서 해당 페이지를 가져와야 하는데 이는 메모리에 접근해서 가져오는 것에 비해 시간이 아주 많이 걸린다.<br /><br /></li>
+</ul>
+
+<h1 id="replacement-algorithm">Replacement Algorithm</h1>
+<h2 id="page-replacement">Page replacement</h2>
+<ul>
+  <li>새로운 페이지를 올릴 공간이 없으면 올려져 있는 페이지 중 어떤 것을 쫓아낼 지 결정해야 한다.</li>
+  <li>이를 위한 여러 알고리즘이 있는데 대체로 <code class="language-plaintext highlighter-rouge">page fault</code>를 최소화하기 위해 곧바로 사용되지 않을 페이지를 쫓아내는 형태로 구현되어 있다.</li>
+</ul>
+
+<h2 id="optimal-algorithm">Optimal Algorithm</h2>
+<ul>
+  <li>가장 먼 미래에 사용될(당장 사용되지 않을) 페이지를 쫓아내는 알고리즘</li>
+  <li>미래에 참조될 페이지를 미리 예측할 수 있다는 가정하에 사용할 수 있는 알고리즘이다. 하지만 미래를 아는 것은 불가능하기 때문에 실제 시스템에 사용은 불가능하다.</li>
+</ul>
+
+<h2 id="fifo-first-in-first-out-algorithm">FIFO (First In First Out) Algorithm</h2>
+<ul>
+  <li>먼저 들어온 것을 먼저 내쫓는 알고리즘</li>
+  <li>실제 시스템에 사용되는 알고리즘이다.</li>
+  <li>먼저 들어온 것을 내쫓는 과정에서 페이지 프레임 크기를 늘렸는데 오히려 <code class="language-plaintext highlighter-rouge">page fault</code>가 늘어나 성능이 하락하는 경우가 생길 수 있다.</li>
+</ul>
+
+<h2 id="lru-least-recently-used-algorithm">LRU (Least Recently Used) Algorithm</h2>
+<ul>
+  <li>가장 오래 전에 참조된 것을 지우는 알고리즘</li>
+  <li>실제 시스템에서 많이 사용된다.</li>
+  <li>어떤 페이지가 참조되면 그것의 순서를 맨 앞으로 바꿔주기만 하면 되기 때문에 링크드 리스트(Linked list) 형태로 구현한다. 시간복잡도는 <code class="language-plaintext highlighter-rouge">O(1)</code></li>
+</ul>
+
+<h2 id="lfu-least-frequently-used-algorithm">LFU (Least Frequently Used) Algorithm</h2>
+<ul>
+  <li>참조 횟수(reference count)가 가장 적은 페이지를 지우는 알고리즘
+    <ul>
+      <li>최저 참조 횟수 페이지가 여러 개 있는 경우
+        <ul>
+          <li>내쫓을 페이지를 임의로 선정한다.</li>
+          <li>성능 향상을 위해 가장 오래 전에 참조된 페이지를 지우게 구현할 수도 있다.</li>
+        </ul>
+      </li>
+      <li>장단점
+        <ul>
+          <li>LRU처럼 직전 참조 시점만 보는 것이 아니라 장기적인 시간 규모를 보기 때문에 페이지의 인기도를 좀 더 정확히 반영할 수 있다.</li>
+          <li>참조 시점의 최근성을 반영하지 못 한다.(만약 1초 전에 처음으로 참조 되었다면 인기도가 낮은 것으로 간주하고 내쫓게 된다)</li>
+          <li>LRU보다 구현이 복잡하다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>어떤 페이지가 참조되면 이전에 참조된 페이지들의 참조 횟수와 하나씩 비교해서 순서를 정해줘야 한다. 그래서 LRU처럼 링크드 리스트 형태로 구현하면 순서를 재설정 하는 데 너무 오래 걸린다. 그래서 최소힙(Min heap) 형태로 구현한다. 참조 횟수가 가장 적은 페이지가 힙의 최상단에 있는 것이다. 시간복잡도는 <code class="language-plaintext highlighter-rouge">O(log n)</code><br /><br /></li>
+</ul>
+
+<h1 id="캐슁-기법">캐슁 기법</h1>
+<ul>
+  <li>한정된 빠른 공간(=캐쉬)에 요청된 데이터를 저장해 두었다가 후속 요청시 캐쉬로부터 직접 서비스하는 방식</li>
+  <li><code class="language-plaintext highlighter-rouge">paging system</code> 외에도 <code class="language-plaintext highlighter-rouge">cache memory</code>, <code class="language-plaintext highlighter-rouge">buffer caching</code>, <code class="language-plaintext highlighter-rouge">Web caching</code> 등 다양한 분야에서 사용된다.</li>
+  <li>그런데 <code class="language-plaintext highlighter-rouge">paging system</code>에서는 <code class="language-plaintext highlighter-rouge">page fault</code>가 생겨서 디스크에서 페이지를 가져와야 할 때에만 <code class="language-plaintext highlighter-rouge">OS</code>가 관여하고 페이지가 메모리에 있어서 디스크까지 갈 필요가 없을 때엔 <code class="language-plaintext highlighter-rouge">OS</code>가 관여하지 않는다. 그래서 <code class="language-plaintext highlighter-rouge">OS</code>는 페이지의 메모리 입장 시간 정도만 알고 있지 메모리에 올라간 이후의 참조 시간과 빈도 같은 것을 알 수 없다. 그래서 사실 위에서 설명했던 LRU와 LFU 같은 알고리즘들은 <code class="language-plaintext highlighter-rouge">OS</code>의 <code class="language-plaintext highlighter-rouge">paging system</code>에서는 사용할 수 없다.</li>
+</ul>
+
+<h2 id="clock-algorithm">Clock Algorithm</h2>
+<ul>
+  <li>그 대신 비슷한 효과를 낼 수 있는 <code class="language-plaintext highlighter-rouge">Clock Algorithm</code>을 사용한다.</li>
+  <li>시계에서 초침이 돌아가는 것처럼 포인터가 <code class="language-plaintext highlighter-rouge">page entry</code>를 돌면서 교체할 페이지를 선정하는 것이다.</li>
+  <li>한 바퀴 돌면서 <code class="language-plaintext highlighter-rouge">Reference bit</code>가 1이면 그동안 사용된 것으로 보고 0으로 바꾸고 넘어가고 0이면 그동안 사용하지 않은 것으로 간주해 쫓아낸다.<br /><br /></li>
+</ul>
+
+<h1 id="page-frame의-allocation">Page Frame의 Allocation</h1>
+<ul>
+  <li>메모리 참조 명령어 수행시 명령어, 데이터 등 여러 페이지를 동시에 참조해야 하는 경우가 생길 수 있다. 이때 명령어 수행을 위해 최소한 할당되어야 하는 프레임의 수가 있는데 이 동작 <code class="language-plaintext highlighter-rouge">Loop</code>를 구성하는 페이지들은 한꺼번에 <code class="language-plaintext highlighter-rouge">allocate</code>되는 것이 유리하다. 만약 하지 않으면 매 <code class="language-plaintext highlighter-rouge">Loop</code>마다 <code class="language-plaintext highlighter-rouge">page fault</code>가 생겨 매번 디스크에 페이지를 찾으러 가야 하기 때문에 비효율적이고 성능이 떨어질 것이다.</li>
+</ul>
+
+<h2 id="allocation-scheme">Allocation Scheme</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Equal allocation</code> : 모든 프로세스에 똑같은 개수 할당</li>
+  <li><code class="language-plaintext highlighter-rouge">Proportional allocation</code> : 프로세스 크기에 비례하여 할당</li>
+  <li><code class="language-plaintext highlighter-rouge">Priority allocation</code> : 프로세스의 우선순위에 따라 다르게 할당</li>
+</ul>
+
+<h2 id="global-replacement">Global replacement</h2>
+<ul>
+  <li>프레임을 얻기 위해 경쟁하는 형태라 할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">replace</code>시 다른 프로세스에 할당된 프레임을 빼앗아 올 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">FIFO</code>, <code class="language-plaintext highlighter-rouge">LRU</code>, <code class="language-plaintext highlighter-rouge">LFU</code> 등의 알고리즘을 <code class="language-plaintext highlighter-rouge">global replacement</code>로 사용시에 해당</li>
+  <li><code class="language-plaintext highlighter-rouge">Working set</code>, <code class="language-plaintext highlighter-rouge">PFF</code> 알고리즘 사용</li>
+</ul>
+
+<h2 id="local-replacement">Local replacement</h2>
+<ul>
+  <li>미리 할당해 놓는 형태이다.</li>
+  <li>자신에게 할당된 프레임 내에서만 교체</li>
+  <li><code class="language-plaintext highlighter-rouge">FIFO</code>, <code class="language-plaintext highlighter-rouge">LRU</code>, <code class="language-plaintext highlighter-rouge">LFU</code> 등의 알고리즘을 프로세스별로 운영시 해당 <br /><br /></li>
+</ul>
+
+<h1 id="thrashing">Thrashing</h1>
+<ul>
+  <li>프로세스의 원활한 수행에 필요한 최소한의 <code class="language-plaintext highlighter-rouge">page frame</code>수를 할당 받지 못한 경우 발생</li>
+  <li><code class="language-plaintext highlighter-rouge">page fault rate</code>이 매우 높아진다.</li>
+  <li><code class="language-plaintext highlighter-rouge">CPU</code> 사용률이 낮아짐</li>
+  <li><code class="language-plaintext highlighter-rouge">OS</code>는 <code class="language-plaintext highlighter-rouge">MPD (Multiprogramming degree)</code>를 높여야 한다고 판단</li>
+  <li>또 다른 프로세스가 시스템에 추가됨(higher MPD)</li>
+  <li>프로세스 당 할당된 프레임 수가 더욱 감소된다.</li>
+  <li>프로세스는 페이지의 <code class="language-plaintext highlighter-rouge">swap in / swap out</code>으로 바쁘다. 그래서 멈춰 있는 것처럼 보인다. (정상적인 동작 불가)</li>
+  <li>그래서 대부분의 시간에 <code class="language-plaintext highlighter-rouge">CPU</code>는 한가하다.(log throughput)</li>
+  <li>동시에 메모리에 올라가 있는 프로그램의 수 조절이 필요하다. 이를 위해 사용되는 것이 <code class="language-plaintext highlighter-rouge">Working-set model</code>이다.</li>
+</ul>
+
+<h2 id="working-set-model">Working-Set Model</h2>
+<ul>
+  <li>프로세스는 특정 시간 동안 일정 장소만을 집중적으로 참조한다.</li>
+  <li>집중적으로 참조되는 해당 페이지들의 집합을 <code class="language-plaintext highlighter-rouge">localityy set</code>이라 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">locality</code>에 기반하여 프로세스가 일정 시간 동안 원활하게 수행되기 위해 한꺼번에 메모리에 올라와 있어야 하는 페이지들의 집합을 <code class="language-plaintext highlighter-rouge">Working Set</code>이라 정의한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Working Set</code> 모델에서는 프로세스의 <code class="language-plaintext highlighter-rouge">Working Set</code> 전체가 메모리에 올라와 있어야 수행되고 그렇지 않고 부분적으로 있으면 가지고 있던 프레임도 모두 반납 후 <code class="language-plaintext highlighter-rouge">swap out(suspend)</code>된다. 이를 통해 <code class="language-plaintext highlighter-rouge">thrashing</code>을 어느 정도 방지할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Working Set</code>을 제대로 탐지하기 위해서는 <code class="language-plaintext highlighter-rouge">window size</code>를 잘 결정해야 한다. 너무 작으면 <code class="language-plaintext highlighter-rouge">localiry set</code>을 모두 수용하지 못할 수 있고, 너무 크면 여러 규모의 <code class="language-plaintext highlighter-rouge">locality set</code>을 수용하게 될 것이다.</li>
+</ul>
+
+<h2 id="pff-page-fault-frequency-scheme">PFF (Page-Fault Frequency) Scheme</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page fault rate</code>의 상한값과 하한값을 둔다.</li>
+  <li><code class="language-plaintext highlighter-rouge">page fault</code>가 많을수록 많은 페이지 프레임을 할당하고 그렇지 않으면 할당된 프레임 수를 줄인다.</li>
+  <li>빈 프레임이 없으면 일부 프로세스를 <code class="language-plaintext highlighter-rouge">swap out</code> 시킨다.<br /><br /></li>
+</ul>
+
+<h1 id="page-size의-결정">Page Size의 결정</h1>
+<ul>
+  <li>페이지의 크기가 너무 작으면 페이지 수가 증가하게 되어 페이지 테이블의 크기가 증가할 것이다.</li>
+  <li>작게 쪼개진만큼 너무 필요한 정보만 메모리에 올라와 있게 되어 <code class="language-plaintext highlighter-rouge">page fault</code>의 빈도수가 늘어나 디스크에 접근해야 하는 시간이 늘어날 것이다. 이런 측면에서 볼 때 메모리 이용은 효율적이지만 <code class="language-plaintext highlighter-rouge">locality</code> 활용 측면에서는 좋지 않다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="출처">출처</h1>
+<ul>
+  <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
+  <li><a href="https://straw961030.tistory.com/155">스레싱(thrashing)이란 무엇인가</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cs" class="page__taxonomy-item p-category" rel="tag">CS</a><span class="sep">, </span>
+    
+      <a href="/tags/#os" class="page__taxonomy-item p-category" rel="tag">OS</a><span class="sep">, </span>
+    
+      <a href="/tags/#virtualmemory" class="page__taxonomy-item p-category" rel="tag">VirtualMemory</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#operating-system" class="page__taxonomy-item p-category" rel="tag">Operating System</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-05-08T00:00:00+09:00">May 8, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=OS%29+Virtual+Memory%20http%3A%2F%2Flocalhost%3A4000%2Foperating%2520system%2FOS-09-Virtual-Memory%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Foperating%2520system%2FOS-09-Virtual-Memory%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Foperating%2520system%2FOS-09-Virtual-Memory%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/uno%20mas/uno-mas-dev-log-13/" class="pagination--pager" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-13/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-05T00:00:00+09:00">May 5, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.05.05
+  작성자 : 황유진
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj14502-py/" rel="permalink">Python) BOJ 14502. 연구소
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-05T00:00:00+09:00">May 5, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://www.acmicpc.net/problem/14502
+
+
+제한
+
+
+
+  시간 제한 : 2 초
+  메모리 제한 : 512 MB
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj18352-py/" rel="permalink">Python) BOJ 18352. 특정 거리의 도시 찾기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-04T00:00:00+09:00">May 4, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://www.acmicpc.net/problem/18352
+
+
+제한
+
+
+
+  시간 제한 : 2 초
+  메모리 제한 : 256 MB
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-10/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 10 - 상품목록 페이징 처리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-03T00:00:00+09:00">May 3, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.05.03
+  작성자 : 황유진
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
