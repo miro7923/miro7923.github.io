@@ -1,4 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-08T23:42:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">OS) Virtual Memory</title><link href="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/" rel="alternate" type="text/html" title="OS) Virtual Memory" /><published>2022-05-08T00:00:00+09:00</published><updated>2022-05-08T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-09-Virtual-Memory</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/"><![CDATA[<h1 id="-demain-paging">👀 Demain Paging</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-09T16:17:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">에러해결 Log) (Spring framework) Mapped Statements collection does not contain value for ~</title><link href="http://localhost:4000/errorlog/warning-log-08/" rel="alternate" type="text/html" title="에러해결 Log) (Spring framework) Mapped Statements collection does not contain value for ~" /><published>2022-05-09T00:00:00+09:00</published><updated>2022-05-09T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-08</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-08/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+
+<p align="center"><img src="../../assets/images/mybatisError1.png" width="800" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MyBatis</code> 매퍼에서 새로운 쿼리문을 만들고 <code class="language-plaintext highlighter-rouge">DAO</code> 테스트를 진행해보려 했는데 마이바티스 쪽에서 에러가 있다고 나왔다. 그 동안 잘만 됐는데 갑자기 왜 안 됄까… 구글링을 해 보았다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<ul>
+  <li>구글링 결과 매퍼에서 쓴 <code class="language-plaintext highlighter-rouge">id</code>값과 <code class="language-plaintext highlighter-rouge">DAO</code> 클래스 내의 메서드에서 부르는 <code class="language-plaintext highlighter-rouge">id</code>값이 일치하지 않았던 것이었다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/mybatisError2.png" width="600" /></p>
+
+<ul>
+  <li>매퍼의 <code class="language-plaintext highlighter-rouge">id</code>값은 <code class="language-plaintext highlighter-rouge">getSaleProdCnt</code>인데</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/mybatisError3.png" width="700" /></p>
+
+<ul>
+  <li>메서드에서 호출하는 부분에서는 중간을 빼먹고 부르고 있었다 ㅠ.ㅠ</li>
+  <li>요즘 <code class="language-plaintext highlighter-rouge">tabnine</code> 자동완성 기능을 많이 쓰고 있는데 저 과정에서 오타가 난 것 같다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/mybatisError4.png" width="700" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">id</code>를 맞춰주니까 잘 된다…<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://manli000.wordpress.com/2016/01/02/mapped-statements-collection-does-not-contain-value-for/">Mapped Statements collection does not contain value for ***</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">에러해결 Log) The prefix “tx” for element “tx:annotation-driven” is not bound.</title><link href="http://localhost:4000/errorlog/warning-log-07/" rel="alternate" type="text/html" title="에러해결 Log) The prefix “tx” for element “tx:annotation-driven” is not bound." /><published>2022-05-08T00:00:00+09:00</published><updated>2022-05-08T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-07</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-07/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생-1">에러의 발생 1</h1>
+
+<p align="center"><img src="../../assets/images/tranError1.png" width="700" /></p>
+
+<ul>
+  <li>DB에 데이터를 삽입하는 테스트를 진행할 때 데이터는 들어갔지만 예외가 발생해 결과적으로는 실패인 상황에도 DB에는 이미 해당 데이터가 있기 때문에 그 데이터를 삭제하든지 이클립스상에서 삽입할 데이터를 바꾸든지 해야 했다.</li>
+  <li>이것은 상당히 귀찮은 작업이었기 때문에… 예외 발생시에는 롤백을 시키려고 <code class="language-plaintext highlighter-rouge">@Transactional</code>을 써 보려고 <code class="language-plaintext highlighter-rouge">root-context.xml</code>에 위의 태그를 추가했다. 그리고 마주한 빨간줄…</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/tranError2.png" width="700" /></p>
+
+<ul>
+  <li>에러 내용을 보니까 접두사 선언이 되어 있지 않은 것이 문제였다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결-1">문제 해결 1</h1>
+
+<p align="center"><img src="../../assets/images/tranError3.png" width="600" /></p>
+
+<ul>
+  <li>그래서 스택오버플로우를 통해 접두사 선언을 해 주었다.</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xmlns:tx="http://www.springframework.org/schema/tx"
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h1 id="에러의-발생-2">에러의 발생 2</h1>
+
+<p align="center"><img src="../../assets/images/tranError4.png" width="700" /></p>
+
+<ul>
+  <li>하지만 여전히 에러는 사라지지 않았고 새로운 메시지가 나왔다. 여전히 관련된 선언을 찾을 수 없다는 내용…ㅠ 해당 메시지로 한 번 더 구글링했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결-2">문제 해결 2</h1>
+
+<p align="center"><img src="../../assets/images/tranError5.png" width="600" /></p>
+
+<ul>
+  <li>역시 스택오버플로우에서 해당 문제에 대한 해답을 찾을 수 있었다. 접두사 <code class="language-plaintext highlighter-rouge">tx</code>와 관련해 스키마 로케이션을 더 추가해 주어야 했던 것이었다…</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+</code></pre></div></div>
+
+<p align="center"><img src="../../assets/images/tranError6.png" width="600" /></p>
+
+<ul>
+  <li>여기까지 하고 나니까 더 이상의 에러가 없는, 클린한 <code class="language-plaintext highlighter-rouge">root-context.xml</code>을 볼 수 있었다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://stackoverflow.com/questions/10373222/spring-the-prefix-tx-for-element-txannotation-driven-is-not-bound">Spring “The prefix “tx” for element “tx:annotation-driven” is not bound.”</a></li>
+  <li><a href="https://stackoverflow.com/questions/17566391/cvc-complex-type-2-4-c-the-matching-wildcard-is-strict-but-no-declaration-can">cvc-complex-type.2.4.c: The matching wildcard is strict, but no declaration can be found for element ‘tx:annotation-driven’</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">OS) Virtual Memory</title><link href="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/" rel="alternate" type="text/html" title="OS) Virtual Memory" /><published>2022-05-08T00:00:00+09:00</published><updated>2022-05-08T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-09-Virtual-Memory</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/"><![CDATA[<h1 id="-demain-paging">👀 Demain Paging</h1>
 <ul>
   <li>실제로 필요할 때 <code class="language-plaintext highlighter-rouge">page</code>를 메모리에 올리는 것</li>
   <li>왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다.</li>
@@ -145,72 +254,7 @@
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
   <li><a href="https://straw961030.tistory.com/155">스레싱(thrashing)이란 무엇인가</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="VirtualMemory" /><summary type="html"><![CDATA[👀 Demain Paging 실제로 필요할 때 page를 메모리에 올리는 것 왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다. 그래서 프로세스 동작에 실제로 필요한 page만 메모리에 올리는 것이 효율적이다. 장점 I/O 양의 감소 메모리 사용량 감소 빠른 응답 시간 더 많은 사용자 수용]]></summary></entry><entry><title type="html">에러해결 Log) The prefix “tx” for element “tx:annotation-driven” is not bound.</title><link href="http://localhost:4000/errorlog/warning-log-07/" rel="alternate" type="text/html" title="에러해결 Log) The prefix “tx” for element “tx:annotation-driven” is not bound." /><published>2022-05-08T00:00:00+09:00</published><updated>2022-05-08T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-07</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-07/"><![CDATA[<h1 id="사용환경">사용환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020) 16GB</li>
-  <li>JDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="에러의-발생-1">에러의 발생 1</h1>
-
-<p align="center"><img src="../../assets/images/tranError1.png" width="700" /></p>
-
-<ul>
-  <li>DB에 데이터를 삽입하는 테스트를 진행할 때 데이터는 들어갔지만 예외가 발생해 결과적으로는 실패인 상황에도 DB에는 이미 해당 데이터가 있기 때문에 그 데이터를 삭제하든지 이클립스상에서 삽입할 데이터를 바꾸든지 해야 했다.</li>
-  <li>이것은 상당히 귀찮은 작업이었기 때문에… 예외 발생시에는 롤백을 시키려고 <code class="language-plaintext highlighter-rouge">@Transactional</code>을 써 보려고 <code class="language-plaintext highlighter-rouge">root-context.xml</code>에 위의 태그를 추가했다. 그리고 마주한 빨간줄…</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/tranError2.png" width="700" /></p>
-
-<ul>
-  <li>에러 내용을 보니까 접두사 선언이 되어 있지 않은 것이 문제였다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결-1">문제 해결 1</h1>
-
-<p align="center"><img src="../../assets/images/tranError3.png" width="600" /></p>
-
-<ul>
-  <li>그래서 스택오버플로우를 통해 접두사 선언을 해 주었다.</li>
-</ul>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xmlns:tx="http://www.springframework.org/schema/tx"
-</code></pre></div></div>
-<p><br /><br /></p>
-
-<h1 id="에러의-발생-2">에러의 발생 2</h1>
-
-<p align="center"><img src="../../assets/images/tranError4.png" width="700" /></p>
-
-<ul>
-  <li>하지만 여전히 에러는 사라지지 않았고 새로운 메시지가 나왔다. 여전히 관련된 선언을 찾을 수 없다는 내용…ㅠ 해당 메시지로 한 번 더 구글링했다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결-2">문제 해결 2</h1>
-
-<p align="center"><img src="../../assets/images/tranError5.png" width="600" /></p>
-
-<ul>
-  <li>역시 스택오버플로우에서 해당 문제에 대한 해답을 찾을 수 있었다. 접두사 <code class="language-plaintext highlighter-rouge">tx</code>와 관련해 스키마 로케이션을 더 추가해 주어야 했던 것이었다…</li>
-</ul>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://www.springframework.org/schema/tx 
-http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
-</code></pre></div></div>
-
-<p align="center"><img src="../../assets/images/tranError6.png" width="600" /></p>
-
-<ul>
-  <li>여기까지 하고 나니까 더 이상의 에러가 없는, 클린한 <code class="language-plaintext highlighter-rouge">root-context.xml</code>을 볼 수 있었다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://stackoverflow.com/questions/10373222/spring-the-prefix-tx-for-element-txannotation-driven-is-not-bound">Spring “The prefix “tx” for element “tx:annotation-driven” is not bound.”</a></li>
-  <li><a href="https://stackoverflow.com/questions/17566391/cvc-complex-type-2-4-c-the-matching-wildcard-is-strict-but-no-declaration-can">cvc-complex-type.2.4.c: The matching wildcard is strict, but no declaration can be found for element ‘tx:annotation-driven’</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">Python) BOJ 14502. 연구소</title><link href="http://localhost:4000/boj/boj14502-py/" rel="alternate" type="text/html" title="Python) BOJ 14502. 연구소" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj14502-py</id><content type="html" xml:base="http://localhost:4000/boj/boj14502-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="VirtualMemory" /><summary type="html"><![CDATA[👀 Demain Paging 실제로 필요할 때 page를 메모리에 올리는 것 왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다. 그래서 프로세스 동작에 실제로 필요한 page만 메모리에 올리는 것이 효율적이다. 장점 I/O 양의 감소 메모리 사용량 감소 빠른 응답 시간 더 많은 사용자 수용]]></summary></entry><entry><title type="html">Python) BOJ 14502. 연구소</title><link href="http://localhost:4000/boj/boj14502-py/" rel="alternate" type="text/html" title="Python) BOJ 14502. 연구소" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj14502-py</id><content type="html" xml:base="http://localhost:4000/boj/boj14502-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1863,94 +1907,7 @@ http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-18</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.02 작성자 : 황유진]]></summary></entry><entry><title type="html">Python) 프로그래머스. 양궁대회</title><link href="http://localhost:4000/programmers/programmers-archery-py/" rel="alternate" type="text/html" title="Python) 프로그래머스. 양궁대회" /><published>2022-05-01T00:00:00+09:00</published><updated>2022-05-01T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-archery-py</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-archery-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/92342">https://programmers.co.kr/learn/courses/30/lessons/92342</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>카카오배 양궁대회가 열렸습니다.</li>
-  <li>라이언은 저번 카카오배 양궁대회 우승자이고 이번 대회에도 결승전까지 올라왔습니다. 결승전 상대는 어피치입니다.</li>
-  <li>
-    <p>카카오배 양궁대회 운영위원회는 한 선수의 연속 우승보다는 다양한 선수들이 양궁대회에서 우승하기를 원합니다. 따라서, 양궁대회 운영위원회는 결승전 규칙을 전 대회 우승자인 라이언에게 불리하게 다음과 같이 정했습니다.</p>
-  </li>
-  <li>어피치가 화살 n발을 다 쏜 후에 라이언이 화살 n발을 쏩니다.</li>
-  <li>점수를 계산합니다.</li>
-  <li>
-    <p>과녁판은 아래 사진처럼 생겼으며 가장 작은 원의 과녁 점수는 10점이고 가장 큰 원의 바깥쪽은 과녁 점수가 0점입니다.</p>
-  </li>
-  <li>
-    <p>만약, k(k는 1~10사이의 자연수)점을 어피치가 a발을 맞혔고 라이언이 b발을 맞혔을 경우 더 많은 화살을 k점에 맞힌 선수가 k 점을 가져갑니다. 단, a = b일 경우는 어피치가 k점을 가져갑니다. k점을 여러 발 맞혀도 k점 보다 많은 점수를 가져가는 게 아니고 k점만 가져가는 것을 유의하세요. 또한 a = b = 0 인 경우, 즉, 라이언과 어피치 모두 k점에 단 하나의 화살도 맞히지 못한 경우는 어느 누구도 k점을 가져가지 않습니다.</p>
-  </li>
-  <li>예를 들어, 어피치가 10점을 2발 맞혔고 라이언도 10점을 2발 맞혔을 경우 어피치가 10점을 가져갑니다.</li>
-  <li>다른 예로, 어피치가 10점을 0발 맞혔고 라이언이 10점을 2발 맞혔을 경우 라이언이 10점을 가져갑니다.</li>
-  <li>모든 과녁 점수에 대하여 각 선수의 최종 점수를 계산합니다.</li>
-  <li>최종 점수가 더 높은 선수를 우승자로 결정합니다. 단, 최종 점수가 같을 경우 어피치를 우승자로 결정합니다.</li>
-  <li>현재 상황은 어피치가 화살 n발을 다 쏜 후이고 라이언이 화살을 쏠 차례입니다.</li>
-  <li>
-    <p>라이언은 어피치를 가장 큰 점수 차이로 이기기 위해서 n발의 화살을 어떤 과녁 점수에 맞혀야 하는지를 구하려고 합니다.</p>
-  </li>
-  <li>화살의 개수를 담은 자연수 n, 어피치가 맞힌 과녁 점수의 개수를 10점부터 0점까지 순서대로 담은 정수 배열 info가 매개변수로 주어집니다. 이때, 라이언이 가장 큰 점수 차이로 우승하기 위해 n발의 화살을 어떤 과녁 점수에 맞혀야 하는지를 10점부터 0점까지 순서대로 정수 배열에 담아 return 하도록 solution 함수를 완성해 주세요. 만약, 라이언이 우승할 수 없는 경우(무조건 지거나 비기는 경우)는 [-1]을 return 해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>1 ≤ n ≤ 10</li>
-  <li>info의 길이 = 11
-    <ul>
-      <li>0 ≤ info의 원소 ≤ n</li>
-      <li>info의 원소 총합 = n</li>
-      <li>info의 i번째 원소는 과녁의 10 - i 점을 맞힌 화살 개수입니다. ( i는 0~10 사이의 정수입니다.)</li>
-    </ul>
-  </li>
-  <li>라이언이 우승할 방법이 있는 경우, return 할 정수 배열의 길이는 11입니다.
-    <ul>
-      <li>0 ≤ return할 정수 배열의 원소 ≤ n</li>
-      <li>return할 정수 배열의 원소 총합 = n (꼭 n발을 다 쏴야 합니다.)</li>
-      <li>return할 정수 배열의 i번째 원소는 과녁의 10 - i 점을 맞힌 화살 개수입니다. ( i는 0~10 사이의 정수입니다.)</li>
-      <li>라이언이 가장 큰 점수 차이로 우승할 수 있는 방법이 여러 가지 일 경우, 가장 낮은 점수를 더 많이 맞힌 경우를 return 해주세요.
-        <ul>
-          <li>가장 낮은 점수를 맞힌 개수가 같을 경우 계속해서 그다음으로 낮은 점수를 더 많이 맞힌 경우를 return 해주세요.</li>
-          <li>예를 들어, [2,3,1,0,0,0,0,1,3,0,0]과 [2,1,0,2,0,0,0,2,3,0,0]를 비교하면 [2,1,0,2,0,0,0,2,3,0,0]를 return 해야 합니다.</li>
-          <li>다른 예로, [0,0,2,3,4,1,0,0,0,0,0]과 [9,0,0,0,0,0,0,0,1,0,0]를 비교하면[9,0,0,0,0,0,0,0,1,0,0]를 return 해야 합니다.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>라이언이 우승할 방법이 없는 경우, return 할 정수 배열의 길이는 1입니다.
-    <ul>
-      <li>라이언이 어떻게 화살을 쏘든 라이언의 점수가 어피치의 점수보다 낮거나 같으면 [-1]을 return 해야 합니다.<br /><br /><br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<h2 id="1차-시도">1차 시도</h2>
-<ul>
-  <li>완전탐색하면 되는 문제같아서 10점부터 차례대로 하나씩 라이언이 맞히지 못했다고 가정하고 경우의 수를 탐색했는데 모든 경우를 고려하는 코드가 아니었던 것인지 60점 조금 안 되는 점수를 받았다.(예제는 다 맞았음 ㅠㅠ)</li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/322183682e7f75709a0acff026e6b8a1.js"></script>
-
-<h2 id="2차-시도">2차 시도</h2>
-<ul>
-  <li>그래서 구글링을 하여 정답 코드를 참고해 풀었다.</li>
-  <li><a href="https://velog.io/@hygge/Python-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%96%91%EA%B6%81%EB%8C%80%ED%9A%8C-2022-KAKAO-BLIND-RECRUITMENT-BFS">[Python] 프로그래머스 양궁대회 (BFS)</a><br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/db80617186ced5c788e567a2b15970f1.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="DFS" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://programmers.co.kr/learn/courses/30/lessons/92342]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 7 - 쇼핑몰 RDBMS 설계 및 생성</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-07/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 7 - 쇼핑몰 RDBMS 설계 및 생성" /><published>2022-05-01T00:00:00+09:00</published><updated>2022-05-01T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-07</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-07/"><![CDATA[<ul>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.02 작성자 : 황유진]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 7 - 쇼핑몰 RDBMS 설계 및 생성</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-07/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 7 - 쇼핑몰 RDBMS 설계 및 생성" /><published>2022-05-01T00:00:00+09:00</published><updated>2022-05-01T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-07</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-07/"><![CDATA[<ul>
   <li>작성일 : 2022.05.01</li>
   <li>
     <p>작성자 : 황유진</p>

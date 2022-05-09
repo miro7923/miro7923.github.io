@@ -1396,4 +1396,10 @@ var store = [{
         "tags": ["Error","Solve","Log"],
         "url": "/errorlog/warning-log-07/",
         "teaser": null
+      },{
+        "title": "에러해결 Log) (Spring framework) Mapped Statements collection does not contain value for ~",
+        "excerpt":"사용환경     MacBook Air (M1, 2020) 16GB   JDK 8   Spring Tool Suite 4.14.0   tomcat 8.5      에러의 발생         MyBatis 매퍼에서 새로운 쿼리문을 만들고 DAO 테스트를 진행해보려 했는데 마이바티스 쪽에서 에러가 있다고 나왔다. 그 동안 잘만 됐는데 갑자기 왜 안 됄까… 구글링을 해 보았다.      문제 해결      구글링 결과 매퍼에서 쓴 id값과 DAO 클래스 내의 메서드에서 부르는 id값이 일치하지 않았던 것이었다.         매퍼의 id값은 getSaleProdCnt인데         메서드에서 호출하는 부분에서는 중간을 빼먹고 부르고 있었다 ㅠ.ㅠ   요즘 tabnine 자동완성 기능을 많이 쓰고 있는데 저 과정에서 오타가 난 것 같다.         id를 맞춰주니까 잘 된다…      참고     Mapped Statements collection does not contain value for ***  ","categories": ["ErrorLog"],
+        "tags": ["Error","Solve","Log"],
+        "url": "/errorlog/warning-log-08/",
+        "teaser": null
       }]

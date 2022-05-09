@@ -1,0 +1,47 @@
+I"�	<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+
+<p align="center"><img src="../../assets/images/mybatisError1.png" width="800" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MyBatis</code> 매퍼에서 새로운 쿼리문을 만들고 <code class="language-plaintext highlighter-rouge">DAO</code> 테스트를 진행해보려 했는데 마이바티스 쪽에서 에러가 있다고 나왔다. 그 동안 잘만 됐는데 갑자기 왜 안 됄까… 구글링을 해 보았다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<ul>
+  <li>구글링 결과는 매퍼에서 쓴 <code class="language-plaintext highlighter-rouge">id</code>값과 <code class="language-plaintext highlighter-rouge">DAO</code> 클래스 내의 메서드에서 부르는 <code class="language-plaintext highlighter-rouge">id</code>값이 일치하지 않았던 것이었다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/mybatisError2.png" width="600" /></p>
+
+<ul>
+  <li>매퍼의 <code class="language-plaintext highlighter-rouge">id</code>값은 <code class="language-plaintext highlighter-rouge">getSaleProdCnt</code>인데</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/mybatisError3.png" width="700" /></p>
+
+<ul>
+  <li>메서드에서 호출하는 부분에서는 중간을 빼먹고 부르고 있었다 ㅠ.ㅠ</li>
+  <li>요즘 <code class="language-plaintext highlighter-rouge">tabnine</code> 자동완성 기능을 많이 쓰고 있는데 저 과정에서 오타가 난 것 같다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/mybatisError4.png" width="700" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">id</code>를 맞춰주니까 잘 된다…<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://stackoverflow.com/questions/10373222/spring-the-prefix-tx-for-element-txannotation-driven-is-not-bound">Spring “The prefix “tx” for element “tx:annotation-driven” is not bound.”</a></li>
+  <li><a href="https://stackoverflow.com/questions/17566391/cvc-complex-type-2-4-c-the-matching-wildcard-is-strict-but-no-declaration-can">cvc-complex-type.2.4.c: The matching wildcard is strict, but no declaration can be found for element ‘tx:annotation-driven’</a></li>
+</ul>
+:ET
