@@ -1,0 +1,454 @@
+I"Ÿ<ul>
+  <li>작성일 : 2022.05.10</li>
+  <li>
+    <p>작성자 : 황유진</p>
+  </li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 황유진</li>
+  <li>팀장 : 황유진</li>
+  <li>부팀장 : 오성은</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 6명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
+  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+
+<p align="center"><img src="../../assets/images/unomas_prodListDb1.png" width="900" /></p>
+
+<ul>
+  <li>신상품과 할인상품을 볼 수 있는 페이지를 만들어 DB에서 조회해 온 값에 따라 출력되도록 했다.</li>
+</ul>
+
+<h2 id="productmapperxml">productMapper.xml</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"com.unomas.mapper.ProductMapper"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- 한 달 이내 신상품 목록 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getNewProducts"</span> <span class="na">resultType=</span><span class="s">"ProductVO"</span><span class="nt">&gt;</span>
+        SELECT *
+        FROM products
+        WHERE prod_regdate BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()
+        ORDER BY prod_regdate DESC
+        LIMIT #{pageStart}, #{perPageNum}
+    <span class="nt">&lt;/select&gt;</span>
+    
+    <span class="c">&lt;!-- 신상품 개수 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getNewProdCnt"</span> <span class="na">resultType=</span><span class="s">"int"</span><span class="nt">&gt;</span>
+        SELECT COUNT(prod_num)
+        FROM products
+        WHERE prod_regdate BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()
+    <span class="nt">&lt;/select&gt;</span>
+    
+    <span class="c">&lt;!-- 특가 상품 목록 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getSaleProducts"</span> <span class="na">resultType=</span><span class="s">"ProductVO"</span><span class="nt">&gt;</span>
+        SELECT *
+        FROM products
+        WHERE prod_discntrate &gt; 0
+        ORDER BY prod_regdate DESC
+        LIMIT #{pageStart}, #{perPageNum}
+    <span class="nt">&lt;/select&gt;</span>
+    
+    <span class="c">&lt;!-- 특가 상품 개수 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getSaleProdCnt"</span> <span class="na">resultType=</span><span class="s">"int"</span><span class="nt">&gt;</span>
+        SELECT COUNT(prod_num)
+        FROM products
+        WHERE prod_discntrate &gt; 0
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>상품 테이블에서 신상품과 할인상품 목록을 가져오기 위한 쿼리문을 작성했다.</li>
+  <li>신상품은 등록일 기준으로 최근 한 달 이내의 상품만 가져오도록 했고, 특가(할인) 상품은 할인율을 표시하는 컬럼인 <code class="language-plaintext highlighter-rouge">prod_discntrate</code>의 값이 0 보다 큰 값을 때에만 가져오도록 했다. 할인율이 0이라면 할인하지 않는 상품이라는 뜻이다.</li>
+</ul>
+
+<h2 id="productdaojava">ProductDAO.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+	
+    <span class="c1">// 신상품 목록 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getNewProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 신상품 개수 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNewProdCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 특가 목록 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getSaleProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 특가 상품 개수 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSaleCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="productdaoimpljava">ProductDAOImpl.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOImpl</span> <span class="kd">implements</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAMESPACE</span> <span class="o">=</span> <span class="s">"com.unomas.mapper.ProductMapper"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOImpl</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getNewProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getNewProducts"</span><span class="o">,</span> <span class="n">pc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNewProdCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectOne</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getNewProdCnt"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getSaleProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getSaleProducts"</span><span class="o">,</span> <span class="n">pc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSaleCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectOne</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getSaleProdCnt"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DAO</code>를 통해 DB에서 신상품과 특가상품 정보를 불러온다.</li>
+</ul>
+
+<h2 id="productdaotestjava">ProductDAOTest.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ContextConfiguration</span><span class="o">(</span>
+        <span class="n">locations</span> <span class="o">=</span> <span class="o">{</span><span class="s">"file:src/main/webapp/WEB-INF/spring/root-context.xml"</span><span class="o">}</span>
+        <span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOTest</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductDAO</span> <span class="n">dao</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOTest</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">신상품목록출력테스트</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">ProdCriteria</span> <span class="n">pp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdCriteria</span><span class="o">();</span>
+        <span class="n">pp</span><span class="o">.</span><span class="na">setPage</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">pp</span><span class="o">.</span><span class="na">setPerPageNum</span><span class="o">(</span><span class="mi">9</span><span class="o">);</span>
+		
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getNewProductList</span><span class="o">(</span><span class="n">pp</span><span class="o">)+</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"count: "</span> <span class="o">+</span> <span class="n">dao</span><span class="o">.</span><span class="na">getNewProdCnt</span><span class="o">());</span>
+    <span class="o">}</span>
+	
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">특가목록출력테스트</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">ProdCriteria</span> <span class="n">pc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdCriteria</span><span class="o">();</span>
+        <span class="nc">ProdPageMaker</span> <span class="n">pm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdPageMaker</span><span class="o">();</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setCri</span><span class="o">(</span><span class="n">pc</span><span class="o">);</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setTotalCnt</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getSaleCnt</span><span class="o">());</span>
+		
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getSaleProductList</span><span class="o">(</span><span class="n">pc</span><span class="o">)+</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">pm</span><span class="o">.</span><span class="na">getTotalCnt</span><span class="o">()+</span><span class="s">""</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서비스 코드에 넣기 전 테스트를 진행했다. 결과가 잘 나왔기 때문에 다음 단계로 넘어간다.</li>
+  <li><code class="language-plaintext highlighter-rouge">ProdCriteria</code>와 <code class="language-plaintext highlighter-rouge">ProdPageMaker</code>는 페이징 처리를 위한 객체들이다.</li>
+</ul>
+
+<h2 id="prodcriteriajava">ProdCriteria.java</h2>
+
+<ul>
+  <li>한 페이지에 보여줄 상품 목록의 정보를 담고 있다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas.domain</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProdCriteria</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">cateStart</span><span class="o">;</span> 
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">;</span> <span class="c1">// 소분류의 시작과 끝번호 (대분류별로 가져올 때 사용)</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">page</span><span class="o">;</span> <span class="c1">// 현재 페이지번호</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">perPageNum</span><span class="o">;</span> <span class="c1">// 한 페이지에 보여질 상품 개수</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">prod_category</span><span class="o">;</span> <span class="c1">// 소분류 번호. 소분류만 지정해서 가져올 때 사용</span>
+	
+    <span class="c1">// 한 페이지에 상품이 9개씩 노출될 것이고 첫 페이지는 1로 설정 </span>
+    <span class="kd">public</span> <span class="nf">ProdCriteria</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">page</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">perPageNum</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+    <span class="o">}</span>
+	
+    <span class="c1">// 테이블에서 상품 목록을 가져올 때 시작 로우 설정</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPageStart</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">page</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">perPageNum</span><span class="o">;</span>
+    <span class="o">}</span>
+	
+    <span class="c1">// 페이지번호가 1보다 작게 입력되면 1페이지로 고정 </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPage</span><span class="o">(</span><span class="kt">int</span> <span class="n">page</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">page</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">page</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+		
+        <span class="k">this</span><span class="o">.</span><span class="na">page</span> <span class="o">=</span> <span class="n">page</span><span class="o">;</span>
+    <span class="o">}</span>
+	
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPerPageNum</span><span class="o">(</span><span class="kt">int</span> <span class="n">perPageNum</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 페이지 사이즈 (한 페이지에 perPageNum만큼 출력하게 하기)</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">perPageNum</span> <span class="o">&amp;&amp;</span> <span class="n">perPageNum</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">perPageNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+		
+        <span class="k">this</span><span class="o">.</span><span class="na">perPageNum</span> <span class="o">=</span> <span class="n">perPageNum</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>입력된 페이지 번호에 따라 테이블에서 가져와야 할 로우 번호를 내부적으로 계산한 후 <code class="language-plaintext highlighter-rouge">MyBatis</code>로 넘겨주도록 했다.</li>
+</ul>
+
+<h2 id="prodpagemakerjava">ProdPageMaker.java</h2>
+
+<ul>
+  <li>페이지의 하단에서 다음 페이지로 이동할 수 있도록 하는 데이터를 처리하여 가지고 있는 객체이다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas.domain</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProdPageMaker</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">totalCnt</span><span class="o">;</span> <span class="c1">// 총 게시글 수</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">startPage</span><span class="o">;</span> <span class="c1">// 시작페이지 번호</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">endPage</span><span class="o">;</span> <span class="c1">// 마지막 페이지 번호</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">prev</span><span class="o">;</span> <span class="c1">// 이전 버튼 활성화 여부(페이지의 개수가 10개가 넘어가면 &lt;&lt; &gt;&gt; 와 같은 버튼 보이게 하는 변수</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">next</span><span class="o">;</span> <span class="c1">// 다음 버튼 활성화 여부</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageBlock</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// 한 페이지에서 보여줄 페이지 블럭의 개수 </span>
+    <span class="kd">private</span> <span class="nc">ProdCriteria</span> <span class="n">cri</span><span class="o">;</span> <span class="c1">// 한 페이지에 보여주는 상품 정보를 관리하는 객체</span>
+	
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCri</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">cri</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">cri</span> <span class="o">=</span> <span class="n">cri</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTotalCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">totalCnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">totalCnt</span> <span class="o">=</span> <span class="n">totalCnt</span><span class="o">;</span>
+		
+        <span class="n">calcData</span><span class="o">();</span>
+    <span class="o">}</span>
+	
+    <span class="c1">// 입력받은 총 상품 수와 한 페이지에 보여줄 상품의 수를 이용해서 몇 개의 페이지가 생성되어야 하는지 계산 </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">calcData</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">endPage</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">cri</span><span class="o">.</span><span class="na">getPage</span><span class="o">()</span> <span class="o">/</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span><span class="n">pageBlock</span><span class="o">)</span> <span class="o">*</span> <span class="n">pageBlock</span><span class="o">;</span>
+        <span class="n">startPage</span> <span class="o">=</span> <span class="o">(</span><span class="n">endPage</span> <span class="o">-</span> <span class="n">pageBlock</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">tmpEndPage</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">totalCnt</span> <span class="o">/</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span><span class="n">cri</span><span class="o">.</span><span class="na">getPerPageNum</span><span class="o">());</span>
+		
+        <span class="k">if</span> <span class="o">(</span><span class="n">endPage</span> <span class="o">&gt;</span> <span class="n">tmpEndPage</span><span class="o">)</span> <span class="n">endPage</span> <span class="o">=</span> <span class="n">tmpEndPage</span><span class="o">;</span>
+		
+        <span class="n">prev</span> <span class="o">=</span> <span class="o">(</span><span class="n">startPage</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="n">next</span> <span class="o">=</span> <span class="o">(</span><span class="n">endPage</span> <span class="o">*</span> <span class="n">cri</span><span class="o">.</span><span class="na">getPerPageNum</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="n">totalCnt</span><span class="o">)</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>현재 카테고리에서 보여져야 하는 상품의 총 개수를 이용해서 생성해야 하는 페이지 블럭의 개수를 계산해 가지고 있는 객체이다. 여기서 계산된 데이터로 뷰 페이지에서 표시되어야 하는 페이지 블럭의 개수만큼 반복문을 돌려 출력한다.</li>
+</ul>
+
+<h2 id="productservicejava">ProductService.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductService</span> <span class="o">{</span>
+	
+    <span class="c1">// 신상품 목록 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getNewProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 신상품 개수 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNewProdCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 특가 목록 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getSaleProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 특가 상품 개수 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSaleCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="productserviceimpljava">ProductServiceImpl.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductServiceImpl</span> <span class="kd">implements</span> <span class="nc">ProductService</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getNewProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getNewProductList</span><span class="o">(</span><span class="n">pc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNewProdCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getNewProdCnt</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getSaleProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getSaleProductList</span><span class="o">(</span><span class="n">pc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSaleCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getSaleCnt</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서비스 클래스도 연결해 준다.</li>
+</ul>
+
+<h2 id="productcontrollerjava">ProductController.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductController</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductService</span> <span class="n">service</span><span class="o">;</span>
+	
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/product_list"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span> <span class="c1">// /shop -&gt; /product_list</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">shopGET</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"topcate_num"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">topcate_num</span><span class="o">,</span> 
+            <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">cateStart</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">,</span> 
+            <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">pageNum</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"dcate_num"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">dcate_num</span><span class="o">,</span> 
+            <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">ProdCriteria</span> <span class="n">cri</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdCriteria</span><span class="o">();</span>
+        <span class="n">cri</span><span class="o">.</span><span class="na">setCateStart</span><span class="o">(</span><span class="n">cateStart</span><span class="o">);</span>
+        <span class="n">cri</span><span class="o">.</span><span class="na">setCateEnd</span><span class="o">(</span><span class="n">cateEnd</span><span class="o">);</span>
+		
+        <span class="c1">// 하단 페이징 처리 //////</span>
+        <span class="c1">// 현재 분류별 전체 상품 개수 얻기</span>
+        <span class="c1">// dcate_num(소분류) 번호가 0이라면 전체를 불러오는 것이고</span>
+        <span class="c1">// 1이상이라면 각각의 소분류만 불러오는 것이다.</span>
+        <span class="kt">int</span> <span class="n">postCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">dcate_num</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">postCnt</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">getProductCnt</span><span class="o">(</span><span class="n">cri</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">postCnt</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">getDcateCnt</span><span class="o">(</span><span class="n">dcate_num</span><span class="o">);</span>
+        <span class="o">}</span>
+		
+        <span class="n">cri</span><span class="o">.</span><span class="na">setPage</span><span class="o">(</span><span class="n">pageNum</span><span class="o">);</span>
+        <span class="n">cri</span><span class="o">.</span><span class="na">setProd_category</span><span class="o">(</span><span class="n">dcate_num</span><span class="o">);</span>
+		
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;();</span>
+		
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="n">productList</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">dcate_num</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">productList</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">getProductPage</span><span class="o">(</span><span class="n">cri</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">productList</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">getDcateList</span><span class="o">(</span><span class="n">cri</span><span class="o">);</span>
+        <span class="o">}</span>
+		
+        <span class="nc">ProdPageMaker</span> <span class="n">pm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdPageMaker</span><span class="o">();</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setCri</span><span class="o">(</span><span class="n">cri</span><span class="o">);</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setTotalCnt</span><span class="o">(</span><span class="n">postCnt</span><span class="o">);</span>
+		
+        <span class="c1">// 글 목록 정보 저장</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"productList"</span><span class="o">,</span> <span class="n">productList</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateStart"</span><span class="o">,</span> <span class="n">cateStart</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cateEnd"</span><span class="o">,</span> <span class="n">cateEnd</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"topcate_num"</span><span class="o">,</span> <span class="n">topcate_num</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"topcate"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getTopCateName</span><span class="o">(</span><span class="n">topcate_num</span><span class="o">));</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"dcate_num"</span><span class="o">,</span> <span class="n">dcate_num</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"dcateList"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getDcateNames</span><span class="o">(</span><span class="n">topcate_num</span><span class="o">));</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"postCnt"</span><span class="o">,</span> <span class="n">postCnt</span><span class="o">);</span>
+		
+        <span class="c1">// 페이지 처리 정보 저장</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pm"</span><span class="o">,</span> <span class="n">pm</span><span class="o">);</span>
+		
+        <span class="n">model</span><span class="o">.</span><span class="na">addAllAttributes</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="s">"product/productList"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이제 컨트롤러로 와서 아까 작업했던 것들을 연결시켜 준다.</li>
+  <li>파라미터로 받은 페이지 정보를 이용해서 현재 페이지에 표시되어야 할 상품 목록을 구해 <code class="language-plaintext highlighter-rouge">Model</code>에 저장한다.</li>
+  <li>대분류와 소분류별로 출력할 때 필요한 파라미터값들도 함께 저장해 뷰 페이지에서 다음 목록을 보여주어야 할 때 사용할 수 있도록 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">/product/product_list?cateStart=4&amp;cateEnd=6&amp;topcate_num=2&amp;pageNum=1&amp;dcate_num=0</code></li>
+  <li>상품목록페이지에서 대소분류별 출력과 페이징 처리에 필요한 정보들을 <code class="language-plaintext highlighter-rouge">GET</code> 방식으로 파라미터를 넘겨주도록 했다. 그래서 새로운 페이지 호출이 있으면 이 파라미터들을 가지고 컨트롤러로 이동해 DB에서 목록을 불러온 다음 뷰 페이지로 이동하는 것이다.</li>
+</ul>
+
+<h2><br /><br /><br /></h2>
+
+<h1 id="구현하며-했던-고민">구현하며 했던 고민</h1>
+<ul>
+  <li>이 부분을 구현하면서 상품목록페이지 내에서 소분류를 클릭하면 비동기 방식으로 목록을 가져와서 보여줄 것인지 지금 구현한 방식처럼 동기식으로 목록을 가져올 것인지 좀 고민을 하며 마켓컬리, 쿠팡과 같은 사이트들을 참고했다.</li>
+  <li>마켓컬리는 비동기 방식, 쿠팡은 동기 방식이었는데 처음엔 마켓컬리처럼 비동기 방식으로 소분류를 보여주고 싶었지만 그러려면 지금 내가 알고 있는 기술 중에서는 <code class="language-plaintext highlighter-rouge">ajax</code>를 써야 했다.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"vo"</span><span class="na"> items=</span><span class="s">"</span><span class="si">${</span><span class="n">productList</span> <span class="si">}</span><span class="s">"</span><span class="na"> varStatus=</span><span class="s">"it"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-4 col-sm-6"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-item"</span> <span class="na">id=</span><span class="s">"productItem"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-pic"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"product_detail"</span><span class="nt">&gt;</span> 
+                    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"${path}/resources/img/product-single/product_vegi01.jpeg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;ul&gt;</span>
+                    <span class="c">&lt;!-- 카트담기 버튼 --&gt;</span>
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"w-icon active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon_bag_alt"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;</span>
+                    <span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-text"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h5&gt;</span>${vo.prod_name }<span class="nt">&lt;/h5&gt;</span>
+                <span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-price"</span> <span class="na">id=</span><span class="s">"prod${it.index }"</span><span class="nt">&gt;</span>
+                    ${vo.prod_price }원
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/c:forEach&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>하지만 <code class="language-plaintext highlighter-rouge">ajax</code>로 가져오게 되면 상품 목록을 자바스크립트로 화면에 뿌려줘야 했는데 기존에 상품목록 출력 부분을 구현한 방식은 위와 같이 컨트롤러에서 <code class="language-plaintext highlighter-rouge">Model</code>에 저장한 정보들을 <code class="language-plaintext highlighter-rouge">JSTL</code>로 읽어와 출력하는 방식이었다. 그래서 <code class="language-plaintext highlighter-rouge">ajax</code>로 하려면 상품목록 출력 방식을 다 새로 작성해야 했다. 이렇게 할 시간은 없기 때문에 비동기 방식은 포기하고 쿠팡을 참고해 동기 방식으로 소분류별로 모아서 보여주는 방식을 택했다.</li>
+  <li>이번 프로젝트 설계 시에는 상품 목록 페이지에서 카테고리별로 어떻게 보여줄 것이고, 또 정렬 기준별로는 파라미터를 어떻게 받아와서 어떤 통신 방식으로 보여줄 지 상세한 설계를 하지 않고 시작했기 때문에 나중에는 기존에 짜여진 틀 내에서만 구현이 가능한, 한마디로 구현 가능한 선택지가 줄어들게 되는 부분들이 있었다. 설계를 열심히 하고 시작했다고 생각했는데 아직 배울 것이 많이 남았다는 생각이 든다. 다음엔 더 철저하게 설계하고 시작하자!<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-15</code></li>
+</ul>
+:ET

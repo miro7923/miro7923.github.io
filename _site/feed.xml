@@ -1,4 +1,502 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-09T16:17:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">에러해결 Log) (Spring framework) Mapped Statements collection does not contain value for ~</title><link href="http://localhost:4000/errorlog/warning-log-08/" rel="alternate" type="text/html" title="에러해결 Log) (Spring framework) Mapped Statements collection does not contain value for ~" /><published>2022-05-09T00:00:00+09:00</published><updated>2022-05-09T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-08</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-08/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-10T17:51:09+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 14 - 신상품 페이지와 특가상품 페이지에서 할인상품의 할인율과 할인가 보여주기</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-14/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 14 - 신상품 페이지와 특가상품 페이지에서 할인상품의 할인율과 할인가 보여주기" /><published>2022-05-10T00:00:00+09:00</published><updated>2022-05-10T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-14</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-14/"><![CDATA[<ul>
+  <li>작성일 : 2022.05.10</li>
+  <li>
+    <p>작성자 : 황유진</p>
+  </li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 황유진</li>
+  <li>팀장 : 황유진</li>
+  <li>부팀장 : 오성은</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 6명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
+  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+
+<p align="center"><img src="../../assets/images/unomas_prodListDb1.png" width="900" /></p>
+
+<ul>
+  <li>신상품과 할인상품을 볼 수 있는 페이지를 만들어 DB에서 조회해 온 값에 따라 출력되도록 했다.</li>
+</ul>
+
+<h2 id="productmapperxml">productMapper.xml</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"com.unomas.mapper.ProductMapper"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- 한 달 이내 신상품 목록 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getNewProducts"</span> <span class="na">resultType=</span><span class="s">"ProductVO"</span><span class="nt">&gt;</span>
+        SELECT *
+        FROM products
+        WHERE prod_regdate BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()
+        ORDER BY prod_regdate DESC
+        LIMIT #{pageStart}, #{perPageNum}
+    <span class="nt">&lt;/select&gt;</span>
+    
+    <span class="c">&lt;!-- 신상품 개수 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getNewProdCnt"</span> <span class="na">resultType=</span><span class="s">"int"</span><span class="nt">&gt;</span>
+        SELECT COUNT(prod_num)
+        FROM products
+        WHERE prod_regdate BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()
+    <span class="nt">&lt;/select&gt;</span>
+    
+    <span class="c">&lt;!-- 특가 상품 목록 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getSaleProducts"</span> <span class="na">resultType=</span><span class="s">"ProductVO"</span><span class="nt">&gt;</span>
+        SELECT *
+        FROM products
+        WHERE prod_discntrate &gt; 0
+        ORDER BY prod_regdate DESC
+        LIMIT #{pageStart}, #{perPageNum}
+    <span class="nt">&lt;/select&gt;</span>
+    
+    <span class="c">&lt;!-- 특가 상품 개수 가져오기 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getSaleProdCnt"</span> <span class="na">resultType=</span><span class="s">"int"</span><span class="nt">&gt;</span>
+        SELECT COUNT(prod_num)
+        FROM products
+        WHERE prod_discntrate &gt; 0
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>상품 테이블에서 신상품과 할인상품 목록을 가져오기 위한 쿼리문을 작성했다.</li>
+  <li>신상품은 등록일 기준으로 최근 한 달 이내의 상품만 가져오도록 했고, 특가(할인) 상품은 할인율을 표시하는 컬럼인 <code class="language-plaintext highlighter-rouge">prod_discntrate</code>의 값이 0 보다 큰 값을 때에만 가져오도록 했다. 할인율이 0이라면 할인하지 않는 상품이라는 뜻이다.</li>
+</ul>
+
+<h2 id="productdaojava">ProductDAO.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+	
+    <span class="c1">// 신상품 목록 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getNewProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 신상품 개수 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNewProdCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 특가 목록 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getSaleProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 특가 상품 개수 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSaleCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="productdaoimpljava">ProductDAOImpl.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOImpl</span> <span class="kd">implements</span> <span class="nc">ProductDAO</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAMESPACE</span> <span class="o">=</span> <span class="s">"com.unomas.mapper.ProductMapper"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOImpl</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getNewProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getNewProducts"</span><span class="o">,</span> <span class="n">pc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNewProdCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectOne</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getNewProdCnt"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getSaleProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getSaleProducts"</span><span class="o">,</span> <span class="n">pc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSaleCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectOne</span><span class="o">(</span><span class="no">NAMESPACE</span> <span class="o">+</span> <span class="s">".getSaleProdCnt"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DAO</code>를 통해 DB에서 신상품과 특가상품 정보를 불러온다.</li>
+</ul>
+
+<h2 id="productdaotestjava">ProductDAOTest.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ContextConfiguration</span><span class="o">(</span>
+        <span class="n">locations</span> <span class="o">=</span> <span class="o">{</span><span class="s">"file:src/main/webapp/WEB-INF/spring/root-context.xml"</span><span class="o">}</span>
+        <span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductDAOTest</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductDAO</span> <span class="n">dao</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductDAOTest</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">신상품목록출력테스트</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">ProdCriteria</span> <span class="n">pp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdCriteria</span><span class="o">();</span>
+        <span class="n">pp</span><span class="o">.</span><span class="na">setPage</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">pp</span><span class="o">.</span><span class="na">setPerPageNum</span><span class="o">(</span><span class="mi">9</span><span class="o">);</span>
+		
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getNewProductList</span><span class="o">(</span><span class="n">pp</span><span class="o">)+</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"count: "</span> <span class="o">+</span> <span class="n">dao</span><span class="o">.</span><span class="na">getNewProdCnt</span><span class="o">());</span>
+    <span class="o">}</span>
+	
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">특가목록출력테스트</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">ProdCriteria</span> <span class="n">pc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdCriteria</span><span class="o">();</span>
+        <span class="nc">ProdPageMaker</span> <span class="n">pm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdPageMaker</span><span class="o">();</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setCri</span><span class="o">(</span><span class="n">pc</span><span class="o">);</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setTotalCnt</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getSaleCnt</span><span class="o">());</span>
+		
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">dao</span><span class="o">.</span><span class="na">getSaleProductList</span><span class="o">(</span><span class="n">pc</span><span class="o">)+</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">pm</span><span class="o">.</span><span class="na">getTotalCnt</span><span class="o">()+</span><span class="s">""</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서비스 코드에 넣기 전 테스트를 진행했다. 결과가 잘 나왔기 때문에 다음 단계로 넘어간다.</li>
+  <li><code class="language-plaintext highlighter-rouge">ProdCriteria</code>와 <code class="language-plaintext highlighter-rouge">ProdPageMaker</code>는 페이징 처리를 위한 객체들이다.</li>
+</ul>
+
+<h2 id="prodcriteriajava">ProdCriteria.java</h2>
+
+<ul>
+  <li>한 페이지에 보여줄 상품 목록의 정보를 담고 있다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas.domain</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProdCriteria</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">cateStart</span><span class="o">;</span> 
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">cateEnd</span><span class="o">;</span> <span class="c1">// 소분류의 시작과 끝번호 (대분류별로 가져올 때 사용)</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">page</span><span class="o">;</span> <span class="c1">// 현재 페이지번호</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">perPageNum</span><span class="o">;</span> <span class="c1">// 한 페이지에 보여질 상품 개수</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">prod_category</span><span class="o">;</span> <span class="c1">// 소분류 번호. 소분류만 지정해서 가져올 때 사용</span>
+	
+    <span class="c1">// 한 페이지에 상품이 9개씩 노출될 것이고 첫 페이지는 1로 설정 </span>
+    <span class="kd">public</span> <span class="nf">ProdCriteria</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">page</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">perPageNum</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+    <span class="o">}</span>
+	
+    <span class="c1">// 테이블에서 상품 목록을 가져올 때 시작 로우 설정</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPageStart</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">page</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">perPageNum</span><span class="o">;</span>
+    <span class="o">}</span>
+	
+    <span class="c1">// 페이지번호가 1보다 작게 입력되면 1페이지로 고정 </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPage</span><span class="o">(</span><span class="kt">int</span> <span class="n">page</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">page</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">page</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+		
+        <span class="k">this</span><span class="o">.</span><span class="na">page</span> <span class="o">=</span> <span class="n">page</span><span class="o">;</span>
+    <span class="o">}</span>
+	
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPerPageNum</span><span class="o">(</span><span class="kt">int</span> <span class="n">perPageNum</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 페이지 사이즈 (한 페이지에 perPageNum만큼 출력하게 하기)</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">perPageNum</span> <span class="o">&amp;&amp;</span> <span class="n">perPageNum</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">perPageNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+		
+        <span class="k">this</span><span class="o">.</span><span class="na">perPageNum</span> <span class="o">=</span> <span class="n">perPageNum</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>입력된 페이지 번호에 따라 테이블에서 가져와야 할 로우 번호를 내부적으로 계산한 후 <code class="language-plaintext highlighter-rouge">MyBatis</code>로 넘겨주도록 했다.</li>
+</ul>
+
+<h2 id="prodpagemakerjava">ProdPageMaker.java</h2>
+
+<ul>
+  <li>페이지의 하단에서 다음 페이지로 이동할 수 있도록 하는 데이터를 처리하여 가지고 있는 객체이다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas.domain</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProdPageMaker</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">totalCnt</span><span class="o">;</span> <span class="c1">// 총 게시글 수</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">startPage</span><span class="o">;</span> <span class="c1">// 시작페이지 번호</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">endPage</span><span class="o">;</span> <span class="c1">// 마지막 페이지 번호</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">prev</span><span class="o">;</span> <span class="c1">// 이전 버튼 활성화 여부(페이지의 개수가 10개가 넘어가면 &lt;&lt; &gt;&gt; 와 같은 버튼 보이게 하는 변수</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">next</span><span class="o">;</span> <span class="c1">// 다음 버튼 활성화 여부</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageBlock</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// 한 페이지에서 보여줄 페이지 블럭의 개수 </span>
+    <span class="kd">private</span> <span class="nc">ProdCriteria</span> <span class="n">cri</span><span class="o">;</span> <span class="c1">// 한 페이지에 보여주는 상품 정보를 관리하는 객체</span>
+	
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCri</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">cri</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">cri</span> <span class="o">=</span> <span class="n">cri</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTotalCnt</span><span class="o">(</span><span class="kt">int</span> <span class="n">totalCnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">totalCnt</span> <span class="o">=</span> <span class="n">totalCnt</span><span class="o">;</span>
+		
+        <span class="n">calcData</span><span class="o">();</span>
+    <span class="o">}</span>
+	
+    <span class="c1">// 입력받은 총 상품 수와 한 페이지에 보여줄 상품의 수를 이용해서 몇 개의 페이지가 생성되어야 하는지 계산 </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">calcData</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">endPage</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">cri</span><span class="o">.</span><span class="na">getPage</span><span class="o">()</span> <span class="o">/</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span><span class="n">pageBlock</span><span class="o">)</span> <span class="o">*</span> <span class="n">pageBlock</span><span class="o">;</span>
+        <span class="n">startPage</span> <span class="o">=</span> <span class="o">(</span><span class="n">endPage</span> <span class="o">-</span> <span class="n">pageBlock</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">tmpEndPage</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">totalCnt</span> <span class="o">/</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span><span class="n">cri</span><span class="o">.</span><span class="na">getPerPageNum</span><span class="o">());</span>
+		
+        <span class="k">if</span> <span class="o">(</span><span class="n">endPage</span> <span class="o">&gt;</span> <span class="n">tmpEndPage</span><span class="o">)</span> <span class="n">endPage</span> <span class="o">=</span> <span class="n">tmpEndPage</span><span class="o">;</span>
+		
+        <span class="n">prev</span> <span class="o">=</span> <span class="o">(</span><span class="n">startPage</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="n">next</span> <span class="o">=</span> <span class="o">(</span><span class="n">endPage</span> <span class="o">*</span> <span class="n">cri</span><span class="o">.</span><span class="na">getPerPageNum</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="n">totalCnt</span><span class="o">)</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>현재 카테고리에서 보여져야 하는 상품의 총 개수를 이용해서 생성해야 하는 페이지 블럭의 개수를 계산해 가지고 있는 객체이다. 여기서 계산된 데이터로 뷰 페이지에서 표시되어야 하는 페이지 블럭의 개수만큼 반복문을 돌려 출력한다.</li>
+</ul>
+
+<h2 id="productservicejava">ProductService.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductService</span> <span class="o">{</span>
+	
+    <span class="c1">// 신상품 목록 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getNewProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 신상품 개수 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNewProdCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 특가 목록 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getSaleProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+    <span class="c1">// 특가 상품 개수 가져오는 메서드</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSaleCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="productserviceimpljava">ProductServiceImpl.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductServiceImpl</span> <span class="kd">implements</span> <span class="nc">ProductService</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getNewProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getNewProductList</span><span class="o">(</span><span class="n">pc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNewProdCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getNewProdCnt</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProductVO</span><span class="o">&gt;</span> <span class="nf">getSaleProductList</span><span class="o">(</span><span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getSaleProductList</span><span class="o">(</span><span class="n">pc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSaleCnt</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dao</span><span class="o">.</span><span class="na">getSaleCnt</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서비스 클래스도 연결해 준다.</li>
+</ul>
+
+<h2 id="productcontrollerjava">ProductController.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductController</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductService</span> <span class="n">service</span><span class="o">;</span>
+	
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/new_list"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">newProductListGET</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"pageNum"</span><span class="o">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="s">"1"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">pageNum</span><span class="o">,</span> 
+        <span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">pc</span><span class="o">.</span><span class="na">setPage</span><span class="o">(</span><span class="n">pageNum</span><span class="o">);</span>
+		
+        <span class="kt">int</span> <span class="n">postCnt</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">getNewProdCnt</span><span class="o">();</span>
+		
+        <span class="nc">ProdPageMaker</span> <span class="n">pm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdPageMaker</span><span class="o">();</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setCri</span><span class="o">(</span><span class="n">pc</span><span class="o">);</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setTotalCnt</span><span class="o">(</span><span class="n">postCnt</span><span class="o">);</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"productList"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getNewProductList</span><span class="o">(</span><span class="n">pc</span><span class="o">));</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"postCnt"</span><span class="o">,</span> <span class="n">postCnt</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"topcate"</span><span class="o">,</span> <span class="s">"신상품"</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"topcate_num"</span><span class="o">,</span> <span class="mi">6</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"pm"</span><span class="o">,</span> <span class="n">pm</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="s">"product/productList"</span><span class="o">;</span>
+    <span class="o">}</span>
+	
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/sale_list"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">saleProductList</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"pageNum"</span><span class="o">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="s">"1"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">pageNum</span><span class="o">,</span> 
+            <span class="nc">ProdCriteria</span> <span class="n">pc</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">pc</span><span class="o">.</span><span class="na">setPage</span><span class="o">(</span><span class="n">pageNum</span><span class="o">);</span>
+		
+        <span class="kt">int</span> <span class="n">postCnt</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">getSaleCnt</span><span class="o">();</span>
+		
+        <span class="nc">ProdPageMaker</span> <span class="n">pm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProdPageMaker</span><span class="o">();</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setCri</span><span class="o">(</span><span class="n">pc</span><span class="o">);</span>
+        <span class="n">pm</span><span class="o">.</span><span class="na">setTotalCnt</span><span class="o">(</span><span class="n">postCnt</span><span class="o">);</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"productList"</span><span class="o">,</span> <span class="n">service</span><span class="o">.</span><span class="na">getSaleProductList</span><span class="o">(</span><span class="n">pc</span><span class="o">));</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"postCnt"</span><span class="o">,</span> <span class="n">postCnt</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"topcate"</span><span class="o">,</span> <span class="s">"특가"</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"topcate_num"</span><span class="o">,</span> <span class="mi">7</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"pageNum"</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"pm"</span><span class="o">,</span> <span class="n">pm</span><span class="o">);</span>
+		
+        <span class="k">return</span> <span class="s">"product/productList"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이제 컨트롤러로 와서 아까 작업했던 것들을 연결시켜 준다.</li>
+  <li>분류별 상품목록을 출력할 때와 다르게 신상품과 특가 상품 목록은 제목과 테이블 상에서의 대분류 번호가 고정되어 있기 때문에 인자값으로 고정된 값을 넣어주었다. 나중에 대분류와 소분류가 더 추가되어서 확장되었을 경우를 생각해보면 지금처럼 대분류 번호인 <code class="language-plaintext highlighter-rouge">topcate_num</code> 값 자체를 지정해 줄 필요가 없이 제거해도 될 거 같기도 하다… 저 번호를 활용해서 테이블에서 데이터를 불러오는 것도 아니고… 나중에 수정 해야겠다.</li>
+</ul>
+
+<h2 id="productlistjsp">productList.jsp</h2>
+<ul>
+  <li>처음에 페이지 템플릿을 만들던 당시에는 신상품과 특가 상품 목록 페이지도 따로 만들었는데 이번에 DB 연결 작업을 하며 생각해보니 저 페이지들을 굳이 따로 만들 필요가 없었다. 기존에 상품 분류별로 출력하던 페이지에서 제어조건만 조금 추가해서 신상품과 특가 상품들도 출력하면 되는 것이었다. 페이지의 제목 부분만 다르지 상품 목록을 보여주고, 상품을 클릭하면 상세 페이지로 이동하는 로직은 다 같기 때문에…</li>
+  <li>그래서 분류별 상품을 출력할 때 썼던 <code class="language-plaintext highlighter-rouge">productList.jsp</code> 파일을 재활용했다.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"categoryBox"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>${topcate }<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">topcate_num</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"categoryList"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"dcateNum"</span> <span class="na">value=</span><span class="s">"${dcate_num }"</span><span class="nt">&gt;</span> 
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/product/product_list?cateStart=${cateStart }&amp;cateEnd=${cateEnd}&amp;topcate_num=${topcate_num}&amp;pageNum=${pageNum}&amp;dcate_num=0"</span> 
+                    <span class="na">class=</span><span class="s">"category"</span> <span class="na">id=</span><span class="s">"category0"</span> <span class="na">style=</span><span class="s">"color: black;"</span> 
+                    <span class="na">onclick=</span><span class="s">"changeSort(0, 0, ${fn:length(dcateList) });"</span><span class="nt">&gt;</span> 전체보기<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"dcate"</span><span class="na"> begin=</span><span class="s">"0"</span><span class="na"> end=</span><span class="s">"</span><span class="si">${</span><span class="n">cateEnd</span><span class="o">-</span><span class="n">cateStart</span> <span class="si">}</span><span class="s">"</span><span class="na"> step=</span><span class="s">"1"</span><span class="na"> varStatus=</span><span class="s">"it"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/product/product_list?cateStart=${cateStart }&amp;cateEnd=${cateEnd}&amp;topcate_num=${topcate_num}&amp;pageNum=1&amp;dcate_num=${cateStart+dcate}"</span> 
+                    <span class="na">class=</span><span class="s">"category"</span> <span class="na">id=</span><span class="s">"category${cateStart+dcate }"</span> <span class="na">style=</span><span class="s">"color: black;"</span> 
+                    <span class="na">onclick=</span><span class="s">"changeSort(${cateStart+dcate }, ${cateStart }, ${fn:length(dcateList) });"</span><span class="nt">&gt;</span> ${dcateList[it.index] }<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;/c:forEach&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/c:if&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSTL</code> 표현식을 사용해 페이지 종류에 따라 출력해야 할 부분을 제어해 주었다. 상단의 소분류는 분류별로 상품을 보는 페이지에서만 출력하고 신상품과 특가 상품 페이지에서는 필요하지 않아서 출력하지 않게 했다.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-text"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/product/product_detail?prod_num=${vo.prod_num }"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h5&gt;</span>${vo.prod_name }<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;c:choose&gt;</span>
+        <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">vo</span><span class="o">.</span><span class="na">prod_discntrate</span> <span class="n">eq</span> <span class="mi">0</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-price"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">vo</span><span class="o">.</span><span class="na">prod_price</span><span class="si">}</span><span class="s">"</span><span class="nt">/&gt;</span>원
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/c:when&gt;</span>
+        <span class="nt">&lt;c:otherwise&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"product-price discountedRate"</span><span class="nt">&gt;</span>${vo.prod_discntrate}%<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"product-price"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"discnted"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">vo</span><span class="o">.</span><span class="na">prod_price</span><span class="o">*(</span><span class="mi">100</span><span class="o">-</span><span class="n">vo</span><span class="o">.</span><span class="na">prod_discntrate</span><span class="o">)/</span><span class="mi">100</span><span class="si">}</span><span class="s">"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">discnted</span><span class="o">+((</span><span class="n">discnted</span><span class="o">%</span><span class="mi">10</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">)?(</span><span class="mi">10</span><span class="o">-(</span><span class="n">discnted</span><span class="o">%</span><span class="mi">10</span><span class="o">))%</span><span class="mi">10</span><span class="o">:-(</span><span class="n">discnted</span><span class="o">%</span><span class="mi">10</span><span class="o">))</span><span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"number"</span><span class="nt">/&gt;</span>원<span class="nt">&lt;br&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-price"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span&gt;&lt;fmt:formatNumber </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">vo</span><span class="o">.</span><span class="na">prod_price</span><span class="si">}</span><span class="s">"</span><span class="na"> type=</span><span class="s">"number"</span><span class="nt">/&gt;</span>원<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/c:otherwise&gt;</span>
+    <span class="nt">&lt;/c:choose&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>만약 할인하는 상품이면 십의 자리에서 반올림한 가격을 출력하도록 했다.</li>
+  <li>그리고 <code class="language-plaintext highlighter-rouge">JSTL</code>의 숫자 포맷 라이브러리를 사용해서 통화에 자동으로 <code class="language-plaintext highlighter-rouge">,</code>를 찍도록 했다. 처음엔 이걸 까먹고 있어서 자바스크립트에서 정규식을 사용하는 방식으로 구현했는데… <code class="language-plaintext highlighter-rouge">JSTL</code>을 사용하는 것이 코드상으로 깔끔하고 가독성도 좋아서 통화 출력 부분은 모두 이렇게 수정했다.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span> <span class="na">id=</span><span class="s">"pagediv"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${pageNum }"</span> <span class="na">id=</span><span class="s">"curPage"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12 text-center"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">prev</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"arrow_carrot-left_alt pagingBtn"</span> <span class="na">id=</span><span class="s">"prev"</span><span class="nt">&gt;&lt;/a&gt;</span> 
+        <span class="nt">&lt;/c:if&gt;</span>
+						
+        <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"block"</span><span class="na"> varStatus=</span><span class="s">"it"</span><span class="na"> begin=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">startPage</span> <span class="si">}</span><span class="s">"</span><span class="na"> end=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">endPage</span> <span class="si">}</span><span class="s">"</span><span class="na"> step=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span&gt;</span>
+                <span class="nt">&lt;c:choose&gt;</span>
+                    <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">topcate_num</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+                        <span class="c">&lt;!----&gt;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/product/product_list?cateStart=${cateStart }&amp;cateEnd=${cateEnd }&amp;topcate_num=${topcate_num }&amp;pageNum=${it.index}&amp;dcate_num=${dcate_num}"</span> 
+                            <span class="na">class=</span><span class="s">"pagingBtn"</span> <span class="na">id=</span><span class="s">"page${it.index }"</span> <span class="na">style=</span><span class="s">"color: black;"</span>
+                            <span class="na">onclick=</span><span class="s">"changePageNum(${it.index }, ${pm.endPage });"</span><span class="nt">&gt;</span>${it.index } <span class="c">&lt;!----&gt;</span><span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/c:when&gt;</span>
+                    <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">topcate_num</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+                        <span class="c">&lt;!----&gt;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/product/new_list?pageNum=${it.index}"</span> 
+                        <span class="na">class=</span><span class="s">"pagingBtn"</span> <span class="na">id=</span><span class="s">"page${it.index }"</span> <span class="na">style=</span><span class="s">"color: black;"</span>
+                        <span class="na">onclick=</span><span class="s">"changePageNum(${it.index }, ${pm.endPage });"</span><span class="nt">&gt;</span>${it.index } <span class="c">&lt;!----&gt;</span><span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/c:when&gt;</span>
+                    <span class="nt">&lt;c:otherwise&gt;</span>
+                        <span class="c">&lt;!----&gt;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/product/sale_list?pageNum=${it.index}"</span> 
+                                <span class="na">class=</span><span class="s">"pagingBtn"</span> <span class="na">id=</span><span class="s">"page${it.index }"</span> <span class="na">style=</span><span class="s">"color: black;"</span>
+                                <span class="na">onclick=</span><span class="s">"changePageNum(${it.index }, ${pm.endPage });"</span><span class="nt">&gt;</span>${it.index } <span class="c">&lt;!----&gt;</span><span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/c:otherwise&gt;</span>
+                <span class="nt">&lt;/c:choose&gt;</span>
+            <span class="nt">&lt;/span&gt;</span> 
+        <span class="nt">&lt;/c:forEach&gt;</span>
+						
+        <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">next</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"arrow_carrot-right_alt pagingBtn"</span> <span class="na">id=</span><span class="s">"next"</span><span class="nt">&gt;&lt;/a&gt;</span> 
+        <span class="nt">&lt;/c:if&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>하단 페이지 블럭 부분에도 각 페이지 종류에 따라 다른 주소를 매핑해주도록 제어했다.</li>
+  <li>이렇게 페이지 재활용 끝!! 😄<br /><br /><br /></li>
+</ul>
+
+<h1 id="구현하며-했던-고민">구현하며 했던 고민</h1>
+<ul>
+  <li>위에서도 기술했다시피 신상품과 특가상품 목록 페이지에서 상품 상세페이지로 이동하는 로직은 다 같은데 굳이 페이지를 나눠야 할까? 였다. 페이지들을 따로 만들지 않고 페이지 하나를 재활용해서 구현하게 된 데에는 상품 상세페이지로 이동하는 매핑주소 작업을 새로 해주기 귀찮았던 것이 가장 컸다.</li>
+  <li>역시 프로그래밍은 귀찮음이 커야 효율적으로 짤 수 있다는 말이 맞는 말이란 생각이 든다…😅 <br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-10</code></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.10 작성자 : 황유진]]></summary></entry><entry><title type="html">에러해결 Log) (Spring framework) Mapped Statements collection does not contain value for ~</title><link href="http://localhost:4000/errorlog/warning-log-08/" rel="alternate" type="text/html" title="에러해결 Log) (Spring framework) Mapped Statements collection does not contain value for ~" /><published>2022-05-09T00:00:00+09:00</published><updated>2022-05-09T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-08</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-08/"><![CDATA[<h1 id="사용환경">사용환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020) 16GB</li>
   <li>JDK 8</li>
@@ -42,71 +540,6 @@
 <h1 id="참고">참고</h1>
 <ul>
   <li><a href="https://manli000.wordpress.com/2016/01/02/mapped-statements-collection-does-not-contain-value-for/">Mapped Statements collection does not contain value for ***</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">에러해결 Log) The prefix “tx” for element “tx:annotation-driven” is not bound.</title><link href="http://localhost:4000/errorlog/warning-log-07/" rel="alternate" type="text/html" title="에러해결 Log) The prefix “tx” for element “tx:annotation-driven” is not bound." /><published>2022-05-08T00:00:00+09:00</published><updated>2022-05-08T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-07</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-07/"><![CDATA[<h1 id="사용환경">사용환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020) 16GB</li>
-  <li>JDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="에러의-발생-1">에러의 발생 1</h1>
-
-<p align="center"><img src="../../assets/images/tranError1.png" width="700" /></p>
-
-<ul>
-  <li>DB에 데이터를 삽입하는 테스트를 진행할 때 데이터는 들어갔지만 예외가 발생해 결과적으로는 실패인 상황에도 DB에는 이미 해당 데이터가 있기 때문에 그 데이터를 삭제하든지 이클립스상에서 삽입할 데이터를 바꾸든지 해야 했다.</li>
-  <li>이것은 상당히 귀찮은 작업이었기 때문에… 예외 발생시에는 롤백을 시키려고 <code class="language-plaintext highlighter-rouge">@Transactional</code>을 써 보려고 <code class="language-plaintext highlighter-rouge">root-context.xml</code>에 위의 태그를 추가했다. 그리고 마주한 빨간줄…</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/tranError2.png" width="700" /></p>
-
-<ul>
-  <li>에러 내용을 보니까 접두사 선언이 되어 있지 않은 것이 문제였다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결-1">문제 해결 1</h1>
-
-<p align="center"><img src="../../assets/images/tranError3.png" width="600" /></p>
-
-<ul>
-  <li>그래서 스택오버플로우를 통해 접두사 선언을 해 주었다.</li>
-</ul>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xmlns:tx="http://www.springframework.org/schema/tx"
-</code></pre></div></div>
-<p><br /><br /></p>
-
-<h1 id="에러의-발생-2">에러의 발생 2</h1>
-
-<p align="center"><img src="../../assets/images/tranError4.png" width="700" /></p>
-
-<ul>
-  <li>하지만 여전히 에러는 사라지지 않았고 새로운 메시지가 나왔다. 여전히 관련된 선언을 찾을 수 없다는 내용…ㅠ 해당 메시지로 한 번 더 구글링했다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결-2">문제 해결 2</h1>
-
-<p align="center"><img src="../../assets/images/tranError5.png" width="600" /></p>
-
-<ul>
-  <li>역시 스택오버플로우에서 해당 문제에 대한 해답을 찾을 수 있었다. 접두사 <code class="language-plaintext highlighter-rouge">tx</code>와 관련해 스키마 로케이션을 더 추가해 주어야 했던 것이었다…</li>
-</ul>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://www.springframework.org/schema/tx 
-http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
-</code></pre></div></div>
-
-<p align="center"><img src="../../assets/images/tranError6.png" width="600" /></p>
-
-<ul>
-  <li>여기까지 하고 나니까 더 이상의 에러가 없는, 클린한 <code class="language-plaintext highlighter-rouge">root-context.xml</code>을 볼 수 있었다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://stackoverflow.com/questions/10373222/spring-the-prefix-tx-for-element-txannotation-driven-is-not-bound">Spring “The prefix “tx” for element “tx:annotation-driven” is not bound.”</a></li>
-  <li><a href="https://stackoverflow.com/questions/17566391/cvc-complex-type-2-4-c-the-matching-wildcard-is-strict-but-no-declaration-can">cvc-complex-type.2.4.c: The matching wildcard is strict, but no declaration can be found for element ‘tx:annotation-driven’</a></li>
 </ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">OS) Virtual Memory</title><link href="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/" rel="alternate" type="text/html" title="OS) Virtual Memory" /><published>2022-05-08T00:00:00+09:00</published><updated>2022-05-08T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/OS-09-Virtual-Memory</id><content type="html" xml:base="http://localhost:4000/operating%20system/OS-09-Virtual-Memory/"><![CDATA[<h1 id="-demain-paging">👀 Demain Paging</h1>
 <ul>
   <li>실제로 필요할 때 <code class="language-plaintext highlighter-rouge">page</code>를 메모리에 올리는 것</li>
@@ -254,239 +687,72 @@ http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
 <ul>
   <li><a href="http://www.kocw.net/home/search/kemView.do?kemId=1046323">운영체제 - 이화여자대학교 KOCW 공개강의</a></li>
   <li><a href="https://straw961030.tistory.com/155">스레싱(thrashing)이란 무엇인가</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="VirtualMemory" /><summary type="html"><![CDATA[👀 Demain Paging 실제로 필요할 때 page를 메모리에 올리는 것 왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다. 그래서 프로세스 동작에 실제로 필요한 page만 메모리에 올리는 것이 효율적이다. 장점 I/O 양의 감소 메모리 사용량 감소 빠른 응답 시간 더 많은 사용자 수용]]></summary></entry><entry><title type="html">Python) BOJ 14502. 연구소</title><link href="http://localhost:4000/boj/boj14502-py/" rel="alternate" type="text/html" title="Python) BOJ 14502. 연구소" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj14502-py</id><content type="html" xml:base="http://localhost:4000/boj/boj14502-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Operating System" /><category term="CS" /><category term="OS" /><category term="VirtualMemory" /><summary type="html"><![CDATA[👀 Demain Paging 실제로 필요할 때 page를 메모리에 올리는 것 왜냐면 프로그램의 대부분의 코드는 (거의 발생하지 않는 치명적인) 오류를 해결하기 위한 코드라 평소에는 쓰지지 않는 부분이 대다수다. 그래서 이걸 다 메모리에 올려 놓으면 메모리 공간만 차지하고 비효율적이다. 그래서 프로세스 동작에 실제로 필요한 page만 메모리에 올리는 것이 효율적이다. 장점 I/O 양의 감소 메모리 사용량 감소 빠른 응답 시간 더 많은 사용자 수용]]></summary></entry><entry><title type="html">에러해결 Log) The prefix “tx” for element “tx:annotation-driven” is not bound.</title><link href="http://localhost:4000/errorlog/warning-log-07/" rel="alternate" type="text/html" title="에러해결 Log) The prefix “tx” for element “tx:annotation-driven” is not bound." /><published>2022-05-08T00:00:00+09:00</published><updated>2022-05-08T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-07</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-07/"><![CDATA[<h1 id="사용환경">사용환경</h1>
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/14502">https://www.acmicpc.net/problem/14502</a><br /><br /></li>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
 </ul>
 
-<h1 id="제한">제한</h1>
-<hr />
+<h1 id="에러의-발생-1">에러의 발생 1</h1>
+
+<p align="center"><img src="../../assets/images/tranError1.png" width="700" /></p>
 
 <ul>
-  <li>시간 제한 : 2 초</li>
-  <li>메모리 제한 : 512 MB<br /><br /></li>
+  <li>DB에 데이터를 삽입하는 테스트를 진행할 때 데이터는 들어갔지만 예외가 발생해 결과적으로는 실패인 상황에도 DB에는 이미 해당 데이터가 있기 때문에 그 데이터를 삭제하든지 이클립스상에서 삽입할 데이터를 바꾸든지 해야 했다.</li>
+  <li>이것은 상당히 귀찮은 작업이었기 때문에… 예외 발생시에는 롤백을 시키려고 <code class="language-plaintext highlighter-rouge">@Transactional</code>을 써 보려고 <code class="language-plaintext highlighter-rouge">root-context.xml</code>에 위의 태그를 추가했다. 그리고 마주한 빨간줄…</li>
 </ul>
 
-<h1 id="문제">문제</h1>
-<hr />
+<p align="center"><img src="../../assets/images/tranError2.png" width="700" /></p>
 
 <ul>
-  <li>
-    <p>인체에 치명적인 바이러스를 연구하던 연구소에서 바이러스가 유출되었다. 다행히 바이러스는 아직 퍼지지 않았고, 바이러스의 확산을 막기 위해서 연구소에 벽을 세우려고 한다.</p>
-  </li>
-  <li>
-    <p>연구소는 크기가 N×M인 직사각형으로 나타낼 수 있으며, 직사각형은 1×1 크기의 정사각형으로 나누어져 있다. 연구소는 빈 칸, 벽으로 이루어져 있으며, 벽은 칸 하나를 가득 차지한다.</p>
-  </li>
-  <li>
-    <p>일부 칸은 바이러스가 존재하며, 이 바이러스는 상하좌우로 인접한 빈 칸으로 모두 퍼져나갈 수 있다. 새로 세울 수 있는 벽의 개수는 3개이며, 꼭 3개를 세워야 한다.</p>
-  </li>
-  <li>
-    <p>벽을 3개 세운 뒤, 바이러스가 퍼질 수 없는 곳을 안전 영역이라고 한다. 위의 지도에서 안전 영역의 크기는 27이다.</p>
-  </li>
-  <li>
-    <p>연구소의 지도가 주어졌을 때 얻을 수 있는 안전 영역 크기의 최댓값을 구하는 프로그램을 작성하시오.<br /><br /></p>
-  </li>
+  <li>에러 내용을 보니까 접두사 선언이 되어 있지 않은 것이 문제였다.<br /><br /><br /></li>
 </ul>
 
-<h1 id="입력">입력</h1>
-<hr />
+<h1 id="문제-해결-1">문제 해결 1</h1>
+
+<p align="center"><img src="../../assets/images/tranError3.png" width="600" /></p>
 
 <ul>
-  <li>
-    <p>첫째 줄에 지도의 세로 크기 N과 가로 크기 M이 주어진다. (3 ≤ N, M ≤ 8)</p>
-  </li>
-  <li>
-    <p>둘째 줄부터 N개의 줄에 지도의 모양이 주어진다. 0은 빈 칸, 1은 벽, 2는 바이러스가 있는 위치이다. 2의 개수는 2보다 크거나 같고, 10보다 작거나 같은 자연수이다.</p>
-  </li>
-  <li>
-    <p>빈 칸의 개수는 3개 이상이다.<br /><br /></p>
-  </li>
+  <li>그래서 스택오버플로우를 통해 접두사 선언을 해 주었다.</li>
 </ul>
 
-<h1 id="출력">출력</h1>
-<hr />
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xmlns:tx="http://www.springframework.org/schema/tx"
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h1 id="에러의-발생-2">에러의 발생 2</h1>
+
+<p align="center"><img src="../../assets/images/tranError4.png" width="700" /></p>
 
 <ul>
-  <li>첫째 줄에 얻을 수 있는 안전 영역의 최대 크기를 출력한다.<br /><br /><br /></li>
+  <li>하지만 여전히 에러는 사라지지 않았고 새로운 메시지가 나왔다. 여전히 관련된 선언을 찾을 수 없다는 내용…ㅠ 해당 메시지로 한 번 더 구글링했다.<br /><br /><br /></li>
 </ul>
 
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
+<h1 id="문제-해결-2">문제 해결 2</h1>
+
+<p align="center"><img src="../../assets/images/tranError5.png" width="600" /></p>
 
 <ul>
-  <li>‘이것이 취업을 위한 코딩테스트다 with 파이썬’을 참고해서 <code class="language-plaintext highlighter-rouge">DFS</code>로 임의의 위치에 벽을 3개 세웠을 때 안전영역 넓이의 최대값을 구하는 방식으로 풀었다.</li>
-  <li>이 문제를 풀기 위한 키포인트는 벽을 3개 세웠을 때의 경우의 수를 모두 탐색하는 것이다. 벽의 위치에 따라 안전영역의 넓이가 달라질텐데, 그 때마다 안전영역의 넓이를 계산해 최대값을 찾아야 한다. 이를 위해 <code class="language-plaintext highlighter-rouge">DFS</code>로 완전탐색을 실시한다.<br /><br /></li>
+  <li>역시 스택오버플로우에서 해당 문제에 대한 해답을 찾을 수 있었다. 접두사 <code class="language-plaintext highlighter-rouge">tx</code>와 관련해 스키마 로케이션을 더 추가해 주어야 했던 것이었다…</li>
 </ul>
 
-<h1 id="전체-코드">전체 코드</h1>
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
-
-<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">tmp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
-
-<span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">def</span> <span class="nf">virus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-        <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-                <span class="n">virus</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">getScore</span><span class="p">():</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">score</span>
-
-<span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">result</span>
-    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="c1"># 울타리가 3개 설치된 경우 임시배열에 복사
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-                <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
-
-        <span class="c1"># 각 바이러스 위치에서 바이러스 전파
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="n">virus</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-
-        <span class="n">result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">getScore</span><span class="p">())</span>
-        <span class="k">return</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="n">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
-                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="n">cnt</span> <span class="o">-=</span> <span class="mi">1</span>
-
-<span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
 </code></pre></div></div>
 
-<h1 id="코드-분석">코드 분석</h1>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
-
-<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1"># tmp: 벽 설치 후 바이러스가 퍼진 것을 시뮬레이션 할 배열 
-</span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
-
-<span class="c1"># 상하좌우 방향 
-</span><span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># 결과값 
-</span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-</code></pre></div></div>
+<p align="center"><img src="../../assets/images/tranError6.png" width="600" /></p>
 
 <ul>
-  <li>문제 풀이에 필요한 입력을 받는 부분이다.</li>
+  <li>여기까지 하고 나니까 더 이상의 에러가 없는, 클린한 <code class="language-plaintext highlighter-rouge">root-context.xml</code>을 볼 수 있었다.<br /><br /><br /></li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">virus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-        <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-                <span class="n">virus</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
-</code></pre></div></div>
-
+<h1 id="참고">참고</h1>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">DFS</code>로 바이러스를 퍼뜨리는 메서드이다.</li>
-  <li>상하좌우 주변에 바이러스를 퍼뜨릴 수 있으면 퍼뜨린 후 자기자신을 재귀호출한다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">getScore</span><span class="p">():</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">score</span>
-</code></pre></div></div>
-
-<ul>
-  <li>안전영역의 넓이를 구하는 메서드이다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">result</span>
-    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="c1"># 울타리가 3개 설치된 경우 임시배열에 복사
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-                <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
-
-        <span class="c1"># 각 바이러스 위치에서 바이러스 전파
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="n">virus</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-
-        <span class="c1"># 안전영역의 최대값 구하기 
-</span>        <span class="n">result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">getScore</span><span class="p">())</span>
-        <span class="k">return</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="c1"># 울타리가 설치 가능하면 설치한 후 재귀호출한다.
-</span>                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="n">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
-                <span class="c1"># 울타리를 3개 모두 설치한 경우의 안전영역을 계산하고 나왔으면
-</span>                <span class="c1"># 다음 탐색을 위해 현재위치의 울타리를 없앤다.
-</span>                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="n">cnt</span> <span class="o">-=</span> <span class="mi">1</span>
-</code></pre></div></div>
-
-<ul>
-  <li>울타리를 3개 설치해 보고 각 경우마다 바이러스를 퍼뜨려본다. 그 다음 안전영역의 넓이를 구해서 최대값으로 갱신한다.</li>
-  <li>재귀함수이기 때문에 무한루프에 빠지지 않도록 조건을 걸어주어야 한다. 벽(cnt)의 개수가 3개가 되면 문제의 조건대로 벽을 모두 세운 것이기 때문에 이 상태에서 바이러스를 퍼뜨려 본 다음에 안전영역의 넓이를 구한다.<br /><br /></li>
-</ul>
-
-<h1 id="결과">결과</h1>
-<hr />
-
-<ul>
-  <li>시간 : 3584 ms</li>
-  <li>메모리 : 142352 KB<br /><br /></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No14502" /><category term="DFS" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/14502 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-13/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-13</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-13/"><![CDATA[<ul>
+  <li><a href="https://stackoverflow.com/questions/10373222/spring-the-prefix-tx-for-element-txannotation-driven-is-not-bound">Spring “The prefix “tx” for element “tx:annotation-driven” is not bound.”</a></li>
+  <li><a href="https://stackoverflow.com/questions/17566391/cvc-complex-type-2-4-c-the-matching-wildcard-is-strict-but-no-declaration-can">cvc-complex-type.2.4.c: The matching wildcard is strict, but no declaration can be found for element ‘tx:annotation-driven’</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-13/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 13 - 대분류별 상품목록페이지에서 소분류별 상품 출력하는 기능 구현" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-13</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-13/"><![CDATA[<ul>
   <li>작성일 : 2022.05.05</li>
   <li>
     <p>작성자 : 황유진</p>
@@ -816,7 +1082,239 @@ http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-15</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.05 작성자 : 황유진]]></summary></entry><entry><title type="html">Python) BOJ 18352. 특정 거리의 도시 찾기</title><link href="http://localhost:4000/boj/boj18352-py/" rel="alternate" type="text/html" title="Python) BOJ 18352. 특정 거리의 도시 찾기" /><published>2022-05-04T00:00:00+09:00</published><updated>2022-05-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18352-py</id><content type="html" xml:base="http://localhost:4000/boj/boj18352-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.05 작성자 : 황유진]]></summary></entry><entry><title type="html">Python) BOJ 14502. 연구소</title><link href="http://localhost:4000/boj/boj14502-py/" rel="alternate" type="text/html" title="Python) BOJ 14502. 연구소" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj14502-py</id><content type="html" xml:base="http://localhost:4000/boj/boj14502-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/14502">https://www.acmicpc.net/problem/14502</a><br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>시간 제한 : 2 초</li>
+  <li>메모리 제한 : 512 MB<br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>인체에 치명적인 바이러스를 연구하던 연구소에서 바이러스가 유출되었다. 다행히 바이러스는 아직 퍼지지 않았고, 바이러스의 확산을 막기 위해서 연구소에 벽을 세우려고 한다.</p>
+  </li>
+  <li>
+    <p>연구소는 크기가 N×M인 직사각형으로 나타낼 수 있으며, 직사각형은 1×1 크기의 정사각형으로 나누어져 있다. 연구소는 빈 칸, 벽으로 이루어져 있으며, 벽은 칸 하나를 가득 차지한다.</p>
+  </li>
+  <li>
+    <p>일부 칸은 바이러스가 존재하며, 이 바이러스는 상하좌우로 인접한 빈 칸으로 모두 퍼져나갈 수 있다. 새로 세울 수 있는 벽의 개수는 3개이며, 꼭 3개를 세워야 한다.</p>
+  </li>
+  <li>
+    <p>벽을 3개 세운 뒤, 바이러스가 퍼질 수 없는 곳을 안전 영역이라고 한다. 위의 지도에서 안전 영역의 크기는 27이다.</p>
+  </li>
+  <li>
+    <p>연구소의 지도가 주어졌을 때 얻을 수 있는 안전 영역 크기의 최댓값을 구하는 프로그램을 작성하시오.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="입력">입력</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>첫째 줄에 지도의 세로 크기 N과 가로 크기 M이 주어진다. (3 ≤ N, M ≤ 8)</p>
+  </li>
+  <li>
+    <p>둘째 줄부터 N개의 줄에 지도의 모양이 주어진다. 0은 빈 칸, 1은 벽, 2는 바이러스가 있는 위치이다. 2의 개수는 2보다 크거나 같고, 10보다 작거나 같은 자연수이다.</p>
+  </li>
+  <li>
+    <p>빈 칸의 개수는 3개 이상이다.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="출력">출력</h1>
+<hr />
+
+<ul>
+  <li>첫째 줄에 얻을 수 있는 안전 영역의 최대 크기를 출력한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>‘이것이 취업을 위한 코딩테스트다 with 파이썬’을 참고해서 <code class="language-plaintext highlighter-rouge">DFS</code>로 임의의 위치에 벽을 3개 세웠을 때 안전영역 넓이의 최대값을 구하는 방식으로 풀었다.</li>
+  <li>이 문제를 풀기 위한 키포인트는 벽을 3개 세웠을 때의 경우의 수를 모두 탐색하는 것이다. 벽의 위치에 따라 안전영역의 넓이가 달라질텐데, 그 때마다 안전영역의 넓이를 계산해 최대값을 찾아야 한다. 이를 위해 <code class="language-plaintext highlighter-rouge">DFS</code>로 완전탐색을 실시한다.<br /><br /></li>
+</ul>
+
+<h1 id="전체-코드">전체 코드</h1>
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
+
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
+
+<span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">virus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="n">virus</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">getScore</span><span class="p">():</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">score</span>
+
+<span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">result</span>
+    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="c1"># 울타리가 3개 설치된 경우 임시배열에 복사
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+
+        <span class="c1"># 각 바이러스 위치에서 바이러스 전파
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">virus</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">getScore</span><span class="p">())</span>
+        <span class="k">return</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">cnt</span> <span class="o">-=</span> <span class="mi">1</span>
+
+<span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h1 id="코드-분석">코드 분석</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span>
+
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># tmp: 벽 설치 후 바이러스가 퍼진 것을 시뮬레이션 할 배열 
+</span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
+
+<span class="c1"># 상하좌우 방향 
+</span><span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 결과값 
+</span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<ul>
+  <li>문제 풀이에 필요한 입력을 받는 부분이다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">virus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="n">virus</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DFS</code>로 바이러스를 퍼뜨리는 메서드이다.</li>
+  <li>상하좌우 주변에 바이러스를 퍼뜨릴 수 있으면 퍼뜨린 후 자기자신을 재귀호출한다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">getScore</span><span class="p">():</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">score</span>
+</code></pre></div></div>
+
+<ul>
+  <li>안전영역의 넓이를 구하는 메서드이다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">result</span>
+    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="c1"># 울타리가 3개 설치된 경우 임시배열에 복사
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+
+        <span class="c1"># 각 바이러스 위치에서 바이러스 전파
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">virus</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+        <span class="c1"># 안전영역의 최대값 구하기 
+</span>        <span class="n">result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">getScore</span><span class="p">())</span>
+        <span class="k">return</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># 울타리가 설치 가능하면 설치한 후 재귀호출한다.
+</span>                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">dfs</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+                <span class="c1"># 울타리를 3개 모두 설치한 경우의 안전영역을 계산하고 나왔으면
+</span>                <span class="c1"># 다음 탐색을 위해 현재위치의 울타리를 없앤다.
+</span>                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">cnt</span> <span class="o">-=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<ul>
+  <li>울타리를 3개 설치해 보고 각 경우마다 바이러스를 퍼뜨려본다. 그 다음 안전영역의 넓이를 구해서 최대값으로 갱신한다.</li>
+  <li>재귀함수이기 때문에 무한루프에 빠지지 않도록 조건을 걸어주어야 한다. 벽(cnt)의 개수가 3개가 되면 문제의 조건대로 벽을 모두 세운 것이기 때문에 이 상태에서 바이러스를 퍼뜨려 본 다음에 안전영역의 넓이를 구한다.<br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<hr />
+
+<ul>
+  <li>시간 : 3584 ms</li>
+  <li>메모리 : 142352 KB<br /><br /></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="BOJ" /><category term="Algorithm" /><category term="BOJ" /><category term="No14502" /><category term="DFS" /><category term="Graph" /><category term="Python" /><summary type="html"><![CDATA[문제 링크 https://www.acmicpc.net/problem/14502 제한 시간 제한 : 2 초 메모리 제한 : 512 MB]]></summary></entry><entry><title type="html">Python) BOJ 18352. 특정 거리의 도시 찾기</title><link href="http://localhost:4000/boj/boj18352-py/" rel="alternate" type="text/html" title="Python) BOJ 18352. 특정 거리의 도시 찾기" /><published>2022-05-04T00:00:00+09:00</published><updated>2022-05-04T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj18352-py</id><content type="html" xml:base="http://localhost:4000/boj/boj18352-py/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1907,216 +2405,4 @@ http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-18</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.02 작성자 : 황유진]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 7 - 쇼핑몰 RDBMS 설계 및 생성</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-07/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 7 - 쇼핑몰 RDBMS 설계 및 생성" /><published>2022-05-01T00:00:00+09:00</published><updated>2022-05-01T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-07</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-07/"><![CDATA[<ul>
-  <li>작성일 : 2022.05.01</li>
-  <li>
-    <p>작성자 : 황유진</p>
-  </li>
-  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 윤정환, 황유진</li>
-  <li>팀장 : 황유진</li>
-  <li>부팀장 : 오성은</li>
-  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>Spring framework 4.3.1.RELEASE</li>
-  <li>Tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
-
-<h1 id="기간">기간</h1>
-<ul>
-  <li>2022.4.13 ~ 2022.5.20<br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
-  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
-  <li>총 팀원은 7명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
-  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황">진행상황</h1>
-<ul>
-  <li>프로젝트의 시작부터 부팀장인 <code class="language-plaintext highlighter-rouge">오성은</code>과 함께 설계해 오던 DB 테이블을 드디어 마무리 하고 생성했다.</li>
-  <li>이번주부터 백엔드 작업에 들어갈 것이기 때문에 생성된 DB 테이블이 필요했다.</li>
-</ul>
-
-<h2 id="쇼핑몰-db-테이블-1n차-설계와-고난">쇼핑몰 DB 테이블 1~n차 설계와 고난</h2>
-<ul>
-  <li>
-    <p>우리의 프로젝트가 3주차에 접어들며 그동안 3번의 회의가 있었다. 회의가 진행될 때마다 새롭게 추가되는 사항이 생겼기 때문에 매주 회의가 끝나면 설계했던 DB 테이블을 수정할 필요가 있었다. 정기 회의가 아니어도 꽤 큰 규모의 DB 테이블을 설계하는 것이 처음이었기 때문에 꽤 자주 수정했던 것 같다.</p>
-  </li>
-  <li>
-    <p>설계 과정에서 어려웠던 점은 주문 테이블의 설계였다.</p>
-    <ul>
-      <li>왜냐하면 회원 한 명이 여러 개의 상품을 주문했을 때 그 상품정보들을 어떻게 저장해야 할 지 감이 오지 않았기 때문이다.</li>
-      <li>일반적인 프로그래밍 언어를 사용해 상품 목록을 관리하면 배열을 만들어 담으면 되는데 DBMS는 그렇지가 않잖아…? 😟 테이블에서 배열 형태를 어떻게 구현하느냐가 최대 난제였다.</li>
-      <li>이를 해결하기 위해 함께 DB를 설계하던 부팀장과 많은 의견을 주고 받았다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="1차로-채택된-의견">1차로 채택된 의견</h3>
-<ul>
-  <li>테이블에서 <code class="language-plaintext highlighter-rouge">PK</code>로 사용할 인덱스 번호 컬럼(AI)과 주문코드를 저장할 컬럼을 만든다.</li>
-  <li>주문이 생기면 한 주문에서 생성된 모든 상품 정보를 주문 테이블에 저장한다. 만약 회원이 딸기, 바나나, 포도 3가지 상품을 주문했다면 각 상품 정보를 담은 로우를 생성하는 것이다. 그리고 <code class="language-plaintext highlighter-rouge">PK</code>인 인덱스 번호는 자동으로 1씩 증가되어 각 로우는 1,2,3이라는 인덱스값을 가지게 될 것이다.</li>
-  <li>방금 생성된 주문은 하나의 주문이기 때문에 세 상품들은 같은 주문코드를 참고해야 한다. 각 로우의 주문코드 컬럼에는 같은 주문코드를 넣어준다.</li>
-  <li>
-    <p>DB에서 주문정보를 조회할 때엔 주문코드 필드값을 이용해 가져온다.</p>
-  </li>
-  <li>다소 복잡한 느낌이 있지만 이 정도면 논리적이라고 생각했다.</li>
-</ul>
-
-<h3 id="2차로-채택된-의견">2차로 채택된 의견</h3>
-<ul>
-  <li>최종 결정하기 전에 이것이 최선일지 경험자의 의견을 듣고 싶어서 학원에서 데이터베이스 수업을 담당하고 계신 강사님한테 여쭤봤다.</li>
-  <li>강사님은 주문코드와 상품번호를 복합키로 사용해라는 의견을 주셨다. 주문코드는 주문내역을 조회할 때 다른 테이블에서 참조되어야 하기 때문에 <code class="language-plaintext highlighter-rouge">PK</code>로 설정되어야 하는데 이것 하나만 <code class="language-plaintext highlighter-rouge">PK</code>로 사용하게 되면 주문코드를 여러 로우에 중복해서 넣을 수 없으니까 상품번호도 함께 <code class="language-plaintext highlighter-rouge">PK</code>를 걸어서 복합키로 사용하라는 것이다. 그리고 주문내역을 조회할 때엔 <code class="language-plaintext highlighter-rouge">where</code>절에 주문코드를 기준으로 <code class="language-plaintext highlighter-rouge">select</code> 하는 것이다.</li>
-  <li>오.. 우리가 생각했던 흐름과 비슷하면서도 역할이 비슷한 컬럼의 수를 줄일 수 있는 방법이었다. 그래서 주문코드와 상품번호를 복합키로 지정했다.</li>
-  <li>테이블을 생성한 뒤 데이터를 삽입하고 조회해 보니까 의도대로 조회가 잘 된다…!</li>
-</ul>
-
-<h2 id="완성된-eer-다이어그램">완성된 EER 다이어그램</h2>
-
-<p align="center"><img src="../../assets/images/unomas-db-table-eer-diagram.png" /></p>
-
-<h2 id="테이블-관계">테이블 관계</h2>
-<h3 id="회원-테이블">회원 테이블</h3>
-
-<p align="center"><img src="../../assets/images/unomas_userTable.png" width="700" /></p>
-
-<ul>
-  <li>회원의 정보를 저장할 <code class="language-plaintext highlighter-rouge">user</code> 테이블은 회원번호를 <code class="language-plaintext highlighter-rouge">PK</code>로 가진다.</li>
-  <li>한 명의 회원은 배송지 목록 테이블을 여러 개 가질 수 있다.</li>
-  <li>한 명의 회원은 주문을 여러 개 가질 수 있다.</li>
-  <li>한 명의 회원은 구매를 여러 개 가질 수 있다.</li>
-  <li>한 명의 회원은 후기글을 여러 개 가질 수 있다.</li>
-  <li>한 명의 회원은 여러 개의 장바구니 번호를 가질 수 있다.</li>
-  <li>한 명의 회원은 여러 개의 위시리스트 번호를 가질 수 있다.</li>
-</ul>
-
-<h3 id="상품-테이블">상품 테이블</h3>
-
-<p align="center"><img src="../../assets/images/unomas_prodTable.png" width="600" /></p>
-
-<ul>
-  <li>상품의 정보를 저장할 <code class="language-plaintext highlighter-rouge">products</code> 테이블은 상품번호를 <code class="language-plaintext highlighter-rouge">PK</code>로 가진다.</li>
-  <li>상품 테이블은 여러 주문에 참고될 수 있다.</li>
-  <li>상품 테이블은 여러 후기에 참고될 수 있다.</li>
-</ul>
-
-<h3 id="상품-카테고리-테이블">상품 카테고리 테이블</h3>
-
-<p align="center"><img src="../../assets/images/unomas_prodCateTable.png" width="400" /></p>
-
-<ul>
-  <li>상품 카테고리 테이블은 대분류와 소분류를 저장할 테이블로 나누었다.</li>
-  <li>상품 테이블에서는 이를 참조해 사용자 화면에 정렬하여 출력할 것이다.</li>
-</ul>
-
-<h3 id="주문-테이블과-결제-테이블">주문 테이블과 결제 테이블</h3>
-
-<p align="center"><img src="../../assets/images/unomas_orderTable.png" width="700" /></p>
-
-<ul>
-  <li>주문 정보를 저장할 테이블 <code class="language-plaintext highlighter-rouge">orders</code>는 주문번호와 상품번호를 <code class="language-plaintext highlighter-rouge">PK</code>로 가진다.</li>
-  <li>주문을 한 회원정보와 주문된 상품정보를 알아야 하기 때문에 회원번호와 상품번호를 <code class="language-plaintext highlighter-rouge">FK</code>로 가진다.</li>
-  <li>주문 테이블은 배송지 주소 정보도 알아야 하기 때문에 회원 한 명의 배송지 정보를 저장할 테이블 <code class="language-plaintext highlighter-rouge">order_addr</code>의 <code class="language-plaintext highlighter-rouge">PK</code>를 <code class="language-plaintext highlighter-rouge">FK</code>로 가진다.</li>
-  <li>결제 테이블인 <code class="language-plaintext highlighter-rouge">pay</code>는 위에서 생성된 주문의 결제 정보를 저장한다. 때문에 회원정보와 주문정보를 참조한다.</li>
-</ul>
-
-<h3 id="환불과-교환-테이블">환불과 교환 테이블</h3>
-
-<p align="center"><img src="../../assets/images/unomas_refundTable.png" width="700" /></p>
-
-<ul>
-  <li>둘 다 원 주문정보가 필요하기 때문에 주문 테이블을 참조한다.</li>
-</ul>
-
-<h3 id="배송-테이블">배송 테이블</h3>
-
-<p align="center"><img src="../../assets/images/unomas_deliveriesTable.png" width="700" /></p>
-
-<ul>
-  <li>배송에 필요한 회원정보, 주문정보, 배송지 정보를 참조한다.</li>
-  <li>배송이 완료되면 해당 데이터는 배송 완료 테이블에도 등록된다.</li>
-</ul>
-
-<h3 id="장바구니와-위시리스트-테이블">장바구니와 위시리스트 테이블</h3>
-
-<p align="center"><img src="../../assets/images/unomas_cartTable.png" width="300" /></p>
-
-<ul>
-  <li>회원정보와 상품정보를 참조하여 회원 한 명의 장바구니 데이터를 저장한다.</li>
-</ul>
-
-<h3 id="리뷰-게시판">리뷰 게시판</h3>
-
-<p align="center"><img src="../../assets/images/unomas_reviewTable.png" width="700" /></p>
-
-<ul>
-  <li>상품 하나에 대한 후기 데이터를 저장할 테이블이다.</li>
-  <li>회원과 상품 테이블을 참조한다.</li>
-</ul>
-
-<h3 id="상품-문의와-그에-대한-댓글-게시판">상품 문의와 그에 대한 댓글 게시판</h3>
-
-<p align="center"><img src="../../assets/images/unomas_prodInquTable.png" width="500" /></p>
-
-<ul>
-  <li>상품 하나에 대한 문의 데이터를 저장할 테이블이다.</li>
-  <li>회원과 상품 테이블을 참조한다.</li>
-  <li>상품 문의에 대해 관리자가 댓글로 답변을 달 것이라서 상품 문의 테이블을 참조하는 댓글 테이블 <code class="language-plaintext highlighter-rouge">prod_comments</code>도 만들었다.</li>
-</ul>
-
-<h3 id="관리자-테이블">관리자 테이블</h3>
-
-<p align="center"><img src="../../assets/images/unomas_adminTable.png" width="200" /></p>
-
-<ul>
-  <li>관리자의 계정정보를 저장할 테이블이다. 쇼핑몰의 규모가 커지면 관리자가 여러 명 생기게 될 것이라서 따로 만들었다.</li>
-</ul>
-
-<h3 id="공지사항-게시판">공지사항 게시판</h3>
-
-<p align="center"><img src="../../assets/images/unomas_boardNoticeTable.png" width="700" /></p>
-
-<ul>
-  <li>고객센터에 있는 공지사항 게시판에는 관리자만 글을 쓸 수 있기 때문에 관리자 테이블을 참조한다.</li>
-</ul>
-
-<h3 id="자주-묻는-질문-게시판">자주 묻는 질문 게시판</h3>
-
-<p align="center"><img src="../../assets/images/unomas_faqTable.png" width="400" /></p>
-
-<ul>
-  <li>자주 묻는 질문 또한 관리자만 작성할 수 있기 때문에 관리자 테이블을 참조한다.</li>
-  <li>자주 묻는 질문은 카테고리별로 모아볼 수 있는 기능을 제공하기 위해 전용 카테고리 테이블 <code class="language-plaintext highlighter-rouge">qna_category</code>이 존재한다.</li>
-</ul>
-
-<h3 id="11-문의-게시판">1:1 문의 게시판</h3>
-
-<p align="center"><img src="../../assets/images/unomas_qnaTable.png" width="700" /></p>
-
-<ul>
-  <li>사용자가 남긴 1:1 문의 데이터를 저장하는 테이블이다.</li>
-  <li>여기에도 관리자가 댓글을 답변하는 형태로 구현할 것이라서 전용 댓글 테이블 <code class="language-plaintext highlighter-rouge">qna_comments</code>가 존재한다.</li>
-  <li>1:1 문의시 문의 카테고리별 담당자가 모아볼 수 있도록 카테고리 테이블을 참조한다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-
-<ul>
-  <li><a href="https://litiblue.com/post/mysql-workbench-db/">MySQL Workbench 로 DB 설계하기</a></li>
-  <li><a href="https://velog.io/@ash3767/DB-ERD-%EB%AA%A8%EB%8D%B8%EB%A7%81">DB ERD 모델링</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-19</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.01 작성자 : 황유진]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.02 작성자 : 황유진]]></summary></entry></feed>
