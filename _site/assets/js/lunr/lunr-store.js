@@ -1414,4 +1414,10 @@ var store = [{
         "tags": ["Algorithm","BOJ","No1018","BruteForce","Python"],
         "url": "/boj/boj1018-py/",
         "teaser": null
+      },{
+        "title": "Python) BOJ 1181. 단어 정렬",
+        "excerpt":"문제 링크       https://www.acmicpc.net/problem/1181     제한       시간 제한 : 2 초   메모리 제한 : 256 MB     문제       알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오.            길이가 짧은 것부터       길이가 같으면 사전 순으로             입력       첫째 줄에 단어의 개수 N이 주어진다. (1 ≤ N ≤ 20,000) 둘째 줄부터 N개의 줄에 걸쳐 알파벳 소문자로 이루어진 단어가 한 줄에 하나씩 주어진다. 주어지는 문자열의 길이는 50을 넘지 않는다.     출력       조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러 번 입력된 경우에는 한 번씩만 출력한다.      👀 풀이       list.sort()나 sorted()를 이용해서 정렬할 수 있는데 나는 리스트의 sort() 메서드를 사용했다.   같은 단어가 여러 개 있으면 하나만 출력해야 하기 때문에 먼저 set으로 중복제거를 해 준 다음 정렬함수에 조건식을 넣어준다.     전체 코드    import sys input = sys.stdin.readline  n = int(input()) words = [] for _ in range(n):     words.append(input())  words = list(set(words)) words.sort(key=lambda x : (len(x), x))  for word in words:     print(word, end='')       코드 분석   words = list(set(words)) words.sort(key=lambda x : (len(x), x))      중복된 단어는 하나만 출력해야 하기 때문에 먼저 set으로 중복제거를 해 준다. 나는 리스트의 정렬함수를 사용할 것이라 set으로 중복제거 한 결과를 list()로 리턴하도록 했다.   그 다음 정렬을 하는데, 정렬 조건이 2개이기 때문에 람다식을 사용했다.   첫 번째로 길이를 기준으로 정렬되어야 하기 때문에 길이를 먼저 넣고 그 다음엔 사전순으로 정렬되도록 x를 그대로 넣어주었다.   그동안 다소 복잡한 언어들만 써 와서 이게 되나 하고 넣어봤는데 아주 잘 되었다. 역시 직관적으로 쓸 수 있는 파이썬…!   for word in words:     print(word, end='')      정렬된 단어들을 출력하는 부분인데 입력된 단어들에 개행문자(\\n)가 들어있어서 단어 하나를 출력하면 자체 줄바꿈이 되었다.   그래서 출력문 자체는 줄바꿈을 하지 않게 end='' 조건을 주었다.     결과       시간 : 116 ms   메모리 : 35452 KB    ","categories": ["BOJ"],
+        "tags": ["Algorithm","BOJ","No1181","BruteForce","Python"],
+        "url": "/boj/boj1181-py/",
+        "teaser": null
       }]
