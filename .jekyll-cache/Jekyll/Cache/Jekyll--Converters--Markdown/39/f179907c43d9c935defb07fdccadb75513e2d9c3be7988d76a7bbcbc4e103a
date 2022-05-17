@@ -1,0 +1,33 @@
+I"�<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+
+<p><code class="language-plaintext highlighter-rouge">There is no getter for property named 'prod_num' in 'class java.lang.Integer'</code></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MyBatis</code> 매퍼에서 새로운 쿼리문을 만들고 컨트롤러단에서 단위 테스트를 진행했다. 그런데 암만 봐도 잘못 쓴 곳이 없는 거 같은데 자꾸 이런 에러가 나는 것이었다…<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<p align="center"><img src="../../assets/images/mybatisError5.png" width="600" /></p>
+
+<ul>
+  <li>그래서 DB에 접근하는 부분마다 로그를 찍어 보았다.</li>
+  <li>
+    <p>그리고 발견한 문제는 <code class="language-plaintext highlighter-rouge">service.getInquiryCnt(prod_num)</code>와 연결되는 <code class="language-plaintext highlighter-rouge">mapper</code>의 쿼리문에서 변수명을 넣어주는 자리에 <code class="language-plaintext highlighter-rouge">${prod_num}</code> 이딴 식으로 쓴 것이었다… 후…….🥲</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">#{prod_num}</code>으로 수정해 주니까 잘 해결 되었다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://velog.io/@jaewon95/%ED%95%B4%EA%B2%B0%EB%A9%94%EB%AA%A8-There-is-no-getter-for-property-named-bno-in-class-java.lang.Integer-%EC%98%A4%EB%A5%98">해결메모 There is no getter for property named ‘bno’ in ‘class java.lang.Integer’ 오류</a></li>
+</ul>
+:ET
