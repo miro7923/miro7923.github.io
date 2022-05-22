@@ -1,0 +1,1163 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 16 - Ajax로 이미지파일 업로드 | Yujin Dev Log</title>
+<meta name="description" content="작성일 : 2022.05.18   작성자 : 황유진">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 16 - Ajax로 이미지파일 업로드">
+<meta property="og:url" content="http://localhost:4000/uno%20mas/uno-mas-dev-log-16/">
+
+
+  <meta property="og:description" content="작성일 : 2022.05.18   작성자 : 황유진">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-05-18T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/uno%20mas/uno-mas-dev-log-16/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#uno-mas" itemprop="item"><span itemprop="name">Uno mas</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 16 - Ajax로 이미지파일 업로드</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업에 능숙한 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Portfolio</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 16 - Ajax로 이미지파일 업로드">
+    <meta itemprop="description" content="  작성일 : 2022.05.18  작성자 : 황유진">
+    <meta itemprop="datePublished" content="2022-05-18T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/uno%20mas/uno-mas-dev-log-16/" class="u-url" itemprop="url">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 16 - Ajax로 이미지파일 업로드
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-18T00:00:00+09:00">May 18, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#기간">기간</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#productmapperxml">productMapper.xml</a></li><li><a href="#servlet-contextxml">servlet-context.xml</a></li><li><a href="#productregisterjsp">productRegister.jsp</a></li><li><a href="#productadminjs">productAdmin.js</a></li><li><a href="#productajaxcontrollerjava">ProductAjaxController.java</a><ul><li><a href="#이미지-원본-업로드">이미지 원본 업로드</a></li><li><a href="#commonsjava">Commons.java</a></li><li><a href="#imgtypejava">ImgType.java</a></li><li><a href="#이미지-크기-줄여서-업로드">이미지 크기 줄여서 업로드</a></li><li><a href="#commonsjava-1">Commons.java</a></li></ul></li></ul></li><li><a href="#구현하며-했던-고민">구현하며 했던 고민</a></li><li><a href="#마감까지">마감까지</a></li><li><a href="#참고">참고</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <ul>
+  <li>작성일 : 2022.05.18</li>
+  <li>
+    <p>작성자 : 황유진</p>
+  </li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 황유진</li>
+  <li>팀장 : 황유진</li>
+  <li>부팀장 : 오성은</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.27<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 6명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
+  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+
+<p align="center"><img src="../../assets/images/unomas_uploadProdImg2.png" width="900" /></p>
+
+<ul>
+  <li>관리자용 상품 등록 페이지에서 비동기 방식으로 상품 이미지를 업로드하고 등록된 이미지를 미리볼 수 있는 기능을 구현했다.</li>
+</ul>
+
+<h2 id="productmapperxml">productMapper.xml</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"setProduct"</span><span class="nt">&gt;</span>
+    INSERT INTO products(prod_name, prod_category, prod_price, prod_stock, prod_expire, 
+                    prod_keep, prod_weight, prod_country, prod_sellunit, prod_explain, prod_packing, 
+                    prod_discntrate, prod_image1, prod_image2, prod_image3, prod_image4)
+    VALUES (#{prod_name}, #{prod_category}, #{prod_price}, #{prod_stock}, #{prod_expire}, 
+            #{prod_keep}, #{prod_weight}, #{prod_country}, #{prod_sellunit}, #{prod_explain}, #{prod_packing},
+            #{prod_discntrate}, #{prod_image1}, #{prod_image2}, #{prod_image3}, #{prod_image4})
+<span class="nt">&lt;/insert&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이미지 파일을 비동기 방식으로 업로드 하기 때문에 <code class="language-plaintext highlighter-rouge">DB</code>에는 파일명만 넣어주면 된다.</li>
+</ul>
+
+<h2 id="servlet-contextxml">servlet-context.xml</h2>
+
+<p align="center"><img src="../../assets/images/unomas_uploadProdImg3.png" width="700" /></p>
+
+<ul>
+  <li>저장되는 이미지의 종류별로 폴더를 분리하는 것이 깔끔하고 화면에 뿌려주기 위해 해당 파일을 찾아올 때 분류된 폴더에서 찾아오는 것이 더 빠를 것이라 생각해서 위와 같이 이미지가 업로드 되는 경로를 분리해 주었다.</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 상품 상세이미지 업로드 경로 --&gt;</span>
+<span class="nt">&lt;beans:bean</span> <span class="na">id=</span><span class="s">"prodDimgUploadPath"</span> <span class="na">class=</span><span class="s">"java.lang.String"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;beans:constructor-arg</span> <span class="na">value=</span><span class="s">"프로젝트경로/src/main/webapp/resources/upload/images/products/detail"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans:bean&gt;</span>
+    
+<span class="c">&lt;!-- 상품 썸네일 업로드 경로 --&gt;</span>
+<span class="nt">&lt;beans:bean</span> <span class="na">id=</span><span class="s">"prodThumbUploadPath"</span> <span class="na">class=</span><span class="s">"java.lang.String"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;beans:constructor-arg</span> <span class="na">value=</span><span class="s">"프로젝트경로/src/main/webapp/resources/upload/images/products/thumbnail"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans:bean&gt;</span>
+    
+<span class="c">&lt;!-- 상품 상단 이미지 업로드 경로 --&gt;</span>
+<span class="nt">&lt;beans:bean</span> <span class="na">id=</span><span class="s">"prodTopImgUploadPath"</span> <span class="na">class=</span><span class="s">"java.lang.String"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;beans:constructor-arg</span> <span class="na">value=</span><span class="s">"프로젝트경로/src/main/webapp/resources/upload/images/products/top"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans:bean&gt;</span>
+    
+<span class="c">&lt;!-- 상품 품절 이미지 업로드 경로 --&gt;</span>
+<span class="nt">&lt;beans:bean</span> <span class="na">id=</span><span class="s">"prodSoldoutImgUploadPath"</span> <span class="na">class=</span><span class="s">"java.lang.String"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;beans:constructor-arg</span> <span class="na">value=</span><span class="s">"프로젝트경로/src/main/webapp/resources/upload/images/products/soldout"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans:bean&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>프레임워크에게 알려주기 위해 <code class="language-plaintext highlighter-rouge">servlet-context.xml</code> 파일에서 각 폴더별로 업로드 경로를 지정해 주었다.</li>
+</ul>
+
+<h2 id="productregisterjsp">productRegister.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-3 col-sm-6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-text"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h5&gt;</span>기본 이미지(세로)<span class="nt">&lt;/h5&gt;&lt;br&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-pic"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">""</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"prevImg1"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sale pp-sale"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"prod_image1"</span> <span class="na">name=</span><span class="s">"prod_image1"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"uploadImg1"</span> <span class="na">name=</span><span class="s">"uploadImg1"</span> <span class="na">oninput=</span><span class="s">"checkFileName(1, 'top');"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"catagory-name"</span><span class="nt">&gt;</span>[이미지 삭제]<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-3 col-sm-6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-text"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h5&gt;</span>상품 상세 설명<span class="nt">&lt;/h5&gt;&lt;br&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-pic"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">""</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"prevImg2"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sale pp-sale"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"prod_image2"</span> <span class="na">name=</span><span class="s">"prod_image2"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"uploadImg2"</span> <span class="na">name=</span><span class="s">"uploadImg2"</span> <span class="na">oninput=</span><span class="s">"checkFileName(2, 'detail');"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"catagory-name"</span><span class="nt">&gt;</span>[이미지 삭제]<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-3 col-sm-6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-text"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h5&gt;</span>썸네일<span class="nt">&lt;/h5&gt;&lt;br&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-pic"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">""</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"prevImg3"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sale pp-sale"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"prod_image3"</span> <span class="na">name=</span><span class="s">"prod_image3"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"uploadImg3"</span> <span class="na">name=</span><span class="s">"uploadImg3"</span> <span class="na">oninput=</span><span class="s">"checkFileName(3, 'thumb');"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"catagory-name"</span><span class="nt">&gt;</span>[이미지 삭제]<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-3 col-sm-6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"product-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-text"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h5&gt;</span>품절 시 대체 썸네일<span class="nt">&lt;/h5&gt;&lt;br&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pi-pic"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">""</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"prevImg4"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sale pp-sale"</span><span class="nt">&gt;</span>4<span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"prod_image4"</span> <span class="na">name=</span><span class="s">"prod_image4"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"uploadImg4"</span> <span class="na">name=</span><span class="s">"uploadImg4"</span> <span class="na">oninput=</span><span class="s">"checkFileName(4, 'soldout');"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"catagory-name"</span><span class="nt">&gt;</span>[이미지 삭제]<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Ajax</code>를 이용해 비동기 방식으로 이미지를 등록할 것이기 때문에 뷰 페이지에서는 <code class="language-plaintext highlighter-rouge">oninput</code> 속성에 이미지 업로드 메서드를 연결했다.</li>
+  <li>이때 각 인풋 태그들에 들어갈 이미지의 종류만 다르지 수행할 동작 자체는 모두 같기 때문에 하나의 메서드에서 좀 더 쉽게 처리할 수 있도록 같은 <code class="language-plaintext highlighter-rouge">id</code>를 사용하되, <code class="language-plaintext highlighter-rouge">id="uploadImg1"</code>, <code class="language-plaintext highlighter-rouge">id="uploadImg2"</code>과 같이 맨 뒤에 번호를 부여해서 각 태그를 구분했다. 그리고 <code class="language-plaintext highlighter-rouge">oninput</code>의 <code class="language-plaintext highlighter-rouge">checkFileName(num, type)</code> 메서드에 인자값으로 해당 <code class="language-plaintext highlighter-rouge">id</code>의 번호와 이미지 타입을 넣어준다.</li>
+</ul>
+
+<h2 id="productadminjs">productAdmin.js</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">checkFileName</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">regex</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="dl">"</span><span class="s2">(.*?)</span><span class="se">\</span><span class="s2">.(jpg|jpeg|png|gif)</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">maxSize</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+	
+    <span class="c1">// id 맨 뒤에 붙는 번호만 바꿔주면 간편하게 해당 인풋 태그를 찾아갈 수 있다.</span>
+    <span class="kd">var</span> <span class="nx">fileSize</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#uploadImg</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">size</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">fileSize</span> <span class="o">&gt;</span> <span class="nx">maxSize</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">5MB 이하만 첨부 가능합니다.</span><span class="dl">'</span><span class="p">);</span>
+        <span class="c1">// 인풋 태그에 등록된 파일을 삭제한다.</span>
+        <span class="nx">crossBrowsing</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">regex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#uploadImg</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">()))</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">확장자가 jpeg, jpg, png, gif인 이미지 파일만 등록 가능합니다.</span><span class="dl">'</span><span class="p">);</span>
+        <span class="c1">// 인풋 태그에 등록된 파일을 삭제한다.</span>
+        <span class="nx">crossBrowsing</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="c1">// 위에서 확장자 검사와 파일 크기 검사를 통과했을 때에만 업로드 메서드 실행 </span>
+    <span class="nx">uploadImg</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">type</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 인풋 태그에 등록된 파일을 삭제하는 메서드</span>
+<span class="kd">function</span> <span class="nx">crossBrowsing</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">agent</span> <span class="o">=</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+	
+    <span class="c1">// 크로스 브라우징 처리</span>
+    <span class="c1">// IE일 때</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">appName</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">Netscape</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="dl">'</span><span class="s1">Trident</span><span class="dl">'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span>
+        <span class="nx">agent</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">msie</span><span class="dl">"</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#uploadImg</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">).</span><span class="nx">replaceWith</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#uploadImg</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">).</span><span class="nx">clone</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+    <span class="k">else</span> <span class="c1">// 그 외 브라우저</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#uploadImg</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>	
+<span class="p">}</span>
+
+<span class="c1">// 파일 업로드를 수행하는 메서드</span>
+<span class="kd">function</span> <span class="nx">uploadImg</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+	
+    <span class="c1">// 업로드 할 파일을 읽어와서 이미지 미리보기 영역에 뿌려준다.</span>
+    <span class="nx">reader</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#prevImg</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">src</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span>
+	
+    <span class="nx">reader</span><span class="p">.</span><span class="nx">readAsDataURL</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#uploadImg</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+	
+    <span class="c1">// 파일을 form 데이터에 담아 전송할 준비 </span>
+    <span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">();</span>
+    <span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">uploadImg</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#uploadImg</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+	
+    <span class="c1">// 업로드 되는 이미지 타입에 따라 매핑되는 url을 다르게 설정한다.</span>
+    <span class="kd">var</span> <span class="nx">newUrl</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/product/upload_</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">detail</span><span class="dl">'</span><span class="p">:</span>
+            <span class="nx">newUrl</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">deImg</span><span class="dl">'</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span><span class="p">:</span>
+            <span class="nx">newUrl</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">topImg</span><span class="dl">'</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">thumb</span><span class="dl">'</span><span class="p">:</span>
+            <span class="nx">newUrl</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">thumb</span><span class="dl">'</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">soldout</span><span class="dl">'</span><span class="p">:</span>
+            <span class="nx">newUrl</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">soldoutImg</span><span class="dl">'</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">post</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">newUrl</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="nx">form</span><span class="p">,</span>
+        <span class="na">processData</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">contentType</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">이미지 업로드 성공</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">서버 오류로 지연되고 있습니다. 잠시 후 다시 시도해 주세요.</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>업로드 하려는 이미지 파일을 읽어와서 이미지 미리보기 영역에 출력한 뒤 파일 업로드를 위해 서버와 통신한 뒤 성공 유무에 따라 알림창을 출력할 것이다.</li>
+</ul>
+
+<h2 id="productajaxcontrollerjava">ProductAjaxController.java</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Ajax</code> 통신을 위한 <code class="language-plaintext highlighter-rouge">RestController</code>에서 이미지 업로드를 수행한다.</li>
+  <li>이때 상품 상세페이지의 상단과 본문 영역에 보여질 이미지는 그대로 업로드 하지만 썸네일은 크기를 줄여서 업로드 할 것이라서 이미지 업로드는 두 가지 분기로 나눠진다.</li>
+</ul>
+
+<h3 id="이미지-원본-업로드">이미지 원본 업로드</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/product/*"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductAjaxController</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductService</span> <span class="n">service</span><span class="o">;</span>
+	
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">ProductAjaxController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Resource</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"reviewImgUploadPath"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">reviewImgUploatPath</span><span class="o">;</span>
+	
+    <span class="nd">@Resource</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"prodDimgUploadPath"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">prodDimgUploadPath</span><span class="o">;</span>
+	
+    <span class="nd">@Resource</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"prodThumbUploadPath"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">prodThumbUploadPath</span><span class="o">;</span>
+	
+    <span class="nd">@Resource</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"prodTopImgUploadPath"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">prodTopImgUploadPath</span><span class="o">;</span>
+	
+    <span class="nd">@Resource</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"prodSoldoutImgUploadPath"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">prodSoldoutImgUploadPath</span><span class="o">;</span>
+	
+    <span class="c1">// 상세페이지 상단 이미지 </span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/upload_topImg"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">uploadTopImgPOST</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"uploadImg1"</span><span class="o">)</span> <span class="nc">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">file</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// 이미지 파일명 변환</span>
+            <span class="n">fileName</span> <span class="o">=</span> <span class="nc">Commons</span><span class="o">.</span><span class="na">convertImgName</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">(),</span> <span class="n">service</span><span class="o">.</span><span class="na">getLastProdNum</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="nc">ImgType</span><span class="o">.</span><span class="na">TOP</span><span class="o">);</span>
+            <span class="nc">File</span> <span class="n">targetFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">prodTopImgUploadPath</span><span class="o">,</span> <span class="n">fileName</span><span class="o">);</span>
+            <span class="nc">FileCopyUtils</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="n">targetFile</span><span class="o">);</span>
+        <span class="o">}</span>
+		
+        <span class="k">return</span> <span class="n">fileName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 상세페이지 본문 이미지 </span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/upload_deImg"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">uploadDeImgPOST</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"uploadImg2"</span><span class="o">)</span> <span class="nc">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">file</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">fileName</span> <span class="o">=</span> <span class="nc">Commons</span><span class="o">.</span><span class="na">convertImgName</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">(),</span> <span class="n">service</span><span class="o">.</span><span class="na">getLastProdNum</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="nc">ImgType</span><span class="o">.</span><span class="na">DETAIL</span><span class="o">);</span>
+            <span class="nc">File</span> <span class="n">targetFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">prodDimgUploadPath</span><span class="o">,</span> <span class="n">fileName</span><span class="o">);</span>
+            <span class="nc">FileCopyUtils</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="n">targetFile</span><span class="o">);</span>
+        <span class="o">}</span>
+		
+        <span class="k">return</span> <span class="n">fileName</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이미지 원본은 별도의 작업을 할 필요가 없기 때문에 지정된 경로에 그대로 업로드 한다.</li>
+  <li>파일을 업로드 할 때 파일명을 각 용도별로 지정해서 사용하기로 했다. 예를 들면 상세 이미지는 <code class="language-plaintext highlighter-rouge">detail_상품번호.png</code>, 썸네일은 <code class="language-plaintext highlighter-rouge">thumbnail_상품번호.png</code>, 후기글의 이미지는 <code class="language-plaintext highlighter-rouge">review_리뷰글번호.png</code>와 같은 형태이다. 그래서 업로드되는 파일명을 변환해주는 메서드가 필요해서 따로 만들었다.</li>
+  <li>파일명을 변환하는 메서드는 <code class="language-plaintext highlighter-rouge">ProductAjaxController</code> 뿐만 아니라 <code class="language-plaintext highlighter-rouge">ProductController</code>에서도 쓰이기 때문에 여러 클래스에서 공통으로 사용되는 메서드들을 모아놓은 <code class="language-plaintext highlighter-rouge">Commons</code> 클래스를 만들어서 작성했다. <code class="language-plaintext highlighter-rouge">Commons</code> 클래스의 메서드는 객체 생성 없이 바로 접근해서 사용하고 싶었기 때문에 <code class="language-plaintext highlighter-rouge">static</code> 메서드로 선언했다.</li>
+</ul>
+
+<h3 id="commonsjava">Commons.java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 여러 컨트롤러에서 공통으로 쓸 수 있는 메서드를 모아놓은 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Commons</span> <span class="o">{</span>
+
+    <span class="c1">// 이미지 용도에 따라 파일명 다르게 설정</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">convertImgName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="nc">ImgType</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 확장자명 시작 위치 찾기</span>
+        <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="na">lastIndexOf</span><span class="o">(</span><span class="s">"."</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">ret</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+        <span class="k">switch</span> <span class="o">(</span><span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="nl">DETAIL:</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="s">"detail_"</span> <span class="o">+</span> <span class="n">num</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">name</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="nl">THUMBNAIL:</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="s">"thumbnail_"</span> <span class="o">+</span> <span class="n">num</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">name</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="nl">TOP:</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="s">"top_"</span> <span class="o">+</span> <span class="n">num</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">name</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="nl">SOLDOUT:</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="s">"soldout_"</span> <span class="o">+</span> <span class="n">num</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">name</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="nl">REVIEW:</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="s">"review_"</span> <span class="o">+</span> <span class="n">num</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">name</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+		
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이미지 파일명 변환 메서드에서는 이미지 타입별로 파일명을 다르게 설정할 것인데 역시 재사용성을 높이기 위해 <code class="language-plaintext highlighter-rouge">enum</code> 클래스를 사용했으며, 가독성과 속도 향상을 위해 <code class="language-plaintext highlighter-rouge">swith</code>문으로 이미지 타입을 구분하도록 했다.</li>
+</ul>
+
+<h3 id="imgtypejava">ImgType.java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.april.unomas.domain</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">enum</span> <span class="nc">ImgType</span> <span class="o">{</span>
+
+    <span class="no">DETAIL</span><span class="o">,</span> <span class="no">THUMBNAIL</span><span class="o">,</span> <span class="no">TOP</span><span class="o">,</span> <span class="no">SOLDOUT</span><span class="o">,</span> <span class="no">REVIEW</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ImgType enum</code> 역시 여러 클래스에서 공통으로 사용되기 때문에 <code class="language-plaintext highlighter-rouge">enum</code> 클래스를 생성했다.</li>
+</ul>
+
+<h3 id="이미지-크기-줄여서-업로드">이미지 크기 줄여서 업로드</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 썸네일 업로드</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/upload_thumb"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">uploadThumbPOST</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"uploadImg3"</span><span class="o">)</span> <span class="nc">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(!</span><span class="n">file</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="c1">// 파일명 변환 후</span>
+        <span class="n">fileName</span> <span class="o">=</span> <span class="nc">Commons</span><span class="o">.</span><span class="na">convertImgName</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">(),</span> <span class="n">service</span><span class="o">.</span><span class="na">getLastProdNum</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="nc">ImgType</span><span class="o">.</span><span class="na">THUMBNAIL</span><span class="o">);</span>
+        <span class="c1">// 이미지 크기 리사이즈</span>
+        <span class="nc">Commons</span><span class="o">.</span><span class="na">resizeImg</span><span class="o">(</span><span class="n">file</span><span class="o">,</span> <span class="n">prodThumbUploadPath</span><span class="o">,</span> <span class="n">fileName</span><span class="o">);</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">fileName</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 품절시 대체 썸네일 업로드</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/upload_soldoutImg"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">uploadSoldoutImgPOST</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"uploadImg4"</span><span class="o">)</span> <span class="nc">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(!</span><span class="n">file</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">fileName</span> <span class="o">=</span> <span class="nc">Commons</span><span class="o">.</span><span class="na">convertImgName</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">(),</span> <span class="n">service</span><span class="o">.</span><span class="na">getLastProdNum</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="nc">ImgType</span><span class="o">.</span><span class="na">SOLDOUT</span><span class="o">);</span>
+        <span class="nc">Commons</span><span class="o">.</span><span class="na">resizeImg</span><span class="o">(</span><span class="n">file</span><span class="o">,</span> <span class="n">prodSoldoutImgUploadPath</span><span class="o">,</span> <span class="n">fileName</span><span class="o">);</span>
+    <span class="o">}</span>
+		
+    <span class="k">return</span> <span class="n">fileName</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>썸네일과 품절시 대체 썸네일은 크기가 줄여져야 한다. 이미지 크기를 조절하는 메서드 또한 <code class="language-plaintext highlighter-rouge">Commons</code> 클래스에 작성했다.</li>
+</ul>
+
+<h3 id="commonsjava-1">Commons.java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">resizeImg</span><span class="o">(</span><span class="nc">MultipartFile</span> <span class="n">file</span><span class="o">,</span> <span class="nc">String</span> <span class="n">filePath</span><span class="o">,</span> <span class="nc">String</span> <span class="n">fileName</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+    <span class="c1">// 이미지 읽어오기</span>
+    <span class="nc">BufferedImage</span> <span class="n">inputImg</span> <span class="o">=</span> <span class="nc">ImageIO</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">());</span>
+		
+    <span class="c1">// 이미지 가로세로 길이 측정</span>
+    <span class="kt">int</span> <span class="n">originWidth</span> <span class="o">=</span> <span class="n">inputImg</span><span class="o">.</span><span class="na">getWidth</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">originHeight</span> <span class="o">=</span> <span class="n">inputImg</span><span class="o">.</span><span class="na">getHeight</span><span class="o">();</span>
+		
+    <span class="c1">// 변경할 가로 길이</span>
+    <span class="kt">int</span> <span class="n">newWidth</span> <span class="o">=</span> <span class="mi">360</span><span class="o">;</span>
+		
+    <span class="k">if</span> <span class="o">(</span><span class="n">originWidth</span> <span class="o">&gt;</span> <span class="n">newWidth</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 기존 이미지 비율을 유지하여 세로길이 설정</span>
+        <span class="kt">int</span> <span class="n">newHeight</span> <span class="o">=</span> <span class="o">(</span><span class="n">originHeight</span> <span class="o">*</span> <span class="n">newWidth</span><span class="o">)</span> <span class="o">/</span> <span class="n">originWidth</span><span class="o">;</span>
+			
+        <span class="c1">// 이미지 품질 설정         </span>
+        <span class="c1">// Image.SCALE_DEFAULT : 기본 이미지 스케일링 알고리즘 사용</span>
+        <span class="c1">// Image.SCALE_FAST : 이미지 부드러움보다 속도 우선</span>
+        <span class="c1">// Image.SCALE_REPLICATE : ReplicateScaleFilter 클래스로 구체화 된 이미지 크기 조절 알고리즘</span>
+        <span class="c1">// Image.SCALE_SMOOTH : 속도보다 이미지 부드러움을 우선</span>
+        <span class="c1">// Image.SCALE_AREA_AVERAGING : 평균 알고리즘 사용</span>
+        <span class="nc">Image</span> <span class="n">resizeImg</span> <span class="o">=</span> <span class="n">inputImg</span><span class="o">.</span><span class="na">getScaledInstance</span><span class="o">(</span><span class="n">newWidth</span><span class="o">,</span> <span class="n">newHeight</span><span class="o">,</span> <span class="nc">Image</span><span class="o">.</span><span class="na">SCALE_FAST</span><span class="o">);</span>
+        <span class="nc">BufferedImage</span> <span class="n">newImg</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedImage</span><span class="o">(</span><span class="n">newWidth</span><span class="o">,</span> <span class="n">newHeight</span><span class="o">,</span> <span class="nc">BufferedImage</span><span class="o">.</span><span class="na">TYPE_INT_RGB</span><span class="o">);</span>
+        <span class="nc">Graphics</span> <span class="n">graphics</span> <span class="o">=</span> <span class="n">newImg</span><span class="o">.</span><span class="na">getGraphics</span><span class="o">();</span>
+        <span class="n">graphics</span><span class="o">.</span><span class="na">drawImage</span><span class="o">(</span><span class="n">resizeImg</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">graphics</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+			
+        <span class="c1">// 이미지 저장</span>
+        <span class="nc">File</span> <span class="n">newFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">filePath</span><span class="o">,</span> <span class="n">fileName</span><span class="o">);</span>
+        <span class="nc">ImageIO</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">newImg</span><span class="o">,</span> <span class="n">fileName</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">fileName</span><span class="o">.</span><span class="na">lastIndexOf</span><span class="o">(</span><span class="s">"."</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">),</span> <span class="n">newFile</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="o">{</span>
+        <span class="c1">// 이미지 저장</span>
+        <span class="nc">File</span> <span class="n">newFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">filePath</span><span class="o">,</span> <span class="n">fileName</span><span class="o">);</span>
+        <span class="nc">FileCopyUtils</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="n">newFile</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>업로드 된 파일과 업로드 될 경로, 변환된 파일명을 인자값으로 받아와 이미지 크기 조절 후 업로드를 수행한다.</li>
+  <li>이미지 크기 조절은 지정된 썸네일 크기보다 클 때 수행한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="구현하며-했던-고민">구현하며 했던 고민</h1>
+<ul>
+  <li>업로드 한 이미지를 실시간으로 미리볼 수 있게 하는 기능을 구현하는 것이 가장 고민이었다. 왜냐면 처음 해 보는 것이었고 학원에서 배웠던 것은 동기방식으로 미리보기 없이 업로드 하는 방식이었기 때문이다.</li>
+  <li>
+    <p>하지만 이와 관련해서 구글에 레퍼런스가 많았기 때문에 약 세 시간 정도 걸려서 구현할 수 있었다.</p>
+  </li>
+  <li>그리고 파일명을 변환하는 메서드와 같이 여러 클래스에서 공통적으로 쓰이게 되는 메서드의 중복 작성을 줄이고자 <code class="language-plaintext highlighter-rouge">Commons</code> 클래스와 <code class="language-plaintext highlighter-rouge">static</code> 메서드를 만드는 과정에서 자바의 <code class="language-plaintext highlighter-rouge">static</code> 메서드 선언 규칙을 다시 공부할 수 있어서 좋았다. 왜냐면 <code class="language-plaintext highlighter-rouge">static</code> 메서드 사용 관련해서는 <code class="language-plaintext highlighter-rouge">C++</code> 기준 지식을 가지고 있었기 때문에…ㅎ<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-9</code><br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://cloud0477.tistory.com/122">ajax으로 file upload를 해보자 &amp; 첨부파일 이미지 미리보기</a></li>
+  <li><a href="https://gorokke.tistory.com/214">JAVA 이미지 리사이징, 가로세로 크기 줄이기</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#log" class="page__taxonomy-item p-category" rel="tag">Log</a><span class="sep">, </span>
+    
+      <a href="/tags/#project" class="page__taxonomy-item p-category" rel="tag">Project</a><span class="sep">, </span>
+    
+      <a href="/tags/#unomas" class="page__taxonomy-item p-category" rel="tag">UnoMas</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#uno-mas" class="page__taxonomy-item p-category" rel="tag">Uno mas</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-05-18T00:00:00+09:00">May 18, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JAVA+Spring%29+1%EC%9D%B8%EA%B0%80%EA%B5%AC%EB%A5%BC+%EC%9C%84%ED%95%9C+%EC%87%BC%ED%95%91%EB%AA%B0+Uno+m%C3%A1s+%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80+16+-+Ajax%EB%A1%9C+%EC%9D%B4%EB%AF%B8%EC%A7%80%ED%8C%8C%EC%9D%BC+%EC%97%85%EB%A1%9C%EB%93%9C%20http%3A%2F%2Flocalhost%3A4000%2Funo%2520mas%2Funo-mas-dev-log-16%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Funo%2520mas%2Funo-mas-dev-log-16%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Funo%2520mas%2Funo-mas-dev-log-16%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/errorlog/warning-log-11/" class="pagination--pager" title="에러해결 Log) (Spring framework) &lt; session-config &gt; element is limited to 1 occurrence
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/errorlog/warning-log-11/" rel="permalink">에러해결 Log) (Spring framework) &lt; session-config &gt; element is limited to 1 occurrence
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-17T00:00:00+09:00">May 17, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">사용환경
+
+  MacBook Air (M1, 2020) 16GB
+  JDK 8
+  Spring Tool Suite 4.14.0
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-15/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 15 - 후기글 첨부 이미지의 수정과 삭제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-17T00:00:00+09:00">May 17, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  작성일 : 2022.05.17
+  작성자 : 황유진
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/errorlog/warning-log-10/" rel="permalink">에러해결 Log) (Spring framework) 파일업로드시 MultipartFile 변수 값이 null로 입력될 때 해결방법
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-16T00:00:00+09:00">May 16, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">사용환경
+
+  MacBook Air (M1, 2020) 16GB
+  JDK 8
+  Spring Tool Suite 4.14.0
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/errorlog/warning-log-09/" rel="permalink">에러해결 Log) (Spring framework) There is no getter for property named ‘prod_num’ in ‘class java.lang.Integer’
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-15T00:00:00+09:00">May 15, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">사용환경
+
+  MacBook Air (M1, 2020) 16GB
+  JDK 8
+  Spring Tool Suite 4.14.0
+  tomcat 8.5
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
