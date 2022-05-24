@@ -1462,4 +1462,10 @@ var store = [{
         "tags": ["Project","UnoMas","Log"],
         "url": "/uno%20mas/uno-mas-dev-log-17/",
         "teaser": null
+      },{
+        "title": "에러해결 Log) (Spring framework) NoSuchBeanDefinitionException No qualifying bean of type 'com.xxx' available",
+        "excerpt":"사용환경     MacBook Air (M1, 2020) 16GB   JDK 8   Spring Tool Suite 4.14.0   tomcat 8.5      에러의 발생      org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type  'com.april.unomas.service.OrderService' available: expected at least 1 bean which qualifies  as autowire candidate. Dependency annotations: {@javax.inject.Inject()} ... 이하 생략 }      새로운 DAO랑 Service 클래스를 추가했는데 이런 에러 메시지가 뜨면서 서버 실행이 돼지 않았다. 찾을 수 없다고 하는 클래스들은 모두 만들어져 있었다.      문제 해결         문제는 DAO와 Service를 구현하는 클래스에 @Repository와 @Service를 지정해 주지 않았던 것이었다…🥲 이걸 왜 까먹었을까…         각각 필요한 어노테이션들을 달아주니까 정상작동 되었다.     ","categories": ["ErrorLog"],
+        "tags": ["Error","Solve","Log"],
+        "url": "/errorlog/warning-log-12/",
+        "teaser": null
       }]
