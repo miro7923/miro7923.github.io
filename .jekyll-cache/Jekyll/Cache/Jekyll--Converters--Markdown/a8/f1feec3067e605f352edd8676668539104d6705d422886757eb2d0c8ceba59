@@ -1,0 +1,244 @@
+I"��<ul>
+  <li>작성일 : 2022.05.27</li>
+  <li>
+    <p>작성자 : 황유진</p>
+  </li>
+  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 황유진</li>
+  <li>팀장 : 황유진</li>
+  <li>부팀장 : 오성은</li>
+  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
+</ul>
+
+<h1 id="개발환경">개발환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020)</li>
+  <li>OpenJDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>Spring framework 4.3.1.RELEASE</li>
+  <li>Tomcat 8.5</li>
+  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
+</ul>
+
+<h1 id="기간">기간</h1>
+<ul>
+  <li>2022.4.13 ~ 2022.5.27<br /><br /><br /></li>
+</ul>
+
+<h1 id="주제">주제</h1>
+<ul>
+  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
+  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
+  <li>총 팀원은 6명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
+  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
+</ul>
+
+<h1 id="진행상황">진행상황</h1>
+
+<p align="center"><img src="../../assets/images/unomas_addrList1.png" width="500" /></p>
+
+<ul>
+  <li>쇼핑몰의 상품을 주문하는 페이지에서 배송지 목록 버튼을 클릭하면</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/unomas_addrList2.png" width="900" /></p>
+
+<ul>
+  <li>배송지를 선택할 수 있는 새 창을 띄우고, 여기서 선택한 주소를 주문 페이지에 입력하는 기능을 추가했다.</li>
+</ul>
+
+<h2 id="shippinglocationjsp">shippingLocation.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+	pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"fn"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/functions"</span> <span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span> <span class="na">style=</span><span class="s">"margin: 0px; padding: 0px; height: 100%; overflow: hidden;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;title&gt;</span>배송지 목록<span class="nt">&lt;/title&gt;</span>
+	<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/themify-icons.css?after"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/elegant-icons.css?after"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/order_css/shippingLocation.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body</span>
+	<span class="na">style=</span><span class="s">"margin: 0px; padding: 0px; height: 100%; width: 100%; overflow: hidden;"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- @@@@@@@ 배송지 선택하면 주문 화면에서 신규배송지 탭에 출력되게 하기 --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_wrap"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_header"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"h1"</span><span class="nt">&gt;</span>배송지 목록<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_container"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_content"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"delivery_list_area"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${sessionScope.saveNUM }"</span> <span class="na">id=</span><span class="s">"user_num"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${curPage }"</span> <span class="na">id=</span><span class="s">"curPage"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"tbl_delivery_list"</span><span class="nt">&gt;</span>    
+                        <span class="nt">&lt;colgroup</span> <span class="na">width=</span><span class="s">"100%"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 140px;"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: auto;"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 150px;"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 148px;"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;/colgroup&gt;</span>
+                        <span class="nt">&lt;thead&gt;</span>
+                            <span class="nt">&lt;tr&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>배송지<span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>주소<span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>연락처<span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>선택<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;/thead&gt;</span>
+                        <span class="nt">&lt;tbody&gt;</span>
+                            <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">primaryAddr</span> <span class="o">!=</span> <span class="kc">null</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+	                            <span class="nt">&lt;tr</span> <span class="na">page=</span><span class="s">"1"</span> <span class="na">class=</span><span class="s">"_address default"</span> <span class="na">style=</span><span class="s">"display: table-row;"</span><span class="nt">&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_delivery"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_addressName nick"</span> <span class="na">id=</span><span class="s">"addr_nameP"</span><span class="nt">&gt;</span>${primaryAddr.addr_name }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;strong</span> <span class="na">class=</span><span class="s">"_receiverName name"</span> <span class="na">id=</span><span class="s">"addr_recipientP"</span><span class="nt">&gt;</span>${primaryAddr.addr_recipient }<span class="nt">&lt;/strong&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"mark_default"</span><span class="nt">&gt;</span>기본배송지<span class="nt">&lt;/span&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_zipCode zipcode"</span> <span class="na">id=</span><span class="s">"addr_postalcodeP"</span><span class="nt">&gt;</span>${primaryAddr.addr_postalcode }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_baseAddress"</span> <span class="na">id=</span><span class="s">"addr_roadaddrP"</span><span class="nt">&gt;</span>${primaryAddr.addr_roadaddr }<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_detailAddress"</span> <span class="na">id=</span><span class="s">"addr_detailaddrP"</span><span class="nt">&gt;</span>${primaryAddr.addr_detailaddr }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_roadNameYn"</span> <span class="na">style=</span><span class="s">"display:none;"</span><span class="nt">&gt;</span>Y<span class="nt">&lt;/span&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_tel"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_telNo1"</span><span class="nt">&gt;</span>${fn:substring(primaryAddr.addr_phone, 0, 3) } - ${fn:substring(primaryAddr.addr_phone, 3, 7) } - ${fn:substring(primaryAddr.addr_phone, 7, 11) }<span class="nt">&lt;/span&gt;&lt;br&gt;&lt;span</span> <span class="na">class=</span><span class="s">"_telNo2"</span><span class="nt">&gt;&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${primaryAddr.addr_phone }"</span> <span class="na">id=</span><span class="s">"addr_phoneP"</span><span class="nt">&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_btn"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"_select setting_btn type_h green"</span> <span class="na">onclick=</span><span class="s">"chooseLocation('P')"</span><span class="nt">&gt;</span>선택<span class="nt">&lt;/button&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                            <span class="nt">&lt;/tr&gt;</span>
+                            <span class="nt">&lt;/c:if&gt;</span>
+                            <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"addrVO"</span><span class="na"> items=</span><span class="s">"</span><span class="si">${</span><span class="n">orderAddrList</span> <span class="si">}</span><span class="s">"</span><span class="na"> varStatus=</span><span class="s">"i"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;tr</span> <span class="na">page=</span><span class="s">"1"</span> <span class="na">class=</span><span class="s">"_address default"</span> <span class="na">style=</span><span class="s">"display: table-row;"</span><span class="nt">&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_delivery"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_addressName nick"</span> <span class="na">id=</span><span class="s">"addr_name${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_name }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;strong</span> <span class="na">class=</span><span class="s">"_receiverName name"</span> <span class="na">id=</span><span class="s">"addr_recipient${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_recipient }<span class="nt">&lt;/strong&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_zipCode zipcode"</span> <span class="na">id=</span><span class="s">"addr_postalcode${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_postalcode }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_baseAddress"</span> <span class="na">id=</span><span class="s">"addr_roadaddr${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_roadaddr }<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_detailAddress"</span> <span class="na">id=</span><span class="s">"addr_detailaddr${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_detailaddr }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_roadNameYn"</span> <span class="na">style=</span><span class="s">"display:none;"</span><span class="nt">&gt;</span>Y<span class="nt">&lt;/span&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_tel"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_telNo1"</span><span class="nt">&gt;</span>${fn:substring(addrVO.addr_phone, 0, 3) } - ${fn:substring(addrVO.addr_phone, 3, 7) } - ${fn:substring(addrVO.addr_phone, 7, 11) }<span class="nt">&lt;/span&gt;&lt;br&gt;&lt;span</span> <span class="na">class=</span><span class="s">"_telNo2"</span><span class="nt">&gt;&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${addrVO.addr_phone }"</span> <span class="na">id=</span><span class="s">"addr_phone${i.index }"</span><span class="nt">&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_btn"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"_select setting_btn type_h green"</span> <span class="na">onclick=</span><span class="s">"chooseLocation(${i.index})"</span><span class="nt">&gt;</span>선택<span class="nt">&lt;/button&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                            <span class="nt">&lt;/tr&gt;</span>
+                            <span class="nt">&lt;/c:forEach&gt;</span>
+                        <span class="nt">&lt;/tbody&gt;</span>
+                    <span class="nt">&lt;/table&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"setting_paginate"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">prev</span> <span class="o">==</span> <span class="kc">true</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+		                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/order/addr_book?user_num=${sessionScope.saveNUM }&amp;page=${reviewPm.startPage - 1 }"</span> 
+		                <span class="na">id=</span><span class="s">"prev"</span> <span class="na">class=</span><span class="s">"page_btn_prev"</span> <span class="na">style=</span><span class="s">"color: black;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"arrow_carrot-left_alt"</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+                    <span class="nt">&lt;/c:if&gt;</span>
+                    <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"page"</span><span class="na"> varStatus=</span><span class="s">"i"</span><span class="na"> begin=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">startPage</span> <span class="si">}</span><span class="s">"</span><span class="na"> end=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">endPage</span> <span class="si">}</span><span class="s">"</span><span class="na"> step=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+		                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">id=</span><span class="s">"page${i.index }"</span> <span class="na">style=</span><span class="s">"color: black;"</span> 
+		                 <span class="na">class=</span><span class="s">"_page page_num"</span> <span class="na">onclick=</span><span class="s">"changePageNum(${i.index}, ${pm.endPage - pm.startPage + 1 })"</span><span class="nt">&gt;</span>${page }<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/c:forEach&gt;</span>
+	                <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">next</span> <span class="o">==</span> <span class="kc">true</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+		                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/order/addr_book?user_num=${sessionScope.saveNUM }&amp;page=${reviewPm.endPage + 1 }"</span> 
+		                <span class="na">id=</span><span class="s">"next"</span> <span class="na">class=</span><span class="s">"page_btn_next"</span> <span class="na">style=</span><span class="s">"color: black;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"arrow_carrot-right_alt"</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+	                <span class="nt">&lt;/c:if&gt;</span>
+            	<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"button"</span> <span class="na">onclick=</span><span class="s">"javascript:window.close();return false;"</span><span class="nt">&gt;</span>닫기<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery-3.3.1.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery-ui.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.countdown.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.nice-select.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.zoom.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.dd.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.slicknav.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/owl.carousel.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/order_js/shippingLocation.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>페이지 템플릿은 네이버 쇼핑의 배송지 목록 템플릿을 참고해서 만들었다.(사실상 그냥 긁어왔…)</li>
+  <li>태그의 클래스 선택자 이름이 출력하는 내용물의 용도에 맞게 지정되어 있어서 데이터를 넣는 <code class="language-plaintext highlighter-rouge">JSTL</code> 표현식을 쓸 때 정말 편했다. 역시 대기업은 다르다.</li>
+</ul>
+
+<h2 id="orderjsp">order.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"site-btn deliverListBtn"</span>
+    <span class="na">onclick=</span><span class="s">"window.open('/order/addr_book?user_num=${sessionScope.saveNUM}&amp;pageNum=1');"</span><span class="nt">&gt;</span>배송지 목록<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>주문페이지에서 <code class="language-plaintext highlighter-rouge">배송지목록</code> 버튼을 클릭하면 이 템플릿 페이지가 새 창에서 열리도록 했다.</li>
+</ul>
+
+<h2 id="shippinglocationjsp-1">shippingLocation.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"_select setting_btn type_h green"</span> <span class="na">onclick=</span><span class="s">"chooseLocation(${i.index})"</span><span class="nt">&gt;</span>선택<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>배송지 목록 페이지에서 배송지를 선택하면 해당 배송지 데이터를 주문 페이지에 입력하는 메서드가 실행된다.</li>
+</ul>
+
+<h2 id="shippinglocationjs">shippingLocation.js</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">chooseLocation</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 신규배송지로 라디오버튼 선택 변경</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:radio[name=deliverSpot]:radio[value="2"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#normalAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span> 
+
+    <span class="c1">// 각 인풋태그값 세팅</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newName</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_recipient</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone1</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone2</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">));</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone3</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">));</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">());</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPostalcode</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_postalcode</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newRoadAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_roadaddr</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newDetailAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_detailaddr</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+
+    <span class="nb">window</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">window.opener</code> 메서드를 사용해 이 창을 연 부모 창에 데이터가 전달되도록 했다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/unomas_addrList3.png" width="500" /></p>
+
+<ul>
+  <li>구현 완료~!<br /><br /><br /></li>
+</ul>
+
+<h1 id="구현하며-했던-고민">구현하며 했던 고민</h1>
+<ul>
+  <li>이번 기능을 구현해 본 적이 없어서 처음에 검색 키워드를 뭘로 해야 할 지 고민했었다. 평소 많이 보던 기능인데 뭐라 쳐야 관련 자료가 나올지 모르겠는 그런 느낌…ㅎ 쇼핑몰 배송지 목록 새창 이런 식으로 검색하면서 관련 자료를 찾았던 것 같다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="마감까지">마감까지</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D-0</code><br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://chobopark.tistory.com/247">[JQuery] AJAX테이블 생성 후 팝업창 데이터 전달&amp;인쇄 방법!! (영상 有)</a></li>
+</ul>
+:ET

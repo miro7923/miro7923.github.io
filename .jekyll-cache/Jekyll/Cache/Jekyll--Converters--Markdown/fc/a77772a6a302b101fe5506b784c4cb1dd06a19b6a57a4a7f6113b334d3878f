@@ -1,5 +1,5 @@
-I"(<ul>
-  <li>작성일 : 2022.05.26</li>
+I"�6<ul>
+  <li>작성일 : 2022.05.27</li>
   <li>
     <p>작성자 : 황유진</p>
   </li>
@@ -34,183 +34,194 @@
 
 <h1 id="진행상황">진행상황</h1>
 
-<p align="center"><img src="../../assets/images/unomas_pay1.png" width="900" /></p>
+<p align="center"><img src="../../assets/images/unomas_addrList1.png" width="500" /></p>
 
 <ul>
-  <li>쇼핑몰 결제기능을 추가했다!</li>
-  <li>아임포트에서 개발자 연습용으로 무료로 제공하는 결제 API가 있어 이걸 이용했다.</li>
-  <li>참고글</li>
-  <li><a href="https://velog.io/@poseassome/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%95%84%EC%9E%84%ED%8F%AC%ED%8A%B8import-%EA%B2%B0%EC%A0%9C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0">[개인프로젝트] 아임포트(i’mport) 결제 기능 구현하기</a></li>
-  <li><a href="https://tyrannocoding.tistory.com/44">[JAVA, SPRING, Iamport] 아임포트 검증하기(WEB,APP)</a></li>
-  <li><a href="https://github.com/iamport/iamport-manual">아임포트(iamport) 결제연동을 위한 매뉴얼 GitHub</a></li>
+  <li>쇼핑몰의 상품을 주문하는 페이지에서 배송지 목록 버튼을 클릭하면</li>
 </ul>
 
-<h2 id="pomxml">pom.xml</h2>
+<p align="center"><img src="../../assets/images/unomas_addrList2.png" width="900" /></p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;properties&gt;</span>
-    <span class="nt">&lt;java-version&gt;</span>1.8<span class="nt">&lt;/java-version&gt;</span>
-    <span class="nt">&lt;org.springframework-version&gt;</span>4.3.8.RELEASE<span class="nt">&lt;/org.springframework-version&gt;</span>
-    <span class="nt">&lt;org.aspectj-version&gt;</span>1.6.10<span class="nt">&lt;/org.aspectj-version&gt;</span>
-    <span class="nt">&lt;org.slf4j-version&gt;</span>1.6.6<span class="nt">&lt;/org.slf4j-version&gt;</span>
-<span class="nt">&lt;/properties&gt;</span>
+<ul>
+  <li>배송지를 선택할 수 있는 새 창을 띄우고, 여기서 선택한 주소를 주문 페이지에 입력하는 기능을 추가했다.</li>
+</ul>
 
-<span class="c">&lt;!-- 상단 properties 아래에 추가 --&gt;</span>
-<span class="nt">&lt;repositories&gt;</span>
-  <span class="nt">&lt;repository&gt;</span>
-    <span class="nt">&lt;id&gt;</span>jitpack.io<span class="nt">&lt;/id&gt;</span>
-    <span class="nt">&lt;url&gt;</span>https://jitpack.io<span class="nt">&lt;/url&gt;</span>
-  <span class="nt">&lt;/repository&gt;</span>
-<span class="nt">&lt;/repositories&gt;</span>
+<h2 id="shippinglocationjsp">shippingLocation.jsp</h2>
 
-...
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+	pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"fn"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/functions"</span> <span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span> <span class="na">style=</span><span class="s">"margin: 0px; padding: 0px; height: 100%; overflow: hidden;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;title&gt;</span>배송지 목록<span class="nt">&lt;/title&gt;</span>
+	<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/themify-icons.css?after"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/elegant-icons.css?after"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/order_css/shippingLocation.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
 
-<span class="c">&lt;!-- dependencies 안에 추가 --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>com.github.iamport<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>iamport-rest-client-java<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>0.2.14<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;body</span>
+	<span class="na">style=</span><span class="s">"margin: 0px; padding: 0px; height: 100%; width: 100%; overflow: hidden;"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- @@@@@@@ 배송지 선택하면 주문 화면에서 신규배송지 탭에 출력되게 하기 --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_wrap"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_header"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"h1"</span><span class="nt">&gt;</span>배송지 목록<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_container"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_content"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"delivery_list_area"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${sessionScope.saveNUM }"</span> <span class="na">id=</span><span class="s">"user_num"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${curPage }"</span> <span class="na">id=</span><span class="s">"curPage"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"tbl_delivery_list"</span><span class="nt">&gt;</span>    
+                        <span class="nt">&lt;colgroup</span> <span class="na">width=</span><span class="s">"100%"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 140px;"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: auto;"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 150px;"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 148px;"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;/colgroup&gt;</span>
+                        <span class="nt">&lt;thead&gt;</span>
+                            <span class="nt">&lt;tr&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>배송지<span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>주소<span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>연락처<span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>선택<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;/thead&gt;</span>
+                        <span class="nt">&lt;tbody&gt;</span>
+                            <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">primaryAddr</span> <span class="o">!=</span> <span class="kc">null</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+	                            <span class="nt">&lt;tr</span> <span class="na">page=</span><span class="s">"1"</span> <span class="na">class=</span><span class="s">"_address default"</span> <span class="na">style=</span><span class="s">"display: table-row;"</span><span class="nt">&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_delivery"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_addressName nick"</span> <span class="na">id=</span><span class="s">"addr_nameP"</span><span class="nt">&gt;</span>${primaryAddr.addr_name }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;strong</span> <span class="na">class=</span><span class="s">"_receiverName name"</span> <span class="na">id=</span><span class="s">"addr_recipientP"</span><span class="nt">&gt;</span>${primaryAddr.addr_recipient }<span class="nt">&lt;/strong&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"mark_default"</span><span class="nt">&gt;</span>기본배송지<span class="nt">&lt;/span&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_zipCode zipcode"</span> <span class="na">id=</span><span class="s">"addr_postalcodeP"</span><span class="nt">&gt;</span>${primaryAddr.addr_postalcode }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_baseAddress"</span> <span class="na">id=</span><span class="s">"addr_roadaddrP"</span><span class="nt">&gt;</span>${primaryAddr.addr_roadaddr }<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_detailAddress"</span> <span class="na">id=</span><span class="s">"addr_detailaddrP"</span><span class="nt">&gt;</span>${primaryAddr.addr_detailaddr }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_roadNameYn"</span> <span class="na">style=</span><span class="s">"display:none;"</span><span class="nt">&gt;</span>Y<span class="nt">&lt;/span&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_tel"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_telNo1"</span><span class="nt">&gt;</span>${fn:substring(primaryAddr.addr_phone, 0, 3) } - ${fn:substring(primaryAddr.addr_phone, 3, 7) } - ${fn:substring(primaryAddr.addr_phone, 7, 11) }<span class="nt">&lt;/span&gt;&lt;br&gt;&lt;span</span> <span class="na">class=</span><span class="s">"_telNo2"</span><span class="nt">&gt;&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${primaryAddr.addr_phone }"</span> <span class="na">id=</span><span class="s">"addr_phoneP"</span><span class="nt">&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_btn"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"_select setting_btn type_h green"</span> <span class="na">onclick=</span><span class="s">"chooseLocation('P')"</span><span class="nt">&gt;</span>선택<span class="nt">&lt;/button&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                            <span class="nt">&lt;/tr&gt;</span>
+                            <span class="nt">&lt;/c:if&gt;</span>
+                            <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"addrVO"</span><span class="na"> items=</span><span class="s">"</span><span class="si">${</span><span class="n">orderAddrList</span> <span class="si">}</span><span class="s">"</span><span class="na"> varStatus=</span><span class="s">"i"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;tr</span> <span class="na">page=</span><span class="s">"1"</span> <span class="na">class=</span><span class="s">"_address default"</span> <span class="na">style=</span><span class="s">"display: table-row;"</span><span class="nt">&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_delivery"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_addressName nick"</span> <span class="na">id=</span><span class="s">"addr_name${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_name }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;strong</span> <span class="na">class=</span><span class="s">"_receiverName name"</span> <span class="na">id=</span><span class="s">"addr_recipient${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_recipient }<span class="nt">&lt;/strong&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_zipCode zipcode"</span> <span class="na">id=</span><span class="s">"addr_postalcode${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_postalcode }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_baseAddress"</span> <span class="na">id=</span><span class="s">"addr_roadaddr${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_roadaddr }<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_detailAddress"</span> <span class="na">id=</span><span class="s">"addr_detailaddr${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_detailaddr }<span class="nt">&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_roadNameYn"</span> <span class="na">style=</span><span class="s">"display:none;"</span><span class="nt">&gt;</span>Y<span class="nt">&lt;/span&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_tel"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_telNo1"</span><span class="nt">&gt;</span>${fn:substring(addrVO.addr_phone, 0, 3) } - ${fn:substring(addrVO.addr_phone, 3, 7) } - ${fn:substring(addrVO.addr_phone, 7, 11) }<span class="nt">&lt;/span&gt;&lt;br&gt;&lt;span</span> <span class="na">class=</span><span class="s">"_telNo2"</span><span class="nt">&gt;&lt;/span&gt;</span>
+	                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${addrVO.addr_phone }"</span> <span class="na">id=</span><span class="s">"addr_phone${i.index }"</span><span class="nt">&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_btn"</span><span class="nt">&gt;</span>
+	                                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"_select setting_btn type_h green"</span> <span class="na">onclick=</span><span class="s">"chooseLocation(${i.index})"</span><span class="nt">&gt;</span>선택<span class="nt">&lt;/button&gt;</span>
+	                                <span class="nt">&lt;/td&gt;</span>
+	                            <span class="nt">&lt;/tr&gt;</span>
+                            <span class="nt">&lt;/c:forEach&gt;</span>
+                        <span class="nt">&lt;/tbody&gt;</span>
+                    <span class="nt">&lt;/table&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"setting_paginate"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">prev</span> <span class="o">==</span> <span class="kc">true</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+		                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/order/addr_book?user_num=${sessionScope.saveNUM }&amp;page=${reviewPm.startPage - 1 }"</span> 
+		                <span class="na">id=</span><span class="s">"prev"</span> <span class="na">class=</span><span class="s">"page_btn_prev"</span> <span class="na">style=</span><span class="s">"color: black;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"arrow_carrot-left_alt"</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+                    <span class="nt">&lt;/c:if&gt;</span>
+                    <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"page"</span><span class="na"> varStatus=</span><span class="s">"i"</span><span class="na"> begin=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">startPage</span> <span class="si">}</span><span class="s">"</span><span class="na"> end=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">endPage</span> <span class="si">}</span><span class="s">"</span><span class="na"> step=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+		                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">id=</span><span class="s">"page${i.index }"</span> <span class="na">style=</span><span class="s">"color: black;"</span> 
+		                 <span class="na">class=</span><span class="s">"_page page_num"</span> <span class="na">onclick=</span><span class="s">"changePageNum(${i.index}, ${pm.endPage - pm.startPage + 1 })"</span><span class="nt">&gt;</span>${page }<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/c:forEach&gt;</span>
+	                <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">next</span> <span class="o">==</span> <span class="kc">true</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+		                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/order/addr_book?user_num=${sessionScope.saveNUM }&amp;page=${reviewPm.endPage + 1 }"</span> 
+		                <span class="na">id=</span><span class="s">"next"</span> <span class="na">class=</span><span class="s">"page_btn_next"</span> <span class="na">style=</span><span class="s">"color: black;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"arrow_carrot-right_alt"</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+	                <span class="nt">&lt;/c:if&gt;</span>
+            	<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"button"</span> <span class="na">onclick=</span><span class="s">"javascript:window.close();return false;"</span><span class="nt">&gt;</span>닫기<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery-3.3.1.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery-ui.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.countdown.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.nice-select.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.zoom.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.dd.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.slicknav.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/owl.carousel.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/order_js/shippingLocation.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <ul>
-  <li>시작 전에 결제 정보 검증을 위해 아임포트에서 제공하는 API를 사용할 수 있도록 의존성을 추가해 준다.</li>
+  <li>페이지 템플릿은 네이버 쇼핑의 배송지 목록 템플릿을 참고해서 만들었다.(사실상 그냥 긁어왔…)</li>
+  <li>태그의 클래스 선택자 이름이 출력하는 내용물의 용도에 맞게 지정되어 있어서 데이터를 넣는 <code class="language-plaintext highlighter-rouge">JSTL</code> 표현식을 쓸 때 정말 편했다. 역시 대기업은 다르다.</li>
 </ul>
 
-<h2 id="orderjs">order.js</h2>
+<h2 id="orderjsp">order.jsp</h2>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">IMP</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">IMP</span><span class="p">;</span> <span class="c1">// 생략 가능</span>
-
-<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="p">...</span>
-	
-    <span class="nx">IMP</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">가맹점식별코드</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 예: imp00000000</span>
-<span class="p">});</span>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"site-btn deliverListBtn"</span>
+    <span class="na">onclick=</span><span class="s">"window.open('/order/addr_book?user_num=${sessionScope.saveNUM}&amp;pageNum=1');"</span><span class="nt">&gt;</span>배송지 목록<span class="nt">&lt;/button&gt;</span>
 </code></pre></div></div>
 
 <ul>
-  <li><a href="https://guide.iamport.kr/8f617f32-564d-464e-9850-bf7648c609b0">KG이니시스 테스트모드</a>로 진행할 것이다.</li>
-  <li>
-    <p>나는 <code class="language-plaintext highlighter-rouge">JSP</code> 페이지와 <code class="language-plaintext highlighter-rouge">JS</code> 파일을 따로 분리했기 때문에 <code class="language-plaintext highlighter-rouge">API</code> 호출을 위한 코드를 작성했다.</p>
-  </li>
-  <li>전체 코드</li>
+  <li>주문페이지에서 <code class="language-plaintext highlighter-rouge">배송지목록</code> 버튼을 클릭하면 이 템플릿 페이지가 새 창에서 열리도록 했다.</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">requestPay</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// 수령자 배송지 설정 </span>
-    <span class="kd">var</span> <span class="nx">addr</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">postalcode</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:radio[name=deliverSpot]:checked</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// 기본배송지 사용</span>
-        <span class="nx">addr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#roadAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#detailAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-        <span class="nx">postalcode</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#postalcode</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="p">{</span>
-        <span class="c1">// 신규배송지 사용</span>
-        <span class="nx">addr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newRoadAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newDetailAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-        <span class="nx">postalcode</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPostalcode</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-    <span class="p">}</span>
-	
-    <span class="kd">var</span> <span class="nx">uid</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
-    <span class="c1">// IMP.request_pay(param, callback) 결제창 호출</span>
-    <span class="nx">IMP</span><span class="p">.</span><span class="nx">request_pay</span><span class="p">({</span> <span class="c1">// param</span>
-        <span class="na">pg</span><span class="p">:</span> <span class="dl">"</span><span class="s2">html5_inicis</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">pay_method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">card</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">merchant_uid</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#orderCode</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-        <span class="na">name</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#prodName0</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-        <span class="na">amount</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#total</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-        <span class="na">buyer_email</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#userEmail</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(),</span>
-        <span class="na">buyer_name</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#userName</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(),</span>
-        <span class="na">buyer_tel</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#phone</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-        <span class="na">buyer_addr</span><span class="p">:</span> <span class="nx">addr</span><span class="p">,</span>
-        <span class="na">buyer_postcode</span><span class="p">:</span> <span class="nx">postalcode</span>
-    <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rsp</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// callback</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">rsp</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우</span>
-            <span class="nx">uid</span> <span class="o">=</span> <span class="nx">rsp</span><span class="p">.</span><span class="nx">imp_uid</span><span class="p">;</span>
-            <span class="c1">// 결제검증</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-                <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/order/verify_iamport/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">rsp</span><span class="p">.</span><span class="nx">imp_uid</span><span class="p">,</span>
-                <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">post</span><span class="dl">'</span>
-            <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// 결제를 요청했던 금액과 실제 결제된 금액이 같으면 해당 주문건의 결제가 정상적으로 완료된 것으로 간주한다.</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#total</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">==</span> <span class="nx">data</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">amount</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="c1">// jQuery로 HTTP 요청</span>
-                    <span class="c1">// 주문정보 생성 및 테이블에 저장 </span>
-                    <span class="c1">// @@ 주문정보는 상품 개수만큼 생성되어야 해서 상품 개수만큼 반복문을 돌린다</span>
-                    <span class="c1">// 이때 order code는 모두 같아야 한다.</span>
-                    <span class="kd">var</span> <span class="nx">roadAddr</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
-                    <span class="kd">var</span> <span class="nx">detailAddr</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
-                    <span class="kd">var</span> <span class="nx">recipient</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:radio[name=deliverSpot]:checked</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">roadAddr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#roadAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-                        <span class="nx">detailAddr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#detailAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-                        <span class="nx">recipient</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#name</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-                    <span class="p">}</span>
-                    <span class="k">else</span> <span class="p">{</span>
-                        <span class="nx">roadAddr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newRoadAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-                        <span class="nx">detailAddr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newDetailAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-                        <span class="nx">recipient</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newName</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-                    <span class="p">}</span>
-		        	
-                    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#prodCnt</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="c1">// 데이터를 json으로 보내기 위해 바꿔준다.</span>
-                        <span class="kd">var</span> <span class="nx">orderVO</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-                            <span class="na">order_code</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#orderCode</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-                            <span class="na">cart_num</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#cartNum</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-                            <span class="na">order_postalcode</span><span class="p">:</span> <span class="nx">postalcode</span><span class="p">,</span>
-                            <span class="na">order_roadaddr</span><span class="p">:</span> <span class="nx">roadAddr</span><span class="p">,</span>
-                            <span class="na">order_detailaddr</span><span class="p">:</span> <span class="nx">detailAddr</span><span class="p">,</span>
-                            <span class="na">user_num</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#userNum</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-                            <span class="na">prod_num</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#prodNum</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-                            <span class="na">order_quantity</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#prodQuantity</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-                            <span class="na">order_total</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#orderTotal</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-                            <span class="na">user_point</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#userPoint</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-                            <span class="na">order_recipient</span><span class="p">:</span> <span class="nx">recipient</span><span class="p">,</span>
-                            <span class="na">order_memo</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#ask</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
-                        <span class="p">});</span>
-					
-                        <span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-                            <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/order/complete</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// 예: https://www.myservice.com/payments/complete</span>
-                            <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
-                            <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
-                            <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-                            <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span>
-                        <span class="p">});</span>
-                    <span class="p">}</span>
-	        	
-                    <span class="nx">createPayInfo</span><span class="p">(</span><span class="nx">uid</span><span class="p">);</span>
-                <span class="p">}</span>
-                <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">결제 실패</span><span class="dl">'</span><span class="p">);</span>
-                <span class="p">}</span>
-            <span class="p">})</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">결제에 실패하였습니다. 에러 내용: </span><span class="dl">"</span> <span class="o">+</span>  <span class="nx">rsp</span><span class="p">.</span><span class="nx">error_msg</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
+<h2 id="shippinglocationjsp-1">shippingLocation.jsp</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"_select setting_btn type_h green"</span> <span class="na">onclick=</span><span class="s">"chooseLocation(${i.index})"</span><span class="nt">&gt;</span>선택<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>배송지 목록 페이지에서 배송지를 선택하면 해당 배송지 데이터를 주문 페이지에 입력하는 메서드가 실행된다.</li>
+</ul>
+
+<h2 id="shippinglocationjs">shippingLocation.js</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">chooseLocation</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 신규배송지로 라디오버튼 선택 변경</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:radio[name=deliverSpot]:radio[value="2"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#normalAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span> 
+
+    <span class="c1">// 각 인풋태그값 세팅</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newName</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_recipient</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone1</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone2</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">));</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone3</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">));</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">());</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPostalcode</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_postalcode</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newRoadAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_roadaddr</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newDetailAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_detailaddr</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+
+    <span class="nb">window</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">createPayInfo</span><span class="p">(</span><span class="nx">uid</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 결제정보 생성 및 테이블 저장 후 결제완료 페이지로 이동 </span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">get</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/order/pay_info</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-            <span class="dl">'</span><span class="s1">imp_uid</span><span class="dl">'</span><span class="p">:</span> <span class="nx">uid</span><span class="p">,</span>
-            <span class="dl">'</span><span class="s1">amount</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#total</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-            <span class="dl">'</span><span class="s1">ship</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#shippingFee</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
-            <span class="dl">'</span><span class="s1">point</span><span class="dl">'</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#userPoint</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
-        <span class="p">},</span>
-        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">결제가 완료 되었습니다.</span><span class="dl">'</span><span class="p">);</span>
-            <span class="c1">// 결제완료 페이지로 이동</span>
-            <span class="nx">location</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">/order/complete?pay_num=</span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">);</span>
-        <span class="p">},</span>
-        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">결제정보 저장 통신 실패</span><span class="dl">'</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
-<span class="p">}</span>
 </code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">window.opener</code> 메서드를 사용해 이 창을 연 부모 창에 데이터가 전달되도록 했다.</li>
+</ul>
+
+<p align="center"><img src="../../assets/images/unomas_addrList3.png" width="500" /></p>
 
 <ul>
   <li>결제 부분</li>
@@ -273,7 +284,7 @@
   <li><a href="https://github.com/iamport/iamport-rest-client-java">iamport REST Client for JAVA</a> 아임포트사에서 제공하는 공식 문서를 참고해서 진행했다. 정리가 잘 되어 있어 보기 편했다.</li>
 </ul>
 
-<h2 id="orderjs-1">order.js</h2>
+<h2 id="orderjs">order.js</h2>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 결제검증</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
@@ -497,24 +508,31 @@
         <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span>
+        <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span><span class="p">,</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 생성 실패!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">});</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">requestPay()</code> 메서드의 주문정보를 생성하는 부분에서 <br /><br /><br /></li>
+  <li>처음에는 <code class="language-plaintext highlighter-rouge">requestPay()</code> 메서드의 주문정보를 생성하는 부분을 이런식으로 작성해서 통신의 성공 유무를 확인하려 했다. 그런데 통신에 실패해서 주문정보 생성에 실패했다는 메시지가 출력되는데 주문정보는 내가 의도한 대로 생성이 잘 되는… 결과적으로 동작에는 아무 문제가 없는 상황이 발생되었다. 원인이 궁금해서 정말 여러 가지 방법으로 테스트를 해 보았지만 주문 정보 생성은 정말정말 잘 되는데 에러 데이터는 계속 리턴되는 희안한 상황이 계속되었다. 아직까지도 원인을 못 찾음…</li>
+  <li>프로젝트 진행 마감날도 다가오고 일단 전체적인 동작에는 문제가 없기 때문에 <code class="language-plaintext highlighter-rouge">ajax</code> 통신의 <code class="language-plaintext highlighter-rouge">success</code> 이하 부분은 삭제하고 가기로 했다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">D-5</code><br /><br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">D-1</code><br /><br /><br /></li>
 </ul>
 
 <h1 id="참고">참고</h1>
 <ul>
-  <li><a href="https://backstreet-programmer.tistory.com/105">[Web] ajax으로 받아온 data를 jstl로 표현하기</a></li>
-  <li><a href="https://velog.io/@hwarkhada/ajax%EB%A1%9C-%EB%B0%9B%EC%95%84%EC%98%A8-data-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8-%EC%97%86%EC%9D%B4-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">ajax로 받아온 data 페이지 새로고침 없이 사용하기</a></li>
+  <li><a href="https://velog.io/@poseassome/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%95%84%EC%9E%84%ED%8F%AC%ED%8A%B8import-%EA%B2%B0%EC%A0%9C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0">[개인프로젝트] 아임포트(i’mport) 결제 기능 구현하기</a></li>
+  <li><a href="https://tyrannocoding.tistory.com/44">[JAVA, SPRING, Iamport] 아임포트 검증하기(WEB,APP)</a></li>
   <li><a href="https://github.com/iamport/iamport-manual">아임포트(iamport) 결제연동을 위한 매뉴얼 GitHub</a></li>
   <li><a href="https://api.iamport.kr/">아임포트 REST API</a></li>
   <li><a href="https://github.com/iamport/iamport-rest-client-java">iamport REST Client for JAVA</a></li>
