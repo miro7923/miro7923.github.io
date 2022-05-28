@@ -104,9 +104,7 @@ function changePageNum(num, maxNum, boardType) {
             success: function(data) {
                 console.log('결과: '+data);
                 // 임시 페이지에 출력된 데이터를 가져와 원본 페이지의 데이터를 바꿔준다.
-                var html = jQuery('<div>').html(data);
-                var contents = html.find('div#reviewListAjax').html();
-                $('#reviewListAjax').html(contents);
+                $('#reviewListAjax').html(data);
 				
                 getPageNum();
             },
@@ -135,10 +133,7 @@ function changePageNum(num, maxNum, boardType) {
             type: 'get',
             url: '/product/list_inquiry?prod_num=' + $('#prod_num').val() + '&page=' + num,
             success: function(data) {
-                console.log('결과: '+data);
-                var html = jQuery('<div>').html(data);
-                var contents = html.find('div#inqDiv').html();
-                $('#inqDiv').html(contents);
+                $('#inqDiv').html(data);
 
                 getPageNum();
             },
@@ -315,10 +310,7 @@ $.ajax({
     url: '/product/list_review?prod_num=' + $('#prod_num').val() + '&page=' + num,
     success: function(data) {
         console.log('결과: '+data);
-        // 임시 페이지에 출력된 데이터를 가져와 원본 페이지의 데이터를 바꿔준다.
-        var html = jQuery('<div>').html(data);
-        var contents = html.find('div#reviewListAjax').html();
-        $('#reviewListAjax').html(contents);
+        $('#reviewListAjax').html(data);
         
         // 선택된 페이지 번호 css로 강조 처리
         getPageNum();

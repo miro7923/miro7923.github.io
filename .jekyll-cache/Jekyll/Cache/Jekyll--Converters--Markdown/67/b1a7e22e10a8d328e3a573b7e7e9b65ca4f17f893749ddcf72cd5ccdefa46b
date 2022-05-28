@@ -1,0 +1,27 @@
+I"
+<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+
+<p align="center"><img src="../../assets/images/gitError0525_1.png" width="500" /></p>
+
+<ul>
+  <li>이클립스에서 스프링 프로젝트를 진행하며 새로운 <code class="language-plaintext highlighter-rouge">JSP</code> 파일을 만들었는데 이런 식으로 인식이 되지 않는 것이었다.(당시 캡쳐본이 없어서 <code class="language-plaintext highlighter-rouge">.gitignore</code>에 등록된 파일로 대체함)</li>
+  <li><code class="language-plaintext highlighter-rouge">.gitignore</code>에도 등록되어 있지 않은 파일인데 뭔 짓을 해도 인식되지 않고 <code class="language-plaintext highlighter-rouge">force</code> 명령어를 써서 파일을 직접 등록해줘야 원격저장소에 업로드가 가능했다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<p align="center"><img src="../../assets/images/gitError0525_2.png" width="500" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.gitignore</code>의 맨 밑에 프로젝트 폴더가 등록되어 있던 것이 문제였다… 저게 도대체 왜 갑자기 들어간건지; 황당하네 😦</li>
+  <li>지워준 뒤 <code class="language-plaintext highlighter-rouge">Add to index</code> 하니까 문제 없이 인식이 잘 되었다.</li>
+</ul>
+:ET

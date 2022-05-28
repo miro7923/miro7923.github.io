@@ -1,4 +1,4 @@
-I"P�<ul>
+I"��<ul>
   <li>작성일 : 2022.05.22</li>
   <li>
     <p>작성자 : 황유진</p>
@@ -102,9 +102,7 @@
             <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">결과: </span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">);</span>
                 <span class="c1">// 임시 페이지에 출력된 데이터를 가져와 원본 페이지의 데이터를 바꿔준다.</span>
-                <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;div&gt;</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-                <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">html</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">div#reviewListAjax</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">();</span>
-                <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#reviewListAjax</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">contents</span><span class="p">);</span>
+                <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#reviewListAjax</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 				
                 <span class="nx">getPageNum</span><span class="p">();</span>
             <span class="p">},</span>
@@ -133,10 +131,7 @@
             <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">get</span><span class="dl">'</span><span class="p">,</span>
             <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/product/list_inquiry?prod_num=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#prod_num</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;page=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">,</span>
             <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">결과: </span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">);</span>
-                <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;div&gt;</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-                <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">html</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">div#inqDiv</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">();</span>
-                <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#inqDiv</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">contents</span><span class="p">);</span>
+                <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#inqDiv</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 
                 <span class="nx">getPageNum</span><span class="p">();</span>
             <span class="p">},</span>
@@ -318,10 +313,7 @@
     <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/product/list_review?prod_num=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#prod_num</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;page=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">num</span><span class="p">,</span>
     <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">결과: </span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">);</span>
-        <span class="c1">// 임시 페이지에 출력된 데이터를 가져와 원본 페이지의 데이터를 바꿔준다.</span>
-        <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;div&gt;</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-        <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">html</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">div#reviewListAjax</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">();</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#reviewListAjax</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">contents</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#reviewListAjax</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
         
         <span class="c1">// 선택된 페이지 번호 css로 강조 처리</span>
         <span class="nx">getPageNum</span><span class="p">();</span>
