@@ -1,5 +1,5 @@
 ---
-title: JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 베송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가
+title: JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 배송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가
 toc: true
 toc_sticky: true
 toc_label: 목차
