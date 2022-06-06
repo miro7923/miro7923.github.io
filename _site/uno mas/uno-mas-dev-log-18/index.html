@@ -350,7 +350,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#기간">기간</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#pomxml">pom.xml</a></li><li><a href="#orderjs">order.js</a></li><li><a href="#아임포트-결제모듈-테스트">아임포트 결제모듈 테스트</a></li><li><a href="#ordercontrollerjava">OrderController.java</a></li><li><a href="#orderjs-1">order.js</a></li></ul></li><li><a href="#구현하며-했던-고민">구현하며 했던 고민</a></li><li><a href="#마감까지">마감까지</a></li><li><a href="#참고">참고</a></li></ul>
+              <ul class="toc__menu"><li><a href="#개발환경">개발환경</a></li><li><a href="#기간">기간</a></li><li><a href="#주제">주제</a></li><li><a href="#진행상황">진행상황</a><ul><li><a href="#pomxml">pom.xml</a></li><li><a href="#orderjs">order.js</a></li><li><a href="#아임포트-결제모듈-테스트">아임포트 결제모듈 테스트</a></li><li><a href="#ordercontrollerjava">OrderController.java</a></li><li><a href="#orderjs-1">order.js</a></li></ul></li><li><a href="#구현하며-했던-고민">구현하며 했던 고민</a><ul><li><a href="#-해결">=&gt; 해결!</a></li></ul></li><li><a href="#마감까지">마감까지</a></li><li><a href="#참고">참고</a></li></ul>
 
             </nav>
           </aside>
@@ -531,9 +531,17 @@
                             <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
                             <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
                             <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span>
-                        <span class="p">});</span>
+                        <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                                <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 성공</span><span class="dl">'</span><span class="p">);</span>
+                            <span class="p">}</span>
+                            <span class="k">else</span> <span class="p">{</span>
+                                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                                <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 실패</span><span class="dl">'</span><span class="p">);</span>
+                            <span class="p">}</span>
+                        <span class="p">})</span>
                     <span class="p">}</span>
-	        	
                     <span class="nx">createPayInfo</span><span class="p">(</span><span class="nx">uid</span><span class="p">);</span>
                 <span class="p">}</span>
                 <span class="k">else</span> <span class="p">{</span>
@@ -685,9 +693,17 @@
                 <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
                 <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
                 <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span>
-            <span class="p">});</span>
+            <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 성공</span><span class="dl">'</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 실패</span><span class="dl">'</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
         <span class="p">}</span>
-    
         <span class="nx">createPayInfo</span><span class="p">(</span><span class="nx">uid</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">else</span> <span class="p">{</span>
@@ -711,11 +727,17 @@
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ResponseBody</span>
 <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/complete"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">completePOST</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">OrderVO</span> <span class="n">vo</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">completePOST</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">OrderVO</span> <span class="n">vo</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
     <span class="c1">// 결제 완료된 주문정보 DB에 저장</span>
-    <span class="n">orderService</span><span class="o">.</span><span class="na">createOrder</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
-    
-    <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"주문정보 생성 완료"</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">OK</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">orderService</span><span class="o">.</span><span class="na">createOrder</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"@@@@@@@@@@@ 주문정보 저장 실패"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">0</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">NOT_ACCEPTABLE</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"@@@@@@@@@@@@ 주문정보 저장 성공"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">CREATED</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -742,7 +764,16 @@
         <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span>
-    <span class="p">});</span>
+    <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 성공</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 실패</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
 <span class="p">}</span>
 
 <span class="nx">createPayInfo</span><span class="p">(</span><span class="nx">uid</span><span class="p">);</span>
@@ -867,7 +898,63 @@
 
 <ul>
   <li>처음에는 <code class="language-plaintext highlighter-rouge">requestPay()</code> 메서드의 주문정보를 생성하는 부분을 이런식으로 작성해서 통신의 성공 유무를 확인하려 했다. 그런데 통신에 실패해서 주문정보 생성에 실패했다는 메시지가 출력되는데 주문정보는 내가 의도한 대로 생성이 잘 되는… 결과적으로 동작에는 아무 문제가 없는 상황이 발생되었다. 원인이 궁금해서 정말 여러 가지 방법으로 테스트를 해 보았지만 주문 정보 생성은 정말정말 잘 되는데 에러 데이터는 계속 리턴되는 희안한 상황이 계속되었다. 아직까지도 원인을 못 찾음…</li>
-  <li>프로젝트 진행 마감날도 다가오고 일단 전체적인 동작에는 문제가 없기 때문에 <code class="language-plaintext highlighter-rouge">ajax</code> 통신의 <code class="language-plaintext highlighter-rouge">success</code> 이하 부분은 삭제하고 가기로 했다.<br /><br /><br /></li>
+  <li>프로젝트 진행 마감날도 다가오고 일단 전체적인 동작에는 문제가 없기 때문에 <code class="language-plaintext highlighter-rouge">ajax</code> 통신의 <code class="language-plaintext highlighter-rouge">success</code> 이하 부분은 삭제하고 가기로 했다.</li>
+</ul>
+
+<h2 id="-해결">=&gt; 해결!</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ResponseBody</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/complete"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">completePOST</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">OrderVO</span> <span class="n">vo</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="c1">// 결제 완료된 주문정보 DB에 저장</span>
+    <span class="n">orderService</span><span class="o">.</span><span class="na">createOrder</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"주문정보 생성 완료"</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">OK</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>처음엔 DB에 데이터를 삽입하는 동작을 수행하는 컨트롤러 메서드에서 따로 조건 처리를 해주지 않고 그냥 저장한 뒤 <code class="language-plaintext highlighter-rouge">String</code> 데이터와 함께 항상 200을 리턴하도록 했다. 그런데 이게 문제였던 것 같다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ResponseBody</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/complete"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">completePOST</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">OrderVO</span> <span class="n">vo</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="c1">// 결제 완료된 주문정보 DB에 저장</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">orderService</span><span class="o">.</span><span class="na">createOrder</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"@@@@@@@@@@@ 주문정보 저장 실패"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">0</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">NOT_ACCEPTABLE</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"@@@@@@@@@@@@ 주문정보 저장 성공"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">CREATED</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>리턴 데이터를 정수형으로 바꿔주니까 작동이 잘 되었다… 문자열 데이터를 파싱하는 과정에서 문제가 있었던 것일까? 문자열 리턴값을 영어로 썼을 때에도 똑같이 <code class="language-plaintext highlighter-rouge">error</code>가 리턴되었기 때문에 한글을 사용한 것이 문제가 되는 것은 아닌 것 같고, <code class="language-plaintext highlighter-rouge">json</code>을 이용한 <code class="language-plaintext highlighter-rouge">post</code> 통신에서 문자열을 리턴값으로 받아오는 것 자체가 <code class="language-plaintext highlighter-rouge">HTTP 상태 코드</code>와 상관없이 <code class="language-plaintext highlighter-rouge">error</code>를 리턴시키는 원인인 듯 하다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/order/complete</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// 예: https://www.myservice.com/payments/complete</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span><span class="p">,</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 생성 실패</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 생성 실패</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>수정한 컨트롤러 메서드에 따라 콜백 받는 부분도 약간 수정해 주었다. 원인을 찾기까지 좀 오래 걸렸지만 새로운 거 하나 배웠다…<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -952,7 +1039,7 @@
 ">이전</a>
     
     
-      <a href="/uno%20mas/uno-mas-dev-log-19/" class="pagination--pager" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 베송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가
+      <a href="/uno%20mas/uno-mas-dev-log-19/" class="pagination--pager" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 배송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가
 ">다음</a>
     
   </nav>
@@ -977,7 +1064,46 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/uno%20mas/uno-mas-dev-log-19/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 베송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가
+        <a href="/design%20pattern/head-first-design-pattern-Chapter01/" rel="permalink">디자인패턴 1) 전략 패턴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-06T00:00:00+09:00">June 6, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CHAPTER 01. 디자인 패턴 소개와 전략 패턴
+1. 오리 시뮬레이션 게임을 만든다면
+
+  초기 기획단계에서는 모든 오리들은 꽥꽥 소리를 낼 수 있고 수영만 할 수 있고 겉모습만 달랐다. 그래서 객체지향 기법을 사용하여 모든 오리가 가지고 있어야 하는 공통된 기능을 정의한 Du...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/uno%20mas/uno-mas-dev-log-19/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 배송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가
 </a>
       
     </h2>
@@ -1088,46 +1214,6 @@
   JDK 8
   Spring Tool Suite 4.14.0
   tomcat 8.5
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/uno%20mas/uno-mas-dev-log-17/" rel="permalink">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 17 - 새로고침 없이 게시판 목록 불러오기
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-05-22T00:00:00+09:00">May 22, 2022</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-  작성일 : 2022.05.22
-  작성자 : 황유진
 
 </p>
   </article>

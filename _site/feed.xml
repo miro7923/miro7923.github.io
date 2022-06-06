@@ -1,4 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-28T22:40:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 베송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-19/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 베송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가" /><published>2022-05-27T00:00:00+09:00</published><updated>2022-05-27T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-19</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-19/"><![CDATA[<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-06T22:25:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">디자인패턴 1) 전략 패턴</title><link href="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter01/" rel="alternate" type="text/html" title="디자인패턴 1) 전략 패턴" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter01</id><content type="html" xml:base="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter01/"><![CDATA[<h1 id="chapter-01-디자인-패턴-소개와-전략-패턴">CHAPTER 01. 디자인 패턴 소개와 전략 패턴</h1>
+<h2 id="1-오리-시뮬레이션-게임을-만든다면">1. 오리 시뮬레이션 게임을 만든다면</h2>
+<ul>
+  <li>
+    <p>초기 기획단계에서는 모든 오리들은 꽥꽥 소리를 낼 수 있고 수영만 할 수 있고 겉모습만 달랐다. 그래서 객체지향 기법을 사용하여 모든 오리가 가지고 있어야 하는 공통된 기능을 정의한 <code class="language-plaintext highlighter-rouge">Duck</code>이라는 슈퍼클래스를 만든 다음 이를 상속받는 서브클래스를 만들어 오리의 겉모습을 각자 다르게 구현했다.</p>
+  </li>
+  <li>그런데 갑자기 나는 기능도 추가되어야 한다면 어떻게 할까?</li>
+  <li>
+    <p>슈퍼클래스인 <code class="language-plaintext highlighter-rouge">Duck</code>에 <code class="language-plaintext highlighter-rouge">fly()</code> 메서드를 추가로 구현하면 상속받고 있는 모든 서브클래스에 나는 기능을 추가할 수 있다.</p>
+  </li>
+  <li>그런데 나중에 보니까 일부 서브클래스에서 문제가 발견되었다. 왜냐면 서브클래스에는 고무로 만든 장난감 오리도 있었는데 그 클래스에도 날아다니는 기능이 추가된 것이었다. 고무 오리가 날아다니는 기능은 의도하지 않은 기능이기 때문에 고쳐야 한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Duck</span> <span class="o">{</span>
+    <span class="n">quack</span><span class="o">();</span> <span class="c1">// 꽥꽥</span>
+    <span class="n">swim</span><span class="o">();</span> <span class="c1">// 수영</span>
+    <span class="n">fly</span><span class="o">();</span> <span class="c1">// 날기</span>
+<span class="o">}</span>
+
+<span class="c1">// 살아 있는 오리</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MallardDuck</span> <span class="kd">extends</span> <span class="nc">Duck</span> <span class="o">{</span>
+    <span class="n">display</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// 고무 오리</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RubberDuck</span> <span class="kd">extends</span> <span class="nc">Duck</span> <span class="o">{</span>
+    <span class="n">display</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>그러면 고무 오리 클래스에서 <code class="language-plaintext highlighter-rouge">fly()</code> 메서드를 아무 것도 하지 않도록 오버라이드 해서 문제를 해결할 수 있을 것이다.</li>
+  <li>하지만 만약 게임이 주기적으로 업데이트 된다면 그 때마다 <code class="language-plaintext highlighter-rouge">fly()</code> 메서드에 새로운 기능이 추가될 수 있고, 그러면 그 때마다 <code class="language-plaintext highlighter-rouge">fly()</code>를 아무 것도 하지 않게 오버라이드 한 서브클래스의 <code class="language-plaintext highlighter-rouge">fly()</code> 메서드도 수정해 줘야 할 것이다. 생각만 해도 너무 손이 많이 간다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Flyable</code>이라는 인터페이스를 만들어 서브클래스에서 구현하게 하면 고무 오리가 날아다니는 문제를 해결할 수 있겠지만 <code class="language-plaintext highlighter-rouge">Flyable</code>을 구현하는 클래스마다 각자 구현해야 하기 때문에 중복되는 코드가 많이 생기고 만약 날아가는 동작에 수정사항이 생긴다면 <code class="language-plaintext highlighter-rouge">Flyable</code>을 구현하는 모든 서브클래스의 코드를 수정해 줘야 한다. 이것 역시 비효율적이다.</li>
+</ul>
+
+<h2 id="2-디자인-원칙-1-애플리케이션에서-달라지는-부분을-찾아내고-달라지지-않는-부분과-분리한다">2. 디자인 원칙 1) 애플리케이션에서 달라지는 부분을 찾아내고, 달라지지 않는 부분과 분리한다.</h2>
+<ul>
+  <li>
+    <p>이를 효율적으로 설계하기 위해서 첫 번째 디자인 원칙인 <code class="language-plaintext highlighter-rouge">캡슐화</code>를 적용한다. <code class="language-plaintext highlighter-rouge">캡슐화</code>는 애플리케이션에서 달라지는 부분을 찾아내고 달라지지 않는 부분과 분리하는 것이다. 그러면 코드를 변경할 일이 생기면 <code class="language-plaintext highlighter-rouge">캡슐화</code>된 부분만 변경하면 돼기 때문에 다른 부분에 미치는 영향을 최소화 시킬 수 있다.</p>
+  </li>
+  <li>
+    <p>현재 오리의 기능 중에서 꽥꽥 소리를 내는 <code class="language-plaintext highlighter-rouge">quack()</code>과 나는 기능인 <code class="language-plaintext highlighter-rouge">fly()</code>는 서브클래스의 종류에 따라 다르게 구현되어야 하기 때문에 <code class="language-plaintext highlighter-rouge">Duck</code> 슈퍼클래스에서 <code class="language-plaintext highlighter-rouge">quack()</code>과 <code class="language-plaintext highlighter-rouge">fly()</code>를 꺼내서 각각 행동을 나타낼 클래스 집합(set)을 새로 만들어야 한다.</p>
+  </li>
+</ul>
+
+<h2 id="3-디자인-원칙-2-구현보다는-인터페이스에-맞춰서-프로그래밍한다">3. 디자인 원칙 2) 구현보다는 인터페이스에 맞춰서 프로그래밍한다.</h2>
+<ul>
+  <li>나는 행동과 꽥꽥거리는 행동을 구현하는 클래스 집합은 최대한 유연하게 만들어야 한다. 그리고 <code class="language-plaintext highlighter-rouge">Duck</code>의 인스턴스에 행동을 할당할 수 있어야 한다. 인스턴스가 생성된 후에 행동을 동적으로 바꿀 수 있으면 더 좋을 것이다.</li>
+  <li>이를 효율적으로 구현하기 위해 슈퍼클래스에 모든 행동을 구현하기 보다는 특정 행동만을 목적으로 하는 클래스의 집합을 만들어 행동 인터페이스를 구현한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">FlyBehaior</span> <span class="o">{</span>
+    <span class="n">fly</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FlyWithWings</span> <span class="kd">implements</span> <span class="nc">FlyBehavior</span> <span class="o">{</span>
+    <span class="n">fly</span><span class="o">();</span>
+    <span class="c1">// 나는 방법을 구현</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FlyNoWay</span> <span class="kd">implements</span> <span class="nc">FlyBehavior</span> <span class="o">{</span>
+    <span class="n">fly</span><span class="o">();</span>
+    <span class="c1">// 아무것도 하지 않음</span>
+    <span class="c1">// 날 수 없다.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이런 식으로 디자인하면 특정 행동들이 <code class="language-plaintext highlighter-rouge">Duck</code> 클래스에 국한되지 않고 해당 기능들이 필요한 서브클래스에 추가해서 사용할 수 있다. 상속을 쓸 때 떠안게 되는 부담을 전부 떨쳐 버리고도 재사용의 장점을 그대로 누릴 수 있다.</li>
+</ul>
+
+<h2 id="4-오리-행동-통합하기">4. 오리 행동 통합하기</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Duck</code> 클래스에서 <code class="language-plaintext highlighter-rouge">flyBehavior</code>와 <code class="language-plaintext highlighter-rouge">quackBehavior</code>라는 인터페이스 형식의 인스턴스 변수를 추가하고 각 서브클래스에서도 <code class="language-plaintext highlighter-rouge">fly()</code>와 <code class="language-plaintext highlighter-rouge">quack()</code>을 제거한다. <code class="language-plaintext highlighter-rouge">Duck</code> 클래스에서 <code class="language-plaintext highlighter-rouge">fly()</code>와 <code class="language-plaintext highlighter-rouge">quack()</code> 메서드를 제거한 뒤 대신 <code class="language-plaintext highlighter-rouge">performFly()</code>와 <code class="language-plaintext highlighter-rouge">performQuack()</code>이라는 메서드를 넣는다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Duck</span> <span class="o">{</span>
+    
+    <span class="nc">FlyBehavior</span> <span class="n">flyBehavior</span><span class="o">;</span>
+    <span class="nc">QuackBehavior</span> <span class="n">quackBehavior</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">performQuack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 꽥꽥거리는 행동을 직접 처리하는 대신 quackBehavior로 참조되는 객체에 그 행동을 위임한다.</span>
+        <span class="n">quackBehavior</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span> 
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">performFly</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">flyBehavior</span><span class="o">.</span><span class="na">fly</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서브클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MallardDuck</span> <span class="kd">extends</span> <span class="nc">Duck</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">MallarDuck</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 슈퍼클래스에서 정의된 인스턴스 변수에 실제 생성된 객체를 할당 </span>
+        <span class="n">quackBehavior</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Quack</span><span class="o">();</span>
+        <span class="n">flyBehavior</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FlyWithWings</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">display</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"저는 물오리입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>슈퍼클래스를 상속받은 서브클래스에서 각각 필요한 인스턴스를 할당해 사용할 수 있다. 재사용성이 증대된다.</li>
+</ul>
+
+<h2 id="5-디자인-원칙-3-상속보다는-구성을-활용한다">5. 디자인 원칙 3) 상속보다는 구성을 활용한다.</h2>
+<ul>
+  <li>각 오리에는 <code class="language-plaintext highlighter-rouge">FlyBehavior</code>와 <code class="language-plaintext highlighter-rouge">QuackBehavior</code>가 있으며 각각 나는 행동과 꽥꽥거리는 행동을 위임받는다. 이런 식으로 두 클래스를 합치는 것을 ‘<code class="language-plaintext highlighter-rouge">구성(composition)</code>을 이용한다’라고 부른다.</li>
+  <li>구성을 활용해서 시스템을 만들면 유연성을 크게 향상시킬 수 있다. 단순히 알고리즘군을 별도의 클래스 집합으로 캡슐화할 수 있으며 구성 요소로 사용하는 객체에서 올바른 행동 인터페이스를 구현하기만 하면 실행 시에 행동을 바꿀 수도 있다.<br /><br /></li>
+</ul>
+
+<h1 id="전략-패턴">전략 패턴</h1>
+<ul>
+  <li>지금까지 학습한 디자인 패턴을 전략 패턴(Strategy Pattern)이라고 한다. 전략 패턴은 알고리즘군을 정의하고 캡슐화해서 각각의 알고리즘군을 수정해서 쓸 수 있게 해 준다. 전략 패턴을 사용하면 클라이언트로부터 알고리즘을 분리해서 독립적으로 변경할 수 있다.<br /><br /></li>
+</ul>
+
+<h1 id="디자인-패턴을-알아야-하는-이유">디자인 패턴을 알아야 하는 이유</h1>
+<ul>
+  <li>개발자끼리 공통으로 아는 전문 용어를 사용하면 다른 개발자와 더 쉽게 대화할 수 있고, 패턴을 아직 모르는 사람들에게는 패턴을 배우고 싶은 생각이 들도록 자극을 줄 수 있다. 또한 자질구레한 객체 수준에서의 생각이 아닌, <code class="language-plaintext highlighter-rouge">패턴 수준</code>에서 생각할 수 있기에 아키텍처를 생각하는 수준도 끌어 올려 준다.<br /><br /></li>
+</ul>
+
+<h1 id="마지막-정리">마지막 정리</h1>
+<h2 id="객체지향-기초">객체지향 기초</h2>
+<ul>
+  <li>추상화</li>
+  <li>캡슐화</li>
+  <li>다형성</li>
+  <li>상속</li>
+</ul>
+
+<h2 id="객체지향-원칙">객체지향 원칙</h2>
+<ul>
+  <li>바뀌는 부분은 캡슐화한다.</li>
+  <li>상속보다는 구성을 활용한다.</li>
+  <li>구현보다는 인터페이스에 맞춰서 프로그래밍한다.</li>
+</ul>
+
+<h2 id="객체지향-패턴">객체지향 패턴</h2>
+<ul>
+  <li>전략 패턴 : 알고리즘군을 정의하고 캡슐화해서 각각의 알고리즘군을 수정해서 쓸 수 있게 해 준다. 전략 패턴을 사용하면 클라이언트로부터 알고리즘을 분리해서 독립적으로 변경할 수 있다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=582754">헤드퍼스트 디자인패턴</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Design Pattern" /><category term="DesignPattern" /><category term="study" /><summary type="html"><![CDATA[CHAPTER 01. 디자인 패턴 소개와 전략 패턴 1. 오리 시뮬레이션 게임을 만든다면 초기 기획단계에서는 모든 오리들은 꽥꽥 소리를 낼 수 있고 수영만 할 수 있고 겉모습만 달랐다. 그래서 객체지향 기법을 사용하여 모든 오리가 가지고 있어야 하는 공통된 기능을 정의한 Duck이라는 슈퍼클래스를 만든 다음 이를 상속받는 서브클래스를 만들어 오리의 겉모습을 각자 다르게 구현했다.]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 배송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-19/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 배송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가" /><published>2022-05-27T00:00:00+09:00</published><updated>2022-05-27T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-19</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-19/"><![CDATA[<ul>
   <li>작성일 : 2022.05.27</li>
   <li>
     <p>작성자 : 황유진</p>
@@ -416,9 +571,17 @@
                             <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
                             <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
                             <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span>
-                        <span class="p">});</span>
+                        <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                                <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 성공</span><span class="dl">'</span><span class="p">);</span>
+                            <span class="p">}</span>
+                            <span class="k">else</span> <span class="p">{</span>
+                                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                                <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 실패</span><span class="dl">'</span><span class="p">);</span>
+                            <span class="p">}</span>
+                        <span class="p">})</span>
                     <span class="p">}</span>
-	        	
                     <span class="nx">createPayInfo</span><span class="p">(</span><span class="nx">uid</span><span class="p">);</span>
                 <span class="p">}</span>
                 <span class="k">else</span> <span class="p">{</span>
@@ -570,9 +733,17 @@
                 <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
                 <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
                 <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span>
-            <span class="p">});</span>
+            <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 성공</span><span class="dl">'</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 실패</span><span class="dl">'</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
         <span class="p">}</span>
-    
         <span class="nx">createPayInfo</span><span class="p">(</span><span class="nx">uid</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">else</span> <span class="p">{</span>
@@ -596,11 +767,17 @@
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ResponseBody</span>
 <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/complete"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">completePOST</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">OrderVO</span> <span class="n">vo</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">completePOST</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">OrderVO</span> <span class="n">vo</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
     <span class="c1">// 결제 완료된 주문정보 DB에 저장</span>
-    <span class="n">orderService</span><span class="o">.</span><span class="na">createOrder</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
-    
-    <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"주문정보 생성 완료"</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">OK</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">orderService</span><span class="o">.</span><span class="na">createOrder</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"@@@@@@@@@@@ 주문정보 저장 실패"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">0</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">NOT_ACCEPTABLE</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"@@@@@@@@@@@@ 주문정보 저장 성공"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">CREATED</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -627,7 +804,16 @@
         <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span>
-    <span class="p">});</span>
+    <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 성공</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 저장 실패</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
 <span class="p">}</span>
 
 <span class="nx">createPayInfo</span><span class="p">(</span><span class="nx">uid</span><span class="p">);</span>
@@ -752,7 +938,63 @@
 
 <ul>
   <li>처음에는 <code class="language-plaintext highlighter-rouge">requestPay()</code> 메서드의 주문정보를 생성하는 부분을 이런식으로 작성해서 통신의 성공 유무를 확인하려 했다. 그런데 통신에 실패해서 주문정보 생성에 실패했다는 메시지가 출력되는데 주문정보는 내가 의도한 대로 생성이 잘 되는… 결과적으로 동작에는 아무 문제가 없는 상황이 발생되었다. 원인이 궁금해서 정말 여러 가지 방법으로 테스트를 해 보았지만 주문 정보 생성은 정말정말 잘 되는데 에러 데이터는 계속 리턴되는 희안한 상황이 계속되었다. 아직까지도 원인을 못 찾음…</li>
-  <li>프로젝트 진행 마감날도 다가오고 일단 전체적인 동작에는 문제가 없기 때문에 <code class="language-plaintext highlighter-rouge">ajax</code> 통신의 <code class="language-plaintext highlighter-rouge">success</code> 이하 부분은 삭제하고 가기로 했다.<br /><br /><br /></li>
+  <li>프로젝트 진행 마감날도 다가오고 일단 전체적인 동작에는 문제가 없기 때문에 <code class="language-plaintext highlighter-rouge">ajax</code> 통신의 <code class="language-plaintext highlighter-rouge">success</code> 이하 부분은 삭제하고 가기로 했다.</li>
+</ul>
+
+<h2 id="-해결">=&gt; 해결!</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ResponseBody</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/complete"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">completePOST</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">OrderVO</span> <span class="n">vo</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="c1">// 결제 완료된 주문정보 DB에 저장</span>
+    <span class="n">orderService</span><span class="o">.</span><span class="na">createOrder</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"주문정보 생성 완료"</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">OK</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>처음엔 DB에 데이터를 삽입하는 동작을 수행하는 컨트롤러 메서드에서 따로 조건 처리를 해주지 않고 그냥 저장한 뒤 <code class="language-plaintext highlighter-rouge">String</code> 데이터와 함께 항상 200을 리턴하도록 했다. 그런데 이게 문제였던 것 같다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ResponseBody</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/complete"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">completePOST</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">OrderVO</span> <span class="n">vo</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="c1">// 결제 완료된 주문정보 DB에 저장</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">orderService</span><span class="o">.</span><span class="na">createOrder</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"@@@@@@@@@@@ 주문정보 저장 실패"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">0</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">NOT_ACCEPTABLE</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"@@@@@@@@@@@@ 주문정보 저장 성공"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">CREATED</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>리턴 데이터를 정수형으로 바꿔주니까 작동이 잘 되었다… 문자열 데이터를 파싱하는 과정에서 문제가 있었던 것일까? 문자열 리턴값을 영어로 썼을 때에도 똑같이 <code class="language-plaintext highlighter-rouge">error</code>가 리턴되었기 때문에 한글을 사용한 것이 문제가 되는 것은 아닌 것 같고, <code class="language-plaintext highlighter-rouge">json</code>을 이용한 <code class="language-plaintext highlighter-rouge">post</code> 통신에서 문자열을 리턴값으로 받아오는 것 자체가 <code class="language-plaintext highlighter-rouge">HTTP 상태 코드</code>와 상관없이 <code class="language-plaintext highlighter-rouge">error</code>를 리턴시키는 원인인 듯 하다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/order/complete</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// 예: https://www.myservice.com/payments/complete</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">orderVO</span><span class="p">,</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 생성 실패</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">주문정보 생성 실패</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>수정한 컨트롤러 메서드에 따라 콜백 받는 부분도 약간 수정해 주었다. 원인을 찾기까지 좀 오래 걸렸지만 새로운 거 하나 배웠다…<br /><br /><br /></li>
 </ul>
 
 <h1 id="마감까지">마감까지</h1>
@@ -1637,7 +1879,37 @@ as autowire candidate. Dependency annotations: {@javax.inject.Inject()}
 <ul>
   <li><a href="https://cloud0477.tistory.com/122">ajax으로 file upload를 해보자 &amp; 첨부파일 이미지 미리보기</a></li>
   <li><a href="https://gorokke.tistory.com/214">JAVA 이미지 리사이징, 가로세로 크기 줄이기</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.18 작성자 : 황유진]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 15 - 후기글 첨부 이미지의 수정과 삭제</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-15/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 15 - 후기글 첨부 이미지의 수정과 삭제" /><published>2022-05-17T00:00:00+09:00</published><updated>2022-05-17T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-15</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-15/"><![CDATA[<ul>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.18 작성자 : 황유진]]></summary></entry><entry><title type="html">에러해결 Log) (Spring framework) &amp;lt; session-config &amp;gt; element is limited to 1 occurrence</title><link href="http://localhost:4000/errorlog/warning-log-11/" rel="alternate" type="text/html" title="에러해결 Log) (Spring framework) &amp;lt; session-config &amp;gt; element is limited to 1 occurrence" /><published>2022-05-17T00:00:00+09:00</published><updated>2022-05-17T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-11</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-11/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<ul>
+  <li>MacBook Air (M1, 2020) 16GB</li>
+  <li>JDK 8</li>
+  <li>Spring Tool Suite 4.14.0</li>
+  <li>tomcat 8.5<br /><br /><br /></li>
+</ul>
+
+<h1 id="에러의-발생">에러의 발생</h1>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;session-config&gt;</span> element is limited to 1 occurrence
+... 이하 생략
+}
+</code></pre></div></div>
+
+<ul>
+  <li>팀 프로젝트 진행 중 팀원의 작업물을 <code class="language-plaintext highlighter-rouge">master</code> 브랜치에 머지하고 난 후 이런 메세지가 뜨면서 서버 실행이 되지 않는 것이었다. 풀 리퀘에서 충돌 확인 할 때도 별 문제 없었는데 무슨 일…?<br /><br /><br /></li>
+</ul>
+
+<h1 id="문제-해결">문제 해결</h1>
+
+<p align="center"><img src="../../assets/images/sessionConfigError.png" width="500" /></p>
+
+<ul>
+  <li>문제는 <code class="language-plaintext highlighter-rouge">web.xml</code> 파일에서 세션 유지 시간을 설정하는 태그가 두 번 작성되어 있었던 것이었다… 머지시 충돌나는 부분을 처리하는 과정에서 제대로 보지 못 하고 머지를 해서 저렇게 되었던 모양이다. 동일한 태그 하나를 지워주니까 서버가 정상적으로 실행되었다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://to-dy.tistory.com/89">[에러] &lt; session-config &gt; element is limited to 1 occurrence</a></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 15 - 후기글 첨부 이미지의 수정과 삭제</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-15/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 15 - 후기글 첨부 이미지의 수정과 삭제" /><published>2022-05-17T00:00:00+09:00</published><updated>2022-05-17T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-15</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-15/"><![CDATA[<ul>
   <li>작성일 : 2022.05.17</li>
   <li>
     <p>작성자 : 황유진</p>
@@ -1778,37 +2050,7 @@ as autowire candidate. Dependency annotations: {@javax.inject.Inject()}
 <h1 id="마감까지">마감까지</h1>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">D-10</code></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.17 작성자 : 황유진]]></summary></entry><entry><title type="html">에러해결 Log) (Spring framework) &amp;lt; session-config &amp;gt; element is limited to 1 occurrence</title><link href="http://localhost:4000/errorlog/warning-log-11/" rel="alternate" type="text/html" title="에러해결 Log) (Spring framework) &amp;lt; session-config &amp;gt; element is limited to 1 occurrence" /><published>2022-05-17T00:00:00+09:00</published><updated>2022-05-17T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-11</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-11/"><![CDATA[<h1 id="사용환경">사용환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020) 16GB</li>
-  <li>JDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="에러의-발생">에러의 발생</h1>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;session-config&gt;</span> element is limited to 1 occurrence
-... 이하 생략
-}
-</code></pre></div></div>
-
-<ul>
-  <li>팀 프로젝트 진행 중 팀원의 작업물을 <code class="language-plaintext highlighter-rouge">master</code> 브랜치에 머지하고 난 후 이런 메세지가 뜨면서 서버 실행이 되지 않는 것이었다. 풀 리퀘에서 충돌 확인 할 때도 별 문제 없었는데 무슨 일…?<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결">문제 해결</h1>
-
-<p align="center"><img src="../../assets/images/sessionConfigError.png" width="500" /></p>
-
-<ul>
-  <li>문제는 <code class="language-plaintext highlighter-rouge">web.xml</code> 파일에서 세션 유지 시간을 설정하는 태그가 두 번 작성되어 있었던 것이었다… 머지시 충돌나는 부분을 처리하는 과정에서 제대로 보지 못 하고 머지를 해서 저렇게 되었던 모양이다. 동일한 태그 하나를 지워주니까 서버가 정상적으로 실행되었다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://to-dy.tistory.com/89">[에러] &lt; session-config &gt; element is limited to 1 occurrence</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">에러해결 Log) (Spring framework) 파일업로드시 MultipartFile 변수 값이 null로 입력될 때 해결방법</title><link href="http://localhost:4000/errorlog/warning-log-10/" rel="alternate" type="text/html" title="에러해결 Log) (Spring framework) 파일업로드시 MultipartFile 변수 값이 null로 입력될 때 해결방법" /><published>2022-05-16T00:00:00+09:00</published><updated>2022-05-16T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-10</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-10/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.17 작성자 : 황유진]]></summary></entry><entry><title type="html">에러해결 Log) (Spring framework) 파일업로드시 MultipartFile 변수 값이 null로 입력될 때 해결방법</title><link href="http://localhost:4000/errorlog/warning-log-10/" rel="alternate" type="text/html" title="에러해결 Log) (Spring framework) 파일업로드시 MultipartFile 변수 값이 null로 입력될 때 해결방법" /><published>2022-05-16T00:00:00+09:00</published><updated>2022-05-16T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-10</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-10/"><![CDATA[<h1 id="사용환경">사용환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020) 16GB</li>
   <li>JDK 8</li>
@@ -1862,35 +2104,4 @@ as autowire candidate. Dependency annotations: {@javax.inject.Inject()}
 <h1 id="참고">참고</h1>
 <ul>
   <li><a href="https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;blogId=websearch&amp;logNo=221309319248">[스프링] MultipartFile 변수가 null 로 입력되는 문제 해결 방법</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry><entry><title type="html">에러해결 Log) (Spring framework) There is no getter for property named ‘prod_num’ in ‘class java.lang.Integer’</title><link href="http://localhost:4000/errorlog/warning-log-09/" rel="alternate" type="text/html" title="에러해결 Log) (Spring framework) There is no getter for property named ‘prod_num’ in ‘class java.lang.Integer’" /><published>2022-05-15T00:00:00+09:00</published><updated>2022-05-15T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-09</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-09/"><![CDATA[<h1 id="사용환경">사용환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020) 16GB</li>
-  <li>JDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>tomcat 8.5<br /><br /><br /></li>
-</ul>
-
-<h1 id="에러의-발생">에러의 발생</h1>
-
-<p><code class="language-plaintext highlighter-rouge">There is no getter for property named 'prod_num' in 'class java.lang.Integer'</code></p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">MyBatis</code> 매퍼에서 새로운 쿼리문을 만들고 컨트롤러단에서 단위 테스트를 진행했다. 그런데 암만 봐도 잘못 쓴 곳이 없는 거 같은데 자꾸 이런 에러가 나는 것이었다…<br /><br /><br /></li>
-</ul>
-
-<h1 id="문제-해결">문제 해결</h1>
-
-<p align="center"><img src="../../assets/images/mybatisError5.png" width="600" /></p>
-
-<ul>
-  <li>그래서 DB에 접근하는 부분마다 로그를 찍어 보았다.</li>
-  <li>
-    <p>그리고 발견한 문제는 <code class="language-plaintext highlighter-rouge">service.getInquiryCnt(prod_num)</code>와 연결되는 <code class="language-plaintext highlighter-rouge">mapper</code>의 쿼리문에서 변수명을 넣어주는 자리에 <code class="language-plaintext highlighter-rouge">${prod_num}</code> 이딴 식으로 쓴 것이었다… 후…….🥲</p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">#{prod_num}</code>으로 수정해 주니까 잘 해결 되었다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://velog.io/@jaewon95/%ED%95%B4%EA%B2%B0%EB%A9%94%EB%AA%A8-There-is-no-getter-for-property-named-bno-in-class-java.lang.Integer-%EC%98%A4%EB%A5%98">해결메모 There is no getter for property named ‘bno’ in ‘class java.lang.Integer’ 오류</a></li>
 </ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB JDK 8 Spring Tool Suite 4.14.0 tomcat 8.5]]></summary></entry></feed>
