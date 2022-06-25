@@ -15,7 +15,7 @@ tags:
 # CHAPTER 03. 데코레이터 패턴(Decorator Pattern)
 ## 1. 데코레이터 패턴
 
-<p align="center"><img src="decoratorPattern.png" width="500"></p>
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/decoratorPattern.png" width="500"></p>
 
 * 데코레이터 패턴은 위 그림과 같이 객체에 추가되는 요소를 하나씩 더해서 기존 객체를 감싸는 형태이다. 
 * 데코레이터 패턴을 사용하면 객체에 추가 요소를 동적으로 더할 수 있고 서브클래스를 만들 때보다 훨씬 유연하게 기능을 확장할 수 있다. 
@@ -217,7 +217,7 @@ public static void main(String[] args) {
 
 ### 주문 결과
 
-<p align="center"><img src="decoratorPattern2.png" width="500"></p>
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/decoratorPattern2.png" width="500"></p>
 
 * 주문한 대로 가격 계산이 잘 된다.
 * 코드의 유연성이 높아지긴 했으나 클래스가 정말 많이 생겼다.<br><br>
