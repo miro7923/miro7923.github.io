@@ -1,5 +1,5 @@
 ---
-title: 디자인패턴 6) 데코레이터 패턴
+title: 디자인패턴 6) 커맨드 패턴
 toc: true
 toc_sticky: true
 toc_label: 목차
@@ -8,7 +8,7 @@ categories:
     - Design Pattern
 tags:
     - DesignPattern
-    - DecoratorPattern
+    - CommandPattern
     - study
 ---
 
@@ -122,7 +122,7 @@ public class RemoteControlTest {
 }
 ```
 
-<p align="center"><img src="commandPattern1.png" width="500"></p>
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/commandPattern1.png" width="500"></p>
 
 * 테스트 코드를 실행하면 위와 같이 조명을 켜는 `on()` 메서드가 실행되는 것을 확인할 수 있다.
 
@@ -198,7 +198,7 @@ public class RemoteControlTest {
 }
 ```
 
-<p align="center"><img src="commandPattern2.png" width="500"></p>
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/commandPattern2.png" width="500"></p>
 
 * 리모컨에서는 '조명켜기'와 '차고 문 열기'와 같은 특정 인터페이스가 구현되어 있다면 그 커맨드 객체에서 실제로 어떤 일을 하는지 몰라도 해당 동작을 실행시킬 수 있다. <br><br>
 
