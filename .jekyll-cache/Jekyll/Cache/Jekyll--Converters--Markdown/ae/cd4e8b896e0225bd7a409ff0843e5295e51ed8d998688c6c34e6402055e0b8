@@ -1,0 +1,266 @@
+I"�V<h1 id="chapter-07-어댑터-패턴과-퍼사드-패턴adapter--facade-pattern">CHAPTER 07. 어댑터 패턴과 퍼사드 패턴(Adapter &amp; Facade Pattern)</h1>
+<h2 id="1-어댑터-패턴">1. 어댑터 패턴</h2>
+<ul>
+  <li>특정 클래스 인터페이스를 클라이언트에서 요구하는 다른 인터페이스로 변환한다. 인터페이스가 호환되지 않아 같이 쓸 수 없었던 클래스를 사용할 수 있게 도와준다.<br /><br /></li>
+</ul>
+
+<h2 id="2-어댑터-패턴을-사용하는-이유">2. 어댑터 패턴을 사용하는 이유</h2>
+<ul>
+  <li>호환되지 않는 인터페이스를 사용하는 클라이언트를 그대로 활용할 수 있다.</li>
+  <li>클라이언트와 구현된 인터페이스를 분리할 수 있다.</li>
+  <li>변경 내역이 어댑터에 캡슐화되기 때문에 나중에 인터페이스가 바뀌더라도 클라이언트를 바꿀 필요가 없다.<br /><br /></li>
+</ul>
+
+<h2 id="3-어댑터-패턴-흐름">3. 어댑터 패턴 흐름</h2>
+<ul>
+  <li>클라이언트는 타깃 인터페이스에 맞게 구현되어 있다.
+    <ul>
+      <li>클라이언트에서 타깃 인터페이스로 메소드를 호출해서 어댑터에 요청을 보낸다.</li>
+    </ul>
+  </li>
+  <li>어댑터는 타깃 인터페이스를 구현하며, 여기에는 어댑티(Adaptee) 인스턴스가 들어있다.
+    <ul>
+      <li>어댑터는 어댑티 인터페이스로 그 요청을 어댑티에 관한 (하나 이상의) 메소드 호출로 변환한다.</li>
+    </ul>
+  </li>
+  <li>클라이언트는 호출 결과를 받긴 하지만 중간에 어댑터가 있다는 사실을 모른다.<br /><br /></li>
+</ul>
+
+<h2 id="4-객체-어댑터와-클래스-어댑터">4. 객체 어댑터와 클래스 어댑터</h2>
+<ul>
+  <li>지금까지 배운 것은 객체 어댑터이고 다중 상속을 이용한 클래스 어댑터가 있다.</li>
+  <li>자바에서는 다중 상속을 지원하지 않기 때문에 클래스 어댑터의 구현이 가능하지 않다.</li>
+  <li>클래스 어댑터 구현 : 어댑터를 어댑티와 타깃 클래스의 서브클래스로 만든다. (어댑티 클래스랑 타깃 클래스 두 개를 상속받게 함)</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Client</span>
+<span class="p">{</span>
+    
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Target</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Client</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">request</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Adaptee</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">specificRequest</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Adapter</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Target</span><span class="p">,</span> <span class="n">Adaptee</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">request</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C++</code>로 구현한 클래스 어댑터<br /><br /></li>
+</ul>
+
+<h2 id="5-어댑터-패턴-구현-예제---iterator와-enumeration">5. 어댑터 패턴 구현 예제 - Iterator와 Enumeration</h2>
+<ul>
+  <li><a href="https://tiboy.tistory.com/481">[자바/java]Iterator 와 Enumeration 쉽게 이해하기 편.</a></li>
+</ul>
+
+<h3 id="5-1-enumeration을-iterator로-변환하는-어댑터-클래스">5-1. Enumeration을 Iterator로 변환하는 어댑터 클래스</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Enumeration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EnumerationIterator</span> <span class="kd">implements</span> <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nc">Enumeration</span><span class="o">&lt;?&gt;</span> <span class="n">enumeration</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">EnumerationIterator</span><span class="o">(</span><span class="nc">Enumeration</span><span class="o">&lt;?&gt;</span> <span class="n">enumeration</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">enumeration</span> <span class="o">=</span> <span class="n">enumeration</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">enumeration</span><span class="o">.</span><span class="na">hasMoreElements</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">next</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">enumeration</span><span class="o">.</span><span class="na">nextElement</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="5-2-iterator를-enumeration으로-변환하는-어댑터-클래스">5-2. Iterator를 Enumeration으로 변환하는 어댑터 클래스</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Enumeration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IteratorEnumeration</span> <span class="kd">implements</span> <span class="nc">Enumeration</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nc">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">iterator</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">IteratorEnumeration</span><span class="o">(</span><span class="nc">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">iterator</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">iterator</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasMoreElements</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">nextElement</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="5-3-테스트">5-3. 테스트</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+
+        <span class="nc">IteratorEnumeration</span> <span class="n">iten</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IteratorEnumeration</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iten</span><span class="o">.</span><span class="na">hasMoreElements</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iten</span><span class="o">.</span><span class="na">nextElement</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/adapterPattern1.png" width="500" /></p>
+<p><br /><br /></p>
+
+<h2 id="6-퍼사드-패턴facade-pattern">6. 퍼사드 패턴(Facade Pattern)</h2>
+<ul>
+  <li>서브시스템에 있는 일련의 인터페이스를 통합 인터페이스로 묶어 준다. 또한 고수준 인터페이스도 정의하므로 서브시스템을 더 편리하게 사용할 수 있다.</li>
+  <li>퍼사드 패턴을 사용하면 클라이언트와 서브시스템이 긴밀하게 연결되지 않아도 된다.</li>
+  <li>퍼사드 패턴을 사용하면 <strong>최소 지식 원칙</strong>을 지킬 수 있다.<br /><br /></li>
+</ul>
+
+<h2 id="7-퍼사드-패턴-구현-예제---홈시어터-만들기">7. 퍼사드 패턴 구현 예제 - 홈시어터 만들기</h2>
+<ul>
+  <li>홈시어터 퍼사드 만들기</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeTheaterFacade</span> <span class="o">{</span>
+    <span class="nc">Amplifier</span> <span class="n">amp</span><span class="o">;</span>
+    <span class="nc">Tuner</span> <span class="n">tuner</span><span class="o">;</span>
+    <span class="nc">StreamingPlayer</span> <span class="n">player</span><span class="o">;</span>
+    <span class="nc">Projector</span> <span class="n">projector</span><span class="o">;</span>
+    <span class="nc">TheaterLights</span> <span class="n">lights</span><span class="o">;</span>
+    <span class="nc">Screen</span> <span class="n">screen</span><span class="o">;</span>
+    <span class="nc">PopcornPopper</span> <span class="n">popper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">HomeTheaterFacade</span><span class="o">(</span><span class="nc">Amplifier</span> <span class="n">amp</span><span class="o">,</span>
+                             <span class="nc">Tuner</span> <span class="n">tuner</span><span class="o">,</span>
+                             <span class="nc">StreamingPlayer</span> <span class="n">player</span><span class="o">,</span>
+                             <span class="nc">Projector</span> <span class="n">projector</span><span class="o">,</span>
+                             <span class="nc">Screen</span> <span class="n">screen</span><span class="o">,</span>
+                             <span class="nc">TheaterLights</span> <span class="n">lights</span><span class="o">,</span>
+                             <span class="nc">PopcornPopper</span> <span class="n">popper</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">amp</span> <span class="o">=</span> <span class="n">amp</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">tuner</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">player</span> <span class="o">=</span> <span class="n">player</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">projector</span> <span class="o">=</span> <span class="n">projector</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">screen</span> <span class="o">=</span> <span class="n">screen</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lights</span> <span class="o">=</span> <span class="n">lights</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">popper</span> <span class="o">=</span> <span class="n">popper</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">watchMovie</span><span class="o">(</span><span class="nc">String</span> <span class="n">movie</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"영화 볼 준비 중"</span><span class="o">);</span>
+        <span class="n">popper</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">popper</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+        <span class="n">lights</span><span class="o">.</span><span class="na">dim</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">screen</span><span class="o">.</span><span class="na">down</span><span class="o">();</span>
+        <span class="n">projector</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">projector</span><span class="o">.</span><span class="na">wideScreenMode</span><span class="o">();</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">setStreamingPlayer</span><span class="o">(</span><span class="n">player</span><span class="o">);</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">setSurroundSound</span><span class="o">();</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">setVolume</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+        <span class="n">player</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="n">movie</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">endMovie</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"홈시어터 끄는 중"</span><span class="o">);</span>
+        <span class="n">popper</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+        <span class="n">lights</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">screen</span><span class="o">.</span><span class="na">up</span><span class="o">();</span>
+        <span class="n">projector</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+        <span class="n">player</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+        <span class="n">player</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>호출</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeTheaterTestDrive</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">HomeTheaterFacade</span> <span class="n">homeTheater</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HomeTheaterFacade</span><span class="o">(</span><span class="n">amp</span><span class="o">,</span> <span class="n">tuner</span><span class="o">,</span> <span class="n">player</span><span class="o">,</span> <span class="n">projector</span><span class="o">,</span> <span class="n">screen</span><span class="o">,</span> <span class="n">lights</span><span class="o">,</span> <span class="n">popper</span><span class="o">);</span>
+
+        <span class="n">homeTheater</span><span class="o">.</span><span class="na">watchMovie</span><span class="o">(</span><span class="s">"겨울왕국"</span><span class="o">);</span>
+        <span class="n">homeTheater</span><span class="o">.</span><span class="na">endMovie</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>동작에 필요한 메서드들을 복잡하게 하나씩 호출할 필요 없이 단순화 시킨 인터페이스 하나만 호출하면 된다.<br /><br /></li>
+</ul>
+
+<h2 id="8-최소-지식-원칙">8. 최소 지식 원칙</h2>
+<ul>
+  <li>디자인 원칙으로 <strong>진짜 절친에게만 이야기해야 한다</strong>는 원칙</li>
+  <li>여러 클래스가 얽혀 있어서 시스템의 한 부분을 변경했을 때 다른 부분까지 줄줄이 고쳐야 하는 상황을 미리 방지할 수 있다.</li>
+  <li><strong>최소 지식 원칙</strong>대로 하면 자바 표준 입출력인 <code class="language-plaintext highlighter-rouge">System.out.println()</code>과 같은 형태로 쓰면 안 되지만 워낙 보편적으로 사용하니까 그냥 씀</li>
+</ul>
+
+<h3 id="8-1-최소-지식-원칙을-잘-따른-예와-아닌-예">8-1. 최소 지식 원칙을 잘 따른 예와 아닌 예</h3>
+<ul>
+  <li>따르지 않은 예</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">float</span> <span class="nf">getTemp</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">Thermometer</span> <span class="n">therm</span> <span class="o">=</span> <span class="n">station</span><span class="o">.</span><span class="na">getThermometer</span><span class="o">();</span>
+    <span class="k">return</span> <span class="n">therm</span><span class="o">.</span><span class="na">getTemperature</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">station</code>으로부터 객체를 한 번 받은 다음에 그 객체의 메서드를 직접 호출하고 있다.</p>
+  </li>
+  <li>
+    <p>따른 예</p>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">float</span> <span class="nf">getTemp</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">station</span><span class="o">.</span><span class="na">getTemperature</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Thermometer</code>에게 요청을 전달하는 메서드를 <code class="language-plaintext highlighter-rouge">station</code> 클래스에 추가한 뒤 호출해서 의존해야 하는 클래스의 개수를 줄임
+<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li>헤드퍼스트 디자인패턴(2022 개정판)</li>
+</ul>
+:ET

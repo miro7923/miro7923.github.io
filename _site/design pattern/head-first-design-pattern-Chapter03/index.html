@@ -1,0 +1,923 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>디자인패턴 3) 데코레이터 패턴 | Yujin Dev Log</title>
+<meta name="description" content="CHAPTER 03. 데코레이터 패턴(Decorator Pattern) 1. 데코레이터 패턴">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="디자인패턴 3) 데코레이터 패턴">
+<meta property="og:url" content="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter03/">
+
+
+  <meta property="og:description" content="CHAPTER 03. 데코레이터 패턴(Decorator Pattern) 1. 데코레이터 패턴">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-06-07T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter03/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#design-pattern" itemprop="item"><span itemprop="name">Design pattern</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">디자인패턴 3) 데코레이터 패턴</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업에 능숙한 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Portfolio</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="디자인패턴 3) 데코레이터 패턴">
+    <meta itemprop="description" content="CHAPTER 03. 데코레이터 패턴(Decorator Pattern)1. 데코레이터 패턴">
+    <meta itemprop="datePublished" content="2022-06-07T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter03/" class="u-url" itemprop="url">디자인패턴 3) 데코레이터 패턴
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-07T00:00:00+09:00">June 7, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#chapter-03-데코레이터-패턴decorator-pattern">CHAPTER 03. 데코레이터 패턴(Decorator Pattern)</a><ul><li><a href="#1-데코레이터-패턴">1. 데코레이터 패턴</a></li><li><a href="#2-데코레이터-패턴을-사용하는-이유">2. 데코레이터 패턴을 사용하는 이유</a></li><li><a href="#3-데코레이터-패턴-설계-예제">3. 데코레이터 패턴 설계 예제</a><ul><li><a href="#3-1-커피-주문-시스템-코드-만들기">3-1. 커피 주문 시스템 코드 만들기</a></li><li><a href="#3-2-음료-코드-구현">3-2. 음료 코드 구현</a></li><li><a href="#3-3-첨가물-코드-구현">3-3. 첨가물 코드 구현</a></li><li><a href="#3-4-커피-주문-시스템-코드-테스트">3-4. 커피 주문 시스템 코드 테스트</a></li><li><a href="#주문-결과">주문 결과</a></li></ul></li><li><a href="#4-데코레이터-패턴이-적용-된-예-자바-io">4. 데코레이터 패턴이 적용 된 예: 자바 I/O</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="chapter-03-데코레이터-패턴decorator-pattern">CHAPTER 03. 데코레이터 패턴(Decorator Pattern)</h1>
+<h2 id="1-데코레이터-패턴">1. 데코레이터 패턴</h2>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/decoratorPattern.png" width="500" /></p>
+
+<ul>
+  <li>데코레이터 패턴은 위 그림과 같이 객체에 추가되는 요소를 하나씩 더해서 기존 객체를 감싸는 형태이다.</li>
+  <li>데코레이터 패턴을 사용하면 객체에 추가 요소를 동적으로 더할 수 있고 서브클래스를 만들 때보다 훨씬 유연하게 기능을 확장할 수 있다.</li>
+  <li>데코레이터의 형식은 그 데코레이더로 감싸는 객체의 형식과 같아야 하기 때문에 데코레이터를 만들 때엔 상속을 통해 구현한다. 하지만 동작은 새로운 데코레이터를 만들 때에 추가하고 부모로부터 상속받지 않는다. 그래서 데코레이터가 여러 개 생겨도 유연성을 잃지 않을 수 있다.</li>
+  <li>하지만 데코레이터 패턴을 사용해 디자인을 하다 보면 잡다한 클래스가 많아지는 단점이 있다.<br /><br /></li>
+</ul>
+
+<h2 id="2-데코레이터-패턴을-사용하는-이유">2. 데코레이터 패턴을 사용하는 이유</h2>
+<ul>
+  <li>클래스는 확장에는 열려 있어야 하지만 변경에는 닫혀 있어야 한다(OCP) 원칙을 지키기 위해서!<br /><br /></li>
+</ul>
+
+<h2 id="3-데코레이터-패턴-설계-예제">3. 데코레이터 패턴 설계 예제</h2>
+<h3 id="3-1-커피-주문-시스템-코드-만들기">3-1. 커피 주문 시스템 코드 만들기</h3>
+<ul>
+  <li>음료 추상 클래스 만들기</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Beverage</span> <span class="o">{</span>
+
+    <span class="nc">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="s">"제목 없음"</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">desc</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">();</span> <span class="c1">// 자식 클래스에서 구현</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>첨가물을 나타내는 추상 클래스(데코레이터 클래스) 만들기</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">CondimentDecorator</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">;</span> <span class="c1">// 각 데코레이터가 감쌀 음료 </span>
+    
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">();</span> <span class="c1">// 자식 클래스에서 구현</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="3-2-음료-코드-구현">3-2. 음료 코드 구현</h3>
+<ul>
+  <li>에스프레소 커피 클래스 만들기</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Espresso</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Espresso</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s">"에스프레소"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mf">1.99</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>하우스 블렌드 커피 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HouseBlend</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">HouseBlend</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s">"하우스 블렌드 커피"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 하우스 블렌드 가격 리턴</span>
+        <span class="k">return</span> <span class="o">.</span><span class="mi">89</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>다크로스트 커피 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DarkRoast</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">DarkRoast</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s">"다크 로스트 커피"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">.</span><span class="mi">99</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>디카페인 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Decaf</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Decaf</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s">"디카페인"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mf">1.05</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="3-3-첨가물-코드-구현">3-3. 첨가물 코드 구현</h3>
+<ul>
+  <li>모카 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Mocha</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Mocha</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 어떤 음료에 첨가될 것인지 정한다.</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 모카"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 감싼 음료의 가격에 첨가물 가격을 더한 값을 리턴 </span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">20</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>우유 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Milk</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Milk</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 우유"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">10</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>두유 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SoyMilk</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">SoyMilk</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 두유"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">15</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>휘핑크림 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Whip</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Whip</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 휘핑크림"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">10</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="3-4-커피-주문-시스템-코드-테스트">3-4. 커피 주문 시스템 코드 테스트</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Beverage</span> <span class="n">beverage1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Espresso</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">beverage1</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">" $"</span> <span class="o">+</span> <span class="n">beverage1</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
+
+    <span class="nc">Beverage</span> <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DarkRoast</span><span class="o">();</span>
+    <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mocha</span><span class="o">(</span><span class="n">beverage2</span><span class="o">);</span>
+    <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mocha</span><span class="o">(</span><span class="n">beverage2</span><span class="o">);</span>
+    <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Whip</span><span class="o">(</span><span class="n">beverage2</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">beverage2</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">" $"</span> <span class="o">+</span> <span class="n">beverage2</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
+
+    <span class="nc">Beverage</span> <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HouseBlend</span><span class="o">();</span>
+    <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SoyMilk</span><span class="o">(</span><span class="n">beverage3</span><span class="o">);</span>
+    <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mocha</span><span class="o">(</span><span class="n">beverage3</span><span class="o">);</span>
+    <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Whip</span><span class="o">(</span><span class="n">beverage3</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">beverage3</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">" $"</span> <span class="o">+</span> <span class="n">beverage3</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="주문-결과">주문 결과</h3>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/decoratorPattern2.png" width="500" /></p>
+
+<ul>
+  <li>주문한 대로 가격 계산이 잘 된다.</li>
+  <li>코드의 유연성이 높아지긴 했으나 클래스가 정말 많이 생겼다.<br /><br /></li>
+</ul>
+
+<h2 id="4-데코레이터-패턴이-적용-된-예-자바-io">4. 데코레이터 패턴이 적용 된 예: 자바 I/O</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">java.io</code> 패키지는 데코레이터 패턴이 적용된 대표적인 예이다. 자바를 배우면서 <code class="language-plaintext highlighter-rouge">I/O</code> 패키지를 왜 이런식으로 만들어놨나 싶었는데 데코레이터 패턴을 배우고 나니까 그렇게 구성된 이유를 알 것 같다.</li>
+  <li>아직 완벽히 이해한 것은 아니지만 설계 이유를 알고 나니까 다음 부터는 필요한 부분만 잘 골라 쓸 수 있을 거 같다.</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#decoratorpattern" class="page__taxonomy-item p-category" rel="tag">DecoratorPattern</a><span class="sep">, </span>
+    
+      <a href="/tags/#designpattern" class="page__taxonomy-item p-category" rel="tag">DesignPattern</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#design-pattern" class="page__taxonomy-item p-category" rel="tag">Design Pattern</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-06-07T00:00:00+09:00">June 7, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4+3%29+%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0+%ED%8C%A8%ED%84%B4%20http%3A%2F%2Flocalhost%3A4000%2Fdesign%2520pattern%2Fhead-first-design-pattern-Chapter03%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdesign%2520pattern%2Fhead-first-design-pattern-Chapter03%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdesign%2520pattern%2Fhead-first-design-pattern-Chapter03%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/design%20pattern/head-first-design-pattern-Chapter01/" class="pagination--pager" title="디자인패턴 1) 전략 패턴
+">이전</a>
+    
+    
+      <a href="/design%20pattern/head-first-design-pattern-Chapter06/" class="pagination--pager" title="디자인패턴 6) 커맨드 패턴
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/certificate/coupling-cohension/" rel="permalink">정보처리기사) 결합도와 응집도
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-03T00:00:00+09:00">July 3, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲
+
+
+결합도(Coupling)
+
+  결합도는 모듈과 모듈 사이의 관련성이 어느 정도인가를 나타내며, 관련성이 적을수록 모듈의 독립성이 높아 모듈 간 영향이 작아진다. 결합도는 자료 결합도가 제일 낮고, ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/design%20pattern/head-first-design-pattern-Chapter12/" rel="permalink">디자인패턴 12) 복합 패턴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-30T00:00:00+09:00">June 30, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CHAPTER 12. 복합 패턴(Composite Pattern)
+1. 복합 패턴
+
+  반복적으로 생길 수 있는 일반적인 문제를 해결하는 용도로 2개 이상의 패턴을 결합해서 사용하는 것
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/design%20pattern/head-first-design-pattern-Chapter10/" rel="permalink">디자인패턴 10) 상태 패턴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-29T00:00:00+09:00">June 29, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CHAPTER 10. 상태 패턴(State Pattern)
+1. 상태 패턴
+
+  객체의 내부 상태가 바뀜에 따라서 객체의 행동을 바꿀 수 있다. 마치 객체의 클래스가 바뀌는 것과 같은 결과를 얻을 수 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/design%20pattern/head-first-design-pattern-Chapter07/" rel="permalink">디자인패턴 7) 어댑터 패턴과 퍼사드 패턴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-25T00:00:00+09:00">June 25, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CHAPTER 07. 어댑터 패턴과 퍼사드 패턴(Adapter &amp; Facade Pattern)
+1. 어댑터 패턴
+
+  특정 클래스 인터페이스를 클라이언트에서 요구하는 다른 인터페이스로 변환한다. 인터페이스가 호환되지 않아 같이 쓸 수 없었던 클래스를 사용할 수 있게 도와준다.
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,555 @@
+I"��<h1 id="chapter-12-복합-패턴composite-pattern">CHAPTER 12. 복합 패턴(Composite Pattern)</h1>
+<h2 id="1-복합-패턴">1. 복합 패턴</h2>
+<ul>
+  <li>반복적으로 생길 수 있는 일반적인 문제를 해결하는 용도로 2개 이상의 패턴을 결합해서 사용하는 것</li>
+</ul>
+
+<h2 id="2-복합-패턴-구현-예제---오리-시뮬레이션-게임">2. 복합 패턴 구현 예제 - 오리 시뮬레이션 게임</h2>
+<h3 id="2-1-오리-구상-클래스-만들기">2-1. 오리 구상 클래스 만들기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Quackable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">();</span> <span class="c1">// 꽥꽥 소리 내는 메서드</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MallardDuck</span> <span class="kd">implements</span> <span class="nc">Quackable</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"꽥꽥"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DuckCall</span> <span class="kd">implements</span> <span class="nc">Quackable</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"꽉꽉"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>오리 소리를 내는 인터페이스와 그걸 구현한 오리 클래스들 생성</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DuckSimulator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">DuckSimulator</span> <span class="n">simulator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DuckSimulator</span><span class="o">();</span>
+        <span class="n">simulator</span><span class="o">.</span><span class="na">simulate</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Quackable</span> <span class="n">mallardDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MallardDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">redheadDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RedheadDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">duckCall</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DuckCall</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">rubberDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RubberDuck</span><span class="o">();</span> <span class="c1">// 아까 만든 오리들 생성</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n오리 시뮬레이션 게임"</span><span class="o">);</span>
+
+        <span class="n">simulate</span><span class="o">(</span><span class="n">mallardDuck</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">redheadDuck</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">duckCall</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">rubberDuck</span><span class="o">);</span>   <span class="c1">// 오리들 꽥꽥 확인</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">(</span><span class="nc">Quackable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>   <span class="c1">// 매개변수로 받은 오리의 꽥꽥 메서드 실행 </span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/compsitePattern1.png" width="300" /></p>
+
+<h3 id="2-2-어댑터-패턴-사용해서-거위-추가">2-2. 어댑터 패턴 사용해서 거위 추가</h3>
+
+<ul>
+  <li>거위 클래스 추가</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Goose</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">honk</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"끽끽"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>거위를 오리와 같이 쓸 수 있게 어댑터 추가 - 변환할 타깃 인터페이스를 구현해야 함</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GooseAdapter</span> <span class="kd">implements</span> <span class="nc">Quackable</span> <span class="o">{</span>
+    <span class="nc">Goose</span> <span class="n">goose</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">GooseAdapter</span><span class="o">(</span><span class="nc">Goose</span> <span class="n">goose</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">goose</span> <span class="o">=</span> <span class="n">goose</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">goose</span><span class="o">.</span><span class="na">honk</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>시뮬레이터에 거위도 추가해서 테스트</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DuckSimulator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">DuckSimulator</span> <span class="n">simulator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DuckSimulator</span><span class="o">();</span>
+        <span class="n">simulator</span><span class="o">.</span><span class="na">simulate</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Quackable</span> <span class="n">mallardDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MallardDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">redheadDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RedheadDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">duckCall</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DuckCall</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">rubberDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RubberDuck</span><span class="o">();</span> <span class="c1">// 아까 만든 오리들 생성</span>
+        <span class="nc">Quackable</span> <span class="n">goose</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GooseAdapter</span><span class="o">(</span><span class="k">new</span> <span class="nc">Goose</span><span class="o">());</span> <span class="c1">// 어댑터를 사용하면 오리로 감싼 거위 생성 가능</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n오리 시뮬레이션 게임"</span><span class="o">);</span>
+
+        <span class="n">simulate</span><span class="o">(</span><span class="n">mallardDuck</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">redheadDuck</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">duckCall</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">rubberDuck</span><span class="o">);</span>   <span class="c1">// 오리들 꽥꽥 확인</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">goose</span><span class="o">);</span>    <span class="c1">// 거위도 꽉꽉 가능 </span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">(</span><span class="nc">Quackable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/compsitePatter2.png" width="300" /></p>
+
+<h3 id="2-3-데코레이터-패턴-사용해서-오리가-소리-낸-횟수-세는-기능-추가">2-3. 데코레이터 패턴 사용해서 오리가 소리 낸 횟수 세는 기능 추가</h3>
+
+<ul>
+  <li>오리가 소리 내는 횟수를 세는 클래스를 데코레이터 클래스로 만듦</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">QuackCounter</span> <span class="kd">implements</span> <span class="nc">Quackable</span> <span class="o">{</span> <span class="c1">// 데코레이터 클래스</span>
+    <span class="nc">Quackable</span> <span class="n">duck</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">duckCnt</span><span class="o">;</span> <span class="c1">// 모든 객체에서 꽥꽥 소리를 낸 횟수를 세야 하기 때문에 static 변수 사용</span>
+
+    <span class="kd">public</span> <span class="nf">QuackCounter</span><span class="o">(</span><span class="nc">Quackable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">duck</span> <span class="o">=</span> <span class="n">duck</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+        <span class="n">duckCnt</span><span class="o">++;</span>  <span class="c1">// 꽥꽥 메서드가 호출되면 행동은 duck 객체로 위임하고 횟수 증가</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getDuckCnt</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">duckCnt</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>시뮬레이터 수정해서 한 번 더 테스트</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DuckSimulator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">DuckSimulator</span> <span class="n">simulator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DuckSimulator</span><span class="o">();</span>
+        <span class="n">simulator</span><span class="o">.</span><span class="na">simulate</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Quackable</span> <span class="n">mallardDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QuackCounter</span><span class="o">(</span><span class="k">new</span> <span class="nc">MallardDuck</span><span class="o">());</span>
+        <span class="nc">Quackable</span> <span class="n">redheadDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QuackCounter</span><span class="o">(</span><span class="k">new</span> <span class="nc">RedheadDuck</span><span class="o">());</span>
+        <span class="nc">Quackable</span> <span class="n">duckCall</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QuackCounter</span><span class="o">(</span><span class="k">new</span> <span class="nc">DuckCall</span><span class="o">());</span>
+        <span class="nc">Quackable</span> <span class="n">rubberDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QuackCounter</span><span class="o">(</span><span class="k">new</span> <span class="nc">RubberDuck</span><span class="o">());</span> <span class="c1">// Quackable을 데코레이터로 감싸 줌</span>
+        <span class="nc">Quackable</span> <span class="n">goose</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GooseAdapter</span><span class="o">(</span><span class="k">new</span> <span class="nc">Goose</span><span class="o">());</span> <span class="c1">// 어댑터를 사용하면 오리로 감싼 거위 생성 가능</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n오리 시뮬레이션 게임"</span><span class="o">);</span>
+
+        <span class="n">simulate</span><span class="o">(</span><span class="n">mallardDuck</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">redheadDuck</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">duckCall</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">rubberDuck</span><span class="o">);</span>   <span class="c1">// 오리들 꽥꽥 확인</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">goose</span><span class="o">);</span>    <span class="c1">// 거위도 꽉꽉 가능</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"오리가 소리 낸 횟수 : "</span> <span class="o">+</span> <span class="nc">QuackCounter</span><span class="o">.</span><span class="na">getDuckCnt</span><span class="o">()</span> <span class="o">+</span> <span class="s">" 번"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">(</span><span class="nc">Quackable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/compsitePatter3.png" width="300" /></p>
+
+<h3 id="2-4-추상-팩토리-패턴-사용해서-오리들을-캡슐화하기">2-4. 추상 팩토리 패턴 사용해서 오리들을 캡슐화하기</h3>
+
+<ul>
+  <li>오리를 생성할 추상 클래스 정의</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractDuckFactory</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">Quackable</span> <span class="nf">createMallardDuck</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">Quackable</span> <span class="nf">createRedheadDuck</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">Quackable</span> <span class="nf">createDuckCall</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">Quackable</span> <span class="nf">createRubberDuck</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">Quackable</span> <span class="nf">createGoose</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>추상 클래스를 상속한 오리 생성 팩토리 생성</li>
+  <li>각 오리들이 소리낸 횟수를 셀 수 있게 데코레이터 클래스로 감싼다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountingDuckFactory</span> <span class="kd">extends</span> <span class="nc">AbstractDuckFactory</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Quackable</span> <span class="nf">createMallardDuck</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">QuackCounter</span><span class="o">(</span><span class="k">new</span> <span class="nc">MallardDuck</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Quackable</span> <span class="nf">createRedheadDuck</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">QuackCounter</span><span class="o">(</span><span class="k">new</span> <span class="nc">RedheadDuck</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Quackable</span> <span class="nf">createDuckCall</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">QuackCounter</span><span class="o">(</span><span class="k">new</span> <span class="nc">DuckCall</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Quackable</span> <span class="nf">createRubberDuck</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">QuackCounter</span><span class="o">(</span><span class="k">new</span> <span class="nc">RubberDuck</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Quackable</span> <span class="nf">createGoose</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">GooseAdapter</span><span class="o">(</span><span class="k">new</span> <span class="nc">Goose</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>시뮬레이터 수정해서 테스트</li>
+  <li>이제 오리 팩토리를 사용해서 오리 객체를 만들 것이기 때문에 시뮬레이터에서 객체를 직접 생성하던 부분을 없애고 팩토리의 생성 메서드를 사용하는 것으로 바꾼다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DuckSimulator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">DuckSimulator</span> <span class="n">simulator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DuckSimulator</span><span class="o">();</span>
+        <span class="nc">AbstractDuckFactory</span> <span class="n">duckFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CountingDuckFactory</span><span class="o">();</span>
+
+        <span class="n">simulator</span><span class="o">.</span><span class="na">simulate</span><span class="o">(</span><span class="n">duckFactory</span><span class="o">);</span> <span class="c1">// 오리 팩토리를 사용할 수 있게 수정</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">(</span><span class="nc">AbstractDuckFactory</span> <span class="n">duckFactory</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Quackable</span> <span class="n">mallardDuck</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createMallardDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">redheadDuck</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createRedheadDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">duckCall</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createDuckCall</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">rubberDuck</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createRubberDuck</span><span class="o">();</span> 
+        <span class="nc">Quackable</span> <span class="n">goose</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createGoose</span><span class="o">();</span> <span class="c1">// 객체의 인스턴스를 팩토리에서 생성하도록 위임</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n오리 시뮬레이션 게임"</span><span class="o">);</span>
+
+        <span class="n">simulate</span><span class="o">(</span><span class="n">mallardDuck</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">redheadDuck</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">duckCall</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">rubberDuck</span><span class="o">);</span>   <span class="c1">// 오리들 꽥꽥 확인</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">goose</span><span class="o">);</span>    <span class="c1">// 거위도 꽉꽉 가능</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"오리가 소리 낸 횟수 : "</span> <span class="o">+</span> <span class="nc">QuackCounter</span><span class="o">.</span><span class="na">getDuckCnt</span><span class="o">()</span> <span class="o">+</span> <span class="s">" 번"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">(</span><span class="nc">Quackable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="2-5-컴포지트-패턴으로-오리-무리-만들기">2-5. 컴포지트 패턴으로 오리 무리 만들기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Flock</span> <span class="kd">implements</span> <span class="nc">Quackable</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Quackable</span><span class="o">&gt;</span> <span class="n">quackers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Quackable</span><span class="o">&gt;();</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="nc">Quackable</span> <span class="n">quacker</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">quackers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">quacker</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Quackable</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">quackers</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="c1">// 반복자 패턴 사용 </span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">Quackable</span> <span class="n">quacker</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">quacker</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>시뮬레이터 수정 후 테스트</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DuckSimulator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">DuckSimulator</span> <span class="n">simulator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DuckSimulator</span><span class="o">();</span>
+        <span class="nc">AbstractDuckFactory</span> <span class="n">duckFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CountingDuckFactory</span><span class="o">();</span>
+
+        <span class="n">simulator</span><span class="o">.</span><span class="na">simulate</span><span class="o">(</span><span class="n">duckFactory</span><span class="o">);</span> <span class="c1">// 오리 팩토리를 사용할 수 있게 수정</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">(</span><span class="nc">AbstractDuckFactory</span> <span class="n">duckFactory</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Quackable</span> <span class="n">redheadDuck</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createRedheadDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">duckCall</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createDuckCall</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">rubberDuck</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createRubberDuck</span><span class="o">();</span> <span class="c1">// 객체의 인스턴스를 팩토리에서 생성하도록 위임</span>
+        <span class="nc">Quackable</span> <span class="n">goose</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createGoose</span><span class="o">();</span> <span class="c1">// 어댑터를 사용하면 오리로 감싼 거위 생성 가능</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n오리 시뮬레이션 게임 : 무리 (+컴포지트)"</span><span class="o">);</span>
+
+        <span class="nc">Flock</span> <span class="n">flockOfDucks</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Flock</span><span class="o">();</span>
+
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">redheadDuck</span><span class="o">);</span>
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">duckCall</span><span class="o">);</span>
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">rubberDuck</span><span class="o">);</span>
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">goose</span><span class="o">);</span>    <span class="c1">// 오리 무리 생성</span>
+
+        <span class="nc">Flock</span> <span class="n">flockOfMallards</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Flock</span><span class="o">();</span>
+
+        <span class="nc">Quackable</span> <span class="n">mallardOne</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createMallardDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">mallardTwo</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createMallardDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">mallardThree</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createMallardDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">mallardFour</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createMallardDuck</span><span class="o">();</span>
+
+        <span class="n">flockOfMallards</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">mallardOne</span><span class="o">);</span>
+        <span class="n">flockOfMallards</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">mallardTwo</span><span class="o">);</span>
+        <span class="n">flockOfMallards</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">mallardThree</span><span class="o">);</span>
+        <span class="n">flockOfMallards</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">mallardFour</span><span class="o">);</span>   <span class="c1">// 물오리 무리 생성</span>
+
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">flockOfMallards</span><span class="o">);</span>  <span class="c1">// 물오리 무리를 오리 무리에 추가</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"오리 시뮬레이션 게임 : 전체 무리"</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">flockOfDucks</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"오리 시뮬레이션 게임 : 물오리 무리"</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">flockOfMallards</span><span class="o">);</span>
+
+        <span class="n">simulate</span><span class="o">(</span><span class="n">redheadDuck</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">duckCall</span><span class="o">);</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">rubberDuck</span><span class="o">);</span>   <span class="c1">// 오리들 꽥꽥 확인</span>
+        <span class="n">simulate</span><span class="o">(</span><span class="n">goose</span><span class="o">);</span>    <span class="c1">// 거위도 꽉꽉 가능</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"오리가 소리 낸 횟수 : "</span> <span class="o">+</span> <span class="nc">QuackCounter</span><span class="o">.</span><span class="na">getDuckCnt</span><span class="o">()</span> <span class="o">+</span> <span class="s">" 번"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">(</span><span class="nc">Quackable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/compsitePatter4.png" width="300" /></p>
+
+<h3 id="2-6-옵저버-패턴으로-개별-오리를-추적하는-기능-만들기">2-6. 옵저버 패턴으로 개별 오리를 추적하는 기능 만들기</h3>
+
+<ul>
+  <li>옵저버 인터페이스 정의</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">QuackObservable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">observer</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyObservers</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// 꽥꽥 인터페이스에서 옵저버 인터페이스 확장</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Quackable</span> <span class="kd">extends</span> <span class="nc">QuackObservable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">();</span> <span class="c1">// 꽥꽥 소리 내는 메서드</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>옵저버 보조 클래스 생성 - 옵저버를 등록하고 연락을 돌리는 기능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Observable</span> <span class="kd">implements</span> <span class="nc">QuackObservable</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Observer</span><span class="o">&gt;</span> <span class="n">observers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="nc">QuackObservable</span> <span class="n">duck</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Observable</span><span class="o">(</span><span class="nc">QuackObservable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">duck</span> <span class="o">=</span> <span class="n">duck</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">observer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">observers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">observer</span><span class="o">);</span>    <span class="c1">// 옵저버 등록</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyObservers</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Observer</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">observers</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">Observer</span> <span class="n">observer</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">observer</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">duck</span><span class="o">);</span>  <span class="c1">// 연락 돌림</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>옵저버 보조 객체와 꽥꽥 클래스 결합</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Observer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MallardDuck</span> <span class="kd">implements</span> <span class="nc">Quackable</span> <span class="o">{</span>
+    <span class="nc">Observable</span> <span class="n">observable</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">MallardDuck</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">observable</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Observable</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"꽥꽥"</span><span class="o">);</span>
+        <span class="n">notifyObservers</span><span class="o">();</span>  <span class="c1">// 꽥꽥 메서드가 호출되면 옵저버들에게 알려줌</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">observer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">observable</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">(</span><span class="n">observer</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyObservers</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">observable</span><span class="o">.</span><span class="na">notifyObservers</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>오리 소리 세는 클래스에도 옵저버 추가</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Observer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QuackCounter</span> <span class="kd">implements</span> <span class="nc">Quackable</span> <span class="o">{</span> <span class="c1">// 데코레이터 클래스</span>
+    <span class="nc">Quackable</span> <span class="n">duck</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">duckCnt</span><span class="o">;</span> <span class="c1">// 모든 객체에서 꽥꽥 소리를 낸 횟수를 세야 하기 때문에 static 변수 사용</span>
+
+    <span class="kd">public</span> <span class="nf">QuackCounter</span><span class="o">(</span><span class="nc">Quackable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">duck</span> <span class="o">=</span> <span class="n">duck</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+        <span class="n">duckCnt</span><span class="o">++;</span>  <span class="c1">// 꽥꽥 메서드가 호출되면 행동은 duck 객체로 위임하고 횟수 증가</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getDuckCnt</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">duckCnt</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">observer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">(</span><span class="n">observer</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyObservers</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">notifyObservers</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>옵저버 인터페이스와 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Observer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">QuackObservable</span> <span class="n">duck</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Quackologist</span> <span class="kd">implements</span> <span class="nc">Observer</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">QuackObservable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"꽥꽥학자 : "</span> <span class="o">+</span> <span class="n">duck</span> <span class="o">+</span> <span class="s">"가 소리냈다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>시뮬레이터 수정 후 테스트</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DuckSimulator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">DuckSimulator</span> <span class="n">simulator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DuckSimulator</span><span class="o">();</span>
+        <span class="nc">AbstractDuckFactory</span> <span class="n">duckFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CountingDuckFactory</span><span class="o">();</span>
+
+        <span class="n">simulator</span><span class="o">.</span><span class="na">simulate</span><span class="o">(</span><span class="n">duckFactory</span><span class="o">);</span> <span class="c1">// 오리 팩토리를 사용할 수 있게 수정</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">(</span><span class="nc">AbstractDuckFactory</span> <span class="n">duckFactory</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Quackable</span> <span class="n">redheadDuck</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createRedheadDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">duckCall</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createDuckCall</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">rubberDuck</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createRubberDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">gooseDuck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GooseAdapter</span><span class="o">(</span><span class="k">new</span> <span class="nc">Goose</span><span class="o">());</span>
+
+        <span class="nc">Flock</span> <span class="n">flockOfDucks</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Flock</span><span class="o">();</span>
+
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">redheadDuck</span><span class="o">);</span>
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">duckCall</span><span class="o">);</span>
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">rubberDuck</span><span class="o">);</span>
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">gooseDuck</span><span class="o">);</span>
+
+        <span class="nc">Flock</span> <span class="n">flockOfMallards</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Flock</span><span class="o">();</span>
+
+        <span class="nc">Quackable</span> <span class="n">mallardOne</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createMallardDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">mallardTwo</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createMallardDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">mallardThree</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createMallardDuck</span><span class="o">();</span>
+        <span class="nc">Quackable</span> <span class="n">mallardFour</span> <span class="o">=</span> <span class="n">duckFactory</span><span class="o">.</span><span class="na">createMallardDuck</span><span class="o">();</span>
+
+        <span class="n">flockOfMallards</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">mallardOne</span><span class="o">);</span>
+        <span class="n">flockOfMallards</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">mallardTwo</span><span class="o">);</span>
+        <span class="n">flockOfMallards</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">mallardThree</span><span class="o">);</span>
+        <span class="n">flockOfMallards</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">mallardFour</span><span class="o">);</span>
+
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">flockOfMallards</span><span class="o">);</span>  <span class="c1">// 물오리 무리를 오리 무리에 추가</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"오리 시뮬레이션 게임 (+옵저버)"</span><span class="o">);</span>
+
+        <span class="nc">Quackologist</span> <span class="n">quackologist</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Quackologist</span><span class="o">();</span>
+        <span class="n">flockOfDucks</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">(</span><span class="n">quackologist</span><span class="o">);</span>
+
+        <span class="n">simulate</span><span class="o">(</span><span class="n">flockOfDucks</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"오리가 소리 낸 횟수 : "</span> <span class="o">+</span> <span class="nc">QuackCounter</span><span class="o">.</span><span class="na">getDuckCnt</span><span class="o">()</span> <span class="o">+</span> <span class="s">" 번"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">simulate</span><span class="o">(</span><span class="nc">Quackable</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/compsitePatter5.png" width="300" /></p>
+<p><br /><br /><br /></p>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li>헤드퍼스트 디자인패턴(2022 개정판)</li>
+</ul>
+:ET

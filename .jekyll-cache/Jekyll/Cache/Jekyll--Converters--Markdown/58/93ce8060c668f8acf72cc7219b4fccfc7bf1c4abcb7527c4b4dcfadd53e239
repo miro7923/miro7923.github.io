@@ -1,0 +1,231 @@
+I"_J<h1 id="chapter-03-데코레이터-패턴decorator-pattern">CHAPTER 03. 데코레이터 패턴(Decorator Pattern)</h1>
+<h2 id="1-데코레이터-패턴">1. 데코레이터 패턴</h2>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/decoratorPattern.png" width="500" /></p>
+
+<ul>
+  <li>데코레이터 패턴은 위 그림과 같이 객체에 추가되는 요소를 하나씩 더해서 기존 객체를 감싸는 형태이다.</li>
+  <li>데코레이터 패턴을 사용하면 객체에 추가 요소를 동적으로 더할 수 있고 서브클래스를 만들 때보다 훨씬 유연하게 기능을 확장할 수 있다.</li>
+  <li>데코레이터의 형식은 그 데코레이더로 감싸는 객체의 형식과 같아야 하기 때문에 데코레이터를 만들 때엔 상속을 통해 구현한다. 하지만 동작은 새로운 데코레이터를 만들 때에 추가하고 부모로부터 상속받지 않는다. 그래서 데코레이터가 여러 개 생겨도 유연성을 잃지 않을 수 있다.</li>
+  <li>하지만 데코레이터 패턴을 사용해 디자인을 하다 보면 잡다한 클래스가 많아지는 단점이 있다.<br /><br /></li>
+</ul>
+
+<h2 id="2-데코레이터-패턴을-사용하는-이유">2. 데코레이터 패턴을 사용하는 이유</h2>
+<ul>
+  <li>클래스는 확장에는 열려 있어야 하지만 변경에는 닫혀 있어야 한다(OCP) 원칙을 지키기 위해서!<br /><br /></li>
+</ul>
+
+<h2 id="3-데코레이터-패턴-설계-예제">3. 데코레이터 패턴 설계 예제</h2>
+<h3 id="3-1-커피-주문-시스템-코드-만들기">3-1. 커피 주문 시스템 코드 만들기</h3>
+<ul>
+  <li>음료 추상 클래스 만들기</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Beverage</span> <span class="o">{</span>
+
+    <span class="nc">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="s">"제목 없음"</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">desc</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">();</span> <span class="c1">// 자식 클래스에서 구현</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>첨가물을 나타내는 추상 클래스(데코레이터 클래스) 만들기</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">CondimentDecorator</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">;</span> <span class="c1">// 각 데코레이터가 감쌀 음료 </span>
+    
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">();</span> <span class="c1">// 자식 클래스에서 구현</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="3-2-음료-코드-구현">3-2. 음료 코드 구현</h3>
+<ul>
+  <li>에스프레소 커피 클래스 만들기</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Espresso</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Espresso</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s">"에스프레소"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mf">1.99</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>하우스 블렌드 커피 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HouseBlend</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">HouseBlend</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s">"하우스 블렌드 커피"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 하우스 블렌드 가격 리턴</span>
+        <span class="k">return</span> <span class="o">.</span><span class="mi">89</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>다크로스트 커피 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DarkRoast</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">DarkRoast</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s">"다크 로스트 커피"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">.</span><span class="mi">99</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>디카페인 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Decaf</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Decaf</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s">"디카페인"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mf">1.05</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="3-3-첨가물-코드-구현">3-3. 첨가물 코드 구현</h3>
+<ul>
+  <li>모카 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Mocha</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Mocha</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 어떤 음료에 첨가될 것인지 정한다.</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 모카"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 감싼 음료의 가격에 첨가물 가격을 더한 값을 리턴 </span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">20</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>우유 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Milk</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Milk</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 우유"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">10</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>두유 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SoyMilk</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">SoyMilk</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 두유"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">15</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>휘핑크림 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Whip</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Whip</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 휘핑크림"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">10</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="3-4-커피-주문-시스템-코드-테스트">3-4. 커피 주문 시스템 코드 테스트</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Beverage</span> <span class="n">beverage1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Espresso</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">beverage1</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">" $"</span> <span class="o">+</span> <span class="n">beverage1</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
+
+    <span class="nc">Beverage</span> <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DarkRoast</span><span class="o">();</span>
+    <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mocha</span><span class="o">(</span><span class="n">beverage2</span><span class="o">);</span>
+    <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mocha</span><span class="o">(</span><span class="n">beverage2</span><span class="o">);</span>
+    <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Whip</span><span class="o">(</span><span class="n">beverage2</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">beverage2</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">" $"</span> <span class="o">+</span> <span class="n">beverage2</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
+
+    <span class="nc">Beverage</span> <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HouseBlend</span><span class="o">();</span>
+    <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SoyMilk</span><span class="o">(</span><span class="n">beverage3</span><span class="o">);</span>
+    <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mocha</span><span class="o">(</span><span class="n">beverage3</span><span class="o">);</span>
+    <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Whip</span><span class="o">(</span><span class="n">beverage3</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">beverage3</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">" $"</span> <span class="o">+</span> <span class="n">beverage3</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="주문-결과">주문 결과</h3>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/decoratorPattern2.png" width="500" /></p>
+
+<ul>
+  <li>주문한 대로 가격 계산이 잘 된다.</li>
+  <li>코드의 유연성이 높아지긴 했으나 클래스가 정말 많이 생겼다.<br /><br /></li>
+</ul>
+
+<h2 id="4-데코레이터-패턴이-적용-된-예-자바-io">4. 데코레이터 패턴이 적용 된 예: 자바 I/O</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">java.io</code> 패키지는 데코레이터 패턴이 적용된 대표적인 예이다. 자바를 배우면서 <code class="language-plaintext highlighter-rouge">I/O</code> 패키지를 왜 이런식으로 만들어놨나 싶었는데 데코레이터 패턴을 배우고 나니까 그렇게 구성된 이유를 알 것 같다.</li>
+  <li>아직 완벽히 이해한 것은 아니지만 설계 이유를 알고 나니까 다음 부터는 필요한 부분만 잘 골라 쓸 수 있을 거 같다.</li>
+</ul>
+:ET

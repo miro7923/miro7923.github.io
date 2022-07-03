@@ -1,0 +1,84 @@
+I"�<ul>
+  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲</li>
+</ul>
+
+<h1 id="결합도coupling">결합도(Coupling)</h1>
+<ul>
+  <li>결합도는 모듈과 모듈 사이의 관련성이 어느 정도인가를 나타내며, 관련성이 적을수록 모듈의 독립성이 높아 모듈 간 영향이 작아진다. 결합도는 자료 결합도가 제일 낮고, 내용 결합도로 갈수록 강해진다.</li>
+  <li>품질 측면에서 가장 높은 품질은 자료 결합도이며, 내용 결합도의 품질이 가장 낮다!</li>
+</ul>
+
+<h2 id="자료-결합도-data-coupling">자료 결합도 (Data Coupling)</h2>
+<ul>
+  <li>모듈 간의 인터페이스로 전달되는 파라미터를 통해서만 모듈 상호 작용이 일어난다.</li>
+</ul>
+
+<h2 id="스탬프-결합도-stamp-coupling">스탬프 결합도 (Stamp Coupling)</h2>
+<ul>
+  <li>모듈 간의 인터페이스로 배열이나 오브젝트, 스트럭처 등이 전달되는 경우</li>
+</ul>
+
+<h2 id="제어-결합도-control-coupling">제어 결합도 (Control Coupling)</h2>
+<ul>
+  <li>단순 처리할 대상인 값만 전달하는 것이 아니라 어떻게 처리해야 한다는 제어요소가 전달되는 경우</li>
+</ul>
+
+<h2 id="외부-결합도-external-coupling">외부 결합도 (External Coupling)</h2>
+<ul>
+  <li>모듈에서 외부로 선언한 데이터(변수)를 다른 모듈에서 참조할 때의 경우로 외부에서 도입된 데이터 포맷, 통신 프로토콜, 또는 디바이스 인터페이스를 공유할 때 주로 발생한다.</li>
+</ul>
+
+<h2 id="공통-결합도-common-coupling">공통 결합도 (Common Coupling)</h2>
+<ul>
+  <li>파라미터가 아닌 모듈 밖에 선언되어 있는 전역변수를 참조하고 전역변수를 갱신하는 식으로 상호 작용하는 경우</li>
+</ul>
+
+<h2 id="내용-결합도-content-coupling">내용 결합도 (Content Coupling)</h2>
+<ul>
+  <li>다른 모듈 내부에 있는 변수나 기능을 또 다른 모듈에서 사용하는 경우<br /><br /></li>
+</ul>
+
+<h1 id="응집도cohension">응집도(Cohension)</h1>
+<ul>
+  <li>응집도는 모듈 내부의 구성유소 간 관계의 밀접 정도로 평가되며, 응집도가 높을수록 필요한 요소들로 구성되고 낮을수록 요소들 간의 관련성이 적은 요소들로 구성된다.</li>
+  <li>품질 측면에서 가장 낮은 품질은 우연적 응집도이며, 기능적 응집도의 품질이 가장 높다.</li>
+</ul>
+
+<h2 id="기능적-응집도-functional-cohension">기능적 응집도 (Functional Cohension)</h2>
+<ul>
+  <li>모듈 내부의 모든 기능이 단일한 목적을 위해 수행된다.</li>
+</ul>
+
+<h2 id="순차적-응집도-sequential-cohension">순차적 응집도 (Sequential Cohension)</h2>
+<ul>
+  <li>모듈 내에서 한 활동으로부터 나온 출력값을 다른 활동이 사용하는 경우</li>
+</ul>
+
+<h2 id="통신적-응집도-communication-cohension">통신적 응집도 (Communication Cohension)</h2>
+<ul>
+  <li>동일한 입력과 출력을 사용하여 다른 기능을 수행하는 활동들이 모여 있을 경우</li>
+</ul>
+
+<h2 id="절차적-응집도-procedural-cohension">절차적 응집도 (Procedural Cohension)</h2>
+<ul>
+  <li>모듈이 다수의 관련 기능을 가질 때, 모듈 안의 구성 요소들이 그 기능을 순차적으로 수행하는 경우</li>
+</ul>
+
+<h2 id="시간적-응집도-temporal-cohension">시간적 응집도 (Temporal Cohension)</h2>
+<ul>
+  <li>연관된 기능이라기보다는 특정 시간에 처리되어야 하는 활동들을 한 모듈에서 처리하는 경우</li>
+</ul>
+
+<h2 id="논리적-응집도-logical-cohension">논리적 응집도 (Logical Cohension)</h2>
+<ul>
+  <li>유사한 성격을 갖거나 특정 형태로 분류되는 처리 요소들이 한 모듈에서 처리되는 경우</li>
+</ul>
+
+<h2 id="우연적-응집도-coincidential-cohension">우연적 응집도 (Coincidential Cohension)</h2>
+<ul>
+  <li>모듈 내부의 각 구성 요소들이 연관이 없는 경우<br /><br /></li>
+</ul>
+
+<h3 id="응집도는-우-논-시-절-통-순-기">응집도는 우-논-시-절-통-순-기</h3>
+<h3 id="결합도는-자-스-제-외-공-내">결합도는 자-스-제-외-공-내</h3>
+:ET

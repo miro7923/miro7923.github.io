@@ -1,0 +1,959 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>디자인패턴 7) 어댑터 패턴과 퍼사드 패턴 | Yujin Dev Log</title>
+<meta name="description" content="CHAPTER 07. 어댑터 패턴과 퍼사드 패턴(Adapter &amp; Facade Pattern) 1. 어댑터 패턴    특정 클래스 인터페이스를 클라이언트에서 요구하는 다른 인터페이스로 변환한다. 인터페이스가 호환되지 않아 같이 쓸 수 없었던 클래스를 사용할 수 있게 도와준다.">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="디자인패턴 7) 어댑터 패턴과 퍼사드 패턴">
+<meta property="og:url" content="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter07/">
+
+
+  <meta property="og:description" content="CHAPTER 07. 어댑터 패턴과 퍼사드 패턴(Adapter &amp; Facade Pattern) 1. 어댑터 패턴    특정 클래스 인터페이스를 클라이언트에서 요구하는 다른 인터페이스로 변환한다. 인터페이스가 호환되지 않아 같이 쓸 수 없었던 클래스를 사용할 수 있게 도와준다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-06-25T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter07/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#design-pattern" itemprop="item"><span itemprop="name">Design pattern</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">디자인패턴 7) 어댑터 패턴과 퍼사드 패턴</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업에 능숙한 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Portfolio</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="디자인패턴 7) 어댑터 패턴과 퍼사드 패턴">
+    <meta itemprop="description" content="CHAPTER 07. 어댑터 패턴과 퍼사드 패턴(Adapter &amp; Facade Pattern)1. 어댑터 패턴  특정 클래스 인터페이스를 클라이언트에서 요구하는 다른 인터페이스로 변환한다. 인터페이스가 호환되지 않아 같이 쓸 수 없었던 클래스를 사용할 수 있게 도와준다.">
+    <meta itemprop="datePublished" content="2022-06-25T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter07/" class="u-url" itemprop="url">디자인패턴 7) 어댑터 패턴과 퍼사드 패턴
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-25T00:00:00+09:00">June 25, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#chapter-07-어댑터-패턴과-퍼사드-패턴adapter--facade-pattern">CHAPTER 07. 어댑터 패턴과 퍼사드 패턴(Adapter &amp; Facade Pattern)</a><ul><li><a href="#1-어댑터-패턴">1. 어댑터 패턴</a></li><li><a href="#2-어댑터-패턴을-사용하는-이유">2. 어댑터 패턴을 사용하는 이유</a></li><li><a href="#3-어댑터-패턴-흐름">3. 어댑터 패턴 흐름</a></li><li><a href="#4-객체-어댑터와-클래스-어댑터">4. 객체 어댑터와 클래스 어댑터</a></li><li><a href="#5-어댑터-패턴-구현-예제---iterator와-enumeration">5. 어댑터 패턴 구현 예제 - Iterator와 Enumeration</a><ul><li><a href="#5-1-enumeration을-iterator로-변환하는-어댑터-클래스">5-1. Enumeration을 Iterator로 변환하는 어댑터 클래스</a></li><li><a href="#5-2-iterator를-enumeration으로-변환하는-어댑터-클래스">5-2. Iterator를 Enumeration으로 변환하는 어댑터 클래스</a></li><li><a href="#5-3-테스트">5-3. 테스트</a></li></ul></li><li><a href="#6-퍼사드-패턴facade-pattern">6. 퍼사드 패턴(Facade Pattern)</a></li><li><a href="#7-퍼사드-패턴-구현-예제---홈시어터-만들기">7. 퍼사드 패턴 구현 예제 - 홈시어터 만들기</a></li><li><a href="#8-최소-지식-원칙">8. 최소 지식 원칙</a><ul><li><a href="#8-1-최소-지식-원칙을-잘-따른-예와-아닌-예">8-1. 최소 지식 원칙을 잘 따른 예와 아닌 예</a></li></ul></li></ul></li><li><a href="#참고">참고</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="chapter-07-어댑터-패턴과-퍼사드-패턴adapter--facade-pattern">CHAPTER 07. 어댑터 패턴과 퍼사드 패턴(Adapter &amp; Facade Pattern)</h1>
+<h2 id="1-어댑터-패턴">1. 어댑터 패턴</h2>
+<ul>
+  <li>특정 클래스 인터페이스를 클라이언트에서 요구하는 다른 인터페이스로 변환한다. 인터페이스가 호환되지 않아 같이 쓸 수 없었던 클래스를 사용할 수 있게 도와준다.<br /><br /></li>
+</ul>
+
+<h2 id="2-어댑터-패턴을-사용하는-이유">2. 어댑터 패턴을 사용하는 이유</h2>
+<ul>
+  <li>호환되지 않는 인터페이스를 사용하는 클라이언트를 그대로 활용할 수 있다.</li>
+  <li>클라이언트와 구현된 인터페이스를 분리할 수 있다.</li>
+  <li>변경 내역이 어댑터에 캡슐화되기 때문에 나중에 인터페이스가 바뀌더라도 클라이언트를 바꿀 필요가 없다.<br /><br /></li>
+</ul>
+
+<h2 id="3-어댑터-패턴-흐름">3. 어댑터 패턴 흐름</h2>
+<ul>
+  <li>클라이언트는 타깃 인터페이스에 맞게 구현되어 있다.
+    <ul>
+      <li>클라이언트에서 타깃 인터페이스로 메소드를 호출해서 어댑터에 요청을 보낸다.</li>
+    </ul>
+  </li>
+  <li>어댑터는 타깃 인터페이스를 구현하며, 여기에는 어댑티(Adaptee) 인스턴스가 들어있다.
+    <ul>
+      <li>어댑터는 어댑티 인터페이스로 그 요청을 어댑티에 관한 (하나 이상의) 메소드 호출로 변환한다.</li>
+    </ul>
+  </li>
+  <li>클라이언트는 호출 결과를 받긴 하지만 중간에 어댑터가 있다는 사실을 모른다.<br /><br /></li>
+</ul>
+
+<h2 id="4-객체-어댑터와-클래스-어댑터">4. 객체 어댑터와 클래스 어댑터</h2>
+<ul>
+  <li>지금까지 배운 것은 객체 어댑터이고 다중 상속을 이용한 클래스 어댑터가 있다.</li>
+  <li>자바에서는 다중 상속을 지원하지 않기 때문에 클래스 어댑터의 구현이 가능하지 않다.</li>
+  <li>클래스 어댑터 구현 : 어댑터를 어댑티와 타깃 클래스의 서브클래스로 만든다. (어댑티 클래스랑 타깃 클래스 두 개를 상속받게 함)</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Client</span>
+<span class="p">{</span>
+    
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Target</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Client</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">request</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Adaptee</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">specificRequest</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Adapter</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Target</span><span class="p">,</span> <span class="n">Adaptee</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">request</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C++</code>로 구현한 클래스 어댑터<br /><br /></li>
+</ul>
+
+<h2 id="5-어댑터-패턴-구현-예제---iterator와-enumeration">5. 어댑터 패턴 구현 예제 - Iterator와 Enumeration</h2>
+<ul>
+  <li><a href="https://tiboy.tistory.com/481">[자바/java]Iterator 와 Enumeration 쉽게 이해하기 편.</a></li>
+</ul>
+
+<h3 id="5-1-enumeration을-iterator로-변환하는-어댑터-클래스">5-1. Enumeration을 Iterator로 변환하는 어댑터 클래스</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Enumeration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EnumerationIterator</span> <span class="kd">implements</span> <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nc">Enumeration</span><span class="o">&lt;?&gt;</span> <span class="n">enumeration</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">EnumerationIterator</span><span class="o">(</span><span class="nc">Enumeration</span><span class="o">&lt;?&gt;</span> <span class="n">enumeration</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">enumeration</span> <span class="o">=</span> <span class="n">enumeration</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">enumeration</span><span class="o">.</span><span class="na">hasMoreElements</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">next</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">enumeration</span><span class="o">.</span><span class="na">nextElement</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="5-2-iterator를-enumeration으로-변환하는-어댑터-클래스">5-2. Iterator를 Enumeration으로 변환하는 어댑터 클래스</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Enumeration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IteratorEnumeration</span> <span class="kd">implements</span> <span class="nc">Enumeration</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nc">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">iterator</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">IteratorEnumeration</span><span class="o">(</span><span class="nc">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">iterator</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">iterator</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasMoreElements</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">nextElement</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="5-3-테스트">5-3. 테스트</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+
+        <span class="nc">IteratorEnumeration</span> <span class="n">iten</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IteratorEnumeration</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iten</span><span class="o">.</span><span class="na">hasMoreElements</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iten</span><span class="o">.</span><span class="na">nextElement</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/adapterPattern1.png" width="500" /></p>
+<p><br /><br /></p>
+
+<h2 id="6-퍼사드-패턴facade-pattern">6. 퍼사드 패턴(Facade Pattern)</h2>
+<ul>
+  <li>서브시스템에 있는 일련의 인터페이스를 통합 인터페이스로 묶어 준다. 또한 고수준 인터페이스도 정의하므로 서브시스템을 더 편리하게 사용할 수 있다.</li>
+  <li>퍼사드 패턴을 사용하면 클라이언트와 서브시스템이 긴밀하게 연결되지 않아도 된다.</li>
+  <li>퍼사드 패턴을 사용하면 <strong>최소 지식 원칙</strong>을 지킬 수 있다.<br /><br /></li>
+</ul>
+
+<h2 id="7-퍼사드-패턴-구현-예제---홈시어터-만들기">7. 퍼사드 패턴 구현 예제 - 홈시어터 만들기</h2>
+<ul>
+  <li>홈시어터 퍼사드 만들기</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeTheaterFacade</span> <span class="o">{</span>
+    <span class="nc">Amplifier</span> <span class="n">amp</span><span class="o">;</span>
+    <span class="nc">Tuner</span> <span class="n">tuner</span><span class="o">;</span>
+    <span class="nc">StreamingPlayer</span> <span class="n">player</span><span class="o">;</span>
+    <span class="nc">Projector</span> <span class="n">projector</span><span class="o">;</span>
+    <span class="nc">TheaterLights</span> <span class="n">lights</span><span class="o">;</span>
+    <span class="nc">Screen</span> <span class="n">screen</span><span class="o">;</span>
+    <span class="nc">PopcornPopper</span> <span class="n">popper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">HomeTheaterFacade</span><span class="o">(</span><span class="nc">Amplifier</span> <span class="n">amp</span><span class="o">,</span>
+                             <span class="nc">Tuner</span> <span class="n">tuner</span><span class="o">,</span>
+                             <span class="nc">StreamingPlayer</span> <span class="n">player</span><span class="o">,</span>
+                             <span class="nc">Projector</span> <span class="n">projector</span><span class="o">,</span>
+                             <span class="nc">Screen</span> <span class="n">screen</span><span class="o">,</span>
+                             <span class="nc">TheaterLights</span> <span class="n">lights</span><span class="o">,</span>
+                             <span class="nc">PopcornPopper</span> <span class="n">popper</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">amp</span> <span class="o">=</span> <span class="n">amp</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">tuner</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">player</span> <span class="o">=</span> <span class="n">player</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">projector</span> <span class="o">=</span> <span class="n">projector</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">screen</span> <span class="o">=</span> <span class="n">screen</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lights</span> <span class="o">=</span> <span class="n">lights</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">popper</span> <span class="o">=</span> <span class="n">popper</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">watchMovie</span><span class="o">(</span><span class="nc">String</span> <span class="n">movie</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"영화 볼 준비 중"</span><span class="o">);</span>
+        <span class="n">popper</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">popper</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+        <span class="n">lights</span><span class="o">.</span><span class="na">dim</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">screen</span><span class="o">.</span><span class="na">down</span><span class="o">();</span>
+        <span class="n">projector</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">projector</span><span class="o">.</span><span class="na">wideScreenMode</span><span class="o">();</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">setStreamingPlayer</span><span class="o">(</span><span class="n">player</span><span class="o">);</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">setSurroundSound</span><span class="o">();</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">setVolume</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+        <span class="n">player</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="n">movie</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">endMovie</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"홈시어터 끄는 중"</span><span class="o">);</span>
+        <span class="n">popper</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+        <span class="n">lights</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">screen</span><span class="o">.</span><span class="na">up</span><span class="o">();</span>
+        <span class="n">projector</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+        <span class="n">amp</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+        <span class="n">player</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+        <span class="n">player</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>호출</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeTheaterTestDrive</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">HomeTheaterFacade</span> <span class="n">homeTheater</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HomeTheaterFacade</span><span class="o">(</span><span class="n">amp</span><span class="o">,</span> <span class="n">tuner</span><span class="o">,</span> <span class="n">player</span><span class="o">,</span> <span class="n">projector</span><span class="o">,</span> <span class="n">screen</span><span class="o">,</span> <span class="n">lights</span><span class="o">,</span> <span class="n">popper</span><span class="o">);</span>
+
+        <span class="n">homeTheater</span><span class="o">.</span><span class="na">watchMovie</span><span class="o">(</span><span class="s">"겨울왕국"</span><span class="o">);</span>
+        <span class="n">homeTheater</span><span class="o">.</span><span class="na">endMovie</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>동작에 필요한 메서드들을 복잡하게 하나씩 호출할 필요 없이 단순화 시킨 인터페이스 하나만 호출하면 된다.<br /><br /></li>
+</ul>
+
+<h2 id="8-최소-지식-원칙">8. 최소 지식 원칙</h2>
+<ul>
+  <li>디자인 원칙으로 <strong>진짜 절친에게만 이야기해야 한다</strong>는 원칙</li>
+  <li>여러 클래스가 얽혀 있어서 시스템의 한 부분을 변경했을 때 다른 부분까지 줄줄이 고쳐야 하는 상황을 미리 방지할 수 있다.</li>
+  <li><strong>최소 지식 원칙</strong>대로 하면 자바 표준 입출력인 <code class="language-plaintext highlighter-rouge">System.out.println()</code>과 같은 형태로 쓰면 안 되지만 워낙 보편적으로 사용하니까 그냥 씀</li>
+</ul>
+
+<h3 id="8-1-최소-지식-원칙을-잘-따른-예와-아닌-예">8-1. 최소 지식 원칙을 잘 따른 예와 아닌 예</h3>
+<ul>
+  <li>따르지 않은 예</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">float</span> <span class="nf">getTemp</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">Thermometer</span> <span class="n">therm</span> <span class="o">=</span> <span class="n">station</span><span class="o">.</span><span class="na">getThermometer</span><span class="o">();</span>
+    <span class="k">return</span> <span class="n">therm</span><span class="o">.</span><span class="na">getTemperature</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">station</code>으로부터 객체를 한 번 받은 다음에 그 객체의 메서드를 직접 호출하고 있다.</p>
+  </li>
+  <li>
+    <p>따른 예</p>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">float</span> <span class="nf">getTemp</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">station</span><span class="o">.</span><span class="na">getTemperature</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Thermometer</code>에게 요청을 전달하는 메서드를 <code class="language-plaintext highlighter-rouge">station</code> 클래스에 추가한 뒤 호출해서 의존해야 하는 클래스의 개수를 줄임
+<br /><br /><br /></li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li>헤드퍼스트 디자인패턴(2022 개정판)</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#adapterpattern" class="page__taxonomy-item p-category" rel="tag">AdapterPattern</a><span class="sep">, </span>
+    
+      <a href="/tags/#designpattern" class="page__taxonomy-item p-category" rel="tag">DesignPattern</a><span class="sep">, </span>
+    
+      <a href="/tags/#facadepattern" class="page__taxonomy-item p-category" rel="tag">FacadePattern</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#design-pattern" class="page__taxonomy-item p-category" rel="tag">Design Pattern</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-06-25T00:00:00+09:00">June 25, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4+7%29+%EC%96%B4%EB%8C%91%ED%84%B0+%ED%8C%A8%ED%84%B4%EA%B3%BC+%ED%8D%BC%EC%82%AC%EB%93%9C+%ED%8C%A8%ED%84%B4%20http%3A%2F%2Flocalhost%3A4000%2Fdesign%2520pattern%2Fhead-first-design-pattern-Chapter07%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdesign%2520pattern%2Fhead-first-design-pattern-Chapter07%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdesign%2520pattern%2Fhead-first-design-pattern-Chapter07%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/design%20pattern/head-first-design-pattern-Chapter06/" class="pagination--pager" title="디자인패턴 6) 커맨드 패턴
+">이전</a>
+    
+    
+      <a href="/design%20pattern/head-first-design-pattern-Chapter10/" class="pagination--pager" title="디자인패턴 10) 상태 패턴
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/certificate/coupling-cohension/" rel="permalink">정보처리기사) 결합도와 응집도
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-03T00:00:00+09:00">July 3, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲
+
+
+결합도(Coupling)
+
+  결합도는 모듈과 모듈 사이의 관련성이 어느 정도인가를 나타내며, 관련성이 적을수록 모듈의 독립성이 높아 모듈 간 영향이 작아진다. 결합도는 자료 결합도가 제일 낮고, ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/design%20pattern/head-first-design-pattern-Chapter12/" rel="permalink">디자인패턴 12) 복합 패턴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-30T00:00:00+09:00">June 30, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CHAPTER 12. 복합 패턴(Composite Pattern)
+1. 복합 패턴
+
+  반복적으로 생길 수 있는 일반적인 문제를 해결하는 용도로 2개 이상의 패턴을 결합해서 사용하는 것
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/design%20pattern/head-first-design-pattern-Chapter10/" rel="permalink">디자인패턴 10) 상태 패턴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-29T00:00:00+09:00">June 29, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CHAPTER 10. 상태 패턴(State Pattern)
+1. 상태 패턴
+
+  객체의 내부 상태가 바뀜에 따라서 객체의 행동을 바꿀 수 있다. 마치 객체의 클래스가 바뀌는 것과 같은 결과를 얻을 수 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/design%20pattern/head-first-design-pattern-Chapter06/" rel="permalink">디자인패턴 6) 커맨드 패턴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-20T00:00:00+09:00">June 20, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CHAPTER 06. 커맨드 패턴(Command Pattern)
+1. 커맨드 패턴
+
+  커맨드 패턴은 어떤 것을 요청하는 객체와 그 요청을 받아들이고 처리하는 객체를 분리하는 객체지향 디자인 패턴의 한 모델이다.
+  커맨드 패턴을 사용하면 요청 내역을 객체로 캡슐화해서 객체를 서로...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
