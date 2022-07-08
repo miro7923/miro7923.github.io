@@ -1,4 +1,139 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-04T22:31:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">정보처리기사) 정규화와 반정규화</title><link href="http://localhost:4000/certificate/db-normalization/" rel="alternate" type="text/html" title="정보처리기사) 정규화와 반정규화" /><published>2022-07-04T00:00:00+09:00</published><updated>2022-07-04T00:00:00+09:00</updated><id>http://localhost:4000/certificate/db-normalization</id><content type="html" xml:base="http://localhost:4000/certificate/db-normalization/"><![CDATA[<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-08T23:10:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Python) 프로그래머스. 나머지가 1이 되는 수 찾기</title><link href="http://localhost:4000/programmers/programmers-rest1-java/" rel="alternate" type="text/html" title="Python) 프로그래머스. 나머지가 1이 되는 수 찾기" /><published>2022-07-08T00:00:00+09:00</published><updated>2022-07-08T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-rest1-java</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-rest1-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/87389">https://school.programmers.co.kr/learn/courses/30/lessons/87389</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>자연수 n이 매개변수로 주어집니다. n을 x로 나눈 나머지가 1이 되도록 하는 가장 작은 자연수 x를 return 하도록 solution 함수를 완성해주세요. 답이 항상 존재함은 증명될 수 있습니다.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>3 ≤ n ≤ 1,000,000<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>한동안 코테준비를 놓았다가 다시 시작해 보면서 프로그래머스의 레벨1부터 시작하기로 했다. 원하는 직무는 자바 개발이니까 자바로 코테를 연습하려 하는데 너~~~무 오랜만이라 그런지 풀이를 떠올리는데 의외로 오래 걸렸다…ㅠ 반성하자…</li>
+  <li>시간에 대한 제한이 없고 입력값의 최대치도 그리 큰 수가 아니라 완전탐색으로 풀었다.</li>
+  <li>입력으로 주어지는 값의 최소값이 3이니까 반복문으로 3의 나머지를 1로 만들 수 있는 2부터 시작해서 <code class="language-plaintext highlighter-rouge">n</code>보다 1 작을 때까지 증가시키며 모듈러 연산(%)을 사용해서 나머지를 구했다. 이 과정에서 나머지가 1이면 정답으로 저장하고 반복문을 탈출한다.</li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/3e9869bda33ee95da0b89724c7f40456.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Math" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/30/lessons/87389]]></summary></entry><entry><title type="html">정보처리기사) 데이터베이스 설계 절차</title><link href="http://localhost:4000/certificate/db-step/" rel="alternate" type="text/html" title="정보처리기사) 데이터베이스 설계 절차" /><published>2022-07-06T00:00:00+09:00</published><updated>2022-07-06T00:00:00+09:00</updated><id>http://localhost:4000/certificate/db-step</id><content type="html" xml:base="http://localhost:4000/certificate/db-step/"><![CDATA[<ul>
+  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
+</ul>
+
+<h1 id="데이터베이스-설계-절차">데이터베이스 설계 절차</h1>
+<ul>
+  <li>요구사항 분석 - 개념적 설계 - 논리적 설계 - 물리적 설계 - 구현</li>
+</ul>
+
+<h2 id="요구사항-분석">요구사항 분석</h2>
+<ul>
+  <li>DB에 저장할 대상, 제약조건, 데이터 처리 등에 대한 요구사항 수집</li>
+  <li>개체와 애트리뷰트, 개체 간 관계 파악, 데이터 처리 시 사용되는 주요 연산들, 연산 시 접근하는 데이터 양 등을 요구사항 분석</li>
+</ul>
+
+<h2 id="개념적-설계">개념적 설계</h2>
+<ul>
+  <li>개체 타입, 관계 타입, 속성들을 식별하고, 속성들의 도메인을 결정하고, 후보키와 기본키를 결정</li>
+  <li>개념적 스키마(ER 스키마)는 ER 다이어그램으로 표현됨</li>
+  <li>현실 세계에 대한 인식을 추상적, 개념적으로 표현하여 개념적 구조를 도출하는 과정으로 주요 산출물에는 E-R 다이어그램이 있다.</li>
+</ul>
+
+<h2 id="논리적-설계">논리적 설계</h2>
+<ul>
+  <li>선택한 DBMS의 데이터 모델을 사용하여 논리적 스키마 생성</li>
+  <li>트랙잭션 인터페이스 설계, 스키마의 평가 및 설계 수행</li>
+  <li>스키마 정제(정규화) : 관계 데이터베이스 스키마를 더 좋은 관계 데이터베이스 스키마로 변환하기 위해서 정규화 과정을 적용</li>
+  <li>목표 DBMS에 맞는 스키마 설계, 트랜잭션 인터페이스를 설계하는 정규화 과정을 수행한다.</li>
+</ul>
+
+<h2 id="물리적-설계">물리적 설계</h2>
+<ul>
+  <li>데이터 처리 요구사항들을 만족시키기 위해 저장 구조와 접근 경로 등을 결정</li>
+  <li>특정 DBMS의 특성 및 성능을 고려하여 데이터베이스 저장 구조로 변환하는 과정으로 결과로 나오는 명세서는 테이블 정의서 등이 있다.</li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="DB" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 데이터베이스 설계 절차 요구사항 분석 - 개념적 설계 - 논리적 설계 - 물리적 설계 - 구현]]></summary></entry><entry><title type="html">정보처리기사) 스키마(Schema)</title><link href="http://localhost:4000/certificate/schema/" rel="alternate" type="text/html" title="정보처리기사) 스키마(Schema)" /><published>2022-07-05T00:00:00+09:00</published><updated>2022-07-05T00:00:00+09:00</updated><id>http://localhost:4000/certificate/schema</id><content type="html" xml:base="http://localhost:4000/certificate/schema/"><![CDATA[<ul>
+  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
+</ul>
+
+<h1 id="스키마schema">스키마(Schema)</h1>
+<ul>
+  <li>데이터베이스의 객체로는 스키마(Schema), 도메인(Domain), 테이블(Table), 뷰(View), 인덱스(Index) 등이 있으며 데이터 정의어(DDL)를 이용하여 객체를 생성(Create), 변경(Alter), 제거(Drop, Truncate)가 가능하다.</li>
+  <li>스키마란 데이터베이스의 전체적인 구조와 제약조건에 대한 명세로, 개념 스키마, 내부 스키마, 외부 스키마로 나뉜다.</li>
+  <li>스키마는 실세계의 구조를 표현하며 데이터 모델을 사용하여 만들어지며 하나의 조직에서 관심 있는 데이터의 구조를 기술한 언어적이고 그래픽적으로 표현한 시간에 독립적인 고정된 집합체이다.</li>
+</ul>
+
+<h2 id="외부external-스키마">외부(External) 스키마</h2>
+<ul>
+  <li>사용자 관점, 사용자마다 다른 스키마, 개념 스키마의 서브 스키마</li>
+</ul>
+
+<h2 id="개념conceptual-스키마">개념(Conceptual) 스키마</h2>
+<ul>
+  <li>통합 관점, 논리적 구조, 관계, 제약조건</li>
+</ul>
+
+<h2 id="내부internal-스키마">내부(Internal) 스키마</h2>
+<ul>
+  <li>물리저장장치 관점, 파일/레코드 등 물리적 저장 구조<br /><br /></li>
+</ul>
+
+<h1 id="도메인domain">도메인(Domain)</h1>
+<ul>
+  <li>속성의 데이터 타입과 크기, 제약조건 등을 지정한 정보</li>
+  <li>속성이 가질 수 있는 값의 범위로 이해 가능<br /><br /></li>
+</ul>
+
+<h1 id="테이블table">테이블(Table)</h1>
+<ul>
+  <li>데이터의 저장 공간<br /><br /></li>
+</ul>
+
+<h1 id="뷰view">뷰(View)</h1>
+<ul>
+  <li>하나 이상의 물리 테이블에서 유도되는 가상의 논리 테이블<br /><br /></li>
+</ul>
+
+<h1 id="인덱스index">인덱스(Index)</h1>
+<ul>
+  <li>검색을 빠르게 하기 위한 데이터 구조<br /><br /></li>
+</ul>
+
+<h1 id="데이터-독립성data-independence">데이터 독립성(Data Independence)</h1>
+<ul>
+  <li>데이터베이스에서 상위 단계의 스키마에 영향을 주지 않으면서 해당 단계의 스키마를 변경할 수 있는 성질<br /><br /></li>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="schema" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 스키마(Schema) 데이터베이스의 객체로는 스키마(Schema), 도메인(Domain), 테이블(Table), 뷰(View), 인덱스(Index) 등이 있으며 데이터 정의어(DDL)를 이용하여 객체를 생성(Create), 변경(Alter), 제거(Drop, Truncate)가 가능하다. 스키마란 데이터베이스의 전체적인 구조와 제약조건에 대한 명세로, 개념 스키마, 내부 스키마, 외부 스키마로 나뉜다. 스키마는 실세계의 구조를 표현하며 데이터 모델을 사용하여 만들어지며 하나의 조직에서 관심 있는 데이터의 구조를 기술한 언어적이고 그래픽적으로 표현한 시간에 독립적인 고정된 집합체이다.]]></summary></entry><entry><title type="html">정보처리기사) OSI 7계층</title><link href="http://localhost:4000/certificate/osi7/" rel="alternate" type="text/html" title="정보처리기사) OSI 7계층" /><published>2022-07-04T00:00:00+09:00</published><updated>2022-07-04T00:00:00+09:00</updated><id>http://localhost:4000/certificate/osi7</id><content type="html" xml:base="http://localhost:4000/certificate/osi7/"><![CDATA[<ul>
+  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲</li>
+</ul>
+
+<h1 id="osi-7계층">OSI 7계층</h1>
+<h2 id="물데네트세프응">물데네트세프응!!!</h2>
+
+<ul>
+  <li>물리 - 기계적, 전기적 특성. X.21, 리피터, 허브</li>
+  <li>데이터 링크 - 흐름 제어, 오류 검출과 회복, HDLC, MAC, 랜카드, 브리지, 스위치</li>
+  <li>네트워크 -  경로 설정(Routing), 트래픽 제어, 패킷, X.25, IP, 라우터</li>
+  <li>전송 - 다중화, 오류 제어, 흐름 제어, TCP, UDP, 게이트웨이</li>
+  <li>세션 - 송수신 측 간의  관련성을 유지, 대화 제어</li>
+  <li>표현 - 데이터 암호화, 데이터 압축, 형식 변환</li>
+  <li>응용 - 파일 전송, 전자 사서함(메일), 정보 교환, 가상 터미널<br /></li>
+</ul>
+
+<p>⭐️ <strong>데이터 링크</strong>는 노드 사이의 흐름과 오류 제어. <br />
+⭐️ <strong>전송</strong>은 단말기 사이의 흐름과 오류 제어.</p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="osi7Layer" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 OSI 7계층 물데네트세프응!!!]]></summary></entry><entry><title type="html">정보처리기사) 정규화와 반정규화</title><link href="http://localhost:4000/certificate/db-normalization/" rel="alternate" type="text/html" title="정보처리기사) 정규화와 반정규화" /><published>2022-07-04T00:00:00+09:00</published><updated>2022-07-04T00:00:00+09:00</updated><id>http://localhost:4000/certificate/db-normalization</id><content type="html" xml:base="http://localhost:4000/certificate/db-normalization/"><![CDATA[<ul>
   <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲</li>
 </ul>
 
@@ -21,25 +156,7 @@
 <h1 id="비정규화denormalization">비정규화(Denormalization)</h1>
 <ul>
   <li>정규화된 데이터 모델을 통합, 중복, 분리하는 과정으로, 성능개선을 위하여 의도적으로 정규화 원칙을 위배하는 행위</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="normalization" /><category term="denormalization" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 정규화(Normalization) 중복을 최소화하게 데이터를 구조화하는 작업 데이터베이스 이상현상의 원인이 되는 데이터 중복성을 제거하여 데이터의 무결성을 보존하는 기법 1NF, 2NF, 3NF, BCNF, 4NF, 5NF로 분류한다.]]></summary></entry><entry><title type="html">정보처리기사) OSI 7계층</title><link href="http://localhost:4000/certificate/osi7/" rel="alternate" type="text/html" title="정보처리기사) OSI 7계층" /><published>2022-07-04T00:00:00+09:00</published><updated>2022-07-04T00:00:00+09:00</updated><id>http://localhost:4000/certificate/osi7</id><content type="html" xml:base="http://localhost:4000/certificate/osi7/"><![CDATA[<ul>
-  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲</li>
-</ul>
-
-<h1 id="osi-7계층">OSI 7계층</h1>
-<h2 id="물데네트세프응">물데네트세프응!!!</h2>
-
-<ul>
-  <li>물리 - 기계적, 전기적 특성. X.21, 리피터, 허브</li>
-  <li>데이터 링크 - 흐름 제어, 오류 검출과 회복, HDLC, MAC, 랜카드, 브리지, 스위치</li>
-  <li>네트워크 -  경로 설정(Routing), 트래픽 제어, 패킷, X.25, IP, 라우터</li>
-  <li>전송 - 다중화, 오류 제어, 흐름 제어, TCP, UDP, 게이트웨이</li>
-  <li>세션 - 송수신 측 간의  관련성을 유지, 대화 제어</li>
-  <li>표현 - 데이터 암호화, 데이터 압축, 형식 변환</li>
-  <li>응용 - 파일 전송, 전자 사서함(메일), 정보 교환, 가상 터미널<br /></li>
-</ul>
-
-<p>⭐️ <strong>데이터 링크</strong>는 노드 사이의 흐름과 오류 제어. <br />
-⭐️ <strong>전송</strong>은 단말기 사이의 흐름과 오류 제어.</p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="osi7Layer" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 OSI 7계층 물데네트세프응!!!]]></summary></entry><entry><title type="html">정보처리기사) 결합도와 응집도</title><link href="http://localhost:4000/certificate/coupling-cohension/" rel="alternate" type="text/html" title="정보처리기사) 결합도와 응집도" /><published>2022-07-03T00:00:00+09:00</published><updated>2022-07-03T00:00:00+09:00</updated><id>http://localhost:4000/certificate/coupling-cohension</id><content type="html" xml:base="http://localhost:4000/certificate/coupling-cohension/"><![CDATA[<ul>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="normalization" /><category term="denormalization" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 정규화(Normalization) 중복을 최소화하게 데이터를 구조화하는 작업 데이터베이스 이상현상의 원인이 되는 데이터 중복성을 제거하여 데이터의 무결성을 보존하는 기법 1NF, 2NF, 3NF, BCNF, 4NF, 5NF로 분류한다.]]></summary></entry><entry><title type="html">정보처리기사) 결합도와 응집도</title><link href="http://localhost:4000/certificate/coupling-cohension/" rel="alternate" type="text/html" title="정보처리기사) 결합도와 응집도" /><published>2022-07-03T00:00:00+09:00</published><updated>2022-07-03T00:00:00+09:00</updated><id>http://localhost:4000/certificate/coupling-cohension</id><content type="html" xml:base="http://localhost:4000/certificate/coupling-cohension/"><![CDATA[<ul>
   <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲</li>
 </ul>
 
@@ -1416,630 +1533,4 @@
 <h1 id="참고">참고</h1>
 <ul>
   <li>헤드퍼스트 디자인패턴(2022 개정판)</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Design Pattern" /><category term="DesignPattern" /><category term="CommandPattern" /><category term="study" /><summary type="html"><![CDATA[CHAPTER 06. 커맨드 패턴(Command Pattern) 1. 커맨드 패턴 커맨드 패턴은 어떤 것을 요청하는 객체와 그 요청을 받아들이고 처리하는 객체를 분리하는 객체지향 디자인 패턴의 한 모델이다. 커맨드 패턴을 사용하면 요청 내역을 객체로 캡슐화해서 객체를 서로 다른 요청 내역에 따라 매개변수화할 수 있다. 이러면 요청을 큐에 저장하거나 로그로 기록하거나 작업 취소 기능을 사용할 수 있다.]]></summary></entry><entry><title type="html">디자인패턴 3) 데코레이터 패턴</title><link href="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter03/" rel="alternate" type="text/html" title="디자인패턴 3) 데코레이터 패턴" /><published>2022-06-07T00:00:00+09:00</published><updated>2022-06-07T00:00:00+09:00</updated><id>http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter03</id><content type="html" xml:base="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter03/"><![CDATA[<h1 id="chapter-03-데코레이터-패턴decorator-pattern">CHAPTER 03. 데코레이터 패턴(Decorator Pattern)</h1>
-<h2 id="1-데코레이터-패턴">1. 데코레이터 패턴</h2>
-
-<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/decoratorPattern.png" width="500" /></p>
-
-<ul>
-  <li>데코레이터 패턴은 위 그림과 같이 객체에 추가되는 요소를 하나씩 더해서 기존 객체를 감싸는 형태이다.</li>
-  <li>데코레이터 패턴을 사용하면 객체에 추가 요소를 동적으로 더할 수 있고 서브클래스를 만들 때보다 훨씬 유연하게 기능을 확장할 수 있다.</li>
-  <li>데코레이터의 형식은 그 데코레이더로 감싸는 객체의 형식과 같아야 하기 때문에 데코레이터를 만들 때엔 상속을 통해 구현한다. 하지만 동작은 새로운 데코레이터를 만들 때에 추가하고 부모로부터 상속받지 않는다. 그래서 데코레이터가 여러 개 생겨도 유연성을 잃지 않을 수 있다.</li>
-  <li>하지만 데코레이터 패턴을 사용해 디자인을 하다 보면 잡다한 클래스가 많아지는 단점이 있다.<br /><br /></li>
-</ul>
-
-<h2 id="2-데코레이터-패턴을-사용하는-이유">2. 데코레이터 패턴을 사용하는 이유</h2>
-<ul>
-  <li>클래스는 확장에는 열려 있어야 하지만 변경에는 닫혀 있어야 한다(OCP) 원칙을 지키기 위해서!<br /><br /></li>
-</ul>
-
-<h2 id="3-데코레이터-패턴-설계-예제">3. 데코레이터 패턴 설계 예제</h2>
-<h3 id="3-1-커피-주문-시스템-코드-만들기">3-1. 커피 주문 시스템 코드 만들기</h3>
-<ul>
-  <li>음료 추상 클래스 만들기</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Beverage</span> <span class="o">{</span>
-
-    <span class="nc">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="s">"제목 없음"</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">desc</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">();</span> <span class="c1">// 자식 클래스에서 구현</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>첨가물을 나타내는 추상 클래스(데코레이터 클래스) 만들기</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">CondimentDecorator</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
-    
-    <span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">;</span> <span class="c1">// 각 데코레이터가 감쌀 음료 </span>
-    
-    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">();</span> <span class="c1">// 자식 클래스에서 구현</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="3-2-음료-코드-구현">3-2. 음료 코드 구현</h3>
-<ul>
-  <li>에스프레소 커피 클래스 만들기</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Espresso</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
-    
-    <span class="kd">public</span> <span class="nf">Espresso</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">desc</span> <span class="o">=</span> <span class="s">"에스프레소"</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="mf">1.99</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>하우스 블렌드 커피 클래스</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HouseBlend</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
-    
-    <span class="kd">public</span> <span class="nf">HouseBlend</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">desc</span> <span class="o">=</span> <span class="s">"하우스 블렌드 커피"</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="c1">// 하우스 블렌드 가격 리턴</span>
-        <span class="k">return</span> <span class="o">.</span><span class="mi">89</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>다크로스트 커피 클래스</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DarkRoast</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
-    
-    <span class="kd">public</span> <span class="nf">DarkRoast</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">desc</span> <span class="o">=</span> <span class="s">"다크 로스트 커피"</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="o">.</span><span class="mi">99</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>디카페인 클래스</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Decaf</span> <span class="kd">extends</span> <span class="nc">Beverage</span> <span class="o">{</span>
-    
-    <span class="kd">public</span> <span class="nf">Decaf</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">desc</span> <span class="o">=</span> <span class="s">"디카페인"</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="mf">1.05</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="3-3-첨가물-코드-구현">3-3. 첨가물 코드 구현</h3>
-<ul>
-  <li>모카 클래스</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Mocha</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
-    
-    <span class="kd">public</span> <span class="nf">Mocha</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 어떤 음료에 첨가될 것인지 정한다.</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 모카"</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="c1">// 감싼 음료의 가격에 첨가물 가격을 더한 값을 리턴 </span>
-        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">20</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>우유 클래스</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Milk</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
-    
-    <span class="kd">public</span> <span class="nf">Milk</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 우유"</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">10</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>두유 클래스</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SoyMilk</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
-    
-    <span class="kd">public</span> <span class="nf">SoyMilk</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 두유"</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">15</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>휘핑크림 클래스</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Whip</span> <span class="kd">extends</span> <span class="nc">CondimentDecorator</span> <span class="o">{</span>
-    
-    <span class="kd">public</span> <span class="nf">Whip</span><span class="o">(</span><span class="nc">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDesc</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">", 휘핑크림"</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">beverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()</span> <span class="o">+</span> <span class="o">.</span><span class="mi">10</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="3-4-커피-주문-시스템-코드-테스트">3-4. 커피 주문 시스템 코드 테스트</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="nc">Beverage</span> <span class="n">beverage1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Espresso</span><span class="o">();</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">beverage1</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">" $"</span> <span class="o">+</span> <span class="n">beverage1</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
-
-    <span class="nc">Beverage</span> <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DarkRoast</span><span class="o">();</span>
-    <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mocha</span><span class="o">(</span><span class="n">beverage2</span><span class="o">);</span>
-    <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mocha</span><span class="o">(</span><span class="n">beverage2</span><span class="o">);</span>
-    <span class="n">beverage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Whip</span><span class="o">(</span><span class="n">beverage2</span><span class="o">);</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">beverage2</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">" $"</span> <span class="o">+</span> <span class="n">beverage2</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
-
-    <span class="nc">Beverage</span> <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HouseBlend</span><span class="o">();</span>
-    <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SoyMilk</span><span class="o">(</span><span class="n">beverage3</span><span class="o">);</span>
-    <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mocha</span><span class="o">(</span><span class="n">beverage3</span><span class="o">);</span>
-    <span class="n">beverage3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Whip</span><span class="o">(</span><span class="n">beverage3</span><span class="o">);</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">beverage3</span><span class="o">.</span><span class="na">getDesc</span><span class="o">()</span> <span class="o">+</span> <span class="s">" $"</span> <span class="o">+</span> <span class="n">beverage3</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="주문-결과">주문 결과</h3>
-
-<p align="center"><img src="https://github.com/Developer-book-club/headfirst-design-pattern-2205/raw/main/yujin/decoratorPattern2.png" width="500" /></p>
-
-<ul>
-  <li>주문한 대로 가격 계산이 잘 된다.</li>
-  <li>코드의 유연성이 높아지긴 했으나 클래스가 정말 많이 생겼다.<br /><br /></li>
-</ul>
-
-<h2 id="4-데코레이터-패턴이-적용-된-예-자바-io">4. 데코레이터 패턴이 적용 된 예: 자바 I/O</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">java.io</code> 패키지는 데코레이터 패턴이 적용된 대표적인 예이다. 자바를 배우면서 <code class="language-plaintext highlighter-rouge">I/O</code> 패키지를 왜 이런식으로 만들어놨나 싶었는데 데코레이터 패턴을 배우고 나니까 그렇게 구성된 이유를 알 것 같다.</li>
-  <li>아직 완벽히 이해한 것은 아니지만 설계 이유를 알고 나니까 다음 부터는 필요한 부분만 잘 골라 쓸 수 있을 거 같다.</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Design Pattern" /><category term="DesignPattern" /><category term="DecoratorPattern" /><category term="study" /><summary type="html"><![CDATA[CHAPTER 03. 데코레이터 패턴(Decorator Pattern) 1. 데코레이터 패턴]]></summary></entry><entry><title type="html">디자인패턴 1) 전략 패턴</title><link href="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter01/" rel="alternate" type="text/html" title="디자인패턴 1) 전략 패턴" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter01</id><content type="html" xml:base="http://localhost:4000/design%20pattern/head-first-design-pattern-Chapter01/"><![CDATA[<h1 id="chapter-01-디자인-패턴-소개와-전략-패턴">CHAPTER 01. 디자인 패턴 소개와 전략 패턴</h1>
-<h2 id="1-오리-시뮬레이션-게임을-만든다면">1. 오리 시뮬레이션 게임을 만든다면</h2>
-<ul>
-  <li>
-    <p>초기 기획단계에서는 모든 오리들은 꽥꽥 소리를 낼 수 있고 수영만 할 수 있고 겉모습만 달랐다. 그래서 객체지향 기법을 사용하여 모든 오리가 가지고 있어야 하는 공통된 기능을 정의한 <code class="language-plaintext highlighter-rouge">Duck</code>이라는 슈퍼클래스를 만든 다음 이를 상속받는 서브클래스를 만들어 오리의 겉모습을 각자 다르게 구현했다.</p>
-  </li>
-  <li>그런데 갑자기 나는 기능도 추가되어야 한다면 어떻게 할까?</li>
-  <li>
-    <p>슈퍼클래스인 <code class="language-plaintext highlighter-rouge">Duck</code>에 <code class="language-plaintext highlighter-rouge">fly()</code> 메서드를 추가로 구현하면 상속받고 있는 모든 서브클래스에 나는 기능을 추가할 수 있다.</p>
-  </li>
-  <li>그런데 나중에 보니까 일부 서브클래스에서 문제가 발견되었다. 왜냐면 서브클래스에는 고무로 만든 장난감 오리도 있었는데 그 클래스에도 날아다니는 기능이 추가된 것이었다. 고무 오리가 날아다니는 기능은 의도하지 않은 기능이기 때문에 고쳐야 한다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Duck</span> <span class="o">{</span>
-    <span class="n">quack</span><span class="o">();</span> <span class="c1">// 꽥꽥</span>
-    <span class="n">swim</span><span class="o">();</span> <span class="c1">// 수영</span>
-    <span class="n">fly</span><span class="o">();</span> <span class="c1">// 날기</span>
-<span class="o">}</span>
-
-<span class="c1">// 살아 있는 오리</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MallardDuck</span> <span class="kd">extends</span> <span class="nc">Duck</span> <span class="o">{</span>
-    <span class="n">display</span><span class="o">();</span>
-<span class="o">}</span>
-
-<span class="c1">// 고무 오리</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RubberDuck</span> <span class="kd">extends</span> <span class="nc">Duck</span> <span class="o">{</span>
-    <span class="n">display</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>그러면 고무 오리 클래스에서 <code class="language-plaintext highlighter-rouge">fly()</code> 메서드를 아무 것도 하지 않도록 오버라이드 해서 문제를 해결할 수 있을 것이다.</li>
-  <li>하지만 만약 게임이 주기적으로 업데이트 된다면 그 때마다 <code class="language-plaintext highlighter-rouge">fly()</code> 메서드에 새로운 기능이 추가될 수 있고, 그러면 그 때마다 <code class="language-plaintext highlighter-rouge">fly()</code>를 아무 것도 하지 않게 오버라이드 한 서브클래스의 <code class="language-plaintext highlighter-rouge">fly()</code> 메서드도 수정해 줘야 할 것이다. 생각만 해도 너무 손이 많이 간다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Flyable</code>이라는 인터페이스를 만들어 서브클래스에서 구현하게 하면 고무 오리가 날아다니는 문제를 해결할 수 있겠지만 <code class="language-plaintext highlighter-rouge">Flyable</code>을 구현하는 클래스마다 각자 구현해야 하기 때문에 중복되는 코드가 많이 생기고 만약 날아가는 동작에 수정사항이 생긴다면 <code class="language-plaintext highlighter-rouge">Flyable</code>을 구현하는 모든 서브클래스의 코드를 수정해 줘야 한다. 이것 역시 비효율적이다.</li>
-</ul>
-
-<h2 id="2-디자인-원칙-1-애플리케이션에서-달라지는-부분을-찾아내고-달라지지-않는-부분과-분리한다">2. 디자인 원칙 1) 애플리케이션에서 달라지는 부분을 찾아내고, 달라지지 않는 부분과 분리한다.</h2>
-<ul>
-  <li>
-    <p>이를 효율적으로 설계하기 위해서 첫 번째 디자인 원칙인 <code class="language-plaintext highlighter-rouge">캡슐화</code>를 적용한다. <code class="language-plaintext highlighter-rouge">캡슐화</code>는 애플리케이션에서 달라지는 부분을 찾아내고 달라지지 않는 부분과 분리하는 것이다. 그러면 코드를 변경할 일이 생기면 <code class="language-plaintext highlighter-rouge">캡슐화</code>된 부분만 변경하면 돼기 때문에 다른 부분에 미치는 영향을 최소화 시킬 수 있다.</p>
-  </li>
-  <li>
-    <p>현재 오리의 기능 중에서 꽥꽥 소리를 내는 <code class="language-plaintext highlighter-rouge">quack()</code>과 나는 기능인 <code class="language-plaintext highlighter-rouge">fly()</code>는 서브클래스의 종류에 따라 다르게 구현되어야 하기 때문에 <code class="language-plaintext highlighter-rouge">Duck</code> 슈퍼클래스에서 <code class="language-plaintext highlighter-rouge">quack()</code>과 <code class="language-plaintext highlighter-rouge">fly()</code>를 꺼내서 각각 행동을 나타낼 클래스 집합(set)을 새로 만들어야 한다.</p>
-  </li>
-</ul>
-
-<h2 id="3-디자인-원칙-2-구현보다는-인터페이스에-맞춰서-프로그래밍한다">3. 디자인 원칙 2) 구현보다는 인터페이스에 맞춰서 프로그래밍한다.</h2>
-<ul>
-  <li>나는 행동과 꽥꽥거리는 행동을 구현하는 클래스 집합은 최대한 유연하게 만들어야 한다. 그리고 <code class="language-plaintext highlighter-rouge">Duck</code>의 인스턴스에 행동을 할당할 수 있어야 한다. 인스턴스가 생성된 후에 행동을 동적으로 바꿀 수 있으면 더 좋을 것이다.</li>
-  <li>이를 효율적으로 구현하기 위해 슈퍼클래스에 모든 행동을 구현하기 보다는 특정 행동만을 목적으로 하는 클래스의 집합을 만들어 행동 인터페이스를 구현한다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">FlyBehaior</span> <span class="o">{</span>
-    <span class="n">fly</span><span class="o">();</span>
-<span class="o">}</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FlyWithWings</span> <span class="kd">implements</span> <span class="nc">FlyBehavior</span> <span class="o">{</span>
-    <span class="n">fly</span><span class="o">();</span>
-    <span class="c1">// 나는 방법을 구현</span>
-<span class="o">}</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FlyNoWay</span> <span class="kd">implements</span> <span class="nc">FlyBehavior</span> <span class="o">{</span>
-    <span class="n">fly</span><span class="o">();</span>
-    <span class="c1">// 아무것도 하지 않음</span>
-    <span class="c1">// 날 수 없다.</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>이런 식으로 디자인하면 특정 행동들이 <code class="language-plaintext highlighter-rouge">Duck</code> 클래스에 국한되지 않고 해당 기능들이 필요한 서브클래스에 추가해서 사용할 수 있다. 상속을 쓸 때 떠안게 되는 부담을 전부 떨쳐 버리고도 재사용의 장점을 그대로 누릴 수 있다.</li>
-</ul>
-
-<h2 id="4-오리-행동-통합하기">4. 오리 행동 통합하기</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Duck</code> 클래스에서 <code class="language-plaintext highlighter-rouge">flyBehavior</code>와 <code class="language-plaintext highlighter-rouge">quackBehavior</code>라는 인터페이스 형식의 인스턴스 변수를 추가하고 각 서브클래스에서도 <code class="language-plaintext highlighter-rouge">fly()</code>와 <code class="language-plaintext highlighter-rouge">quack()</code>을 제거한다. <code class="language-plaintext highlighter-rouge">Duck</code> 클래스에서 <code class="language-plaintext highlighter-rouge">fly()</code>와 <code class="language-plaintext highlighter-rouge">quack()</code> 메서드를 제거한 뒤 대신 <code class="language-plaintext highlighter-rouge">performFly()</code>와 <code class="language-plaintext highlighter-rouge">performQuack()</code>이라는 메서드를 넣는다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Duck</span> <span class="o">{</span>
-    
-    <span class="nc">FlyBehavior</span> <span class="n">flyBehavior</span><span class="o">;</span>
-    <span class="nc">QuackBehavior</span> <span class="n">quackBehavior</span><span class="o">;</span>
-    
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">performQuack</span><span class="o">()</span> <span class="o">{</span>
-        <span class="c1">// 꽥꽥거리는 행동을 직접 처리하는 대신 quackBehavior로 참조되는 객체에 그 행동을 위임한다.</span>
-        <span class="n">quackBehavior</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span> 
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">performFly</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">flyBehavior</span><span class="o">.</span><span class="na">fly</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>서브클래스</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MallardDuck</span> <span class="kd">extends</span> <span class="nc">Duck</span> <span class="o">{</span>
-    
-    <span class="kd">public</span> <span class="nf">MallarDuck</span><span class="o">()</span> <span class="o">{</span>
-        <span class="c1">// 슈퍼클래스에서 정의된 인스턴스 변수에 실제 생성된 객체를 할당 </span>
-        <span class="n">quackBehavior</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Quack</span><span class="o">();</span>
-        <span class="n">flyBehavior</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FlyWithWings</span><span class="o">();</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">display</span><span class="o">()</span> <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"저는 물오리입니다."</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>슈퍼클래스를 상속받은 서브클래스에서 각각 필요한 인스턴스를 할당해 사용할 수 있다. 재사용성이 증대된다.</li>
-</ul>
-
-<h2 id="5-디자인-원칙-3-상속보다는-구성을-활용한다">5. 디자인 원칙 3) 상속보다는 구성을 활용한다.</h2>
-<ul>
-  <li>각 오리에는 <code class="language-plaintext highlighter-rouge">FlyBehavior</code>와 <code class="language-plaintext highlighter-rouge">QuackBehavior</code>가 있으며 각각 나는 행동과 꽥꽥거리는 행동을 위임받는다. 이런 식으로 두 클래스를 합치는 것을 ‘<code class="language-plaintext highlighter-rouge">구성(composition)</code>을 이용한다’라고 부른다.</li>
-  <li>구성을 활용해서 시스템을 만들면 유연성을 크게 향상시킬 수 있다. 단순히 알고리즘군을 별도의 클래스 집합으로 캡슐화할 수 있으며 구성 요소로 사용하는 객체에서 올바른 행동 인터페이스를 구현하기만 하면 실행 시에 행동을 바꿀 수도 있다.<br /><br /></li>
-</ul>
-
-<h1 id="전략-패턴">전략 패턴</h1>
-<ul>
-  <li>지금까지 학습한 디자인 패턴을 전략 패턴(Strategy Pattern)이라고 한다. 전략 패턴은 알고리즘군을 정의하고 캡슐화해서 각각의 알고리즘군을 수정해서 쓸 수 있게 해 준다. 전략 패턴을 사용하면 클라이언트로부터 알고리즘을 분리해서 독립적으로 변경할 수 있다.<br /><br /></li>
-</ul>
-
-<h1 id="디자인-패턴을-알아야-하는-이유">디자인 패턴을 알아야 하는 이유</h1>
-<ul>
-  <li>개발자끼리 공통으로 아는 전문 용어를 사용하면 다른 개발자와 더 쉽게 대화할 수 있고, 패턴을 아직 모르는 사람들에게는 패턴을 배우고 싶은 생각이 들도록 자극을 줄 수 있다. 또한 자질구레한 객체 수준에서의 생각이 아닌, <code class="language-plaintext highlighter-rouge">패턴 수준</code>에서 생각할 수 있기에 아키텍처를 생각하는 수준도 끌어 올려 준다.<br /><br /></li>
-</ul>
-
-<h1 id="마지막-정리">마지막 정리</h1>
-<h2 id="객체지향-기초">객체지향 기초</h2>
-<ul>
-  <li>추상화</li>
-  <li>캡슐화</li>
-  <li>다형성</li>
-  <li>상속</li>
-</ul>
-
-<h2 id="객체지향-원칙">객체지향 원칙</h2>
-<ul>
-  <li>바뀌는 부분은 캡슐화한다.</li>
-  <li>상속보다는 구성을 활용한다.</li>
-  <li>구현보다는 인터페이스에 맞춰서 프로그래밍한다.</li>
-</ul>
-
-<h2 id="객체지향-패턴">객체지향 패턴</h2>
-<ul>
-  <li>전략 패턴 : 알고리즘군을 정의하고 캡슐화해서 각각의 알고리즘군을 수정해서 쓸 수 있게 해 준다. 전략 패턴을 사용하면 클라이언트로부터 알고리즘을 분리해서 독립적으로 변경할 수 있다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=582754">헤드퍼스트 디자인패턴</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Design Pattern" /><category term="DesignPattern" /><category term="study" /><summary type="html"><![CDATA[CHAPTER 01. 디자인 패턴 소개와 전략 패턴 1. 오리 시뮬레이션 게임을 만든다면 초기 기획단계에서는 모든 오리들은 꽥꽥 소리를 낼 수 있고 수영만 할 수 있고 겉모습만 달랐다. 그래서 객체지향 기법을 사용하여 모든 오리가 가지고 있어야 하는 공통된 기능을 정의한 Duck이라는 슈퍼클래스를 만든 다음 이를 상속받는 서브클래스를 만들어 오리의 겉모습을 각자 다르게 구현했다.]]></summary></entry><entry><title type="html">JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 배송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가</title><link href="http://localhost:4000/uno%20mas/uno-mas-dev-log-19/" rel="alternate" type="text/html" title="JAVA Spring) 1인가구를 위한 쇼핑몰 Uno más 개발일지 19 - 주문시 배송지 목록 새 창에서 선택된 배송지 정보 가져오는 기능 추가" /><published>2022-05-27T00:00:00+09:00</published><updated>2022-05-27T00:00:00+09:00</updated><id>http://localhost:4000/uno%20mas/uno-mas-dev-log-19</id><content type="html" xml:base="http://localhost:4000/uno%20mas/uno-mas-dev-log-19/"><![CDATA[<ul>
-  <li>작성일 : 2022.05.27</li>
-  <li>
-    <p>작성자 : 황유진</p>
-  </li>
-  <li>팀원 : 김진영, 박승지, 반현빈, 오성은, 오은현, 황유진</li>
-  <li>팀장 : 황유진</li>
-  <li>부팀장 : 오성은</li>
-  <li>GitHub Repository : <a href="https://github.com/miro7923/Uno-Mas">https://github.com/miro7923/Uno-Mas</a><br /><br /><br /></li>
-</ul>
-
-<h1 id="개발환경">개발환경</h1>
-<ul>
-  <li>MacBook Air (M1, 2020)</li>
-  <li>OpenJDK 8</li>
-  <li>Spring Tool Suite 4.14.0</li>
-  <li>Spring framework 4.3.1.RELEASE</li>
-  <li>Tomcat 8.5</li>
-  <li>MySQL Workbench 8.0.19<br /><br /><br /></li>
-</ul>
-
-<h1 id="기간">기간</h1>
-<ul>
-  <li>2022.4.13 ~ 2022.5.27<br /><br /><br /></li>
-</ul>
-
-<h1 id="주제">주제</h1>
-<ul>
-  <li>웹 백엔드 수업 중 마지막 과제로 팀 프로젝트를 진행하게 되었다.</li>
-  <li>조건은 <code class="language-plaintext highlighter-rouge">Spring</code> 기반으로 웹 사이트를 제작하는 것이다.</li>
-  <li>총 팀원은 6명이며, 우리 팀은 <code class="language-plaintext highlighter-rouge">1인 가구를 위한 쇼핑몰</code>을 주제로 정했다.</li>
-  <li>팀 이름으로 정해진 <code class="language-plaintext highlighter-rouge">Uno más</code>는 스페인어로 <code class="language-plaintext highlighter-rouge">하나 더</code>라는 뜻이다. <br /><br /><br /></li>
-</ul>
-
-<h1 id="진행상황">진행상황</h1>
-
-<p align="center"><img src="../../assets/images/unomas_addrList1.png" width="500" /></p>
-
-<ul>
-  <li>쇼핑몰의 상품을 주문하는 페이지에서 배송지 목록 버튼을 클릭하면</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/unomas_addrList2.png" width="900" /></p>
-
-<ul>
-  <li>배송지를 선택할 수 있는 새 창을 띄우고, 여기서 선택한 주소를 주문 페이지에 입력하는 기능을 추가했다.</li>
-</ul>
-
-<h2 id="shippinglocationjsp">shippingLocation.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
-	pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
-<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"c"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="nt">%&gt;</span>
-<span class="nt">&lt;%@taglib </span><span class="na">prefix=</span><span class="s">"fn"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/functions"</span> <span class="nt">%&gt;</span>
-<span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span> <span class="na">style=</span><span class="s">"margin: 0px; padding: 0px; height: 100%; overflow: hidden;"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-<span class="nt">&lt;title&gt;</span>배송지 목록<span class="nt">&lt;/title&gt;</span>
-	<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/themify-icons.css?after"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/elegant-icons.css?after"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"${path}/resources/css/order_css/shippingLocation.css"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-
-<span class="nt">&lt;body</span>
-	<span class="na">style=</span><span class="s">"margin: 0px; padding: 0px; height: 100%; width: 100%; overflow: hidden;"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- @@@@@@@ 배송지 선택하면 주문 화면에서 신규배송지 탭에 출력되게 하기 --&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_wrap"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_header"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"h1"</span><span class="nt">&gt;</span>배송지 목록<span class="nt">&lt;/h1&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_container"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_content"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"delivery_list_area"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${sessionScope.saveNUM }"</span> <span class="na">id=</span><span class="s">"user_num"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${curPage }"</span> <span class="na">id=</span><span class="s">"curPage"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"tbl_delivery_list"</span><span class="nt">&gt;</span>    
-                        <span class="nt">&lt;colgroup</span> <span class="na">width=</span><span class="s">"100%"</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 140px;"</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: auto;"</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 150px;"</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width: 148px;"</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;/colgroup&gt;</span>
-                        <span class="nt">&lt;thead&gt;</span>
-                            <span class="nt">&lt;tr&gt;</span>
-                                <span class="nt">&lt;th&gt;</span>배송지<span class="nt">&lt;/th&gt;</span>
-                                <span class="nt">&lt;th&gt;</span>주소<span class="nt">&lt;/th&gt;</span>
-                                <span class="nt">&lt;th&gt;</span>연락처<span class="nt">&lt;/th&gt;</span>
-                                <span class="nt">&lt;th&gt;</span>선택<span class="nt">&lt;/th&gt;</span>
-                            <span class="nt">&lt;/tr&gt;</span>
-                        <span class="nt">&lt;/thead&gt;</span>
-                        <span class="nt">&lt;tbody&gt;</span>
-                            <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">primaryAddr</span> <span class="o">!=</span> <span class="kc">null</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
-	                            <span class="nt">&lt;tr</span> <span class="na">page=</span><span class="s">"1"</span> <span class="na">class=</span><span class="s">"_address default"</span> <span class="na">style=</span><span class="s">"display: table-row;"</span><span class="nt">&gt;</span>
-	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_delivery"</span><span class="nt">&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_addressName nick"</span> <span class="na">id=</span><span class="s">"addr_nameP"</span><span class="nt">&gt;</span>${primaryAddr.addr_name }<span class="nt">&lt;/span&gt;</span>
-	                                    <span class="nt">&lt;strong</span> <span class="na">class=</span><span class="s">"_receiverName name"</span> <span class="na">id=</span><span class="s">"addr_recipientP"</span><span class="nt">&gt;</span>${primaryAddr.addr_recipient }<span class="nt">&lt;/strong&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"mark_default"</span><span class="nt">&gt;</span>기본배송지<span class="nt">&lt;/span&gt;</span>
-	                                <span class="nt">&lt;/td&gt;</span>
-	                                <span class="nt">&lt;td&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_zipCode zipcode"</span> <span class="na">id=</span><span class="s">"addr_postalcodeP"</span><span class="nt">&gt;</span>${primaryAddr.addr_postalcode }<span class="nt">&lt;/span&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_baseAddress"</span> <span class="na">id=</span><span class="s">"addr_roadaddrP"</span><span class="nt">&gt;</span>${primaryAddr.addr_roadaddr }<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_detailAddress"</span> <span class="na">id=</span><span class="s">"addr_detailaddrP"</span><span class="nt">&gt;</span>${primaryAddr.addr_detailaddr }<span class="nt">&lt;/span&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_roadNameYn"</span> <span class="na">style=</span><span class="s">"display:none;"</span><span class="nt">&gt;</span>Y<span class="nt">&lt;/span&gt;</span>
-	                                <span class="nt">&lt;/td&gt;</span>
-	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_tel"</span><span class="nt">&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_telNo1"</span><span class="nt">&gt;</span>${fn:substring(primaryAddr.addr_phone, 0, 3) } - ${fn:substring(primaryAddr.addr_phone, 3, 7) } - ${fn:substring(primaryAddr.addr_phone, 7, 11) }<span class="nt">&lt;/span&gt;&lt;br&gt;&lt;span</span> <span class="na">class=</span><span class="s">"_telNo2"</span><span class="nt">&gt;&lt;/span&gt;</span>
-	                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${primaryAddr.addr_phone }"</span> <span class="na">id=</span><span class="s">"addr_phoneP"</span><span class="nt">&gt;</span>
-	                                <span class="nt">&lt;/td&gt;</span>
-	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_btn"</span><span class="nt">&gt;</span>
-	                                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"_select setting_btn type_h green"</span> <span class="na">onclick=</span><span class="s">"chooseLocation('P')"</span><span class="nt">&gt;</span>선택<span class="nt">&lt;/button&gt;</span>
-	                                <span class="nt">&lt;/td&gt;</span>
-	                            <span class="nt">&lt;/tr&gt;</span>
-                            <span class="nt">&lt;/c:if&gt;</span>
-                            <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"addrVO"</span><span class="na"> items=</span><span class="s">"</span><span class="si">${</span><span class="n">orderAddrList</span> <span class="si">}</span><span class="s">"</span><span class="na"> varStatus=</span><span class="s">"i"</span><span class="nt">&gt;</span>
-                                <span class="nt">&lt;tr</span> <span class="na">page=</span><span class="s">"1"</span> <span class="na">class=</span><span class="s">"_address default"</span> <span class="na">style=</span><span class="s">"display: table-row;"</span><span class="nt">&gt;</span>
-	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_delivery"</span><span class="nt">&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_addressName nick"</span> <span class="na">id=</span><span class="s">"addr_name${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_name }<span class="nt">&lt;/span&gt;</span>
-	                                    <span class="nt">&lt;strong</span> <span class="na">class=</span><span class="s">"_receiverName name"</span> <span class="na">id=</span><span class="s">"addr_recipient${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_recipient }<span class="nt">&lt;/strong&gt;</span>
-	                                <span class="nt">&lt;/td&gt;</span>
-	                                <span class="nt">&lt;td&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_zipCode zipcode"</span> <span class="na">id=</span><span class="s">"addr_postalcode${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_postalcode }<span class="nt">&lt;/span&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_baseAddress"</span> <span class="na">id=</span><span class="s">"addr_roadaddr${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_roadaddr }<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_detailAddress"</span> <span class="na">id=</span><span class="s">"addr_detailaddr${i.index }"</span><span class="nt">&gt;</span>${addrVO.addr_detailaddr }<span class="nt">&lt;/span&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_roadNameYn"</span> <span class="na">style=</span><span class="s">"display:none;"</span><span class="nt">&gt;</span>Y<span class="nt">&lt;/span&gt;</span>
-	                                <span class="nt">&lt;/td&gt;</span>
-	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_tel"</span><span class="nt">&gt;</span>
-	                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"_telNo1"</span><span class="nt">&gt;</span>${fn:substring(addrVO.addr_phone, 0, 3) } - ${fn:substring(addrVO.addr_phone, 3, 7) } - ${fn:substring(addrVO.addr_phone, 7, 11) }<span class="nt">&lt;/span&gt;&lt;br&gt;&lt;span</span> <span class="na">class=</span><span class="s">"_telNo2"</span><span class="nt">&gt;&lt;/span&gt;</span>
-	                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"${addrVO.addr_phone }"</span> <span class="na">id=</span><span class="s">"addr_phone${i.index }"</span><span class="nt">&gt;</span>
-	                                <span class="nt">&lt;/td&gt;</span>
-	                                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"cell_btn"</span><span class="nt">&gt;</span>
-	                                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"_select setting_btn type_h green"</span> <span class="na">onclick=</span><span class="s">"chooseLocation(${i.index})"</span><span class="nt">&gt;</span>선택<span class="nt">&lt;/button&gt;</span>
-	                                <span class="nt">&lt;/td&gt;</span>
-	                            <span class="nt">&lt;/tr&gt;</span>
-                            <span class="nt">&lt;/c:forEach&gt;</span>
-                        <span class="nt">&lt;/tbody&gt;</span>
-                    <span class="nt">&lt;/table&gt;</span>
-                <span class="nt">&lt;/div&gt;</span>
-                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"setting_paginate"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">prev</span> <span class="o">==</span> <span class="kc">true</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
-		                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/order/addr_book?user_num=${sessionScope.saveNUM }&amp;page=${reviewPm.startPage - 1 }"</span> 
-		                <span class="na">id=</span><span class="s">"prev"</span> <span class="na">class=</span><span class="s">"page_btn_prev"</span> <span class="na">style=</span><span class="s">"color: black;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"arrow_carrot-left_alt"</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
-                    <span class="nt">&lt;/c:if&gt;</span>
-                    <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"page"</span><span class="na"> varStatus=</span><span class="s">"i"</span><span class="na"> begin=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">startPage</span> <span class="si">}</span><span class="s">"</span><span class="na"> end=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">endPage</span> <span class="si">}</span><span class="s">"</span><span class="na"> step=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-		                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="na">id=</span><span class="s">"page${i.index }"</span> <span class="na">style=</span><span class="s">"color: black;"</span> 
-		                 <span class="na">class=</span><span class="s">"_page page_num"</span> <span class="na">onclick=</span><span class="s">"changePageNum(${i.index}, ${pm.endPage - pm.startPage + 1 })"</span><span class="nt">&gt;</span>${page }<span class="nt">&lt;/a&gt;</span>
-                    <span class="nt">&lt;/c:forEach&gt;</span>
-	                <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pm</span><span class="o">.</span><span class="na">next</span> <span class="o">==</span> <span class="kc">true</span> <span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
-		                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/order/addr_book?user_num=${sessionScope.saveNUM }&amp;page=${reviewPm.endPage + 1 }"</span> 
-		                <span class="na">id=</span><span class="s">"next"</span> <span class="na">class=</span><span class="s">"page_btn_next"</span> <span class="na">style=</span><span class="s">"color: black;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"arrow_carrot-right_alt"</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
-	                <span class="nt">&lt;/c:if&gt;</span>
-            	<span class="nt">&lt;/div&gt;</span>
-            <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pop_footer"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"button"</span> <span class="na">onclick=</span><span class="s">"javascript:window.close();return false;"</span><span class="nt">&gt;</span>닫기<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery-3.3.1.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery-ui.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.countdown.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.nice-select.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.zoom.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.dd.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/jquery.slicknav.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/owl.carousel.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"${path}/resources/js/order_js/shippingLocation.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>페이지 템플릿은 네이버 쇼핑의 배송지 목록 템플릿을 참고해서 만들었다.(사실상 그냥 긁어왔…)</li>
-  <li>태그의 클래스 선택자 이름이 출력하는 내용물의 용도에 맞게 지정되어 있어서 데이터를 넣는 <code class="language-plaintext highlighter-rouge">JSTL</code> 표현식을 쓸 때 정말 편했다. 역시 대기업은 다르다.</li>
-</ul>
-
-<h2 id="orderjsp">order.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"site-btn deliverListBtn"</span>
-    <span class="na">onclick=</span><span class="s">"window.open('/order/addr_book?user_num=${sessionScope.saveNUM}&amp;pageNum=1');"</span><span class="nt">&gt;</span>배송지 목록<span class="nt">&lt;/button&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>주문페이지에서 <code class="language-plaintext highlighter-rouge">배송지목록</code> 버튼을 클릭하면 이 템플릿 페이지가 새 창에서 열리도록 했다.</li>
-</ul>
-
-<h2 id="shippinglocationjsp-1">shippingLocation.jsp</h2>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"_select setting_btn type_h green"</span> <span class="na">onclick=</span><span class="s">"chooseLocation(${i.index})"</span><span class="nt">&gt;</span>선택<span class="nt">&lt;/button&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>배송지 목록 페이지에서 배송지를 선택하면 해당 배송지 데이터를 주문 페이지에 입력하는 메서드가 실행된다.</li>
-</ul>
-
-<h2 id="shippinglocationjs">shippingLocation.js</h2>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">chooseLocation</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 신규배송지로 라디오버튼 선택 변경</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input:radio[name=deliverSpot]:radio[value="2"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#normalAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newAddr</span><span class="dl">'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span> 
-
-    <span class="c1">// 각 인풋태그값 세팅</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newName</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_recipient</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone1</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone2</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">));</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone3</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">));</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPhone</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_phone</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">val</span><span class="p">());</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newPostalcode</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_postalcode</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newRoadAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_roadaddr</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#newDetailAddress</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#addr_detailaddr</span><span class="dl">'</span><span class="o">+</span><span class="nx">num</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
-
-    <span class="nb">window</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">window.opener</code> 메서드를 사용해 이 창을 연 부모 창에 데이터가 전달되도록 했다.</li>
-</ul>
-
-<p align="center"><img src="../../assets/images/unomas_addrList3.png" width="500" /></p>
-
-<ul>
-  <li>구현 완료~!<br /><br /><br /></li>
-</ul>
-
-<h1 id="구현하며-했던-고민">구현하며 했던 고민</h1>
-<ul>
-  <li>이번 기능을 구현해 본 적이 없어서 처음에 검색 키워드를 뭘로 해야 할 지 고민했었다. 평소 많이 보던 기능인데 뭐라 쳐야 관련 자료가 나올지 모르겠는 그런 느낌…ㅎ 쇼핑몰 배송지 목록 새창 이런 식으로 검색하면서 관련 자료를 찾았던 것 같다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="마감까지">마감까지</h1>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">D-0</code><br /><br /><br /></li>
-</ul>
-
-<h1 id="참고">참고</h1>
-<ul>
-  <li><a href="https://chobopark.tistory.com/247">[JQuery] AJAX테이블 생성 후 팝업창 데이터 전달&amp;인쇄 방법!! (영상 有)</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Uno mas" /><category term="Project" /><category term="UnoMas" /><category term="Log" /><summary type="html"><![CDATA[작성일 : 2022.05.27 작성자 : 황유진]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Design Pattern" /><category term="DesignPattern" /><category term="CommandPattern" /><category term="study" /><summary type="html"><![CDATA[CHAPTER 06. 커맨드 패턴(Command Pattern) 1. 커맨드 패턴 커맨드 패턴은 어떤 것을 요청하는 객체와 그 요청을 받아들이고 처리하는 객체를 분리하는 객체지향 디자인 패턴의 한 모델이다. 커맨드 패턴을 사용하면 요청 내역을 객체로 캡슐화해서 객체를 서로 다른 요청 내역에 따라 매개변수화할 수 있다. 이러면 요청을 큐에 저장하거나 로그로 기록하거나 작업 취소 기능을 사용할 수 있다.]]></summary></entry></feed>
