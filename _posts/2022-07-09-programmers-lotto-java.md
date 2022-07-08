@@ -1,5 +1,5 @@
 ---
-title: Python) 프로그래머스. 로또의 최고 순위와 최저 순위
+title: Java) 프로그래머스. 로또의 최고 순위와 최저 순위
 toc: true
 toc_sticky: true
 toc_label: 목차

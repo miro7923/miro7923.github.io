@@ -1,5 +1,5 @@
 ---
-title: Python) 프로그래머스. 나머지가 1이 되는 수 찾기
+title: Java) 프로그래머스. 나머지가 1이 되는 수 찾기
 toc: true
 toc_sticky: true
 toc_label: 목차
