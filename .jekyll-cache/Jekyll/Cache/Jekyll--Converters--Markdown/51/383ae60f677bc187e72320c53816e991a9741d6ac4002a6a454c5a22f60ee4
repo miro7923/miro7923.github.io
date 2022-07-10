@@ -1,0 +1,74 @@
+I"<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://school.programmers.co.kr/learn/courses/10302/lessons/62946">https://school.programmers.co.kr/learn/courses/10302/lessons/62946</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>N개의 아파트가 일렬로 쭉 늘어서 있습니다. 이 중에서 일부 아파트 옥상에는 4g 기지국이 설치되어 있습니다. 기술이 발전해 5g 수요가 높아져 4g 기지국을 5g 기지국으로 바꾸려 합니다. 그런데 5g 기지국은 4g 기지국보다 전달 범위가 좁아, 4g 기지국을 5g 기지국으로 바꾸면 어떤 아파트에는 전파가 도달하지 않습니다.</li>
+  <li>예를 들어 11개의 아파트가 쭉 늘어서 있고, [4, 11] 번째 아파트 옥상에는 4g 기지국이 설치되어 있습니다. 만약 이 4g 기지국이 전파 도달 거리가 1인 5g 기지국으로 바뀔 경우 모든 아파트에 전파를 전달할 수 없습니다. (전파의 도달 거리가 W일 땐, 기지국이 설치된 아파트를 기준으로 전파를 양쪽으로 W만큼 전달할 수 있습니다.)</li>
+  <li>이때, 우리는 기지국을 최소로 설치하면서 모든 아파트에 전파를 전달하려고 합니다. 위의 예시에선 최소 3개의 아파트 옥상에 기지국을 설치해야 모든 아파트에 전파를 전달할 수 있습니다.</li>
+  <li>아파트의 개수 N, 현재 기지국이 설치된 아파트의 번호가 담긴 1차원 배열 stations, 전파의 도달 거리 W가 매개변수로 주어질 때, 모든 아파트에 전파를 전달하기 위해 증설해야 할 기지국 개수의 최솟값을 리턴하는 solution 함수를 완성해주세요.</li>
+  <li>(문제 전문은 링크에…)<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>N: 200,000,000 이하의 자연수</li>
+  <li>stations의 크기: 10,000 이하의 자연수</li>
+  <li>stations는 오름차순으로 정렬되어 있고, 배열에 담긴 수는 N보다 같거나 작은 자연수입니다.</li>
+  <li>W: 10,000 이하의 자연수<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>코테공부를 오래 쉰 거 치고는 생각외로 빠르게 푼 문제… 아직 완전히 감을 잃지는 않았나보다 ㅠㅠ 그리디 기본문제라 쉽긴 했다.<br /><br /></p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">n</code>의 최대값이 2억으로 꽤 크기 때문에 완전탐색으로 답을 구하면 효율성 테스트를 통과하지 못 할 것이다.</li>
+  <li>
+    <p>그래서 기지국을 설치해야 하는 구간의 길이를 구한 다음 기지국 하나의 커버리지 길이로 나눠주면 완전탐색에 비해서는 빠르게 구할 수 있을 것이라 생각하고 코드를 짰다.<br /><br /></p>
+  </li>
+  <li>설치해야 할 기지국의 개수의 최솟값을 구하려면 먼저 하나의 기지국 당 커버할 수 있는 길이를 구해야 한다.
+    <ul>
+      <li>문제의 그림을 참고하면 하나의 기지국이 커버할 수 있는 길이는 <code class="language-plaintext highlighter-rouge">w * 2 + 1</code>이다. 기지국이 설치된 위치 기준으로 양 옆 <code class="language-plaintext highlighter-rouge">w</code>만큼 커버할 수 있기 때문에 <code class="language-plaintext highlighter-rouge">w</code>의 2배에 기지국이 설치된 위치 1만큼을 더해주어야 한다.<br /><br /></li>
+    </ul>
+  </li>
+  <li>다음으로 기지국이 커버할 수 없어 비어있는 구간의 길이를 구해야 한다.
+    <ul>
+      <li>이는 (현재 기지국을 설치해야 하는 빈 구간의 끝점 - 시작점)으로 구할 수 있다.
+        <ul>
+          <li>빈 구간의 끝점은 빈 구간 다음에 첫 번째로 나오는 기지국의 위치에서 <code class="language-plaintext highlighter-rouge">w + 1</code>만큼을 빼면 구할 수 있다.</li>
+          <li>시작점은 설치된 기지국의 위치 + <code class="language-plaintext highlighter-rouge">w + 1</code>로 구할 수 있다.</li>
+        </ul>
+      </li>
+      <li>(끝점 - 시작점)으로 빈 구간의 길이를 구한 다음 위에서 구했던 기지국의 커버리지로 나눠본다.
+        <ul>
+          <li>나눈 나머지가 0이면 몫만큼 기지국을 설치하면 되지만, 나머지가 0보다 크다면 1개를 추가로 설치해야 모든 구역을 커버할 수 있다.</li>
+        </ul>
+      </li>
+      <li>위의 과정을 기지국의 위치 배열인 <code class="language-plaintext highlighter-rouge">stations</code>의 원소 갯수만큼 반복한다.<br /><br /></li>
+    </ul>
+  </li>
+  <li>두 번째 항목의 반복문이 끝나고 나면 마지막 기지국 뒤에 남아있는 빈 구간이 생길 수 있기 때문에 마지막으로 구했던 끝점이 아파트의 전체 길이보다 작다면 남은 구간에 대해 두 번째 항목을 한 번 더 수행한다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="결과">결과</h1>
+<ul>
+  <li>효율성 테스트 결과 평균 <code class="language-plaintext highlighter-rouge">0.7ms</code> 정도에 통과할 수 있었다. 굿굿~~</li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/4330cbc0e820660fdb28eca5b24e74a5.js"></script>
+
+:ET
