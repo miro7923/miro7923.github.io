@@ -1,4 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-10T17:54:57+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">정보처리기사) 네트워크 레이어 프로토콜</title><link href="http://localhost:4000/certificate/network-layer/" rel="alternate" type="text/html" title="정보처리기사) 네트워크 레이어 프로토콜" /><published>2022-07-10T00:00:00+09:00</published><updated>2022-07-10T00:00:00+09:00</updated><id>http://localhost:4000/certificate/network-layer</id><content type="html" xml:base="http://localhost:4000/certificate/network-layer/"><![CDATA[<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-12T20:07:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) 프로그래머스 - 예산</title><link href="http://localhost:4000/programmers/programmers-binary-search/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 예산" /><published>2022-07-11T00:00:00+09:00</published><updated>2022-07-11T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-binary-search</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-binary-search/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://school.programmers.co.kr/learn/courses/10302/lessons/62949">https://school.programmers.co.kr/learn/courses/10302/lessons/62949</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>국가의 역할 중 하나는 여러 지방의 예산요청을 심사하여 국가의 예산을 분배하는 것입니다. 국가예산의 총액은 미리 정해져 있어서 모든 예산요청을 배정해 주기는 어려울 수도 있습니다. 그래서 정해진 총액 이하에서 가능한 한 최대의 총 예산을 다음과 같은 방법으로 배정합니다.<br /><br /></li>
+</ul>
+
+<ol>
+  <li>모든 요청이 배정될 수 있는 경우에는 요청한 금액을 그대로 배정합니다.<br /></li>
+  <li>모든 요청이 배정될 수 없는 경우에는 특정한 정수 상한액을 계산하여 그 이상인 예산요청에는 모두 상한액을 배정합니다. 상한액 이하의 예산요청에 대해서는 요청한 금액을 그대로 배정합니다.</li>
+</ol>
+
+<ul>
+  <li>예를 들어, 전체 국가예산이 485이고 4개 지방의 예산요청이 각각 120, 110, 140, 150일 때, 상한액을 127로 잡으면 위의 요청들에 대해서 각각 120, 110, 127, 127을 배정하고 그 합이 484로 가능한 최대가 됩니다.</li>
+  <li>각 지방에서 요청하는 예산이 담긴 배열 budgets과 총 예산 M이 매개변수로 주어질 때, 위의 조건을 모두 만족하는 상한액을 return 하도록 solution 함수를 작성해주세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>지방의 수는 3 이상 100,000 이하인 자연수입니다.</li>
+  <li>각 지방에서 요청하는 예산은 1 이상 100,000 이하인 자연수입니다.</li>
+  <li>총 예산은 지방의 수 이상 1,000,000,000 이하인 자연수입니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>
+    <p>뭔가 막연하게 이분탐색 문제같았는데 범위를 좁혀나가는 기준을 어떻게 설정해야 할 지 모르겠어서 풀이 영상을 봤다. 이분탐색 문제는 풀 때마다 어렵게 느껴진다 😭</p>
+  </li>
+  <li>문제를 풀기 위해서는 금액이 최대가 되는 상한액의 범위를 좁혀가면서 탐색해야 한다. 그래서 최소값(0)과 최대값(입력 중 가장 큰 값) 범위에서 중간값을 구한 다음 이 중간값이 적절한 상한액이면 정답이 되는 것이고 많이 모자란 값이라면 최소값을 증가시키고, 초과하는 값이라면 최대값을 감소시킨다.</li>
+  <li>이 과정을 최소값과 최대값이 같아지는(서로 만나는) 지점까지 반복하면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/d168474b2fe3ceb2d077e3962f62e964.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BinarySearch" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62949]]></summary></entry><entry><title type="html">정보처리기사) 네트워크 레이어 프로토콜</title><link href="http://localhost:4000/certificate/network-layer/" rel="alternate" type="text/html" title="정보처리기사) 네트워크 레이어 프로토콜" /><published>2022-07-10T00:00:00+09:00</published><updated>2022-07-10T00:00:00+09:00</updated><id>http://localhost:4000/certificate/network-layer</id><content type="html" xml:base="http://localhost:4000/certificate/network-layer/"><![CDATA[<ul>
   <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
 </ul>
 
@@ -364,22 +411,4 @@
 <h1 id="비정규화denormalization">비정규화(Denormalization)</h1>
 <ul>
   <li>정규화된 데이터 모델을 통합, 중복, 분리하는 과정으로, 성능개선을 위하여 의도적으로 정규화 원칙을 위배하는 행위</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="normalization" /><category term="denormalization" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 정규화(Normalization) 중복을 최소화하게 데이터를 구조화하는 작업 데이터베이스 이상현상의 원인이 되는 데이터 중복성을 제거하여 데이터의 무결성을 보존하는 기법 1NF, 2NF, 3NF, BCNF, 4NF, 5NF로 분류한다.]]></summary></entry><entry><title type="html">정보처리기사) OSI 7계층</title><link href="http://localhost:4000/certificate/osi7/" rel="alternate" type="text/html" title="정보처리기사) OSI 7계층" /><published>2022-07-04T00:00:00+09:00</published><updated>2022-07-04T00:00:00+09:00</updated><id>http://localhost:4000/certificate/osi7</id><content type="html" xml:base="http://localhost:4000/certificate/osi7/"><![CDATA[<ul>
-  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲</li>
-</ul>
-
-<h1 id="osi-7계층">OSI 7계층</h1>
-<h2 id="물데네트세프응">물데네트세프응!!!</h2>
-
-<ul>
-  <li>물리 - 기계적, 전기적 특성. X.21, 리피터, 허브</li>
-  <li>데이터 링크 - 흐름 제어, 오류 검출과 회복, HDLC, MAC, 랜카드, 브리지, 스위치</li>
-  <li>네트워크 -  경로 설정(Routing), 트래픽 제어, 패킷, X.25, IP, 라우터</li>
-  <li>전송 - 다중화, 오류 제어, 흐름 제어, TCP, UDP, 게이트웨이</li>
-  <li>세션 - 송수신 측 간의  관련성을 유지, 대화 제어</li>
-  <li>표현 - 데이터 암호화, 데이터 압축, 형식 변환</li>
-  <li>응용 - 파일 전송, 전자 사서함(메일), 정보 교환, 가상 터미널<br /></li>
-</ul>
-
-<p>⭐️ <strong>데이터 링크</strong>는 노드 사이의 흐름과 오류 제어. <br />
-⭐️ <strong>전송</strong>은 단말기 사이의 흐름과 오류 제어.</p>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="osi7Layer" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 OSI 7계층 물데네트세프응!!!]]></summary></entry></feed>
+</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="normalization" /><category term="denormalization" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 정규화(Normalization) 중복을 최소화하게 데이터를 구조화하는 작업 데이터베이스 이상현상의 원인이 되는 데이터 중복성을 제거하여 데이터의 무결성을 보존하는 기법 1NF, 2NF, 3NF, BCNF, 4NF, 5NF로 분류한다.]]></summary></entry></feed>
