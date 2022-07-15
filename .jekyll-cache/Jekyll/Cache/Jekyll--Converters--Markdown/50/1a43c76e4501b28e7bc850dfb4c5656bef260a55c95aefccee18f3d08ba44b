@@ -1,0 +1,1673 @@
+I"�<ul>
+  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
+</ul>
+
+<h1 id="소프트웨어-아키텍처-패턴">소프트웨어 아키텍처 패턴</h1>
+<ul>
+  <li>소프트웨어 설계 시 참조 가능한 솔루션</li>
+  <li>일반적으로 발생하는 문제점들에 대해 일반화되고 재사용 가능한 솔루션<br /><br /></li>
+</ul>
+
+<h1 id="요구공학">요구공학</h1>
+<ul>
+  <li>요구사항을 도출, 분석, 명세, 확인하는 구조화된 활동<br /><br /></li>
+</ul>
+
+<h2 id="요구사항-분석-기법">요구사항 분석 기법</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">자료 흐름 지향 분석</code> : 데이터 흐름도(DFD)와 자료 사전(DD)을 통해 분석</li>
+  <li><code class="language-plaintext highlighter-rouge">객체지향 분석</code> : 시스템 기능과 데이터를 함께 분석해 UML로 표준화</li>
+</ul>
+
+<h2 id="요구공학-프로세스">요구공학 프로세스</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">개발 단계(CMM Level 3)</code> : 요구사항 분석</li>
+  <li><code class="language-plaintext highlighter-rouge">관리 단계 (CMM Levle 2)</code> : 설계 - 개발 - 테스트를 거치는 동안 요구사항 잘 만족하는지 확인</li>
+</ol>
+
+<h2 id="요구공학-개발-단계-구성-cmm-level-3">요구공학 개발 단계 구성 (CMM Level 3)</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">도출</code> : 이해관계자 식별, 고객 분석</li>
+  <li><code class="language-plaintext highlighter-rouge">분석</code> : 분류 -&gt; 개념 모델링 생성 -&gt; 할당 -&gt; 협상 -&gt; 분석</li>
+  <li><code class="language-plaintext highlighter-rouge">명세</code> : 정형화된 형태로 명세 작성</li>
+  <li><code class="language-plaintext highlighter-rouge">확인</code> : 요구사항 이해를 확인하고 문서가 완전한지 검증</li>
+</ol>
+
+<h2 id="요구사항-도출-기법">요구사항 도출 기법</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">인터뷰</code> : 직접 대화</li>
+  <li><code class="language-plaintext highlighter-rouge">브레인스토밍</code> : 말하기 쉬운 분위기 속에서 비판없이 의견을 수용</li>
+  <li><code class="language-plaintext highlighter-rouge">델파이 기법</code> : 전문가 경험 활용</li>
+  <li><code class="language-plaintext highlighter-rouge">롤 플레잉</code> : 각자 맡은 역을 연기</li>
+  <li><code class="language-plaintext highlighter-rouge">워크숍</code> : 단기간 집중하여 정보 획득 후 공유(사전 준비 필요)</li>
+  <li><code class="language-plaintext highlighter-rouge">설문 조사</code></li>
+</ul>
+
+<h2 id="요구사항-분석-단계">요구사항 분석 단계</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">요구사항 분류</code> : 기능적 요구사항 (시스템이 제공해야 할 기능) vs 비기능적 요구사항(시스템이 준수해야 할 제약사항)</li>
+  <li><code class="language-plaintext highlighter-rouge">개념 모델링 생성</code> : 주로 UML 사용. 요구사항을 쉽게 이해할 수 있도록 개념적 표현</li>
+  <li><code class="language-plaintext highlighter-rouge">요구사항 할당</code> : 요구사항 만족을 위한 아키텍처 구성요소 식별</li>
+  <li><code class="language-plaintext highlighter-rouge">요구사항 협상</code> : 충돌되는 경우 합의, 우선순위 부여</li>
+  <li><code class="language-plaintext highlighter-rouge">정형 분석</code> : 정형화된 언어를 통해 수학적 기호로 표현</li>
+</ol>
+
+<h2 id="요구사항-명세-기법">요구사항 명세 기법</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">비정형 명세 기법</code> : 자연어 기반 서술</li>
+  <li><code class="language-plaintext highlighter-rouge">정형 명세 기법</code> : 수학적 표기법으로 서술</li>
+</ol>
+
+<h2 id="요구사항-명세-원리-및-검증-항목">요구사항 명세 원리 및 검증 항목</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">명확성</code> : 각 명세 내용은 하나의 의미만 부여</li>
+  <li><code class="language-plaintext highlighter-rouge">완전성</code> : 모든 요구사항이 포함되어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">검증 가능성</code> : 달성 정도를 확인할 수 있어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">일관성</code> : 모순이 없어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">수정 용이성</code> : 쉽게 수정할 수 있어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">개발 후 이용성</code> : 운영 및 유지보수에 이용이 가능해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">추적 가능성</code> : 추적이 가능해야 함</li>
+</ol>
+
+<h2 id="요구사항-확인-기법">요구사항 확인 기법</h2>
+<ol>
+  <li>정형 기술 검토(TCR)</li>
+  <li>프로토타이핑 활용</li>
+  <li>테스트 케이스를 통한 확인</li>
+  <li>CASE 도구 활용</li>
+  <li>베이스라인 검증</li>
+  <li>요구사항 추적표 (RTM : Requirement Tracebility Matrix) 통해 검증
+    <ul>
+      <li>요구사항 정의서 기준으로 개발단계별 최종 산출물이 어떻게 변경되었는지 확인 가능한 문서</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="정형-기술-검토-tcr-기법">정형 기술 검토 (TCR) 기법</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">동료 검토 (Peer Review)</code> : 작성자가 설명하고, 이해 관계자들이 설명을 들으며 결함 발견</li>
+  <li><code class="language-plaintext highlighter-rouge">워크 스루 (Walk Through)</code> : 검토 자료 사전 배포 후, 짧은 시간 동안 회의 진행</li>
+  <li><code class="language-plaintext highlighter-rouge">인스펙션 (Inspection)</code> : 저작자가 아닌 다른 전문가가 검토</li>
+  <li>참가자 구성
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">주재자(Moderator)</code> : 참가자를 선정하고 계획 및 주재</li>
+      <li><code class="language-plaintext highlighter-rouge">작성자</code></li>
+      <li><code class="language-plaintext highlighter-rouge">낭독자</code></li>
+      <li><code class="language-plaintext highlighter-rouge">기록자</code></li>
+      <li><code class="language-plaintext highlighter-rouge">검토자</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">관리 리뷰 (Management Review)</code> : 프로젝트 진행 상황을 전반적으로 검토</li>
+  <li><code class="language-plaintext highlighter-rouge">기술 리뷰 (Technical Review)</code> : 명세를 준수하고 있는지 검토</li>
+  <li><code class="language-plaintext highlighter-rouge">감사 (Audit)</code> : 제품이 표준이나 가이드라인을 준수하는지 검토. 제품 제공자, 소비자, 제 3기관이 수행</li>
+</ul>
+
+<h2 id="요구공학-관리-단계-구성cmm-level-2">요구공학 관리 단계 구성(CMM Level 2)</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">협상</code> : 구현 가능한 기능 협상</li>
+  <li><code class="language-plaintext highlighter-rouge">기준선 설정</code> : 기준선(베이스라인) 설정
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">베이스라인</code> : 개발 과정의 산출물의 변화를 통제하는 시점</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">변경관리</code> : 형상통제 위원회를 운영하여 변경 관리
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">CCB</code> : 형상 관리의 방침을 정하고 산출물을 검토하는 조직</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">확인 및 검증</code> : 요구사항에 부합하는지 확인<br /><br /></li>
+</ol>
+
+<h1 id="미들웨어">미들웨어</h1>
+<ul>
+  <li>컴퓨터와 컴퓨터 간 연결 및 연결 관리를 돕는 소프트웨어<br /><br /></li>
+</ul>
+
+<h1 id="네트워크">네트워크</h1>
+<ul>
+  <li>원하는 정보를 수신자에게 정확하게 전달하기 위한 인프라</li>
+</ul>
+
+<h1 id="osi-7계층">OSI 7계층</h1>
+<ul>
+  <li>네트워크 통신에서 충돌 문제를 최소화하고자, 국제표준화기구(ISO)에서 제시한 네트워크 통신 규약</li>
+  <li>물데네트세표응!</li>
+</ul>
+
+<h2 id="물리-계층">물리 계층</h2>
+<ul>
+  <li>데이터를 전기적인 신호로 변환시켜 통신
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">단위</code> : 비트</li>
+      <li><code class="language-plaintext highlighter-rouge">프로토콜</code> : RS-232C</li>
+      <li><code class="language-plaintext highlighter-rouge">장비</code> : 허브, 리피터</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="물리-계층-장비">물리 계층 장비</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">허브</code> : 여러 대의 컴퓨터를 연결해 네트워크로 보내거나, 하나의 네트워크로 수신된 정보를 여러 대의 컴퓨터로 보내는 장비</li>
+  <li><code class="language-plaintext highlighter-rouge">리피터</code> : 디지털 신호를 증폭시키는 장비<br /><br /></li>
+</ul>
+
+<h2 id="데이터링크-계층">데이터링크 계층</h2>
+<ul>
+  <li>노드 간 오류 제어, 흐름 제어, 회선 제어
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">단위</code> : 프레임</li>
+      <li><code class="language-plaintext highlighter-rouge">장비</code> : L2 스위치, 브릿지, NIC, 스위칭 허브</li>
+      <li><code class="language-plaintext highlighter-rouge">프로토콜</code> : HDLC, PPP, Frame Relay, ATM</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="데이터링크-계층-장비">데이터링크 계층 장비</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">L2 스위치</code> : 목적지 MAC 주소를 기반으로 빠르게 데이터를 전송하는 장비
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">Store and Forwarding</code> : 데이터를 전부 받은 후 처리</li>
+      <li><code class="language-plaintext highlighter-rouge">Cut Through</code> : 목적지 주소만 확인 후 바로 전송</li>
+      <li><code class="language-plaintext highlighter-rouge">Fragment Frame</code> : 앞 64비트만 읽어 에러 처리 후 전송</li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">브릿지</code> : LAN과 LAN을 연결하는 장비</li>
+  <li><code class="language-plaintext highlighter-rouge">NIC</code> : 네트워크 인터페이스 카드. 외부 네트워크와 빠른 통신을 위해 컴퓨터 내에 설치되는 장비</li>
+  <li><code class="language-plaintext highlighter-rouge">스위칭 허브</code> : 스위치 기능을 가진 허브</li>
+</ul>
+
+<h3 id="데이터링크-계층-프로토콜">데이터링크 계층 프로토콜</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HDLC</code> : 점대점, 다중점 통신에 사용하는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">PPP</code> : 통신 노드 간 연결을 위한 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">Frame Relay</code> : 프레임 간 중계기능, 다중화 기능을 통해 빠른 데이터 전송이 가능한 고속 전송 기술</li>
+  <li><code class="language-plaintext highlighter-rouge">ATM</code> : 고정 크기 단위로 전송하는 비동기식 전송 기술<br /><br /></li>
+</ul>
+
+<h2 id="네트워크-계층">네트워크 계층</h2>
+<ul>
+  <li>데이터 전송을 위한 최적의 경로 설정
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">단위</code> : 패킷</li>
+      <li><code class="language-plaintext highlighter-rouge">장비</code> : L3 스위치, 라우터, 게이트웨이, 인터넷 공유기, 망(백본) 스위칭 허브</li>
+      <li><code class="language-plaintext highlighter-rouge">프로토콜</code> : IP, 라우팅 프로토콜, ARP, RARP, ICMP, IGMP</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="네트워크-계층-장비">네트워크 계층 장비</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">L3 스위치</code> : 3계층에서 동작하는 스위치 (L2 스위치 기능 + L3 라우터 기능을 모두 갖춘 장비)</li>
+  <li><code class="language-plaintext highlighter-rouge">라우터</code> : 최적의 경로를 지정하고 경로에 따라 전송시키는 장비</li>
+  <li><code class="language-plaintext highlighter-rouge">게이트웨이</code> : 다른 통신망에 접속할 수 있게 해주는 장비</li>
+  <li><code class="language-plaintext highlighter-rouge">인터넷 공유기</code> : 하나의 인터넷 라인을 여러 컴퓨터가 공유할 수 있게 해주는 장비</li>
+  <li><code class="language-plaintext highlighter-rouge">망(백본) 스위칭 허브</code> : 광역 네트워크를 커버하는 스위칭 허브</li>
+</ul>
+
+<h3 id="네트워크-계층-프로토콜">네트워크 계층 프로토콜</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">IP</code> : 패킷 단위의 네트워크 통신 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">라우팅 프로토콜</code> : 최적의 데이터 전송 경로를 설정하는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">ARP</code> : IP주소(3계층)를 MAC 주소(2계층)으로 변환하는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">RARP</code> : MAC 주소는 알지만 IP 주소를 모를 때 사용하는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">ICMP</code> : IP 패킷 처리 시의 문제를 알려주는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">IGMP</code> : 멀티캐스트 실시간 전송을 위해 사용하는 프로토콜(화상회의 등)</li>
+  <li><code class="language-plaintext highlighter-rouge">IPSec</code> : 네트워크 계층에서 사용하는 보안 프로토콜. 인증 헤더 + 암호화를 이용. MAC + 암호화를 통해 인증 + 기밀성 제공<br /><br /></li>
+</ul>
+
+<h2 id="전송계층transport">전송계층(Transport)</h2>
+<ul>
+  <li>종단 간 신뢰성있고 효율적으로 데이터 전송
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">단위</code> : 세그먼트</li>
+      <li><code class="language-plaintext highlighter-rouge">장비</code> : L4 스위치</li>
+      <li><code class="language-plaintext highlighter-rouge">프로토콜</code> : TCP, UDP</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="전송계층-장비">전송계층 장비</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">L4 스위치</code> : OSI 4계층에서 네트워크 단위를 연결하는 장비. TCP/UDP 등 스위칭 수행</li>
+</ul>
+
+<h3 id="전송계층-프로토콜">전송계층 프로토콜</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">TCP</code>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">신뢰성 보장</code> : 패킷 손실, 중복이 없도록 보장 (IP 계층 보완)</li>
+      <li><code class="language-plaintext highlighter-rouge">연결지향적</code> : 연결 회선을 통해 통신이 이뤄짐</li>
+      <li><code class="language-plaintext highlighter-rouge">흐름제어</code> : 송신-수신 속도 일치시킴</li>
+      <li><code class="language-plaintext highlighter-rouge">혼잡제어</code> : 네트워크 혼잡도에 따라 송신율 제어</li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">TCP 헤더 구조</code>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">Source Port Number</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Destination Port Number</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Sequence Number</code> : 신뢰성과 흐름 담당</li>
+      <li><code class="language-plaintext highlighter-rouge">Acknowledgement Number</code> : 승인 번호(수신을 기대하는 다음 번호)</li>
+      <li><code class="language-plaintext highlighter-rouge">HLEN</code> : 헤더 길이</li>
+      <li><code class="language-plaintext highlighter-rouge">Flag Bit</code> : 값 유효 여부 등을 표시하는 플래그</li>
+      <li><code class="language-plaintext highlighter-rouge">Window Size</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Checksum</code> : 에러 확인</li>
+      <li><code class="language-plaintext highlighter-rouge">Urgent Pointer</code> : 시퀀스 번호로부터의 옵셋</li>
+      <li><code class="language-plaintext highlighter-rouge">Options and Padding</code></li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">UDP</code>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">비신뢰성</code> : 메시지의 도착을 보장하지 않음</li>
+      <li><code class="language-plaintext highlighter-rouge">비순서화</code> : 수신된 메시지 순서 맞추지 않음</li>
+      <li>실시간 응용 및 멀티캐스팅 가능</li>
+      <li>단순 헤더 (고정 크기 헤더)</li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">UDP 헤더 구조</code>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">Source Port Number</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Destination Port Number</code></li>
+      <li><code class="language-plaintext highlighter-rouge">UDP Length</code></li>
+      <li><code class="language-plaintext highlighter-rouge">UDP Checksum</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Data</code><br /><br /></li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="세션계층-session">세션계층 (Session)</h2>
+<ul>
+  <li>송수신간(단말기 사이) 연결을 제어
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">단위</code> : 데이터</li>
+      <li><code class="language-plaintext highlighter-rouge">프로토콜</code> : RPC, NetBIOS, SSH, SSL/TLS</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="세션계층-프로토콜">세션계층 프로토콜</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">RPC</code> : 원격 프로시저 호출. 다른 주소 공간에 있는 프로세스 실행 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">NetBIOS</code> : 응용계층의 애플리케이션에 API 제공</li>
+  <li><code class="language-plaintext highlighter-rouge">SSH</code> : 보안 쉘. 원격 호스트에 접근하기 위한 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">SSL/TLS</code> : 안전한 데이터 전송을 위한 보안 프로토콜 (4계층(응용) - 7계층(전송) 사이에서 안전한 데이터 전송을 보장)<br /><br /></li>
+</ul>
+
+<h2 id="표현계층-presentaion">표현계층 (Presentaion)</h2>
+<ul>
+  <li>응용프로그램의 데이터를 통신에 알맞은 형태로 만들거나, 하위 계층의 데이터를 사용자가 이해할 수 있는 형태로 만드는 계층
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">단위</code> : 데이터</li>
+      <li><code class="language-plaintext highlighter-rouge">프로토콜</code> : JPEG, MPEG</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="표현계층-프로토콜">표현계층 프로토콜</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JPEG</code> : 이미지를 위한 표준 규격</li>
+  <li><code class="language-plaintext highlighter-rouge">MPEG</code> : 멀티미디어를 위한 표준 규격<br /><br /></li>
+</ul>
+
+<h2 id="응용계층-application">응용계층 (Application)</h2>
+<ul>
+  <li>사용자가 OSI 환경에 접근할 수 있도록 서비스(인터페이스)를 제공하는 계층
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">단위</code> : 데이터</li>
+      <li><code class="language-plaintext highlighter-rouge">프로토콜</code> : HTTP, FTP, SMTP, POP3, IMAP, Telnet</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="응용계층-프로토콜">응용계층 프로토콜</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HTTP</code> : 인터넷에서 데이터를 주고받기 위한 텍스트 기반의 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">FTP</code> : 서버-클라이언트 간 파일 전송을 위한 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">SMTP</code> : 이메일을 보내기 위한 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">POP3</code> : 이메일을 가져오기 위한 프로토콜 (로컬 PC에 저장 후 불러옴)</li>
+  <li><code class="language-plaintext highlighter-rouge">IMAP</code> : 이메일을 가져오기 위한 프로토콜 (메일 서버에서 불러옴)</li>
+  <li><code class="language-plaintext highlighter-rouge">Telnet</code> : 네트워크 연결에 사용하는 응용계층의 프로토콜<br /><br /></li>
+</ul>
+
+<h1 id="os">OS</h1>
+<ul>
+  <li>컴퓨터의 하드웨어를 사용자가 쉽게 사용할 수 있도록 인터페이스를 담당하는 소프트웨어</li>
+</ul>
+
+<h2 id="os-현행-시스템-분석">OS 현행 시스템 분석</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">품질 측면</code> : 신뢰도, 성능</li>
+  <li><code class="language-plaintext highlighter-rouge">지원 측면</code> : 기술 지원, 주변 기기, 구축 비용<br /><br /></li>
+</ol>
+
+<h1 id="디자인-패턴">디자인 패턴</h1>
+<ul>
+  <li>소프트웨어 설계 시 자주 쓰이는 방법을 정리한 패턴으로, 참고 시 개발 효율성이 높아진다.</li>
+</ul>
+
+<h2 id="디자인-패턴-구성요소">디자인 패턴 구성요소</h2>
+<ol>
+  <li>패턴 이름</li>
+  <li>문제 및 배경</li>
+  <li>솔루션</li>
+  <li>사례</li>
+  <li>결과</li>
+  <li>샘플코드
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">라이브러리 구성</code> : 도움말, 설치파일, 샘플코드</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="디자인-패턴-유형">디자인 패턴 유형</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">생성(5)</code> : 객체의 생성방식을 결정하는 패턴</li>
+  <li><code class="language-plaintext highlighter-rouge">구조(7)</code> : 객체를 조직화하는데 유용한 패턴</li>
+  <li><code class="language-plaintext highlighter-rouge">행위(11)</code> : 객체의 행위를 조직, 관리, 연합하는데 사용하는 패턴</li>
+</ol>
+
+<h3 id="디자인-패턴---생성-패턴">디자인 패턴 - 생성 패턴</h3>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">팩토리 메소드(Factory Method)</code> : 상위 클래스에서 인터페이스 정의, 서브 클래스가 실제 생성</li>
+  <li><code class="language-plaintext highlighter-rouge">프로토타입(Prototype)</code> : 원형 객체를 복사하여 생성 (객체 생성 시 갖춰야 할 기본 형태가 있을 때 사용)</li>
+  <li><code class="language-plaintext highlighter-rouge">빌더(Builder)</code> : 객체를 조립하여 생성. 생성 방법과 구현 방법을 구분하여, 동일한 객체 생성이여도 다른 결과가 나올 수 있음)</li>
+  <li><code class="language-plaintext highlighter-rouge">싱글톤(Singletone)</code> : 클래스 내 객체가 하나 뿐임을 보장. 하나의 객체를 생성해 어디든 참조할 수 있으나 동시 참조 불가</li>
+  <li><code class="language-plaintext highlighter-rouge">추상 팩토리(Abstract Factory)</code> : 구체적인 클래스에 의존하지 않고, 연관된 객체들의 그룹으로 생성 (객체 간 결합이 느슨해짐)</li>
+</ol>
+
+<h3 id="디자인-패턴---구조-패턴">디자인 패턴 - 구조 패턴</h3>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">퍼싸드(Facade)</code> : 복잡한 시스템에 단순한 인터페이스를 제공해 접근성을 높인 패턴</li>
+  <li><code class="language-plaintext highlighter-rouge">플라이웨이트(Flyweight)</code> : 객체가 필요할 때 생성하는 대신 공유하여 메모리 절약</li>
+  <li><code class="language-plaintext highlighter-rouge">컴포지트(Composite)</code> : 객체 관계를 파일 트리 구조로 구성하여, 복합 객체와 단일 객체를 동일하게 취급</li>
+  <li><code class="language-plaintext highlighter-rouge">프록시(Proxy)</code> : 실제 기능을 수행하는 객체(Real object) 대신 가상의 객체(Proxy object)를 사용해 로직의 흐름을 제어하는 디자인 패턴</li>
+  <li><code class="language-plaintext highlighter-rouge">브리지(Bridge)</code> : 구현부에서 추상층을 분리하여 결합도를 낮춘 패턴</li>
+  <li><code class="language-plaintext highlighter-rouge">어댑터(Adapter)</code> : 호환성 없는 클래스의 인터페이스를 이용할 수 있게 변환</li>
+  <li><code class="language-plaintext highlighter-rouge">데코레이터(Decorator)</code> : 객체 결합을 통해 기능을 확장</li>
+</ol>
+
+<h3 id="디자인-패턴---행위-패턴">디자인 패턴 - 행위 패턴</h3>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">중재자(Mediator)</code> : 객체 사이에 중재자를 두어 의존성을 줄이는 패턴</li>
+  <li><code class="language-plaintext highlighter-rouge">인터프리터(Interpreter)</code> : 여러 언어 구문을 해석할 수 있게 해주는 패턴</li>
+  <li><code class="language-plaintext highlighter-rouge">템플릿 메소드(Template Method)</code> : 상위 클래스에서 기능을 정의하고, 하위 클래스에서 세부 처리 방법을 구체화하는 패턴</li>
+  <li><code class="language-plaintext highlighter-rouge">옵저버(Observer)</code> : 객체를 지켜보고 있다가, 객체의 상태가 변하면 그 객체에 의존하는 다른 객체들에게 변화된 상태를 전달</li>
+  <li><code class="language-plaintext highlighter-rouge">커맨드(Command)</code> : 요청을 객체로 캡슐화하여, 각 요청(명령)이 들어오면 그에 맞는 서브 클래스 실행</li>
+  <li><code class="language-plaintext highlighter-rouge">비지터(Visitor)</code> : 처리 기능을 별도로 분리한 패턴 (분리된 처리 기능은 클래스를 방문하여 수행)</li>
+  <li><code class="language-plaintext highlighter-rouge">반복자(Iterator)</code> : 접근이 잦은 객체에 대해 동일한 인터페이스를 사용하도록 하는 패턴 (내부 노출 없이 순차적 접근 가능)</li>
+  <li><code class="language-plaintext highlighter-rouge">상태(State)</code> : 객체의 상태를 캡슐화하고, 이를 참조해 동작을 다르게 처리</li>
+  <li><code class="language-plaintext highlighter-rouge">전략(Strategy)</code> : 동일한 계열의 알고리즘을 캡슐화하고, 전략을 선택해 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">책임 연쇄(Chain of Responsibility)</code> : 한 객체가 요청을 처리하지 못하면, 연결된 객체로 넘어가 처리</li>
+  <li><code class="language-plaintext highlighter-rouge">메멘토(Memento)</code> : 특정 시점의 객체 내부 상태를 객체화하여, 해당 시점으로 되돌리는 기능을 제공<br /><br /></li>
+</ol>
+
+<h1 id="소프트웨어-아키텍처">소프트웨어 아키텍처</h1>
+<ul>
+  <li>소프트웨어 구성요소와, 구성요소의 특성, 구성요소 간 관계를 표현하는 구조</li>
+</ul>
+
+<h2 id="현행-시스템-파악">현행 시스템 파악</h2>
+<ol>
+  <li>구성 현황 / 기능 현황 / 인터페이스 파악</li>
+  <li>아키텍처, 소프트웨어 구성 파악</li>
+  <li>하드웨어, 네트워크 구성 파악</li>
+</ol>
+
+<h2 id="소프트웨어-41-뷰">소프트웨어 4+1 뷰</h2>
+<ul>
+  <li>요구사항을 4개의 관점에서 바라보는 방법. 4개 구조가 충돌되지 않는지, 요구사항을 충족하는지 증명하기 위해 유스케이스 사용
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">프로세스 뷰</code> : 비기능적인 속성으로 자원 사용 등을 표현한 뷰</li>
+      <li><code class="language-plaintext highlighter-rouge">유스케이스 뷰</code> : 유스케이스를 도출하고 다른 뷰를 검증하는 뷰</li>
+      <li><code class="language-plaintext highlighter-rouge">배치 뷰</code> : 컴포넌트가 물리적인 아키텍처에 어떻게 배치되는가를 보여주는 뷰</li>
+      <li><code class="language-plaintext highlighter-rouge">논리 뷰</code> : 기능적인 요구사항이 어떻게 제공되는지 표현한 뷰</li>
+      <li><code class="language-plaintext highlighter-rouge">구조 뷰</code> : 소프트웨어 모듈의 구성을 보여주는 뷰</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="소프트웨어-아키텍처-패턴-종류">소프트웨어 아키텍처 패턴 종류</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">계층화 패턴</code> : 시스템을 계층으로 구분 (ex. <code class="language-plaintext highlighter-rouge">OSI 7계층</code> : 서로 마주보는 계층에서만 상호작용 발생)</li>
+  <li><code class="language-plaintext highlighter-rouge">클라이언트-서버 패턴</code> : 하나의 서버 + 다수의 클라이언트 -&gt; 사용자는 클라이언트와만 상호작용</li>
+  <li><code class="language-plaintext highlighter-rouge">파이프-필터 패턴</code> : 데이터 스트림을 처리하는 시스템에서 사용 (ex. <code class="language-plaintext highlighter-rouge">Unix의 Shell</code> : 하나의 서브시스템이 데이터를 받아 처리하고, 결과를 다음 서브 시스템에게 넘겨줌)</li>
+  <li><code class="language-plaintext highlighter-rouge">브로커 패턴</code> : 사용자가 요청하면, 브로커가 적합한 컴포넌트를 연결하는 방식. 원격 서비스 호출에 응답하는 컴포넌트가 여럿일 때 적합</li>
+  <li><code class="language-plaintext highlighter-rouge">모델-뷰-컨트롤러 패턴</code> : 3개의 서브시스템으로 구조화한 패턴
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">모델</code> : 핵심 기능과 데이터 보관</li>
+      <li><code class="language-plaintext highlighter-rouge">뷰</code> : 사용자에게 정보 표시</li>
+      <li><code class="language-plaintext highlighter-rouge">컨트롤러</code> : 사용자의 입력 처리 - 하나의 모델에 여러 개의 뷰를 필요로 하는 대화형 애플리케이션에 적합</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="소프트웨어-아키텍처-비용-평가-모델">소프트웨어 아키텍처 비용 평가 모델</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">SAAM</code> : 변경 용이성과 기능성에 집중. 경험없어도 쉽게 사용 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">ATAM</code> : <code class="language-plaintext highlighter-rouge">SAAM</code>을 계승. 아키텍처 품질 속성을 만족하는지도 평가</li>
+  <li><code class="language-plaintext highlighter-rouge">CBAM</code> : <code class="language-plaintext highlighter-rouge">ATAM</code>에 경제성 평가 보장</li>
+  <li><code class="language-plaintext highlighter-rouge">ADR</code> : 아키텍처 구성요소 간 응집도 평가</li>
+  <li><code class="language-plaintext highlighter-rouge">ARID</code> : <code class="language-plaintext highlighter-rouge">ATAM + ADR</code>. 전체가 아닌 특정 부분에 대한 비용 평가<br /><br /></li>
+</ol>
+
+<h1 id="sdlc-소프트웨어-생명주기">SDLC (소프트웨어 생명주기)</h1>
+<ul>
+  <li>시스템의 요구분석 ~ 유지보수까지 전 과정을 모델링한 것</li>
+</ul>
+
+<h2 id="sdlc-모델-종류">SDLC 모델 종류</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">폭포수 모델(Waterfall model)</code> : 선형 순차적 모델. 고전적 생명주기 모델. 각 개발 단계를 마무리 지은 후 넘어가는 모델로 가장 오래됐고, 성공사례가 많으며, 단계별 산출물이 명확하고 요구사항 변경이 어려움</li>
+  <li><code class="language-plaintext highlighter-rouge">프로토타이핑 모델(Prototyping model)</code> : 주요 기능을 프로토타입으로 구현하고, 피드백을 반영해 만들어나가는 모델</li>
+  <li><code class="language-plaintext highlighter-rouge">나선형 모델(Spiral model)</code> : 위험을 최소화하기 위해 점진적으로 개발해나가는 모델
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">절차</code> : 계획 및 정의 - 위험 분석 - 개발 - 고객 평가</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">반복적 모델(Iteration model)</code> : 병렬적으로 개발 후 통합하거나, 반복적으로 개발해 점차 완성시켜나가는 모델</li>
+</ol>
+
+<h2 id="sdlc-모델-프로세스">SDLC 모델 프로세스</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">요구사항 분석</code> : 요구사항을 분석하고, 제약조건, 목표 등을 정의</li>
+  <li><code class="language-plaintext highlighter-rouge">설계</code> : 수행 방법을 논리적으로 결정 (ex. 시스템 구조 설계, 사용자 인터페이스 설계)</li>
+  <li><code class="language-plaintext highlighter-rouge">구현</code> : 프로그래밍 언어를 사용해 실제로 코드를 작성 (ex. 인터페이스 개발, 자료 구조 개발, 오류 처리)</li>
+  <li><code class="language-plaintext highlighter-rouge">테스트</code> (ex. 단위 테스트, 통합 테스트, 시스템 테스트, 인수 테스트)</li>
+  <li><code class="language-plaintext highlighter-rouge">유지보수</code><br /><br /></li>
+</ol>
+
+<h1 id="소프트웨어-개발-방법론">소프트웨어 개발 방법론</h1>
+<ul>
+  <li>소프트웨어의 개발 시작부터 전 개발 과정을 형상화한 방법론</li>
+</ul>
+
+<h2 id="소프트웨어-개발-방법론-종류">소프트웨어 개발 방법론 종류</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">구조적 방법론</code> : 전체 시스템을 나눠 개발하고 통합하는 분할-정복 방식의 방법론. 나씨-슈나이더만 차트 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">정보공학 방법론</code> : 정보 시스템 개발에 필요한 절차를 체계화한 방법론 (대형 프로젝트)</li>
+  <li><code class="language-plaintext highlighter-rouge">객체지향 방법론</code> : 객체라는 단위로 시스템을 설계하는 방법론</li>
+  <li><code class="language-plaintext highlighter-rouge">컴포넌트 기반 방법론</code> : 컴포넌트를 조립해 작성하는 방법론</li>
+  <li><code class="language-plaintext highlighter-rouge">애자일 방법론</code> : 절차보다 사람이 우선되는, 변화에 유연한 경량 개발 방법론</li>
+  <li><code class="language-plaintext highlighter-rouge">제품 개발 방법론</code> : 제품에 적용할 공통 기능을 정의하여 개발하는 방법론 (임베디드 소프트웨어 작성에 유용)<br /><br /></li>
+</ol>
+
+<h1 id="xp">XP</h1>
+<ul>
+  <li>1-3주의 반복 주기를 갖는 애자일 방법론</li>
+</ul>
+
+<h2 id="xp의-5가지-가치">XP의 5가지 가치</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">용기</code> : 용기를 갖고 빠르게 개발</li>
+  <li><code class="language-plaintext highlighter-rouge">단순성</code> : 필요한 것만 하자</li>
+  <li><code class="language-plaintext highlighter-rouge">의사소통</code> : 개발자-관리자-고객 간 원활하게 소통</li>
+  <li><code class="language-plaintext highlighter-rouge">피드백</code> : 의사소통에 대한 빠른 피드백</li>
+  <li><code class="language-plaintext highlighter-rouge">존중</code> : 팀원간 상호 존중</li>
+</ol>
+
+<h2 id="xp의-12가지-기본-원리">XP의 12가지 기본 원리</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">짝 프로그래밍 (Pair Programming)</code> : 다른 사람과 페어로 개발하여 공동 책임을 지님</li>
+  <li><code class="language-plaintext highlighter-rouge">공동 코드 소유 (Collective Ownership)</code> : 시스템에 있는 코드는 누구나 언제든 수정 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">지속적인 통합 (CI ; Continuos Integration)</code> : 여러 번 소프트웨어를 통합하고 빌드해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">계획 세우기 (Planning Process)</code> : 고객이 원하는 가치를 정의하고, 개발에 필요한 것은 무엇이며, 어떤 곳에서 지연이 될 수 있는지 알려줘야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">작은 릴리즈 (Small Release)</code> : 작은 시스템을 먼저 만들고, 짧은 단위로 업데이트</li>
+  <li><code class="language-plaintext highlighter-rouge">메타포어 (Metaphor)</code> : 공통 이름 체계를 통해 의사소통을 원활히</li>
+  <li><code class="language-plaintext highlighter-rouge">간단한 디자인 (Simple Release)</code> : 요구사항에 적합한 단순한 시스템을 설계</li>
+  <li><code class="language-plaintext highlighter-rouge">테스트 기반 개발 (TDD ; Test Drive Develop)</code> : 테스트를 먼저 수행하고, 통과할 수 있는 코드를 작성</li>
+  <li><code class="language-plaintext highlighter-rouge">리팩토링 (Refactoring)</code> : 기능을 바꾸지 않으면서 중복제거, 단순화 등을 위해 코드를 재구성</li>
+  <li><code class="language-plaintext highlighter-rouge">40시간 작업 (40-Hour Work)</code> : 피곤으로 인한 실수가 없도록 주 40시간만 일하자</li>
+  <li><code class="language-plaintext highlighter-rouge">고객 상주 (On Site Customer)</code> : 개발자들의 질문에 즉각 대답해줄 수 있는 고객이 풀타임 상주해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">코드 표준 (Coding Standard)</code> : 코딩 표준을 두고 효과적으로 개발<br /><br /></li>
+</ol>
+
+<h1 id="린">린</h1>
+<ul>
+  <li>낭비 요소를 제거해 품질을 향상시키는 애자일 방법론</li>
+</ul>
+
+<h2 id="린의-7가지-원칙">린의 7가지 원칙</h2>
+<ol>
+  <li>낭비제거</li>
+  <li>품질 내재화</li>
+  <li>지식 창출</li>
+  <li>늦은 확정</li>
+  <li>빠른 인도</li>
+  <li>사람 존중</li>
+  <li>전체 최적화<br /><br /></li>
+</ol>
+
+<h1 id="스크럼">스크럼</h1>
+<ul>
+  <li>매일 정해진 시간 / 장소에서 짧은 시간의 개발을 위한 애자일 방법론</li>
+</ul>
+
+<h2 id="스크럼-용어">스크럼 용어</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">백로그</code> : 제품에 대한 요구사항</li>
+  <li><code class="language-plaintext highlighter-rouge">스프린트</code> : 짧은 기간 내 반복적으로 개발</li>
+  <li><code class="language-plaintext highlighter-rouge">데일리(스크럼) 미팅</code> : 매일 To-Do List 계획 수립. 번다운 차트 작성</li>
+  <li><code class="language-plaintext highlighter-rouge">스크럼 마스터</code> : 프로젝트 리더</li>
+  <li><code class="language-plaintext highlighter-rouge">스프린트 회고</code> : 각자 반성하고 개선점 확인</li>
+  <li><code class="language-plaintext highlighter-rouge">번 다운 차트</code> : 남아있는 백로그 대비 시간을 시각적으로 표현 (백로그를 수직, 시간을 수평)<br /><br /></li>
+</ul>
+
+<h1 id="비용산정-모델">비용산정 모델</h1>
+<ul>
+  <li>소프트웨어 개발 계획을 수립하기 위해 투입될 자원이나 시간을 산정하는 방식
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">하향식</code> : 전문가가 산정 (ex. 델파이 기법)</li>
+      <li><code class="language-plaintext highlighter-rouge">상향식</code> : 요구사항과 기능에 따라 산정 (ex. LoC, Man Month, COCOMO, 푸트남, FP)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="비용산정-모델-종류">비용산정 모델 종류</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">LoC(Lines of Codes) 모형</code> : 코드 라인 수의 예측치를 구하여 비용 산정
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">산정방법</code> : (낙관치 + 중관치 x 4 + 비관치) / 6</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">COCOMO 모형</code> : 프로그램 규모에 따라 비용을 산정
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">조직형 / 단순형 (Organic)</code> : 소규모 5만 라인 (5KSDI) 이하</li>
+      <li><code class="language-plaintext highlighter-rouge">반 분리형 (Semi-Detached)</code> : 중간형 30만 라인 (30KSDI) 이하</li>
+      <li><code class="language-plaintext highlighter-rouge">임베디드형 (Embedded)</code> : 초대형</li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Man Month 모형</code> : 한 사람이 1개월 간 할 수 있는 일의 양을 기준으로 비용 산정
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Man Month = LoC / 개발자의 월간 생산성</code></li>
+      <li><code class="language-plaintext highlighter-rouge">프로젝트 기간 = Man Month / 프로젝트 인력</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">푸트남(Putnam) 모형</code> : 생명주기 단계별 인력분포를 예측하는 방식 (시간에 따른 함수로 표현되는 Rayleigh-Norden 곡선 분포도 기초)</li>
+  <li><code class="language-plaintext highlighter-rouge">FP(기능점수) 모형</code> : 요구 기능별로 가중치를 부여해 총 점수를 계산해 비용 산정<br /><br /></li>
+</ul>
+
+<h1 id="일정-관리-모델">일정 관리 모델</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">CPM(주 공정법)</code> : 여러 작업의 수행 순서가 얽힌 프로젝트에서 일정을 계산하는 기법
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">임계 경로(Critical Path) 계산법</code> : 가장 긴 경로 계산</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">CCPM(중요 연쇄 공정법)</code> : 주 공정법의 연쇄법으로, 자원 제약사항을 고려해 계산</li>
+  <li><code class="language-plaintext highlighter-rouge">PERT</code> : 낙관치, 중관치, 비관치의 3점 추정방식으로 일정 관리<br /><br /></li>
+</ol>
+
+<h1 id="ui">UI</h1>
+<ul>
+  <li>사용자와 시스템 사이의 매개체</li>
+</ul>
+
+<h2 id="ui-유형">UI 유형</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">CLI</code> : 텍스트(명령어) 기반</li>
+  <li><code class="language-plaintext highlighter-rouge">GUI</code> : 그래픽 기반(마우스, 펜)</li>
+  <li><code class="language-plaintext highlighter-rouge">NUI</code> : 신체 부위 이용(터치, 음성)</li>
+  <li><code class="language-plaintext highlighter-rouge">OUI</code> : 유기적 상호작용 기반 인터페이스(모든 사물이 입출력장치로 변화)</li>
+</ol>
+
+<h2 id="ui-설계-원칙">UI 설계 원칙</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">직관성</code> : 누구나 쉽게 이해하고 쉽게 사용할 수 있어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">유효성</code> : 사용자 목표가 달성될 수 있어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">학습성</code> : 쉽게 배울 수 있어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">유연성</code> : 인터렉션을 최대한 포용해야 함</li>
+</ol>
+
+<h2 id="ui-설계-지침">UI 설계 지침</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">사용자 중심</code> : 사용자가 이해하기 쉽게 설계</li>
+  <li><code class="language-plaintext highlighter-rouge">일관성</code> : 조작법을 빨리 이해할 수 있도록 일관적으로 설계해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">단순성</code></li>
+  <li><code class="language-plaintext highlighter-rouge">결과 예측 가능</code></li>
+  <li><code class="language-plaintext highlighter-rouge">명확성</code> : 개념적으로 인지하기 쉬워야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">표준화</code> : 디자인 표준으로 선행학습 이후 쉽게 사용할 수 있어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">오류 발생 해결</code> : 오류 상황을 인지할 수 있어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">접근성</code> : 연령, 성별 등 다양한 계층을 수용해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">가시성</code> : 주요 기능은 메인 화면에 노출해야 함</li>
+</ol>
+
+<h2 id="ui-시나리오-문서-작성-요건">UI 시나리오 문서 작성 요건</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">완전성</code> : 누락 없이 최대한 상세하게 작성</li>
+  <li><code class="language-plaintext highlighter-rouge">일관성</code> : 요구사항은 일관적이어야 함. UI도 일관적으로 작성</li>
+  <li><code class="language-plaintext highlighter-rouge">이해성</code> : 이해하기 쉬워야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">가독성</code> : 쉽게 읽혀야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">추적 용이성</code> : 변경사항을 알아보기 쉬워야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">수정 용이성</code> : 쉽게 수정할 수 있어야 함</li>
+</ol>
+
+<h2 id="ui-설계-도구">UI 설계 도구</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">화면 설계 도구</code> : 파워 목업, 발사믹 목업, 카카오 오븐</li>
+  <li><code class="language-plaintext highlighter-rouge">프로토타이핑 도구</code> : UX핀, 액슈어(디스크립션까지 작성 가능), 네이버 프로토나우</li>
+  <li><code class="language-plaintext highlighter-rouge">UI 디자인 산출물로 작업하는 프로토타이핑 도구</code> : 인비전, 픽사에이트, 프레이머</li>
+</ol>
+
+<h2 id="ui-품질-요구사항-isoiec-9126-기반">UI 품질 요구사항 (ISO/IEC 9126 기반)</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">이식성</code> : 다른 환경에도 잘 적응하는가?
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">적용성</code> : 다른 환경에도 잘 적용되고</li>
+      <li><code class="language-plaintext highlighter-rouge">설치성</code> : 잘 설치되며</li>
+      <li><code class="language-plaintext highlighter-rouge">대체성</code> : 다른 SW를 대체할 수 있는지</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">신뢰성</code> : 오류가 없거나 있더라도 괜찮은가?
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">성숙성</code> : 오류가 없고</li>
+      <li><code class="language-plaintext highlighter-rouge">고장허용성</code> : 오류가 있어도 성능을 유지할 수 있고</li>
+      <li><code class="language-plaintext highlighter-rouge">회복성</code> : 오류를 금방 회복할 수 있는지</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">사용성</code> : 쓰기 편한가?
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">이해성</code> : 이해하기 쉽고</li>
+      <li><code class="language-plaintext highlighter-rouge">학습성</code> : 배우기 쉽고</li>
+      <li><code class="language-plaintext highlighter-rouge">운용성</code> : 다루기 쉬운지</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">유지보수성</code> : 개선 및 확장이 쉬운가?
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">분석성</code> : 결함이나 고장을 발견하기 쉽고</li>
+      <li><code class="language-plaintext highlighter-rouge">변경성</code> : 수정하기 쉽고</li>
+      <li><code class="language-plaintext highlighter-rouge">안정성</code> : 수정하더라도 안정적이고</li>
+      <li><code class="language-plaintext highlighter-rouge">시험성</code> : 변경된 내용을 검증할 수 있는지</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">효율성</code> : 한정된 자원을 효율적으로 쓰는가?
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">시간반응성</code> : 처리 속도가 빠르고</li>
+      <li><code class="language-plaintext highlighter-rouge">자원효율성</code> : 적절한 자원을 제공하는지</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">기능성</code> : 요구사항을 정확하게 만족하며 기능하는가?
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">적절성</code> : 적절하고</li>
+      <li><code class="language-plaintext highlighter-rouge">정밀성</code> : 정확하고</li>
+      <li><code class="language-plaintext highlighter-rouge">상호운용성</code> : 상호 운용되고</li>
+      <li><code class="language-plaintext highlighter-rouge">보안성</code> : 보안성 있고</li>
+      <li><code class="language-plaintext highlighter-rouge">호환성</code> : 표준 잘 지키는지</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="ui-표준">UI 표준</h2>
+<ol>
+  <li>UX 원칙 정의</li>
+  <li>정책 및 철학 설정</li>
+  <li>스타일 가이드 정의</li>
+  <li>UI 패턴 모델 정의</li>
+  <li>조직 구성</li>
+</ol>
+
+<h2 id="ui-개발을-위한-주요-기법">UI 개발을 위한 주요 기법</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">3C 분석</code> : Customer(고객), Company(자사), Competitor(경쟁사) 분석</li>
+  <li><code class="language-plaintext highlighter-rouge">SWOT 분석</code> : 강점, 약점, 기회, 위협 요인을 분석</li>
+  <li><code class="language-plaintext highlighter-rouge">시나리오 플래닝</code> : 다양한 시나리오를 설계해 불확실성 제거</li>
+  <li><code class="language-plaintext highlighter-rouge">사용성 테스트</code> : 사용자가 직접 제품을 사용하며 과제 수행</li>
+  <li><code class="language-plaintext highlighter-rouge">워크숍</code> : 집단이 모여 지식, 아이디어를 교환하고 검토하는 연구회</li>
+</ul>
+
+<h2 id="ui-화면-설계-구분">UI 화면 설계 구분</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">와이어프레임</code> : 화면 단위의 레이아웃 설계</li>
+  <li><code class="language-plaintext highlighter-rouge">스토리보드</code> : 정책, 와이어프레임 등 구축하려는 서비스를 위한 정보가 수록된 문서</li>
+  <li><code class="language-plaintext highlighter-rouge">프로토타입</code> : 와이어프레임(or 스토리보드) + 동적 효과<br /><br /></li>
+</ul>
+
+<h1 id="사용자-요구사항-도출">사용자 요구사항 도출</h1>
+<ol>
+  <li>페르소나 정의</li>
+  <li>콘셉트 모델 정의</li>
+  <li>요구사항 정의</li>
+  <li>UI 컨셉션<br /><br /></li>
+</ol>
+
+<h1 id="uml">UML</h1>
+<ul>
+  <li>표준화된 범용 모델링 언어</li>
+</ul>
+
+<h2 id="uml의-특징">UML의 특징</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">가시화 언어</code> : 원활한 의사소통을 위해 가시화</li>
+  <li><code class="language-plaintext highlighter-rouge">구축 언어</code> : UML -&gt; 소스코드 변환 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">명세화 언어</code></li>
+  <li><code class="language-plaintext highlighter-rouge">문서화 언어</code></li>
+</ol>
+
+<h2 id="uml의-구성요소">UML의 구성요소</h2>
+<ol>
+  <li>사물</li>
+  <li>관계</li>
+  <li>다이어그램</li>
+</ol>
+
+<h2 id="uml-다이어그램">UML 다이어그램</h2>
+<ul>
+  <li>정적(구조적) 다이어그램
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">클래스 다이어그램</code> : 클래스 간 관계 표현</li>
+      <li><code class="language-plaintext highlighter-rouge">객체 다이어그램</code> : 객체 간 관계 표현</li>
+      <li><code class="language-plaintext highlighter-rouge">컴포넌트 다이어그램</code> : 컴포넌트 간 관계를 표현. 구현 단계에서 사용</li>
+      <li><code class="language-plaintext highlighter-rouge">배치 다이어그램</code> : 물리적 요소의 위치 표현. 구현 단계에서 사용</li>
+      <li><code class="language-plaintext highlighter-rouge">복합체 구조 다이어그램</code> : 복합 구조인 경우 그 내부 표현</li>
+      <li><code class="language-plaintext highlighter-rouge">패키지 다이어그램</code> : 패키지 간 관계 표현</li>
+    </ol>
+  </li>
+  <li>동적(행위적) 다이어그램
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">시퀀스 다이어그램</code> : <code class="language-plaintext highlighter-rouge">시간적 개념</code> 중심으로 메시지 표현</li>
+      <li><code class="language-plaintext highlighter-rouge">유스케이스 다이어그램</code> : 사용자 관점에서 표현</li>
+      <li><code class="language-plaintext highlighter-rouge">커뮤니케이션 다이어그램</code> : 객체들이 주고 받는 메시지와 상호작용(객체 간 연관)까지 표현</li>
+      <li><code class="language-plaintext highlighter-rouge">활동 다이어그램</code> : 시스템이 수행하는 활동을 표현</li>
+      <li><code class="language-plaintext highlighter-rouge">상태 다이어그램</code> : 객체의 상태와 상태 변화를 표현</li>
+      <li><code class="language-plaintext highlighter-rouge">타이밍 다이어그램</code> : 객체의 상태 변화와 시간 제약을 표현</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="uml-스테레오-타입">UML 스테레오 타입</h2>
+<ul>
+  <li>UML 기본 요소 + 새로운 요소를 더한 확장 매커니즘. « »(길러멧) 기호 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;include&gt;&gt;</code> : 어떤 시점에 반드시 다른 유스케이스를 실행함</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;extend&gt;&gt;</code> : 어떤 시점에 다른 유스케이스를 실행할 수도 있고 아닐 수도 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;abstract&gt;&gt;</code> : 추상 클래스 (인스턴스 생성 하지 않고 공통 특징만 정의)</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;interface&gt;&gt;</code> : 모든 메서드와 상수가 추상인 클래스</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;entity&gt;&gt;</code> : 정보 또는 행위를 표현하는 클래스</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;boundary&gt;&gt;</code> : 상호작용을 담당하는 클래스</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;control&gt;&gt;</code> : 로직 및 제어를 담당하는 클래스</li>
+</ul>
+
+<h2 id="다이어그램-종류">다이어그램 종류</h2>
+<h3 id="클래스-다이어그램">클래스 다이어그램</h3>
+<ul>
+  <li>클래스의 속성(변수), 연산(메서드), 클래스 간 관계를 표현한 다이어그램</li>
+  <li>속성 : 클래스의 구조적 특성 (인스턴스가 보유 가능한 값의 범위)</li>
+  <li>접근 제어자 : 접근 가능한 정도</li>
+</ul>
+
+<h4 id="클래스-접근제어자">클래스 접근제어자</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">public</code> : 외부 모든 클래스에서 접근 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">protected</code> : 동일 패키지(하위 클래스 포함)일 때 접근 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">default</code> : 자바 전용. 접근 제어자 명시가 없을 때 동일 패키지(하위 클래스 포함) 또는 파생 클래스에서 접근 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">private</code> : 같은 클래스 내에서만 접근 가능</li>
+</ul>
+
+<h4 id="클래스-간-관계">클래스 간 관계</h4>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">연관(Association)</code> : 관련되어 있음 &lt; - - &gt; (양방향은 화살표 생략)</li>
+  <li><code class="language-plaintext highlighter-rouge">의존(Dependency)</code> : 클래스가 다른 클래스 사용 &lt; . . . &gt;</li>
+  <li><code class="language-plaintext highlighter-rouge">집합(Aggeregation)</code> : 포함하지만 독립적</li>
+  <li><code class="language-plaintext highlighter-rouge">포함(Composition)</code> : 포함하고 생명주기를 함께 함</li>
+  <li><code class="language-plaintext highlighter-rouge">일반화(Generalization)</code> : 일반적인지 구체적인지</li>
+  <li><code class="language-plaintext highlighter-rouge">실체화(Realization)</code> : 기능으로 묶인 관계</li>
+</ol>
+
+<h3 id="컴포넌트-다이어그램">컴포넌트 다이어그램</h3>
+<ul>
+  <li>컴포넌트와 컴포넌트 간 관계를 표현한 다이어그램
+    <ul>
+      <li>컴포넌트 : 탭 2개가 달린 직사각형 + 이름</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="패키지-다이어그램">패키지 다이어그램</h3>
+<ul>
+  <li>패키지 관계를 표현한 다이어그램
+    <ul>
+      <li>패키지 : 폴더 형태</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="시퀀스-다이어그램">시퀀스 다이어그램</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">시간적 개념</code> 중심으로 메시지 흐름을 표현한 다이어그램
+    <ul>
+      <li>생명선 : - - - - -</li>
+      <li>실행 : - - [ ] - - (함수 실행시간)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="유스케이스-다이어그램">유스케이스 다이어그램</h3>
+<ul>
+  <li>사용자 시점에서 표현한 다이어그램</li>
+</ul>
+
+<h3 id="커뮤니케이션-다이어그램">커뮤니케이션 다이어그램</h3>
+<ul>
+  <li>객체들이 주고받는 메시지와 상호작용(객체 간 연관)까지 표현한 다이어그램
+    <ul>
+      <li>객체 : 사각형 (객체명:클래스명 으로 표현)</li>
+      <li>메시지 : -&gt; 표현</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="활동-다이어그램">활동 다이어그램</h3>
+<ul>
+  <li>시스템의 처리 활동을 순서대로 표현한 다이어그램
+    <ul>
+      <li>종료점 : 조건 노드, 병합 노드, 포크 노드</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="상태-다이어그램">상태 다이어그램</h3>
+<ul>
+  <li>객체의 상태와 상태 변화를 표현한 다이어그램
+    <ul>
+      <li>종료점 : 전이, 전이 조건, 이벤트<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="데이터-모델">데이터 모델</h1>
+<ul>
+  <li>현실 세계의 정보를 컴퓨터가 이해할 수 있도록 표현한 모델</li>
+</ul>
+
+<h2 id="데이터-모델의-구성-요소">데이터 모델의 구성 요소</h2>
+<ul>
+  <li>연구제!!!</li>
+</ul>
+
+<ol>
+  <li>연산</li>
+  <li>구조</li>
+  <li>제약조건</li>
+</ol>
+
+<h2 id="데이터-모델의-절차">데이터 모델의 절차</h2>
+<ul>
+  <li>개논물</li>
+  <li>개념적 -&gt; 논리적 -&gt; 물리적</li>
+</ul>
+
+<h3 id="개념적-데이터-모델">개념적 데이터 모델</h3>
+<ul>
+  <li>현실 세계의 정보를 <code class="language-plaintext highlighter-rouge">추상적</code>, <code class="language-plaintext highlighter-rouge">개념적</code>으로 표현</li>
+  <li>DB 종류에 무관함</li>
+  <li>주요 산출물 : E-R 다이어그램
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">E-R 다이어그램</code> : 현실의 정보를 사람이 이해할 수 있는 형태로 표현해 개체와 개체의 속성, 개체 간 관계를 도식화 한 다이어그램</li>
+      <li><code class="language-plaintext highlighter-rouge">E-R 다이어그램 구성요소</code>
+        <ul>
+          <li>개체 : □</li>
+          <li>속성 : ○</li>
+          <li>다중 값 속성 : ◎</li>
+          <li>관계-속성 : ─</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">개체 정의서</code> : 개념 데이터 모델링 단계에서 도출된 개체와 관련된 정보를 명세화한 문서</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="논리적-데이터-모델">논리적 데이터 모델</h3>
+<ul>
+  <li>논리적 데이터베이스 구조로 매핑</li>
+  <li>목표 DBMS 설정, <code class="language-plaintext highlighter-rouge">스키마 설계</code></li>
+  <li>정규화 수행</li>
+  <li>모델링 종류
+    <ol>
+      <li>관계 데이터 모델</li>
+      <li>계층 데이터 모델</li>
+      <li>네트워크 데이터 모델</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="물리적-데이터-모델">물리적 데이터 모델</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">객체 생성</code> (테이블, 뷰, 인덱스 등)</li>
+  <li>반 정규화 수행<br /><br /></li>
+</ul>
+
+<h1 id="관계-데이터-모델">관계 데이터 모델</h1>
+<ul>
+  <li>2차원 테이블 형태</li>
+  <li>Codd 박사가 제안</li>
+  <li>1:1, 1:N, N:M 자유롭게 표현<br /><br /></li>
+</ul>
+
+<h1 id="네트워크-데이터-모델">네트워크 데이터 모델</h1>
+<ul>
+  <li>그래프 형태</li>
+  <li>CODASYL DBTG 모델이라고도 함</li>
+  <li>상위-하위 레코드 간 N:M 관계<br /><br /></li>
+</ul>
+
+<h1 id="계층-데이터-모델">계층 데이터 모델</h1>
+<ul>
+  <li>트리 형태</li>
+  <li>상하 관계 존재</li>
+  <li>1:N 관계만 허용<br /><br /></li>
+</ul>
+
+<h1 id="데이터베이스">데이터베이스</h1>
+<ul>
+  <li>다수의 인원과 시스템이 사용할 목적으로 관리하는 데이터 집합
+    <ol>
+      <li>통합된 데이터</li>
+      <li>저장된 데이터</li>
+      <li>운영 데이터</li>
+      <li>공용 데이터</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="데이터베이스-특성">데이터베이스 특성</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">실시간 접근성</code> : 쿼리에 실시간으로 응답</li>
+  <li><code class="language-plaintext highlighter-rouge">계속적인 변화</code> : 삽입/삭제/갱신으로 최신 데이터 유지</li>
+  <li><code class="language-plaintext highlighter-rouge">동시 공용</code> : 다수 사용자가 이용</li>
+  <li><code class="language-plaintext highlighter-rouge">내용 참조</code> : 사용자가 요구하는 내용으로 참조</li>
+</ol>
+
+<h2 id="데이터베이스의-종류">데이터베이스의 종류</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">파일 시스템 개념</code> : DB 전 단계의 데이터 관리 방식</li>
+  <li><code class="language-plaintext highlighter-rouge">관계형 DBMS(= RDBMS)</code> : 관계형 데이터 모델을 기반으로 하는 DB 관리 시스템</li>
+  <li><code class="language-plaintext highlighter-rouge">계층형 DBMS(= HDBMS)</code> : 데이터를 상하 종속 관계로 계층화한 모델</li>
+  <li><code class="language-plaintext highlighter-rouge">네트워크형 DBMS(= NDBMS)</code> : 데이터를 망상 형태로 표현한 모델</li>
+</ol>
+
+<h2 id="dbms">DBMS</h2>
+<ul>
+  <li>데이터의 추가, 변경, 삭제 등의 관리 기능을 제공하는 소프트웨어</li>
+</ul>
+
+<h2 id="dbms의-유형">DBMS의 유형</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Key-Value DBMS</code> : Unique한 키에 하나의 값을 갖는 형태 (ex. Redis, DynamoDB)</li>
+  <li><code class="language-plaintext highlighter-rouge">Column Family Data Store DBMS</code> : Key 안에 (Column, Value) 조합의 필드를 갖는 DBMS. 구글의 Bigtable 기반 (ex.. HBase, Cassandra)</li>
+  <li><code class="language-plaintext highlighter-rouge">Document Store DBMS</code> : 값의 데이터 타입이 문서 타입(XML, JSON)인 DBMS (ex. MongoDB, Couchbase)</li>
+  <li><code class="language-plaintext highlighter-rouge">Graph DBMS</code> : 시멘틱 웹과 온톨로지 분야에서 활용되는 그래프로 데이터를 표현 (ex. Neo4j, AllegroGraph)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">온톨로지</code> : 실세계에 존재하는 개념 정보를 컴퓨터가 이해할 수 있도록 서술한 지식베이스</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="dbms의-특징">DBMS의 특징</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">데이터 일관성</code> : 조작 후에도 데이터는 변함없음</li>
+  <li><code class="language-plaintext highlighter-rouge">데이터 회복성</code> : 장애 발생 시 복구되어야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">데이터 무결성</code> : 동일한 내용에 서로 다른 데이터가 저장되지 않아야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">데이터 효율성</code> : 응답시간, 저장공간 등을 최적화해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">데이터 보안성</code> : 불법적인 노출, 변경으로부터 보호해야 함</li>
+</ol>
+
+<h2 id="dbms-분석-시-고려-사항">DBMS 분석 시 고려 사항</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">성능 측면</code> : 가용성, 성능, 상호 호환성</li>
+  <li><code class="language-plaintext highlighter-rouge">지원 측면</code> : 기술 지원, 구축 비용<br /><br /></li>
+</ol>
+
+<h1 id="관계-대수">관계 대수</h1>
+<ul>
+  <li>원하는 정보를 어떻게 유도하는가에 대한 절차적 정형 언어</li>
+</ul>
+
+<h2 id="일반-집합-연산자">일반 집합 연산자</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">합집합(Union)</code> : 전체</li>
+  <li><code class="language-plaintext highlighter-rouge">교집합(Intersection)</code> : 공통</li>
+  <li><code class="language-plaintext highlighter-rouge">차집합(Difference)</code> : R에만 존재하고 S에는 없음</li>
+  <li><code class="language-plaintext highlighter-rouge">카티션 프로덕트(CARTESIAN Product)</code> : R과 S에 속한 모든 튜플 연결</li>
+</ol>
+
+<h2 id="순수-관계-연산자">순수 관계 연산자</h2>
+<ol>
+  <li>셀렉트 <code class="language-plaintext highlighter-rouge">σ</code> : <code class="language-plaintext highlighter-rouge">σ 조건 (R)</code> R에서 조건을 만족하는 튜플 반환 -&gt; 가로</li>
+  <li>프로젝트 <code class="language-plaintext highlighter-rouge">π</code> : <code class="language-plaintext highlighter-rouge">π 속성리스트 (R)</code> R에서 주어진 속성들로만 구성된 튜플 반환 -&gt; 세로</li>
+  <li>조인 <code class="language-plaintext highlighter-rouge">▷◁</code> : <code class="language-plaintext highlighter-rouge">R ▷◁ S</code> 공통 속성으로 R과 S의 튜플 연결하여 반환</li>
+  <li>디비전 <code class="language-plaintext highlighter-rouge">÷</code> : <code class="language-plaintext highlighter-rouge">R ÷ S</code> S의 모든 튜플과 관련된 R의 튜플 반환<br /><br /></li>
+</ol>
+
+<h1 id="관계-해석">관계 해석</h1>
+<ul>
+  <li>원하는 정보가 무엇인가에 대한 비절차적 언어 (프레디킷 해석 기반)<br /><br /></li>
+</ul>
+
+<h1 id="정규화normalization">정규화(Normalization)</h1>
+<ul>
+  <li>데이터의 중복성을 제거하여 이상 현상을 방지하는 과정</li>
+</ul>
+
+<h2 id="이상-현상anomaly">이상 현상(Anomaly)</h2>
+<ul>
+  <li>데이터 중복으로 인해 릴레이션 조작 시 발생하는 비합리적 현상</li>
+  <li><code class="language-plaintext highlighter-rouge">삽입, 삭제, 갱신 이상</code> (select, update, delete)</li>
+</ul>
+
+<h2 id="정규화-단계">정규화 단계</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">1NF (1차 정규화)</code> : 도메인은 원자값으로만 구성</li>
+  <li><code class="language-plaintext highlighter-rouge">2NF (2차 정규화)</code> : 부분 함수 종속성 제거 (완전 함수적 종속 관계)</li>
+  <li><code class="language-plaintext highlighter-rouge">3NF (3차 정규화)</code> : 이행 함수 종속성 제거 (A -&gt; B, B -&gt; C, A -&gt; C일 때 이행 함수 종속 관계)</li>
+  <li><code class="language-plaintext highlighter-rouge">보이스-코드(BC)NF</code> : 결정자는 모두 후보키여야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">4NF (4차 정규화)</code> : 다치(다중값) 종속 제거</li>
+  <li><code class="language-plaintext highlighter-rouge">5NF (5차 정규화)</code> : 조인 종속 제거 (릴레이션의 모든 조인 종속이 후보키를 통해서만 설립)<br /><br /></li>
+</ol>
+
+<h1 id="반-정규화de-normalization">반 정규화(De-Normalization)</h1>
+<ul>
+  <li>정규화된 개체/속성/관계를 단순화하는 기법</li>
+  <li>장점 : 성능 &amp; 관리 효율성 증대</li>
+  <li>단점 : 일관성 &amp; 무관성 하락</li>
+</ul>
+
+<h2 id="반-정규화-기법">반 정규화 기법</h2>
+<ol>
+  <li>테이블 병합</li>
+  <li>테이블 분할</li>
+  <li>중복 테이블 추가 : 집계테이블, 진행테이블, 특정 부분만을 포함하는 테이블</li>
+  <li>중복 컬럼 허용</li>
+  <li>중복 관계 허용<br /><br /></li>
+</ol>
+
+<h1 id="nosql">NoSQL</h1>
+<ul>
+  <li>Not Only SQL</li>
+  <li>전통적인 RDBMS가 아닌 DBMS를 지칭</li>
+  <li>조인 연산 불가, 수평적으로 확장 가능</li>
+</ul>
+
+<h2 id="nosql의-특징">NoSQL의 특징</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Basically Available</code> : 언제든지 접근 가능해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">Soft-State</code> : 노드의 상태는 외부 정보로 결정됨</li>
+  <li><code class="language-plaintext highlighter-rouge">Eventually Consistency</code> : 일정 시간이 지나면 데이터 일관성이 유지됨</li>
+</ol>
+
+<h2 id="nosql의-유형">NoSQL의 유형</h2>
+<ol>
+  <li>Key-Value</li>
+  <li>Column Family Data Store</li>
+  <li>Document Store</li>
+  <li>Graph<br /><br /></li>
+</ol>
+
+<h1 id="데이터-마이닝">데이터 마이닝</h1>
+<ul>
+  <li>대규모 데이터 속에서 의미있는 정보를 파악해 의사결정에 활용하는 기법</li>
+</ul>
+
+<h2 id="데이터-마이닝-기법">데이터 마이닝 기법</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">분류 규칙 (Classification)</code> : 과거 데이터로부터 분류 모델을 만들어 이를 토대로 새로운 결과 값을 예측</li>
+  <li><code class="language-plaintext highlighter-rouge">연관 규칙 (Association)</code> : 데이터 항목 간 종속 관계를 찾아냄 (ex. 넥타이 구매자는 셔츠도 같이 구매함)</li>
+  <li><code class="language-plaintext highlighter-rouge">연속 규칙 (Sequence)</code> : 연관 규칙에 ‘시간’ 관련 정보가 포함된 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">데이터 군집화 (Clustering)</code> : 유사한 특성을 지닌 그룹으로 분류하되 정보가 없는 상태에서 분류</li>
+</ol>
+
+<h2 id="데이터-마이닝-종류">데이터 마이닝 종류</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">텍스트 마이닝</code> : 대량의 텍스트 속에서 의미있는 정보를 찾아내는 기법 (자연어, 문서 처리기술 적용)</li>
+  <li><code class="language-plaintext highlighter-rouge">웹 마이닝</code> : 웹으로부터 얻는 방대한 정보 속에서 의미있는 정보를 찾아내는 기법 (데이터 마이닝 기술 응용)<br /><br /></li>
+</ul>
+
+<h1 id="빅데이터의-특성">빅데이터의 특성</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Volumn(양)</code> : PB 수준의 대규모 데이터</li>
+  <li><code class="language-plaintext highlighter-rouge">Variety(다양성)</code> : 유형이 로그, 소셜, 위치 등 다양해짐</li>
+  <li><code class="language-plaintext highlighter-rouge">Velocity(속도)</code> : 정보가 빠르게 증가하고 수집됨</li>
+</ol>
+
+<h2 id="빅데이터-수집-및-처리-기술">빅데이터 수집 및 처리 기술</h2>
+<ol>
+  <li>비정형 데이터 수집 (ex. 척화(Chuckwa), 플럼(Flume), 스크라이브(Scribe)</li>
+  <li>정형 데이터 수집 (ex. 스쿱(Squoop), 하이호(Hiho), ETL, FTP</li>
+  <li>분산 데이터 저장/처리 (ex. HDFS(하둡 분산 파일 시스템), 맵리듀스(구글이 발표)</li>
+  <li>분산 데이터 베이스 (ex. HBase)</li>
+</ol>
+
+<h2 id="빅데이터-분석-및-처리-기술">빅데이터 분석 및 처리 기술</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">빅데이터 분석</code>
+    <ul>
+      <li>데이터 가공 : ex. 피그(Pig), 하이브(Hive),</li>
+      <li>데이터 마이닝 : ex. 머하웃(Mahout)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">빅데이터 실시간 처리</code>
+    <ul>
+      <li>실시간 SQL 처리 : ex. 임팔라(Impala)</li>
+      <li>요청 작업의 워크플로우 관리 : ex. 우지(Oozie)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">분산 코디네이션</code>
+    <ul>
+      <li>분산 처리 기술 : ex. 주키퍼(Zookeeper)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">분석 및 시각화</code>
+    <ul>
+      <li>시각화 기술 : ex. R<br /><br /></li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="인터페이스연계-명세서">인터페이스(연계) 명세서</h1>
+<ul>
+  <li>연계에 필요한 항목을 명세화한 문서 구성요소
+    <ol>
+      <li>인터페이스 ID</li>
+      <li>최대 처리 횟수</li>
+      <li>데이터 크기 (평균/최대)</li>
+      <li>시스템 정보 (송수신 각각) : 시스템명, 업무명, 연계방식 등</li>
+      <li>데이터 정보 (송수신 각각) : 번호, 필드, 데이터 타입 등</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="연계-요구사항-분석-시-참고-문서">연계 요구사항 분석 시 참고 문서</h2>
+<ol>
+  <li>코드 정의서</li>
+  <li>테이블 정의서</li>
+  <li>응용 프로그램 구성도 (화면 설계서, 사용자 인터페이스 정의서 등)</li>
+  <li>시스템 구성도 (소프트웨어 구성도, 하드웨어 구성도, 네트워크 구성도 등)</li>
+</ol>
+
+<h2 id="연계-시스템의-구성">연계 시스템의 구성</h2>
+<ol>
+  <li>송신 시스템 : 연계할 데이터를 송신</li>
+  <li>수신 시스템 : 수신한 데이터를 변환해 저장하고 활용하는 시스템</li>
+  <li>중계 시스템 : 송신-수신 시스템 사이에서 송수신하고 모니터링하는 시스템</li>
+</ol>
+
+<h2 id="연계-데이터-표준화">연계 데이터 표준화</h2>
+<ol>
+  <li>인터페이스 데이터 공통부 : 표준 항목</li>
+  <li>인터페이스 데이터 개별부 : 개별 데이터</li>
+  <li>인터페이스 데이터 종료부 : 전송데이터의 끝을 알림</li>
+</ol>
+
+<h2 id="연계-매커니즘-수행-절차">연계 매커니즘 수행 절차</h2>
+<ol>
+  <li>연계 데이터 추출 및 생성</li>
+  <li>코드 매핑 (데이터 변환)</li>
+  <li>연계 테이블 또는 연계 파일 생성</li>
+  <li>로그 기록</li>
+  <li>연계 서버 또는 송수신 어댑터</li>
+  <li>전송</li>
+  <li>수신된 데이터 DB에 반영</li>
+</ol>
+
+<h2 id="연계-매커니즘-종류">연계 매커니즘 종류</h2>
+<h3 id="직접-연계">직접 연계</h3>
+<ul>
+  <li>장점 : 구현이 쉽고 개발 기간이 짧음</li>
+  <li>단점 : 결합도가 높음</li>
+  <li>종류
+    <ul>
+      <li>DB Link : 수신 시스템에서 DB 링크를 생성하고 송신 시스템에서 해당 링크를 참조하는 방식</li>
+      <li>DB Connection : DB Connection Pool을 생성하고 해당 풀 명을 이용하여 연결하는 방식
+        <ul>
+          <li>커넥션 풀 : DB와 연결된 커넥션을 미리 만들어 풀 속에 저장하고, 필요할 때마다 쓰고 반환하는 기법</li>
+        </ul>
+      </li>
+      <li>API : 데이터를 주고 받을 때 어떤 방식으로 요청하고 제공받을 수 있는지, 규격을 정해 놓은 인터페이스</li>
+      <li>JDBC : JDBC 드라이버를 이용해 송신 시스템의 DB와 연결하는 방식
+        <ul>
+          <li>JDBC : 자바에서 데이터베이스에 접속할 수 있게 해주는 API</li>
+          <li>JDBC 드라이버의 구성 : Java Application - JDBC API - JDBC Driver Manager - JDBC Driver</li>
+        </ul>
+      </li>
+      <li>하이퍼링크 : 현재 페이지에서 다른 부분 또는 다른 페이지로 이동하게 해주는 속성</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="간접-연계">간접 연계</h3>
+<ul>
+  <li>장점 : 서로 상이한 네트워크, 프로토콜 연계 가능</li>
+  <li>단점 : 성능 저하, 개발 비용 높음</li>
+  <li>종류
+    <ul>
+      <li>EAI : 기업에서 운영되는 서로 다른 플랫폼 및 애플리케이션 간 <code class="language-plaintext highlighter-rouge">연계</code>를 돕는 솔루션
+        <ul>
+          <li>구성요소
+            <ul>
+              <li>EAI 플랫폼</li>
+              <li>어댑터 : EAI의 핵심장치. 애플리케이션을 연결하는 데이터 입출력 도구</li>
+              <li>브로커 : 데이터 전송 시 포맷과 코드를 변환해 줌</li>
+              <li>메시지 큐 : 비동기 메시지를 사용하는 프로그램 사이에서 송수신 해 주는 기술</li>
+              <li>비즈니스 워크플로우 : 미리 정의된 워크플로우에 따라 업무 처리</li>
+            </ul>
+          </li>
+          <li>유형
+            <ul>
+              <li>Point-to-Point : 가장 기초적인 1:1 단순 통합방법</li>
+              <li>Hub &amp; Spoke : 허브 시스템을 통한 중앙 집중 방식</li>
+              <li>Message Bus : 애플리케이션 사이에 미들웨어(버스)를 두어 연계</li>
+              <li>Hybrid : 그룹 내 = Hub &amp; Spoke 그룹 간 = Message Bus</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>ESB : 기업에서 운영되는 서로 다른 플랫폼 및 애플리케이션을 하나의 시스템으로 관리할 수 있게 하는 아키텍처로, 미들웨어(버스)를 중심으로 애플리케이션 <code class="language-plaintext highlighter-rouge">통합</code>을 ‘느슨한 결합’ 방식으로 지원</li>
+      <li>
+        <p>Socket : 프로세스 간 통신의 접속점(IP 주소 + 포트넘버) 클라이언트 요청을 서버와 연결해 줌</p>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">EAI</code>는 연계! <code class="language-plaintext highlighter-rouge">ESB</code>는 통합!</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="인터페이스-기능-구현">인터페이스 기능 구현</h2>
+<ol>
+  <li>대상자 선택(대상이 될 데이터를 SQL로 선택)</li>
+  <li>인터페이스 데이터 생성(JSON 등 형식에 맞게 가공)</li>
+  <li>인터페이스 데이터 전송 요청</li>
+  <li>인터페이스 데이터 전송</li>
+  <li>인터페이스 데이터 수신</li>
+  <li>인터페이스 데이터 파싱</li>
+  <li>인터페이스 데이터 검증(포맷 및 제약조건 오류 검사)</li>
+  <li>후속 기능 수행(수신 시스템에 정의된 후속 기능 진행)</li>
+  <li>수신 결과 생성 및 전송<br />
+10.수신 측의 처리 결과 반환 <br /><br /></li>
+</ol>
+
+<h1 id="웹-서비스-방식">웹 서비스 방식</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">SOAP</code> : HTTP, HTTPS 등을 사용해 XML 기반의 메시지를 교환하는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">WSDL</code> : Web Service Description Language. 웹 서비스명, 제공위치 등 웹 서비스의 정보가 기술된 XML 형식의 언어</li>
+  <li><code class="language-plaintext highlighter-rouge">UDDI</code> : WSDL의 등록, 검색을 위한 저장소 (공개적으로 접근 가능한 레지스트리)<br /><br /></li>
+</ol>
+
+<h1 id="json">JSON</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">키-값</code> 쌍으로 이루어진 데이터를 전달하기 위해 인간이 읽을 수 있는 텍스트를 사용한 포맷(AJAX에서 많이 사용)</li>
+</ul>
+
+<h2 id="json의-표현-자료형">JSON의 표현 자료형</h2>
+<ol>
+  <li>숫자</li>
+  <li>문자열(항상 “” 따옴표 사용)</li>
+  <li>배열(대괄호 [] 표시)</li>
+  <li>객체(중괄호 {} 로 표시하며, 이름은 문자열을 쓴다)<br /><br /></li>
+</ol>
+
+<h1 id="xml">XML</h1>
+<ul>
+  <li>HTML의 단점을 보완하여, 특수한 목적을 갖는 마크업 언어</li>
+</ul>
+
+<h2 id="xml의-특징">XML의 특징</h2>
+<ul>
+  <li>트리 구조이며 모든 태그에는 종료 태그가 필수</li>
+  <li>속성값은 큰 따옴표(“)로 묶고 대소문자를 구분함<br /><br /></li>
+</ul>
+
+<h1 id="ajax">AJAX</h1>
+<ul>
+  <li>서버-클라이언트 간 비동기적으로 데이터를 교환하기 위한 기술</li>
+</ul>
+
+<h2 id="ajax의-동작-원리">AJAX의 동작 원리</h2>
+<ol>
+  <li>요청 이벤트 발생</li>
+  <li>자바스크립트 호출</li>
+  <li>자바스크립트가 XMLHttpRequest 객체를 사용해 서버에 요청 (비동기이므로 그동안 다른 일 처리)</li>
+  <li>서버는 XMLHttpRequest 객체를 가지고 AJAX 요청 처리</li>
+  <li>전달받은 데이터를 사용해 웹 페이지 일부만을 갱신하는 자바스크립트 호출</li>
+</ol>
+
+<h2 id="ajax의-주요기술">AJAX의 주요기술</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">XMLHttpRequest</code> : 비동기 통신을 담당하는 자바스크립트 객체</li>
+  <li><code class="language-plaintext highlighter-rouge">XML</code> : HTML의 단점을 보완하여, 특수한 목적을 갖는 마크업 언어</li>
+  <li><code class="language-plaintext highlighter-rouge">DOM</code> : XML 문서를 트리 구조 형태로 접근하게 해주는 API</li>
+  <li><code class="language-plaintext highlighter-rouge">XSLT(eXtensible Stylesheet Language Transformations)</code> : XML 문서를 다른 XML 문서로 변환하는 데 사용하는 언어</li>
+  <li><code class="language-plaintext highlighter-rouge">HTML</code> : 웹 문서를 표현하는 마크업 언어</li>
+  <li><code class="language-plaintext highlighter-rouge">CSS</code> : 마크업 언어가 표시되는 방법을 기술하는 언어<br /><br /></li>
+</ul>
+
+<h1 id="rest">REST</h1>
+<ul>
+  <li>HTTP URI로 자원을 표시하고, HTTP 메서드를 통해 해당 자원에 대한 삽입, 삭제, 갱신 등의 명령을 적용하는 아키텍처</li>
+</ul>
+
+<h2 id="rest-메서드의-종류">REST 메서드의 종류</h2>
+<ol>
+  <li>POST (Create)</li>
+  <li>GET (Read)</li>
+  <li>PUT (Update)</li>
+  <li>DELETE (Delete)</li>
+</ol>
+
+<h2 id="rest의-구성">REST의 구성</h2>
+<ol>
+  <li>리소스</li>
+  <li>메서드</li>
+  <li>메시지<br /><br /></li>
+</ol>
+
+<h1 id="db-암호화-기법">DB 암호화 기법</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">API 방식</code> : 애플리케이션 서버에 암호 모듈 적용(애플리케이션 서버에 부하 발생)</li>
+  <li><code class="language-plaintext highlighter-rouge">플러그인 방식</code> : DB 서버에 암호 모듈 적용(DB 서버에 부하 발생)</li>
+  <li><code class="language-plaintext highlighter-rouge">TDE 방식</code> : DBMS 커널이 자체적으로 암호화 기능 수행 (Transparent Data Encryption)</li>
+  <li><code class="language-plaintext highlighter-rouge">하이브리드 방식</code> : API + 플러그인 (부하 분산)<br /><br /></li>
+</ol>
+
+<h1 id="인터페이스-구현-검증-도구">인터페이스 구현 검증 도구</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">xUnit</code> : Java, C++ 등 다양한 언어를 지원하는 단위 테스트 프레임워크</li>
+  <li><code class="language-plaintext highlighter-rouge">STAF</code> : 각 테스트 대상 분산 환경에 ‘데몬’을 사용하여 테스트를 수행</li>
+  <li><code class="language-plaintext highlighter-rouge">FitNesse</code> : 웹 기반 테스트 케이스를 지원</li>
+  <li><code class="language-plaintext highlighter-rouge">NTAF</code> : STAF(재사용 및 확장성) + FitNesse(협업 기능) 장점을 통합한 NHN의 프레임워크</li>
+  <li><code class="language-plaintext highlighter-rouge">Selenium</code> : 다양한 브라우저와 개발 언어를 지원하는 웹 애플리케이션 테스트 프레임워크</li>
+  <li><code class="language-plaintext highlighter-rouge">Watir</code> : 루비 기반의 웹 애플리케이션 테스트 프레임워크</li>
+</ol>
+
+<h2 id="인터페이스-감시-도구">인터페이스 감시 도구</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">스카우터</code> : 애플리케이션 및 DB 모니터링 가능한 감시 도구</li>
+  <li><code class="language-plaintext highlighter-rouge">제니퍼</code> : 개발부터 운영에 이르기까지 전 생애주기 동안 모니터링 가능한 감시 도구</li>
+</ol>
+
+<h2 id="오류-처리-방법">오류 처리 방법</h2>
+<ol>
+  <li>화면에서 오류를 인지하도록 구현</li>
+  <li>오류 로그 생성</li>
+  <li>관련 테이블에 오류 사항 기록<br /><br /></li>
+</ol>
+
+<h1 id="프로그래밍-언어-분류실행방식에-따라">프로그래밍 언어 분류(실행방식에 따라)</h1>
+<ol>
+  <li>명령형 언어(= 절차형 언어) : 명령들이 순차적으로 실행되는 방식
+    <ul>
+      <li>ex. FORTRAN, COBOL, PASCAL, C, ALGOL, BASIC</li>
+    </ul>
+  </li>
+  <li>객체지향 언어 : 객체 간 메시지 통신을 이용하는 방식
+    <ul>
+      <li>ex. 자바, C++</li>
+    </ul>
+  </li>
+  <li>함수형 언어 : 수학수식과 같은 함수들로 프로그램을 구성하여 호출하는 방식
+    <ul>
+      <li>ex. 리스프(LISP), 하스켈(Haskell)</li>
+    </ul>
+  </li>
+  <li>논리형 언어 : 논리 문장을 이용하여 표현하는 방식
+    <ul>
+      <li>ex. 프롤로그(Prolog)</li>
+    </ul>
+  </li>
+  <li>스크립트 언어
+    <ul>
+      <li>PHP : 동적 웹페이지를 위한 언어</li>
+      <li>Perl : 실용성 모토, 인터프리터</li>
+      <li>Python, JavaScript</li>
+    </ul>
+  </li>
+  <li>선언형 언어
+    <ul>
+      <li>함수형 언어</li>
+      <li>논리형 언어</li>
+      <li>특수분야 언어 : SQL(DBMS 관리를 위한 질의어)</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="프로그래밍-구현-기법">프로그래밍 구현 기법</h2>
+<ol>
+  <li>컴파일 방식 : 고급 언어 -&gt; 기계어로 번역
+    <ul>
+      <li>ex. FORTRAN, PASCAL, C, C++</li>
+    </ul>
+  </li>
+  <li>인터프리터 방식 : 명령문을 하나씩 번역하고 실행하는 방식
+    <ul>
+      <li>ex. BASIC, LISP, PHP, Perl, Prolog</li>
+    </ul>
+  </li>
+  <li>혼합형 방식 : 고급 언어를 컴파일하여 중간 언어로 변환 후 인터프리터가 번역을 실행하는 방식
+    <ul>
+      <li>ex. 자바</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="절차적-프로그래밍">절차적 프로그래밍</h2>
+<ol>
+  <li>FORTRAN : 과학 기술 전문 언어로, 고급 수학 함수들 사용 가능(컴파일 방식)</li>
+  <li>C : 유닉스 운영체제에서 사용하기 위한 언어(컴파일 방식)</li>
+  <li>알골 : 알고리즘 연구개발 목적</li>
+  <li>베이직 : 교육용으로 개발된 언어(인터프리터 방식)</li>
+</ol>
+
+<h2 id="객체지향-프로그래밍">객체지향 프로그래밍</h2>
+<ol>
+  <li>C++ : C 언어에 객체지향 프로그래밍 개념 추가(컴파일 방식)</li>
+  <li>C# : MS에서 개발. 불안전 코드(Unsafe Code) 같은 기술을 통해 상호 운용성 확보</li>
+  <li>자바 : 웹 애플리케이션 개발에 가장 많이 사용되는 언어</li>
+  <li>델파이 : 파스칼 문법 + 여러 기능. Windows 아래에서 모든 부분 프로그래밍 가능</li>
+</ol>
+
+<h3 id="객체지향-프로그래밍의-구성요소">객체지향 프로그래밍의 구성요소</h3>
+<ol>
+  <li>객체 : 개체 + 속성 + 메서드로 이루어진 인스턴스</li>
+  <li>클래스 : 객체를 표현하는 추상 데이터 타입</li>
+  <li>메서드 : 객체 간 통신<br /><br /></li>
+</ol>
+
+<h1 id="파이썬-자료형">파이썬 자료형</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">List</code> : 순서 있는 배열
+    <ul>
+      <li>값 맨 뒤에 삽입 : <code class="language-plaintext highlighter-rouge">append(value)</code></li>
+      <li>중간에 삽입 : <code class="language-plaintext highlighter-rouge">insert(index, value)</code></li>
+      <li>삭제 : <code class="language-plaintext highlighter-rouge">remove(value)</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Dictionary</code> : 키-값 쌍
+    <ul>
+      <li>값 참조 : <code class="language-plaintext highlighter-rouge">딕셔너리이름[키] = 값</code></li>
+      <li>값 삭제 : <code class="language-plaintext highlighter-rouge">del 딕셔너리이름[키]</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Set</code> : 중복 허용 X, 순서 없음
+    <ul>
+      <li>값 추가 : <code class="language-plaintext highlighter-rouge">add(value)</code></li>
+      <li>값 삭제 : <code class="language-plaintext highlighter-rouge">remove(value)</code><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="자바-자료형">자바 자료형</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HashMap</code> : 키-값 쌍
+    <ul>
+      <li>값 추가 : <code class="language-plaintext highlighter-rouge">put(key, value)</code></li>
+      <li>값 삭제 : <code class="language-plaintext highlighter-rouge">remove(key)</code></li>
+      <li>값 얻기 : <code class="language-plaintext highlighter-rouge">get(key)</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">ArrayList</code> : 순서 있는 배열
+    <ul>
+      <li>값 맨 뒤에 추가 : <code class="language-plaintext highlighter-rouge">add(value)</code></li>
+      <li>값 중간에 삽입 : <code class="language-plaintext highlighter-rouge">add(index, value)</code></li>
+      <li>값 삭제 : <code class="language-plaintext highlighter-rouge">remove(index)</code></li>
+      <li>인덱스 값 참조 : <code class="language-plaintext highlighter-rouge">get(index)</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">HashSet</code> : 중복 허용 X, 순서 없음
+    <ul>
+      <li>값 추가 : <code class="language-plaintext highlighter-rouge">add(value)</code></li>
+      <li>값 제거 : <code class="language-plaintext highlighter-rouge">remove(value)</code><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="라이브러리">라이브러리</h1>
+<ul>
+  <li>효율적인 개발을 위해 필요한 프로그램들을 모은 집합체(모듈과 패키지를 총칭)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">모듈</code> : 변수, 함수 등을 모아둔 파일</li>
+      <li><code class="language-plaintext highlighter-rouge">패키지</code> : 모듈을 구조화한 라이브러리</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="라이브러리-구성">라이브러리 구성</h2>
+<ol>
+  <li>도움말</li>
+  <li>설치 파일</li>
+  <li>샘플 코드<br /><br /></li>
+</ol>
+
+<h1 id="클래스-관련-용어">클래스 관련 용어</h1>
+<h2 id="인터페이스">인터페이스</h2>
+<ul>
+  <li>자바에서 다향성을 극대화하기 위한 문법으로 추상 메서드와 상수만을 멤버로 갖는다.</li>
+</ul>
+
+<h2 id="추상-클래스">추상 클래스</h2>
+<ul>
+  <li>자식 클래스에서 상위 클래스의 미구현 추상 메서드를 구현하는 것</li>
+</ul>
+
+<h2 id="추상-클래스-구현">추상 클래스 구현</h2>
+<ul>
+  <li>C++ : 메서드 뒤에 <code class="language-plaintext highlighter-rouge">= 0</code> 붙임</li>
+  <li>자바 : 클래스명과 메서드명 앞에 <code class="language-plaintext highlighter-rouge">abstract</code> 붙임</li>
+  <li>파이썬 : 메서드 내부에 <code class="language-plaintext highlighter-rouge">pass</code> 키워드 사용</li>
+</ul>
+
+<h2 id="상위-클래스-접근">상위 클래스 접근</h2>
+<ul>
+  <li>C++ : 부모클래스::메서드명()</li>
+  <li>자바 : super.메서드명()</li>
+  <li>파이썬 : super().메서드명()</li>
+</ul>
+
+<h2 id="오버로딩">오버로딩</h2>
+<ul>
+  <li>같은 이름의 메서드를 매개변수만 다르게 하여 여러 개 정의하는 것</li>
+</ul>
+
+<h2 id="오버라이딩">오버라이딩</h2>
+<ul>
+  <li>하위 클래스에서 상위 클래스 메서드를 재정의하는 것. C++은 <code class="language-plaintext highlighter-rouge">virtual</code> 키워드 필요</li>
+</ul>
+
+<h2 id="상속">상속</h2>
+<ul>
+  <li>어떤 객체의 변수와 메서드를 다른 객체가 물려받는 것</li>
+</ul>
+
+<h3 id="상속-문법">상속 문법</h3>
+<ul>
+  <li>C++ : <code class="language-plaintext highlighter-rouge">class 자식클래스 : public 부모클래스 {}</code></li>
+  <li>자바 : <code class="language-plaintext highlighter-rouge">class 자식클래스 extends 부모클래스 {}</code></li>
+  <li>파이썬 : <code class="language-plaintext highlighter-rouge">class 자식클래스 (부모클래스):</code></li>
+</ul>
+
+<h2 id="생성자">생성자</h2>
+<ul>
+  <li>해달 클래스의 객체가 생성될 때 자동으로 호출되는 메서드</li>
+  <li>C++, 자바 : 클래스명과 동일하면 생성자</li>
+  <li>파이썬 : <code class="language-plaintext highlighter-rouge">__int__</code> 메서드명 사용하면 생성자</li>
+</ul>
+
+<h2 id="소멸자">소멸자</h2>
+<ul>
+  <li>객체가 소멸될 때 호출되는 메서드. 할당된 메모리를 해제하는 용도로 사용됨</li>
+  <li>C++ : 클래스명과 동일하나 클래스명 앞에 <code class="language-plaintext highlighter-rouge">~</code> 기호를 붙이면 소멸자</li>
+  <li>자바 : <code class="language-plaintext highlighter-rouge">finalize</code> 메서드명을 사용하면 소멸자</li>
+  <li>파이썬 : <code class="language-plaintext highlighter-rouge">__del__</code> 메서드면 사용하면 소멸자</li>
+</ul>
+
+<h2 id="자신-클래스-참조">자신 클래스 참조</h2>
+<ul>
+  <li>C++, 자바는 <code class="language-plaintext highlighter-rouge">this-&gt;</code>, <code class="language-plaintext highlighter-rouge">this.</code></li>
+  <li>파이썬은 <code class="language-plaintext highlighter-rouge">self.</code></li>
+</ul>
+
+<h2 id="구조체">구조체</h2>
+<ul>
+  <li>기본 타입을 이용해 새롭게 정의하는 자료형</li>
+  <li>C/C++ 한정 <code class="language-plaintext highlighter-rouge">struct</code>로 선언 후 사용</li>
+</ul>
+
+<h2 id="열거체">열거체</h2>
+<ul>
+  <li>정수형 상수에 이름을 붙여 쓰기 편하게 만드는 것</li>
+</ul>
+
+<h2 id="포맷-스트링">포맷 스트링</h2>
+<ul>
+  <li>%c : 문자</li>
+  <li>%s : 문자열</li>
+  <li>%d : 10진수</li>
+  <li>%x : 16진수</li>
+  <li>%o : 8진수</li>
+  <li>%f : 실수(6자리까지)</li>
+</ul>
+
+<h2 id="비트-연산자">비트 연산자</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> : 같은 비트 값이 모두 1이면 1 - AND</li>
+  <li><code class="language-plaintext highlighter-rouge">|</code> : 같은 비트 중 하나라도 1이면 1 - OR</li>
+  <li><code class="language-plaintext highlighter-rouge">^</code> : 같은 비트값이 서로 다르면 1 - XOR</li>
+  <li><code class="language-plaintext highlighter-rouge">~</code> : 모든 비트값을 반대로 뒤집음 - NOT</li>
+</ul>
+
+<h2 id="시프트-연산자">시프트 연산자</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code> 왼쪽으로 비트 이동 : * 2 효과가 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> 오른쪽으로 비트 이동 : / 2 효과</li>
+</ul>
+
+<h2 id="식별자-표기법">식별자 표기법</h2>
+<ul>
+  <li>헝가리안 표기법 : 식별자 앞에 자료형을 붙이는 표기법</li>
+  <li>스네이크 표기법 : 식별자에 여러 단어가 이어질 때 각 단어 사이에 언더바를 넣는 표기법</li>
+  <li>카멜 표기법 : 식별자에 여러 단어가 이어질 때 첫 단어의 시작만 소문자로, 각 단어의 첫 글자는 대문자로 쓰는 표기법</li>
+  <li>파스칼 표기법 : 식별자에 여러 단어가 이어질 때 각 단어의 첫 글자는 대문자로 쓰는 표기법</li>
+</ul>
+
+<h2 id="리스트-인덱스">리스트 인덱스</h2>
+<ul>
+  <li>[0] [1] … [n-2] [n-1] [-n] [-(n-1)] [-2] [-1]</li>
+</ul>
+
+<h2 id="리스트-슬라이싱">리스트 슬라이싱</h2>
+<ol>
+  <li>시작 인덱스 : 생략 시 처음부터</li>
+  <li>종료 인덱스 : <code class="language-plaintext highlighter-rouge">종료 인덱스 전</code> 까지만 슬라이싱하며 <code class="language-plaintext highlighter-rouge">생략 시 마지막까지</code></li>
+  <li>스텝 : 생략 시 1</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div></div>
+
+<ul>
+  <li>출력 : [7,3]</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">"Hello Phython"</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<ul>
+  <li>출력 : Heltho</li>
+</ul>
+:ET

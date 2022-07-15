@@ -1,4 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-16T00:05:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yujin Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">정보처리기사) 실기 개념 정리</title><link href="http://localhost:4000/certificate/cs-certificate/" rel="alternate" type="text/html" title="정보처리기사) 실기 개념 정리" /><published>2022-07-15T00:00:00+09:00</published><updated>2022-07-15T00:00:00+09:00</updated><id>http://localhost:4000/certificate/cs-certificate</id><content type="html" xml:base="http://localhost:4000/certificate/cs-certificate/"><![CDATA[<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-16T02:41:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sia’s Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) Queue 사용법</title><link href="http://localhost:4000/java/java-queue/" rel="alternate" type="text/html" title="Java) Queue 사용법" /><published>2022-07-16T00:00:00+09:00</published><updated>2022-07-16T00:00:00+09:00</updated><id>http://localhost:4000/java/java-queue</id><content type="html" xml:base="http://localhost:4000/java/java-queue/"><![CDATA[<ul>
+  <li>쓸 때마다 자꾸 까먹어서 정리하는 자바의 큐!!</li>
+</ul>
+
+<h1 id="queue란">Queue란?</h1>
+<ul>
+  <li>먼저 들어온 것이 먼저 나가는 선입선출(FIFO; First In First Out) 구조를 가진 자료구조이다.</li>
+</ul>
+
+<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhvAPe%2FbtqHlVqf0RY%2FY4oCoA4wUkEpvIkU80i43K%2Fimg.png" width="500" /></p>
+
+<ul>
+  <li>
+    <p>기본적으로 배열을 활용해 만들 수 있는 자료구조이지만 배열처럼 랜덤 인덱스에 접근할 수는 없다. 맨 앞에 있는 데이터에만 접근해서 값을 읽을 수 있고 데이터의 삽입은 큐의 맨 뒤에서만 가능하다.</p>
+  </li>
+  <li>큐의 맨 뒤에 데이터를 삽입하는 것을 <code class="language-plaintext highlighter-rouge">Enqueue</code>라 하고</li>
+  <li>큐의 맨 앞에서 데이터를 제거하는 것을 <code class="language-plaintext highlighter-rouge">Dequeue</code>라 한다.</li>
+  <li>하지만 각 언어별로 제공되는 메서드명은 조금씩 다르다. <br /><br /></li>
+</ul>
+
+<h1 id="queue-선언">Queue 선언</h1>
+<ul>
+  <li>난 <code class="language-plaintext highlighter-rouge">C++</code>로 프로그래밍을 시작해서 자바의 큐 선언법이 참 낯설었다.</li>
+  <li>자바에서의 큐 <code class="language-plaintext highlighter-rouge">Queue</code>는 인터페이스이기 때문에 <code class="language-plaintext highlighter-rouge">new Queue()</code>로는 만들 수가 없다. (이것이 자바로 코테를 보는 걸 좀 꺼리게 만들었고 오랫동안 C++을 고집한 이유가 되기도 했다.)</li>
+  <li>그렇기 때문에 큐를 구현하고 있는 클래스를 이용해 객체를 생성해야 하는데, 이는 <code class="language-plaintext highlighter-rouge">LinkedList</code>가 구현하고 있기 때문에 이걸 이용해서 생성한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>큐를 사용하려면 <code class="language-plaintext highlighter-rouge">LinkedList</code>와 <code class="language-plaintext highlighter-rouge">Queue</code> 두 가지를 임포트 해 주어야 한다.</li>
+  <li>하지만 보통 자동완성이 되지 않는 코테에서 이걸 일일이 외워서 쓰기엔 너무 귀찮고 헷갈린다… 그래서 코테에선</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+</code></pre></div></div>
+<p><br />
+로 가는 것이 편하다. <code class="language-plaintext highlighter-rouge">util</code> 패키지에 어지간한 자료구조는 다 들어있기 때문에 임포트문에 대한 강박을 좀 덜 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 제네릭 사용시 뒤에는 생략 가능</span>
+<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">strQ</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+
+<span class="c1">// 제네릭 미사용 - 데이터 안정성이 좀 떨어져서 제네릭 사용이 권장됨</span>
+<span class="nc">Queue</span> <span class="n">q2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위의 예제와 같이 제네릭을 사용해서 선언할 수 있고 제네릭 없이 선언할 수도 있다.</li>
+  <li>하지만 최신 자바에서는 데이터 안정성 면에서 제네릭을 사용하는 것을 권장하기 때문에 제네릭으로 데이터 타입을 명시해 주는 것이 좋다.</li>
+  <li>제네릭 사용시, <code class="language-plaintext highlighter-rouge">int</code>와 같은 Primitive 타입이 아니라 <code class="language-plaintext highlighter-rouge">Integer</code>와 같은 Wrapper 클래스를 써 주어야 한다. 왜냐면 저기엔 오브젝트를 넣기로 약속되어 있으니까.<br /><br /></li>
+</ul>
+
+<h1 id="enqueue">Enqueue</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>   <span class="c1">// 큐에 1 삽입</span>
+<span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span> <span class="c1">// 큐에 2 삽입</span>
+</code></pre></div></div>
+<ul>
+  <li>자바에서 큐에 데이터를 삽입하려면 <code class="language-plaintext highlighter-rouge">add(value)</code> 혹은 <code class="language-plaintext highlighter-rouge">offer(value)</code>를 사용하면 되는데 난 <code class="language-plaintext highlighter-rouge">offer()</code>를 많이 쓰는 편이다.<br /><br /></li>
+</ul>
+
+<h1 id="dequeue">Dequeue</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>           
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+<span class="nc">Integer</span> <span class="n">j</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>   <span class="c1">// 맨 앞 원소 반환하고 제거 - 비어있으면 null 반환</span>
+
+<span class="n">q</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>         <span class="c1">// 맨 앞 원소 제거 - 비어있으면 null exception 발생</span>
+</code></pre></div></div>
+
+<ul>
+  <li>큐의 맨 앞에 있는 데이터를 꺼내려면 <code class="language-plaintext highlighter-rouge">poll()</code> 또는 <code class="language-plaintext highlighter-rouge">remove()</code> 메서드를 사용하면 되는데 두 개가 존재하는 이유는 리턴 타입이 다르기 때문이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">poll()</code>은 원소를 반환하고 제거하기 때문에 그냥 쓸 수도 있지만 반환값을 변수에 저장할 수도 있다. 큐가 비어있다면 null을 반환하기 때문에 큐에 저장된 데이터가 정수형과 같은 Primitive 타입이라면 Wrapper 클래스로 받는 것이 더 안정적일 것 같지만, 보통은 큐가 비어있는지 먼저 확인한 다음 값을 꺼내니까 편한걸로 써도 상관없을 거 같다.</li>
+  <li><code class="language-plaintext highlighter-rouge">remove()</code>는 그냥 제거만 하기 때문에 큐가 비어있으면 예외가 발생한다. <br /><br /></li>
+</ul>
+
+<h1 id="queue가-비었는지-확인하기">Queue가 비었는지 확인하기</h1>
+<ul>
+  <li>그래서 큐에서 값을 꺼내기 전에 큐가 비었는지 아닌지 먼저 확인한 다음 동작을 수행하는 것이 좋다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    <span class="o">...</span> <span class="n">블라블라</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위와 같이 큐가 비었는지 확인한 다음 값을 꺼내는 연산을 하는 것이 안전하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">isEmpty()</code>는 대부분의 컬렉션에서 사용할 수 있는 메서드로, <code class="language-plaintext highlighter-rouge">boolean</code>타입으로 해당 자료구조가 비었는지 아닌지를 리턴해 준다.<br /><br /></li>
+</ul>
+
+<h1 id="queue의-첫-번째-값-참조">Queue의 첫 번째 값 참조</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>큐의 첫 번째 값을 제거하지 않고 그냥 확인만 하고 싶다면 <code class="language-plaintext highlighter-rouge">peek()</code> 메서드를 사용할 수 있다.</p>
+  </li>
+  <li>
+    <p>자바에서 큐는 이 정도만 알면 충분히 응용할 수 있을 것 같다.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://coding-factory.tistory.com/602">[Java] 자바 Queue 클래스 사용법 &amp; 예제 총정리</a></li>
+</ul>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Java" /><category term="Java" /><category term="Queue" /><summary type="html"><![CDATA[쓸 때마다 자꾸 까먹어서 정리하는 자바의 큐!!]]></summary></entry><entry><title type="html">정보처리기사) 실기 개념 정리</title><link href="http://localhost:4000/certificate/cs-certificate/" rel="alternate" type="text/html" title="정보처리기사) 실기 개념 정리" /><published>2022-07-16T00:00:00+09:00</published><updated>2022-07-16T00:00:00+09:00</updated><id>http://localhost:4000/certificate/cs-certificate</id><content type="html" xml:base="http://localhost:4000/certificate/cs-certificate/"><![CDATA[<ul>
   <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
 </ul>
 
@@ -204,14 +316,15 @@
   <li><code class="language-plaintext highlighter-rouge">망(백본) 스위칭 허브</code> : 광역 네트워크를 커버하는 스위칭 허브</li>
 </ul>
 
-<h3 id="네트위크-계층-프로토콜">네트위크 계층 프로토콜</h3>
+<h3 id="네트워크-계층-프로토콜">네트워크 계층 프로토콜</h3>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">IP</code> : 패킷 단위의 네트워크 통신 프로토콜</li>
   <li><code class="language-plaintext highlighter-rouge">라우팅 프로토콜</code> : 최적의 데이터 전송 경로를 설정하는 프로토콜</li>
   <li><code class="language-plaintext highlighter-rouge">ARP</code> : IP주소(3계층)를 MAC 주소(2계층)으로 변환하는 프로토콜</li>
   <li><code class="language-plaintext highlighter-rouge">RARP</code> : MAC 주소는 알지만 IP 주소를 모를 때 사용하는 프로토콜</li>
   <li><code class="language-plaintext highlighter-rouge">ICMP</code> : IP 패킷 처리 시의 문제를 알려주는 프로토콜</li>
-  <li><code class="language-plaintext highlighter-rouge">IGMP</code> : 멀티캐스트 실시간 전송을 위해 사용하는 프로토콜(화상회의 등)<br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">IGMP</code> : 멀티캐스트 실시간 전송을 위해 사용하는 프로토콜(화상회의 등)</li>
+  <li><code class="language-plaintext highlighter-rouge">IPSec</code> : 네트워크 계층에서 사용하는 보안 프로토콜. 인증 헤더 + 암호화를 이용. MAC + 암호화를 통해 인증 + 기밀성 제공<br /><br /></li>
 </ul>
 
 <h2 id="전송계층transport">전송계층(Transport)</h2>
@@ -275,7 +388,7 @@
 
 <h2 id="세션계층-session">세션계층 (Session)</h2>
 <ul>
-  <li>송수신간 연결을 제어
+  <li>송수신간(단말기 사이) 연결을 제어
     <ol>
       <li><code class="language-plaintext highlighter-rouge">단위</code> : 데이터</li>
       <li><code class="language-plaintext highlighter-rouge">프로토콜</code> : RPC, NetBIOS, SSH, SSL/TLS</li>
@@ -426,7 +539,7 @@
 
 <h2 id="소프트웨어-아키텍처-패턴-종류">소프트웨어 아키텍처 패턴 종류</h2>
 <ol>
-  <li><code class="language-plaintext highlighter-rouge">계층화 패턴</code> : 시스템을 계층으로 구분 (ex. <code class="language-plaintext highlighter-rouge">OSI 7계층</code> : 서로 마주보든 계층에서만 상호작용 발생)</li>
+  <li><code class="language-plaintext highlighter-rouge">계층화 패턴</code> : 시스템을 계층으로 구분 (ex. <code class="language-plaintext highlighter-rouge">OSI 7계층</code> : 서로 마주보는 계층에서만 상호작용 발생)</li>
   <li><code class="language-plaintext highlighter-rouge">클라이언트-서버 패턴</code> : 하나의 서버 + 다수의 클라이언트 -&gt; 사용자는 클라이언트와만 상호작용</li>
   <li><code class="language-plaintext highlighter-rouge">파이프-필터 패턴</code> : 데이터 스트림을 처리하는 시스템에서 사용 (ex. <code class="language-plaintext highlighter-rouge">Unix의 Shell</code> : 하나의 서브시스템이 데이터를 받아 처리하고, 결과를 다음 서브 시스템에게 넘겨줌)</li>
   <li><code class="language-plaintext highlighter-rouge">브로커 패턴</code> : 사용자가 요청하면, 브로커가 적합한 컴포넌트를 연결하는 방식. 원격 서비스 호출에 응답하는 컴포넌트가 여럿일 때 적합</li>
@@ -876,6 +989,10 @@
 </ul>
 
 <h2 id="데이터-모델의-구성-요소">데이터 모델의 구성 요소</h2>
+<ul>
+  <li>연구제!!!</li>
+</ul>
+
 <ol>
   <li>연산</li>
   <li>구조</li>
@@ -890,7 +1007,7 @@
 
 <h3 id="개념적-데이터-모델">개념적 데이터 모델</h3>
 <ul>
-  <li>현실 세계의 정보를 추상적, 개념적으로 표현</li>
+  <li>현실 세계의 정보를 <code class="language-plaintext highlighter-rouge">추상적</code>, <code class="language-plaintext highlighter-rouge">개념적</code>으로 표현</li>
   <li>DB 종류에 무관함</li>
   <li>주요 산출물 : E-R 다이어그램
     <ul>
@@ -911,7 +1028,7 @@
 <h3 id="논리적-데이터-모델">논리적 데이터 모델</h3>
 <ul>
   <li>논리적 데이터베이스 구조로 매핑</li>
-  <li>목표 DBMS 설정, 스키마 설계</li>
+  <li>목표 DBMS 설정, <code class="language-plaintext highlighter-rouge">스키마 설계</code></li>
   <li>정규화 수행</li>
   <li>모델링 종류
     <ol>
@@ -924,7 +1041,7 @@
 
 <h3 id="물리적-데이터-모델">물리적 데이터 모델</h3>
 <ul>
-  <li>객체 생성 (테이블, 뷰, 인덱스 등)</li>
+  <li><code class="language-plaintext highlighter-rouge">객체 생성</code> (테이블, 뷰, 인덱스 등)</li>
   <li>반 정규화 수행<br /><br /></li>
 </ul>
 
@@ -1076,7 +1193,7 @@
 <ul>
   <li>Not Only SQL</li>
   <li>전통적인 RDBMS가 아닌 DBMS를 지칭</li>
-  <li>조인 연산 불가, 수평적으로 확장 가능)</li>
+  <li>조인 연산 불가, 수평적으로 확장 가능</li>
 </ul>
 
 <h2 id="nosql의-특징">NoSQL의 특징</h2>
@@ -1110,7 +1227,7 @@
 <h2 id="데이터-마이닝-종류">데이터 마이닝 종류</h2>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">텍스트 마이닝</code> : 대량의 텍스트 속에서 의미있는 정보를 찾아내는 기법 (자연어, 문서 처리기술 적용)</li>
-  <li><code class="language-plaintext highlighter-rouge">웹 마이닝</code> : 웹으로부터 얻는 방대한 정보 속에서 의미있는 정보를 찾아내는 기법 (데이터 마이닝 기술 응용)</li>
+  <li><code class="language-plaintext highlighter-rouge">웹 마이닝</code> : 웹으로부터 얻는 방대한 정보 속에서 의미있는 정보를 찾아내는 기법 (데이터 마이닝 기술 응용)<br /><br /></li>
 </ul>
 
 <h1 id="빅데이터의-특성">빅데이터의 특성</h1>
@@ -1253,7 +1370,10 @@
         </ul>
       </li>
       <li>ESB : 기업에서 운영되는 서로 다른 플랫폼 및 애플리케이션을 하나의 시스템으로 관리할 수 있게 하는 아키텍처로, 미들웨어(버스)를 중심으로 애플리케이션 <code class="language-plaintext highlighter-rouge">통합</code>을 ‘느슨한 결합’ 방식으로 지원</li>
-      <li>Socket : 프로세스 간 통신의 접속점(IP 주소 + 포트넘버) 클라이언트 요청을 서버와 연결해 줌</li>
+      <li>
+        <p>Socket : 프로세스 간 통신의 접속점(IP 주소 + 포트넘버) 클라이언트 요청을 서버와 연결해 줌</p>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">EAI</code>는 연계! <code class="language-plaintext highlighter-rouge">ESB</code>는 통합!</li>
     </ul>
   </li>
 </ul>
@@ -1268,15 +1388,15 @@
   <li>인터페이스 데이터 파싱</li>
   <li>인터페이스 데이터 검증(포맷 및 제약조건 오류 검사)</li>
   <li>후속 기능 수행(수신 시스템에 정의된 후속 기능 진행)</li>
-  <li>수신 결과 생성 및 전송
+  <li>수신 결과 생성 및 전송<br />
 10.수신 측의 처리 결과 반환 <br /><br /></li>
 </ol>
 
 <h1 id="웹-서비스-방식">웹 서비스 방식</h1>
 <ol>
-  <li>SOAP : HTTP, HTTPS 등을 사용해 XML 기반의 메시지를 교환하는 프로토콜</li>
-  <li>WSDL : Web Service Description Language. 웹 서비스명, 제공위치 등 웹 서비스의 정보가 기술된 XML 형식의 언어</li>
-  <li>UDDI : WSDL의 등록, 검색을 위한 저장소 (공개적으로 접근 가능한 레지스트리)<br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">SOAP</code> : HTTP, HTTPS 등을 사용해 XML 기반의 메시지를 교환하는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">WSDL</code> : Web Service Description Language. 웹 서비스명, 제공위치 등 웹 서비스의 정보가 기술된 XML 형식의 언어</li>
+  <li><code class="language-plaintext highlighter-rouge">UDDI</code> : WSDL의 등록, 검색을 위한 저장소 (공개적으로 접근 가능한 레지스트리)<br /><br /></li>
 </ol>
 
 <h1 id="json">JSON</h1>
@@ -1319,12 +1439,12 @@
 
 <h2 id="ajax의-주요기술">AJAX의 주요기술</h2>
 <ul>
-  <li>XMLHttpRequest : 비동기 통신을 담당하는 자바스크립트 객체</li>
-  <li>XML : HTML의 단점을 보완하여, 특수한 목적을 갖는 마크업 언어</li>
-  <li>DOM : XML 문서를 트리 구조 형태로 접근하게 해주는 API</li>
-  <li>XSLT(eXtensible Stylesheet Language Transformations) : XML 문서를 다른 XML 문서로 변환하는 데 사용하는 언어</li>
-  <li>HTML : 웹 문서를 표현하는 마크업 언어</li>
-  <li>CSS : 마크업 언어가 표시되는 방법을 기술하는 언어<br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">XMLHttpRequest</code> : 비동기 통신을 담당하는 자바스크립트 객체</li>
+  <li><code class="language-plaintext highlighter-rouge">XML</code> : HTML의 단점을 보완하여, 특수한 목적을 갖는 마크업 언어</li>
+  <li><code class="language-plaintext highlighter-rouge">DOM</code> : XML 문서를 트리 구조 형태로 접근하게 해주는 API</li>
+  <li><code class="language-plaintext highlighter-rouge">XSLT(eXtensible Stylesheet Language Transformations)</code> : XML 문서를 다른 XML 문서로 변환하는 데 사용하는 언어</li>
+  <li><code class="language-plaintext highlighter-rouge">HTML</code> : 웹 문서를 표현하는 마크업 언어</li>
+  <li><code class="language-plaintext highlighter-rouge">CSS</code> : 마크업 언어가 표시되는 방법을 기술하는 언어<br /><br /></li>
 </ul>
 
 <h1 id="rest">REST</h1>
@@ -1349,123 +1469,319 @@
 
 <h1 id="db-암호화-기법">DB 암호화 기법</h1>
 <ol>
-  <li>API 방식 : 애플리케이션 서버에 암호 모듈 적용(애플리케이션 서버에 부하 발생)</li>
-  <li>플러그인 방식 : DB 서버에 암호 모듈 적용(DB 서버에 부하 발생)</li>
-  <li>TDE 방식 : DBMS 커널이 자체적으로 암호화 기능 수행 (Transparent Data Encryption)</li>
-  <li>하이브리드 방식 : API + 플러그인 (부하 분산)</li>
-</ol>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 소프트웨어 아키텍처 패턴 소프트웨어 설계 시 참조 가능한 솔루션 일반적으로 발생하는 문제점들에 대해 일반화되고 재사용 가능한 솔루션]]></summary></entry><entry><title type="html">Java) Queue 사용법</title><link href="http://localhost:4000/java/java-queue/" rel="alternate" type="text/html" title="Java) Queue 사용법" /><published>2022-07-15T00:00:00+09:00</published><updated>2022-07-15T00:00:00+09:00</updated><id>http://localhost:4000/java/java-queue</id><content type="html" xml:base="http://localhost:4000/java/java-queue/"><![CDATA[<ul>
-  <li>쓸 때마다 자꾸 까먹어서 정리하는 자바의 큐!!</li>
-</ul>
+  <li><code class="language-plaintext highlighter-rouge">API 방식</code> : 애플리케이션 서버에 암호 모듈 적용(애플리케이션 서버에 부하 발생)</li>
+  <li><code class="language-plaintext highlighter-rouge">플러그인 방식</code> : DB 서버에 암호 모듈 적용(DB 서버에 부하 발생)</li>
+  <li><code class="language-plaintext highlighter-rouge">TDE 방식</code> : DBMS 커널이 자체적으로 암호화 기능 수행 (Transparent Data Encryption)</li>
+  <li><code class="language-plaintext highlighter-rouge">하이브리드 방식</code> : API + 플러그인 (부하 분산)<br /><br /></li>
+</ol>
 
-<h1 id="queue란">Queue란?</h1>
-<ul>
-  <li>먼저 들어온 것이 먼저 나가는 선입선출(FIFO; First In First Out) 구조를 가진 자료구조이다.</li>
-</ul>
+<h1 id="인터페이스-구현-검증-도구">인터페이스 구현 검증 도구</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">xUnit</code> : Java, C++ 등 다양한 언어를 지원하는 단위 테스트 프레임워크</li>
+  <li><code class="language-plaintext highlighter-rouge">STAF</code> : 각 테스트 대상 분산 환경에 ‘데몬’을 사용하여 테스트를 수행</li>
+  <li><code class="language-plaintext highlighter-rouge">FitNesse</code> : 웹 기반 테스트 케이스를 지원</li>
+  <li><code class="language-plaintext highlighter-rouge">NTAF</code> : STAF(재사용 및 확장성) + FitNesse(협업 기능) 장점을 통합한 NHN의 프레임워크</li>
+  <li><code class="language-plaintext highlighter-rouge">Selenium</code> : 다양한 브라우저와 개발 언어를 지원하는 웹 애플리케이션 테스트 프레임워크</li>
+  <li><code class="language-plaintext highlighter-rouge">Watir</code> : 루비 기반의 웹 애플리케이션 테스트 프레임워크</li>
+</ol>
 
-<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhvAPe%2FbtqHlVqf0RY%2FY4oCoA4wUkEpvIkU80i43K%2Fimg.png" width="500" /></p>
+<h2 id="인터페이스-감시-도구">인터페이스 감시 도구</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">스카우터</code> : 애플리케이션 및 DB 모니터링 가능한 감시 도구</li>
+  <li><code class="language-plaintext highlighter-rouge">제니퍼</code> : 개발부터 운영에 이르기까지 전 생애주기 동안 모니터링 가능한 감시 도구</li>
+</ol>
 
-<ul>
-  <li>
-    <p>기본적으로 배열을 활용해 만들 수 있는 자료구조이지만 배열처럼 랜덤 인덱스에 접근할 수는 없다. 맨 앞에 있는 데이터에만 접근해서 값을 읽을 수 있고 데이터의 삽입은 큐의 맨 뒤에서만 가능하다.</p>
+<h2 id="오류-처리-방법">오류 처리 방법</h2>
+<ol>
+  <li>화면에서 오류를 인지하도록 구현</li>
+  <li>오류 로그 생성</li>
+  <li>관련 테이블에 오류 사항 기록<br /><br /></li>
+</ol>
+
+<h1 id="프로그래밍-언어-분류실행방식에-따라">프로그래밍 언어 분류(실행방식에 따라)</h1>
+<ol>
+  <li>명령형 언어(= 절차형 언어) : 명령들이 순차적으로 실행되는 방식
+    <ul>
+      <li>ex. FORTRAN, COBOL, PASCAL, C, ALGOL, BASIC</li>
+    </ul>
   </li>
-  <li>큐의 맨 뒤에 데이터를 삽입하는 것을 <code class="language-plaintext highlighter-rouge">Enqueue</code>라 하고</li>
-  <li>큐의 맨 앞에서 데이터를 제거하는 것을 <code class="language-plaintext highlighter-rouge">Dequeue</code>라 한다.</li>
-  <li>하지만 각 언어별로 제공되는 메서드명은 조금씩 다르다. <br /><br /></li>
-</ul>
-
-<h1 id="queue-선언">Queue 선언</h1>
-<ul>
-  <li>난 <code class="language-plaintext highlighter-rouge">C++</code>로 프로그래밍을 시작해서 자바의 큐 선언법이 참 낯설었다.</li>
-  <li>자바에서의 큐 <code class="language-plaintext highlighter-rouge">Queue</code>는 인터페이스이기 때문에 <code class="language-plaintext highlighter-rouge">new Queue()</code>로는 만들 수가 없다. (이것이 자바로 코테를 보는 걸 좀 꺼리게 만들었고 오랫동안 C++을 고집한 이유가 되기도 했다.)</li>
-  <li>그렇기 때문에 큐를 구현하고 있는 클래스를 이용해 객체를 생성해야 하는데, 이는 <code class="language-plaintext highlighter-rouge">LinkedList</code>가 구현하고 있기 때문에 이걸 이용해서 생성한다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>큐를 사용하려면 <code class="language-plaintext highlighter-rouge">LinkedList</code>와 <code class="language-plaintext highlighter-rouge">Queue</code> 두 가지를 임포트 해 주어야 한다.</li>
-  <li>하지만 보통 자동완성이 되지 않는 코테에서 이걸 일일이 외워서 쓰기엔 너무 귀찮고 헷갈린다… 그래서 코테에선</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-</code></pre></div></div>
-<p><br />
-로 가는 것이 편하다. <code class="language-plaintext highlighter-rouge">util</code> 패키지에 어지간한 자료구조는 다 들어있기 때문에 임포트문에 대한 강박을 좀 덜 수 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 제네릭 사용시 뒤에는 생략 가능</span>
-<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
-<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">strQ</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
-
-<span class="c1">// 제네릭 미사용 - 데이터 안정성이 좀 떨어져서 제네릭 사용이 권장됨</span>
-<span class="nc">Queue</span> <span class="n">q2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">();</span>
-</code></pre></div></div>
-
-<ul>
-  <li>위의 예제와 같이 제네릭을 사용해서 선언할 수 있고 제네릭 없이 선언할 수도 있다.</li>
-  <li>하지만 최신 자바에서는 데이터 안정성 면에서 제네릭을 사용하는 것을 권장하기 때문에 제네릭으로 데이터 타입을 명시해 주는 것이 좋다.</li>
-  <li>제네릭 사용시, <code class="language-plaintext highlighter-rouge">int</code>와 같은 Primitive 타입이 아니라 <code class="language-plaintext highlighter-rouge">Integer</code>와 같은 Wrapper 클래스를 써 주어야 한다. 왜냐면 저기엔 오브젝트를 넣기로 약속되어 있으니까.<br /><br /></li>
-</ul>
-
-<h1 id="enqueue">Enqueue</h1>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>   <span class="c1">// 큐에 1 삽입</span>
-<span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span> <span class="c1">// 큐에 2 삽입</span>
-</code></pre></div></div>
-<ul>
-  <li>자바에서 큐에 데이터를 삽입하려면 <code class="language-plaintext highlighter-rouge">add(value)</code> 혹은 <code class="language-plaintext highlighter-rouge">offer(value)</code>를 사용하면 되는데 난 <code class="language-plaintext highlighter-rouge">offer()</code>를 많이 쓰는 편이다.<br /><br /></li>
-</ul>
-
-<h1 id="dequeue">Dequeue</h1>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>           
-<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
-<span class="nc">Integer</span> <span class="n">j</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>   <span class="c1">// 맨 앞 원소 반환하고 제거 - 비어있으면 null 반환</span>
-
-<span class="n">q</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>         <span class="c1">// 맨 앞 원소 제거 - 비어있으면 null exception 발생</span>
-</code></pre></div></div>
-
-<ul>
-  <li>큐의 맨 앞에 있는 데이터를 꺼내려면 <code class="language-plaintext highlighter-rouge">poll()</code> 또는 <code class="language-plaintext highlighter-rouge">remove()</code> 메서드를 사용하면 되는데 두 개가 존재하는 이유는 리턴 타입이 다르기 때문이다.</li>
-  <li><code class="language-plaintext highlighter-rouge">poll()</code>은 원소를 반환하고 제거하기 때문에 그냥 쓸 수도 있지만 반환값을 변수에 저장할 수도 있다. 큐가 비어있다면 null을 반환하기 때문에 큐에 저장된 데이터가 정수형과 같은 Primitive 타입이라면 Wrapper 클래스로 받는 것이 더 안정적일 것 같지만, 보통은 큐가 비어있는지 먼저 확인한 다음 값을 꺼내니까 편한걸로 써도 상관없을 거 같다.</li>
-  <li><code class="language-plaintext highlighter-rouge">remove()</code>는 그냥 제거만 하기 때문에 큐가 비어있으면 예외가 발생한다. <br /><br /></li>
-</ul>
-
-<h1 id="queue가-비었는지-확인하기">Queue가 비었는지 확인하기</h1>
-<ul>
-  <li>그래서 큐에서 값을 꺼내기 전에 큐가 비었는지 아닌지 먼저 확인한 다음 동작을 수행하는 것이 좋다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
-    <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
-    <span class="o">...</span> <span class="n">블라블라</span> 
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>위와 같이 큐가 비었는지 확인한 다음 값을 꺼내는 연산을 하는 것이 안전하다.</li>
-  <li><code class="language-plaintext highlighter-rouge">isEmpty()</code>는 대부분의 컬렉션에서 사용할 수 있는 메서드로, <code class="language-plaintext highlighter-rouge">boolean</code>타입으로 해당 자료구조가 비었는지 아닌지를 리턴해 준다.<br /><br /></li>
-</ul>
-
-<h1 id="queue의-첫-번째-값-참조">Queue의 첫 번째 값 참조</h1>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
-</code></pre></div></div>
-
-<ul>
-  <li>
-    <p>큐의 첫 번째 값을 제거하지 않고 그냥 확인만 하고 싶다면 <code class="language-plaintext highlighter-rouge">peek()</code> 메서드를 사용할 수 있다.</p>
+  <li>객체지향 언어 : 객체 간 메시지 통신을 이용하는 방식
+    <ul>
+      <li>ex. 자바, C++</li>
+    </ul>
   </li>
-  <li>
-    <p>자바에서 큐는 이 정도만 알면 충분히 응용할 수 있을 것 같다.<br /><br /></p>
+  <li>함수형 언어 : 수학수식과 같은 함수들로 프로그램을 구성하여 호출하는 방식
+    <ul>
+      <li>ex. 리스프(LISP), 하스켈(Haskell)</li>
+    </ul>
+  </li>
+  <li>논리형 언어 : 논리 문장을 이용하여 표현하는 방식
+    <ul>
+      <li>ex. 프롤로그(Prolog)</li>
+    </ul>
+  </li>
+  <li>스크립트 언어
+    <ul>
+      <li>PHP : 동적 웹페이지를 위한 언어</li>
+      <li>Perl : 실용성 모토, 인터프리터</li>
+      <li>Python, JavaScript</li>
+    </ul>
+  </li>
+  <li>선언형 언어
+    <ul>
+      <li>함수형 언어</li>
+      <li>논리형 언어</li>
+      <li>특수분야 언어 : SQL(DBMS 관리를 위한 질의어)</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="프로그래밍-구현-기법">프로그래밍 구현 기법</h2>
+<ol>
+  <li>컴파일 방식 : 고급 언어 -&gt; 기계어로 번역
+    <ul>
+      <li>ex. FORTRAN, PASCAL, C, C++</li>
+    </ul>
+  </li>
+  <li>인터프리터 방식 : 명령문을 하나씩 번역하고 실행하는 방식
+    <ul>
+      <li>ex. BASIC, LISP, PHP, Perl, Prolog</li>
+    </ul>
+  </li>
+  <li>혼합형 방식 : 고급 언어를 컴파일하여 중간 언어로 변환 후 인터프리터가 번역을 실행하는 방식
+    <ul>
+      <li>ex. 자바</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="절차적-프로그래밍">절차적 프로그래밍</h2>
+<ol>
+  <li>FORTRAN : 과학 기술 전문 언어로, 고급 수학 함수들 사용 가능(컴파일 방식)</li>
+  <li>C : 유닉스 운영체제에서 사용하기 위한 언어(컴파일 방식)</li>
+  <li>알골 : 알고리즘 연구개발 목적</li>
+  <li>베이직 : 교육용으로 개발된 언어(인터프리터 방식)</li>
+</ol>
+
+<h2 id="객체지향-프로그래밍">객체지향 프로그래밍</h2>
+<ol>
+  <li>C++ : C 언어에 객체지향 프로그래밍 개념 추가(컴파일 방식)</li>
+  <li>C# : MS에서 개발. 불안전 코드(Unsafe Code) 같은 기술을 통해 상호 운용성 확보</li>
+  <li>자바 : 웹 애플리케이션 개발에 가장 많이 사용되는 언어</li>
+  <li>델파이 : 파스칼 문법 + 여러 기능. Windows 아래에서 모든 부분 프로그래밍 가능</li>
+</ol>
+
+<h3 id="객체지향-프로그래밍의-구성요소">객체지향 프로그래밍의 구성요소</h3>
+<ol>
+  <li>객체 : 개체 + 속성 + 메서드로 이루어진 인스턴스</li>
+  <li>클래스 : 객체를 표현하는 추상 데이터 타입</li>
+  <li>메서드 : 객체 간 통신<br /><br /></li>
+</ol>
+
+<h1 id="파이썬-자료형">파이썬 자료형</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">List</code> : 순서 있는 배열
+    <ul>
+      <li>값 맨 뒤에 삽입 : <code class="language-plaintext highlighter-rouge">append(value)</code></li>
+      <li>중간에 삽입 : <code class="language-plaintext highlighter-rouge">insert(index, value)</code></li>
+      <li>삭제 : <code class="language-plaintext highlighter-rouge">remove(value)</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Dictionary</code> : 키-값 쌍
+    <ul>
+      <li>값 참조 : <code class="language-plaintext highlighter-rouge">딕셔너리이름[키] = 값</code></li>
+      <li>값 삭제 : <code class="language-plaintext highlighter-rouge">del 딕셔너리이름[키]</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Set</code> : 중복 허용 X, 순서 없음
+    <ul>
+      <li>값 추가 : <code class="language-plaintext highlighter-rouge">add(value)</code></li>
+      <li>값 삭제 : <code class="language-plaintext highlighter-rouge">remove(value)</code><br /><br /></li>
+    </ul>
   </li>
 </ul>
 
-<h1 id="참고">참고</h1>
+<h1 id="자바-자료형">자바 자료형</h1>
 <ul>
-  <li><a href="https://coding-factory.tistory.com/602">[Java] 자바 Queue 클래스 사용법 &amp; 예제 총정리</a></li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Java" /><category term="Java" /><category term="Queue" /><summary type="html"><![CDATA[쓸 때마다 자꾸 까먹어서 정리하는 자바의 큐!!]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 게임 맵 최단거리</title><link href="http://localhost:4000/programmers/programmers-bfs/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 게임 맵 최단거리" /><published>2022-07-15T00:00:00+09:00</published><updated>2022-07-15T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-bfs</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-bfs/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+  <li><code class="language-plaintext highlighter-rouge">HashMap</code> : 키-값 쌍
+    <ul>
+      <li>값 추가 : <code class="language-plaintext highlighter-rouge">put(key, value)</code></li>
+      <li>값 삭제 : <code class="language-plaintext highlighter-rouge">remove(key)</code></li>
+      <li>값 얻기 : <code class="language-plaintext highlighter-rouge">get(key)</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">ArrayList</code> : 순서 있는 배열
+    <ul>
+      <li>값 맨 뒤에 추가 : <code class="language-plaintext highlighter-rouge">add(value)</code></li>
+      <li>값 중간에 삽입 : <code class="language-plaintext highlighter-rouge">add(index, value)</code></li>
+      <li>값 삭제 : <code class="language-plaintext highlighter-rouge">remove(index)</code></li>
+      <li>인덱스 값 참조 : <code class="language-plaintext highlighter-rouge">get(index)</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">HashSet</code> : 중복 허용 X, 순서 없음
+    <ul>
+      <li>값 추가 : <code class="language-plaintext highlighter-rouge">add(value)</code></li>
+      <li>값 제거 : <code class="language-plaintext highlighter-rouge">remove(value)</code><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="라이브러리">라이브러리</h1>
+<ul>
+  <li>효율적인 개발을 위해 필요한 프로그램들을 모은 집합체(모듈과 패키지를 총칭)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">모듈</code> : 변수, 함수 등을 모아둔 파일</li>
+      <li><code class="language-plaintext highlighter-rouge">패키지</code> : 모듈을 구조화한 라이브러리</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="라이브러리-구성">라이브러리 구성</h2>
+<ol>
+  <li>도움말</li>
+  <li>설치 파일</li>
+  <li>샘플 코드<br /><br /></li>
+</ol>
+
+<h1 id="클래스-관련-용어">클래스 관련 용어</h1>
+<h2 id="인터페이스">인터페이스</h2>
+<ul>
+  <li>자바에서 다향성을 극대화하기 위한 문법으로 추상 메서드와 상수만을 멤버로 갖는다.</li>
+</ul>
+
+<h2 id="추상-클래스">추상 클래스</h2>
+<ul>
+  <li>자식 클래스에서 상위 클래스의 미구현 추상 메서드를 구현하는 것</li>
+</ul>
+
+<h2 id="추상-클래스-구현">추상 클래스 구현</h2>
+<ul>
+  <li>C++ : 메서드 뒤에 <code class="language-plaintext highlighter-rouge">= 0</code> 붙임</li>
+  <li>자바 : 클래스명과 메서드명 앞에 <code class="language-plaintext highlighter-rouge">abstract</code> 붙임</li>
+  <li>파이썬 : 메서드 내부에 <code class="language-plaintext highlighter-rouge">pass</code> 키워드 사용</li>
+</ul>
+
+<h2 id="상위-클래스-접근">상위 클래스 접근</h2>
+<ul>
+  <li>C++ : 부모클래스::메서드명()</li>
+  <li>자바 : super.메서드명()</li>
+  <li>파이썬 : super().메서드명()</li>
+</ul>
+
+<h2 id="오버로딩">오버로딩</h2>
+<ul>
+  <li>같은 이름의 메서드를 매개변수만 다르게 하여 여러 개 정의하는 것</li>
+</ul>
+
+<h2 id="오버라이딩">오버라이딩</h2>
+<ul>
+  <li>하위 클래스에서 상위 클래스 메서드를 재정의하는 것. C++은 <code class="language-plaintext highlighter-rouge">virtual</code> 키워드 필요</li>
+</ul>
+
+<h2 id="상속">상속</h2>
+<ul>
+  <li>어떤 객체의 변수와 메서드를 다른 객체가 물려받는 것</li>
+</ul>
+
+<h3 id="상속-문법">상속 문법</h3>
+<ul>
+  <li>C++ : <code class="language-plaintext highlighter-rouge">class 자식클래스 : public 부모클래스 {}</code></li>
+  <li>자바 : <code class="language-plaintext highlighter-rouge">class 자식클래스 extends 부모클래스 {}</code></li>
+  <li>파이썬 : <code class="language-plaintext highlighter-rouge">class 자식클래스 (부모클래스):</code></li>
+</ul>
+
+<h2 id="생성자">생성자</h2>
+<ul>
+  <li>해달 클래스의 객체가 생성될 때 자동으로 호출되는 메서드</li>
+  <li>C++, 자바 : 클래스명과 동일하면 생성자</li>
+  <li>파이썬 : <code class="language-plaintext highlighter-rouge">__int__</code> 메서드명 사용하면 생성자</li>
+</ul>
+
+<h2 id="소멸자">소멸자</h2>
+<ul>
+  <li>객체가 소멸될 때 호출되는 메서드. 할당된 메모리를 해제하는 용도로 사용됨</li>
+  <li>C++ : 클래스명과 동일하나 클래스명 앞에 <code class="language-plaintext highlighter-rouge">~</code> 기호를 붙이면 소멸자</li>
+  <li>자바 : <code class="language-plaintext highlighter-rouge">finalize</code> 메서드명을 사용하면 소멸자</li>
+  <li>파이썬 : <code class="language-plaintext highlighter-rouge">__del__</code> 메서드면 사용하면 소멸자</li>
+</ul>
+
+<h2 id="자신-클래스-참조">자신 클래스 참조</h2>
+<ul>
+  <li>C++, 자바는 <code class="language-plaintext highlighter-rouge">this-&gt;</code>, <code class="language-plaintext highlighter-rouge">this.</code></li>
+  <li>파이썬은 <code class="language-plaintext highlighter-rouge">self.</code></li>
+</ul>
+
+<h2 id="구조체">구조체</h2>
+<ul>
+  <li>기본 타입을 이용해 새롭게 정의하는 자료형</li>
+  <li>C/C++ 한정 <code class="language-plaintext highlighter-rouge">struct</code>로 선언 후 사용</li>
+</ul>
+
+<h2 id="열거체">열거체</h2>
+<ul>
+  <li>정수형 상수에 이름을 붙여 쓰기 편하게 만드는 것</li>
+</ul>
+
+<h2 id="포맷-스트링">포맷 스트링</h2>
+<ul>
+  <li>%c : 문자</li>
+  <li>%s : 문자열</li>
+  <li>%d : 10진수</li>
+  <li>%x : 16진수</li>
+  <li>%o : 8진수</li>
+  <li>%f : 실수(6자리까지)</li>
+</ul>
+
+<h2 id="비트-연산자">비트 연산자</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> : 같은 비트 값이 모두 1이면 1 - AND</li>
+  <li><code class="language-plaintext highlighter-rouge">|</code> : 같은 비트 중 하나라도 1이면 1 - OR</li>
+  <li><code class="language-plaintext highlighter-rouge">^</code> : 같은 비트값이 서로 다르면 1 - XOR</li>
+  <li><code class="language-plaintext highlighter-rouge">~</code> : 모든 비트값을 반대로 뒤집음 - NOT</li>
+</ul>
+
+<h2 id="시프트-연산자">시프트 연산자</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code> 왼쪽으로 비트 이동 : * 2 효과가 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> 오른쪽으로 비트 이동 : / 2 효과</li>
+</ul>
+
+<h2 id="식별자-표기법">식별자 표기법</h2>
+<ul>
+  <li>헝가리안 표기법 : 식별자 앞에 자료형을 붙이는 표기법</li>
+  <li>스네이크 표기법 : 식별자에 여러 단어가 이어질 때 각 단어 사이에 언더바를 넣는 표기법</li>
+  <li>카멜 표기법 : 식별자에 여러 단어가 이어질 때 첫 단어의 시작만 소문자로, 각 단어의 첫 글자는 대문자로 쓰는 표기법</li>
+  <li>파스칼 표기법 : 식별자에 여러 단어가 이어질 때 각 단어의 첫 글자는 대문자로 쓰는 표기법</li>
+</ul>
+
+<h2 id="리스트-인덱스">리스트 인덱스</h2>
+<ul>
+  <li>[0] [1] … [n-2] [n-1] [-n] [-(n-1)] [-2] [-1]</li>
+</ul>
+
+<h2 id="리스트-슬라이싱">리스트 슬라이싱</h2>
+<ol>
+  <li>시작 인덱스 : 생략 시 처음부터</li>
+  <li>종료 인덱스 : <code class="language-plaintext highlighter-rouge">종료 인덱스 전</code> 까지만 슬라이싱하며 <code class="language-plaintext highlighter-rouge">생략 시 마지막까지</code></li>
+  <li>스텝 : 생략 시 1</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div></div>
+
+<ul>
+  <li>출력 : [7,3]</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">"Hello Phython"</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<ul>
+  <li>출력 : Heltho</li>
+</ul>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 소프트웨어 아키텍처 패턴 소프트웨어 설계 시 참조 가능한 솔루션 일반적으로 발생하는 문제점들에 대해 일반화되고 재사용 가능한 솔루션]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 게임 맵 최단거리</title><link href="http://localhost:4000/programmers/programmers-bfs/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 게임 맵 최단거리" /><published>2022-07-15T00:00:00+09:00</published><updated>2022-07-15T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-bfs</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-bfs/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1513,7 +1829,7 @@
 <script src="https://gist.github.com/miro7923/de92d73ee78595e6fb2b814097db6d7d.js"></script>
 
 <h2 id="풀이영상-시청-후-참고해서-다듬은-코드">풀이영상 시청 후 참고해서 다듬은 코드</h2>
-<script src="https://gist.github.com/miro7923/4787925f0bf7d68e5ab3c5c217432a90.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BFS" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62951]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 위장</title><link href="http://localhost:4000/programmers/programmers-combination-count/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 위장" /><published>2022-07-14T00:00:00+09:00</published><updated>2022-07-14T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-combination-count</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-combination-count/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/4787925f0bf7d68e5ab3c5c217432a90.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BFS" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62951]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 위장</title><link href="http://localhost:4000/programmers/programmers-combination-count/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 위장" /><published>2022-07-14T00:00:00+09:00</published><updated>2022-07-14T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-combination-count</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-combination-count/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1555,7 +1871,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/c16faa62652395d70d2ad8ae38a6fc16.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="hash" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62950]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 숫자 게임</title><link href="http://localhost:4000/programmers/programmers-number-game/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 숫자 게임" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-number-game</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-number-game/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/c16faa62652395d70d2ad8ae38a6fc16.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="hash" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62950]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 숫자 게임</title><link href="http://localhost:4000/programmers/programmers-number-game/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 숫자 게임" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-number-game</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-number-game/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1612,7 +1928,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/b31d9de91d26ef1943e7d862b541a340.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="Simulation" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62947]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 예산</title><link href="http://localhost:4000/programmers/programmers-binary-search/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 예산" /><published>2022-07-11T00:00:00+09:00</published><updated>2022-07-11T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-binary-search</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-binary-search/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/b31d9de91d26ef1943e7d862b541a340.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="Simulation" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62947]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 예산</title><link href="http://localhost:4000/programmers/programmers-binary-search/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 예산" /><published>2022-07-11T00:00:00+09:00</published><updated>2022-07-11T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-binary-search</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-binary-search/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1659,34 +1975,7 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/d168474b2fe3ceb2d077e3962f62e964.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BinarySearch" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62949]]></summary></entry><entry><title type="html">정보처리기사) 네트워크 레이어 프로토콜</title><link href="http://localhost:4000/certificate/network-layer/" rel="alternate" type="text/html" title="정보처리기사) 네트워크 레이어 프로토콜" /><published>2022-07-10T00:00:00+09:00</published><updated>2022-07-10T00:00:00+09:00</updated><id>http://localhost:4000/certificate/network-layer</id><content type="html" xml:base="http://localhost:4000/certificate/network-layer/"><![CDATA[<ul>
-  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
-</ul>
-
-<h1 id="네트워크-계층">네트워크 계층</h1>
-<ul>
-  <li>데이터 전송을 위한 최적의 경로 설정</li>
-  <li>단위 : 패킷</li>
-</ul>
-
-<h2 id="장비">장비</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">L3 스위치</code> : 3계층에서 동작하는 스위치 (L2 스위치 기능 + L3 라우터 기능을 모두 갖춘 장비)</li>
-  <li><code class="language-plaintext highlighter-rouge">라우터</code> : 최적의 경로를 지정하고 경로에 따라 전송시키는 장비</li>
-  <li><code class="language-plaintext highlighter-rouge">게이트웨이</code> : 다른 통신망에 접속할 수 있게 해주는 장비</li>
-  <li><code class="language-plaintext highlighter-rouge">인터넷 공유기</code> : 하나의 인터넷 라인을 여러 컴퓨터가 공유할 수 있게 해주는 장비</li>
-  <li><code class="language-plaintext highlighter-rouge">망(백본) 스위치 허브</code> : 광역 네트워크를 커버하는 스위칭 허브</li>
-</ul>
-
-<h2 id="프로토콜">프로토콜</h2>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">IP</code> : 패킷 단위의 네트워크 통신 프로토콜</li>
-  <li><code class="language-plaintext highlighter-rouge">라우팅 프로토콜</code> : 최적의 데이터 전송 경로를 설정하는 프로토콜</li>
-  <li><code class="language-plaintext highlighter-rouge">ARP</code> : IP주소(3계층)을 MAC주소(2계층)으로 변환하는 프로토콜</li>
-  <li><code class="language-plaintext highlighter-rouge">RARP</code> : MAC 주소는 알지만 IP 주소는 모를 때 사용하는 프로토콜</li>
-  <li><code class="language-plaintext highlighter-rouge">ICMP</code> : IP 패킷 처리 시의 문제를 알려주는 프로토콜</li>
-  <li><code class="language-plaintext highlighter-rouge">IGMP</code> : 멀티캐스트 실시간 전송을 위해 사용하는 프로토콜 (화상회의 등)</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="OSI7" /><category term="NetworkLayer" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 네트워크 계층 데이터 전송을 위한 최적의 경로 설정 단위 : 패킷]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 가장 큰 수</title><link href="http://localhost:4000/programmers/programmers-bigNumber-java/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 가장 큰 수" /><published>2022-07-10T00:00:00+09:00</published><updated>2022-07-10T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-bigNumber-java</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-bigNumber-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/d168474b2fe3ceb2d077e3962f62e964.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BinarySearch" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62949]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 가장 큰 수</title><link href="http://localhost:4000/programmers/programmers-bigNumber-java/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 가장 큰 수" /><published>2022-07-10T00:00:00+09:00</published><updated>2022-07-10T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-bigNumber-java</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-bigNumber-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1739,7 +2028,34 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/a4ecd2b3fa0442c38c6fc07058a86114.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="Sorting" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62948]]></summary></entry><entry><title type="html">Java) 프로그래머스. 로또의 최고 순위와 최저 순위</title><link href="http://localhost:4000/programmers/programmers-lotto-java/" rel="alternate" type="text/html" title="Java) 프로그래머스. 로또의 최고 순위와 최저 순위" /><published>2022-07-09T00:00:00+09:00</published><updated>2022-07-09T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-lotto-java</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-lotto-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<script src="https://gist.github.com/miro7923/a4ecd2b3fa0442c38c6fc07058a86114.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="Sorting" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62948]]></summary></entry><entry><title type="html">정보처리기사) 네트워크 레이어 프로토콜</title><link href="http://localhost:4000/certificate/network-layer/" rel="alternate" type="text/html" title="정보처리기사) 네트워크 레이어 프로토콜" /><published>2022-07-10T00:00:00+09:00</published><updated>2022-07-10T00:00:00+09:00</updated><id>http://localhost:4000/certificate/network-layer</id><content type="html" xml:base="http://localhost:4000/certificate/network-layer/"><![CDATA[<ul>
+  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
+</ul>
+
+<h1 id="네트워크-계층">네트워크 계층</h1>
+<ul>
+  <li>데이터 전송을 위한 최적의 경로 설정</li>
+  <li>단위 : 패킷</li>
+</ul>
+
+<h2 id="장비">장비</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">L3 스위치</code> : 3계층에서 동작하는 스위치 (L2 스위치 기능 + L3 라우터 기능을 모두 갖춘 장비)</li>
+  <li><code class="language-plaintext highlighter-rouge">라우터</code> : 최적의 경로를 지정하고 경로에 따라 전송시키는 장비</li>
+  <li><code class="language-plaintext highlighter-rouge">게이트웨이</code> : 다른 통신망에 접속할 수 있게 해주는 장비</li>
+  <li><code class="language-plaintext highlighter-rouge">인터넷 공유기</code> : 하나의 인터넷 라인을 여러 컴퓨터가 공유할 수 있게 해주는 장비</li>
+  <li><code class="language-plaintext highlighter-rouge">망(백본) 스위치 허브</code> : 광역 네트워크를 커버하는 스위칭 허브</li>
+</ul>
+
+<h2 id="프로토콜">프로토콜</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">IP</code> : 패킷 단위의 네트워크 통신 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">라우팅 프로토콜</code> : 최적의 데이터 전송 경로를 설정하는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">ARP</code> : IP주소(3계층)을 MAC주소(2계층)으로 변환하는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">RARP</code> : MAC 주소는 알지만 IP 주소는 모를 때 사용하는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">ICMP</code> : IP 패킷 처리 시의 문제를 알려주는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">IGMP</code> : 멀티캐스트 실시간 전송을 위해 사용하는 프로토콜 (화상회의 등)</li>
+</ul>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="OSI7" /><category term="NetworkLayer" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 네트워크 계층 데이터 전송을 위한 최적의 경로 설정 단위 : 패킷]]></summary></entry><entry><title type="html">Java) 프로그래머스. 로또의 최고 순위와 최저 순위</title><link href="http://localhost:4000/programmers/programmers-lotto-java/" rel="alternate" type="text/html" title="Java) 프로그래머스. 로또의 최고 순위와 최저 순위" /><published>2022-07-09T00:00:00+09:00</published><updated>2022-07-09T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-lotto-java</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-lotto-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -1788,30 +2104,75 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/1a87d96c893a7a2cc45c3468acc77376.js"></script>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/30/lessons/77484]]></summary></entry><entry><title type="html">정보처리기사) 암호화 알고리즘</title><link href="http://localhost:4000/certificate/encryption/" rel="alternate" type="text/html" title="정보처리기사) 암호화 알고리즘" /><published>2022-07-09T00:00:00+09:00</published><updated>2022-07-09T00:00:00+09:00</updated><id>http://localhost:4000/certificate/encryption</id><content type="html" xml:base="http://localhost:4000/certificate/encryption/"><![CDATA[<ul>
-  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
+<script src="https://gist.github.com/miro7923/1a87d96c893a7a2cc45c3468acc77376.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/30/lessons/77484]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 기지국 설치</title><link href="http://localhost:4000/programmers/programmers-coverage-java/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 기지국 설치" /><published>2022-07-09T00:00:00+09:00</published><updated>2022-07-09T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-coverage-java</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-coverage-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://school.programmers.co.kr/learn/courses/10302/lessons/62946">https://school.programmers.co.kr/learn/courses/10302/lessons/62946</a><br /><br /></li>
 </ul>
 
-<h1 id="des">DES</h1>
+<h1 id="문제">문제</h1>
+<hr />
+
 <ul>
-  <li>미국 NBS (National Bureau of Standards, 현재 NIST)에서 국가 표준으로 정한 암호 알고리즘으로, 64비트 평문을 64비트 암호문으로 암화하는 대칭키 암호 알고리즘이다. 키는 7비트마다 오류검출을 위한 정보가 1비트씩 들어가기 때문에 실질적으로는 56비트이다. 현재는 취약하여 사용되지 않는다.<br /><br /></li>
+  <li>N개의 아파트가 일렬로 쭉 늘어서 있습니다. 이 중에서 일부 아파트 옥상에는 4g 기지국이 설치되어 있습니다. 기술이 발전해 5g 수요가 높아져 4g 기지국을 5g 기지국으로 바꾸려 합니다. 그런데 5g 기지국은 4g 기지국보다 전달 범위가 좁아, 4g 기지국을 5g 기지국으로 바꾸면 어떤 아파트에는 전파가 도달하지 않습니다.</li>
+  <li>예를 들어 11개의 아파트가 쭉 늘어서 있고, [4, 11] 번째 아파트 옥상에는 4g 기지국이 설치되어 있습니다. 만약 이 4g 기지국이 전파 도달 거리가 1인 5g 기지국으로 바뀔 경우 모든 아파트에 전파를 전달할 수 없습니다. (전파의 도달 거리가 W일 땐, 기지국이 설치된 아파트를 기준으로 전파를 양쪽으로 W만큼 전달할 수 있습니다.)</li>
+  <li>이때, 우리는 기지국을 최소로 설치하면서 모든 아파트에 전파를 전달하려고 합니다. 위의 예시에선 최소 3개의 아파트 옥상에 기지국을 설치해야 모든 아파트에 전파를 전달할 수 있습니다.</li>
+  <li>아파트의 개수 N, 현재 기지국이 설치된 아파트의 번호가 담긴 1차원 배열 stations, 전파의 도달 거리 W가 매개변수로 주어질 때, 모든 아파트에 전파를 전달하기 위해 증설해야 할 기지국 개수의 최솟값을 리턴하는 solution 함수를 완성해주세요.</li>
+  <li>(문제 전문은 링크에…)<br /><br /></li>
 </ul>
 
-<h1 id="aria">ARIA</h1>
+<h1 id="제한">제한</h1>
+<hr />
+
 <ul>
-  <li>대칭키(블록)</li>
-  <li>학계(Academy) + 연구기관(Research Institute) + 정부(Agency)</li>
-  <li>국정원과 산학연구협회가 개발함<br /><br /></li>
+  <li>N: 200,000,000 이하의 자연수</li>
+  <li>stations의 크기: 10,000 이하의 자연수</li>
+  <li>stations는 오름차순으로 정렬되어 있고, 배열에 담긴 수는 N보다 같거나 작은 자연수입니다.</li>
+  <li>W: 10,000 이하의 자연수<br /><br /><br /></li>
 </ul>
 
-<h1 id="rsa">RSA</h1>
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
 <ul>
-  <li>비대칭키</li>
-  <li>수학교수 3명의 앞글자를 땄음 (리베스트, 샤미르, 아들만). 소인수 분해 문제의 어려움을 근거로 함<br /><br /></li>
+  <li>
+    <p>코테공부를 오래 쉰 거 치고는 생각외로 빠르게 푼 문제… 아직 완전히 감을 잃지는 않았나보다 ㅠㅠ 그리디 기본문제라 쉽긴 했다.<br /><br /></p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">n</code>의 최대값이 2억으로 꽤 크기 때문에 완전탐색으로 답을 구하면 효율성 테스트를 통과하지 못 할 것이다.</li>
+  <li>
+    <p>그래서 기지국을 설치해야 하는 구간의 길이를 구한 다음 기지국 하나의 커버리지 길이로 나눠주면 완전탐색에 비해서는 빠르게 구할 수 있을 것이라 생각하고 코드를 짰다.<br /><br /></p>
+  </li>
+  <li>설치해야 할 기지국의 개수의 최솟값을 구하려면 먼저 하나의 기지국 당 커버할 수 있는 길이를 구해야 한다.
+    <ul>
+      <li>문제의 그림을 참고하면 하나의 기지국이 커버할 수 있는 길이는 <code class="language-plaintext highlighter-rouge">w * 2 + 1</code>이다. 기지국이 설치된 위치 기준으로 양 옆 <code class="language-plaintext highlighter-rouge">w</code>만큼 커버할 수 있기 때문에 <code class="language-plaintext highlighter-rouge">w</code>의 2배에 기지국이 설치된 위치 1만큼을 더해주어야 한다.<br /><br /></li>
+    </ul>
+  </li>
+  <li>다음으로 기지국이 커버할 수 없어 비어있는 구간의 길이를 구해야 한다.
+    <ul>
+      <li>이는 (현재 기지국을 설치해야 하는 빈 구간의 끝점 - 시작점)으로 구할 수 있다.
+        <ul>
+          <li>빈 구간의 끝점은 빈 구간 다음에 첫 번째로 나오는 기지국의 위치에서 <code class="language-plaintext highlighter-rouge">w + 1</code>만큼을 빼면 구할 수 있다.</li>
+          <li>시작점은 설치된 기지국의 위치 + <code class="language-plaintext highlighter-rouge">w + 1</code>로 구할 수 있다.</li>
+        </ul>
+      </li>
+      <li>(끝점 - 시작점)으로 빈 구간의 길이를 구한 다음 위에서 구했던 기지국의 커버리지로 나눠본다.
+        <ul>
+          <li>나눈 나머지가 0이면 몫만큼 기지국을 설치하면 되지만, 나머지가 0보다 크다면 1개를 추가로 설치해야 모든 구역을 커버할 수 있다.</li>
+        </ul>
+      </li>
+      <li>위의 과정을 기지국의 위치 배열인 <code class="language-plaintext highlighter-rouge">stations</code>의 원소 갯수만큼 반복한다.<br /><br /></li>
+    </ul>
+  </li>
+  <li>두 번째 항목의 반복문이 끝나고 나면 마지막 기지국 뒤에 남아있는 빈 구간이 생길 수 있기 때문에 마지막으로 구했던 끝점이 아파트의 전체 길이보다 작다면 남은 구간에 대해 두 번째 항목을 한 번 더 수행한다.<br /><br /><br /></li>
 </ul>
 
-<h1 id="md5">MD5</h1>
+<h1 id="결과">결과</h1>
 <ul>
-  <li>해시 암호화</li>
-  <li><code class="language-plaintext highlighter-rouge">MD4</code>를 개선한 알고리즘</li>
-</ul>]]></content><author><name>Yujin Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="Algorithm" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲 DES 미국 NBS (National Bureau of Standards, 현재 NIST)에서 국가 표준으로 정한 암호 알고리즘으로, 64비트 평문을 64비트 암호문으로 암화하는 대칭키 암호 알고리즘이다. 키는 7비트마다 오류검출을 위한 정보가 1비트씩 들어가기 때문에 실질적으로는 56비트이다. 현재는 취약하여 사용되지 않는다.]]></summary></entry></feed>
+  <li>효율성 테스트 결과 평균 <code class="language-plaintext highlighter-rouge">0.7ms</code> 정도에 통과할 수 있었다. 굿굿~~</li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/4330cbc0e820660fdb28eca5b24e74a5.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Greedy" /><category term="Java" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62946]]></summary></entry></feed>
