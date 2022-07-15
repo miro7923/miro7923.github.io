@@ -1,0 +1,810 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Java) Queue 사용법 | Yujin Dev Log</title>
+<meta name="description" content="쓸 때마다 자꾸 까먹어서 정리하는 자바의 큐!!">
+
+
+  <meta name="author" content="Yujin Hwang">
+  
+  <meta property="article:author" content="Yujin Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Yujin Dev Log">
+<meta property="og:title" content="Java) Queue 사용법">
+<meta property="og:url" content="http://localhost:4000/java/java-queue/">
+
+
+  <meta property="og:description" content="쓸 때마다 자꾸 까먹어서 정리하는 자바의 큐!!">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-07-15T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/java/java-queue/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yujin Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yujin Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#java" itemprop="item"><span itemprop="name">Java</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Java) Queue 사용법</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Yujin Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Yujin Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업에 능숙한 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Portfolio</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Java) Queue 사용법">
+    <meta itemprop="description" content="  쓸 때마다 자꾸 까먹어서 정리하는 자바의 큐!!">
+    <meta itemprop="datePublished" content="2022-07-15T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/java/java-queue/" class="u-url" itemprop="url">Java) Queue 사용법
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-15T00:00:00+09:00">July 15, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#queue란">Queue란?</a></li><li><a href="#queue-선언">Queue 선언</a></li><li><a href="#enqueue">Enqueue</a></li><li><a href="#dequeue">Dequeue</a></li><li><a href="#queue가-비었는지-확인하기">Queue가 비었는지 확인하기</a></li><li><a href="#queue의-첫-번째-값-참조">Queue의 첫 번째 값 참조</a></li><li><a href="#참고">참고</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <ul>
+  <li>쓸 때마다 자꾸 까먹어서 정리하는 자바의 큐!!</li>
+</ul>
+
+<h1 id="queue란">Queue란?</h1>
+<ul>
+  <li>먼저 들어온 것이 먼저 나가는 선입선출(FIFO; First In First Out) 구조를 가진 자료구조이다.</li>
+</ul>
+
+<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhvAPe%2FbtqHlVqf0RY%2FY4oCoA4wUkEpvIkU80i43K%2Fimg.png" width="500" /></p>
+
+<ul>
+  <li>
+    <p>기본적으로 배열을 활용해 만들 수 있는 자료구조이지만 배열처럼 랜덤 인덱스에 접근할 수는 없다. 맨 앞에 있는 데이터에만 접근해서 값을 읽을 수 있고 데이터의 삽입은 큐의 맨 뒤에서만 가능하다.</p>
+  </li>
+  <li>큐의 맨 뒤에 데이터를 삽입하는 것을 <code class="language-plaintext highlighter-rouge">Enqueue</code>라 하고</li>
+  <li>큐의 맨 앞에서 데이터를 제거하는 것을 <code class="language-plaintext highlighter-rouge">Dequeue</code>라 한다.</li>
+  <li>하지만 각 언어별로 제공되는 메서드명은 조금씩 다르다. <br /><br /></li>
+</ul>
+
+<h1 id="queue-선언">Queue 선언</h1>
+<ul>
+  <li>난 <code class="language-plaintext highlighter-rouge">C++</code>로 프로그래밍을 시작해서 자바의 큐 선언법이 참 낯설었다.</li>
+  <li>자바에서의 큐 <code class="language-plaintext highlighter-rouge">Queue</code>는 인터페이스이기 때문에 <code class="language-plaintext highlighter-rouge">new Queue()</code>로는 만들 수가 없다. (이것이 자바로 코테를 보는 걸 좀 꺼리게 만들었고 오랫동안 C++을 고집한 이유가 되기도 했다.)</li>
+  <li>그렇기 때문에 큐를 구현하고 있는 클래스를 이용해 객체를 생성해야 하는데, 이는 <code class="language-plaintext highlighter-rouge">LinkedList</code>가 구현하고 있기 때문에 이걸 이용해서 생성한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>큐를 사용하려면 <code class="language-plaintext highlighter-rouge">LinkedList</code>와 <code class="language-plaintext highlighter-rouge">Queue</code> 두 가지를 임포트 해 주어야 한다.</li>
+  <li>하지만 보통 자동완성이 되지 않는 코테에서 이걸 일일이 외워서 쓰기엔 너무 귀찮고 헷갈린다… 그래서 코테에선</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+</code></pre></div></div>
+<p><br />
+로 가는 것이 편하다. <code class="language-plaintext highlighter-rouge">util</code> 패키지에 어지간한 자료구조는 다 들어있기 때문에 임포트문에 대한 강박을 좀 덜 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 제네릭 사용시 뒤에는 생략 가능</span>
+<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">strQ</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+
+<span class="c1">// 제네릭 미사용 - 데이터 안정성이 좀 떨어져서 제네릭 사용이 권장됨</span>
+<span class="nc">Queue</span> <span class="n">q2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위의 예제와 같이 제네릭을 사용해서 선언할 수 있고 제네릭 없이 선언할 수도 있다.</li>
+  <li>하지만 최신 자바에서는 데이터 안정성 면에서 제네릭을 사용하는 것을 권장하기 때문에 제네릭으로 데이터 타입을 명시해 주는 것이 좋다.</li>
+  <li>제네릭 사용시, <code class="language-plaintext highlighter-rouge">int</code>와 같은 Primitive 타입이 아니라 <code class="language-plaintext highlighter-rouge">Integer</code>와 같은 Wrapper 클래스를 써 주어야 한다. 왜냐면 저기엔 오브젝트를 넣기로 약속되어 있으니까.<br /><br /></li>
+</ul>
+
+<h1 id="enqueue">Enqueue</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>   <span class="c1">// 큐에 1 삽입</span>
+<span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span> <span class="c1">// 큐에 2 삽입</span>
+</code></pre></div></div>
+<ul>
+  <li>자바에서 큐에 데이터를 삽입하려면 <code class="language-plaintext highlighter-rouge">add(value)</code> 혹은 <code class="language-plaintext highlighter-rouge">offer(value)</code>를 사용하면 되는데 난 <code class="language-plaintext highlighter-rouge">offer()</code>를 많이 쓰는 편이다.<br /><br /></li>
+</ul>
+
+<h1 id="dequeue">Dequeue</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>           
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+<span class="nc">Integer</span> <span class="n">j</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>   <span class="c1">// 맨 앞 원소 반환하고 제거 - 비어있으면 null 반환</span>
+
+<span class="n">q</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>         <span class="c1">// 맨 앞 원소 제거 - 비어있으면 null exception 발생</span>
+</code></pre></div></div>
+
+<ul>
+  <li>큐의 맨 앞에 있는 데이터를 꺼내려면 <code class="language-plaintext highlighter-rouge">poll()</code> 또는 <code class="language-plaintext highlighter-rouge">remove()</code> 메서드를 사용하면 되는데 두 개가 존재하는 이유는 리턴 타입이 다르기 때문이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">poll()</code>은 원소를 반환하고 제거하기 때문에 그냥 쓸 수도 있지만 반환값을 변수에 저장할 수도 있다. 큐가 비어있다면 null을 반환하기 때문에 큐에 저장된 데이터가 정수형과 같은 Primitive 타입이라면 Wrapper 클래스로 받는 것이 더 안정적일 것 같지만, 보통은 큐가 비어있는지 먼저 확인한 다음 값을 꺼내니까 편한걸로 써도 상관없을 거 같다.</li>
+  <li><code class="language-plaintext highlighter-rouge">remove()</code>는 그냥 제거만 하기 때문에 큐가 비어있으면 예외가 발생한다. <br /><br /></li>
+</ul>
+
+<h1 id="queue가-비었는지-확인하기">Queue가 비었는지 확인하기</h1>
+<ul>
+  <li>그래서 큐에서 값을 꺼내기 전에 큐가 비었는지 아닌지 먼저 확인한 다음 동작을 수행하는 것이 좋다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    <span class="o">...</span> <span class="n">블라블라</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위와 같이 큐가 비었는지 확인한 다음 값을 꺼내는 연산을 하는 것이 안전하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">isEmpty()</code>는 대부분의 컬렉션에서 사용할 수 있는 메서드로, <code class="language-plaintext highlighter-rouge">boolean</code>타입으로 해당 자료구조가 비었는지 아닌지를 리턴해 준다.<br /><br /></li>
+</ul>
+
+<h1 id="queue의-첫-번째-값-참조">Queue의 첫 번째 값 참조</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>큐의 첫 번째 값을 제거하지 않고 그냥 확인만 하고 싶다면 <code class="language-plaintext highlighter-rouge">peek()</code> 메서드를 사용할 수 있다.</p>
+  </li>
+  <li>
+    <p>자바에서 큐는 이 정도만 알면 충분히 응용할 수 있을 것 같다.<br /><br /></p>
+  </li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://coding-factory.tistory.com/602">[Java] 자바 Queue 클래스 사용법 &amp; 예제 총정리</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#java" class="page__taxonomy-item p-category" rel="tag">Java</a><span class="sep">, </span>
+    
+      <a href="/tags/#queue" class="page__taxonomy-item p-category" rel="tag">Queue</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#java" class="page__taxonomy-item p-category" rel="tag">Java</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-07-15T00:00:00+09:00">July 15, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Java%29+Queue+%EC%82%AC%EC%9A%A9%EB%B2%95%20http%3A%2F%2Flocalhost%3A4000%2Fjava%2Fjava-queue%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjava%2Fjava-queue%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjava%2Fjava-queue%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/certificate/cs-certificate/" class="pagination--pager" title="정보처리기사) 실기 개념 정리
+">이전</a>
+    
+    
+      <a href="/programmers/programmers-bfs/" class="pagination--pager" title="Java) 프로그래머스 - 게임 맵 최단거리
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-bfs/" rel="permalink">Java) 프로그래머스 - 게임 맵 최단거리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-15T00:00:00+09:00">July 15, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://school.programmers.co.kr/learn/courses/10302/lessons/62951
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/certificate/cs-certificate/" rel="permalink">정보처리기사) 실기 개념 정리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-15T00:00:00+09:00">July 15, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲
+
+
+소프트웨어 아키텍처 패턴
+
+  소프트웨어 설계 시 참조 가능한 솔루션
+  일반적으로 발생하는 문제점들에 대해 일반화되고 재사용 가능한 솔루션
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-combination-count/" rel="permalink">Java) 프로그래머스 - 위장
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-14T00:00:00+09:00">July 14, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://school.programmers.co.kr/learn/courses/10302/lessons/62950
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-number-game/" rel="permalink">Java) 프로그래머스 - 숫자 게임
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-13T00:00:00+09:00">July 13, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://school.programmers.co.kr/learn/courses/10302/lessons/62947
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Yujin Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
