@@ -1,5 +1,31 @@
-I"�<ul>
+I"�<ul>
   <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
+</ul>
+
+<h1 id="결합도coupling">결합도(Coupling)</h1>
+<ul>
+  <li>모듈과 모듈 사이의 관련성이 어느 정도인가를 나타내며, 관련성이 적을수록 모듈의 독립성이 높아 모듈 간 영향이 작아진다. 자료 결합도가 제일 낮고 내용 결합도가 가장 높다.</li>
+  <li>
+    <p>자료 결합도의 품질이 가장 높고 내용 결합도의 품질이 가장 낮다.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">자료 결합도(Data Coupling)</code> : 모듈 간의 인터페이스로 전달되는 파라미터를 통해서만 모듈 상호 작용이 일어난다.</li>
+  <li><code class="language-plaintext highlighter-rouge">스탬프 결합도(Stamp Coupling)</code> : 모듈 간의 인터페이스로 배열이나 오브젝트, 스트럭처 등이 전달되는 경우</li>
+  <li><code class="language-plaintext highlighter-rouge">제어 결합도(Control Coupling)</code> : 단순 처리할 대상인 값만 전달하는 것이 아니라 어떻게 처리해야 한다는 제어요소가 전달되는 경우</li>
+  <li><code class="language-plaintext highlighter-rouge">외부 결합도(External Coupling)</code> : 모듈에서 외부로 선언한 데이터(변수)를 다른 모듈에서 참조할 때의 경우로 외부에서 도입된 데이터 포맷, 통신 프로토콜, 또는 디바이스 인터페이스를 공유할 때 주로 발생</li>
+  <li><code class="language-plaintext highlighter-rouge">공통 결합도(Common Coupling)</code> : 파라미터가 아닌 모듈 밖에 선언되어 있는 전역변수를 참조하고 전역변수를 갱신하는 식으로 상호 작용하는 경우</li>
+  <li><code class="language-plaintext highlighter-rouge">내용 결합도(Content Coupling)</code> : 다른 모듈 내부에 있는 변수나 기능을 또 다른 모듈에서 사용하는 경우<br /><br /></li>
+</ul>
+
+<h1 id="응집도cohension">응집도(Cohension)</h1>
+<ul>
+  <li>모듈 내부의 구성요소 간 관계의 밀접 정도로 평가되며, 응집도가 높을수록 필요한 요소들로 구성되고 낮을수록 요소들 간의 관련성이 적은 요소들로 구성된다.</li>
+  <li>
+    <p>기능적 응집도의 품질이 가장 높고 우연적 응집도의 품질이 가장 낮다.</p>
+  </li>
+  <li>기능적 응집도(Functional Cohension) : 모듈 내부의 모든 기능이 단일한 목적을 위해 수행된다.</li>
+  <li>순차적 응집도(Sequential Cohension) : 모듈 내에서 한 활동으로부터 나온 출력값을 다른 활동이 사용하는 경우</li>
+  <li>통신적 응집도(Communication Cohension) : 동일한 입력과 출력을 사용하여 다른 기능을 수행하는 활동들이 모여 있을 경우</li>
+  <li>절차적 응집도(Procedural Cohension) : 모듈이 다수의 관련 기능을 가질 때, 모듈 안의 구성 요소들이 그 기능을 순차적으로 수행하는 경우</li>
 </ul>
 
 <h1 id="소프트웨어-아키텍처-패턴">소프트웨어 아키텍처 패턴</h1>
@@ -1284,8 +1310,12 @@
 <ol>
   <li><code class="language-plaintext highlighter-rouge">SOAP</code> : HTTP, HTTPS 등을 사용해 XML 기반의 메시지를 교환하는 프로토콜</li>
   <li><code class="language-plaintext highlighter-rouge">WSDL</code> : Web Service Description Language. 웹 서비스명, 제공위치 등 웹 서비스의 정보가 기술된 XML 형식의 언어</li>
-  <li><code class="language-plaintext highlighter-rouge">UDDI</code> : WSDL의 등록, 검색을 위한 저장소 (공개적으로 접근 가능한 레지스트리)<br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">UDDI</code> : WSDL의 등록, 검색을 위한 저장소 (공개적으로 접근 가능한 레지스트리)</li>
 </ol>
+
+<ul>
+  <li>XML 프로토콜이면 <code class="language-plaintext highlighter-rouge">SOAP</code>, 언어면 <code class="language-plaintext highlighter-rouge">WSDL</code><br /><br /></li>
+</ul>
 
 <h1 id="json">JSON</h1>
 <ul>
