@@ -1,4 +1,4 @@
-I"�<ul>
+I"�<ul>
   <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
 </ul>
 
@@ -2168,8 +2168,8 @@
 
 <h2 id="배치-스케줄러-종류">배치 스케줄러 종류</h2>
 <ol>
-  <li>스프링 배치 : 스프링 프레임워크에서 사용하는 스케줄러</li>
-  <li>쿼츠 스케줄러 : Job과 Trigger를 분리하는 오픈 소스 스케줄러</li>
+  <li><code class="language-plaintext highlighter-rouge">스프링 배치</code> : 스프링 프레임워크에서 사용하는 스케줄러</li>
+  <li><code class="language-plaintext highlighter-rouge">쿼츠 스케줄러</code> : Job과 Trigger를 분리하는 오픈 소스 스케줄러</li>
 </ol>
 
 <h2 id="쿼츠-크론-표현식">쿼츠 크론 표현식</h2>
@@ -2193,20 +2193,340 @@
 </ol>
 
 <h1 id="해킹-종류">해킹 종류</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DRDos 공격</code> : 공격대상이 반사 서버로부터 다량의 응답을 받도록 하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">DDos 공격</code> : 여러 대의 공격자를 분산 배치 후 동시에 동작시키는 DoS 공격(대역폭 소진 공격 &amp; 서비스 마비 공격)
+    <ul>
+      <li>구성요소
+        <ol>
+          <li><code class="language-plaintext highlighter-rouge">공격자</code> : 해커 컴퓨터</li>
+          <li><code class="language-plaintext highlighter-rouge">마스터(Master)</code> : 공격자의 명령을 받고 에이전트를 관리하는 시스템</li>
+          <li><code class="language-plaintext highlighter-rouge">핸들러(Handler)</code> : 마스터 시스템의 프로그램</li>
+          <li><code class="language-plaintext highlighter-rouge">에이전트(Agent)</code> : 직접 공격하는 시스템</li>
+          <li><code class="language-plaintext highlighter-rouge">데몬(Daemon)</code> : 에이전트 시스템의 프로그램</li>
+        </ol>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">Stacheldraht</code> : DDoS의 에이전트 역할을 하는 도구</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">UDP 플러딩</code> : 대량의 UDP 패키지를 임의의 포트번호로 전송하지만 응답 메시지는 공격자에 전달되지 않아 자원을 고갈시키는 공격
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Trino</code> : UDP 플러딩 공격 도구</li>
+      <li><code class="language-plaintext highlighter-rouge">TFN</code> : UDP 플러딩, SYN 플러딩, 스머프 등등 여러 DDoS 공격이 가능한 도구</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">SYN 플러딩</code> : ACK를 발송하지 않고 SYN 패킷만 보내 점유하여 자원을 고갈시키는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">죽음의 핑</code> : ICMP 패킷(핑)을 아주 크게 만들어 과부하시키는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">스머프/스머핑</code> : 출발지 IP를 공격 대상의 IP로 변조하여 브로드캐스팅으로 ICMP Echo 패킷 요청을 보내 과부하시키는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">티어 드롭</code> : 조작된 IP 패킷 조각을 보내 재조립 과정에서 오류를 발생시키는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">랜드 어택</code> : 출발지 IP와 도착지 IP를 같은 주소로 만들어, 자기 자신에게 응답을 보내도록 하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">봉크/보잉크</code> : IP 패킷의 재전송, 재조합 과정에서 오류를 발생시키는 공격(봉크 : 같은 시퀀스 번호 / 보잉크 : 시퀀스 번호에 빈 공간)</li>
+  <li><code class="language-plaintext highlighter-rouge">Slow HTTP Read Dos</code> : TCP 윈도 크기와 데이터 처리율을 감소시킨 뒤 다량의 HTTP 요청을 보내는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Slow HTTP Header Dos</code> : =Slowloris. 헤더 정보를 조작하여 웹 서버가 온전한 헤더정보가 올 때까지 기다리게 하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Slow HTTP Post Dos</code> : =RUDY. 헤더의 Content-Length를 아주 크게 만들고 데이터를 아주 소량으로 보내 연결을 유지하게 하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">HTTP GET 플러딩</code> : 과도한 GET 메시지를 통해 과부하시키는 공격(캐싱서버가 아닌 웹 서버가 직접 처리하도록 유도)</li>
+  <li><code class="language-plaintext highlighter-rouge">Hulk Dos</code> : 공격자가 공격대상의 URL을 계속 변경하면서(=차단 정책 우회) 다량의 GET 요청을 보내는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Hash Dos</code> : 웹 서버의 해시 테이블에 해시 충돌을 일으켜 자원을 소모시키는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Dos 공격</code> : 시스템의 자원을 고갈시켜 서비스 거부를 유발하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">스니핑</code> : 공격대상에 직접 공격을 가하지 않고 몰래 정보를 들여다보는 수동적인 공격 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">패스워드 크래킹</code>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">사전 크래킹 Dictionary Cracking</code> : IP/PW가 될 가능성이 있는 단어를 대입하는 공격</li>
+      <li><code class="language-plaintext highlighter-rouge">무차별 크래킹 Brute Force Cracking</code> : PW로 사용될 수 있는 문자를 무작위로 대입하는 공격</li>
+      <li><code class="language-plaintext highlighter-rouge">패스워드 하이브리드 공격 Password Hybrid Attack</code> : 사전 + 무차별을 결합하여 공격</li>
+      <li><code class="language-plaintext highlighter-rouge">레인보우 테이블 공격 Rainbow Table Attack</code> : 크래킹하려는 해시값을 테이블에서 검색하는 공격</li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">네트워크 스캐너/스니퍼</code> : 공격자가 취약점을 탐색하는 도구</li>
+  <li><code class="language-plaintext highlighter-rouge">ICMP Redirect 공격</code> : ICMP Redirect 메시지를 공격자가 원하는 형태로 위조해 패킷을 스니핑하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">IP 스푸핑</code> : IP를 위조하여 인증된 시스템인 것처럼 IP를 위조하여 목표 시스템의 정보를 빼내는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">ARP 스푸핑</code> : MAC 주소를 위장하여 패킷을 스니핑하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">트로이 목마</code> : 겉으로는 정상적이나 실행하면 악성코드가 실행되는 프로그램</li>
+  <li><code class="language-plaintext highlighter-rouge">버퍼 오버플로우 공격</code> : 메모리의 버퍼 크기를 초과하는 데이터를 입력해 프로세스 흐름을 변경시키는 공격 기법
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">버퍼 오버플로우 공격 대응</code>
+        <ol>
+          <li><code class="language-plaintext highlighter-rouge">스택가드</code> (활용 : 카나리(무결성 체크용 값)를 미리 삽입해 두고 버퍼 오버플로우 발생 시 카나리값을 체크해 변한 경우 복귀 주소를 호출하지 않음)</li>
+          <li><code class="language-plaintext highlighter-rouge">스택쉴드</code> (활용 : 함수 시작시 복귀주소를 특수 스택에 저장해 두고 함수 종료시 스택 값을 비교해 다를 경우 오버플로우로 간주하고 중단)</li>
+          <li><code class="language-plaintext highlighter-rouge">ASLR</code> (활용 : Address Space Layout Randomization; 주소 공간 배치 난수화. 주소 공간 배치를 난수화하여 실행 시마다 메모리 주소를 변경시키는 것)</li>
+          <li><code class="language-plaintext highlighter-rouge">안전한 함수 사용</code> : 버퍼오버플로우에 취약한 scanf() 대신 fscanf() 등을 사용</li>
+          <li><code class="language-plaintext highlighter-rouge">실행 제한</code> : 스택에서의 쓰기 권한 제한 등</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">스택 버퍼 오버플로우 공격</code> : 스택 영역(지역변수, 매개변수가 저장되는 영역)의 버퍼에 오버플로우를 일으켜서 복귀주소를 바꾸는 공격 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">힙 버퍼 오버플로우 공격</code> : 힙 영역(사용자가 직접 관리 가능한 메모리 영역)의 버퍼에 오버플로우를 일으켜서 데이터를 오염시키는 공격 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">포맷 스트링 공격</code> : 포맷 스트링을 인자로 하는 함수의 취약점을 이용한 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">키로거 공격</code> : 키보드 움직임을 탐지해 주요정보를 빼가는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">루트킷</code> : 불법 해킹에 사용되는 기능을 제공하는 프로그램 모음</li>
+  <li><code class="language-plaintext highlighter-rouge">백도어</code> : 정상적인 인증절차를 우회하는 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">레이스 컨디션 공격</code> : 프로세스가 임시 파일을 만들 때 실행 중에 끼어들어 임시파일을 심볼릭 링크하는 공격
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">심볼릭 링크</code> : 링크를 연결하여 원본 파일을 사용하는 것과 같은 효과를 내는 링크</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">스피어피싱</code> : 특정 대상 선정 후, 일반적인 메일로 위장한 메일을 발송해 개인정보를 탈취하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">스미싱</code> : SMS + 피싱. 문자메시지를 통해 개인정보를 탈취하거나 소액결제를 유도하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">공급망 공격</code> : SW 개발사의 코드를 수정하거나 배포 서버에 접근해 파일을 변경하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">큐싱</code> : QR코드 + 피싱. QR을 이용한 피싱 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">APT 공격</code> : 특정 대상을 목표로 한 지능적/지속적인 공격
+    <ul>
+      <li>대응 : <code class="language-plaintext highlighter-rouge">사이버 킬체인</code> - 공격형 방위 시스템. APT 공격의 방어 모델</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">봇넷</code> : 악성 프로그램에 감염된 컴퓨터들이 네트워크로 연결된 형태</li>
+  <li><code class="language-plaintext highlighter-rouge">악성 봇</code> : 해커의 명령에 의해 원격으로 제어되는 프로그램(DDos 등에 악용)</li>
+  <li><code class="language-plaintext highlighter-rouge">웜</code> : 스스로를 복제하여 전파하는 악성 프로그램</li>
+  <li><code class="language-plaintext highlighter-rouge">제로데이 공격</code> : 보안 취약점이 공표되기 전 신속히 이뤄지는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">이블 트윈 공격</code> : 합법적인 Wifi 제공자처럼 행세하며 연결된 사용자 정보를 탈취하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">랜섬웨어</code> : 암호화 후 복호화를 위해 돈을 요구하는 악성 소프트웨어</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Tcpdump</code> : 스니핑 도구(패킷 내용을 출력하는 프로그램)</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">XSS</code> : 검증되지 않은 입력데이터가 포함된 웹페이지를 열람할 때, 웹페이지에 포함된 부적절한 스크립트가 실행되는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Stored XSS</code> : 악성 스크립트가 포함된 웹페이지를 읽을 때 감염되는 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">DOM XSS</code> : DOM 기반 XSS 취약점이 있는 브라우저를 대상으로 한 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">Reflected XSS</code> : 악성 URL 클릭 시 공격 스크립트가 반사되는 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">CSRF</code> : =Cross Site Request Forgery(사이트 간 요청 위조) 사용자가 자신의 의지와 무관하게 공격자가 의도한 행위를 요청하게 하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">SQL Injection</code> : 악의적인 SQL 구문을 삽입, 실행시켜 DB 정보를 탈취하거나 조작하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Union SQL Injection</code> : UNION 연산자를 이용해 쿼리 결과를 결합해 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Form SQL Injection</code> : HTML Form 기반 인증의 취약점을 이용한 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Stored Procedure SQL Injection</code> : 저장 프로시저를 이용해 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Maxx SQL Injection</code> : 한 번의 공격으로 대량의 DB값을 변조하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">Error-Based SQL Injection</code> : 에러값을 기반으로 한 단계씩 점진적으로 정보를 캐내는 공격</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Blind SQL Injection</code> : 쿼리 결과의 참/거짓을 통해 공격</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">부 채널 공격(Side Channel Attack)</code> : 전격 소비와 같은 물리적 특성을 측정해 비밀 정보를 알아내는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">드라이브 바이 다운로드(Drive By Download)</code> : 악성 스크립트를 웹 서버에 설치 후, 사용자를 멀웨어 서버로 연결해 감염시키는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">워터링 홀(Watering Hole)</code> : 특정인을 표적으로 삼아 특정인이 자주 방문하는 웹사이트에 악성코드를 심어 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">하트 블리드(Heart Bleed)</code> : 하트비트(암호화 라이브러리)의 확장 모듈 취약점을 이용해 데이터를 탈취하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">IoT-SSDP</code> : SSDP(단순 서비스 검색 프로토콜)의 특성을 이용해 IoT 디바이스를 좀비 PC로 이용해 DDoS 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">크라임웨어(Crimeware)</code> : 금융, 인증 정보를 탈취해 금전적 이익을 취하는 악성 코드</li>
+  <li><code class="language-plaintext highlighter-rouge">스캠 공격(SCAM)</code> : 기업 이메일을 도용해 거래 대금을 가로채는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">MIMT(Man in the Middle)</code> : 통신 연결 중간에 침입해 통신 내용을 도청하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">DNS 스푸핑</code> : DNS 서버 캐시를 조작해 의도치 않은 주소로 접속하게 하는 공격 (=DNS 캐시 포이즈닝)</li>
+  <li><code class="language-plaintext highlighter-rouge">포트 스캐닝(Port Scanning)</code> : 침입 전 어떤 포트가 활성화되어 있는지 확인하는 기법</li>
+  <li><code class="language-plaintext highlighter-rouge">디렉토리 리스팅 취약점(Directory Listing)</code> : 웹 서버의 인덱싱 기능이 활성화된 경우, 서버 내 모든 디렉토리를 볼 수 있는 취약점</li>
+  <li><code class="language-plaintext highlighter-rouge">리버스 쉘 공격(Reverse Shell)</code> : 타깃 서버(피해자)가 클라이언트로 접속하게 하고, 클라이언트에서 서버의 쉘을 획득하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">익스플로잇(Exploit)</code> : SW/HW의 버그나 취약점을 악용해 공격하는 행위</li>
+  <li><code class="language-plaintext highlighter-rouge">스턱스넷 공격(Stuxnet)</code> : 독일 지멘스사의 SCADA 시스템을 목표로 제작된 악성코드(주요 산업 기반 시설의 제어 시스템에 침투하는 공격)</li>
+  <li><code class="language-plaintext highlighter-rouge">크리덴셜 스터핑(Credential Stuffing)</code> : 다른 곳에서 유출된 로그인 정보를 다른 곳에 무작위 대입하는 공격</li>
+  <li><code class="language-plaintext highlighter-rouge">토르 네트워크(Tor Network)</code> : 암호화 기법으로 데이터를 전송해 익명으로 사용 가능한 네트워크</li>
+  <li><code class="language-plaintext highlighter-rouge">윈드토커(WindTalker)</code> : 터치, 타이핑 등의 패턴을 스니핑하여 해킹</li>
+  <li><code class="language-plaintext highlighter-rouge">멜트다운(Meltdown)</code> : 인텔 아키텍처의 버그를 이용해 시스템 메모리에 접근하는 취약점</li>
+  <li><code class="language-plaintext highlighter-rouge">스펙터(Specter)</code> : 실패한 분기 예측으로 메모리 영역을 훔쳐보는 취약점</li>
+</ul>
+
+<h2 id="보안-취약점">보안 취약점</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">API 오용 취약점</code>
+    <ul>
+      <li>DNS Lookup에 의존하지 않기 (DNS 엔트리를 속일 수 있음)</li>
+      <li>보안에 취약한 함수 사용하지 않기</li>
+      <li>널 매개변수 검사하기(자바에서 매개변수가 NULL이면 반환오류가 있을 수 있다)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">캡슐화 취약점</code>
+    <ul>
+      <li>디버그 코드는 꼭 제거</li>
+      <li>민감한 데이터를 가진 클래스 사용에 주의</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">코드 오류 취약점</code>
+    <ul>
+      <li>NULL이 될 수 있는 레퍼런스는 참조 전 NULL 값인지 검사</li>
+      <li>정수를 문자로 변환할 때 잘려나가지 않도록 크기 확인</li>
+      <li>자원 사용 후에는 반드시 해제</li>
+      <li>변수 선언 시 초기화(이전에 사용한 내용이 남지 않도록)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">시간 및 상태 취약점</code>
+    <ul>
+      <li>세션 통제 취약점 : 세션 정보에 읽고 쓰기가 가능한 변수 미사용</li>
+      <li>병렬 시스템 : 공유 자원의 접근 직렬화, 블록문 내에서만 재귀함수 호출</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">에러 처리 취약점</code>
+    <ul>
+      <li>취약한 패스워드 조건 미사용</li>
+      <li>오류 메시지에 정보 노출 하지 않음</li>
+      <li>예외 처리 구문 작성</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="보안-취약점-분석-절차">보안 취약점 분석 절차</h3>
 <ol>
-  <li>DRDos 공격 : 공격대상이 반사 서버로부터 다량의 응답을 받도록 하는 공격</li>
-  <li>DDos 공격 : 여러 대의 공격자를 분산 배치 후 동시에 동작시키는 DoS 공격(대역폭 소진 공격 &amp; 서비스 마비 공격)</li>
-  <li>UDP 플러딩 : 대량의 UDP 패키지를 임의의 포트번호로 전송하지만 응답 메시지는 공격자에 정달되지 않아 자원을 고갈시키는 공격</li>
-  <li>SYN 플러딩 : ACK를 발송하지 않고 SYN 패킷만 보내 점유하여 자원을 고갈시키는 공격</li>
-  <li>죽음의 핑 : ICMP 패킷(핑)을 아주 크게 만들어 과부하시키는 공격</li>
-  <li>스머프/스머핑 : 출발지 IP를 공격 대상의 IP로 변조하여 브로드캐스팅으로 ICMP Echo 패킷 요청을 보내 과부하시키는 공격</li>
-  <li>티어 드롭 : 조작된 IP 패킷 조각을 보내 재조립 과정에서 오류를 발생시키는 공격</li>
-  <li>랜드 어택 : 출발지 IP와 도착지 IP를 같은 주소로 만들어, 자기 자신에게 응답을 보내도록 하는 공격</li>
-  <li>봉크/보잉크 : IP 패킷의 재전송, 재조합 과정에서 오류를 발생시키는 공격(봉크 : 같은 시퀀스 번호 / 보잉크 : 시퀀스 번호에 빈 공간)</li>
-  <li>Slow HTTP Read Dos : TCP 윈도 크기와 데이터 처리율을 감소시킨 뒤 다량의 HTTP 요청을 보내는 공격</li>
-  <li>Slow HTTP Header Dos : =Slowloris. 헤더 정보를 조작하여 웹 서버가 온전한 헤더정보가 올 때까지 기다리게 하는 공격</li>
-  <li>Slow HTTP Post Dos : =RUDY. 헤더의 Content-Length를 아주 크게 만들고 데이터를 아주 소량으로 보내 연결을 유지하게 하는 공격</li>
-  <li>HTTP GET 플러딩 : 과도한 GET 메시지를 통해 과부하시키는 공격(캐싱서버가 아닌 웹 서버가 직접 처리하도록 유도)</li>
-  <li></li>
+  <li>자산 조사</li>
+  <li>진단 대상 선정(전수조사 vs. 샘플링)</li>
+  <li>제약사항 확인</li>
+  <li>진단 수행(기술 진단, 인터뷰, 내부 실사 등)</li>
+  <li>결과 보고서 작성<br /><br /></li>
+</ol>
+
+<h1 id="보안-솔루션">보안 솔루션</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">네트워크 접근 제어(NAC)</code> : 내부 네트워크에 접속을 시도할 때 통제하는 솔루션</li>
+  <li><code class="language-plaintext highlighter-rouge">웹 방화벽(WAF)</code> : 웹 애플리케이션에 특화되어 XSS나 SQL Injection 등을 탐지하고 차단하는 시스템</li>
+  <li><code class="language-plaintext highlighter-rouge">방화벽(Firewall)</code> : 내부, 외부 트래픽을 모니터링하여 접근을 사용/차단하는 시스템</li>
+  <li><code class="language-plaintext highlighter-rouge">침입 탐지 시스템(IDS)</code> : 비인가 사용자의 침입을 실시간으로 탐지하는 시스템</li>
+  <li><code class="language-plaintext highlighter-rouge">가상사설망(VPN)</code> : 공중망을 사용할 때 마치 전용망을 사용하는 것과 같은 보안 효과를 주는 솔루션</li>
+  <li><code class="language-plaintext highlighter-rouge">침입 방지 시스템(IPS)</code> : 공격 및 침입을 실시간으로 차단하는 시스템</li>
+  <li><code class="language-plaintext highlighter-rouge">통합 보안 시스템(UTM)</code> : 방화벽, IDS, IPS, VPN 등 다양한 보안 장비 기능을 통합 제공하는 시스템</li>
+  <li><code class="language-plaintext highlighter-rouge">무선 침입 방지 시스템(WIPS)</code> : 비인가 무선 단말기의 접속을 차단하는 시스템</li>
+  <li><code class="language-plaintext highlighter-rouge">Secure OS</code> : OS 커널에 보안 기능을 추가한 솔루션</li>
+  <li><code class="language-plaintext highlighter-rouge">Anti-Spam Solution</code> : 메일 서버 앞단에 바이러스 검사, 정보 유출 방지 등의 기능을 제공하는 솔루션</li>
+  <li><code class="language-plaintext highlighter-rouge">DLP</code> : Data Loss Prevention; 주요 자료가 외부로 유출되는 것을 차단하는 솔루션</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">DRM</code> : Digital Right Management; 디지털 저작물에 암호를 걸어 권한이 없는 사용자의 사용을 막는 솔루션</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">BIA</code> : 비즈니스 영향 평가(Business Impact Analysis). 장애나 재해에 따른 영향도 조사</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">BCP</code> : 비즈니스 연속성 계획(Business Continuity Plan). 위기 관리를 기반으로 비상시 비즈니스 연속성을 보장하는 체계. BIA가 선행되어야 함</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">DRS</code> : 재해 복구 시스템(Disaster Recovery System) : DRP를 위한 관리체제
+    <ul>
+      <li>유형
+        <ol>
+          <li><code class="language-plaintext highlighter-rouge">Mirror Site</code> : 주 센터 &amp; 복구센터 모두 운영 상태(RTO는 0)</li>
+          <li><code class="language-plaintext highlighter-rouge">Hot Site</code> : 주 센터와 동일한 수준의 자원을 대기 상태로 보유하며 데이터를 최신 상태로 유지(RTO는 4시간 이내)</li>
+          <li><code class="language-plaintext highlighter-rouge">Warm Site</code> : 중요성이 높은 자원만 주 센터와 동일한 수준으로 보유(RTO는 수일~수주)</li>
+          <li><code class="language-plaintext highlighter-rouge">Cold Site</code> : 데이터만 원격지에 보관하고 재해 시 이를 근간으로 복구(RTO는 수주~수개월)</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">DRP</code> : 재해 복구 계획(Disaster Recovery Plan). 재해로 장기간 운영이 불가한 경우를 대비한 계획</li>
+  <li><code class="language-plaintext highlighter-rouge">RTO</code> : 복구 목표 시간(Recovery Time Object). 재해 시 업무중단 시점~업무복구 시점까지 걸린 시간</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">RPO</code> : 복구 목표 지점(Recovery Point Object). 재해 시 업무중단 시점~정상가동까지 허용하는 손실</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">허니팟(HoneyPot)</code> : 일부러 허술하게 만들어 해커에게 노출하는 유인시스템</li>
+  <li><code class="language-plaintext highlighter-rouge">OWASP Top 10</code> : 웹 애플리케이션의 10가지 보안 취약점에 대한 방안을 제공하는 가이드</li>
+  <li><code class="language-plaintext highlighter-rouge">핑거프린팅(Finger Printing)</code> : 저작권 정보와 구매자 정보를 콘텐츠에 삽입해 불법 배포자를 추적할 수 있는 기술</li>
+  <li><code class="language-plaintext highlighter-rouge">CPTED</code> : 범죄 예방 환경 설계(Crime Privent Through Environment Design). 학문 간 연계를 통해 범죄를 최소화할 수 있는 환경을 설계하는 전략</li>
+  <li><code class="language-plaintext highlighter-rouge">워터 마킹(Water Marking)</code> : 디지털 콘텐츠에 저작자 정보를 삽입해 불법 복제 시 원소유자를 증명하는 기술</li>
+  <li><code class="language-plaintext highlighter-rouge">CC(Common Criteria)</code> : 컴퓨터 보안을 위한 국제 평가 기준</li>
+  <li><code class="language-plaintext highlighter-rouge">C-TAS(사이버 위협 정보 분석 공유 시스템)</code> : 사이버 위협정보를 체계적으로 수립해 관계 기관과 자동화된 정보공유를 할 수 있는 시스템(KISA 주관)</li>
+  <li><code class="language-plaintext highlighter-rouge">CWE(Common Weakness Enumeration)</code> : 소프트웨어의 공통 약점(CW)을 식별화(E)한 것</li>
+  <li><code class="language-plaintext highlighter-rouge">CVE(Common Vulerabilities and Exposures)</code> : 소프트웨어의 공통 취약점(CV)을 식별화(E)한 것(CVE-연도-순서)</li>
+  <li><code class="language-plaintext highlighter-rouge">CVSS(Common Vulnerability Scoring System)</code> : 공통 취약점(CV)에 등급(S)을 매긴 시스템(S). 위험도 계산 가능<br /><br /></li>
+</ul>
+
+<h1 id="해킹-대응-방법">해킹 대응 방법</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Tripwire</code> : 백도어가 생기거나 설정 파일 변화가 있을 때 이를 감지할 수 있게 돕는 도구</li>
+  <li><code class="language-plaintext highlighter-rouge">난독화</code> : 코드의 가독성을 낮춰 역공학에 대비</li>
+  <li><code class="language-plaintext highlighter-rouge">Ping</code> : 접속하려는 원격 호스트가 정상 운영 중인지 확인하는 명령어<br /><br /></li>
+</ul>
+
+<h1 id="접근-통제-유형">접근 통제 유형</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">식별</code> : 주체가 객체에게 정보 제공</li>
+  <li><code class="language-plaintext highlighter-rouge">인증</code> : 객체가 주체의 신원을 인정</li>
+  <li><code class="language-plaintext highlighter-rouge">인가</code> : 인증된 주체에게 접근을 허용</li>
+  <li><code class="language-plaintext highlighter-rouge">책임추적성</code> : 주체의 접근과 행동을 추적 및 기록</li>
+</ol>
+
+<h2 id="서버-접근-통제-유형">서버 접근 통제 유형</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">DAC(임의적 접근 통제)</code>
+    <ul>
+      <li>접근결정 : 신분</li>
+      <li>권한 부여 : 데이터 소유자. ACL(Access Control List)로 자원에 대한 권한 부여</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">MAC(강제적 접근 통제)</code>
+    <ul>
+      <li>접근결정 : 권한(등급)</li>
+      <li>권한 부여 : 시스템</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">RBAC(역할 기반 접근 통제)</code>
+    <ul>
+      <li>접근결정 : 역할</li>
+      <li>권한 부여 : 중앙관리자</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="인증-기술의-유형">인증 기술의 유형</h2>
+<ol>
+  <li>지식기반 ex. ID/PW</li>
+  <li>소지기반 ex. 공인인증서</li>
+  <li>생체기반 ex. 지문, 홍채</li>
+  <li>특징기반 ex. 서명, 발걸음<br /><br /></li>
+</ol>
+
+<h1 id="암호화-알고리즘-방식">암호화 알고리즘 방식</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">대칭 키 암호 방식</code> : 암호화 알고리즘의 한 종류로, 암/복호화에 같은 암호 키를 쓰는 알고리즘을 의미
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">블록 암호</code> : 고정 길이의 블록을 암호화하는 대칭 키 암호 방식
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">DES</code> : 미 연방표준국(NIST)에서 발표. 키 길이는 56bit, 블록크기는 64bit</li>
+          <li><code class="language-plaintext highlighter-rouge">3DES</code></li>
+          <li><code class="language-plaintext highlighter-rouge">AES</code> : =Advanced Encryption Standard. 3DES의 문제점을 극복하기 위해 개발. 라운드 수는 10, 12, 14로 분류되고, 한 라운드는 빼고(SubBytes)+이동하고(ShiftRows)+섞고(MixColumns)+더하는(AddRoundKey) 4계층으로 구성됨</li>
+          <li><code class="language-plaintext highlighter-rouge">SEED</code> : KISA가 개발. 16라운드를 거쳐 128비트 블록으로 암호화</li>
+          <li><code class="language-plaintext highlighter-rouge">ARIA</code> : 학계(Academy) + 연구기관(Research Institute) + 정부(Agency) 국정원과 산학연구협회가 개발함</li>
+          <li><code class="language-plaintext highlighter-rouge">IDEA</code> : DES를 대체하기 위해 개발</li>
+          <li><code class="language-plaintext highlighter-rouge">RC5</code> : RC4를 개선한 알고리즘. 입출력, Key, 라운드 수가 가변인 블록 알고리즘. 32/64/128비트의 키 사용</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">스트림 암호</code> : 매우 긴 주기의 난수열을 발생시켜 암호화하는 대칭 키 암호 방식
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">LFSR</code> : 선형 되먹음 시프트 레지스터</li>
+          <li><code class="language-plaintext highlighter-rouge">RC4</code> : 셔플링 기법을 이용해 평뮨과 XOR 연산해 암호화</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">비대칭 키 암호 방식</code> : 공개 키는 누구나 알 수 있지만 그에 대응하는 비밀키는 키의 소유자만이 알 수 있도록, 공개 키와 비밀 키를 사용하는 알고리즘
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">디피-헬만</code> : 비대칭키 최초의 비밀키 교환 프로토콜. 이산대수 계산의 어려움을 근거로 함</li>
+      <li><code class="language-plaintext highlighter-rouge">RSA</code> : 비대칭키 수학교수 3명의 앞글자를 땄음(리베르트, 샤미르, 아들만). 소인수 분해 문제의 어려움을 근거로 함</li>
+      <li><code class="language-plaintext highlighter-rouge">ECC</code> : 비대칭키 타원 곡선 암호. RSA의 대안. 짧은 키로 높은 암호 강도</li>
+      <li><code class="language-plaintext highlighter-rouge">DSA</code> : 전자서명 알고리즘 표준. 이산대수 계산의 어려움을 근거로 함. 구조가 간단한 것이 장점</li>
+      <li><code class="language-plaintext highlighter-rouge">Elgamel</code> : 비대칭키 이산대수의 어려움을 근거로 함. 전자서명에 사용 가능</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">해시 암호 방식</code> : 해시 값으로 원래 입력값을 찾아낼 수 없는, 일방향성의 특성을 가진 알고리즘
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">SHA-1</code> : 160비트 암호화 해시함수. 1993년 미국 NIST에서 개발됨. 보안강도가 약해 <code class="language-plaintext highlighter-rouge">SHA-256</code>이나 <code class="language-plaintext highlighter-rouge">SHA-512</code>로 대체되고 있다. 전자서명시 활용</li>
+      <li><code class="language-plaintext highlighter-rouge">MD5</code> : 128비트 기반 암호화 해시 함수. 결과 값이 16개 문자열. 설계상 결함으로 사용이 줄어드는 추세. 메시지 무결성에 활용</li>
+      <li><code class="language-plaintext highlighter-rouge">HAVAL</code> : <code class="language-plaintext highlighter-rouge">MD5</code>를 변형하여 만든 해시 함수. 128비트~256비트까지 다양한 크기 가능</li>
+      <li><code class="language-plaintext highlighter-rouge">Tiger</code> : 64비트 CPU에 최적화 됨. 32비트 CPU에서도 빠르게 동작 가능. 64비트 CPU의 해시에 활용됨</li>
+      <li><code class="language-plaintext highlighter-rouge">HAS-160</code> : 국내 표준 디지털 서명 알고리즘(KCDSA)을 위해 개발된 알고리즘(MD5의 장점 + SHA-1의 장점)</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">S-HTTP</code> : 클라이언트/서버 간 메시지를 암호화하는 보안 기술(HTTP를 사용한 경우에만 가능)<br /><br /></li>
+</ul>
+
+<h1 id="개인정보보호-관련-법령">개인정보보호 관련 법령</h1>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">개인정보보호법</code> : 주민등록번호, 여권번호, 운전면허번호, 외국인등록번호와 같은 고유 식별 번호는 분실, 도난, 유출, 변조, 훼손에 주의해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">정보통신망법</code></li>
+  <li><code class="language-plaintext highlighter-rouge">신용정보법</code><br /><br /></li>
+</ol>
+
+<h1 id="open-samm">Open SAMM</h1>
+<ul>
+  <li>확대가 가능한 개방형 프레임워크. 설계 리뷰, 코드 리뷰, 보안 테스팅 3개를 주요 검증 활동으로 함 (*SAMM : 소프트웨어 보증 성숙도 모델)<br /><br /></li>
+</ul>
+
+<h1 id="시큐어-코딩-가이드">시큐어 코딩 가이드</h1>
+<ol>
+  <li>입력데이터 검증 및 표현</li>
+  <li>보안 기능</li>
+  <li>시간 및 상태</li>
+  <li>에러 처리</li>
+  <li>코드 오류</li>
+  <li>캡슐화</li>
+  <li>API 오용</li>
 </ol>
 :ET
