@@ -1317,7 +1317,11 @@ c = a[-4:-1]
 * 두 개 이상의 테이블을 연결해 데이터를 검색하는 방법
 
 ### 조인 명령어
-* SELECT A.번호, B.가격 FROM 상품목록 A JOIN 가격목록 B ON A.번호 = B.번호 WHERE A.번호 IS NOT NULL
+```sql
+SELECT A.번호, B.가격 
+FROM 상품목록 A JOIN 가격목록 B ON A.번호 = B.번호 
+WHERE A.번호 IS NOT NULL;
+```
 
 ### 논리적 조인
 1. `내부 조인` : 양 테이블의 공통 컬럼의 값이 같을 때 사용 `INNER JOIN`
