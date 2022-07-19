@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-18T22:39:46+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sia’s Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">정보처리기사) 실기 개념 정리</title><link href="http://localhost:4000/certificate/cs-certificate/" rel="alternate" type="text/html" title="정보처리기사) 실기 개념 정리" /><published>2022-07-17T00:00:00+09:00</published><updated>2022-07-17T00:00:00+09:00</updated><id>http://localhost:4000/certificate/cs-certificate</id><content type="html" xml:base="http://localhost:4000/certificate/cs-certificate/"><![CDATA[<ul>
-  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲<br /><br /></li>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-19T23:17:46+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sia’s Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">정보처리기사) 실기 개념 정리</title><link href="http://localhost:4000/certificate/cs-certificate/" rel="alternate" type="text/html" title="정보처리기사) 실기 개념 정리" /><published>2022-07-19T00:00:00+09:00</published><updated>2022-07-19T00:00:00+09:00</updated><id>http://localhost:4000/certificate/cs-certificate</id><content type="html" xml:base="http://localhost:4000/certificate/cs-certificate/"><![CDATA[<ul>
+  <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리<br /><br /></li>
 </ul>
 
 <h1 id="결합도coupling">결합도(Coupling)</h1>
@@ -157,8 +157,33 @@
 
 <h1 id="네트워크">네트워크</h1>
 <ul>
-  <li>원하는 정보를 수신자에게 정확하게 전달하기 위한 인프라<br /><br /></li>
+  <li>원하는 정보를 수신자에게 정확하게 전달하기 위한 인프라
+    <ol>
+      <li>LAN : 근거리 네트워크</li>
+      <li>WAN : 광대역 네트워크</li>
+    </ol>
+  </li>
 </ul>
+
+<h2 id="네트워크-프로토콜">네트워크 프로토콜</h2>
+<ul>
+  <li>컴퓨터(통신 장비) 간 메시지 교환을 위한 규약</li>
+  <li>단편화 : 전송이 가능한 상태로 나누는 기법</li>
+  <li>재조립 : 단편화된 조각을 복원하는 기법(송신측)</li>
+  <li>동기화 : 송신-수신 시점 맞추는 기법<br /><br /></li>
+</ul>
+
+<h1 id="프로토콜">프로토콜</h1>
+<ul>
+  <li>서로 다른 시스템 간 데이터 교환을 위한 규약</li>
+</ul>
+
+<h2 id="프로토콜의-기본-3요소">프로토콜의 기본 3요소</h2>
+<ol>
+  <li>구문(Syntax) : 정보 전송을 위한 데이터 형식</li>
+  <li>의미(Semantic) : 정보 전송을 위한 제어 정보</li>
+  <li>타이밍(Timing) : 정보 전송을 위한 순서와 속도 조절<br /><br /></li>
+</ol>
 
 <h1 id="osi-7계층">OSI 7계층</h1>
 <ul>
@@ -242,7 +267,7 @@
   <li><code class="language-plaintext highlighter-rouge">라우팅 프로토콜</code> : 최적의 데이터 전송 경로를 설정하는 프로토콜</li>
   <li><code class="language-plaintext highlighter-rouge">ARP</code> : IP주소(3계층)를 MAC 주소(2계층)으로 변환하는 프로토콜</li>
   <li><code class="language-plaintext highlighter-rouge">RARP</code> : MAC 주소는 알지만 IP 주소를 모를 때 사용하는 프로토콜</li>
-  <li><code class="language-plaintext highlighter-rouge">ICMP</code> : IP 패킷 처리 시의 문제를 알려주는 프로토콜</li>
+  <li><code class="language-plaintext highlighter-rouge">ICMP</code> : IP 패킷 처리 시의 문제를 알려주는 프로토콜, 신뢰성없는 IP를 대신하여 송신측으로 네트워크의 IP 상태 및 에러 메시지를 전달해주는 프로토콜</li>
   <li><code class="language-plaintext highlighter-rouge">IGMP</code> : 멀티캐스트 실시간 전송을 위해 사용하는 프로토콜(화상회의 등)</li>
   <li><code class="language-plaintext highlighter-rouge">IPSec</code> : 네트워크 계층에서 사용하는 보안 프로토콜. 인증 헤더 + 암호화를 이용. MAC + 암호화를 통해 인증 + 기밀성 제공<br /><br /></li>
 </ul>
@@ -360,16 +385,95 @@
   <li><code class="language-plaintext highlighter-rouge">Telnet</code> : 네트워크 연결에 사용하는 응용계층의 프로토콜<br /><br /></li>
 </ul>
 
-<h1 id="os">OS</h1>
+<h1 id="ipv4-ipv6">IPv4 IPv6</h1>
+<h2 id="ipv4">IPv4</h2>
 <ul>
-  <li>컴퓨터의 하드웨어를 사용자가 쉽게 사용할 수 있도록 인터페이스를 담당하는 소프트웨어</li>
+  <li>32bit(=4byte) 주소 체계를 갖는 인터넷 프로토콜</li>
+  <li>8bit * 4 = 32bit</li>
+  <li>전송방식
+    <ul>
+      <li>멀티캐스트 : 같은 데이터를 여러 명의 그룹 수신자들에게 동시에 전송하는 프로토콜</li>
+      <li>유니캐스트 : 식별된 고유 주소의 목적지에 1:1로 데이터를 전송하는 프로토콜</li>
+      <li>브로드캐스트 : 같은 서브 네트워크의 모든 수신자에게 데이터를 전송하는 프로토콜</li>
+    </ul>
+  </li>
+  <li>구성 : (127, 191, 223, 239, 255)
+    <ul>
+      <li>D 클래스 : 멀티캐스트 용도</li>
+      <li>E 클래스 : 연구용</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="os-현행-시스템-분석">OS 현행 시스템 분석</h2>
+<h2 id="ipv6">IPv6</h2>
+<ul>
+  <li>128bit(=16byte) 주소 체계를 갖는 인터넷 프로토콜</li>
+  <li>16bit * 8 = 128bit</li>
+  <li>전송방식
+    <ul>
+      <li>멀티캐스트 : 같은 데이터를 여러 명의 그룹 수신자들에게 동시에 전송하는 프로토콜</li>
+      <li>유니캐스트 : 식별된 고유 주소의 목적지에 1:1로 데이터를 전송하는 프로토콜</li>
+      <li>애니캐스트 : 잠재적인 수신자 그룹 안에서 다장 가까운 노드에게 연결해 전송하는 프로토콜</li>
+    </ul>
+  </li>
+  <li>특징
+    <ol>
+      <li>IP 주소 확장</li>
+      <li>인증 및 보안 기능</li>
+      <li>실시간 패킷 추적 가능</li>
+      <li>Plug &amp; Play 지원(실시간 멀티미디어 처리)</li>
+      <li>이식성(물리적 위치의 제한 없음)</li>
+      <li>단순 헤더</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="ipv4---ipv6-전환-방법">IPv4 -&gt; IPv6 전환 방법</h2>
 <ol>
-  <li><code class="language-plaintext highlighter-rouge">품질 측면</code> : 신뢰도, 성능</li>
-  <li><code class="language-plaintext highlighter-rouge">지원 측면</code> : 기술 지원, 주변 기기, 구축 비용<br /><br /></li>
+  <li>듀얼 스택 : IP 계층에 IPv4, IPv6 프로토콜을 모두 탑재하여 전송 상대에 따라 선택</li>
+  <li>터널링 : 인접한 IPv4 망에 터널을 만들고 캡슐화하여 전송</li>
+  <li>주소변환 : 게이트웨이(주소변환기)로 패킷 변환</li>
 </ol>
+
+<h2 id="라우팅-프로토콜-종류">라우팅 프로토콜 종류</h2>
+<ol>
+  <li>RIP : 동적 &amp; 내부 라우팅 프로토콜. 벨만-포드 알고리즘 사용(거리-벡터 알고리즘 기초)
+    <ul>
+      <li>홉 카운트 15 / UDP 포트 520 사용 / 30초마다 정보 공유</li>
+      <li>거리-벡터 알고리즘 : 인접 라우터와 정보를 교환하여 경로 도출</li>
+    </ul>
+  </li>
+  <li>OSPF : 동적 &amp; 내부 라우팅 프로토콜. 다익스트라 알고리즘 사용(링크-상태 알고리즘 기초)
+    <ul>
+      <li>홉 카운트 무제한/ RIP의 단점 개선 / AS(자치시스템) 분할(지역별로 라우팅 관리)</li>
+      <li>링크-상태 알고리즘 : 링크 상태 정보를 모든 라우터에게 전달해 경로 도출(범위 넓고 복잡)</li>
+    </ul>
+  </li>
+  <li>BGF : 동적 &amp; 외부 라우팅 프로토콜. AS간 경로 정보 교환 / 경로-벡터 알고리즘 사용 / ISP 사업자간 주로 사용<br /><br /></li>
+</ol>
+
+<h1 id="qos-quality-of-service">QoS (Quality of Service)</h1>
+<ul>
+  <li>데이터의 중요도에 따라 우선순위를 부여, 데이터 전송 성능을 보장하는 것</li>
+</ul>
+
+<h2 id="패킷-스위칭">패킷 스위칭</h2>
+<ul>
+  <li>패킷으로 데이터를 전송하며 전송하는 동안만 자원을 사용하는 통신 방식
+    <ol>
+      <li>X.25 : 고정된 대역폭 사용, 낮은 성능</li>
+      <li>프레임 릴레이 : 유연한 대역폭 사용, 가격 저렴</li>
+      <li>ATM : 광대역 전송에 쓰이는 스위칭 기법</li>
+    </ol>
+  </li>
+  <li>헤더의 주소 정보에 따라 전송한다. 이메일 등에 적합</li>
+</ul>
+
+<h2 id="서킷-스위칭">서킷 스위칭</h2>
+<ul>
+  <li>서킷이라는 특정 연결을 만들어 독점적으로 사용해 통신하는 방식(전송 보장)</li>
+  <li>데이터 일부를 송수신 해 경로를 파악 후 전송한다. 영상 등에 적합<br /><br /></li>
+</ul>
 
 <h1 id="디자인-패턴">디자인 패턴</h1>
 <ul>
@@ -383,11 +487,7 @@
   <li>솔루션</li>
   <li>사례</li>
   <li>결과</li>
-  <li>샘플코드
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">라이브러리 구성</code> : 도움말, 설치파일, 샘플코드</li>
-    </ul>
-  </li>
+  <li>샘플코드</li>
 </ol>
 
 <h2 id="디자인-패턴-유형">디자인 패턴 유형</h2>
@@ -1626,7 +1726,7 @@
   <li>객체가 소멸될 때 호출되는 메서드. 할당된 메모리를 해제하는 용도로 사용됨</li>
   <li>C++ : 클래스명과 동일하나 클래스명 앞에 <code class="language-plaintext highlighter-rouge">~</code> 기호를 붙이면 소멸자</li>
   <li>자바 : <code class="language-plaintext highlighter-rouge">finalize</code> 메서드명을 사용하면 소멸자</li>
-  <li>파이썬 : <code class="language-plaintext highlighter-rouge">__del__</code> 메서드면 사용하면 소멸자</li>
+  <li>파이썬 : <code class="language-plaintext highlighter-rouge">__del__</code> 메서드명 사용하면 소멸자</li>
 </ul>
 
 <h2 id="자신-클래스-참조">자신 클래스 참조</h2>
@@ -1712,8 +1812,8 @@
   <li>DB 시스템에서 하나의 논리적 기능을 정상적으로 수행하기 위한 작업 단위 (특성 : <code class="language-plaintext highlighter-rouge">ACID</code>)</li>
   <li><code class="language-plaintext highlighter-rouge">원자성(Atomicity)</code> : All or Nothing. 연산 전체는 성공 또는 실패여야 하며, 하나라도 실패할 경우 전체가 취소되어야 하는 특성</li>
   <li><code class="language-plaintext highlighter-rouge">일관성(Consistency)</code> : 트랜잭션이 성공적으로 실행되면, DB는 일관된 상태를 유지해야 하는 특성 (기법 : 병행(동시성) 제어)</li>
-  <li><code class="language-plaintext highlighter-rouge">격리성(Isolation)</code> : 트랜잭션 실행 중 중간 연산 결과에 다른 트랜잭션이 접근할 수 없다. (기법 : 고립화 수준)</li>
-  <li><code class="language-plaintext highlighter-rouge">영속성(Durability)</code> : 성공적으로 완료된 트랜잭션 결과는 DB에 영속적으로 저장되어야 한다. (기법 : 회복기법)</li>
+  <li><code class="language-plaintext highlighter-rouge">격리성(Isolation)(독립성)</code> : 트랜잭션 실행 중 중간 연산 결과에 다른 트랜잭션이 접근할 수 없다. (기법 : 고립화 수준)</li>
+  <li><code class="language-plaintext highlighter-rouge">영속성(Durability)(지속성)</code> : 성공적으로 완료된 트랜잭션 결과는 DB에 영속적으로 저장되어야 한다. (기법 : 회복기법)</li>
 </ul>
 
 <h2 id="트랜잭션의-상태-변환">트랜잭션의 상태 변환</h2>
@@ -1817,6 +1917,43 @@
   <li>디그리 : 애트리뷰트의 개수</li>
 </ul>
 
+<h2 id="테이블-관리-명령어">테이블 관리 명령어</h2>
+<ul>
+  <li>테이블 생성 : CREATE TABLE 테이블명 (컬럼명 데이터타입 [제약조건]);</li>
+  <li>테이블 생성 제약조건
+    <ul>
+      <li>PRIMARY KEY</li>
+      <li>FOREIGN KEY REFERENCES 테이블(컬럼)</li>
+      <li>NOT NULL</li>
+      <li>UNIQUE</li>
+      <li>CHECK (조건 OR 조건)</li>
+      <li>DEFAULT</li>
+    </ul>
+  </li>
+  <li>테이블 변경
+    <ul>
+      <li>ALTER TABLE 테이블명 ADD 컬럼명 데이터타입 [제약조건];</li>
+      <li>ALTER TABLE 테이블명 MODIFY 컬럼명 데이터타입 [제약조건];</li>
+      <li>ALTER TABLE 테이블명 DROP 컬럼명;</li>
+    </ul>
+  </li>
+  <li>테이블 삭제
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>DROP TABLE 테이블명 [CASCADE</td>
+              <td>RESTRICT];</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>TRUNCATE TABLE 테이블명;</li>
+    </ul>
+  </li>
+</ul>
+
 <h2 id="뷰">뷰</h2>
 <ul>
   <li>데이터의 독립성을 보장하고 조작 연산을 간소화할 수 있는 논리 테이블</li>
@@ -1833,10 +1970,23 @@
   <li><code class="language-plaintext highlighter-rouge">WITH READ ONLY</code> : DML(조작어) 불가</li>
 </ul>
 
+<h3 id="뷰-관리-명령어">뷰 관리 명령어</h3>
+<ul>
+  <li>뷰 생성 : CREATE [OR REPLACE] VIEW 뷰이름 AS SELECT 이름 FROM 학생 WHERE 성별 = ‘F’;</li>
+  <li>뷰 삭제 : DROP VIEW 이름;</li>
+</ul>
+
 <h2 id="인덱스">인덱스</h2>
 <ul>
   <li>DB 시스템에서 빠른 검색을 위한 데이터 구조</li>
   <li>인덱스가 없으면 Table Full Scan을 하지만, 인덱스가 있으면 Index Range Scan을 하므로 검색 속도가 빠르다.</li>
+</ul>
+
+<h3 id="인덱스-관리-명령어">인덱스 관리 명령어</h3>
+<ul>
+  <li>인덱스 생성 : CREATE INDEX 인덱스명 ON 테이블(컬럼);</li>
+  <li>인덱스 변경 : ALTER INDEX 인덱스명 ON 테이블(컬럼);</li>
+  <li>인덱스 삭제 : DROP INDEX 인덱스명;</li>
 </ul>
 
 <h3 id="인덱스-종류">인덱스 종류</h3>
@@ -1896,48 +2046,6 @@
   <li><code class="language-plaintext highlighter-rouge">경합 감소</code></li>
 </ol>
 
-<h2 id="테이블-명령어">테이블 명령어</h2>
-<ul>
-  <li>테이블 생성 : CREATE TABLE 테이블명 (컬럼명 데이터타입 [제약조건]);</li>
-  <li>테이블 생성 제약조건
-    <ul>
-      <li>PRIMARY KEY</li>
-      <li>FOREIGN KEY REFERENCES 테이블(컬럼)</li>
-      <li>NOT NULL</li>
-      <li>UNIQUE</li>
-      <li>CHECK (조건 OR 조건)</li>
-      <li>DEFAULT</li>
-    </ul>
-  </li>
-  <li>테이블 변경
-    <ul>
-      <li>ALTER TABLE 테이블명 ADD 컬럼명 데이터타입 [제약조건];</li>
-      <li>ALTER TABLE 테이블명 MODIFY 컬럼명 데이터타입 [제약조건];</li>
-      <li>ALTER TABLE 테이블명 DROP 컬럼명;</li>
-    </ul>
-  </li>
-  <li>테이블 삭제
-    <ul>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>DROP TABLE 테이블명 [CASCADE</td>
-              <td>RESTRICT];</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-      <li>TRUNCATE TABLE 테이블명;</li>
-    </ul>
-  </li>
-  <li>뷰 생성 : CREATE [OR REPLACE] VIEW 뷰이름 AS SELECT 이름 FROM 학생 WHERE 성별 = ‘F’;</li>
-  <li>뷰 삭제 : DROP VIEW 이름;</li>
-  <li>인덱스 생성 : CREATE INDEX 인덱스명 ON 테이블(컬럼);</li>
-  <li>인덱스 변경 : ALTER INDEX 인덱스명 ON 테이블(컬럼);</li>
-  <li>인덱스 삭제 : DROP INDEX 인덱스명;</li>
-</ul>
-
 <h2 id="참조-무결성">참조 무결성</h2>
 <ul>
   <li>외래키 값은 항상 참조되는 테이블의 기본키여야 함</li>
@@ -1956,9 +2064,10 @@
 </ul>
 
 <h3 id="조인-명령어">조인 명령어</h3>
-<ul>
-  <li>SELECT A.번호, B.가격 FROM 상품목록 A JOIN 가격목록 B ON A.번호 = B.번호 WHERE A.번호 IS NOT NULL</li>
-</ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">A</span><span class="p">.</span><span class="err">번호</span><span class="p">,</span> <span class="n">B</span><span class="p">.</span><span class="err">가격</span> 
+<span class="k">FROM</span> <span class="err">상품목록</span> <span class="n">A</span> <span class="k">JOIN</span> <span class="err">가격목록</span> <span class="n">B</span> <span class="k">ON</span> <span class="n">A</span><span class="p">.</span><span class="err">번호</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="err">번호</span> 
+<span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="err">번호</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></div>
 
 <h3 id="논리적-조인">논리적 조인</h3>
 <ol>
@@ -2045,7 +2154,7 @@
   </li>
 </ol>
 
-<h3 id="옵티마지어의-역할">옵티마지어의 역할</h3>
+<h3 id="옵티마이저의-역할">옵티마이저의 역할</h3>
 <ol>
   <li>쿼리 변환 : SQL을 표준화된 형태로 변환</li>
   <li>비용 산정 : 카디널리티, 비용 등을 계산</li>
@@ -2510,8 +2619,8 @@
 <h1 id="개인정보보호-관련-법령">개인정보보호 관련 법령</h1>
 <ol>
   <li><code class="language-plaintext highlighter-rouge">개인정보보호법</code> : 주민등록번호, 여권번호, 운전면허번호, 외국인등록번호와 같은 고유 식별 번호는 분실, 도난, 유출, 변조, 훼손에 주의해야 함</li>
-  <li><code class="language-plaintext highlighter-rouge">정보통신망법</code></li>
-  <li><code class="language-plaintext highlighter-rouge">신용정보법</code><br /><br /></li>
+  <li><code class="language-plaintext highlighter-rouge">정보통신망법</code> : 정보통신망의 이용을 촉진하고 정보통신서비스를 이용하는 자의 개인정보를 보호함과 아울러 정보통신망을 건전하고 안전하게 이용할 수 있는 환경을 조성하기 위한 규정</li>
+  <li><code class="language-plaintext highlighter-rouge">신용정보법</code> : 개인 신용정보의 취급 단계별 보호조치 및 의무사항에 관한 규정<br /><br /></li>
 </ol>
 
 <h1 id="open-samm">Open SAMM</h1>
@@ -2527,8 +2636,692 @@
   <li>에러 처리</li>
   <li>코드 오류</li>
   <li>캡슐화</li>
-  <li>API 오용</li>
-</ol>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리 🥲]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 올바른 괄호의 갯수</title><link href="http://localhost:4000/programmers/programmers-dfs/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 올바른 괄호의 갯수" /><published>2022-07-16T00:00:00+09:00</published><updated>2022-07-16T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-dfs</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-dfs/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+  <li>API 오용<br /><br /></li>
+</ol>
+
+<h1 id="sw-테스트">SW 테스트</h1>
+<ul>
+  <li>개발된 소프트웨어가 요구사항을 만족하는지 확인하고 결함을 검출하는 활동</li>
+</ul>
+
+<h2 id="sw-테스트의-필요성">SW 테스트의 필요성</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">오류 발견 관점</code> : 잠재된 오류를 발견 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">오류 예방 관점</code> : 사전에 오류를 발견하고 예방</li>
+  <li><code class="language-plaintext highlighter-rouge">품질 향상 관점</code> : 요구사항과 기대 수준을 만족하도록 품질 향상</li>
+</ol>
+
+<h2 id="sw-테스트의-기본-원칙">SW 테스트의 기본 원칙</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">완벽한 테스팅은 불가</code> : 무한입력값, 무한경로</li>
+  <li><code class="language-plaintext highlighter-rouge">살충제 패러독스</code> : 같은 테스트케이스를 반복하면 새 오류 검출이 불가능하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">초기에 테스팅을 시작할 것</code> : 후반으로 갈수록 비용이 증가한다.(오르돈의 법칙, 눈덩이 법칙)</li>
+  <li><code class="language-plaintext highlighter-rouge">정황에 의존하지 말 것</code> : SW 성격, 환경에 맞춰 테스트해야 함</li>
+  <li><code class="language-plaintext highlighter-rouge">오류-부재의 궤변</code> : 오류(결함)가 없더라도 요구사항을 만족하지 못하면 품질이 높다고 할 수 없음</li>
+  <li><code class="language-plaintext highlighter-rouge">결함 집중</code> : 결함의 80%는 전체 모듈 20% 내에서 발견된다.(파레토 법칙)</li>
+  <li><code class="language-plaintext highlighter-rouge">결함은 늘 존재한다</code> : 테스팅은 결함이 존재함을 밝히는 활동</li>
+</ol>
+
+<h2 id="테스트-케이스-test-case">테스트 케이스 Test Case</h2>
+<ul>
+  <li>요구사항을 만족하는지 확인하기 위해 설계된 입력값, 실행조건, 기대결과로 구성된 명세서</li>
+  <li><code class="language-plaintext highlighter-rouge">테스트 스크립트 Test Script</code> : TC 실행순서를 작성한 문서 (=테스트 스텝, 테스트 프로시저)</li>
+  <li><code class="language-plaintext highlighter-rouge">테스트 시나리오 Test Scenario</code> : 테스트할 기능, 상황을 정리해 절차를 명세화한 문서</li>
+  <li><code class="language-plaintext highlighter-rouge">테스트 슈트 Test Suites</code> : 실행환경에 따라 구분해 놓은 TC의 집합</li>
+</ul>
+
+<h3 id="테스트-케이스-구성요소">테스트 케이스 구성요소</h3>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">입력 명세</code> : 입력할 데이터 및 조건</li>
+  <li><code class="language-plaintext highlighter-rouge">출력 명세</code> : 기대되는 결과값</li>
+  <li><code class="language-plaintext highlighter-rouge">테스트 항목</code></li>
+  <li><code class="language-plaintext highlighter-rouge">특수절차요구</code></li>
+  <li><code class="language-plaintext highlighter-rouge">환경설정</code> : 수행에 필요할 HW/SW 환경</li>
+  <li><code class="language-plaintext highlighter-rouge">의존성 기술</code> : TC 간 의존성</li>
+  <li><code class="language-plaintext highlighter-rouge">식별자</code></li>
+</ol>
+
+<h2 id="테스트-종류에-따른-분류">테스트 종류에 따른 분류</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">구조 기반</code> : 내부 논리 흐름에 따라 테스트 (화이트박스)</li>
+  <li><code class="language-plaintext highlighter-rouge">명세 기반</code> : 명세서 기반으로 테스트 (블랙박스)</li>
+  <li><code class="language-plaintext highlighter-rouge">경험 기반</code> : 유사 평가 경험을 기반으로 테스트 (탐색적 테스트, 오류 추정, 체크리스트, 특성 테스트)</li>
+</ol>
+
+<h2 id="테스트-목적에-따른-분류">테스트 목적에 따른 분류</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">회복 테스트(Recovery)</code> : 고의로 실패를 유도한 뒤, 정상 복귀를 테스트</li>
+  <li><code class="language-plaintext highlighter-rouge">안전 테스트(Security)</code> : 보안 결함 점검</li>
+  <li><code class="language-plaintext highlighter-rouge">성능 테스트(Performance)</code> : 요구에 대한 반응속도를 측정
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">부하 테스트(Load)</code> : 부하를 점점 늘려 임계점을 찾는 테스트</li>
+      <li><code class="language-plaintext highlighter-rouge">스트레스 테스트(Stress)</code> : 임계점 이상의 부하를 가해 비정상적인 상황에서의 성능을 측정</li>
+      <li><code class="language-plaintext highlighter-rouge">스파크 테스트(Spark)</code> : 짧은 시간 내 많은 사용자가 몰릴 때 반응 테스트</li>
+      <li><code class="language-plaintext highlighter-rouge">내구성 테스트(Endurance)</code> : 오랜 시간 동안 높은 부하를 가해 성능 테스트</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">구조 테스트(Structure)</code> : 논리 경로, 소스코드 복잡도 측정</li>
+  <li><code class="language-plaintext highlighter-rouge">회귀 테스트(Regression)</code> : 오류 제거 후, 수정에 의해 유입된 오류가 없는지 테스트</li>
+  <li><code class="language-plaintext highlighter-rouge">병행 테스트(Parallel)</code> : 변경된 시스템과 기존 시스템에 동일 데이터 입력 후 결과값 비교</li>
+</ol>
+
+<h2 id="테스트-시각에-따른-분류">테스트 시각에 따른 분류</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">검증(Verification)</code> : 개발자 시점, 규격(명세기능)을 만족하는가</li>
+  <li><code class="language-plaintext highlighter-rouge">확인(Validation)</code> : 사용자 시점, 올바른 SW</li>
+</ol>
+
+<h2 id="정적-테스트-종류">정적 테스트 종류</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">리뷰</code> : SW의 결함을 검출하거나 진행 상황을 파악하는 활동으로 전문가가 수행
+    <ul>
+      <li>리뷰의 유형
+        <ol>
+          <li>관리 리뷰</li>
+          <li>기술 리뷰(=코드 리뷰)</li>
+          <li>인스펙션 : 저작자가 아닌 다른 전문가가 검토</li>
+          <li>워크스루 : 사전에 자료 배포 후 짧은 회의</li>
+          <li>감사 : 표준 준수 확인, 제3기관 수행</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">정적 분석</code> : 분석 도구의 도움을 받아 수행(소스코드 실행 안 함). 코딩 표준, 소스코드 복잡도 검사</li>
+</ol>
+
+<h3 id="화이트박스-테스트">화이트박스 테스트</h3>
+<ul>
+  <li>모듈 내부 구조, 논리 경로를 테스트(구조 기반 테스트, 동적 테스트)</li>
+  <li>유형
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">구문 커버리지</code> : 모든 명령문을 한 번 이상 수행. 결과에 무관하게 구문 실행 개수로 측정</li>
+      <li><code class="language-plaintext highlighter-rouge">결정 커버리지(=선택 커버리지, 분기 커버리지)</code> : 결정 포인트 내 개별 조건식이 참/거짓을 한 번씩 수행</li>
+      <li><code class="language-plaintext highlighter-rouge">조건 커버리지</code> : 결정 포인트 내 개별 조건식이 참/거짓을 한 번씩 수행(전체 조건식에 주는 영향은 고려하지 않음)</li>
+      <li><code class="language-plaintext highlighter-rouge">조건/결정 커버리지</code> : 결정 포인트 내 전체 조건식도 참/거짓을 한 번씩, 개별 조건식도 참/거짓을 한 번씩 수행)</li>
+      <li><code class="language-plaintext highlighter-rouge">변경 조건/결정 커버리지</code> : 결정 포인트 내 개별 조건식이 다른 개별 조건식의 영향을 받지 않고 전체 조건식에 독립적으로 영향을 주도록 수행</li>
+      <li><code class="language-plaintext highlighter-rouge">다중 조건 커버리지</code> : 모든 개별 조건식의 가능한 조합을 100% 보장
+        <ul>
+          <li>개별 조건식의 수가 N이라고 했을 때, 2^N의 결과가 나옴. 즉 개별조건식이 2개면 2^2=4, 3개면 2^3=8개</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">기본 경로 커버리지</code> : 맥케이브의 순환복잡도를 기반으로 수행 가능한 모든 경로를 테스트
+        <ul>
+          <li>순환복잡도 계산 : V=E-N+2 또는 V=P+1</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">제어 흐름 테스트</code> : 제어 구조를 그래프로 나타내어 테스트</li>
+      <li><code class="language-plaintext highlighter-rouge">데이터 흐름 테스트</code> : 제어 흐름 그래프에 데이터 사용 현황을 추가한 그래프를 통해 테스트</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="블랙박스-테스트">블랙박스 테스트</h3>
+<ul>
+  <li>요구사항 명세를 보며 기능 위주 테스트(명세 기반 테스트, 동적 테스트)</li>
+  <li>유형
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">상태 전이 테스트</code> : 이벤트에 의해 객체 상태가 전이되는 경우의 수를 측정
+        <ul>
+          <li>상태 전이도 모델링 -&gt; 전이 트리 도출 -&gt; 전이 경로 TC -&gt; 비정상 전이 TC</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">원인-결과 그래프 테스트</code> : 그래프를 통해 입력값 간의 관계 및 출력에 미치는 영향을 분석해 효용성이 높은 TC를 선택해 테스트</li>
+      <li><code class="language-plaintext highlighter-rouge">동치 분할 테스트</code> : 입력 데이터 영역을 유효값/무효값으로 그룹핑해 대표값 TC를 도출해 테스트</li>
+      <li><code class="language-plaintext highlighter-rouge">경계값 분석 테스트</code> : 최소값을 바로 위나 아래와 같이 입력 데이터의 극한 한계를 테스트(2-Value, 3-Value)</li>
+      <li><code class="language-plaintext highlighter-rouge">비교 테스트</code> : 여러 버전의 프로그램에 같은 입력값을 넣어 결과를 비교</li>
+      <li><code class="language-plaintext highlighter-rouge">분류 트리 테스트</code> : 트리 구조로 분석 및 표현하여 테스트
+        <ul>
+          <li>항목 선정 -&gt; 분류 트리 구축 -&gt; 불류 클래스 조합해 TC 생성</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">페어와이즈 테스트</code> : 테스트 데이터값을 최소 한 번씩 조합</li>
+      <li><code class="language-plaintext highlighter-rouge">유스케이스 테스트</code> : 유스케이스로 모델링 되어있을 때, 프로세스 흐름 기반으로 테스트 수행</li>
+      <li><code class="language-plaintext highlighter-rouge">결과 테이블 테스트</code> : 요구사항을 테이블로 구성해 원인(조건)-결과(행위)를 조합해 테스트</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="경험-기반-테스트">경험 기반 테스트</h3>
+<ul>
+  <li>테스터의 경험과 직관을 기반으로 한 테스트</li>
+  <li>유형
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">특성테스트</code> : ISO/IEC 9126 등 표준 품질 특성을 염두에 두고 테스트 수행</li>
+      <li><code class="language-plaintext highlighter-rouge">탐색적 테스트</code> : TC 명세화 없이 경험에 의존해 탐색적으로 테스트 수행(테스터의 휴리스틱한 능력 필요)</li>
+      <li><code class="language-plaintext highlighter-rouge">오류 추정</code> : 개발자가 범하기 쉬운 실수를 추정하고 이에 맞춰 테스트</li>
+      <li><code class="language-plaintext highlighter-rouge">체크리스트</code> : 테스트 내용을 목록화하여 테스트(재사용 목적)</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="테스트-오라클">테스트 오라클</h2>
+<ul>
+  <li>테스트 결과가 참/거짓인지 판단하기 위해 사전에 정의된 참값을 입력해 비교하는 기법</li>
+  <li>유형
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">참 오라클</code> : 모든 입력값의 기대결과를 생성(오류를 모두 검출 가능)</li>
+      <li><code class="language-plaintext highlighter-rouge">샘플링 오라클</code> : 특정 몇 개 입력값의 기대결과만 생성</li>
+      <li><code class="language-plaintext highlighter-rouge">휴리스틱 오라클 (Heuristic)</code> : 몇 개 입력값에 대해서는 정확한 결과를 제공하고 나머지는 휴리스틱으로 처리(샘플링 오라클 개선)</li>
+      <li><code class="language-plaintext highlighter-rouge">일관성 검사 오라클 (Consistent)</code> : 변경이 있을 때 수행 전후 결과값이 동일한지 확인</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="테스트-레벨">테스트 레벨</h2>
+<ul>
+  <li>개발 단계에 따라 테스트를 분류한 것</li>
+  <li>유형
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">단위 테스트</code> : 설계 최소 단위인 모듈, 컴포넌트, 서브 루틴 등을 테스트</li>
+      <li><code class="language-plaintext highlighter-rouge">통합 테스트</code> : 단위 테스트를 통과한 모듈 간 인터페이스, 컴포넌트 상호작용 등을 테스트
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">빅뱅 테스트</code> : 모든 컴포넌트를 통합해 한꺼번에 테스트(비점증적 방식)</li>
+          <li><code class="language-plaintext highlighter-rouge">상향식 테스트</code> : 최하위 모듈부터 위 방향으로 통합하며 테스트
+            <ol>
+              <li>하위 모듈을 클러스터로 결합(클러스터링)</li>
+              <li>드라이버 개발</li>
+              <li>통합된 클러스터 테스트</li>
+              <li>드라이버를 실제 모듈로 대체</li>
+            </ol>
+          </li>
+          <li><code class="language-plaintext highlighter-rouge">하향식 테스트</code> : 메인 제어 모듈로부터 아래 방향으로 통합하며 테스트
+            <ol>
+              <li>초기에 시스템 구조 파악</li>
+              <li>스텁 개발</li>
+              <li>깊이-우선 또는 너비-우선 방식에 따라 스텁을 실제 모듈로 대체</li>
+            </ol>
+          </li>
+          <li><code class="language-plaintext highlighter-rouge">샌드위치 테스트</code> : 상위모듈은 하향식, 하위 모듈은 상향식 테스트를 수행</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">시스템 테스트</code> : 통합된 단위시스템 검증(기능적 요구사항 테스트, 비기능적 요구사항 테스트)</li>
+      <li><code class="language-plaintext highlighter-rouge">인수 테스트</code> : 계약상 요구사항을 만족하는지 확인
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">알파 테스트</code> : 통제된 환경에서 선택된 사용자가 개발자랑 확인</li>
+          <li><code class="language-plaintext highlighter-rouge">베타 테스트</code> : 실제 환경에서 확인</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="테스트-하네스">테스트 하네스</h2>
+<ul>
+  <li>단위 테스트를 지원하기 위한 코드와 데이터</li>
+  <li>유형
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">목 객체</code> : 사전에 조건을 입력하면 그 상황에 예정된 행위를 수행하는 가짜 객체
+        <ul>
+          <li>유형
+            <ol>
+              <li><code class="language-plaintext highlighter-rouge">테스트 스텁</code> : 특정 값을 리턴하거나 메시지를 출력하는 등 단순 기능을 수행하는 더미 모듈(하향식 테스트에서 사용)</li>
+              <li><code class="language-plaintext highlighter-rouge">테스트 드라이버</code> : 하위 모듈을 호출하거나 파라미터를 전달하는 모듈(상향식 테스트에서 사용)</li>
+              <li><code class="language-plaintext highlighter-rouge">테스트 스파이</code> : 테스트 대상 클래스와 협력 클래스로 가는 출력을 검증하는 데 사용</li>
+              <li><code class="language-plaintext highlighter-rouge">가짜 객체</code> : 협력 클래스 기능을 대체하기 위해 사용</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="테스트-자동화-도구-유형">테스트 자동화 도구 유형</h2>
+<ol>
+  <li>정적 분석 도구 : 실행하지 않고 소스 코드를 테스트</li>
+  <li>테스트 실행 도구 : 작성된 스크립트를 실행해 테스트(데이터 주도 접근 방식 vs. 키워드 주도 접근 방식)</li>
+  <li>성능 테스트 도구</li>
+  <li>테스트 통제 도구 : 형상 관리 도구, 결함 추적 도구 등</li>
+</ol>
+
+<h2 id="테스트-리포팅">테스트 리포팅</h2>
+<ol>
+  <li>테스트 결과 정리</li>
+  <li>테스트 요약문서 작성</li>
+  <li>품질 상태 파악</li>
+  <li>결과서 작성</li>
+  <li>테스트 실행 절차 리뷰 및 평가</li>
+</ol>
+
+<h2 id="테스트-커버리지">테스트 커버리지</h2>
+<ul>
+  <li>테스트의 수행 정도를 나타내는 값
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">기능 기반 커버리지</code> : 전체 기능을 모수로 측정</li>
+      <li><code class="language-plaintext highlighter-rouge">라인 커버리지</code> : 소스 코드 라인 수를 모수로 측정</li>
+      <li><code class="language-plaintext highlighter-rouge">코드 커버리지</code> : 구문(코드) 자체가 얼마나 테스트됐는가를 측정(커버리지라 함은 대부분 코드 커버리지를 가리킴)<br /><br /></li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="소프트웨어-결함">소프트웨어 결함</h1>
+<ul>
+  <li>Error/오류 : 사람에 의해 생성됨. Defect(결함)의 원인</li>
+  <li>Defect / Bug : Error로 인해 포함된 결함. 제거되지 않으면 Failure나 Problem이 됨</li>
+  <li>Failure / Problem : Defect가 실행될 때 발생하는 현상</li>
+</ul>
+
+<h2 id="결함-관리-프로세스">결함 관리 프로세스</h2>
+<ol>
+  <li>결함 관리 계획</li>
+  <li>결함 관리 DB에 기록</li>
+  <li>결함 검토</li>
+  <li>결함 수정</li>
+  <li>결함 재검토</li>
+  <li>결함 추적 및 모니터링</li>
+  <li>최종 결함 분석 및 보고서 작성</li>
+</ol>
+
+<h2 id="결함-생명주기">결함 생명주기</h2>
+<ul>
+  <li>Open -&gt; Review -&gt; Assigned -&gt; Resolved -&gt; Verified -&gt; Closed -&gt; Deferred -&gt; Reopen -&gt; Closed</li>
+</ul>
+
+<h2 id="결함-분석-방법">결함 분석 방법</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">고립화</code> : 입력값, 절차, 환경 중 무엇이 영향을 미치는지 파악</li>
+  <li><code class="language-plaintext highlighter-rouge">구체화</code> : 입력값, 절차, 환경을 정확히 파악</li>
+  <li><code class="language-plaintext highlighter-rouge">일반화</code> : 결함에 영향을 주는 요소를 최대한 일반화</li>
+</ol>
+
+<h3 id="결함-분석">결함 분석</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">결함 추이 분석</code> : 결함 지표를 분석해 추후 발생될 결함을 추정하는 작업</li>
+  <li><code class="language-plaintext highlighter-rouge">결함 분포 분석</code> : 특정 속성에 해당하는 결함 수를 측정</li>
+  <li><code class="language-plaintext highlighter-rouge">결함 추세 분석</code> : 테스트 시간 흐름에 따른 결함 수를 측정</li>
+  <li><code class="language-plaintext highlighter-rouge">결함 에이징 분석</code> : 특정 결함의 지속 시간을 측정</li>
+</ul>
+
+<h2 id="결함-분류">결함 분류</h2>
+<ol>
+  <li>시스템 결함(비정상적인 종료, DB 에러)</li>
+  <li>기능 결함(요구사항 불일치, 스크립트 에러)</li>
+  <li>GUI 결함(부정확한 메세지)</li>
+  <li>문서 결함(매뉴얼 불일치)</li>
+</ol>
+
+<h2 id="결함-심각도">결함 심각도</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Critical(치명적)</code> : 테스트 불가할 정도</li>
+  <li><code class="language-plaintext highlighter-rouge">Major(주요)</code> : 기능이 기대와 다르게 동작</li>
+  <li><code class="language-plaintext highlighter-rouge">Normal(보통)</code> : 사소한 기능 오작동</li>
+  <li><code class="language-plaintext highlighter-rouge">Minor(경미)</code> : UI 오류</li>
+  <li><code class="language-plaintext highlighter-rouge">Simple(단순)</code> : 미관성 해침</li>
+</ol>
+
+<h3 id="결함-우선순위">결함 우선순위</h3>
+<ol>
+  <li>Critical : 이 결함으로 전체 기능 미동작</li>
+  <li>High : 이 결함으로 다른 기능 미동작</li>
+  <li>Medium</li>
+  <li>Low</li>
+</ol>
+
+<h2 id="성능-분석">성능 분석</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">처리량</code> : 주어진 시간에 처리 가능한 트랜잭션(웹 페이지) 수</li>
+  <li><code class="language-plaintext highlighter-rouge">응답시간</code> : 사용자 입력 -&gt; 응답 출력 개시까지 걸린 시간</li>
+  <li><code class="language-plaintext highlighter-rouge">경과시간</code> : 사용자 입력 -&gt; 트랜잭션 처리 -&gt; 결과 출력까지 걸린 시간</li>
+  <li><code class="language-plaintext highlighter-rouge">자원 사용률</code> : 트랜잭션 처리 동안 사용하는 자원 사용량</li>
+</ol>
+
+<h3 id="성능-테스트-수행-방법">성능 테스트 수행 방법</h3>
+<ol>
+  <li>성능 테스트 도구 설치</li>
+  <li>환경설정</li>
+  <li>시나리오 작성</li>
+  <li>성능 테스트 실행 및 모니터링</li>
+</ol>
+
+<h3 id="성능-저하-원인---db-관련">성능 저하 원인 - DB 관련</h3>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">DB Lock</code> : Lock 해제 시까지 타임 아웃</li>
+  <li><code class="language-plaintext highlighter-rouge">불필요한 DB Fetch</code> : 대량의 데이터 요청으로 응답 시간 저하, 결과 세트에서 마지막 위치로 커서 옮기는 작업 빈번 시 응답 저하</li>
+  <li><code class="language-plaintext highlighter-rouge">연결 누수 Connection Leak</code> : JDBC 객체 사용 후 미종료</li>
+  <li><code class="language-plaintext highlighter-rouge">부적절한 DB Connection Pool Size</code> : 커넥션 풀이 너무 작거나 큼</li>
+  <li><code class="language-plaintext highlighter-rouge">커밋 관련</code> : 트랜잭션이 커밋되지 않고 반환되거나 불필요한 커밋이 잦음</li>
+</ol>
+
+<h2 id="리팩토링">리팩토링</h2>
+<ul>
+  <li>기능을 변경하지 않고 내부 코드를 보완해 유지보수성을 향상시키는 것</li>
+  <li>목적 : 유지보수성 향상, 품질 향상, 생산성 향상, 유연한 시스템</li>
+</ul>
+
+<h2 id="클린-코드">클린 코드</h2>
+<ul>
+  <li>잘 작성되어 가독성 높고 단순한 코드</li>
+  <li>작성원칙
+    <ol>
+      <li>가독성</li>
+      <li>단순성</li>
+      <li>의존성 최소화</li>
+      <li>중복 제거</li>
+      <li>추상화</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="베드-코드">베드 코드</h3>
+<ul>
+  <li>다른 개발자가 로직을 이해하기 어려운 코드</li>
+  <li><code class="language-plaintext highlighter-rouge">외계인 코드</code> : 아주 오래되거나 참고할 개발자/문서가 없어 유지보수가 힘든 코드</li>
+  <li><code class="language-plaintext highlighter-rouge">스파게티 코드</code> : 동작은 하지만 내부 코드가 복잡하여 파악이 어려운 코드</li>
+</ul>
+
+<h3 id="베드-코드-유형">베드 코드 유형</h3>
+<ol>
+  <li>오염 : 비즈니스 기능을 수행하지 못하는 컴포넌트가 많음</li>
+  <li>문서 부족 : 코드와 문서 불일치</li>
+  <li>의미없는 이름</li>
+  <li>높은 결합도</li>
+  <li>아키텍처 침식 : 아키텍처가 변형되어 품질 저하</li>
+</ol>
+
+<h3 id="코드-품질-분석-도구">코드 품질 분석 도구</h3>
+<ul>
+  <li>정적 분석 도구 : pmd, cppcheck, SonarQube, checkstyle, cobertuna</li>
+  <li>동적 분석 도구 : Avalance, Valgrind<br /><br /></li>
+</ul>
+
+<h1 id="os-운영체제">OS (운영체제)</h1>
+<ul>
+  <li>사용자가 하드웨어를 쉽게 사용할 수 있도록 인터페이스 기능을 제공하는 소프트웨어</li>
+</ul>
+
+<h2 id="os의-특징">OS의 특징</h2>
+<ol>
+  <li>사용자 편리성 제공</li>
+  <li>인터페이스 기능 제공</li>
+  <li>스케줄링 담당 : 자원 분배</li>
+  <li>자원 관리 : CPU, 메모리 관리</li>
+  <li>제어 기능 : 입출력 장치 등</li>
+</ol>
+
+<h2 id="os의-쉘">OS의 쉘</h2>
+<ul>
+  <li>사용자 명령에 대한 처리를 담당</li>
+  <li>사용자 명령을 입력받아 기계어 형태로 변환해 커널에 전달</li>
+</ul>
+
+<h2 id="os의-커널">OS의 커널</h2>
+<ul>
+  <li>하드웨어와 관련된 핵심 처리 기능 담당</li>
+</ul>
+
+<h2 id="windows의-특징">Windows의 특징</h2>
+<ol>
+  <li>GUI 제공</li>
+  <li>선점형 멀티태스킹 방식 제공 : 동시에 여러 프로그램을 실행하면서 자원 사용을 제어</li>
+  <li>자동 감지 기능 제공 : HW 설치 시 환경 구성</li>
+  <li>OLE 기능 제공 : 문서에 개체 삽입/연결</li>
+</ol>
+
+<h2 id="windows-기본-명령어">Windows 기본 명령어</h2>
+<ul>
+  <li>ATTRIB : 파일 속성 표시</li>
+  <li>CALL : 일괄 프로그램에서 다른 일괄 프로그램 호출</li>
+  <li>CD : 디렉토리 표시</li>
+  <li>CHKDSK : 디스크 검사</li>
+  <li>CLS : 화면 지움</li>
+  <li>CMD : 명령 프롬프트 실행</li>
+  <li>COMP : 두 개 이상 파일 비교</li>
+  <li>DISKPART : 파티션 구성 표시</li>
+  <li>ECHO : 메시지 표시</li>
+  <li>ERASE : 파일 삭제</li>
+  <li>EXIT : 인터프리터 종료</li>
+</ul>
+
+<h2 id="unix의-특징">Unix의 특징</h2>
+<ol>
+  <li>대화식 운영체제 기능 : 명령어 입력 시 해당 명령어 수행</li>
+  <li>다중 작업 기능</li>
+  <li>다중 사용자 기능</li>
+  <li>이식성 제공</li>
+  <li>계층 트리 구조 파일 시스템 기능 제공</li>
+</ol>
+
+<h2 id="linux">Linux</h2>
+<ul>
+  <li>Unix 기반의 오픈 소스 운영 체제</li>
+</ul>
+
+<h2 id="mac-os">Mac OS</h2>
+<ul>
+  <li>Unix 기반의 GUI 운영 체제</li>
+</ul>
+
+<h2 id="andoroid">Andoroid</h2>
+<ul>
+  <li>Linux 기반의 휴대용 장치를 위한 운영체제</li>
+</ul>
+
+<h2 id="unixlinux-계열-기본-명령어">Unix/Linux 계열 기본 명령어</h2>
+<ul>
+  <li>uname -a : 모든 시스템 정보 표시</li>
+  <li>uname -r : OS 배포버전 표시</li>
+  <li>cat : 파일 내용 출력</li>
+  <li>uptime : 가동시간 확인</li>
+  <li>id : 사용자 로그인명, id 확인</li>
+  <li>last : 모든 로그인/로그아웃 정보 확인</li>
+  <li>who : 현재 접속한 사용자 정보 확인</li>
+  <li>ls : 현재 경로의 파일 및 폴더 출력</li>
+  <li>pwd : 현재 디렉토리의 절대 경로 출력</li>
+  <li>cd : 디렉토리 이동</li>
+  <li>rm : 파일 삭제</li>
+  <li>cp : 파일 복제</li>
+  <li>mv : 파일 이동</li>
+  <li>rsync : 복사 후 동기화</li>
+  <li>chmod : 퍼미션 변경</li>
+  <li>chown : 소유자, 소유그룹 변경</li>
+  <li>tar : 압축 해제</li>
+  <li>gzip : 압축</li>
+  <li>find : 파일 검색</li>
+  <li>grep : 문자열 검색</li>
+  <li>df : 남은 디스크 용량 확인</li>
+  <li>du : 파일 사이즈 확인</li>
+  <li>ps : 프로세스 목록 확인</li>
+  <li>pmap : 프로세스 ID 기준 메모리맵 정보 표시</li>
+  <li>kill : 프로세스 종료</li>
+  <li>fork : vmfhtptm todtjd</li>
+  <li>ifconfig : 네트워크 인터페이스 확인</li>
+  <li>host : host는 아는데 IP 주소 모를 때 사용</li>
+</ul>
+
+<h2 id="접근제어">접근제어</h2>
+<ul>
+  <li>user / group / other / all</li>
+  <li>r(read : 4) w(write : 2) x(execute : 1) 순서로 점수 부여</li>
+  <li><code class="language-plaintext highlighter-rouge">chmod 664 a.txt</code> : user, group의 rx 권한 설정, other의 r 권한 설정</li>
+  <li><code class="language-plaintext highlighter-rouge">chmod o-w a.txt</code> : other 사용자의 쓰기 권한 제거<br /><br /></li>
+</ul>
+
+<h1 id="메모리-관리">메모리 관리</h1>
+<ul>
+  <li>필요할 때마다 프로세스에게 기억장치를 할당하고 사용이 끝나면 회수하는 것</li>
+</ul>
+
+<h2 id="메모리-관리-기법">메모리 관리 기법</h2>
+<ol>
+  <li>반입 기법 : <code class="language-plaintext highlighter-rouge">언제</code> 주기억장치에 다음 프로세스를 언제 할당할 것인지 결정하는 기업
+    <ul>
+      <li>요구 반입 : 요구가 있을 시 반입</li>
+      <li>예상 반입 : 예측하여 반입</li>
+    </ul>
+  </li>
+  <li>배치 기법 : <code class="language-plaintext highlighter-rouge">어디에</code> 주기억장치의 어떤 위치에 프로세스를 할당할 것인지 결정하는 기법
+    <ul>
+      <li>최초 배치 : 첫 번째 분할에 배치</li>
+      <li>최적 배치 : 비슷한 공간에 배치</li>
+      <li>최악 배치 : 가장 큰 공간에 배치</li>
+    </ul>
+  </li>
+  <li>할당 기법 : <code class="language-plaintext highlighter-rouge">어떻게</code> 주기억장치에 어떤 방법으로 프로세스를 할당할 것인지 결정하는 기법
+    <ul>
+      <li>연속 할당 : 연속해서 배치 ex. 단일 분할, 다중 분할</li>
+      <li>분산 할당 : 프로세스를 조각내어 배치 ex. 페이징(같은 크기로), 세그멘테이션(가변적 크기로)</li>
+    </ul>
+  </li>
+  <li>교체 기법 : <code class="language-plaintext highlighter-rouge">누구를</code> 주기억장치에 있는 프로세스 중 어떤 것을 제거할 지 결정하는 기법
+    <ul>
+      <li>FIFO : 가장 먼저 들어온 페이지 교체</li>
+      <li>LRU : 가장 오랫동안 사용되지 않은 페이지 교체</li>
+      <li>LFU : 참조 횟수가 적은 페이지 교체</li>
+      <li>OPT : 앞으로 사용될 가능성이 적은 페이지 교체</li>
+      <li>NUR : 최근까지 사용되지 않은 페이지 교체 (LRU 오버헤드 감소)</li>
+      <li>SCR : 세컨드 찬스. 먼저 들어왔지만 자주 사용되는 페이지의 교체를 막음(FIFO 보완)</li>
+      <li>SJF : Shortest Job First. 대기 큐 중 수행시간이 가장 짧은 프로세스에게 할당</li>
+      <li>SRT : Shortest Remaining Time First. 대기 큐에 수행(남은) 시간이 짧은 프로세스가 생기면 언제라도 선점</li>
+      <li>RR(라운드 로빈) : 시간 할당량을 정해놓고 시간 내 처리되지 못하면 대기 큐 가장 뒤로 보냄</li>
+      <li>다단계 큐 : 여러 개의 큐를 이용해 각각 독립적인 스케줄리을 가징</li>
+      <li>다단계 피드백 큐 : 여러 개의 큐에 프로세스 특성에 따라 서로 다른 시간 할당량을 부여(FIFO + RR : 우선 도착한 프로세스를 실행하되 완료가 안 된 프로세스는 하위 큐로 보내고 마지막 큐에서도 안 끝나면 RR 방식)</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="메모리-단편화">메모리 단편화</h2>
+<ul>
+  <li>메모리 할당/반납 과정에서 낭비되는 공간이 생기는 것
+    <ol>
+      <li>내부 단편화 : 적재하고 남는 공간 발생. 페이징 기법에서 자주 발생함 =&gt; Slab Allocator, 통합, 압축으로 해결</li>
+      <li>외부 단편화 : 작아서 못 쓰는 공간 발생. 세그멘테이션에서 자주 발생 =&gt; 버디 메모리 할당, 통합, 압축으로 해결<br /><br /></li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="프로세스">프로세스</h1>
+<ul>
+  <li>CPU에 의해 관리되는 현재 실행중인 프로그램(=Job, Task)</li>
+</ul>
+
+<h2 id="프로세스-상태">프로세스 상태</h2>
+<ol>
+  <li>생성(Fork)</li>
+  <li>준비(Ready) : Ready List에서 할당 대기</li>
+  <li>실행(Run or Execute)</li>
+  <li>대기(Wait) : 입출력 발생시</li>
+  <li>완료</li>
+</ol>
+
+<h3 id="프로세스-상태-전이">프로세스 상태 전이</h3>
+<ol>
+  <li>디스패치 : Ready List에서 프로세스를 선정하고 CPU 할당 (준비 -&gt; 실행)</li>
+  <li>타이머 런 아웃 : 할당 시간 초과, PCB에 저장 후 준비 상태로 전이(실행 -&gt; 준비)
+    <ul>
+      <li>PCB : Process Control Block. OS가 프로세스 관리를 위해 필요한 내용을 담고 있는 자료 구조</li>
+    </ul>
+  </li>
+  <li>블록 : 입출력 발생(실행 -&gt; 대기)</li>
+  <li>웨이크업 : 입출력 종료(대기 -&gt; 준비)</li>
+</ol>
+
+<h2 id="프로세스-스케줄링">프로세스 스케줄링</h2>
+<ul>
+  <li>CPU를 사용하려는 프로세스 간 우선순위를 관리하는 작업</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>반환시간(응답시간) = 종료시간 - 도착시간
+대기시간 = 반환시간 - 서비스시간
+</code></pre></div></div>
+
+<ul>
+  <li>선점형 스케줄링 : 우선순위가 높은 프로세스가 오면 기존 프로세스를 중단하고 CPU를 점유</li>
+  <li>비선점형 스케줄링 : CPU를 할당받으면 반환 시까지 다른 프로세스가 점유 불가</li>
+</ul>
+
+<h2 id="응답률-계산식">응답률 계산식</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(대기시간 + 서비스시간) / 서비스시간 = 응답률
+</code></pre></div></div>
+
+<ul>
+  <li>응답률이 높을수록 우선순위가 높다.<br /><br /></li>
+</ul>
+
+<h1 id="가상화">가상화</h1>
+<ul>
+  <li>물리적인 리소스를 하나로 보이게 하거나, 하나의 물리적인 리소스를 여러 개처럼 보이게 하는 기술</li>
+  <li>종류
+    <ul>
+      <li>플랫폼 가상화 : 하드웨어 플랫폼 위에서 실행되는 호스트 프로그램이 게스트 프로그램을 만들어 독립된 환경을 구축한 것처럼 보여주는 기술</li>
+      <li>리소스 가상화 : 소프트웨어가 독립된 하드웨어에서 실행되는 것처럼 보여주는 기술</li>
+      <li>스토리지 가상화 : 스토리지와 서버 사이에 계층을 추가해 논리적 단위로 활용 ex. 분산 파일 시스템</li>
+      <li>컴퓨팅 가상화 : 컴퓨터 리소스를 가상화하여 논리적 단위로 활용 ex. 하이퍼바이저</li>
+      <li>I/O 가상화 : I/O와 서버 사이에 계층을 추가해 자원을 효율적으로 활용 ex. VNIC(가상 네트워크 인터페이스 카드)</li>
+      <li>컨테이너 : 컨테이너화된 애플리케이션들이 단일 운영체제상에서 실행되도록 하는 기술 ex. 도커</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="네트워크-가상화-기술">네트워크 가상화 기술</h2>
+<ul>
+  <li>물리적으로 떨어진 장비들을 연결하는 기술</li>
+  <li>종류
+    <ul>
+      <li>SDN : Software Defined Network. 컨트롤 플레인(트래픽 경로 지정) / 데이터 플레인(트래픽 전송)으로 분리하여 네트워크를 관리하는 기술</li>
+      <li>NFV : Network Function Virtualization. 라우터, 로드밸런서 등 하드웨어에 가상화 기술을 적용하여 네트워크 서비스를 가상화하는 기술<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="클라우드-컴퓨팅">클라우드 컴퓨팅</h1>
+<ul>
+  <li>자신의 컴퓨터가 아닌 클라우드에 연결된 컴퓨터로 처리하는 기술</li>
+  <li>분류
+    <ul>
+      <li>사설 클라우드 : 조직 내부의 컴퓨팅 자원을 이용해 내부적으로 구축한 클라우드. 보안성 높고, 직접 제어 가능</li>
+      <li>공용 클라우드 : 제공 업체의 서비스를 이용한 클라우드. 확장성 높음</li>
+      <li>하이브리드 클라우드 : 사설 + 공용 클라우드 동시 사용</li>
+    </ul>
+  </li>
+  <li>유형
+    <ul>
+      <li>IaaS : 인프라형 서비스. 서버, 스토리지 같은 자원을 클라우드로 제공</li>
+      <li>PaaS : 플랫폼형 서비스. 인프라를 관리하는 복잡함 없이 애플리케이션 개발에 필요한 플랫폼을 클라우드로 제공</li>
+      <li>SaaS : 소프트웨어형 서비스. 사용자에게 제공하는 소프트웨어와 관련 데이터를 클라우드로 제공</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="클라우드-기반-개발-환경-인프라">클라우드 기반 개발 환경 인프라</h2>
+<ol>
+  <li>컴퓨팅 환경 : 프로그램을 설치하고 하드웨어 세팅</li>
+  <li>스토리지 : 대규모 데이터 저장용 장치 세팅</li>
+  <li>데이터베이스 : 실데이터를 저장하고 관리하기 위한 세팅, 멀티미디어 데이터 처리를 위한 세팅</li>
+  <li>네트워킹 전송 : 서비스, 프로그램, 콘텐츠 전달을 위한 환경 세팅</li>
+  <li>개발자 도구 : 개발을 위한 환경 구축</li>
+  <li>보안 환경 구축 : 시스템과 데이터 보호를 위한 액세스, 암호화 관리 등</li>
+  <li>응용 기술 세팅 : AR, VR, 머신러닝, 딥러닝 등</li>
+  <li>생산성 향상 : 볼륨 자동 확장 환경, 스트리밍 서비스 환경 등 구축<br /><br /></li>
+</ol>
+
+<h1 id="개발-지원-도구">개발 지원 도구</h1>
+<ol>
+  <li>요구사항 관리 : JFeature</li>
+  <li>설계 : DBdesigner</li>
+  <li>구현 : Eclipse, CodeBlock</li>
+  <li>테스트 : JUnit</li>
+  <li>빌드 : Ant, Jenkins</li>
+  <li>형상관리 : SubVersion</li>
+  <li>품질관리 : jDepend, Mylyn</li>
+  <li>이슈관리 : Mentis, Git</li>
+  <li>프로젝트 관리 : Redmine, OpenProj<br /><br /></li>
+</ol>
+
+<h1 id="개발-인프라-구축-방식">개발 인프라 구축 방식</h1>
+<ol>
+  <li>온프레미스 방식 : 외부 인터넷망이 차단된 상태에서 인트라넷망만을 활용해 개발 환경 구축</li>
+  <li>클라우드 방식 : 서비스를 임대하여 개발환경 구축</li>
+  <li>하이브리드 방식<br /><br /></li>
+</ol>
+
+<h1 id="cpu-자원-할당-관련-용어">CPU 자원 할당 관련 용어</h1>
+<ul>
+  <li>우선순위 : 프로세스별 우선순위에 따라 CPU 할당</li>
+  <li>HRN : 응답률이 높은 프로세스를 선택해 할당</li>
+  <li>기한부 : 정해진 시간 내 프로세스가 완료되도록 계획</li>
+  <li></li>
+</ul>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Certificate" /><category term="Certificate" /><category term="study" /><summary type="html"><![CDATA[최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 올바른 괄호의 갯수</title><link href="http://localhost:4000/programmers/programmers-dfs/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 올바른 괄호의 갯수" /><published>2022-07-16T00:00:00+09:00</published><updated>2022-07-16T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-dfs</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-dfs/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
