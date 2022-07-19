@@ -1223,6 +1223,23 @@ c = a[-4:-1]
 * 애트리뷰트 : =Column
 * 디그리 : 애트리뷰트의 개수
 
+## 테이블 관리 명령어
+* 테이블 생성 : CREATE TABLE 테이블명 (컬럼명 데이터타입 [제약조건]);
+* 테이블 생성 제약조건
+    * PRIMARY KEY
+    * FOREIGN KEY REFERENCES 테이블(컬럼)
+    * NOT NULL
+    * UNIQUE
+    * CHECK (조건 OR 조건)
+    * DEFAULT
+* 테이블 변경
+    * ALTER TABLE 테이블명 ADD 컬럼명 데이터타입 [제약조건];
+    * ALTER TABLE 테이블명 MODIFY 컬럼명 데이터타입 [제약조건];
+    * ALTER TABLE 테이블명 DROP 컬럼명;
+* 테이블 삭제
+    * DROP TABLE 테이블명 [CASCADE | RESTRICT];
+    * TRUNCATE TABLE 테이블명;
+
 ## 뷰
 * 데이터의 독립성을 보장하고 조작 연산을 간소화할 수 있는 논리 테이블
 * ALTER로 변경 불가
@@ -1235,9 +1252,18 @@ c = a[-4:-1]
 * `WITH CHECK OPTION` : 서브 쿼리 내 조건을 만족하는 행만 변경
 * `WITH READ ONLY` : DML(조작어) 불가
 
+### 뷰 관리 명령어
+* 뷰 생성 : CREATE [OR REPLACE] VIEW 뷰이름 AS SELECT 이름 FROM 학생 WHERE 성별 = 'F';
+* 뷰 삭제 : DROP VIEW 이름;
+
 ## 인덱스
 * DB 시스템에서 빠른 검색을 위한 데이터 구조
 * 인덱스가 없으면 Table Full Scan을 하지만, 인덱스가 있으면 Index Range Scan을 하므로 검색 속도가 빠르다.
+
+### 인덱스 관리 명령어
+* 인덱스 생성 : CREATE INDEX 인덱스명 ON 테이블(컬럼);
+* 인덱스 변경 : ALTER INDEX 인덱스명 ON 테이블(컬럼);
+* 인덱스 삭제 : DROP INDEX 인덱스명;
 
 ### 인덱스 종류
 1. `비트맵 인덱스` : 컬럼 개수가 적고 수정이 적을수록 좋은 인덱스(생년월일, 상품번호 등)
@@ -1278,28 +1304,6 @@ c = a[-4:-1]
 2. `가용성 향상` : 데이터 훼손 가능성이 적으니까
 3. `백업 기능`
 4. `경합 감소`
-
-## 테이블 명령어
-* 테이블 생성 : CREATE TABLE 테이블명 (컬럼명 데이터타입 [제약조건]);
-* 테이블 생성 제약조건
-    * PRIMARY KEY
-    * FOREIGN KEY REFERENCES 테이블(컬럼)
-    * NOT NULL
-    * UNIQUE
-    * CHECK (조건 OR 조건)
-    * DEFAULT
-* 테이블 변경
-    * ALTER TABLE 테이블명 ADD 컬럼명 데이터타입 [제약조건];
-    * ALTER TABLE 테이블명 MODIFY 컬럼명 데이터타입 [제약조건];
-    * ALTER TABLE 테이블명 DROP 컬럼명;
-* 테이블 삭제
-    * DROP TABLE 테이블명 [CASCADE | RESTRICT];
-    * TRUNCATE TABLE 테이블명;
-* 뷰 생성 : CREATE [OR REPLACE] VIEW 뷰이름 AS SELECT 이름 FROM 학생 WHERE 성별 = 'F';
-* 뷰 삭제 : DROP VIEW 이름;
-* 인덱스 생성 : CREATE INDEX 인덱스명 ON 테이블(컬럼);
-* 인덱스 변경 : ALTER INDEX 인덱스명 ON 테이블(컬럼);
-* 인덱스 삭제 : DROP INDEX 인덱스명;
 
 ## 참조 무결성
 * 외래키 값은 항상 참조되는 테이블의 기본키여야 함
