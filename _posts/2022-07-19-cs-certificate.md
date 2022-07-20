@@ -1318,13 +1318,13 @@ c = a[-4:-1]
 ### 뷰 관리 명령어
 * 뷰 생성
 
-```
+```sql
 CREATE [OR REPLACE] VIEW 뷰이름 AS SELECT 이름 FROM 학생 WHERE 성별 = 'F';
 ```
 
 * 뷰 삭제
 
-```
+```sql
 DROP VIEW 이름;
 ```
 
