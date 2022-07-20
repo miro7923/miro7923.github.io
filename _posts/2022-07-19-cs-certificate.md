@@ -1333,9 +1333,23 @@ DROP VIEW 이름;
 * 인덱스가 없으면 Table Full Scan을 하지만, 인덱스가 있으면 Index Range Scan을 하므로 검색 속도가 빠르다.
 
 ### 인덱스 관리 명령어
-* 인덱스 생성 : CREATE INDEX 인덱스명 ON 테이블(컬럼);
-* 인덱스 변경 : ALTER INDEX 인덱스명 ON 테이블(컬럼);
-* 인덱스 삭제 : DROP INDEX 인덱스명;
+* 인덱스 생성
+
+```sql
+CREATE INDEX 인덱스명 ON 테이블(컬럼);
+```
+
+* 인덱스 변경
+
+```sql
+ALTER INDEX 인덱스명 ON 테이블(컬럼);
+```
+
+* 인덱스 삭제
+
+```sql
+DROP INDEX 인덱스명;
+```
 
 ### 인덱스 종류
 1. `비트맵 인덱스` : 컬럼 개수가 적고 수정이 적을수록 좋은 인덱스(생년월일, 상품번호 등)
