@@ -1431,8 +1431,17 @@ WHERE A.번호 IS NOT NULL;
 * `MINUS 연산자` : 차집합. 첫 번째 쿼리에만 있고, 두 번째 쿼리에만 없는 결과만 추출
 
 ## DCL 명령어
-* `권한 부여` : GRANT 권한 ON 테이블 TO 사용자 [WITH GRANT OPTION];
-* `권한 회수` : REVOKE 권한 ON 테이블 FROM 사용자 [CASCADE CONSTRAINT];
+* 권한 부여
+
+```sql
+GRANT 권한 ON 테이블 TO 사용자 [WITH GRANT OPTION];
+```
+
+* 권한 회수
+
+```sql
+REVOKE 권한 ON 테이블 FROM 사용자 [CASCADE CONSTRAINT];
+```
 
 ## DBMS_OUTPUT
 * 버퍼로부터 메시지를 읽어오는 인터페이스 패키지
