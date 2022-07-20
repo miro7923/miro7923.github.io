@@ -2141,7 +2141,7 @@ DBMS_OUTPUT.PUT(문자열); // 문자열 출력하는 프로시저
 * ps : 프로세스 목록 확인
 * pmap : 프로세스 ID 기준 메모리맵 정보 표시
 * kill : 프로세스 종료
-* fork : vmfhtptm todtjd
+* fork : 프로세스 생성
 * ifconfig : 네트워크 인터페이스 확인
 * host : host는 아는데 IP 주소 모를 때 사용
 
