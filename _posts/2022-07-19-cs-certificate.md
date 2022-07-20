@@ -1316,8 +1316,17 @@ c = a[-4:-1]
 * `WITH READ ONLY` : DML(조작어) 불가
 
 ### 뷰 관리 명령어
-* 뷰 생성 : CREATE [OR REPLACE] VIEW 뷰이름 AS SELECT 이름 FROM 학생 WHERE 성별 = 'F';
-* 뷰 삭제 : DROP VIEW 이름;
+* 뷰 생성
+
+```
+CREATE [OR REPLACE] VIEW 뷰이름 AS SELECT 이름 FROM 학생 WHERE 성별 = 'F';
+```
+
+* 뷰 삭제
+
+```
+DROP VIEW 이름;
+```
 
 ## 인덱스
 * DB 시스템에서 빠른 검색을 위한 데이터 구조
