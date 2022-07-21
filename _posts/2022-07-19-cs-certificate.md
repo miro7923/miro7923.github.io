@@ -1287,7 +1287,12 @@ c = a[-4:-1]
 * 디그리 : 애트리뷰트의 개수
 
 ## 테이블 관리 명령어
-* 테이블 생성 : CREATE TABLE 테이블명 (컬럼명 데이터타입 [제약조건]);
+* 테이블 생성
+
+```sql
+CREATE TABLE 테이블명 (컬럼명 데이터타입 [제약조건]);
+```
+
 * 테이블 생성 제약조건
     * PRIMARY KEY
     * FOREIGN KEY REFERENCES 테이블(컬럼)
@@ -1296,12 +1301,19 @@ c = a[-4:-1]
     * CHECK (조건 OR 조건)
     * DEFAULT
 * 테이블 변경
-    * ALTER TABLE 테이블명 ADD 컬럼명 데이터타입 [제약조건];
-    * ALTER TABLE 테이블명 MODIFY 컬럼명 데이터타입 [제약조건];
-    * ALTER TABLE 테이블명 DROP 컬럼명;
+
+```sql
+ALTER TABLE 테이블명 ADD 컬럼명 데이터타입 [제약조건];
+ALTER TABLE 테이블명 MODIFY 컬럼명 데이터타입 [제약조건];
+ALTER TABLE 테이블명 DROP 컬럼명;
+```
+
 * 테이블 삭제
-    * DROP TABLE 테이블명 [CASCADE | RESTRICT];
-    * TRUNCATE TABLE 테이블명;
+
+```sql
+DROP TABLE 테이블명 [CASCADE | RESTRICT];
+TRUNCATE TABLE 테이블명;
+```
 
 ## 뷰
 * 데이터의 독립성을 보장하고 조작 연산을 간소화할 수 있는 논리 테이블
