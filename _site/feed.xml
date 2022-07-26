@@ -1,52 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-25T19:38:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sia’s Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) 프로그래머스 - 정수 삼각형</title><link href="http://localhost:4000/programmers/programmers-dp/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 정수 삼각형" /><published>2022-07-25T00:00:00+09:00</published><updated>2022-07-25T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-dp</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-dp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-26T21:28:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sia’s Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) 프로그래머스 - 카카오프렌즈 컬러링북</title><link href="http://localhost:4000/programmers/programmers-mid-alphabet/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 카카오프렌즈 컬러링북" /><published>2022-07-26T00:00:00+09:00</published><updated>2022-07-26T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-mid-alphabet</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-mid-alphabet/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
-  <li><a href="https://school.programmers.co.kr/learn/courses/10302/lessons/62953">https://school.programmers.co.kr/learn/courses/10302/lessons/62953</a><br /><br /></li>
+  <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/1829">https://school.programmers.co.kr/learn/courses/30/lessons/1829</a><br /><br /></li>
 </ul>
 
 <h1 id="문제">문제</h1>
 <hr />
 
-<p align="center"><img src="https://grepp-programmers.s3.amazonaws.com/files/production/97ec02cc39/296a0863-a418-431d-9e8c-e57f7a9722ac.png" /></p>
+<p align="center"><img src="http://t1.kakaocdn.net/codefestival/apeach.png" /></p>
 
 <ul>
-  <li>위와 같은 삼각형의 꼭대기에서 바닥까지 이어지는 경로 중, 거쳐간 숫자의 합이 가장 큰 경우를 찾아보려고 합니다. 아래 칸으로 이동할 때는 대각선 방향으로 한 칸 오른쪽 또는 왼쪽으로만 이동 가능합니다. 예를 들어 3에서는 그 아래칸의 8 또는 1로만 이동이 가능합니다.</li>
-  <li>삼각형의 정보가 담긴 배열 triangle이 매개변수로 주어질 때, 거쳐간 숫자의 최댓값을 return 하도록 solution 함수를 완성하세요.<br /><br /></li>
+  <li>출판사의 편집자인 어피치는 네오에게 컬러링북에 들어갈 원화를 그려달라고 부탁하여 여러 장의 그림을 받았다. 여러 장의 그림을 난이도 순으로 컬러링북에 넣고 싶었던 어피치는 영역이 많으면 색칠하기가 까다로워 어려워진다는 사실을 발견하고 그림의 난이도를 영역의 수로 정의하였다. (영역이란 상하좌우로 연결된 같은 색상의 공간을 의미한다.)</li>
+  <li>그림에 몇 개의 영역이 있는지와 가장 큰 영역의 넓이는 얼마인지 계산하는 프로그램을 작성해보자.</li>
+  <li>위의 그림은 총 12개 영역으로 이루어져 있으며, 가장 넓은 영역은 어피치의 얼굴면으로 넓이는 120이다.<br /><br /></li>
 </ul>
 
 <h1 id="제한">제한</h1>
 <hr />
 
 <ul>
-  <li>삼각형의 높이는 1 이상 500 이하입니다.</li>
-  <li>삼각형을 이루고 있는 숫자는 0 이상 9,999 이하의 정수입니다.<br /><br /><br /></li>
+  <li>
+    <p>입력은 그림의 크기를 나타내는 m과 n, 그리고 그림을 나타내는 m × n 크기의 2차원 배열 picture로 주어진다. 제한조건은 아래와 같다.</p>
+  </li>
+  <li>
+    <p>1 &lt;= m, n &lt;= 100</p>
+  </li>
+  <li>picture의 원소는 0 이상 2^31 - 1 이하의 임의의 값이다.</li>
+  <li>picture의 원소 중 값이 0인 경우는 색칠하지 않는 영역을 뜻한다.<br /><br /><br /></li>
 </ul>
 
 <h1 id="-풀이">👀 풀이</h1>
 <hr />
 
 <ul>
-  <li>얼핏 보면 그리디로 풀 수 있을거 같지만 그럴 수 없다. 항상 큰 수를 고른다고 해서 무조건 합이 최대가 되는 것은 아니기 때문이다.</li>
-  <li>문제의 조건대로 답을 구하려면 삼각형을 잘게 쪼개서 조건대로 더해보면 된다.</li>
-  <li>각 라인의 첫 번째와 마지막 칸엔 바로 윗 줄의 양 끝에 있는 값과 현재 칸의 값을 더한 값만 가능하고, 나머지는 대각선 방향에 있는 두 숫자와 더한 값 중 큰 값을 남기면 된다.<br /><br /></li>
+  <li>예전에 풀었던 적이 있는 문제인데 자바로는 풀어본 적이 없어서 한 번 더 풀어보았다.</li>
+  <li><code class="language-plaintext highlighter-rouge">BFS</code> 기본 문제로 <code class="language-plaintext highlighter-rouge">BFS</code> 알고리즘을 영역별로 나눠서 탐색하도록 수정하면 된다.</li>
+  <li>그래서 [0][0] 인덱스부터 탐색하는 것이 아닌 2중 반복문으로 배열을 탐색하면서 색칠된 칸(숫자가 1 이상인 칸)부터 <code class="language-plaintext highlighter-rouge">BFS</code> 탐색을 시작해서 상하좌우에 더 이상 같이 색이 존재하지 않을 때까지 탐색하면 된다. 이 때 넓이도 함께 계산해서 최댓값을 계속 갱신해 주어야 한다.</li>
+  <li>하나의 영역 탐색이 끝나고 나면 영역의 갯수도 증가시켜 준다.<br /><br /></li>
 </ul>
 
-<h1 id="하향식-풀이-코드">하향식 풀이 코드</h1>
+<h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/82b721d9237427678d02b255168ff8a7.js"></script>
-<p><br /><br /></p>
-
-<h1 id="상향식-풀이-코드">상향식 풀이 코드</h1>
-<hr />
-
-<ul>
-  <li>풀이 강의에서 일반적으로 생각할 수 있는 하향식 풀이가 아닌, 아래에서부터 위로 올라가는 상향식 풀이 방법도 보여주었다.</li>
-  <li>이렇게 하면 각 라인의 끝 칸에 대해 예외처리를 해 줄 필요가 없다. 삼각형은 아래로 갈수록 넓어지기 때문이다.</li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/ff9c94c504efe2dc20582548a759ba64.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="DP" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62953]]></summary></entry><entry><title type="html">에러해결 Log) 스프링부트 invalid source release 11</title><link href="http://localhost:4000/errorlog/warning-log-14/" rel="alternate" type="text/html" title="에러해결 Log) 스프링부트 invalid source release 11" /><published>2022-07-25T00:00:00+09:00</published><updated>2022-07-25T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-14</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-14/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<script src="https://gist.github.com/miro7923/7fd992e23df328368a5fd4b020ac6e79.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BFS" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/30/lessons/1829]]></summary></entry><entry><title type="html">에러해결 Log) 스프링부트 invalid source release 11</title><link href="http://localhost:4000/errorlog/warning-log-14/" rel="alternate" type="text/html" title="에러해결 Log) 스프링부트 invalid source release 11" /><published>2022-07-25T00:00:00+09:00</published><updated>2022-07-25T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-14</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-14/"><![CDATA[<h1 id="사용환경">사용환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020) 16GB</li>
   <li>OpenJDK 11</li>
@@ -113,7 +110,55 @@
 </ul>
 
 <h1 id="참고">참고</h1>
-<p><a href="https://blog.naver.com/PostView.naver?blogId=tofhadl529&amp;logNo=222374497101&amp;from=search&amp;redirect=Log&amp;widgetTypeCall=true&amp;directAccess=false">[스프링부트] invalid source release: 11 오류</a></p>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB OpenJDK 11 IntelliJ IDEA Community]]></summary></entry><entry><title type="html">정보처리기사) 실기 개념 정리</title><link href="http://localhost:4000/certificate/cs-certificate/" rel="alternate" type="text/html" title="정보처리기사) 실기 개념 정리" /><published>2022-07-19T00:00:00+09:00</published><updated>2022-07-19T00:00:00+09:00</updated><id>http://localhost:4000/certificate/cs-certificate</id><content type="html" xml:base="http://localhost:4000/certificate/cs-certificate/"><![CDATA[<ul>
+<p><a href="https://blog.naver.com/PostView.naver?blogId=tofhadl529&amp;logNo=222374497101&amp;from=search&amp;redirect=Log&amp;widgetTypeCall=true&amp;directAccess=false">[스프링부트] invalid source release: 11 오류</a></p>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB OpenJDK 11 IntelliJ IDEA Community]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 정수 삼각형</title><link href="http://localhost:4000/programmers/programmers-dp/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 정수 삼각형" /><published>2022-07-25T00:00:00+09:00</published><updated>2022-07-25T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-dp</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-dp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://school.programmers.co.kr/learn/courses/10302/lessons/62953">https://school.programmers.co.kr/learn/courses/10302/lessons/62953</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<p align="center"><img src="https://grepp-programmers.s3.amazonaws.com/files/production/97ec02cc39/296a0863-a418-431d-9e8c-e57f7a9722ac.png" /></p>
+
+<ul>
+  <li>위와 같은 삼각형의 꼭대기에서 바닥까지 이어지는 경로 중, 거쳐간 숫자의 합이 가장 큰 경우를 찾아보려고 합니다. 아래 칸으로 이동할 때는 대각선 방향으로 한 칸 오른쪽 또는 왼쪽으로만 이동 가능합니다. 예를 들어 3에서는 그 아래칸의 8 또는 1로만 이동이 가능합니다.</li>
+  <li>삼각형의 정보가 담긴 배열 triangle이 매개변수로 주어질 때, 거쳐간 숫자의 최댓값을 return 하도록 solution 함수를 완성하세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>삼각형의 높이는 1 이상 500 이하입니다.</li>
+  <li>삼각형을 이루고 있는 숫자는 0 이상 9,999 이하의 정수입니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>얼핏 보면 그리디로 풀 수 있을거 같지만 그럴 수 없다. 항상 큰 수를 고른다고 해서 무조건 합이 최대가 되는 것은 아니기 때문이다.</li>
+  <li>문제의 조건대로 답을 구하려면 삼각형을 잘게 쪼개서 조건대로 더해보면 된다.</li>
+  <li>각 라인의 첫 번째와 마지막 칸엔 바로 윗 줄의 양 끝에 있는 값과 현재 칸의 값을 더한 값만 가능하고, 나머지는 대각선 방향에 있는 두 숫자와 더한 값 중 큰 값을 남기면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="하향식-풀이-코드">하향식 풀이 코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/82b721d9237427678d02b255168ff8a7.js"></script>
+<p><br /><br /></p>
+
+<h1 id="상향식-풀이-코드">상향식 풀이 코드</h1>
+<hr />
+
+<ul>
+  <li>풀이 강의에서 일반적으로 생각할 수 있는 하향식 풀이가 아닌, 아래에서부터 위로 올라가는 상향식 풀이 방법도 보여주었다.</li>
+  <li>이렇게 하면 각 라인의 끝 칸에 대해 예외처리를 해 줄 필요가 없다. 삼각형은 아래로 갈수록 넓어지기 때문이다.</li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/ff9c94c504efe2dc20582548a759ba64.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="DP" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62953]]></summary></entry><entry><title type="html">정보처리기사) 실기 개념 정리</title><link href="http://localhost:4000/certificate/cs-certificate/" rel="alternate" type="text/html" title="정보처리기사) 실기 개념 정리" /><published>2022-07-19T00:00:00+09:00</published><updated>2022-07-19T00:00:00+09:00</updated><id>http://localhost:4000/certificate/cs-certificate</id><content type="html" xml:base="http://localhost:4000/certificate/cs-certificate/"><![CDATA[<ul>
   <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리<br /><br /></li>
 </ul>
 
@@ -3953,57 +3998,4 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/d168474b2fe3ceb2d077e3962f62e964.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BinarySearch" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62949]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 가장 큰 수</title><link href="http://localhost:4000/programmers/programmers-bigNumber-java/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 가장 큰 수" /><published>2022-07-10T00:00:00+09:00</published><updated>2022-07-10T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-bigNumber-java</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-bigNumber-java/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://school.programmers.co.kr/learn/courses/10302/lessons/62948">https://school.programmers.co.kr/learn/courses/10302/lessons/62948</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내 주세요.</li>
-  <li>예를 들어, 주어진 정수가 [6, 10, 2]라면 [6102, 6210, 1062, 1026, 2610, 2106]를 만들 수 있고, 이중 가장 큰 수는 6210입니다.</li>
-  <li>0 또는 양의 정수가 담긴 배열 numbers가 매개변수로 주어질 때, 순서를 재배치하여 만들 수 있는 가장 큰 수를 문자열로 바꾸어 return 하도록 solution 함수를 작성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>numbers의 길이는 1 이상 100,000 이하입니다.</li>
-  <li>numbers의 원소는 0 이상 1,000 이하입니다.</li>
-  <li>정답이 너무 클 수 있으니 문자열로 바꾸어 return 합니다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>주어지는 배열의 숫자들을 조합해서 숫자를 만들다 보면 정수 자료형의 범위를 초과할 수 있다.</li>
-  <li>그래서 조합을 시도할 땐 정수를 문자열로 바꾸어야 한다. 여기까지는 맞는 접근…</li>
-</ul>
-
-<h2 id="1차-시도">1차 시도</h2>
-<ul>
-  <li>배열의 모든 원소를 조합해서 숫자를 만들어봐야 하기 때문에 순열문제라고 생각했다. 그래서 순열 만드는 함수를 만들어 모든 순열을 구한 다음에 그걸 정렬해서 가장 큰 수를 리턴하는 방식으로 했다.</li>
-  <li>테스트 케이스는 통과했지만 막상 제출하니까 시간초과가 뜨면서 실패했다…ㅎ</li>
-  <li>나중에 풀이를 보니까 접근 방법 자체가 달라서 통과할 수 없는 알고리즘이었다. 순열을 구하는 메서드에서 시간초과가 발생했거나 무한루프가 돈 것으로 예상되었다.</li>
-</ul>
-
-<h2 id="2차-시도">2차 시도</h2>
-<ul>
-  <li>풀이 영상을 보고 처음에 생각했던 접근방법이 틀렸다는 걸 알게 되었다.</li>
-  <li>이 문제를 시간 안에 통과하기 위한 접근법은 숫자를 -&gt; 문자로 바꾸고 -&gt; 내림차순으로 정렬해서 -&gt; 문자열로 조합 이었다.</li>
-  <li>하지만 무작정 내림차순으로 정렬하면 테스트 케이스 1처럼 <code class="language-plaintext highlighter-rouge">6, 10</code>인 경우에는 <code class="language-plaintext highlighter-rouge">610</code>이 큰 수지만 단순 내림차순으로 정렬해 버린 후 조합하면 <code class="language-plaintext highlighter-rouge">10, 6</code>이 되어 <code class="language-plaintext highlighter-rouge">106</code>이라는 결과를 얻게 된다. 그렇기 때문에 두 수를 조합한 결과가 큰 순서대로 내림차순 정렬될 수 있도록 해야한다.</li>
-  <li>이를 위해 <code class="language-plaintext highlighter-rouge">compareTo()</code> 메서드를 사용해 정렬 대상이 되는 앞뒤 원소 두 개를 조합한 결과에 따라 내림차순 정렬이 될 수 있도록 했다.</li>
-  <li>주 언어가 자바지만 정작 코테 준비는 <code class="language-plaintext highlighter-rouge">C++</code>이나 <code class="language-plaintext highlighter-rouge">파이썬</code>으로 많이 했었기 때문에 자바의 컬렉션에 좀 약했는데 풀이 강의는 자바 사용에 대한 팁도 많이 줘서 좋았다. 이것 하나로 수강료가 아깝지 않았다.</li>
-  <li>프로그래머스 <a href="https://school.programmers.co.kr/learn/courses/10302">[Java/문제풀이] 코딩테스트 광탈 방지 Kit: Java편</a> 왕추천!! <br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/a4ecd2b3fa0442c38c6fc07058a86114.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="Sorting" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62948]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/d168474b2fe3ceb2d077e3962f62e964.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BinarySearch" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62949]]></summary></entry></feed>
