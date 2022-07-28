@@ -1,0 +1,767 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Java) 프로그래머스 - 메뉴 리뉴얼 | Sia’s Dev Log</title>
+<meta name="description" content="문제 링크      https://school.programmers.co.kr/learn/courses/30/lessons/72411">
+
+
+  <meta name="author" content="Sia Hwang">
+  
+  <meta property="article:author" content="Sia Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Sia's Dev Log">
+<meta property="og:title" content="Java) 프로그래머스 - 메뉴 리뉴얼">
+<meta property="og:url" content="http://localhost:4000/programmers/programmers-menu/">
+
+
+  <meta property="og:description" content="문제 링크      https://school.programmers.co.kr/learn/courses/30/lessons/72411">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-07-28T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/programmers/programmers-menu/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Sia Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Sia's Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#programmers" itemprop="item"><span itemprop="name">Programmers</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Java) 프로그래머스 - 메뉴 리뉴얼</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Sia Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Sia Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업 좋아하는 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Portfolio</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Java) 프로그래머스 - 메뉴 리뉴얼">
+    <meta itemprop="description" content="문제 링크  https://school.programmers.co.kr/learn/courses/30/lessons/72411">
+    <meta itemprop="datePublished" content="2022-07-28T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/programmers/programmers-menu/" class="u-url" itemprop="url">Java) 프로그래머스 - 메뉴 리뉴얼
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-28T00:00:00+09:00">July 28, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#문제-링크">문제 링크</a></li><li><a href="#문제">문제</a></li><li><a href="#제한">제한</a></li><li><a href="#-풀이">👀 풀이</a></li><li><a href="#코드">코드</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/72411">https://school.programmers.co.kr/learn/courses/30/lessons/72411</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>각 손님들이 주문한 단품메뉴들이 문자열 형식으로 담긴 배열 orders, “스카피”가 추가하고 싶어하는 코스요리를 구성하는 단품메뉴들의 갯수가 담긴 배열 course가 매개변수로 주어질 때, “스카피”가 새로 추가하게 될 코스요리의 메뉴 구성을 문자열 형태로 배열에 담아 return 하도록 solution 함수를 완성해 주세요.</li>
+  <li>전문은 링크에…<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>orders 배열의 크기는 2 이상 20 이하입니다.</li>
+  <li>orders 배열의 각 원소는 크기가 2 이상 10 이하인 문자열입니다.
+    <ul>
+      <li>각 문자열은 알파벳 대문자로만 이루어져 있습니다.</li>
+      <li>각 문자열에는 같은 알파벳이 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>course 배열의 크기는 1 이상 10 이하입니다.
+    <ul>
+      <li>course 배열의 각 원소는 2 이상 10 이하인 자연수가 오름차순으로 정렬되어 있습니다.</li>
+      <li>course 배열에는 같은 값이 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>정답은 각 코스요리 메뉴의 구성을 문자열 형식으로 배열에 담아 사전 순으로 오름차순 정렬해서 return 해주세요.
+    <ul>
+      <li>배열의 각 원소에 저장된 문자열 또한 알파벳 오름차순으로 정렬되어야 합니다.</li>
+      <li>만약 가장 많이 함께 주문된 메뉴 구성이 여러 개라면, 모두 배열에 담아 return 하면 됩니다.</li>
+      <li>orders와 course 매개변수는 return 하는 배열의 길이가 1 이상이 되도록 주어집니다.<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>푸는데 참 오래걸렸다…ㅎ</li>
+  <li>처음엔 하나씩 조합해서 주문목록에서 찾는 방식으로 해야하나 하는 막연한 생각이 들었지만 뭔가 엄두가 안나서 미루다가… 질문 게시판을 참고했다. 참고 결과 처음에 생각했던 방향이 어느정도 맞아 보여서 이 아이디어로 코드를 짜 보았다.</li>
+</ul>
+
+<ol>
+  <li>먼저 주문에 사용된 알파벳들을 조합해서 메뉴 구성을 짜 보아야 한다. 그러기 위해서는 손님들의 주문에 어떤 알파벳들이 쓰였는지 알아야 한다. 이걸 알아내기 위해 <code class="language-plaintext highlighter-rouge">Set</code>을 이용해 주문목록을 순회하면서 사용된 알파벳들을 추출한다. <code class="language-plaintext highlighter-rouge">Set</code>은 중복을 허용하지 않기 때문에 주문에 사용된 알파벳들을 알아낼 수 있다.</li>
+  <li>쓰인 알파벳들을 알아냈으면 이걸 오름차순으로 정렬한다. 정답은 오름차순으로 조합된 결과여야 하기 때문에 알파벳들을 오름차순으로 정렬한 다음 조합을 시작할 것이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">course</code>의 원소값만큼 길이로 알파벳들을 조합한 결과를 <code class="language-plaintext highlighter-rouge">Map&lt;String, Integer&gt;</code>에 담는다. 왜냐면 각 조합별로 몇 번 주문되었는지 셀 것이기 때문이다. <code class="language-plaintext highlighter-rouge">Menu</code> 클래스를 만들어 조합 문자열과 주문횟수를 저장한 뒤 배열에 담을수도 있는데 나중에 찾을 때 오래 걸릴 거 같아서 키값으로 빠르게 찾아오려고 <code class="language-plaintext highlighter-rouge">Map</code>을 사용했다. 하지만 지금 글을 쓰면서 생각해보니 클래스를 담은 배열로도 충분할 거 같은데 지금은 시간이 늦었으니 내일 리팩토링을 해 보는 것으로!
+    <ul>
+      <li>조합 결과를 담을 때 &lt;메뉴조합, 0&gt; 페어로 담는다.</li>
+    </ul>
+  </li>
+  <li>조합별로 몇 번 사용되었는지 횟수를 센다.</li>
+  <li>이 중에서 2번 이상 주문된 조합만 정답이 될 가능성이 있다. 그런데 문제의 조건이 각 <code class="language-plaintext highlighter-rouge">course</code>별 메뉴 조합 중에서는 가장 많이 주문된 조합을 리턴하고 가장 많이 주문된 조합이 여러개라면 여러개를 다 리턴하는 것이다.(처음에 이걸 못 알아먹어서 헤멤..) 그래서 먼저 2번 이상 주문된 조합만 추출한다.</li>
+  <li>5번에서 추출한 메뉴들 중에서 각 <code class="language-plaintext highlighter-rouge">course</code> 갯수별로 가장 많이 주문된 조합을 찾아서 정답 배열에 담아서 리턴한다.</li>
+</ol>
+
+<ul>
+  <li>글로 과정을 정리하니까 간단해 보이는데 미처 생각치 못한 예외케이스들이 있어 디버깅에 시간이 오래 걸렸다. 하지만 예전같았음 진작에 답지 보고 풀었을텐데 끝까지 내가 풀어서 뿌듯하다!<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/7d6b28ff671a62dfa9d5d7561f729b58.js"></script>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a><span class="sep">, </span>
+    
+      <a href="/tags/#bruteforce" class="page__taxonomy-item p-category" rel="tag">BruteForce</a><span class="sep">, </span>
+    
+      <a href="/tags/#combination" class="page__taxonomy-item p-category" rel="tag">Combination</a><span class="sep">, </span>
+    
+      <a href="/tags/#java" class="page__taxonomy-item p-category" rel="tag">Java</a><span class="sep">, </span>
+    
+      <a href="/tags/#programmers" class="page__taxonomy-item p-category" rel="tag">Programmers</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#programmers" class="page__taxonomy-item p-category" rel="tag">Programmers</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-07-28T00:00:00+09:00">July 28, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Java%29+%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4+-+%EB%A9%94%EB%89%B4+%EB%A6%AC%EB%89%B4%EC%96%BC%20http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-menu%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-menu%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-menu%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/programmers/programmers-mid-alphabet/" class="pagination--pager" title="Java) 프로그래머스 - 카카오프렌즈 컬러링북
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-mid-alphabet/" rel="permalink">Java) 프로그래머스 - 카카오프렌즈 컬러링북
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-26T00:00:00+09:00">July 26, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://school.programmers.co.kr/learn/courses/30/lessons/1829
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/errorlog/warning-log-14/" rel="permalink">에러해결 Log) 스프링부트 invalid source release 11
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-25T00:00:00+09:00">July 25, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">사용환경
+
+  MacBook Air (M1, 2020) 16GB
+  OpenJDK 11
+  IntelliJ IDEA Community
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-dp/" rel="permalink">Java) 프로그래머스 - 정수 삼각형
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-25T00:00:00+09:00">July 25, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://school.programmers.co.kr/learn/courses/10302/lessons/62953
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/certificate/cs-certificate/" rel="permalink">정보처리기사) 실기 개념 정리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-19T00:00:00+09:00">July 19, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Sia Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

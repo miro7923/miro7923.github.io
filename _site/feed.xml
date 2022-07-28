@@ -1,4 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-26T21:28:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sia’s Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) 프로그래머스 - 카카오프렌즈 컬러링북</title><link href="http://localhost:4000/programmers/programmers-mid-alphabet/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 카카오프렌즈 컬러링북" /><published>2022-07-26T00:00:00+09:00</published><updated>2022-07-26T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-mid-alphabet</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-mid-alphabet/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-29T00:09:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sia’s Dev Log</title><subtitle>개발 공부 기록하는 블로그</subtitle><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><entry><title type="html">Java) 프로그래머스 - 메뉴 리뉴얼</title><link href="http://localhost:4000/programmers/programmers-menu/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 메뉴 리뉴얼" /><published>2022-07-28T00:00:00+09:00</published><updated>2022-07-28T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-menu</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-menu/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/72411">https://school.programmers.co.kr/learn/courses/30/lessons/72411</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<ul>
+  <li>각 손님들이 주문한 단품메뉴들이 문자열 형식으로 담긴 배열 orders, “스카피”가 추가하고 싶어하는 코스요리를 구성하는 단품메뉴들의 갯수가 담긴 배열 course가 매개변수로 주어질 때, “스카피”가 새로 추가하게 될 코스요리의 메뉴 구성을 문자열 형태로 배열에 담아 return 하도록 solution 함수를 완성해 주세요.</li>
+  <li>전문은 링크에…<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>orders 배열의 크기는 2 이상 20 이하입니다.</li>
+  <li>orders 배열의 각 원소는 크기가 2 이상 10 이하인 문자열입니다.
+    <ul>
+      <li>각 문자열은 알파벳 대문자로만 이루어져 있습니다.</li>
+      <li>각 문자열에는 같은 알파벳이 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>course 배열의 크기는 1 이상 10 이하입니다.
+    <ul>
+      <li>course 배열의 각 원소는 2 이상 10 이하인 자연수가 오름차순으로 정렬되어 있습니다.</li>
+      <li>course 배열에는 같은 값이 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>정답은 각 코스요리 메뉴의 구성을 문자열 형식으로 배열에 담아 사전 순으로 오름차순 정렬해서 return 해주세요.
+    <ul>
+      <li>배열의 각 원소에 저장된 문자열 또한 알파벳 오름차순으로 정렬되어야 합니다.</li>
+      <li>만약 가장 많이 함께 주문된 메뉴 구성이 여러 개라면, 모두 배열에 담아 return 하면 됩니다.</li>
+      <li>orders와 course 매개변수는 return 하는 배열의 길이가 1 이상이 되도록 주어집니다.<br /><br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>푸는데 참 오래걸렸다…ㅎ</li>
+  <li>처음엔 하나씩 조합해서 주문목록에서 찾는 방식으로 해야하나 하는 막연한 생각이 들었지만 뭔가 엄두가 안나서 미루다가… 질문 게시판을 참고했다. 참고 결과 처음에 생각했던 방향이 어느정도 맞아 보여서 이 아이디어로 코드를 짜 보았다.</li>
+</ul>
+
+<ol>
+  <li>먼저 주문에 사용된 알파벳들을 조합해서 메뉴 구성을 짜 보아야 한다. 그러기 위해서는 손님들의 주문에 어떤 알파벳들이 쓰였는지 알아야 한다. 이걸 알아내기 위해 <code class="language-plaintext highlighter-rouge">Set</code>을 이용해 주문목록을 순회하면서 사용된 알파벳들을 추출한다. <code class="language-plaintext highlighter-rouge">Set</code>은 중복을 허용하지 않기 때문에 주문에 사용된 알파벳들을 알아낼 수 있다.</li>
+  <li>쓰인 알파벳들을 알아냈으면 이걸 오름차순으로 정렬한다. 정답은 오름차순으로 조합된 결과여야 하기 때문에 알파벳들을 오름차순으로 정렬한 다음 조합을 시작할 것이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">course</code>의 원소값만큼 길이로 알파벳들을 조합한 결과를 <code class="language-plaintext highlighter-rouge">Map&lt;String, Integer&gt;</code>에 담는다. 왜냐면 각 조합별로 몇 번 주문되었는지 셀 것이기 때문이다. <code class="language-plaintext highlighter-rouge">Menu</code> 클래스를 만들어 조합 문자열과 주문횟수를 저장한 뒤 배열에 담을수도 있는데 나중에 찾을 때 오래 걸릴 거 같아서 키값으로 빠르게 찾아오려고 <code class="language-plaintext highlighter-rouge">Map</code>을 사용했다. 하지만 지금 글을 쓰면서 생각해보니 클래스를 담은 배열로도 충분할 거 같은데 지금은 시간이 늦었으니 내일 리팩토링을 해 보는 것으로!
+    <ul>
+      <li>조합 결과를 담을 때 &lt;메뉴조합, 0&gt; 페어로 담는다.</li>
+    </ul>
+  </li>
+  <li>조합별로 몇 번 사용되었는지 횟수를 센다.</li>
+  <li>이 중에서 2번 이상 주문된 조합만 정답이 될 가능성이 있다. 그런데 문제의 조건이 각 <code class="language-plaintext highlighter-rouge">course</code>별 메뉴 조합 중에서는 가장 많이 주문된 조합을 리턴하고 가장 많이 주문된 조합이 여러개라면 여러개를 다 리턴하는 것이다.(처음에 이걸 못 알아먹어서 헤멤..) 그래서 먼저 2번 이상 주문된 조합만 추출한다.</li>
+  <li>5번에서 추출한 메뉴들 중에서 각 <code class="language-plaintext highlighter-rouge">course</code> 갯수별로 가장 많이 주문된 조합을 찾아서 정답 배열에 담아서 리턴한다.</li>
+</ol>
+
+<ul>
+  <li>글로 과정을 정리하니까 간단해 보이는데 미처 생각치 못한 예외케이스들이 있어 디버깅에 시간이 오래 걸렸다. 하지만 예전같았음 진작에 답지 보고 풀었을텐데 끝까지 내가 풀어서 뿌듯하다!<br /><br /></li>
+</ul>
+
+<h1 id="코드">코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/7d6b28ff671a62dfa9d5d7561f729b58.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="Combination" /><category term="BruteForce" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/30/lessons/72411]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 카카오프렌즈 컬러링북</title><link href="http://localhost:4000/programmers/programmers-mid-alphabet/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 카카오프렌즈 컬러링북" /><published>2022-07-26T00:00:00+09:00</published><updated>2022-07-26T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-mid-alphabet</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-mid-alphabet/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -43,7 +112,55 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/7fd992e23df328368a5fd4b020ac6e79.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BFS" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/30/lessons/1829]]></summary></entry><entry><title type="html">에러해결 Log) 스프링부트 invalid source release 11</title><link href="http://localhost:4000/errorlog/warning-log-14/" rel="alternate" type="text/html" title="에러해결 Log) 스프링부트 invalid source release 11" /><published>2022-07-25T00:00:00+09:00</published><updated>2022-07-25T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-14</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-14/"><![CDATA[<h1 id="사용환경">사용환경</h1>
+<script src="https://gist.github.com/miro7923/7fd992e23df328368a5fd4b020ac6e79.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BFS" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/30/lessons/1829]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 정수 삼각형</title><link href="http://localhost:4000/programmers/programmers-dp/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 정수 삼각형" /><published>2022-07-25T00:00:00+09:00</published><updated>2022-07-25T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-dp</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-dp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
+<hr />
+
+<ul>
+  <li><a href="https://school.programmers.co.kr/learn/courses/10302/lessons/62953">https://school.programmers.co.kr/learn/courses/10302/lessons/62953</a><br /><br /></li>
+</ul>
+
+<h1 id="문제">문제</h1>
+<hr />
+
+<p align="center"><img src="https://grepp-programmers.s3.amazonaws.com/files/production/97ec02cc39/296a0863-a418-431d-9e8c-e57f7a9722ac.png" /></p>
+
+<ul>
+  <li>위와 같은 삼각형의 꼭대기에서 바닥까지 이어지는 경로 중, 거쳐간 숫자의 합이 가장 큰 경우를 찾아보려고 합니다. 아래 칸으로 이동할 때는 대각선 방향으로 한 칸 오른쪽 또는 왼쪽으로만 이동 가능합니다. 예를 들어 3에서는 그 아래칸의 8 또는 1로만 이동이 가능합니다.</li>
+  <li>삼각형의 정보가 담긴 배열 triangle이 매개변수로 주어질 때, 거쳐간 숫자의 최댓값을 return 하도록 solution 함수를 완성하세요.<br /><br /></li>
+</ul>
+
+<h1 id="제한">제한</h1>
+<hr />
+
+<ul>
+  <li>삼각형의 높이는 1 이상 500 이하입니다.</li>
+  <li>삼각형을 이루고 있는 숫자는 0 이상 9,999 이하의 정수입니다.<br /><br /><br /></li>
+</ul>
+
+<h1 id="-풀이">👀 풀이</h1>
+<hr />
+
+<ul>
+  <li>얼핏 보면 그리디로 풀 수 있을거 같지만 그럴 수 없다. 항상 큰 수를 고른다고 해서 무조건 합이 최대가 되는 것은 아니기 때문이다.</li>
+  <li>문제의 조건대로 답을 구하려면 삼각형을 잘게 쪼개서 조건대로 더해보면 된다.</li>
+  <li>각 라인의 첫 번째와 마지막 칸엔 바로 윗 줄의 양 끝에 있는 값과 현재 칸의 값을 더한 값만 가능하고, 나머지는 대각선 방향에 있는 두 숫자와 더한 값 중 큰 값을 남기면 된다.<br /><br /></li>
+</ul>
+
+<h1 id="하향식-풀이-코드">하향식 풀이 코드</h1>
+<hr />
+
+<script src="https://gist.github.com/miro7923/82b721d9237427678d02b255168ff8a7.js"></script>
+<p><br /><br /></p>
+
+<h1 id="상향식-풀이-코드">상향식 풀이 코드</h1>
+<hr />
+
+<ul>
+  <li>풀이 강의에서 일반적으로 생각할 수 있는 하향식 풀이가 아닌, 아래에서부터 위로 올라가는 상향식 풀이 방법도 보여주었다.</li>
+  <li>이렇게 하면 각 라인의 끝 칸에 대해 예외처리를 해 줄 필요가 없다. 삼각형은 아래로 갈수록 넓어지기 때문이다.</li>
+</ul>
+
+<script src="https://gist.github.com/miro7923/ff9c94c504efe2dc20582548a759ba64.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="DP" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62953]]></summary></entry><entry><title type="html">에러해결 Log) 스프링부트 invalid source release 11</title><link href="http://localhost:4000/errorlog/warning-log-14/" rel="alternate" type="text/html" title="에러해결 Log) 스프링부트 invalid source release 11" /><published>2022-07-25T00:00:00+09:00</published><updated>2022-07-25T00:00:00+09:00</updated><id>http://localhost:4000/errorlog/warning-log-14</id><content type="html" xml:base="http://localhost:4000/errorlog/warning-log-14/"><![CDATA[<h1 id="사용환경">사용환경</h1>
 <ul>
   <li>MacBook Air (M1, 2020) 16GB</li>
   <li>OpenJDK 11</li>
@@ -110,55 +227,7 @@
 </ul>
 
 <h1 id="참고">참고</h1>
-<p><a href="https://blog.naver.com/PostView.naver?blogId=tofhadl529&amp;logNo=222374497101&amp;from=search&amp;redirect=Log&amp;widgetTypeCall=true&amp;directAccess=false">[스프링부트] invalid source release: 11 오류</a></p>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB OpenJDK 11 IntelliJ IDEA Community]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 정수 삼각형</title><link href="http://localhost:4000/programmers/programmers-dp/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 정수 삼각형" /><published>2022-07-25T00:00:00+09:00</published><updated>2022-07-25T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-dp</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-dp/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://school.programmers.co.kr/learn/courses/10302/lessons/62953">https://school.programmers.co.kr/learn/courses/10302/lessons/62953</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<p align="center"><img src="https://grepp-programmers.s3.amazonaws.com/files/production/97ec02cc39/296a0863-a418-431d-9e8c-e57f7a9722ac.png" /></p>
-
-<ul>
-  <li>위와 같은 삼각형의 꼭대기에서 바닥까지 이어지는 경로 중, 거쳐간 숫자의 합이 가장 큰 경우를 찾아보려고 합니다. 아래 칸으로 이동할 때는 대각선 방향으로 한 칸 오른쪽 또는 왼쪽으로만 이동 가능합니다. 예를 들어 3에서는 그 아래칸의 8 또는 1로만 이동이 가능합니다.</li>
-  <li>삼각형의 정보가 담긴 배열 triangle이 매개변수로 주어질 때, 거쳐간 숫자의 최댓값을 return 하도록 solution 함수를 완성하세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>삼각형의 높이는 1 이상 500 이하입니다.</li>
-  <li>삼각형을 이루고 있는 숫자는 0 이상 9,999 이하의 정수입니다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>얼핏 보면 그리디로 풀 수 있을거 같지만 그럴 수 없다. 항상 큰 수를 고른다고 해서 무조건 합이 최대가 되는 것은 아니기 때문이다.</li>
-  <li>문제의 조건대로 답을 구하려면 삼각형을 잘게 쪼개서 조건대로 더해보면 된다.</li>
-  <li>각 라인의 첫 번째와 마지막 칸엔 바로 윗 줄의 양 끝에 있는 값과 현재 칸의 값을 더한 값만 가능하고, 나머지는 대각선 방향에 있는 두 숫자와 더한 값 중 큰 값을 남기면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="하향식-풀이-코드">하향식 풀이 코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/82b721d9237427678d02b255168ff8a7.js"></script>
-<p><br /><br /></p>
-
-<h1 id="상향식-풀이-코드">상향식 풀이 코드</h1>
-<hr />
-
-<ul>
-  <li>풀이 강의에서 일반적으로 생각할 수 있는 하향식 풀이가 아닌, 아래에서부터 위로 올라가는 상향식 풀이 방법도 보여주었다.</li>
-  <li>이렇게 하면 각 라인의 끝 칸에 대해 예외처리를 해 줄 필요가 없다. 삼각형은 아래로 갈수록 넓어지기 때문이다.</li>
-</ul>
-
-<script src="https://gist.github.com/miro7923/ff9c94c504efe2dc20582548a759ba64.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="DP" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62953]]></summary></entry><entry><title type="html">정보처리기사) 실기 개념 정리</title><link href="http://localhost:4000/certificate/cs-certificate/" rel="alternate" type="text/html" title="정보처리기사) 실기 개념 정리" /><published>2022-07-19T00:00:00+09:00</published><updated>2022-07-19T00:00:00+09:00</updated><id>http://localhost:4000/certificate/cs-certificate</id><content type="html" xml:base="http://localhost:4000/certificate/cs-certificate/"><![CDATA[<ul>
+<p><a href="https://blog.naver.com/PostView.naver?blogId=tofhadl529&amp;logNo=222374497101&amp;from=search&amp;redirect=Log&amp;widgetTypeCall=true&amp;directAccess=false">[스프링부트] invalid source release: 11 오류</a></p>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="ErrorLog" /><category term="Error" /><category term="Solve" /><category term="Log" /><summary type="html"><![CDATA[사용환경 MacBook Air (M1, 2020) 16GB OpenJDK 11 IntelliJ IDEA Community]]></summary></entry><entry><title type="html">정보처리기사) 실기 개념 정리</title><link href="http://localhost:4000/certificate/cs-certificate/" rel="alternate" type="text/html" title="정보처리기사) 실기 개념 정리" /><published>2022-07-19T00:00:00+09:00</published><updated>2022-07-19T00:00:00+09:00</updated><id>http://localhost:4000/certificate/cs-certificate</id><content type="html" xml:base="http://localhost:4000/certificate/cs-certificate/"><![CDATA[<ul>
   <li>최근 미뤄뒀던 정보처리기사 실기를 준비하며… 꼭 외워야 하는 내용 정리<br /><br /></li>
 </ul>
 
@@ -3951,51 +4020,4 @@
 <h1 id="코드">코드</h1>
 <hr />
 
-<script src="https://gist.github.com/miro7923/b31d9de91d26ef1943e7d862b541a340.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="Simulation" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62947]]></summary></entry><entry><title type="html">Java) 프로그래머스 - 예산</title><link href="http://localhost:4000/programmers/programmers-binary-search/" rel="alternate" type="text/html" title="Java) 프로그래머스 - 예산" /><published>2022-07-11T00:00:00+09:00</published><updated>2022-07-11T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers-binary-search</id><content type="html" xml:base="http://localhost:4000/programmers/programmers-binary-search/"><![CDATA[<h1 id="문제-링크">문제 링크</h1>
-<hr />
-
-<ul>
-  <li><a href="https://school.programmers.co.kr/learn/courses/10302/lessons/62949">https://school.programmers.co.kr/learn/courses/10302/lessons/62949</a><br /><br /></li>
-</ul>
-
-<h1 id="문제">문제</h1>
-<hr />
-
-<ul>
-  <li>국가의 역할 중 하나는 여러 지방의 예산요청을 심사하여 국가의 예산을 분배하는 것입니다. 국가예산의 총액은 미리 정해져 있어서 모든 예산요청을 배정해 주기는 어려울 수도 있습니다. 그래서 정해진 총액 이하에서 가능한 한 최대의 총 예산을 다음과 같은 방법으로 배정합니다.<br /><br /></li>
-</ul>
-
-<ol>
-  <li>모든 요청이 배정될 수 있는 경우에는 요청한 금액을 그대로 배정합니다.<br /></li>
-  <li>모든 요청이 배정될 수 없는 경우에는 특정한 정수 상한액을 계산하여 그 이상인 예산요청에는 모두 상한액을 배정합니다. 상한액 이하의 예산요청에 대해서는 요청한 금액을 그대로 배정합니다.</li>
-</ol>
-
-<ul>
-  <li>예를 들어, 전체 국가예산이 485이고 4개 지방의 예산요청이 각각 120, 110, 140, 150일 때, 상한액을 127로 잡으면 위의 요청들에 대해서 각각 120, 110, 127, 127을 배정하고 그 합이 484로 가능한 최대가 됩니다.</li>
-  <li>각 지방에서 요청하는 예산이 담긴 배열 budgets과 총 예산 M이 매개변수로 주어질 때, 위의 조건을 모두 만족하는 상한액을 return 하도록 solution 함수를 작성해주세요.<br /><br /></li>
-</ul>
-
-<h1 id="제한">제한</h1>
-<hr />
-
-<ul>
-  <li>지방의 수는 3 이상 100,000 이하인 자연수입니다.</li>
-  <li>각 지방에서 요청하는 예산은 1 이상 100,000 이하인 자연수입니다.</li>
-  <li>총 예산은 지방의 수 이상 1,000,000,000 이하인 자연수입니다.<br /><br /><br /></li>
-</ul>
-
-<h1 id="-풀이">👀 풀이</h1>
-<hr />
-
-<ul>
-  <li>
-    <p>뭔가 막연하게 이분탐색 문제같았는데 범위를 좁혀나가는 기준을 어떻게 설정해야 할 지 모르겠어서 풀이 영상을 봤다. 이분탐색 문제는 풀 때마다 어렵게 느껴진다 😭</p>
-  </li>
-  <li>문제를 풀기 위해서는 금액이 최대가 되는 상한액의 범위를 좁혀가면서 탐색해야 한다. 그래서 최소값(0)과 최대값(입력 중 가장 큰 값) 범위에서 중간값을 구한 다음 이 중간값이 적절한 상한액이면 정답이 되는 것이고 많이 모자란 값이라면 최소값을 증가시키고, 초과하는 값이라면 최대값을 감소시킨다.</li>
-  <li>이 과정을 최소값과 최대값이 같아지는(서로 만나는) 지점까지 반복하면 된다.<br /><br /></li>
-</ul>
-
-<h1 id="코드">코드</h1>
-<hr />
-
-<script src="https://gist.github.com/miro7923/d168474b2fe3ceb2d077e3962f62e964.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="BinarySearch" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62949]]></summary></entry></feed>
+<script src="https://gist.github.com/miro7923/b31d9de91d26ef1943e7d862b541a340.js"></script>]]></content><author><name>Sia Hwang</name><email>miro7923@gmail.com</email></author><category term="Programmers" /><category term="Algorithm" /><category term="Programmers" /><category term="Java" /><category term="Simulation" /><summary type="html"><![CDATA[문제 링크 https://school.programmers.co.kr/learn/courses/10302/lessons/62947]]></summary></entry></feed>
