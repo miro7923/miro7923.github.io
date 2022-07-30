@@ -1,4 +1,4 @@
-I"&<h1 id="문제-링크">문제 링크</h1>
+I"�<h1 id="문제-링크">문제 링크</h1>
 <hr />
 
 <ul>
@@ -52,6 +52,7 @@
   <li>쓰인 알파벳들을 알아냈으면 이걸 오름차순으로 정렬한다. 정답은 오름차순으로 조합된 결과여야 하기 때문에 알파벳들을 오름차순으로 정렬한 다음 조합을 시작할 것이다.</li>
   <li><code class="language-plaintext highlighter-rouge">course</code>의 원소값만큼 길이로 알파벳들을 조합한 결과를 <code class="language-plaintext highlighter-rouge">Map&lt;String, Integer&gt;</code>에 담는다. 왜냐면 각 조합별로 몇 번 주문되었는지 셀 것이기 때문이다. <code class="language-plaintext highlighter-rouge">Menu</code> 클래스를 만들어 조합 문자열과 주문횟수를 저장한 뒤 배열에 담을수도 있는데 나중에 찾을 때 오래 걸릴 거 같아서 키값으로 빠르게 찾아오려고 <code class="language-plaintext highlighter-rouge">Map</code>을 사용했다. 하지만 지금 글을 쓰면서 생각해보니 클래스를 담은 배열로도 충분할 거 같은데 지금은 시간이 늦었으니 내일 리팩토링을 해 보는 것으로!
     <ul>
+      <li>➡️ 맵을 사용했던 부분을 전부 클래스를 배열로 바꿔서 테스트 해 본 결과 작동이 잘 된다!</li>
       <li>조합 결과를 담을 때 &lt;메뉴조합, 0&gt; 페어로 담는다.</li>
     </ul>
   </li>
@@ -67,6 +68,12 @@
 <h1 id="코드">코드</h1>
 <hr />
 
+<h2 id="hashmap-사용한-코드">HashMap 사용한 코드</h2>
+
 <script src="https://gist.github.com/miro7923/7d6b28ff671a62dfa9d5d7561f729b58.js"></script>
+
+<h2 id="arraylist--menu-class-사용한-코드">ArrayList + Menu class 사용한 코드</h2>
+
+<script src="https://gist.github.com/miro7923/10bb71c7eae5eb929a8000a481b430ed.js"></script>
 
 :ET
