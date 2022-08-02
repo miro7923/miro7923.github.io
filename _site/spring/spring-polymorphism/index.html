@@ -1,0 +1,798 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Spring) 다형성 Polymorphism | Sia’s Dev Log</title>
+<meta name="description" content="다형성이란?    하나의 객체가 여러 타입을 가질 수 있는 것을 말한다. 자바로 코딩을 하다 보면 업캐스팅/다운캐스팅을 사용해서 하나의 자료형으로 여러 타입의 객체를 생성하는 경우가 많다. 이것이 다형성의 대표적인 예라고 할 수 있다.">
+
+
+  <meta name="author" content="Sia Hwang">
+  
+  <meta property="article:author" content="Sia Hwang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Sia's Dev Log">
+<meta property="og:title" content="Spring) 다형성 Polymorphism">
+<meta property="og:url" content="http://localhost:4000/spring/spring-polymorphism/">
+
+
+  <meta property="og:description" content="다형성이란?    하나의 객체가 여러 타입을 가질 수 있는 것을 말한다. 자바로 코딩을 하다 보면 업캐스팅/다운캐스팅을 사용해서 하나의 자료형으로 여러 타입의 객체를 생성하는 경우가 많다. 이것이 다형성의 대표적인 예라고 할 수 있다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-08-02T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/spring/spring-polymorphism/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Sia Hwang",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Sia's Dev Log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발 공부 기록하는 Blog
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#spring" itemprop="item"><span itemprop="name">Spring</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Spring) 다형성 Polymorphism</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.png" alt="Sia Hwang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Sia Hwang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>협업 좋아하는 백엔드 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Portfolio</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:miro7923@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="miro7923@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Spring) 다형성 Polymorphism">
+    <meta itemprop="description" content="다형성이란?  하나의 객체가 여러 타입을 가질 수 있는 것을 말한다. 자바로 코딩을 하다 보면 업캐스팅/다운캐스팅을 사용해서 하나의 자료형으로 여러 타입의 객체를 생성하는 경우가 많다. 이것이 다형성의 대표적인 예라고 할 수 있다.">
+    <meta itemprop="datePublished" content="2022-08-02T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/spring/spring-polymorphism/" class="u-url" itemprop="url">Spring) 다형성 Polymorphism
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-08-02T00:00:00+09:00">August 2, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#다형성이란">다형성이란?</a></li><li><a href="#객체지향프로그래밍에서-다형성이-중요한-이유">객체지향프로그래밍에서 다형성이 중요한 이유</a><ul><li><a href="#역할과-구현의-분리">역할과 구현의 분리</a></li><li><a href="#자바에서의-다형성">자바에서의 다형성</a></li></ul></li><li><a href="#객체지향-solid-원칙">객체지향 SOLID 원칙</a><ul><li><a href="#srp-단일-책임-원칙">SRP 단일 책임 원칙</a></li><li><a href="#ocp-개방-폐쇄-원칙">OCP 개방-폐쇄 원칙</a></li><li><a href="#lsp-리스코프-치환-원칙">LSP 리스코프 치환 원칙</a></li><li><a href="#isp-인터페이스-분리-원칙">ISP 인터페이스 분리 원칙</a></li><li><a href="#dip-의존관계-역전-원칙">DIP 의존관계 역전 원칙</a></li></ul></li><li><a href="#스프링이란">스프링이란?</a></li><li><a href="#참고">참고</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="다형성이란">다형성이란?</h1>
+<ul>
+  <li>하나의 객체가 여러 타입을 가질 수 있는 것을 말한다. 자바로 코딩을 하다 보면 업캐스팅/다운캐스팅을 사용해서 하나의 자료형으로 여러 타입의 객체를 생성하는 경우가 많다. 이것이 다형성의 대표적인 예라고 할 수 있다.<br /><br /></li>
+</ul>
+
+<h1 id="객체지향프로그래밍에서-다형성이-중요한-이유">객체지향프로그래밍에서 다형성이 중요한 이유</h1>
+<ul>
+  <li>객체지향프로그래밍의 꽃은 다형성이라 할 수 있을 것이다. 객체지향프로그래밍 하면 빼놓을 수 없는 자바와 스프링도 다형성이 없으면 돌아가지 않을 것이다. 그렇다면 왜 이렇게 중요한 걸까?</li>
+</ul>
+
+<h2 id="역할과-구현의-분리">역할과 구현의 분리</h2>
+<ul>
+  <li>역할과 구현을 분리한다는 말이 처음에는 참 어렵게 느껴진다. 솔직히 무슨 말인가 싶었다…ㅋㅋㅋ</li>
+  <li>자동차와 운전자를 예로 들면, 운전자는 운전만 할 줄 알면 세상의 모든 차를 운전할 수 있다. 왜냐면 자동차의 운전 방식은 똑같으니까. 자동차가 바뀐다고 운전 방법이 달라지지는 않는다. 그래서 운전자는 운전 방법만 알고 있으면 된다.</li>
+  <li>
+    <p>하지만 자동차는 운전 방법만으로 이루어지지 않는다. 자동차에는 내연기관도 필요하고 바퀴도 필요하고 본체도 필요하고 핸들의 움직임도 제어할 수 있어야 하고… 자동차의 구성 요소가 동작하게 할 각종 매커니즘이 필요하다. 그런데 이런 매커니즘을 몰라도 운전은 할 수 있다. 안다고 손해는 없겠지만 운전자는 운전만 하면 되는데 머리 아프게 이런 것들까지 꼭 알아야 할까?</p>
+  </li>
+  <li>그래서 나온 개념이 역할과 구현을 분리하는 것이다.</li>
+  <li>운전자 입장에서 자동차는 운전해서 이동할 수 있다는 역할을 한다는 것만 알고 있으면 된다. 내부 구조가 어떻게 돌아가는지까지는 몰라도 상관이 없다. 자동차의 내부 구조는 그걸 구현하는 회사가 알고 있으면 된다.</li>
+  <li>
+    <p>여기서 나오는 개념이 바로.. <code class="language-plaintext highlighter-rouge">인터페이스</code>이다. 오늘에서야 인터페이스의 존재 이유를 명확하게 알게 되었는데, 처음에는 굳이 이걸 왜? 였다.</p>
+  </li>
+  <li>자동차를 만드는 회사는 <code class="language-plaintext highlighter-rouge">운전할 수 있는 차</code>라는 <code class="language-plaintext highlighter-rouge">인터페이스(역할)</code>를 운전자에게 제공하기만 하면 내부 구조를 어떻게 만들든 운전자는 운전을 할 것이다. 그러면 자동차 회사는 하나의 인터페이스 안에서 여러 모델의 차를 만들 수 있을 것이다. 디자인과 기능이 어떻게 되었든 운전만 되면 되니까.</li>
+  <li>이런 방식으로 코딩하면 사용자에게 제공할 차의 종류나 기능이 바껴도 제공하는 부분을 일일이 뜯어고치지 않고 구현하는 내부만 고치면 된다. 사용자 100명에게 제공하고 있지만 실제로 구현하는 클래스 하나만 수정하면 되는 것이다. 만약 100명에게 일일이 실제 구현체를 제공하는 코드를 작성했다면…… 그 부분 수정하다가 날이 저물 것이다.</li>
+</ul>
+
+<h2 id="자바에서의-다형성">자바에서의 다형성</h2>
+<ul>
+  <li>역할 = 인터페이스</li>
+  <li>구현 = 인터페이스를 구현한 클래스, 구현 객체</li>
+  <li>객체를 설계할 때엔 역할과 구현을 명확하게 분리해야 한다. 이를 위해서는 객체의 역할을 먼저 부여한 다음 그 역할을 수행하는 구현 객체를 만드는 것이 좋다.<br /><br /></li>
+</ul>
+
+<h1 id="객체지향-solid-원칙">객체지향 SOLID 원칙</h1>
+<ul>
+  <li>이번 정보처리기사 실기에 출제되어 나를 괴롭게 했던…^^ <code class="language-plaintext highlighter-rouge">SOLID</code> 원칙을 알아보자.</li>
+</ul>
+
+<h2 id="srp-단일-책임-원칙">SRP 단일 책임 원칙</h2>
+<ul>
+  <li>Single responsibility principle</li>
+  <li>한 클래스는 하나의 책임만 가져야 한다.</li>
+  <li>하나의 책임이라는 기준이 다소 모호할 수 있다. 중요한 기준은 <code class="language-plaintext highlighter-rouge">변경</code>으로, 변경이 있을 때 파급 효과가 적으면 단일 책임 원칙을 잘 따른 것이다.</li>
+  <li>예) UI 변경, 객체의 생성과 사용을 분리</li>
+</ul>
+
+<h2 id="ocp-개방-폐쇄-원칙">OCP 개방-폐쇄 원칙</h2>
+<ul>
+  <li>Open/closed principle</li>
+  <li>소프트웨어의 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야 한다.</li>
+  <li>참 모순된 말이지만 다형성과 스프링 프레임워크를 사용하면 이것을 손쉽게 구현할 수 있다.</li>
+  <li>대표적인 예는 하나의 인터페이스를 활용한 여러 타입의 객체 생성이다.</li>
+</ul>
+
+<h2 id="lsp-리스코프-치환-원칙">LSP 리스코프 치환 원칙</h2>
+<ul>
+  <li>Liskov substitution principle</li>
+  <li>프로그램의 객체는 프로그램의 정확성을 깨뜨리지 않으면서 하위 타입의 인스턴스로 바꿀 수 있어야 한다.</li>
+  <li>하위 클래스는 인터페이스 규약을 다 지켜야 하는 것이다.</li>
+  <li>예) 자동차 인터페이스의 엑셀은 앞으로 가는 기능으로 정의했다. 그런데 이걸 뒤로 가게 구현하면 LSP 원칙을 위반하는 것이다. 무조건 앞으로 가게 구현해야 LSP 원칙을 지키는 것이다.</li>
+</ul>
+
+<h2 id="isp-인터페이스-분리-원칙">ISP 인터페이스 분리 원칙</h2>
+<ul>
+  <li>Interface segregation principle</li>
+  <li>특정 클라이언트를 위한 인터페이스 여러 개가 범용 인터페이스 하나보다 낫다.</li>
+  <li>예) 자동차 인터페이스 -&gt; 운전 인터페이스, 정비 인터페이스로 분리</li>
+  <li>사용자 클라이언트 -&gt; 운전자 클라이언트, 정비사 클라이언트로 분리
+    <ul>
+      <li>분리하면 정비 인터페이스 자체가 변해도 운전자 클라이언트에 영향을 주지 않는다.</li>
+    </ul>
+  </li>
+  <li>인터페이스가 명확해지고 대체 가능성이 높아진다.</li>
+</ul>
+
+<h2 id="dip-의존관계-역전-원칙">DIP 의존관계 역전 원칙</h2>
+<ul>
+  <li>Dependency inversion principle</li>
+  <li>프로그래머는 <code class="language-plaintext highlighter-rouge">추상화에 의존해야지, 구체화에 의존하면 안 된다.</code></li>
+  <li>의존성 주입은 이 원칙을 따르는 방법 중 하나다.</li>
+  <li>구현 클래스에 의존하지 않고 인터페이스에 의존하라는 뜻. 즉 역할에 의존하게 해야 한다. 구현체에 의존하게 되면 변경이 아주 어려워진다.<br /><br /></li>
+</ul>
+
+<h1 id="스프링이란">스프링이란?</h1>
+<ul>
+  <li>객체지향프로그래밍에서 처음에는 객체가 각자 분리되어야 한다고 생각하기 쉽다. (내가 그랬다)</li>
+  <li>하지만 본질은 그것이 아니다!</li>
+  <li>객체간의 협력으로 이루어지는 것이며 <code class="language-plaintext highlighter-rouge">요청</code>하는 <code class="language-plaintext highlighter-rouge">클라이언트</code>와 <code class="language-plaintext highlighter-rouge">응답</code>하는 <code class="language-plaintext highlighter-rouge">서버</code>가 있는 것이다.</li>
+  <li>다형성의 가장 중요한 본질은 클라이언트를 변경하지 않고, 서버의 구현 기능을 유연하게 변경할 수 있다는 것이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">스프링</code>은 이러한 다형성을 극대화해서 이용할 수 있게 도와주는 것이다. 쉬운 건 아니긴 한데 그렇다고 으마무시하게 복잡한 기술은 아닌 것이다…</li>
+  <li>스프링에서 제공하는 <code class="language-plaintext highlighter-rouge">DI(Dependency Injection)</code>을 이용해 다형성과 <code class="language-plaintext highlighter-rouge">OCP</code>, <code class="language-plaintext highlighter-rouge">DIP</code>를 쉽게 구현할 수 있다.
+    <ul>
+      <li>클라이언트의 코드의 변경 없이 기능을 확장할 수 있으며 쉽게 부품을 교체하듯이 개발할 수 있다.<br /><br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8%ED%8E%B8#">스프링 핵심 원리 - 기본편</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#java" class="page__taxonomy-item p-category" rel="tag">Java</a><span class="sep">, </span>
+    
+      <a href="/tags/#oop" class="page__taxonomy-item p-category" rel="tag">OOP</a><span class="sep">, </span>
+    
+      <a href="/tags/#polymorphism" class="page__taxonomy-item p-category" rel="tag">Polymorphism</a><span class="sep">, </span>
+    
+      <a href="/tags/#spring" class="page__taxonomy-item p-category" rel="tag">Spring</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#spring" class="page__taxonomy-item p-category" rel="tag">Spring</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-08-02T00:00:00+09:00">August 2, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Spring%29+%EB%8B%A4%ED%98%95%EC%84%B1+Polymorphism%20http%3A%2F%2Flocalhost%3A4000%2Fspring%2Fspring-polymorphism%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fspring%2Fspring-polymorphism%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fspring%2Fspring-polymorphism%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/programmers/programmers-convertPair/" class="pagination--pager" title="Java) 프로그래머스 - 괄호 변환
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-convertPair/" rel="permalink">Java) 프로그래머스 - 괄호 변환
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-31T00:00:00+09:00">July 31, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://school.programmers.co.kr/learn/courses/30/lessons/60058
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-menu/" rel="permalink">Java) 프로그래머스 - 메뉴 리뉴얼
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-28T00:00:00+09:00">July 28, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://school.programmers.co.kr/learn/courses/30/lessons/72411
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-mid-alphabet/" rel="permalink">Java) 프로그래머스 - 카카오프렌즈 컬러링북
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-26T00:00:00+09:00">July 26, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">문제 링크
+
+
+
+  https://school.programmers.co.kr/learn/courses/30/lessons/1829
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/errorlog/warning-log-14/" rel="permalink">에러해결 Log) 스프링부트 invalid source release 11
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-07-25T00:00:00+09:00">July 25, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">사용환경
+
+  MacBook Air (M1, 2020) 16GB
+  OpenJDK 11
+  IntelliJ IDEA Community
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:miro7923@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/miro7923" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://miro7923.github.io/yujin-porfolio/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Sia Hwang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
