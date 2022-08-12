@@ -51,7 +51,7 @@ int[] arr = {1,2,3,4,5};	// ArrayList로 바꾸고 싶은 배열
 List<Integer> newArr = Arrays.asList(arr); // 컴파일 에러!
 ```
 
-<a align=“center”><img src=“../../assets/images/arrays-aslist” width=“500”></p>
+<p align=“center”><img src=“../../assets/images/arrays-aslist” width=“500”></p>
 
 * 코드를 작성해보면 위와 같은 메시지와 함께 컴파일이 되지 않는다.
 * 그렇다… 여기서 `Arrays.asList()`는 컬렉션 리스트 객체 생성을 위한 오토박싱이 되지 않는다는 것을 알 수 있다. 그래서 요상한 모양으로 바뀌는 것이다. 이걸 해결하기 위해 스트림을 사용해 컬렉션 리스트로 바꿀 수 있다.<br><br>
@@ -59,11 +59,11 @@ List<Integer> newArr = Arrays.asList(arr); // 컴파일 에러!
 # Stream을 사용해 컬렉션 리스트로 바꾸기
 * 자바 8 이상부터는 스트림이라는 기능이 제공된다. 배열과 같은 자료구조에서 기존에는 for문을 사용해 반복작업을 하던 것을 메서드만 호출하면 for문 작성 없이 내부적으로 처리해 주는 기능이라고 보면 된다.
 
-<a align=“center”><img src=“../../assets/images/arrays-stream-aslist” width=“800”></p>
+<p align=“center”><img src=“../../assets/images/arrays-stream-aslist” width=“800”></p>
 
 * 스트림에 있는 `boxed()` 라는 메서드는 이름처럼 기본형 타입에 대한 박싱 기능을 제공한다. for문으로 배열을 순회하며 하나하나 Integer로 형변환 해 주는 코드를 작성하지 않아도 배열의 내부 요소들이 모두 형변환되는 것이다. 짱짱 
 
-<a align=“center”><img src=“../../assets/images/arrays-stream-aslist-collect” width=“800”></p>
+<p align=“center”><img src=“../../assets/images/arrays-stream-aslist-collect” width=“800”></p>
 
 * 박싱된 데이터들을 `collect()`로 컬렉션 리스트로 바꿔주면 된다.  .만 누르면 자동완성 다 보여주는 인텔리제이 사랑해
 
